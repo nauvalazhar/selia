@@ -11,6 +11,9 @@ export const chipVariants = cva(
         primary: 'bg-primary ring-primary text-primary-foreground',
         secondary: 'bg-secondary ring-secondary text-secondary-foreground',
         tertiary: 'bg-tertiary ring-tertiary text-tertiary-foreground',
+        success: 'bg-success ring-success text-success-foreground',
+        info: 'bg-info ring-info text-info-foreground',
+        warning: 'bg-warning ring-warning text-warning-foreground',
         destructive:
           'bg-destructive ring-destructive text-destructive-foreground',
       },
