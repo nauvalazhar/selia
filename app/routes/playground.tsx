@@ -4,11 +4,18 @@ import {
   Card,
   CardBody,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardHeaderContent,
   CardTitle,
 } from 'components/selia/card';
 import { Chip } from 'components/selia/chip';
+import {
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  PaginationList,
+} from 'components/selia/pagination';
 import {
   Table,
   TableBody,
@@ -19,6 +26,7 @@ import {
   TableHeader,
   TableRow,
 } from 'components/selia/table';
+import { ChevronLeft, ChevronRight, MoreHorizontalIcon } from 'lucide-react';
 
 export default function Playground() {
   return (
@@ -102,6 +110,41 @@ export default function Playground() {
             </Table>
           </TableContainer>
         </CardBody>
+        <CardFooter className="text-center">
+          <Pagination>
+            <PaginationList>
+              <PaginationItem>
+                <PaginationLink disabled>
+                  <ChevronLeft />
+                  Previous
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink active>1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink>2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink>3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink>4</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink>
+                  <MoreHorizontalIcon />
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink>
+                  Next
+                  <ChevronRight />
+                </PaginationLink>
+              </PaginationItem>
+            </PaginationList>
+          </Pagination>
+        </CardFooter>
       </Card>
     </div>
   );
