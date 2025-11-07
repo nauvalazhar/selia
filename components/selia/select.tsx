@@ -210,7 +210,7 @@ export interface SelectSeparatorProps extends BaseSelect.Separator.Props {}
 export function SelectSeparator({ className, ...props }: SelectSeparatorProps) {
   return (
     <BaseSelect.Separator
-      className={cn('h-px my-1 bg-border02', className)}
+      className={cn('h-px my-1 bg-border04', className)}
       {...props}
     />
   );

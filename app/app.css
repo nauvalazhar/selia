@@ -59,8 +59,9 @@
   --success-foreground: var(--foreground);
   --info-background: #0597ff;
   --info-foreground: var(--foreground);
-  --kbd-background: #43454c;
+  --kbd-background: #43454C;
   --kbd-foreground: var(--foreground);
+  --kbd-border: #484B51;
   --accent03-gradient: linear-gradient(180deg, #424348 0%, #3a3b40 100%);
   --accent04-gradient: linear-gradient(180deg, #424248 0%, #3b3b40 100%);
   --card-gradient: linear-gradient(
@@ -79,6 +80,8 @@
 
   --spinner-light: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_339_178)'%3E%3Cpath d='M22 12.0005C21.9999 14.1123 21.3313 16.1698 20.0899 17.8782C18.8486 19.5866 17.0983 20.8582 15.0899 21.5107C13.0814 22.1632 10.918 22.1631 8.9096 21.5105C6.90121 20.8579 5.15098 19.5862 3.90974 17.8777C2.6685 16.1693 1.99998 14.1117 2 11.9999C2.00002 9.88816 2.66856 7.83061 3.90982 6.12216C5.15109 4.4137 6.90134 3.14205 8.90974 2.48946C10.9181 1.83687 13.0816 1.83684 15.09 2.48938' stroke='%23F7F7F8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_339_178'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
   --spinner-dark: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_339_178)'%3E%3Cpath d='M22 12.0005C21.9999 14.1123 21.3313 16.1698 20.0899 17.8782C18.8486 19.5866 17.0983 20.8582 15.0899 21.5107C13.0814 22.1632 10.918 22.1631 8.9096 21.5105C6.90121 20.8579 5.15098 19.5862 3.90974 17.8777C2.6685 16.1693 1.99998 14.1117 2 11.9999C2.00002 9.88816 2.66856 7.83061 3.90982 6.12216C5.15109 4.4137 6.90134 3.14205 8.90974 2.48946C10.9181 1.83687 13.0816 1.83684 15.09 2.48938' stroke='%23161718' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_339_178'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+  --chevron-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-chevron-right-icon lucide-chevron-right'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
+  --chevron-right-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-chevron-right-icon lucide-chevron-right'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
 
   /* --kbdnormal-box-shadow:
     inset 0px 1px 0px rgba(255, 255, 255, 0.1), 0px 2px 3px rgba(0, 0, 0, 0.25),
@@ -158,6 +161,9 @@
   --color-popover: var(--popover-background);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover-border: var(--popover-border);
+  --color-kbd: var(--kbd-background);
+  --color-kbd-foreground: var(--kbd-foreground);
+  --color-kbd-border: var(--kbd-border);
 
   --color-surface00: var(--surface00);
   --color-surface01: var(--surface01);
@@ -195,6 +201,20 @@
 
 @utility bg-spinner-dark {
   background-image: var(--spinner-dark);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@utility bg-chevron-right {
+  background-image: var(--chevron-right);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@utility bg-chevron-right-dark {
+  background-image: var(--chevron-right-dark);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
