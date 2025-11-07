@@ -37,7 +37,7 @@ export function DividerText({
 }: DividerTextProps) {
   return (
     <div className={cn(dividerTextVariants({ variant, className }))} {...props}>
-      <span className="text-sm text-dim text-nowrap">{children}</span>
+      <span className="text-sm text-dimmed text-nowrap">{children}</span>
     </div>
   );
 }

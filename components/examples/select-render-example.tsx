@@ -24,7 +24,7 @@ export default function SelectRenderExample() {
               state.value ? (
                 <span className="text-foreground">{state.value.label}</span>
               ) : (
-                <span className="text-dim">Select an option</span>
+                <span className="text-dimmed">Select an option</span>
               )
             }
           />

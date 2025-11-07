@@ -26,11 +26,15 @@
   --foreground: #f7f7f8;
   --subtle: #e9e9ec;
   --muted: #d4d5d8;
-  --dim: #999ba3;
+  --dimmed: #999ba3;
   --input-background: var(--surface03);
+  --input-subtle-background: var(--surface02);
   --input-border: #424348;
+  --avatar-background: #313135;
+  --avatar-foreground: #f7f7f8;
   --card-background: var(--surface02);
   --card-border: #2a2b2d;
+  --card-footer-background: var(--surface01);
   --popover-background: #313135;
   --popover-foreground: #f7f7f8;
   --popover-border: #45454a;
@@ -46,9 +50,9 @@
   --destructive-background: #df0c0f;
   --destructive-foreground: var(--foreground);
   --destructive-ring: #8c0809;
-  --invert-background: #ecedee;
-  --invert-foreground: #161618;
-  --invert-ring: #4f5459;
+  --tertiary-background: #ecedee;
+  --tertiary-foreground: #161618;
+  --tertiary-ring: #4f5459;
   --warning-background: #e09e06;
   --warning-foreground: var(--foreground);
   --success-background: #04ae48;
@@ -70,7 +74,7 @@
   --gradient-secondary: linear-gradient(180deg, #3d3f43 0%, #383a3d 100%);
   --gradient-success: linear-gradient(180deg, #04ae48 0%, #03963e 100%);
   --gradient-warning: linear-gradient(180deg, #e09e06 0%, #c78c05 100%);
-  --gradient-invert: linear-gradient(180deg, #ecedee 0%, #c9cccf 100%);
+  --gradient-tertiary: linear-gradient(180deg, #ecedee 0%, #c9cccf 100%);
   --gradient-destructive: linear-gradient(180deg, #df0c0f 0%, #c20a0d 100%);
 
   --spinner-light: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_339_178)'%3E%3Cpath d='M22 12.0005C21.9999 14.1123 21.3313 16.1698 20.0899 17.8782C18.8486 19.5866 17.0983 20.8582 15.0899 21.5107C13.0814 22.1632 10.918 22.1631 8.9096 21.5105C6.90121 20.8579 5.15098 19.5862 3.90974 17.8777C2.6685 16.1693 1.99998 14.1117 2 11.9999C2.00002 9.88816 2.66856 7.83061 3.90982 6.12216C5.15109 4.4137 6.90134 3.14205 8.90974 2.48946C10.9181 1.83687 13.0816 1.83684 15.09 2.48938' stroke='%23F7F7F8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_339_178'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
@@ -115,10 +119,10 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-destructive-ring: var(--destructive-ring);
   --background-image-gradient-destructive: var(--gradient-destructive);
-  --color-invert: var(--invert-background);
-  --color-invert-foreground: var(--invert-foreground);
-  --color-invert-ring: var(--invert-ring);
-  --background-image-gradient-invert: var(--gradient-invert);
+  --color-tertiary: var(--tertiary-background);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-ring: var(--tertiary-ring);
+  --background-image-gradient-tertiary: var(--gradient-tertiary);
   --color-info: var(--info-background);
   --color-info-foreground: var(--info-foreground);
   --background-image-gradient-info: var(--gradient-info);
@@ -141,10 +145,14 @@
   --color-accent03: var(--accent03);
   --color-accent04: var(--accent04);
   --color-accent05: var(--accent05);
+  --color-avatar: var(--avatar-background);
+  --color-avatar-foreground: var(--avatar-foreground);
   --color-card: var(--card-background);
   --color-card-border: var(--card-border);
+  --color-card-footer: var(--card-footer-background);
   --background-image-gradient-card: var(--card-gradient);
   --color-input: var(--input-background);
+  --color-input-subtle: var(--input-subtle-background);
   --color-input-foreground: var(--foreground);
   --color-input-border: var(--input-border);
   --color-popover: var(--popover-background);
@@ -158,7 +166,7 @@
   --color-surface04: var(--surface04);
   --color-subtle: var(--subtle);
   --color-muted: var(--muted);
-  --color-dim: var(--dim);
+  --color-dimmed: var(--dimmed);
 
   --radius: 0.75rem;
   --shadow: 0 3px 4px rgba(0, 0, 0, 0.25);
@@ -195,6 +203,9 @@
 @layer base {
   .root {
     isolation: isolate;
+  }
+  html {
+    color-scheme: dark;
   }
   body {
     @apply text-base bg-background;

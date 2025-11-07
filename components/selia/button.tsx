@@ -5,7 +5,7 @@ import { cn } from 'lib/utils';
 
 export const buttonVariants = cva(
   [
-    'relative font-semibold inset-shadow-2xs ring-2',
+    'relative font-semibold',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
     'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
@@ -18,32 +18,75 @@ export const buttonVariants = cva(
       variant: {
         primary: [
           'bg-gradient-primary text-primary-foreground',
-          'ring-primary-ring inset-shadow-white/15 shadow',
-          'after:rounded focus-visible:outline-primary',
+          'inset-shadow-2xs inset-shadow-white/15 shadow',
+          'after:rounded outline-primary',
         ],
-        invert: [
-          'bg-invert text-invert-foreground',
-          'ring-invert-ring inset-shadow-background/15 shadow',
-          'after:rounded after:bg-background/10 focus-visible:outline-invert',
+        'primary-subtle': [
+          'bg-primary/15 hover:bg-primary/25 text-primary',
+          'after:content-none outline-primary',
+        ],
+        'primary-outline': [
+          'text-primary',
+          'border-2 border-primary hover:bg-primary/15',
+          'after:content-none outline-primary',
+        ],
+        'primary-plain': [
+          'text-primary hover:bg-primary/25',
+          'after:content-none outline-primary',
         ],
         secondary: [
           'bg-gradient-secondary text-secondary-foreground',
-          'ring-secondary-ring inset-shadow-white/15 shadow',
-          'after:rounded focus-visible:outline-secondary',
+          'inset-shadow-2xs inset-shadow-white/15 shadow',
+          'after:rounded outline-secondary',
+        ],
+        'secondary-subtle': [
+          'bg-secondary/15 hover:bg-secondary/25 text-secondary-foreground',
+          'after:content-none outline-secondary',
+        ],
+        'secondary-outline': [
+          'text-secondary-foreground',
+          'border-2 border-secondary hover:bg-secondary/15',
+          'after:content-none outline-secondary',
+        ],
+        'secondary-plain': [
+          'text-secondary-foreground hover:bg-secondary/25',
+          'after:content-none outline-secondary shadow-none',
+        ],
+        tertiary: [
+          'bg-gradient-tertiary text-tertiary-foreground',
+          'inset-shadow-2xs inset-shadow-background/15 shadow',
+          'after:rounded after:bg-background/10 focus-visible:outline-tertiary',
+        ],
+        'tertiary-subtle': [
+          'bg-tertiary/15 hover:bg-tertiary/25 text-tertiary',
+          'after:content-none outline-tertiary',
+        ],
+        'tertiary-outline': [
+          'text-tertiary',
+          'border-2 border-tertiary hover:bg-tertiary/15',
+          'after:content-none outline-tertiary',
+        ],
+        'tertiary-plain': [
+          'text-tertiary hover:bg-tertiary/25',
+          'after:content-none outline-tertiary',
         ],
         destructive: [
           'bg-gradient-destructive text-destructive-foreground',
-          'ring-destructive-ring inset-shadow-white/15 shadow',
-          'after:rounded focus-visible:outline-destructive',
+          'inset-shadow-2xs inset-shadow-white/15 shadow',
+          'after:rounded outline-destructive',
         ],
-        outline: [
-          'text-foreground',
-          'ring-border04 hover:bg-accent01',
-          'after:content-none focus-visible:outline-secondary',
+        'destructive-subtle': [
+          'bg-destructive/15 hover:bg-destructive/25 text-destructive',
+          'after:content-none outline-destructive',
         ],
-        ghost: [
-          'text-foreground ring-0 after:rounded hover:bg-accent01',
-          'after:content-none focus-visible:outline-secondary',
+        'destructive-outline': [
+          'text-destructive',
+          'border-2 border-destructive hover:bg-destructive/15',
+          'after:content-none outline-destructive',
+        ],
+        'destructive-plain': [
+          'text-destructive hover:bg-destructive/25',
+          'after:content-none outline-destructive',
         ],
       },
       size: {
@@ -71,7 +114,7 @@ export const buttonVariants = cva(
     },
     compoundVariants: [
       {
-        variant: 'invert',
+        variant: 'tertiary',
         progress: true,
         className: 'before:bg-spinner-dark',
       },

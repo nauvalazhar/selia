@@ -108,7 +108,7 @@ export default function TeamCardExample() {
       </CardBody>
       <CardFooter className="p-0">
         <Button
-          variant="ghost"
+          variant="secondary-plain"
           block
           className="p-4 h-auto rounded-b-3xl rounded-t-none"
           render={<a href="#" />}

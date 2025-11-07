@@ -30,7 +30,7 @@ export function SelectTrigger({
     <BaseSelect.Trigger
       data-slot="trigger"
       className={cn(
-        'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dim transition-colors',
+        'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
         'ring ring-input-border hover:ring-border05 focus:outline-0 focus:ring-primary focus:ring-2',
         'flex items-center',
         className,
@@ -83,7 +83,7 @@ function SelectRenderValue({
   placeholder: string;
 }) {
   if (!value) {
-    return <span className="text-dim">{placeholder}</span>;
+    return <span className="text-dimmed">{placeholder}</span>;
   }
 
   if (typeof value === 'object') {
@@ -199,7 +199,7 @@ export function SelectGroupLabel({
 }: SelectGroupLabelProps) {
   return (
     <BaseSelect.GroupLabel
-      className={cn('px-2.5 py-1.5 text-sm font-medium text-dim', className)}
+      className={cn('px-2.5 py-1.5 text-sm font-medium text-dimmed', className)}
       {...props}
     />
   );

@@ -54,6 +54,15 @@ export const registry = {
           })),
         ),
       },
+      {
+        name: 'Indicator',
+        path: 'components/examples/avatar-indicator-example.tsx',
+        component: React.lazy(() =>
+          import('./examples/avatar-indicator-example').then((mod) => ({
+            default: mod.default,
+          })),
+        ),
+      },
     ],
   },
   button: {
@@ -205,6 +214,20 @@ export const registry = {
         path: 'components/examples/checkbox-group-parent-example.tsx',
         component: React.lazy(() =>
           import('./examples/checkbox-group-parent-example').then((mod) => ({
+            default: mod.default,
+          })),
+        ),
+      },
+    ],
+  },
+  chip: {
+    name: 'Chip',
+    examples: [
+      {
+        name: 'Basic',
+        path: 'components/examples/chip-example.tsx',
+        component: React.lazy(() =>
+          import('./examples/chip-example').then((mod) => ({
             default: mod.default,
           })),
         ),

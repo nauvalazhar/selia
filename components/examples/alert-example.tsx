@@ -13,7 +13,7 @@ export default function AlertExample() {
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="invert">
+      <Alert variant="tertiary">
         <InfoIcon />
         Some neutral message here.
       </Alert>

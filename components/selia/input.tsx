@@ -1,22 +1,37 @@
 import * as React from 'react';
 import { Input as BaseInput } from '@base-ui-components/react/input';
 import { cn } from 'lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export interface InputProps extends BaseInput.Props {}
+export const inputVariants = cva(
+  [
+    'h-9.5 px-2.5 w-full text-foreground rounded placeholder:text-dimmed transition-colors',
+    'ring ring-input-border hover:ring-border05 focus:outline-0 focus:ring-primary focus:ring-2',
+    '[&[type="file"]]:py-2 [&[type="file"]]:text-dimmed',
+    'file:h-5.5 file:px-1.5 file:rounded-lg file:text-secondary-foreground file:ring file:ring-border05 file:bg-secondary file:text-sm file:mr-2',
+    'disabled:opacity-70',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'bg-input',
+        subtle: 'bg-input-subtle',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
 
-export function Input({ className, ...props }: InputProps) {
+export interface InputProps
+  extends BaseInput.Props,
+    VariantProps<typeof inputVariants> {}
+
+export function Input({ className, variant, ...props }: InputProps) {
   return (
     <BaseInput
-      data-slot="input"
-      data-type={props.type}
-      className={cn(
-        'h-9.5 px-2.5 w-full bg-input text-foreground rounded placeholder:text-dim transition-colors',
-        'ring ring-input-border hover:ring-border05 focus:outline-0 focus:ring-primary focus:ring-2',
-        'data-[type=file]:py-2 data-[type=file]:text-dim',
-        'file:h-5.5 file:px-1.5 file:rounded-lg file:text-secondary-foreground file:ring file:ring-border05 file:bg-secondary file:text-sm file:mr-2',
-        'disabled:opacity-70',
-        className,
-      )}
+      className={cn(inputVariants({ variant, className }))}
       {...props}
     />
   );

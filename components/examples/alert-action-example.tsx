@@ -15,18 +15,18 @@ export default function AlertExample() {
         <InfoIcon />
         Message deleted successfully.
         <AlertActions>
-          <Button variant="invert" size="xs">
+          <Button variant="tertiary" size="xs" pill>
             Undo
           </Button>
         </AlertActions>
       </Alert>
-      <Alert variant="invert">
+      <Alert variant="tertiary">
         <InfoIcon />
         Some neutral message here.
         <AlertActions>
           <Button
-            variant="ghost"
-            className="not-hover:text-invert-foreground"
+            variant="secondary-plain"
+            className="text-tertiary-foreground"
             size="xs-icon"
             pill
           >
@@ -38,7 +38,7 @@ export default function AlertExample() {
         <XCircleIcon />
         Payment failed. Check your card details.
         <AlertActions>
-          <Button variant="ghost" size="xs" pill>
+          <Button variant="secondary-plain" size="xs" pill>
             Retry
           </Button>
         </AlertActions>
@@ -47,7 +47,7 @@ export default function AlertExample() {
         <InfoIcon />
         Some useful information here.
         <AlertActions>
-          <Button variant="ghost" size="xs" pill>
+          <Button variant="secondary-plain" size="xs" pill>
             Setting
           </Button>
         </AlertActions>
@@ -56,7 +56,7 @@ export default function AlertExample() {
         <CheckCircle2Icon />
         Your changes have been saved successfully.
         <AlertActions>
-          <Button variant="ghost" size="xs" pill>
+          <Button variant="secondary-plain" size="xs" pill>
             Refresh
           </Button>
         </AlertActions>
@@ -65,7 +65,7 @@ export default function AlertExample() {
         <TriangleAlertIcon />
         Some features may not work.
         <AlertActions>
-          <Button variant="ghost" size="xs" pill>
+          <Button variant="secondary-plain" size="xs" pill>
             Fix Now
           </Button>
         </AlertActions>

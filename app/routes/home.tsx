@@ -106,6 +106,17 @@ export default function Home({
           )}
 
           <Heading size="md" className="mb-4 mt-24">
+            Chip
+          </Heading>
+          {registry.chip.examples.map(
+            ({ name, component: Component, path }) => (
+              <Preview key={name} title={name} source={sources[path]}>
+                <Component />
+              </Preview>
+            ),
+          )}
+
+          <Heading size="md" className="mb-4 mt-24">
             Divider
           </Heading>
           {registry.divider.examples.map(

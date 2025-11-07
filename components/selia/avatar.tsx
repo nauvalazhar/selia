@@ -4,7 +4,7 @@ import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const avatarVariants = cva(
-  'rounded-full select-none bg-surface04 flex items-center justify-center text-foreground font-semibold',
+  'relative rounded-full select-none bg-avatar flex items-center justify-center text-avatar-foreground font-semibold',
   {
     variants: {
       size: {
@@ -51,6 +51,45 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
         'flex items-center justify-center size-full rounded-full',
         className,
       )}
+      {...props}
+    />
+  );
+}
+
+export const avatarIndicatorVariants = cva(
+  'absolute flex items-center justify-center size-2.5 rounded-full text-xs',
+  {
+    variants: {
+      position: {
+        top: 'top-0.5 right-0.5',
+        bottom: 'bottom-0.5 right-0.5',
+      },
+      size: {
+        sm: 'size-2.5',
+        md: 'size-3',
+        lg: 'size-3.5',
+      },
+    },
+    defaultVariants: {
+      position: 'bottom',
+      size: 'md',
+    },
+  },
+);
+
+export interface AvatarIndicatorProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof avatarIndicatorVariants> {}
+
+export function AvatarIndicator({
+  position,
+  size,
+  className,
+  ...props
+}: AvatarIndicatorProps) {
+  return (
+    <div
+      className={cn(avatarIndicatorVariants({ position, size, className }))}
       {...props}
     />
   );

@@ -13,7 +13,7 @@ export default function AlertExample() {
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="invert-light">
+      <Alert variant="tertiary-light">
         <InfoIcon />
         Some neutral message here.
       </Alert>

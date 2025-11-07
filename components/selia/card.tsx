@@ -107,7 +107,7 @@ export function CardFooter({ className, ...props }: CardFooterProps) {
   return (
     <div
       className={cn(
-        'p-6 bg-surface01 border-t border-card-border rounded-b-3xl',
+        'p-6 bg-card-footer border-t border-card-border rounded-b-3xl',
         className,
       )}
       {...props}
