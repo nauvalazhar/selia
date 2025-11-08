@@ -39,9 +39,8 @@ export function SelectTrigger({
     >
       {children}
 
-      <BaseSelect.Icon className="ml-auto text-muted pointer-events-none">
+      <BaseSelect.Icon className="ml-auto size-4 text-muted pointer-events-none">
         <svg
-          className="h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"
@@ -210,7 +209,7 @@ export interface SelectSeparatorProps extends BaseSelect.Separator.Props {}
 export function SelectSeparator({ className, ...props }: SelectSeparatorProps) {
   return (
     <BaseSelect.Separator
-      className={cn('h-px my-1 bg-border04', className)}
+      className={cn('h-px my-1 bg-border02', className)}
       {...props}
     />
   );
