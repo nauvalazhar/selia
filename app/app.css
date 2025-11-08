@@ -41,6 +41,8 @@
   --dialog-background: rgba(34, 35, 37, 0.9);
   --dialog-foreground: #f7f7f8;
   --dialog-border: #2e3032;
+  --tabs-background: var(--surface03);
+  --tabs-foreground: var(--foreground);
   --primary-background: #336ff1;
   --primary-foreground: var(--foreground);
   --primary-ring: #0c40b1;
@@ -69,6 +71,7 @@
     rgba(32, 33, 35, 0.96) 0%,
     #1a1b1d 100%
   );
+
   --gradient-primary: linear-gradient(180deg, #4a7ff2 0%, #336ff1 100%);
   --gradient-primary-hover: linear-gradient(180deg, #5889f3 0%, #4078f2 100%);
   --gradient-info: linear-gradient(180deg, #0597ff 0%, #0086e5 100%);
@@ -148,6 +151,8 @@
   --color-accent03: var(--accent03);
   --color-accent04: var(--accent04);
   --color-accent05: var(--accent05);
+  --background-image-gradient-accent03: var(--accent03-gradient);
+  --background-image-gradient-accent04: var(--accent04-gradient);
   --color-avatar: var(--avatar-background);
   --color-avatar-foreground: var(--avatar-foreground);
   --color-card: var(--card-background);
@@ -167,6 +172,8 @@
   --color-dialog: var(--dialog-background);
   --color-dialog-foreground: var(--dialog-foreground);
   --color-dialog-border: var(--dialog-border);
+  --color-tabs: var(--tabs-background);
+  --color-tabs-foreground: var(--tabs-foreground);
 
   --color-surface00: var(--surface00);
   --color-surface01: var(--surface01);
