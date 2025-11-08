@@ -61,7 +61,7 @@ export function DialogHeader({
   return (
     <header
       {...props}
-      className={cn('px-6 pt-4 flex items-center gap-3.5', className)}
+      className={cn('px-6 pt-4.5 flex items-center gap-3.5', className)}
     >
       {children}
     </header>
