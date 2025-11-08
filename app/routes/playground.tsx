@@ -10,6 +10,7 @@ import {
   ComboboxValue,
 } from 'components/selia/combobox';
 import { Slider, SliderThumb } from 'components/selia/slider';
+import { Switch } from 'components/selia/switch';
 import { ChevronDownIcon } from 'lucide-react';
 import { useRef } from 'react';
 
@@ -27,12 +28,7 @@ export default function Playground() {
 
   return (
     <div className="flex items-center justify-center h-screen gap-4">
-      <div className="w-96">
-        <Slider defaultValue={[40, 60]} className="w-full">
-          <SliderThumb index={0} />
-          <SliderThumb index={1} />
-        </Slider>
-      </div>
+      <Switch />
     </div>
   );
 }
