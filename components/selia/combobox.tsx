@@ -229,7 +229,10 @@ export function ComboboxList({
   ...props
 }: React.ComponentProps<typeof BaseCombobox.List>) {
   return (
-    <BaseCombobox.List {...props} className={cn('space-y-1', className)} />
+    <BaseCombobox.List
+      {...props}
+      className={cn('space-y-1 outline-none', className)}
+    />
   );
 }
 

@@ -9,6 +9,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
 } from 'components/selia/combobox';
+import { Slider, SliderThumb } from 'components/selia/slider';
 import { ChevronDownIcon } from 'lucide-react';
 import { useRef } from 'react';
 
@@ -27,21 +28,10 @@ export default function Playground() {
   return (
     <div className="flex items-center justify-center h-screen gap-4">
       <div className="w-96">
-        <Combobox items={items}>
-          <ComboboxTrigger>
-            <ComboboxValue />
-          </ComboboxTrigger>
-          <ComboboxContent anchor={anchorRef}>
-            <ComboboxEmpty>No results.</ComboboxEmpty>
-            <ComboboxList>
-              {(item) => (
-                <ComboboxItem key={item.value} value={item}>
-                  {item.label}
-                </ComboboxItem>
-              )}
-            </ComboboxList>
-          </ComboboxContent>
-        </Combobox>
+        <Slider defaultValue={[40, 60]} className="w-full">
+          <SliderThumb index={0} />
+          <SliderThumb index={1} />
+        </Slider>
       </div>
     </div>
   );
