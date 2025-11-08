@@ -164,6 +164,9 @@
   --color-kbd: var(--kbd-background);
   --color-kbd-foreground: var(--kbd-foreground);
   --color-kbd-border: var(--kbd-border);
+  --color-dialog: var(--dialog-background);
+  --color-dialog-foreground: var(--dialog-foreground);
+  --color-dialog-border: var(--dialog-border);
 
   --color-surface00: var(--surface00);
   --color-surface01: var(--surface01);
