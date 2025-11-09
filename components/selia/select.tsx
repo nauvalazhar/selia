@@ -20,6 +20,7 @@ export const selectVariants = cva(
     'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'flex items-center gap-2.5 cursor-default',
+    'disabled:opacity-70',
   ],
   {
     variants: {

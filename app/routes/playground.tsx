@@ -229,16 +229,23 @@ export default function Playground() {
         <InputGroupSeparator />
         <InputGroupBar>
           <InputGroupText>Max. 1000 characters</InputGroupText>
-          <Select>
-            <SelectTrigger className="ml-auto w-auto mr-2" variant="plain">
-              <SelectValue placeholder="Courier" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="jne">JNE</SelectItem>
-              <SelectItem value="pos">POS</SelectItem>
-              <SelectItem value="tiki">Tiki</SelectItem>
-            </SelectContent>
-          </Select>
+
+          <Combobox items={options}>
+            <ComboboxTrigger className="w-auto ml-auto mr-2" variant="plain">
+              <ComboboxValue placeholder="Courier" />
+            </ComboboxTrigger>
+            <ComboboxContent className="w-40">
+              <ComboboxSearch />
+              <ComboboxEmpty>No results found</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item.value} value={item}>
+                    {item.label}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
           <Button variant="tertiary-subtle">Send</Button>
         </InputGroupBar>
       </InputGroup>

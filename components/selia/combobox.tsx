@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Combobox as BaseCombobox } from '@base-ui-components/react/combobox';
 import { cn } from 'lib/utils';
 import { Chip } from 'components/selia/chip';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 export function Combobox({
   ...props
@@ -9,24 +10,44 @@ export function Combobox({
   return <BaseCombobox.Root {...props} />;
 }
 
-const comboboxTriggerClasses = cn(
-  'px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
-  'ring ring-input-border hover:ring-border05',
-  'focus:outline-0 focus:ring-primary focus:ring-2',
-  'has-focus:ring-primary has-focus:ring-2',
-  'flex items-center gap-2.5',
+export const comboboxTriggerVariants = cva(
+  [
+    'px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
+    'focus:outline-0 focus:ring-primary focus:ring-2',
+    'has-focus:ring-primary has-focus:ring-2',
+    'flex items-center gap-2.5 cursor-default',
+    'disabled:opacity-70',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'bg-input ring ring-input-border hover:ring-border05',
+        subtle: 'bg-input-subtle ring ring-input-border hover:ring-border05',
+        plain: 'bg-transparent hover:bg-input',
+      },
+      pill: {
+        true: 'rounded-full',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      pill: false,
+    },
+  },
 );
 
 export function ComboboxTrigger({
   className,
   children,
+  variant,
   ...props
-}: React.ComponentProps<typeof BaseCombobox.Trigger>) {
+}: React.ComponentProps<typeof BaseCombobox.Trigger> &
+  VariantProps<typeof comboboxTriggerVariants>) {
   return (
     <BaseCombobox.Trigger
       {...props}
       role="combobox"
-      className={cn('h-9.5', comboboxTriggerClasses, className)}
+      className={cn('h-9.5', comboboxTriggerVariants({ variant, className }))}
     >
       {children}
       <BaseCombobox.Icon className="text-muted ml-auto">
@@ -94,8 +115,10 @@ function ComboboxRenderValue({
 export function ComboboxInput({
   className,
   placeholder,
+  variant,
+  pill,
   ref,
-}: {
+}: VariantProps<typeof comboboxTriggerVariants> & {
   placeholder: string;
   className?: string;
   ref?: React.RefObject<HTMLDivElement | null>;
@@ -105,8 +128,7 @@ export function ComboboxInput({
       role="combobox"
       className={cn(
         'min-h-9.5 py-1 flex items-center flex-wrap gap-1.5',
-        comboboxTriggerClasses,
-        className,
+        comboboxTriggerVariants({ variant, pill, className }),
       )}
       ref={ref}
     >
