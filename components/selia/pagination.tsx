@@ -4,21 +4,26 @@ import { cn } from 'lib/utils';
 
 export function Pagination({ ...props }: React.ComponentProps<'nav'>) {
   return (
-    <nav {...props} className={cn('flex justify-center', props.className)} />
+    <nav
+      aria-label="Pagination"
+      {...props}
+      className={cn('flex justify-center', props.className)}
+    />
   );
 }
 
-export function PaginationList({ ...props }: React.ComponentProps<'ul'>) {
+export function PaginationList({
+  children,
+  ...props
+}: React.ComponentProps<'ul'>) {
   return (
-    <ul {...props} className={cn('flex items-center gap-1', props.className)} />
+    <ul className="flex items-center gap-1" {...props}>
+      {children}
+    </ul>
   );
 }
 
-export function PaginationItem({ ...props }: React.ComponentProps<'li'>) {
-  return <li {...props} className={cn(props.className)} />;
-}
-
-export function PaginationLink({
+export function PaginationItem({
   active,
   disabled,
   render,
@@ -27,29 +32,26 @@ export function PaginationLink({
   active?: boolean;
   disabled?: boolean;
 }) {
-  return useRender({
-    defaultTagName: 'a',
-    render,
-    props: {
-      className: cn(
-        buttonVariants({
-          variant: active ? 'secondary' : 'secondary-plain',
-        }),
-        'cursor-pointer',
-        active && 'pointer-events-none',
-        disabled && 'pointer-events-none opacity-70',
-        props.className,
-      ),
-      ...props,
-    },
-  });
-}
-
-export function PaginationEllipsis({ ...props }: React.ComponentProps<'span'>) {
   return (
-    <span
-      {...props}
-      className={cn('inline-flex items-center gap-2', props.className)}
-    />
+    <li>
+      {useRender({
+        defaultTagName: 'a',
+        render,
+        props: {
+          'aria-current': active ? 'page' : undefined,
+          'aria-disabled': disabled ? true : undefined,
+          className: cn(
+            buttonVariants({
+              variant: active ? 'secondary' : 'secondary-plain',
+            }),
+            'cursor-pointer',
+            active && 'pointer-events-none',
+            disabled && 'pointer-events-none opacity-70',
+            props.className,
+          ),
+          ...props,
+        },
+      })}
+    </li>
   );
 }

@@ -40,14 +40,14 @@ export function TabsList({
   );
 }
 
-export function TabsTab({
+export function TabsItem({
   className,
   ...props
 }: React.ComponentProps<typeof BaseTabs.Tab>) {
   return (
     <BaseTabs.Tab
       className={cn(
-        'flex items-center justify-center gap-2.5',
+        'flex items-center justify-center gap-2.5 rounded-xl',
         'h-8 py-1 px-3 text-muted flex-1 font-medium',
         'data-selected:text-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
