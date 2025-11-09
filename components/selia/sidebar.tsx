@@ -91,7 +91,7 @@ export function SidebarList({
 }
 
 const sidebarItemClasses = [
-  'flex items-center gap-2.5 min-h-8.5 px-2.5 py-1.5 rounded-xl w-full',
+  'flex items-center gap-2.5 min-h-8.5 px-2.5 py-2 rounded-xl w-full',
   'text-foreground font-medium cursor-pointer',
   'transition-colors duration-75 hover:bg-accent01',
   '[&_svg]:size-4 [&_svg]:text-muted',
@@ -178,9 +178,9 @@ export function SidebarCollapsibleTrigger({
     <BaseCollapsible.Trigger
       className={cn(
         sidebarItemClasses,
-        'after:bg-chevron-right after:size-4 after:ml-auto',
+        'after:bg-chevron-down after:size-4 after:ml-auto',
         'after:transition-transform after:duration-100',
-        'data-[panel-open]:after:rotate-90',
+        'data-[panel-open]:after:rotate-180',
         className,
       )}
       {...props}
@@ -200,7 +200,7 @@ export function SidebarSubmenu({
       render={<nav />}
       {...props}
       className={cn(
-        'relative pl-6.5 py-1 transition-all duration-100',
+        'relative pl-6.5 transition-all duration-100',
         'h-(--collapsible-panel-height) overflow-hidden',
         'data-[ending-style]:h-0 data-[starting-style]:h-0',
         indicator && [

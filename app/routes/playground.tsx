@@ -27,13 +27,13 @@ import {
   LogOutIcon,
   MessageCircleIcon,
   MoreHorizontalIcon,
+  Package2Icon,
   PlusIcon,
   SettingsIcon,
   ShoppingBagIcon,
   TagsIcon,
   UserIcon,
 } from 'lucide-react';
-import { Collapsible } from '@base-ui-components/react/collapsible';
 import {
   Dropdown,
   DropdownContent,
@@ -42,6 +42,7 @@ import {
 } from 'components/selia/dropdown';
 import { useRef } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
+import { Chip } from 'components/selia/chip';
 
 export default function Playground() {
   const anchorRef = useRef<HTMLAnchorElement>(null);
@@ -78,6 +79,13 @@ export default function Playground() {
                 <SidebarItem>
                   <TagsIcon />
                   Categories
+                </SidebarItem>
+                <SidebarItem>
+                  <Package2Icon />
+                  Orders
+                  <Chip className="ml-auto" size="sm" pill variant="info">
+                    10
+                  </Chip>
                 </SidebarItem>
                 <SidebarCollapsible>
                   <SidebarCollapsibleTrigger>
