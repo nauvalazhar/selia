@@ -24,11 +24,12 @@ export const inputVariants = cva(
   },
 );
 
-export interface InputProps
-  extends BaseInput.Props,
-    VariantProps<typeof inputVariants> {}
-
-export function Input({ className, variant, ...props }: InputProps) {
+export function Input({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<typeof BaseInput> &
+  VariantProps<typeof inputVariants>) {
   return (
     <BaseInput
       className={cn(inputVariants({ variant, className }))}

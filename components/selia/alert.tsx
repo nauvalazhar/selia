@@ -34,20 +34,20 @@ export const alertVariants = cva(
   },
 );
 
-export interface AlertProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof alertVariants> {}
-
-export function Alert({ className, variant, ...props }: AlertProps) {
+export function Alert({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof alertVariants>) {
   return (
     <div className={cn(alertVariants({ variant, className }))} {...props} />
   );
 }
 
-export interface AlertActionsProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function AlertActions({ className, ...props }: AlertActionsProps) {
+export function AlertActions({
+  className,
+  ...props
+}: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn('ml-auto flex items-center gap-1.5', className)}

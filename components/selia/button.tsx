@@ -126,10 +126,6 @@ export const buttonVariants = cva(
   },
 );
 
-interface ButtonProps
-  extends useRender.ComponentProps<'button'>,
-    VariantProps<typeof buttonVariants> {}
-
 export function Button({
   render,
   variant,
@@ -139,7 +135,7 @@ export function Button({
   block,
   className,
   ...props
-}: ButtonProps) {
+}: useRender.ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
   return useRender({
     defaultTagName: 'button',
     render,

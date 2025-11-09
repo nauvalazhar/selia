@@ -2,9 +2,10 @@ import { useRender } from '@base-ui-components/react';
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui-components/react/checkbox-group';
 import { cn } from 'lib/utils';
 
-export interface CheckboxGroupProps extends BaseCheckboxGroup.Props {}
-
-export function CheckboxGroup({ className, ...props }: CheckboxGroupProps) {
+export function CheckboxGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseCheckboxGroup>) {
   return (
     <BaseCheckboxGroup
       {...props}
@@ -13,13 +14,10 @@ export function CheckboxGroup({ className, ...props }: CheckboxGroupProps) {
   );
 }
 
-export interface CheckboxGroupLabelProps
-  extends useRender.ComponentProps<'span'> {}
-
 export function CheckboxGroupLabel({
   render,
   ...props
-}: CheckboxGroupLabelProps) {
+}: useRender.ComponentProps<'span'>) {
   return useRender({
     defaultTagName: 'span',
     render,

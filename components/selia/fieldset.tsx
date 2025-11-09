@@ -2,9 +2,10 @@ import * as React from 'react';
 import { cn } from 'lib/utils';
 import { Fieldset as BaseFieldset } from '@base-ui-components/react/fieldset';
 
-export interface FieldsetProps extends BaseFieldset.Root.Props {}
-
-export function Fieldset({ className, ...props }: FieldsetProps) {
+export function Fieldset({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseFieldset.Root>) {
   return (
     <BaseFieldset.Root
       className={cn('flex flex-col gap-4', className)}
@@ -13,9 +14,10 @@ export function Fieldset({ className, ...props }: FieldsetProps) {
   );
 }
 
-export interface FieldsetLegendProps extends BaseFieldset.Legend.Props {}
-
-export function FieldsetLegend({ className, ...props }: FieldsetLegendProps) {
+export function FieldsetLegend({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseFieldset.Legend>) {
   return (
     <BaseFieldset.Legend
       className={cn('text-lg font-semibold text-foreground', className)}

@@ -1,10 +1,9 @@
 import { Checkbox as BaseCheckbox } from '@base-ui-components/react/checkbox';
 import { cn } from 'lib/utils';
 
-export interface CheckboxProps
-  extends React.ComponentProps<typeof BaseCheckbox.Root> {}
-
-export function Checkbox({ ...props }: CheckboxProps) {
+export function Checkbox({
+  ...props
+}: React.ComponentProps<typeof BaseCheckbox.Root>) {
   return (
     <BaseCheckbox.Root
       {...props}

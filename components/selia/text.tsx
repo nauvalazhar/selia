@@ -1,10 +1,11 @@
 import { useRender } from '@base-ui-components/react';
-import { cva } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
-export interface TextProps extends useRender.ComponentProps<'p'> {}
-
-export function Text({ className, render, ...props }: TextProps) {
+export function Text({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<'p'>) {
   return useRender({
     defaultTagName: 'p',
     render,
@@ -15,9 +16,11 @@ export function Text({ className, render, ...props }: TextProps) {
   });
 }
 
-export interface TextLinkProps extends useRender.ComponentProps<'a'> {}
-
-export function TextLink({ className, render, ...props }: TextLinkProps) {
+export function TextLink({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<'a'>) {
   return useRender({
     defaultTagName: 'a',
     render,
@@ -28,9 +31,10 @@ export function TextLink({ className, render, ...props }: TextLinkProps) {
   });
 }
 
-export interface StrongProps extends React.HTMLAttributes<HTMLElement> {}
-
-export function Strong({ className, ...props }: StrongProps) {
+export function Strong({
+  className,
+  ...props
+}: React.ComponentProps<'strong'>) {
   return (
     <strong
       className={cn('font-semibold text-foreground', className)}
@@ -39,9 +43,7 @@ export function Strong({ className, ...props }: StrongProps) {
   );
 }
 
-export interface CodeProps extends React.HTMLAttributes<HTMLElement> {}
-
-export function Code({ className, ...props }: CodeProps) {
+export function Code({ className, ...props }: React.ComponentProps<'code'>) {
   return (
     <code
       className={cn(

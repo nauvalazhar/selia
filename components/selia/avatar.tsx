@@ -19,11 +19,12 @@ export const avatarVariants = cva(
   },
 );
 
-export interface AvatarProps
-  extends BaseAvatar.Root.Props,
-    VariantProps<typeof avatarVariants> {}
-
-export function Avatar({ size, className, ...props }: AvatarProps) {
+export function Avatar({
+  size,
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseAvatar.Root> &
+  VariantProps<typeof avatarVariants>) {
   return (
     <BaseAvatar.Root
       className={cn(avatarVariants({ size, className }))}
@@ -32,8 +33,10 @@ export function Avatar({ size, className, ...props }: AvatarProps) {
   );
 }
 
-export interface AvatarImageProps extends BaseAvatar.Image.Props {}
-export function AvatarImage({ className, ...props }: AvatarImageProps) {
+export function AvatarImage({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseAvatar.Image>) {
   return (
     <BaseAvatar.Image
       className={cn('size-full rounded-full', className)}
@@ -42,9 +45,10 @@ export function AvatarImage({ className, ...props }: AvatarImageProps) {
   );
 }
 
-export interface AvatarFallbackProps extends BaseAvatar.Fallback.Props {}
-
-export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
+export function AvatarFallback({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseAvatar.Fallback>) {
   return (
     <BaseAvatar.Fallback
       className={cn(
@@ -77,16 +81,12 @@ export const avatarIndicatorVariants = cva(
   },
 );
 
-export interface AvatarIndicatorProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof avatarIndicatorVariants> {}
-
 export function AvatarIndicator({
   position,
   size,
   className,
   ...props
-}: AvatarIndicatorProps) {
+}: React.ComponentProps<'div'> & VariantProps<typeof avatarIndicatorVariants>) {
   return (
     <div
       className={cn(avatarIndicatorVariants({ position, size, className }))}

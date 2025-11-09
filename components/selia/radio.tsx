@@ -3,9 +3,10 @@ import { Radio as BaseRadio } from '@base-ui-components/react/radio';
 import { RadioGroup as BaseRadioGroup } from '@base-ui-components/react/radio-group';
 import { cn } from 'lib/utils';
 
-export interface RadioGroupProps extends BaseRadioGroup.Props {}
-
-export function RadioGroup({ className, ...props }: RadioGroupProps) {
+export function RadioGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseRadioGroup>) {
   return (
     <BaseRadioGroup
       {...props}
@@ -14,14 +15,11 @@ export function RadioGroup({ className, ...props }: RadioGroupProps) {
   );
 }
 
-export interface RadioGroupLabelProps
-  extends useRender.ComponentProps<'span'> {}
-
 export function RadioGroupLabel({
   className,
   render,
   ...props
-}: RadioGroupLabelProps) {
+}: useRender.ComponentProps<'span'>) {
   return useRender({
     defaultTagName: 'span',
     render,
@@ -32,9 +30,10 @@ export function RadioGroupLabel({
   });
 }
 
-export interface RadioProps extends BaseRadio.Root.Props {}
-
-export function Radio({ className, ...props }: RadioProps) {
+export function Radio({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseRadio.Root>) {
   return (
     <BaseRadio.Root
       className={cn(

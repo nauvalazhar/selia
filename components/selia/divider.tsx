@@ -2,9 +2,7 @@ import * as React from 'react';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-export interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {}
-
-export function Divider({ className, ...props }: DividerProps) {
+export function Divider({ className, ...props }: React.ComponentProps<'hr'>) {
   return <hr className={cn('border-border02', className)} {...props} />;
 }
 
@@ -23,18 +21,12 @@ export const dividerTextVariants = cva('flex items-center gap-2.5', {
   },
 });
 
-export interface DividerTextProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof dividerTextVariants> {
-  children?: React.ReactNode;
-}
-
 export function DividerText({
   children,
   variant,
   className,
   ...props
-}: DividerTextProps) {
+}: React.ComponentProps<'div'> & VariantProps<typeof dividerTextVariants>) {
   return (
     <div className={cn(dividerTextVariants({ variant, className }))} {...props}>
       <span className="text-sm text-dimmed text-nowrap">{children}</span>

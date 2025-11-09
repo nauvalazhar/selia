@@ -15,11 +15,11 @@ export const cardVariants = cva(
   },
 );
 
-export interface CardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
-
-export function Card({ variant, className, ...props }: CardProps) {
+export function Card({
+  variant,
+  className,
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof cardVariants>) {
   return (
     <div className={cn(cardVariants({ variant, className }))} {...props} />
   );
@@ -41,33 +41,27 @@ export const cardHeaderVariants = cva(
   },
 );
 
-export interface CardHeaderProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardHeaderVariants> {}
-
-export function CardHeader({ align, className, ...props }: CardHeaderProps) {
+export function CardHeader({
+  align,
+  className,
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof cardHeaderVariants>) {
   return (
     <div className={cn(cardHeaderVariants({ align, className }))} {...props} />
   );
 }
 
-export interface CardHeaderContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
-
 export function CardHeaderContent({
   className,
   ...props
-}: CardHeaderContentProps) {
+}: React.ComponentProps<'div'>) {
   return <div className={cn('flex flex-col gap-2', className)} {...props} />;
 }
-
-export interface CardHeaderActionsProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function CardHeaderActions({
   className,
   ...props
-}: CardHeaderActionsProps) {
+}: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn('ml-auto flex items-center gap-2', className)}
@@ -76,10 +70,7 @@ export function CardHeaderActions({
   );
 }
 
-export interface CardTitleProps
-  extends React.HTMLAttributes<HTMLHeadingElement> {}
-
-export function CardTitle({ className, ...props }: CardTitleProps) {
+export function CardTitle({ className, ...props }: React.ComponentProps<'h3'>) {
   return (
     <h3
       className={cn('text-lg font-semibold leading-none', className)}
@@ -88,22 +79,21 @@ export function CardTitle({ className, ...props }: CardTitleProps) {
   );
 }
 
-export interface CardDescriptionProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {}
-
-export function CardDescription({ className, ...props }: CardDescriptionProps) {
+export function CardDescription({
+  className,
+  ...props
+}: React.ComponentProps<'p'>) {
   return <p className={cn('text-muted', className)} {...props} />;
 }
 
-export interface CardBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function CardBody({ className, ...props }: CardBodyProps) {
+export function CardBody({ className, ...props }: React.ComponentProps<'div'>) {
   return <div className={cn('p-6', className)} {...props} />;
 }
 
-export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function CardFooter({ className, ...props }: CardFooterProps) {
+export function CardFooter({
+  className,
+  ...props
+}: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(

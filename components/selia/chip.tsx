@@ -33,10 +33,6 @@ export const chipVariants = cva(
   },
 );
 
-export interface ChipProps
-  extends useRender.ComponentProps<'div'>,
-    VariantProps<typeof chipVariants> {}
-
 export function Chip({
   render,
   variant,
@@ -44,7 +40,7 @@ export function Chip({
   pill,
   className,
   ...props
-}: ChipProps) {
+}: useRender.ComponentProps<'div'> & VariantProps<typeof chipVariants>) {
   return useRender({
     defaultTagName: 'div',
     render,
@@ -55,10 +51,7 @@ export function Chip({
   });
 }
 
-export interface ChipActionProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
-export function ChipAction({ ...props }: ChipActionProps) {
+export function ChipButton({ ...props }: useRender.ComponentProps<'button'>) {
   return (
     <button
       className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer"

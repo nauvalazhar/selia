@@ -1,21 +1,16 @@
 import { Menu as BaseMenu } from '@base-ui-components/react/menu';
 import { cn } from 'lib/utils';
 
-export interface DropdownProps extends BaseMenu.Root.Props {}
-
-export function Dropdown({ ...props }: DropdownProps) {
+export function Dropdown({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Root>) {
   return <BaseMenu.Root {...props} />;
 }
 
-export interface DropdownTriggerProps extends BaseMenu.Trigger.Props {}
-
-export function DropdownTrigger({ ...props }: DropdownTriggerProps) {
+export function DropdownTrigger({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Trigger>) {
   return <BaseMenu.Trigger {...props} />;
-}
-
-export interface DropdownContentProps extends BaseMenu.Positioner.Props {
-  popupProps?: BaseMenu.Popup.Props;
-  children?: React.ReactNode;
 }
 
 export function DropdownContent({
@@ -23,11 +18,13 @@ export function DropdownContent({
   children,
   className,
   ...props
-}: DropdownContentProps) {
+}: React.ComponentProps<typeof BaseMenu.Positioner> & {
+  popupProps?: BaseMenu.Popup.Props;
+}) {
   return (
     <BaseMenu.Portal>
       <BaseMenu.Backdrop />
-      <BaseMenu.Positioner {...props} className={cn('outline-none', className)}>
+      <BaseMenu.Positioner {...props}>
         <BaseMenu.Popup
           {...popupProps}
           className={cn(
@@ -35,7 +32,7 @@ export function DropdownContent({
             'p-1 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
-            popupProps?.className,
+            className,
           )}
         >
           {children}
@@ -45,9 +42,9 @@ export function DropdownContent({
   );
 }
 
-export interface DropdownArrowProps extends BaseMenu.Arrow.Props {}
-
-export function DropdownArrow({ ...props }: DropdownArrowProps) {
+export function DropdownArrow({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Arrow>) {
   return (
     <BaseMenu.Arrow
       {...props}
@@ -80,9 +77,9 @@ const dropdownItemClasses = [
   '[&_svg]:size-4 [&_svg]:text-foreground',
 ];
 
-export interface DropdownItemProps extends BaseMenu.Item.Props {}
-
-export function DropdownItem({ ...props }: DropdownItemProps) {
+export function DropdownItem({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Item>) {
   return (
     <BaseMenu.Item
       {...props}
@@ -91,9 +88,9 @@ export function DropdownItem({ ...props }: DropdownItemProps) {
   );
 }
 
-export interface DropdownSeparatorProps extends BaseMenu.Separator.Props {}
-
-export function DropdownSeparator({ ...props }: DropdownSeparatorProps) {
+export function DropdownSeparator({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Separator>) {
   return (
     <BaseMenu.Separator
       className={cn('h-px my-1 bg-border04', props.className)}
@@ -102,18 +99,15 @@ export function DropdownSeparator({ ...props }: DropdownSeparatorProps) {
   );
 }
 
-export interface DropdownSubmenuProps extends BaseMenu.SubmenuRoot.Props {}
-
-export function DropdownSubmenu({ ...props }: DropdownSubmenuProps) {
+export function DropdownSubmenu({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
   return <BaseMenu.SubmenuRoot {...props} />;
 }
 
-export interface DropdownSubmenuTriggerProps
-  extends BaseMenu.SubmenuTrigger.Props {}
-
 export function DropdownSubmenuTrigger({
   ...props
-}: DropdownSubmenuTriggerProps) {
+}: React.ComponentProps<typeof BaseMenu.SubmenuTrigger>) {
   return (
     <BaseMenu.SubmenuTrigger
       {...props}
@@ -126,15 +120,15 @@ export function DropdownSubmenuTrigger({
   );
 }
 
-export interface DropdownGroupProps extends BaseMenu.Group.Props {}
-
-export function DropdownGroup({ ...props }: DropdownGroupProps) {
+export function DropdownGroup({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Group>) {
   return <BaseMenu.Group {...props} />;
 }
 
-export interface DropdownGroupLabelProps extends BaseMenu.GroupLabel.Props {}
-
-export function DropdownGroupLabel({ ...props }: DropdownGroupLabelProps) {
+export function DropdownGroupLabel({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.GroupLabel>) {
   return (
     <BaseMenu.GroupLabel
       className={cn(
@@ -146,13 +140,10 @@ export function DropdownGroupLabel({ ...props }: DropdownGroupLabelProps) {
   );
 }
 
-export interface DropdownCheckboxItemProps
-  extends BaseMenu.CheckboxItem.Props {}
-
 export function DropdownCheckboxItem({
   children,
   ...props
-}: DropdownCheckboxItemProps) {
+}: React.ComponentProps<typeof BaseMenu.CheckboxItem>) {
   return (
     <BaseMenu.CheckboxItem
       {...props}
@@ -183,18 +174,16 @@ export function DropdownCheckboxItem({
   );
 }
 
-export interface DropdownRadioGroupProps extends BaseMenu.RadioGroup.Props {}
-
-export function DropdownRadioGroup({ ...props }: DropdownRadioGroupProps) {
+export function DropdownRadioGroup({
+  ...props
+}: React.ComponentProps<typeof BaseMenu.RadioGroup>) {
   return <BaseMenu.RadioGroup {...props} />;
 }
-
-export interface DropdownRadioItemProps extends BaseMenu.RadioItem.Props {}
 
 export function DropdownRadioItem({
   children,
   ...props
-}: DropdownRadioItemProps) {
+}: React.ComponentProps<typeof BaseMenu.RadioItem>) {
   return (
     <BaseMenu.RadioItem
       {...props}
