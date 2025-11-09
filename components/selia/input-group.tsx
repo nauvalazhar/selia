@@ -2,9 +2,15 @@ import { cn } from 'lib/utils';
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
+const InputGroupContext = React.createContext<{
+  size: VariantProps<typeof inputGroupVariants>['size'];
+}>({
+  size: 'md',
+});
+
 export const inputGroupVariants = cva(
   [
-    'relative flex flex-wrap rounded',
+    'relative flex flex-wrap',
     'ring ring-input-border hover:ring-border05',
     '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-primary',
     '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-2',
@@ -12,7 +18,6 @@ export const inputGroupVariants = cva(
     '[&>input,&>[role="combobox"],textarea]:bg-transparent',
     '[&>input,&>[role="combobox"],textarea]:ring-0',
     '[&>input,&>[role="combobox"],textarea]:focus:ring-0',
-    '[&>textarea]:py-3',
   ],
   {
     variants: {
@@ -20,9 +25,14 @@ export const inputGroupVariants = cva(
         default: 'bg-input',
         subtle: 'bg-input-subtle',
       },
+      size: {
+        md: '[&>textarea]:py-3 rounded',
+        lg: '[&>textarea]:p-3.5 rounded-xl',
+      },
     },
     defaultVariants: {
       variant: 'default',
+      size: 'md',
     },
   },
 );
@@ -31,12 +41,18 @@ export function InputGroup({
   className,
   children,
   variant,
+  size,
   ...props
 }: React.ComponentProps<'div'> & VariantProps<typeof inputGroupVariants>) {
   return (
-    <div className={cn(inputGroupVariants({ variant, className }))} {...props}>
-      {children}
-    </div>
+    <InputGroupContext value={{ size }}>
+      <div
+        className={cn(inputGroupVariants({ variant, size, className }))}
+        {...props}
+      >
+        {children}
+      </div>
+    </InputGroupContext>
   );
 }
 
@@ -102,13 +118,30 @@ export function InputGroupText({
   );
 }
 
+export const inputGroupBarVariants = cva(
+  ['flex w-full px-2.5 py-2.5 items-center'],
+  {
+    variants: {
+      size: {
+        md: 'px-2.5 py-1.5',
+        lg: 'px-3.5 py-2.5',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  },
+);
+
 export function InputGroupBar({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
+  const { size } = React.use(InputGroupContext);
+
   return (
     <div
-      className={cn('flex w-full px-2.5 py-2.5 items-center', className)}
+      className={cn(inputGroupBarVariants({ size, className }))}
       {...props}
     />
   );

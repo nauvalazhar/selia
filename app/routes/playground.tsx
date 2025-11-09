@@ -1,3 +1,6 @@
+import { Button } from 'components/selia/button';
+import { Chip } from 'components/selia/chip';
+import { InputGroup, InputGroupBar } from 'components/selia/input-group';
 import {
   Popover,
   PopoverContent,
@@ -10,12 +13,21 @@ import {
   ProgressLabel,
   ProgressValue,
 } from 'components/selia/progress';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from 'components/selia/select';
 import { Text } from 'components/selia/text';
+import { Textarea } from 'components/selia/textarea';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from 'components/selia/tooltip';
+import { ArrowUpIcon, PlusIcon, SendIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Playground() {
@@ -33,10 +45,44 @@ export default function Playground() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <Progress value={progress} className="w-64">
-        <ProgressLabel>Launching Workspace</ProgressLabel>
-        <ProgressValue />
-      </Progress>
+      <div className="w-md bg-surface01 p-2 rounded-3xl">
+        <div className="flex items-center gap-2.5 p-1.5 mb-2">
+          <Chip variant="secondary" size="sm">
+            How to make a website
+          </Chip>
+          <Chip variant="secondary" size="sm">
+            Write a love letter
+          </Chip>
+          <Chip variant="secondary" size="sm">
+            Write a poem
+          </Chip>
+        </div>
+        <InputGroup variant="subtle" size="lg" className="shadow">
+          <Textarea
+            placeholder="Ask AI anything"
+            className="min-h-14 resize-none"
+          />
+          <InputGroupBar>
+            <Button size="sm-icon" variant="secondary">
+              <PlusIcon />
+            </Button>
+            <Select defaultValue="gpt-4o">
+              <SelectTrigger className="ml-auto w-auto mr-2" variant="plain">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gpt-4o">GPT-4o</SelectItem>
+                <SelectItem value="gpt-4o-mini">GPT-4o Mini</SelectItem>
+                <SelectItem value="gpt-4">GPT-4</SelectItem>
+                <SelectItem value="gpt-3.5-turbo">GPT-3.5 Turbo</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button size="sm-icon">
+              <ArrowUpIcon />
+            </Button>
+          </InputGroupBar>
+        </InputGroup>
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@ export const chipVariants = cva(
           'bg-destructive ring-destructive text-destructive-foreground',
       },
       size: {
-        sm: 'text-sm px-1.5 h-5 rounded-sm [&_svg]:size-3.5',
+        sm: 'text-sm px-1.5 h-5 rounded-md [&_svg]:size-3.5',
         md: 'px-2 h-6.5 rounded-lg [&_svg]:size-4',
         lg: 'px-2.5 h-7 rounded-xl [&_svg]:size-4.5',
       },
