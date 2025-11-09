@@ -64,7 +64,7 @@ export default function Playground() {
               <SidebarGroupTitle>Navigation</SidebarGroupTitle>
               <SidebarGroupAction>
                 <button>
-                  <PlusIcon className="size-5" />
+                  <PlusIcon className="size-4.5" />
                 </button>
               </SidebarGroupAction>
               <SidebarList>
@@ -156,7 +156,7 @@ export default function Playground() {
                           john.doe@example.com
                         </span>
                       </div>
-                      <ChevronRightIcon />
+                      <ChevronRightIcon className="ml-auto" />
                     </SidebarItem>
                   }
                 />

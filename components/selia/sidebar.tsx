@@ -45,7 +45,7 @@ export function SidebarLogo({
 }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn('flex items-center gap-2.5 px-2.5', className)}
+      className={cn('flex items-center gap-2.5 px-2.5 select-none', className)}
       {...props}
     >
       {children}
@@ -200,7 +200,7 @@ export function SidebarSubmenu({
       render={<nav />}
       {...props}
       className={cn(
-        'relative pl-6.5 transition-all duration-100',
+        'relative pl-6.5 py-0.5 transition-all duration-100',
         'h-(--collapsible-panel-height) overflow-hidden',
         'data-[ending-style]:h-0 data-[starting-style]:h-0',
         indicator && [
