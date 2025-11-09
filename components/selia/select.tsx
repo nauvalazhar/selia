@@ -1,40 +1,55 @@
 import * as React from 'react';
 import { Select as BaseSelect } from '@base-ui-components/react/select';
 import { cn } from 'lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export interface SelectItem {
+export type SelectItem = {
   value: string;
   label: React.ReactNode;
   icon?: React.ReactNode;
-}
+};
 
-export interface SelectProps<
-  Value,
-  Multiple extends boolean | undefined = false,
-> extends BaseSelect.Root.Props<Value, Multiple> {}
-
-export function Select<Value, Multiple extends boolean | undefined = false>({
+export function Select({
   ...props
-}: SelectProps<Value, Multiple>) {
+}: React.ComponentProps<typeof BaseSelect.Root>) {
   return <BaseSelect.Root {...props} />;
 }
 
-export interface SelectTriggerProps extends BaseSelect.Trigger.Props {}
+export const selectVariants = cva(
+  [
+    'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
+    'focus:outline-0 focus:ring-primary focus:ring-2',
+    'flex items-center gap-2.5 cursor-default',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'bg-input ring ring-input-border hover:ring-border05',
+        subtle: 'bg-input-subtle ring ring-input-border hover:ring-border05',
+        plain: 'bg-transparent hover:bg-input',
+      },
+      pill: {
+        true: 'rounded-full',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      pill: false,
+    },
+  },
+);
 
 export function SelectTrigger({
   className,
   children,
+  variant,
+  pill,
   ...props
-}: SelectTriggerProps) {
+}: React.ComponentProps<typeof BaseSelect.Trigger> &
+  VariantProps<typeof selectVariants>) {
   return (
     <BaseSelect.Trigger
-      data-slot="trigger"
-      className={cn(
-        'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
-        'ring ring-input-border hover:ring-border05 focus:outline-0 focus:ring-primary focus:ring-2',
-        'flex items-center',
-        className,
-      )}
+      className={cn(selectVariants({ variant, pill, className }))}
       {...props}
     >
       {children}
@@ -56,17 +71,15 @@ export function SelectTrigger({
   );
 }
 
-export interface SelectValueProps extends BaseSelect.Value.Props {
-  placeholder?: string;
-}
-
 export function SelectValue({
   className,
   placeholder = 'Select an option',
   ...props
-}: SelectValueProps) {
+}: React.ComponentProps<typeof BaseSelect.Value> & {
+  placeholder?: string;
+}) {
   return (
-    <BaseSelect.Value className={cn('', className)} {...props}>
+    <BaseSelect.Value className={cn(className)} {...props}>
       {(value: string | SelectItem | null) => (
         <SelectRenderValue value={value} placeholder={placeholder} />
       )}
@@ -87,44 +100,36 @@ function SelectRenderValue({
 
   if (typeof value === 'object') {
     return (
-      <div className="flex items-center gap-2.5 [&_svg]:size-4 [&_svg]:text-foreground">
+      <div className="flex items-center gap-2.5 select-none [&_svg]:size-4 [&_svg]:text-foreground">
         {value.icon}
         <span className="text-foreground">{value.label}</span>
       </div>
     );
   }
 
-  return <span className="text-foreground">{value}</span>;
-}
-
-export interface SelectContentProps {
-  positionerProps?: BaseSelect.Positioner.Props;
-  popupProps?: BaseSelect.Popup.Props;
-  children?: React.ReactNode;
+  return <span className="text-foreground select-none">{value}</span>;
 }
 
 export function SelectContent({
-  positionerProps,
   popupProps,
   children,
-}: SelectContentProps) {
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseSelect.Positioner> &
+  VariantProps<typeof selectVariants> & {
+    popupProps?: BaseSelect.Popup.Props;
+  }) {
   return (
     <BaseSelect.Portal>
       <BaseSelect.Backdrop />
-      <BaseSelect.Positioner
-        {...positionerProps}
-        className={cn(
-          'z-10 select-none outline-none',
-          positionerProps?.className,
-        )}
-      >
+      <BaseSelect.Positioner {...props}>
         <BaseSelect.ScrollUpArrow className="top-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-foreground flex items-center justify-around bg-accent04" />
         <BaseSelect.Popup
           {...popupProps}
           className={cn(
             'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow',
             'p-1 outline-none',
-            popupProps?.className,
+            className,
           )}
         >
           <BaseSelect.Arrow />
@@ -136,9 +141,10 @@ export function SelectContent({
   );
 }
 
-export interface SelectListProps extends BaseSelect.List.Props {}
-
-export function SelectList({ className, ...props }: SelectListProps) {
+export function SelectList({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseSelect.List>) {
   return (
     <BaseSelect.List
       className={cn(
@@ -150,13 +156,15 @@ export function SelectList({ className, ...props }: SelectListProps) {
   );
 }
 
-export interface SelectItemProps extends BaseSelect.Item.Props {}
-
-export function SelectItem({ className, children, ...props }: SelectItemProps) {
+export function SelectItem({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof BaseSelect.Item>) {
   return (
     <BaseSelect.Item
       className={cn(
-        'flex items-center text-foreground py-2 px-2.5 rounded',
+        'flex items-center text-foreground py-2 px-2.5 gap-3.5 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-accent04 data-[selected]:bg-accent04',
         'focus-visible:outline-none',
@@ -185,17 +193,17 @@ export function SelectItem({ className, children, ...props }: SelectItemProps) {
   );
 }
 
-export interface SelectGroupProps extends BaseSelect.Group.Props {}
-
-export function SelectGroup({ className, ...props }: SelectGroupProps) {
+export function SelectGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseSelect.Group>) {
   return <BaseSelect.Group className={cn(className)} {...props} />;
 }
 
-export interface SelectGroupLabelProps extends BaseSelect.GroupLabel.Props {}
 export function SelectGroupLabel({
   className,
   ...props
-}: SelectGroupLabelProps) {
+}: React.ComponentProps<typeof BaseSelect.GroupLabel>) {
   return (
     <BaseSelect.GroupLabel
       className={cn('px-2.5 py-1.5 text-sm font-medium text-dimmed', className)}
@@ -204,9 +212,10 @@ export function SelectGroupLabel({
   );
 }
 
-export interface SelectSeparatorProps extends BaseSelect.Separator.Props {}
-
-export function SelectSeparator({ className, ...props }: SelectSeparatorProps) {
+export function SelectSeparator({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseSelect.Separator>) {
   return (
     <BaseSelect.Separator
       className={cn('h-px my-1 bg-border02', className)}

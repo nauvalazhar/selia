@@ -14,7 +14,7 @@ const comboboxTriggerClasses = cn(
   'ring ring-input-border hover:ring-border05',
   'focus:outline-0 focus:ring-primary focus:ring-2',
   'has-focus:ring-primary has-focus:ring-2',
-  'flex items-center',
+  'flex items-center gap-2.5',
 );
 
 export function ComboboxTrigger({
@@ -23,44 +23,27 @@ export function ComboboxTrigger({
   ...props
 }: React.ComponentProps<typeof BaseCombobox.Trigger>) {
   return (
-    <div className="relative flex items-center">
-      <BaseCombobox.Trigger
-        {...props}
-        className={cn('h-9.5', comboboxTriggerClasses, className)}
-      >
-        {children}
-        <BaseCombobox.Icon className="text-muted ml-auto">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-4"
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </BaseCombobox.Icon>
-      </BaseCombobox.Trigger>
-      <div className="absolute h-full right-8 flex items-center">
-        <BaseCombobox.Clear className="size-3.5 text-muted">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </BaseCombobox.Clear>
-      </div>
-    </div>
+    <BaseCombobox.Trigger
+      {...props}
+      role="combobox"
+      className={cn('h-9.5', comboboxTriggerClasses, className)}
+    >
+      {children}
+      <BaseCombobox.Icon className="text-muted ml-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-4"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </BaseCombobox.Icon>
+    </BaseCombobox.Trigger>
   );
 }
 
@@ -119,6 +102,7 @@ export function ComboboxInput({
 }) {
   return (
     <BaseCombobox.Chips
+      role="combobox"
       className={cn(
         'min-h-9.5 py-1 flex items-center flex-wrap gap-1.5',
         comboboxTriggerClasses,
@@ -168,6 +152,7 @@ export function ComboboxInput({
 }
 
 export function ComboboxContent({
+  className,
   popupProps,
   children,
   ...props
@@ -187,7 +172,7 @@ export function ComboboxContent({
             'p-1 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
-            popupProps?.className,
+            className,
           )}
         >
           {children}

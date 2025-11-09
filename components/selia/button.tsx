@@ -92,7 +92,7 @@ export const buttonVariants = cva(
       size: {
         md: 'h-9.5 px-4 rounded',
         icon: 'size-9.5 rounded',
-        xs: 'h-7.5 px-2.5 rounded-lg after:rounded-lg',
+        xs: 'h-7 px-2 rounded-lg after:rounded-lg',
         'xs-icon': 'size-7.5 rounded-lg after:rounded-lg',
         sm: 'h-8.5 px-3 rounded-[10px] after:rounded-[10px]',
         'sm-icon': 'size-8.5 rounded-[10px] after:rounded-[10px]',

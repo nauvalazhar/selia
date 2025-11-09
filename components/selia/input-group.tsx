@@ -1,34 +1,124 @@
 import { cn } from 'lib/utils';
 import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export interface InputGroupProps extends React.HTMLAttributes<HTMLDivElement> {}
+export const inputGroupVariants = cva(
+  [
+    'relative flex flex-wrap rounded',
+    'ring ring-input-border hover:ring-border05',
+    '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-primary',
+    '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-2',
+    '[&>input,&>[role="combobox"],textarea]:flex-1',
+    '[&>input,&>[role="combobox"],textarea]:bg-transparent',
+    '[&>input,&>[role="combobox"],textarea]:ring-0',
+    '[&>input,&>[role="combobox"],textarea]:focus:ring-0',
+    '[&>textarea]:py-3',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'bg-input',
+        subtle: 'bg-input-subtle',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
 
-export function InputGroup({ className, ...props }: InputGroupProps) {
+export function InputGroup({
+  className,
+  children,
+  variant,
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof inputGroupVariants>) {
+  return (
+    <div className={cn(inputGroupVariants({ variant, className }))} {...props}>
+      {children}
+    </div>
+  );
+}
+
+export const inputGroupAddonVariants = cva(
+  [
+    'flex items-center gap-2.5',
+    '[&_svg]:size-4 [&_svg]:text-dimmed',
+    '[&_button:not([role="combobox"])]:h-7 [&_button:not([role="combobox"])]:px-2',
+    '[&_[role="combobox"]]:not-focus:ring-0',
+    '[&.items-start,&.items-end]:py-3',
+  ],
+  {
+    variants: {
+      align: {
+        start: 'not-[:has(>[role="combobox"])]:pl-2.5',
+        end: 'not-[:has(>[role="combobox"])]:pr-2.5',
+      },
+    },
+    defaultVariants: {
+      align: 'start',
+    },
+  },
+);
+
+export function InputGroupAddon({
+  className,
+  children,
+  align,
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
     <div
+      className={cn(inputGroupAddonVariants({ align, className }))}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest('button')) {
+          return;
+        }
+        e.currentTarget.parentElement?.querySelector('input')?.focus();
+      }}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function InputGroupText({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<'span'>) {
+  return (
+    <span
       className={cn(
-        'relative flex h-9.5 px-2.5',
-        'bg-input rounded transition-colors',
-        'ring ring-input-border hover:ring-border05 focus:outline-0 focus:ring-primary focus:ring-2',
-        '*:data-[slot=input]:bg-transparent',
-        '*:data-[slot=input]:ring-0',
+        'inline-flex items-center gap-1.5 text-muted select-none',
+        '[&_svg]:size-4 [&_svg]:text-dimmed',
         className,
       )}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+}
+
+export function InputGroupBar({
+  className,
+  ...props
+}: React.ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn('flex w-full px-2.5 py-2.5 items-center', className)}
       {...props}
     />
   );
 }
 
-export interface InputGroupAddonProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function InputGroupAddon({ className, ...props }: InputGroupAddonProps) {
-  return <div className={cn('flex items-center', className)} {...props} />;
-}
-
-export interface InputGroupTextProps
-  extends React.HTMLAttributes<HTMLSpanElement> {}
-
-export function InputGroupText({ className, ...props }: InputGroupTextProps) {
-  return <span className={cn('', className)} {...props} />;
+export function InputGroupSeparator({
+  className,
+  ...props
+}: React.ComponentProps<'div'>) {
+  return (
+    <div className={cn('w-full h-px bg-input-border', className)} {...props} />
+  );
 }
