@@ -1,3 +1,10 @@
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverTitle,
+  PopoverTrigger,
+} from 'components/selia/popover';
 import { Text } from 'components/selia/text';
 import {
   Tooltip,
@@ -12,6 +19,13 @@ export default function Playground() {
         <TooltipTrigger render={<Text>Tooltip</Text>} />
         <TooltipContent side="bottom">Tooltip content</TooltipContent>
       </Tooltip>
+      <Popover>
+        <PopoverTrigger render={<Text>Popover</Text>} />
+        <PopoverContent side="bottom">
+          <PopoverTitle>Popover title</PopoverTitle>
+          <PopoverDescription>Popover description</PopoverDescription>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }
