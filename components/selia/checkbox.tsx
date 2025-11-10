@@ -8,7 +8,7 @@ export function Checkbox({
     <BaseCheckbox.Root
       {...props}
       className={cn(
-        'size-5 flex items-center justify-center rounded-sm ring ring-input-border bg-input',
+        'size-4 flex items-center justify-center rounded-sm ring ring-input-border bg-input',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         'data-[checked]:bg-primary data-[checked]:ring-primary',
         'transition-colors duration-75',
@@ -43,7 +43,7 @@ export function Checkbox({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="3"
-                className="size-4"
+                className="size-3"
                 viewBox="0 0 24 24"
               >
                 <path d="M20 6 9 17l-5-5"></path>

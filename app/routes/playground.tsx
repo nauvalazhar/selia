@@ -1,36 +1,26 @@
-import { Badge } from 'components/selia/badge';
 import { Button } from 'components/selia/button';
-import { Chip } from 'components/selia/chip';
-import { InputGroup, InputGroupBar } from 'components/selia/input-group';
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverTitle,
-  PopoverTrigger,
-} from 'components/selia/popover';
-import {
-  Progress,
-  ProgressLabel,
-  ProgressValue,
-} from 'components/selia/progress';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from 'components/selia/select';
-import { Spinner } from 'components/selia/spinner';
-import { Text } from 'components/selia/text';
-import { Textarea } from 'components/selia/textarea';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from 'components/selia/tooltip';
-import { ArrowUpIcon, PlusIcon, SendIcon, UserIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from 'components/selia/field';
+import { Input } from 'components/selia/input';
+import { Fieldset, FieldsetLegend } from 'components/selia/fieldset';
+import { Checkbox } from 'components/selia/checkbox';
+import { Separator } from 'components/selia/separator';
+import { Text } from 'components/selia/text';
+import { Radio, RadioGroup } from 'components/selia/radio';
+import {
+  Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardHeaderContent,
+  CardTitle,
+} from 'components/selia/card';
 
 export default function Playground() {
   const [progress, setProgress] = useState(0);
@@ -46,40 +36,116 @@ export default function Playground() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <div className="flex items-center gap-2.5 flex-wrap max-w-md">
-        <Badge variant="primary">
-          <Spinner />
-          Creating
-        </Badge>
-        <Badge variant="primary">
-          <UserIcon />
-          User
-        </Badge>
-        <Badge variant="primary" pill>
-          20
-        </Badge>
-        <Badge variant="primary-subtle">Creating</Badge>
-        <Badge variant="primary-outline">Creating</Badge>
-        <Badge variant="secondary">Creating</Badge>
-        <Badge variant="secondary-subtle">Creating</Badge>
-        <Badge variant="secondary-outline">Creating</Badge>
-        <Badge variant="tertiary">Creating</Badge>
-        <Badge variant="tertiary-subtle">Creating</Badge>
-        <Badge variant="tertiary-outline">Creating</Badge>
-        <Badge variant="destructive">Creating</Badge>
-        <Badge variant="destructive-subtle">Creating</Badge>
-        <Badge variant="destructive-outline">Creating</Badge>
-        <Badge variant="success-subtle">Creating</Badge>
-        <Badge variant="success-outline">Creating</Badge>
-        <Badge variant="info">Creating</Badge>
-        <Badge variant="info-subtle">Creating</Badge>
-        <Badge variant="info-outline">Creating</Badge>
-        <Badge variant="warning">Creating</Badge>
-        <Badge variant="warning-subtle">Creating</Badge>
-        <Badge variant="warning-outline">Creating</Badge>
+    <div className="flex flex-col items-center min-h-screen gap-4 py-20">
+      <div className="w-md">
+        <Card>
+          <CardHeader>
+            <CardHeaderContent>
+              <CardTitle>User Settings</CardTitle>
+              <CardDescription>
+                Your personal information and settings.
+              </CardDescription>
+            </CardHeaderContent>
+          </CardHeader>
+          <CardBody>
+            <Fieldset>
+              <FieldsetLegend>Personal Information</FieldsetLegend>
+              <Text>
+                We need your name and email to create your account. You can
+                always change this information later.
+              </Text>
+              <Field>
+                <FieldLabel htmlFor="name">Name</FieldLabel>
+                <Input id="name" placeholder="Enter your name" required />
+                <FieldError match="valueMissing">This is required</FieldError>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <Input id="email" placeholder="Enter your email" required />
+                <FieldError match="valueMissing">This is required</FieldError>
+              </Field>
+            </Fieldset>
+            <Separator />
+            <Fieldset>
+              <FieldsetLegend>Security</FieldsetLegend>
+              <Text>
+                Set up your security preferences to protect your account.
+              </Text>
+              <Field>
+                <FieldLabel htmlFor="password">Password</FieldLabel>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  required
+                />
+                <FieldError match="valueMissing">This is required</FieldError>
+                <FieldDescription>
+                  Password must be at least 8 characters long.
+                </FieldDescription>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="confirm-password">
+                  Confirm Password
+                </FieldLabel>
+                <Input
+                  id="confirm-password"
+                  type="password"
+                  placeholder="Confirm your password"
+                  required
+                />
+                <FieldError match="valueMissing">This is required</FieldError>
+                <FieldError match="valueMissing">
+                  Passwords do not match
+                </FieldError>
+              </Field>
+            </Fieldset>
+            <Separator />
+            <Fieldset>
+              <FieldsetLegend>Notifications</FieldsetLegend>
+              <Text>
+                We'll send you notifications about your account and important
+                updates. Choose the ones you want to receive.
+              </Text>
+              <Field inline>
+                <Checkbox name="notifications" id="notifications-email" />
+                <FieldLabel htmlFor="notifications-email">Email</FieldLabel>
+              </Field>
+              <Field inline>
+                <Checkbox name="notifications" id="sms" />
+                <FieldLabel htmlFor="sms">SMS</FieldLabel>
+              </Field>
+              <Field inline>
+                <Checkbox name="notifications" id="push" />
+                <FieldLabel htmlFor="push">Push</FieldLabel>
+              </Field>
+            </Fieldset>
+            <Separator />
+            <Fieldset>
+              <FieldsetLegend>Theme</FieldsetLegend>
+              <Text>Choose your preferred theme for the interface.</Text>
+              <RadioGroup defaultValue="system">
+                <Field inline>
+                  <Radio name="theme" id="system" value="system" />
+                  <FieldLabel htmlFor="system">System</FieldLabel>
+                </Field>
+                <Field inline>
+                  <Radio name="theme" id="light" value="light" />
+                  <FieldLabel htmlFor="light">Light</FieldLabel>
+                </Field>
+                <Field inline>
+                  <Radio name="theme" id="dark" value="dark" />
+                  <FieldLabel htmlFor="dark">Dark</FieldLabel>
+                </Field>
+              </RadioGroup>
+            </Fieldset>
+          </CardBody>
+          <CardFooter>
+            <Button className="ml-auto">Save Changes</Button>
+          </CardFooter>
+        </Card>
       </div>
-      <div className="w-md bg-surface01 p-2 rounded-3xl">
+      {/**<div className="w-md bg-surface01 p-2 rounded-3xl">
         <div className="flex items-center gap-2.5 p-1.5 mb-2">
           <Chip variant="secondary" size="sm">
             How to make a website
@@ -116,7 +182,7 @@ export default function Playground() {
             </Button>
           </InputGroupBar>
         </InputGroup>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -9,6 +9,7 @@ export function RadioGroup({
 }: React.ComponentProps<typeof BaseRadioGroup>) {
   return (
     <BaseRadioGroup
+      data-slot="radio-group"
       {...props}
       className={cn('flex flex-col gap-2.5', className)}
     />
@@ -24,6 +25,7 @@ export function RadioGroupLabel({
     defaultTagName: 'span',
     render,
     props: {
+      'data-slot': 'radio-group-label',
       className: cn('text-foreground', className),
       ...props,
     },
@@ -36,8 +38,9 @@ export function Radio({
 }: React.ComponentProps<typeof BaseRadio.Root>) {
   return (
     <BaseRadio.Root
+      data-slot="radio"
       className={cn(
-        'size-5 flex items-center justify-center rounded-full ring ring-input-border bg-input',
+        'size-4 flex items-center justify-center rounded-full ring ring-input-border bg-input',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         'data-[checked]:bg-primary data-[checked]:ring-primary',
         'transition-colors duration-75',
@@ -46,7 +49,7 @@ export function Radio({
       )}
       {...props}
     >
-      <BaseRadio.Indicator className="size-2.5 rounded-full bg-foreground" />
+      <BaseRadio.Indicator className="size-2 rounded-full bg-foreground" />
     </BaseRadio.Root>
   );
 }

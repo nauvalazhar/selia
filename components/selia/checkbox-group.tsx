@@ -8,6 +8,7 @@ export function CheckboxGroup({
 }: React.ComponentProps<typeof BaseCheckboxGroup>) {
   return (
     <BaseCheckboxGroup
+      data-slot="checkbox-group"
       {...props}
       className={cn('flex flex-col gap-2.5', className)}
     />
@@ -22,6 +23,7 @@ export function CheckboxGroupLabel({
     defaultTagName: 'span',
     render,
     props: {
+      'data-slot': 'checkbox-group-label',
       className: cn('text-foreground', props.className),
       ...props,
     },

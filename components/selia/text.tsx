@@ -10,6 +10,7 @@ export function Text({
     defaultTagName: 'p',
     render,
     props: {
+      'data-slot': 'text',
       className: cn('text-base/6 text-foreground', className),
       ...props,
     },
@@ -26,6 +27,7 @@ export function TextLink({
     render,
     props: {
       className: cn('text-foreground underline', className),
+      'data-slot': 'text-link',
       ...props,
     },
   });
@@ -37,6 +39,7 @@ export function Strong({
 }: React.ComponentProps<'strong'>) {
   return (
     <strong
+      data-slot="text-strong"
       className={cn('font-semibold text-foreground', className)}
       {...props}
     />
@@ -46,6 +49,7 @@ export function Strong({
 export function Code({ className, ...props }: React.ComponentProps<'code'>) {
   return (
     <code
+      data-slot="text-code"
       className={cn(
         'font-mono text-sm bg-accent03 px-1 py-px rounded-md text-foreground',
         className,

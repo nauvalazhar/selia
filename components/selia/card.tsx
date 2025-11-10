@@ -97,6 +97,7 @@ export function CardFooter({
   return (
     <div
       className={cn(
+        'flex items-center gap-1.5',
         'p-6 bg-card-footer border-t border-card-border rounded-b-3xl',
         className,
       )}

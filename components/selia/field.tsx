@@ -1,14 +1,31 @@
 import * as React from 'react';
 import { Field as BaseField } from '@base-ui-components/react/field';
 import { cn } from 'lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+
+export const fieldVariants = cva('flex', {
+  variants: {
+    inline: {
+      true: 'flex-row gap-3 items-center',
+      false: 'flex-col gap-2',
+    },
+  },
+  defaultVariants: {
+    inline: false,
+  },
+});
 
 export function Field({
   className,
+  inline,
   ...props
-}: React.ComponentProps<typeof BaseField.Root>) {
+}: React.ComponentProps<typeof BaseField.Root> &
+  VariantProps<typeof fieldVariants>) {
   return (
     <BaseField.Root
-      className={cn('flex flex-col gap-2', className)}
+      data-slot="field"
+      data-layout={inline ? 'inline' : 'block'}
+      className={cn(fieldVariants({ inline, className }))}
       {...props}
     />
   );
@@ -19,7 +36,11 @@ export function FieldLabel({
   ...props
 }: React.ComponentProps<typeof BaseField.Label>) {
   return (
-    <BaseField.Label className={cn('text-foreground', className)} {...props} />
+    <BaseField.Label
+      data-slot="field-label"
+      className={cn('text-foreground', className)}
+      {...props}
+    />
   );
 }
 
@@ -29,7 +50,8 @@ export function FieldDescription({
 }: React.ComponentProps<typeof BaseField.Description>) {
   return (
     <BaseField.Description
-      className={cn('text-muted text-sm', className)}
+      data-slot="field-description"
+      className={cn('text-muted text-sm leading-relaxed', className)}
       {...props}
     />
   );
@@ -40,12 +62,16 @@ export function FieldError({
   ...props
 }: React.ComponentProps<typeof BaseField.Error>) {
   return (
-    <BaseField.Error className={cn('text-destructive', className)} {...props} />
+    <BaseField.Error
+      data-slot="field-error"
+      className={cn('text-destructive', className)}
+      {...props}
+    />
   );
 }
 
 export function FieldValidity({
   ...props
 }: React.ComponentProps<typeof BaseField.Validity>) {
-  return <BaseField.Validity {...props} />;
+  return <BaseField.Validity data-slot="field-validity" {...props} />;
 }
