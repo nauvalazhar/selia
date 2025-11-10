@@ -1,3 +1,4 @@
+import { Badge } from 'components/selia/badge';
 import { Button } from 'components/selia/button';
 import { Chip } from 'components/selia/chip';
 import { InputGroup, InputGroupBar } from 'components/selia/input-group';
@@ -20,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from 'components/selia/select';
+import { Spinner } from 'components/selia/spinner';
 import { Text } from 'components/selia/text';
 import { Textarea } from 'components/selia/textarea';
 import {
@@ -27,7 +29,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from 'components/selia/tooltip';
-import { ArrowUpIcon, PlusIcon, SendIcon } from 'lucide-react';
+import { ArrowUpIcon, PlusIcon, SendIcon, UserIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Playground() {
@@ -45,6 +47,38 @@ export default function Playground() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-4">
+      <div className="flex items-center gap-2.5 flex-wrap max-w-md">
+        <Badge variant="primary">
+          <Spinner />
+          Creating
+        </Badge>
+        <Badge variant="primary">
+          <UserIcon />
+          User
+        </Badge>
+        <Badge variant="primary" pill>
+          20
+        </Badge>
+        <Badge variant="primary-subtle">Creating</Badge>
+        <Badge variant="primary-outline">Creating</Badge>
+        <Badge variant="secondary">Creating</Badge>
+        <Badge variant="secondary-subtle">Creating</Badge>
+        <Badge variant="secondary-outline">Creating</Badge>
+        <Badge variant="tertiary">Creating</Badge>
+        <Badge variant="tertiary-subtle">Creating</Badge>
+        <Badge variant="tertiary-outline">Creating</Badge>
+        <Badge variant="destructive">Creating</Badge>
+        <Badge variant="destructive-subtle">Creating</Badge>
+        <Badge variant="destructive-outline">Creating</Badge>
+        <Badge variant="success-subtle">Creating</Badge>
+        <Badge variant="success-outline">Creating</Badge>
+        <Badge variant="info">Creating</Badge>
+        <Badge variant="info-subtle">Creating</Badge>
+        <Badge variant="info-outline">Creating</Badge>
+        <Badge variant="warning">Creating</Badge>
+        <Badge variant="warning-subtle">Creating</Badge>
+        <Badge variant="warning-outline">Creating</Badge>
+      </div>
       <div className="w-md bg-surface01 p-2 rounded-3xl">
         <div className="flex items-center gap-2.5 p-1.5 mb-2">
           <Chip variant="secondary" size="sm">
