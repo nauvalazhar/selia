@@ -13,9 +13,6 @@ export function Fieldset({
         '*:data-[slot=text]:mt-2 *:data-[slot=text]:text-muted',
         '*:data-[slot=text]:mb-6',
         '[&_[data-slot="field"]:not([data-layout="inline"])]:not-last:mb-6',
-        '[&_[data-slot="field"][data-layout="inline"]]:not-last:mb-2.5',
-        '*:data-[slot=radio-group]:gap-0',
-        '*:data-[slot=checkbox-group]:gap-0',
         className,
       )}
       {...props}

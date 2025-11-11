@@ -1,31 +1,15 @@
 import * as React from 'react';
 import { Field as BaseField } from '@base-ui-components/react/field';
 import { cn } from 'lib/utils';
-import { cva, type VariantProps } from 'class-variance-authority';
-
-export const fieldVariants = cva('flex', {
-  variants: {
-    inline: {
-      true: 'flex-row gap-3 items-center',
-      false: 'flex-col gap-2',
-    },
-  },
-  defaultVariants: {
-    inline: false,
-  },
-});
 
 export function Field({
   className,
-  inline,
   ...props
-}: React.ComponentProps<typeof BaseField.Root> &
-  VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<typeof BaseField.Root>) {
   return (
     <BaseField.Root
       data-slot="field"
-      data-layout={inline ? 'inline' : 'block'}
-      className={cn(fieldVariants({ inline, className }))}
+      className={cn('flex gap-2 flex-col', className)}
       {...props}
     />
   );

@@ -8,7 +8,7 @@ import {
 } from 'components/selia/field';
 import { Input } from 'components/selia/input';
 import { Fieldset, FieldsetLegend } from 'components/selia/fieldset';
-import { Checkbox } from 'components/selia/checkbox';
+import { Checkbox, CheckboxGroup } from 'components/selia/checkbox';
 import { Separator } from 'components/selia/separator';
 import { Text } from 'components/selia/text';
 import { Radio, RadioGroup } from 'components/selia/radio';
@@ -21,6 +21,9 @@ import {
   CardHeaderContent,
   CardTitle,
 } from 'components/selia/card';
+import { IconBox } from 'components/selia/icon-box';
+import { SettingsIcon } from 'lucide-react';
+import { Label } from 'components/selia/label';
 
 export default function Playground() {
   const [progress, setProgress] = useState(0);
@@ -40,6 +43,9 @@ export default function Playground() {
       <div className="w-md">
         <Card>
           <CardHeader>
+            <IconBox variant="info">
+              <SettingsIcon />
+            </IconBox>
             <CardHeaderContent>
               <CardTitle>User Settings</CardTitle>
               <CardDescription>
@@ -107,37 +113,49 @@ export default function Playground() {
                 We'll send you notifications about your account and important
                 updates. Choose the ones you want to receive.
               </Text>
-              <Field inline>
-                <Checkbox name="notifications" id="notifications-email" />
-                <FieldLabel htmlFor="notifications-email">Email</FieldLabel>
-              </Field>
-              <Field inline>
-                <Checkbox name="notifications" id="sms" />
-                <FieldLabel htmlFor="sms">SMS</FieldLabel>
-              </Field>
-              <Field inline>
-                <Checkbox name="notifications" id="push" />
-                <FieldLabel htmlFor="push">Push</FieldLabel>
-              </Field>
+              <CheckboxGroup defaultValue={['email']}>
+                <Label>
+                  <Checkbox
+                    name="notifications"
+                    id="notifications-email"
+                    value="email"
+                  />
+                  Email
+                </Label>
+                <Label>
+                  <Checkbox name="notifications" id="sms" value="sms" />
+                  SMS
+                </Label>
+                <Label>
+                  <Checkbox name="notifications" id="push" value="push" />
+                  Push
+                </Label>
+              </CheckboxGroup>
             </Fieldset>
             <Separator />
             <Fieldset>
               <FieldsetLegend>Theme</FieldsetLegend>
               <Text>Choose your preferred theme for the interface.</Text>
-              <RadioGroup defaultValue="system">
-                <Field inline>
-                  <Radio name="theme" id="system" value="system" />
-                  <FieldLabel htmlFor="system">System</FieldLabel>
-                </Field>
-                <Field inline>
-                  <Radio name="theme" id="light" value="light" />
-                  <FieldLabel htmlFor="light">Light</FieldLabel>
-                </Field>
-                <Field inline>
-                  <Radio name="theme" id="dark" value="dark" />
-                  <FieldLabel htmlFor="dark">Dark</FieldLabel>
-                </Field>
-              </RadioGroup>
+              <Field>
+                <RadioGroup defaultValue="system">
+                  <Label>
+                    <Radio name="theme" id="system" value="system" />
+                    System
+                  </Label>
+                  <Label>
+                    <Radio name="theme" id="light" value="light" />
+                    Light
+                  </Label>
+                  <Label>
+                    <Radio name="theme" id="dark" value="dark" />
+                    Dark
+                  </Label>
+                </RadioGroup>
+                <FieldError match="valueMissing">This is required</FieldError>
+                <FieldDescription>
+                  System theme will use the system default theme.
+                </FieldDescription>
+              </Field>
             </Fieldset>
           </CardBody>
           <CardFooter>

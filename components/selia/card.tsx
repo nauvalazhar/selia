@@ -26,7 +26,7 @@ export function Card({
 }
 
 export const cardHeaderVariants = cva(
-  'p-6 flex gap-1.5 border-b border-card-border',
+  'p-6 flex gap-3.5 border-b border-card-border',
   {
     variants: {
       align: {
