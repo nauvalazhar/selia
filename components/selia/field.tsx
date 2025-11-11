@@ -22,7 +22,7 @@ export function FieldLabel({
   return (
     <BaseField.Label
       data-slot="field-label"
-      className={cn('text-foreground', className)}
+      className={cn('text-foreground font-medium', className)}
       {...props}
     />
   );

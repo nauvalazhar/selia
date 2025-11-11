@@ -4,13 +4,13 @@ import { cn } from 'lib/utils';
 export function Dropdown({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Root>) {
-  return <BaseMenu.Root {...props} />;
+  return <BaseMenu.Root data-slot="dropdown" {...props} />;
 }
 
 export function DropdownTrigger({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Trigger>) {
-  return <BaseMenu.Trigger {...props} />;
+  return <BaseMenu.Trigger data-slot="dropdown-trigger" {...props} />;
 }
 
 export function DropdownContent({
@@ -24,14 +24,16 @@ export function DropdownContent({
   return (
     <BaseMenu.Portal>
       <BaseMenu.Backdrop />
-      <BaseMenu.Positioner {...props}>
+      <BaseMenu.Positioner sideOffset={6} {...props}>
         <BaseMenu.Popup
+          data-slot="dropdown-content"
           {...popupProps}
           className={cn(
             'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow',
             'p-1 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
+            '**:data-[slot=item]:p-0',
             className,
           )}
         >
@@ -82,6 +84,7 @@ export function DropdownItem({
 }: React.ComponentProps<typeof BaseMenu.Item>) {
   return (
     <BaseMenu.Item
+      data-slot="dropdown-item"
       {...props}
       className={cn(dropdownItemClasses, props.className)}
     />
@@ -93,6 +96,7 @@ export function DropdownSeparator({
 }: React.ComponentProps<typeof BaseMenu.Separator>) {
   return (
     <BaseMenu.Separator
+      data-slot="dropdown-separator"
       className={cn('h-px my-1 bg-border04', props.className)}
       {...props}
     />
@@ -102,7 +106,7 @@ export function DropdownSeparator({
 export function DropdownSubmenu({
   ...props
 }: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
-  return <BaseMenu.SubmenuRoot {...props} />;
+  return <BaseMenu.SubmenuRoot data-slot="dropdown-submenu" {...props} />;
 }
 
 export function DropdownSubmenuTrigger({
@@ -110,6 +114,7 @@ export function DropdownSubmenuTrigger({
 }: React.ComponentProps<typeof BaseMenu.SubmenuTrigger>) {
   return (
     <BaseMenu.SubmenuTrigger
+      data-slot="dropdown-submenu-trigger"
       {...props}
       className={cn(
         dropdownItemClasses,
@@ -123,7 +128,7 @@ export function DropdownSubmenuTrigger({
 export function DropdownGroup({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Group>) {
-  return <BaseMenu.Group {...props} />;
+  return <BaseMenu.Group data-slot="dropdown-group" {...props} />;
 }
 
 export function DropdownGroupLabel({
@@ -131,6 +136,7 @@ export function DropdownGroupLabel({
 }: React.ComponentProps<typeof BaseMenu.GroupLabel>) {
   return (
     <BaseMenu.GroupLabel
+      data-slot="dropdown-group-label"
       className={cn(
         'px-2.5 py-1.5 text-dimmed font-medium text-sm',
         props.className,
@@ -146,6 +152,7 @@ export function DropdownCheckboxItem({
 }: React.ComponentProps<typeof BaseMenu.CheckboxItem>) {
   return (
     <BaseMenu.CheckboxItem
+      data-slot="dropdown-checkbox-item"
       {...props}
       className={cn(
         dropdownItemClasses,
@@ -177,7 +184,7 @@ export function DropdownCheckboxItem({
 export function DropdownRadioGroup({
   ...props
 }: React.ComponentProps<typeof BaseMenu.RadioGroup>) {
-  return <BaseMenu.RadioGroup {...props} />;
+  return <BaseMenu.RadioGroup data-slot="dropdown-radio-group" {...props} />;
 }
 
 export function DropdownRadioItem({
@@ -186,6 +193,7 @@ export function DropdownRadioItem({
 }: React.ComponentProps<typeof BaseMenu.RadioItem>) {
   return (
     <BaseMenu.RadioItem
+      data-slot="dropdown-radio-item"
       {...props}
       className={cn(
         dropdownItemClasses,

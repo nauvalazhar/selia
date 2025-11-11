@@ -88,6 +88,60 @@ export const buttonVariants = cva(
           'text-destructive hover:bg-destructive/25',
           'after:content-none outline-destructive',
         ],
+        info: [
+          'bg-gradient-info text-info-foreground',
+          'inset-shadow-2xs inset-shadow-white/15 shadow',
+          'after:rounded outline-info',
+        ],
+        'info-subtle': [
+          'bg-info/15 hover:bg-info/25 text-info',
+          'after:content-none outline-info',
+        ],
+        'info-outline': [
+          'text-info',
+          'border-2 border-info hover:bg-info/15',
+          'after:content-none outline-info',
+        ],
+        'info-plain': [
+          'text-info hover:bg-info/25',
+          'after:content-none outline-info',
+        ],
+        success: [
+          'bg-gradient-success text-success-foreground',
+          'inset-shadow-2xs inset-shadow-white/15 shadow',
+          'after:rounded outline-success',
+        ],
+        'success-subtle': [
+          'bg-success/15 hover:bg-success/25 text-success',
+          'after:content-none outline-success',
+        ],
+        'success-outline': [
+          'text-success',
+          'border-2 border-success hover:bg-success/15',
+          'after:content-none outline-success',
+        ],
+        'success-plain': [
+          'text-success hover:bg-success/25',
+          'after:content-none outline-success',
+        ],
+        warning: [
+          'bg-gradient-warning text-warning-foreground',
+          'inset-shadow-2xs inset-shadow-white/15 shadow',
+          'after:rounded outline-warning',
+        ],
+        'warning-subtle': [
+          'bg-warning/15 hover:bg-warning/25 text-warning',
+          'after:content-none outline-warning',
+        ],
+        'warning-outline': [
+          'text-warning',
+          'border-2 border-warning hover:bg-warning/15',
+          'after:content-none outline-warning',
+        ],
+        'warning-plain': [
+          'text-warning hover:bg-warning/25',
+          'after:content-none outline-warning',
+        ],
       },
       size: {
         md: 'h-9.5 px-4 rounded',

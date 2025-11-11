@@ -38,6 +38,7 @@ export function IconBox({
 }: React.ComponentProps<'div'> & VariantProps<typeof iconBoxVariants>) {
   return (
     <div
+      data-slot="iconbox"
       {...props}
       className={cn(iconBoxVariants({ variant, circle, className }))}
     >
