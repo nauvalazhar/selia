@@ -53,6 +53,7 @@ import {
 } from 'components/selia/dropdown';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
 import { Switch } from 'components/selia/switch';
+import { toast } from 'components/selia/toast';
 
 export default function Playground() {
   const [progress, setProgress] = useState(0);
@@ -70,6 +71,110 @@ export default function Playground() {
   return (
     <div className="flex flex-col items-center min-h-screen gap-4 py-20">
       <div className="w-2xl mb-10 space-y-4">
+        <Button
+          onClick={() =>
+            toast.info('Hello, world!', {
+              description: 'This is a toast message',
+            })
+          }
+        >
+          Info
+        </Button>
+        <Button
+          onClick={() =>
+            toast.success('Hello, world!', {
+              description: 'This is a toast message',
+            })
+          }
+        >
+          Success
+        </Button>
+        <Button
+          onClick={() =>
+            toast.warning('Hello, world!', {
+              description: 'This is a toast message',
+            })
+          }
+        >
+          Warning
+        </Button>
+        <Button
+          onClick={() =>
+            toast.error('Hello, world!', {
+              description: 'This is a toast message',
+            })
+          }
+        >
+          Error
+        </Button>
+        <Button
+          onClick={() =>
+            toast('Hello, world!', {
+              description: 'This is a toast message',
+            })
+          }
+        >
+          Neutral
+        </Button>
+        <Button
+          onClick={() =>
+            toast.success('Item Deleted', {
+              description: 'Item deleted sucessfully',
+              action: {
+                label: 'Undo',
+                onClick: () => console.log('Undo'),
+              },
+            })
+          }
+        >
+          Button
+        </Button>
+        <Button
+          onClick={() =>
+            toast(
+              <Item variant="plain">
+                <ItemMedia>
+                  <Avatar>
+                    <AvatarImage src="/avatar01.png" alt="Avatar" />
+                    <AvatarFallback>BS</AvatarFallback>
+                  </Avatar>
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>John Doe</ItemTitle>
+                  <ItemMeta>5 minutes ago</ItemMeta>
+                  <ItemDescription>Hi, how are you?</ItemDescription>
+                </ItemContent>
+              </Item>,
+            )
+          }
+        >
+          Custom
+        </Button>
+        <Button
+          onClick={() =>
+            toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
+              loading: 'Loading...',
+              success: 'Loaded successfully!',
+              error: 'Failed to load',
+            })
+          }
+        >
+          Promise
+        </Button>
+        <Button
+          onClick={() =>
+            toast('Hello, world!', {
+              description: 'This is a toast message',
+              icon: (
+                <IconBox variant="info" size="sm">
+                  <InfoIcon />
+                </IconBox>
+              ),
+            })
+          }
+        >
+          Icon Box
+        </Button>
         <Stack>
           <Item className="items-center">
             <ItemMedia>

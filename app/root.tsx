@@ -9,6 +9,7 @@ import {
 
 import type { Route } from './+types/root';
 import './app.css';
+import { Toast } from 'components/selia/toast';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -34,6 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-background">
         <div className="root">{children}</div>
+        <Toast />
         <ScrollRestoration />
         <Scripts />
       </body>

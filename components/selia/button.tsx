@@ -194,6 +194,7 @@ export function Button({
     defaultTagName: 'button',
     render,
     props: {
+      'data-slot': 'button',
       ...props,
       className: cn(
         buttonVariants({ variant, size, pill, progress, block, className }),
