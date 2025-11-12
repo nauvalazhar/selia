@@ -31,9 +31,18 @@ export const itemVariants = cva(
         'tertiary-outline': 'border-tertiary/20 border',
       },
       size: {
-        sm: 'p-3.5 rounded-xl after:rounded-xl gap-2.5 has-[[data-slot=item-description]]:gap-3',
-        md: 'p-4 rounded-2xl after:rounded-2xl gap-3 has-[[data-slot=item-description]]:gap-4.5',
-        lg: 'p-4.5 rounded-3xl after:rounded-3xl gap-3.5 has-[[data-slot=item-description]]:gap-5',
+        sm: [
+          'p-3.5 rounded-xl after:rounded-xl gap-2.5',
+          'has-[[data-slot=item-description]]:gap-3',
+        ],
+        md: [
+          'p-4 rounded-2xl after:rounded-2xl gap-3',
+          'has-[[data-slot=item-description]]:gap-4.5',
+        ],
+        lg: [
+          'p-4.5 rounded-3xl after:rounded-3xl gap-3.5',
+          'has-[[data-slot=item-description]]:gap-5',
+        ],
       },
       direction: {
         row: 'flex-row',

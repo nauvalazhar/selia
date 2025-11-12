@@ -51,6 +51,7 @@ import {
   DropdownTrigger,
 } from 'components/selia/dropdown';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
+import { Switch } from 'components/selia/switch';
 
 export default function Playground() {
   const [progress, setProgress] = useState(0);
@@ -244,6 +245,10 @@ export default function Playground() {
                   <ItemDescription>Description</ItemDescription>
                 </ItemContent>
               </Item>
+            </DropdownItem>
+            <DropdownItem render={<label />} closeOnClick={false}>
+              Search
+              <Switch />
             </DropdownItem>
           </DropdownContent>
         </Dropdown>

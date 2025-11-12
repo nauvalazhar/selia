@@ -7,6 +7,7 @@ export function Switch({
 }: React.ComponentProps<typeof BaseSwitch.Root>) {
   return (
     <BaseSwitch.Root
+      data-slot="switch"
       className={cn(
         'w-9 h-5 rounded-full flex items-center px-0.5',
         'ring ring-input-border bg-input',

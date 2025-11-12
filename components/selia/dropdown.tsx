@@ -77,6 +77,7 @@ const dropdownItemClasses = [
   'data-[popup-open]:bg-accent04',
   'focus-visible:outline-none',
   '[&_svg]:size-4 [&_svg]:text-foreground',
+  '*:data-[slot=switch]:ml-auto',
 ];
 
 export function DropdownItem({
