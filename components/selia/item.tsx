@@ -114,6 +114,16 @@ export function ItemDescription({
   );
 }
 
+export function ItemMeta({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="item-meta"
+      className={cn('text-dimmed text-sm leading-relaxed', className)}
+      {...props}
+    />
+  );
+}
+
 export function ItemMedia({
   className,
   ...props

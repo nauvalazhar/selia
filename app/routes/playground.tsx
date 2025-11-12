@@ -41,6 +41,7 @@ import {
   ItemContent,
   ItemDescription,
   ItemMedia,
+  ItemMeta,
   ItemTitle,
 } from 'components/selia/item';
 import { Stack } from 'components/selia/stack';
@@ -261,7 +262,7 @@ export default function Playground() {
           </ItemMedia>
           <ItemContent>
             <ItemTitle>John Doe</ItemTitle>
-            <Text className="text-sm text-dimmed mb-2.5">5 minutes ago</Text>
+            <ItemMeta className="mb-2.5">5 minutes ago</ItemMeta>
             <ItemDescription>This is an example of comment!</ItemDescription>
             <div className="-mx-2 mt-2.5">
               <Button size="xs" variant="tertiary-plain" pill>
