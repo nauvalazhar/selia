@@ -14,7 +14,8 @@
     "types": [
       "node",
       "vite/client",
-      "@types/bun"
+      "@types/bun",
+      "@types/mdx"
     ],
     "target": "ES2022",
     "module": "ES2022",

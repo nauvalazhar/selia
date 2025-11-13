@@ -1,0 +1,51 @@
+import { Alert, AlertTitle, AlertDescription } from 'components/selia/alert';
+import { Preview, PreviewDemo, PreviewCode } from 'components/preview';
+import { InfoIcon, XCircleIcon, CheckCircle2Icon, TriangleAlertIcon } from 'lucide-react';
+
+# Alert
+
+Component to display alerts.
+
+<Preview>
+  <PreviewDemo>
+  <Alert>
+    <InfoIcon />
+    We will announce the winner of the contest soon.
+  </Alert>
+  <Alert>
+    <InfoIcon />
+    <AlertTitle>New Release</AlertTitle>
+    <AlertDescription>
+      We have released a new version of our app. Please update to the latest version.
+    </AlertDescription>
+  </Alert>
+  </PreviewDemo>
+  <PreviewCode>
+  ```tsx
+  <Alert>
+    <InfoIcon />
+    <AlertTitle>New Release</AlertTitle>
+    <AlertDescription>
+      We have released a new version of our app. Please update to the latest version.
+    </AlertDescription>
+  </Alert>
+  ```
+  </PreviewCode>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+import { 
+  Alert, 
+  AlertTitle, 
+  AlertDescription 
+} from 'components/selia/alert';
+
+<Alert>
+  <AlertTitle />
+  <AlertDescription />
+</Alert>
+```

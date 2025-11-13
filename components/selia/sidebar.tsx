@@ -1,13 +1,18 @@
 import { useRender } from '@base-ui-components/react';
 import { cn } from 'lib/utils';
 import { Collapsible as BaseCollapsible } from '@base-ui-components/react/collapsible';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 export function Sidebar({
   className,
   ...props
 }: React.ComponentProps<'aside'>) {
   return (
-    <aside className={cn('flex flex-col gap-2.5', className)} {...props} />
+    <aside
+      data-slot="sidebar"
+      className={cn('flex flex-col gap-2.5', className)}
+      {...props}
+    />
   );
 }
 
@@ -17,7 +22,11 @@ export function SidebarHeader({
   ...props
 }: React.ComponentProps<'header'>) {
   return (
-    <header className={cn('py-4 px-2.5', className)} {...props}>
+    <header
+      data-slot="sidebar-header"
+      className={cn('py-4 px-2.5', className)}
+      {...props}
+    >
       {children}
     </header>
   );
@@ -29,6 +38,7 @@ export function SidebarContent({
 }: React.ComponentProps<'div'>) {
   return (
     <div
+      data-slot="sidebar-content"
       className={cn(
         'flex flex-col gap-2.5 px-2.5 h-full overflow-y-auto',
         className,
@@ -45,6 +55,7 @@ export function SidebarLogo({
 }: React.ComponentProps<'div'>) {
   return (
     <div
+      data-slot="sidebar-logo"
       className={cn('flex items-center gap-2.5 px-2.5 select-none', className)}
       {...props}
     >
@@ -59,7 +70,11 @@ export function SidebarFooter({
   ...props
 }: React.ComponentProps<'footer'>) {
   return (
-    <footer className={cn('mt-auto py-4 px-2.5', className)} {...props}>
+    <footer
+      data-slot="sidebar-footer"
+      className={cn('mt-auto py-4 px-2.5', className)}
+      {...props}
+    >
       {children}
     </footer>
   );
@@ -71,27 +86,69 @@ export function SidebarMenu({
 }: React.ComponentProps<'nav'>) {
   return (
     <nav
-      aria-label="Sidebar Menu"
-      className={cn('flex flex-col gap-2.5', className)}
+      data-slot="sidebar-menu"
+      className={cn('flex flex-col gap-6', className)}
       {...props}
     />
   );
 }
 
+export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
+  variants: {
+    size: {
+      default: [
+        '**:data-[slot=sidebar-item]:min-h-8.5',
+        '**:data-[slot=sidebar-item]:px-2.5',
+        '**:data-[slot=sidebar-item]:py-2',
+        '**:data-[slot=sidebar-item]:rounded-xl',
+      ],
+      compact: [
+        '**:data-[slot=sidebar-item]:min-h-8',
+        '**:data-[slot=sidebar-item]:px-2.5',
+        '**:data-[slot=sidebar-item]:py-1.5',
+        '**:data-[slot=sidebar-item]:rounded-xl',
+      ],
+    },
+    line: {
+      true: [
+        'relative before:absolute before:top-0 before:bottom-1',
+        'before:z-[-1] before:left-3.5 before:w-px before:bg-border01',
+        '**:data-[slot=sidebar-item]:pl-7',
+        '**:data-[slot=sidebar-item]:data-active:bg-accent01/60',
+        '**:data-[slot=sidebar-item]:data-active:before:absolute',
+        '**:data-[slot=sidebar-item]:data-active:before:w-0.5',
+        '**:data-[slot=sidebar-item]:data-active:before:left-3.5',
+        '**:data-[slot=sidebar-item]:data-active:before:rounded-full',
+        '**:data-[slot=sidebar-item]:data-active:before:h-4',
+        '**:data-[slot=sidebar-item]:data-active:before:bg-primary',
+      ],
+    },
+  },
+  defaultVariants: {
+    size: 'default',
+  },
+});
+
 export function SidebarList({
   className,
+  line,
+  size,
   children,
   ...props
-}: React.ComponentProps<'ul'>) {
+}: React.ComponentProps<'ul'> & VariantProps<typeof sidebarListVariants>) {
   return (
-    <ul className={cn('flex flex-col gap-0.5 w-full', className)} {...props}>
+    <ul
+      data-slot="sidebar-list"
+      className={cn(sidebarListVariants({ line, size, className }))}
+      {...props}
+    >
       {children}
     </ul>
   );
 }
 
 const sidebarItemClasses = [
-  'flex items-center gap-2.5 min-h-8.5 px-2.5 py-2 rounded-xl w-full',
+  'flex items-center gap-2.5 w-full',
   'text-foreground font-medium cursor-pointer',
   'transition-colors duration-75 hover:bg-accent01',
   '[&_svg]:size-4 [&_svg]:text-muted',
@@ -110,6 +167,8 @@ export function SidebarItem({
         defaultTagName: 'a',
         render,
         props: {
+          'data-slot': 'sidebar-item',
+          'data-active': active ? true : undefined,
           className: cn(sidebarItemClasses, active && 'bg-accent01', className),
           ...props,
         },
@@ -126,6 +185,7 @@ export function SidebarGroup({
   return (
     <section
       role="group"
+      data-slot="sidebar-group"
       className={cn('flex flex-wrap gap-0.5', className)}
       {...props}
     >
@@ -141,6 +201,7 @@ export function SidebarGroupTitle({
 }: React.ComponentProps<'span'>) {
   return (
     <span
+      data-slot="sidebar-group-title"
       className={cn('text-sm font-medium text-dimmed px-2.5', className)}
       {...props}
     >
@@ -156,6 +217,7 @@ export function SidebarGroupAction({
 }: React.ComponentProps<'div'>) {
   return (
     <div
+      data-slot="sidebar-group-action"
       className={cn('ml-auto flex items-center gap-1.5 px-2.5', className)}
       {...props}
     >
@@ -167,7 +229,7 @@ export function SidebarGroupAction({
 export function SidebarCollapsible({
   ...props
 }: React.ComponentProps<typeof BaseCollapsible.Root>) {
-  return <BaseCollapsible.Root {...props} />;
+  return <BaseCollapsible.Root data-slot="sidebar-collapsible" {...props} />;
 }
 
 export function SidebarCollapsibleTrigger({
@@ -176,6 +238,7 @@ export function SidebarCollapsibleTrigger({
 }: React.ComponentProps<typeof BaseCollapsible.Trigger>) {
   return (
     <BaseCollapsible.Trigger
+      data-slot="sidebar-item"
       className={cn(
         sidebarItemClasses,
         'after:bg-chevron-down after:size-4 after:ml-auto',
@@ -190,23 +253,18 @@ export function SidebarCollapsibleTrigger({
 
 export function SidebarSubmenu({
   className,
-  indicator,
   ...props
-}: React.ComponentProps<typeof BaseCollapsible.Panel> & {
-  indicator?: boolean;
-}) {
+}: React.ComponentProps<typeof BaseCollapsible.Panel>) {
   return (
     <BaseCollapsible.Panel
+      data-slot="sidebar-submenu"
       render={<nav />}
       {...props}
       className={cn(
         'relative pl-6.5 py-0.5 transition-all duration-100',
         'h-(--collapsible-panel-height) overflow-hidden',
         'data-[ending-style]:h-0 data-[starting-style]:h-0',
-        indicator && [
-          'before:absolute before:top-0 before:bottom-1',
-          'before:left-4.5 before:w-px before:bg-border01',
-        ],
+        '**:data-[slot=sidebar-list]:before:left-2.5',
         className,
       )}
     />
