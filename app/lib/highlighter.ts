@@ -3,9 +3,9 @@ import { codeToHtml } from 'shiki';
 const cache = new Map<string, string>();
 
 export async function highlightCode(path: string) {
-  if (process.env.NODE_ENV === 'development' && cache.has(path)) {
-    return cache.get(path)!;
-  }
+  // if (process.env.NODE_ENV === 'development' && cache.has(path)) {
+  //   return cache.get(path)!;
+  // }
 
   const source = await Bun.file(path).text();
   const html = await codeToHtml(source, {
@@ -13,9 +13,9 @@ export async function highlightCode(path: string) {
     theme: 'tokyo-night',
   });
 
-  if (process.env.NODE_ENV === 'development') {
-    cache.set(path, html);
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   cache.set(path, html);
+  // }
 
   return html;
 }

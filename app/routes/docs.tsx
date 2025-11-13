@@ -110,12 +110,16 @@ export default function LayoutDocs({
             <article
               className={cn(
                 'flex-1 max-w-2xl mx-auto text-zinc-300',
-                '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-6',
+                '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-4',
                 '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2,h3]:mb-3',
                 '*:[h2+h3]:mt-8 *:[h2]:mt-14',
                 '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
                 '**:[h1,h2,h3]:text-foreground',
-                '*:[p]:mb-6',
+                '*:[p]:mb-6 *:[p]:leading-loose',
+                '**:[p_code]:before:content-["`"] **:[p_code]:after:content-["`"]',
+                '**:[p_code]:text-foreground **:[p_code]:font-medium',
+                '[&>p:first-of-type]:text-lg',
+                '[&>p:first-of-type]:text-muted',
               )}
             >
               <MDXProvider components={mdxComponents}>

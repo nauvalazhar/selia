@@ -1,0 +1,89 @@
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogClose,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from 'components/selia/alert-dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+  DialogTrigger,
+  DialogBody,
+} from 'components/selia/dialog';
+import { Button } from 'components/selia/button';
+import { useState } from 'react';
+import { Textarea } from 'components/selia/textarea';
+
+export default function AlertDialogBasicExample() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
+  const [feedback, setFeedback] = useState('');
+
+  return (
+    <Dialog
+      open={dialogOpen}
+      onOpenChange={(open) => {
+        if (!open && feedback) {
+          setConfirmationOpen(true);
+          return;
+        }
+
+        setFeedback('');
+        setDialogOpen(open);
+      }}
+    >
+      <DialogTrigger render={<Button variant="destructive">Delete</Button>} />
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Feedback</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
+          <DialogDescription>Please provide your feedback.</DialogDescription>
+          <Textarea
+            placeholder="Enter your feedback"
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+          />
+        </DialogBody>
+        <DialogFooter>
+          <DialogClose>Cancel</DialogClose>
+          <Button onClick={() => setDialogOpen(false)}>Submit</Button>
+        </DialogFooter>
+      </DialogContent>
+
+      <AlertDialog open={confirmationOpen} onOpenChange={setConfirmationOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Discard Feedback?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <AlertDialogBody>
+            <AlertDialogDescription>
+              Your feedback will be lost.
+            </AlertDialogDescription>
+          </AlertDialogBody>
+          <AlertDialogFooter>
+            <AlertDialogClose>Cancel</AlertDialogClose>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                setConfirmationOpen(false);
+                setDialogOpen(false);
+              }}
+            >
+              Discard
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </Dialog>
+  );
+}

@@ -1,0 +1,69 @@
+import { Preview, PreviewDemo, PreviewCode } from 'components/preview';
+import { examples } from 'components/examples/alert-dialog';
+
+# Alert Dialog
+
+Some actions require confirmation from the user.
+
+<Preview name="basic">
+  <PreviewDemo>
+   <examples.basic.component /> 
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<AlertDialog>
+  <AlertDialogTrigger />
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle />
+    </AlertDialogHeader>
+    <AlertDialogBody>
+      <AlertDialogDescription />
+    </AlertDialogBody>
+    <AlertDialogFooter>
+      <AlertDialogClose />
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Usage
+
+### Trigger
+
+You can pass a custom trigger element to the `AlertDialogTrigger` component
+by using the `render` prop.
+
+<Preview name="trigger">
+  <PreviewDemo>
+   <examples.trigger.component /> 
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+An icon can be added to the `AlertDialogHeader` component by using the `IconBox` component.
+
+<Preview name="icon">
+  <PreviewDemo>
+   <examples.icon.component /> 
+  </PreviewDemo>
+</Preview>
+
+### Confirmation
+
+You may want to alert the user before closing the dialog. 
+This can be achieved by nesting the `AlertDialog` component inside the `Dialog` component.
+
+Try to input some feedback and then click the "Cancel" button. You will be prompted with a confirmation dialog.
+
+<Preview name="confirmation">
+  <PreviewDemo>
+   <examples.confirmation.component /> 
+  </PreviewDemo>
+</Preview>

@@ -36,7 +36,7 @@ export function DialogContent({
           'bg-dialog text-dialog-foreground backdrop-blur-sm',
           'ring ring-dialog-border rounded-3xl shadow',
           'scale-[calc(1-0.1*var(--nested-dialogs))]',
-          'outline-none transition-all',
+          'outline-none transition-all w-md',
           'data-[nested-dialog-open]:after:absolute',
           'data-[nested-dialog-open]:after:inset-0',
           'data-[nested-dialog-open]:after:rounded-3xl',
@@ -89,7 +89,7 @@ export function DialogBody({
   ...props
 }: React.ComponentProps<'div'>) {
   return (
-    <div {...props} className={cn('px-6 py-4.5', className)}>
+    <div {...props} className={cn('px-6 py-4.5 space-y-1.5', className)}>
       {children}
     </div>
   );
