@@ -47,6 +47,7 @@ export function InputGroup({
   return (
     <InputGroupContext value={{ size }}>
       <div
+        data-slot="input-group"
         className={cn(inputGroupVariants({ variant, size, className }))}
         {...props}
       >
@@ -85,6 +86,7 @@ export function InputGroupAddon({
 }: React.ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
     <div
+      data-slot="input-group-addon"
       className={cn(inputGroupAddonVariants({ align, className }))}
       onClick={(e) => {
         if ((e.target as HTMLElement).closest('button')) {
@@ -106,6 +108,7 @@ export function InputGroupText({
 }: React.ComponentProps<'span'>) {
   return (
     <span
+      data-slot="input-group-text"
       className={cn(
         'inline-flex items-center gap-1.5 text-muted select-none',
         '[&_svg]:size-4 [&_svg]:text-dimmed',
@@ -141,6 +144,7 @@ export function InputGroupBar({
 
   return (
     <div
+      data-slot="input-group-bar"
       className={cn(inputGroupBarVariants({ size, className }))}
       {...props}
     />
@@ -152,6 +156,10 @@ export function InputGroupSeparator({
   ...props
 }: React.ComponentProps<'div'>) {
   return (
-    <div className={cn('w-full h-px bg-input-border', className)} {...props} />
+    <div
+      data-slot="input-group-separator"
+      className={cn('w-full h-px bg-input-border', className)}
+      {...props}
+    />
   );
 }

@@ -5,14 +5,18 @@ import { cn } from 'lib/utils';
 export function Dialog({
   ...props
 }: React.ComponentProps<typeof BaseDialog.Root>) {
-  return <BaseDialog.Root {...props} />;
+  return <BaseDialog.Root data-slot="dialog" {...props} />;
 }
 
 export function DialogTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof BaseDialog.Trigger>) {
-  return <BaseDialog.Trigger {...props}>{children}</BaseDialog.Trigger>;
+  return (
+    <BaseDialog.Trigger data-slot="dialog-trigger" {...props}>
+      {children}
+    </BaseDialog.Trigger>
+  );
 }
 
 export function DialogContent({
@@ -29,6 +33,7 @@ export function DialogContent({
         )}
       />
       <BaseDialog.Popup
+        data-slot="dialog-content"
         {...props}
         className={cn(
           'fixed left-1/2 -translate-x-1/2 -translate-y-1/2',
@@ -60,6 +65,7 @@ export function DialogHeader({
 }: React.ComponentProps<'header'>) {
   return (
     <header
+      data-slot="dialog-header"
       {...props}
       className={cn('px-6 pt-4.5 flex items-center gap-3.5', className)}
     >
@@ -75,6 +81,7 @@ export function DialogTitle({
 }: React.ComponentProps<typeof BaseDialog.Title>) {
   return (
     <BaseDialog.Title
+      data-slot="dialog-title"
       {...props}
       className={cn('text-xl font-semibold', className)}
     >
@@ -89,7 +96,11 @@ export function DialogBody({
   ...props
 }: React.ComponentProps<'div'>) {
   return (
-    <div {...props} className={cn('px-6 py-4.5 space-y-1.5', className)}>
+    <div
+      data-slot="dialog-body"
+      {...props}
+      className={cn('px-6 py-4.5 space-y-1.5', className)}
+    >
       {children}
     </div>
   );
@@ -102,6 +113,7 @@ export function DialogDescription({
 }: React.ComponentProps<typeof BaseDialog.Description>) {
   return (
     <BaseDialog.Description
+      data-slot="dialog-description"
       {...props}
       className={cn('text-muted leading-relaxed', className)}
     >
@@ -117,6 +129,7 @@ export function DialogFooter({
 }: React.ComponentProps<'footer'>) {
   return (
     <footer
+      data-slot="dialog-footer"
       {...props}
       className={cn(
         'flex items-center justify-end gap-1.5',
@@ -136,6 +149,7 @@ export function DialogClose({
 }: React.ComponentProps<typeof BaseDialog.Close>) {
   return (
     <BaseDialog.Close
+      data-slot="dialog-close"
       {...props}
       className={cn(buttonVariants({ variant: 'secondary-plain' }), className)}
     >

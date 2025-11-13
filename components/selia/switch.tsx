@@ -19,6 +19,7 @@ export function Switch({
       {...props}
     >
       <BaseSwitch.Thumb
+        data-slot="switch-thumb"
         className={cn(
           'size-4 bg-white rounded-full shadow',
           'data-checked:translate-x-4 transition-transform duration-75',

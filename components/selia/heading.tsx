@@ -38,6 +38,7 @@ export function Heading({
     defaultTagName: `h${selectedLevel}` as keyof React.JSX.IntrinsicElements,
     render,
     props: {
+      'data-slot': 'heading',
       className: cn(headingVariants({ size, className })),
       ...props,
     },

@@ -35,6 +35,7 @@ export function Textarea({
 }: React.ComponentProps<'textarea'> & VariantProps<typeof textareaVariants>) {
   return (
     <textarea
+      data-slot="textarea"
       className={cn(textareaVariants({ variant, size, className }))}
       {...props}
     />

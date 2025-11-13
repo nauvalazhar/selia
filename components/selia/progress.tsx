@@ -8,6 +8,7 @@ export function Progress({
 }: React.ComponentProps<typeof BaseProgress.Root>) {
   return (
     <BaseProgress.Root
+      data-slot="progress"
       {...props}
       className={cn('flex flex-wrap gap-1.5 justify-between', className)}
     >
@@ -25,6 +26,7 @@ export function ProgressLabel({
 }: React.ComponentProps<typeof BaseProgress.Label>) {
   return (
     <BaseProgress.Label
+      data-slot="progress-label"
       {...props}
       className={cn('font-semibold text-foreground', className)}
     />
@@ -37,6 +39,7 @@ export function ProgressValue({
 }: React.ComponentProps<typeof BaseProgress.Value>) {
   return (
     <BaseProgress.Value
+      data-slot="progress-value"
       {...props}
       className={cn('text-sm text-dimmed', className)}
     />

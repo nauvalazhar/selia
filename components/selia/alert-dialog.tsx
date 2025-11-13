@@ -5,7 +5,7 @@ import { cn } from 'lib/utils';
 export function AlertDialog({
   ...props
 }: React.ComponentProps<typeof BaseAlertDialog.Root>) {
-  return <BaseAlertDialog.Root {...props} />;
+  return <BaseAlertDialog.Root data-slot="alert-dialog" {...props} />;
 }
 
 export function AlertDialogTrigger({
@@ -13,7 +13,9 @@ export function AlertDialogTrigger({
   ...props
 }: React.ComponentProps<typeof BaseAlertDialog.Trigger>) {
   return (
-    <BaseAlertDialog.Trigger {...props}>{children}</BaseAlertDialog.Trigger>
+    <BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props}>
+      {children}
+    </BaseAlertDialog.Trigger>
   );
 }
 
@@ -31,6 +33,7 @@ export function AlertDialogContent({
         )}
       />
       <BaseAlertDialog.Popup
+        data-slot="alert-dialog-content"
         {...props}
         className={cn(
           'fixed left-1/2 -translate-x-1/2 -translate-y-1/2',
@@ -62,6 +65,7 @@ export function AlertDialogHeader({
 }: React.ComponentProps<'header'>) {
   return (
     <header
+      data-slot="alert-dialog-header"
       {...props}
       className={cn('px-6 pt-4.5 flex items-center gap-3.5', className)}
     >
@@ -77,6 +81,7 @@ export function AlertDialogTitle({
 }: React.ComponentProps<typeof BaseAlertDialog.Title>) {
   return (
     <BaseAlertDialog.Title
+      data-slot="alert-dialog-title"
       {...props}
       className={cn('text-xl font-semibold', className)}
     >
@@ -91,7 +96,11 @@ export function AlertDialogBody({
   ...props
 }: React.ComponentProps<'div'>) {
   return (
-    <div {...props} className={cn('px-6 py-4.5', className)}>
+    <div
+      data-slot="alert-dialog-body"
+      {...props}
+      className={cn('px-6 py-4.5', className)}
+    >
       {children}
     </div>
   );
@@ -104,6 +113,7 @@ export function AlertDialogDescription({
 }: React.ComponentProps<typeof BaseAlertDialog.Description>) {
   return (
     <BaseAlertDialog.Description
+      data-slot="alert-dialog-description"
       {...props}
       className={cn('text-muted leading-relaxed', className)}
     >
@@ -119,6 +129,7 @@ export function AlertDialogFooter({
 }: React.ComponentProps<'footer'>) {
   return (
     <footer
+      data-slot="alert-dialog-footer"
       {...props}
       className={cn(
         'flex items-center justify-end gap-1.5',
@@ -138,6 +149,7 @@ export function AlertDialogClose({
 }: React.ComponentProps<typeof BaseAlertDialog.Close>) {
   return (
     <BaseAlertDialog.Close
+      data-slot="alert-dialog-close"
       {...props}
       className={cn(buttonVariants({ variant: 'secondary-plain' }), className)}
     >

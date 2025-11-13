@@ -3,6 +3,7 @@ import { cn } from 'lib/utils';
 export function Table({ ...props }: React.ComponentProps<'table'>) {
   return (
     <table
+      data-slot="table"
       {...props}
       className={cn('w-full text-foreground text-left', props.className)}
     />
@@ -10,16 +11,29 @@ export function Table({ ...props }: React.ComponentProps<'table'>) {
 }
 
 export function TableContainer({ ...props }: React.ComponentProps<'div'>) {
-  return <div {...props} className={cn('overflow-x-auto', props.className)} />;
+  return (
+    <div
+      data-slot="table-container"
+      {...props}
+      className={cn('overflow-x-auto', props.className)}
+    />
+  );
 }
 
 export function TableHeader({ ...props }: React.ComponentProps<'thead'>) {
-  return <thead {...props} className={cn(props.className)} />;
+  return (
+    <thead
+      data-slot="table-header"
+      {...props}
+      className={cn(props.className)}
+    />
+  );
 }
 
 export function TableHead({ ...props }: React.ComponentProps<'th'>) {
   return (
     <th
+      data-slot="table-head"
       {...props}
       className={cn(
         'px-6 py-3.5 text-muted font-medium bg-surface03 border-y border-border04',
@@ -30,12 +44,15 @@ export function TableHead({ ...props }: React.ComponentProps<'th'>) {
 }
 
 export function TableBody({ ...props }: React.ComponentProps<'tbody'>) {
-  return <tbody {...props} className={cn(props.className)} />;
+  return (
+    <tbody data-slot="table-body" {...props} className={cn(props.className)} />
+  );
 }
 
 export function TableRow({ ...props }: React.ComponentProps<'tr'>) {
   return (
     <tr
+      data-slot="table-row"
       {...props}
       className={cn(
         'border-b border-border02 last:border-none hover:bg-accent01',
@@ -46,12 +63,19 @@ export function TableRow({ ...props }: React.ComponentProps<'tr'>) {
 }
 
 export function TableCell({ ...props }: React.ComponentProps<'td'>) {
-  return <td {...props} className={cn('px-6 py-3.5', props.className)} />;
+  return (
+    <td
+      data-slot="table-cell"
+      {...props}
+      className={cn('px-6 py-3.5', props.className)}
+    />
+  );
 }
 
 export function TableFooter({ ...props }: React.ComponentProps<'tfoot'>) {
   return (
     <tfoot
+      data-slot="table-footer"
       {...props}
       className={cn('text-xs text-muted-foreground', props.className)}
     />
@@ -66,6 +90,7 @@ export function TableCaption({
 }) {
   return (
     <caption
+      data-slot="table-caption"
       {...props}
       className={cn(
         'text-sm text-muted my-4',

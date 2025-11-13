@@ -8,6 +8,7 @@ export function Tabs({
 }: React.ComponentProps<typeof BaseTabs.Root>) {
   return (
     <BaseTabs.Root
+      data-slot="tabs"
       className={cn('flex flex-col gap-2.5', className)}
       {...props}
     />
@@ -21,6 +22,7 @@ export function TabsList({
 }: React.ComponentProps<typeof BaseTabs.List>) {
   return (
     <BaseTabs.List
+      data-slot="tabs-list"
       className={cn(
         'relative z-0 flex items-center bg-tabs p-1 rounded-xl',
         className,
@@ -46,6 +48,7 @@ export function TabsItem({
 }: React.ComponentProps<typeof BaseTabs.Tab>) {
   return (
     <BaseTabs.Tab
+      data-slot="tabs-item"
       className={cn(
         'flex items-center justify-center gap-2.5 rounded-xl',
         'h-8 py-1 px-3 text-muted flex-1 font-medium',
@@ -63,5 +66,11 @@ export function TabsPanel({
   className,
   ...props
 }: React.ComponentProps<typeof BaseTabs.Panel>) {
-  return <BaseTabs.Panel className={cn(className)} {...props} />;
+  return (
+    <BaseTabs.Panel
+      data-slot="tabs-panel"
+      className={cn(className)}
+      {...props}
+    />
+  );
 }

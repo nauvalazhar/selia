@@ -4,13 +4,13 @@ import { cn } from 'lib/utils';
 export function Tooltip({
   ...props
 }: React.ComponentProps<typeof BaseTooltip.Root>) {
-  return <BaseTooltip.Root {...props} />;
+  return <BaseTooltip.Root data-slot="tooltip" {...props} />;
 }
 
 export function TooltipTrigger({
   ...props
 }: React.ComponentProps<typeof BaseTooltip.Trigger>) {
-  return <BaseTooltip.Trigger {...props} />;
+  return <BaseTooltip.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
 export function TooltipContent({
@@ -25,6 +25,7 @@ export function TooltipContent({
     <BaseTooltip.Portal>
       <BaseTooltip.Positioner sideOffset={6} {...props}>
         <BaseTooltip.Popup
+          data-slot="tooltip-content"
           {...popupProps}
           className={cn(
             'bg-tertiary text-tertiary-foreground rounded shadow',

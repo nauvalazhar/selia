@@ -3,6 +3,7 @@ import { cn } from 'lib/utils';
 export function Kbd({ ...props }: React.ComponentProps<'kbd'>) {
   return (
     <kbd
+      data-slot="kbd"
       {...props}
       className={cn(
         'inline-flex items-center gap-1 px-1.5 h-5.5',

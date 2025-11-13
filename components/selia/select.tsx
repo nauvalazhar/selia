@@ -50,6 +50,7 @@ export function SelectTrigger({
   VariantProps<typeof selectVariants>) {
   return (
     <BaseSelect.Trigger
+      data-slot="select-trigger"
       className={cn(selectVariants({ variant, pill, className }))}
       {...props}
     >
@@ -80,7 +81,11 @@ export function SelectValue({
   placeholder?: string;
 }) {
   return (
-    <BaseSelect.Value className={cn(className)} {...props}>
+    <BaseSelect.Value
+      data-slot="select-value"
+      className={cn(className)}
+      {...props}
+    >
       {(value: string | SelectItem | null) => (
         <SelectRenderValue value={value} placeholder={placeholder} />
       )}
@@ -126,6 +131,7 @@ export function SelectContent({
       <BaseSelect.Positioner {...props}>
         <BaseSelect.ScrollUpArrow className="top-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-foreground flex items-center justify-around bg-accent04" />
         <BaseSelect.Popup
+          data-slot="select-content"
           {...popupProps}
           className={cn(
             'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow',
@@ -148,6 +154,7 @@ export function SelectList({
 }: React.ComponentProps<typeof BaseSelect.List>) {
   return (
     <BaseSelect.List
+      data-slot="select-list"
       className={cn(
         'space-y-1 max-h-(--available-height) overflow-y-auto relative',
         className,
@@ -164,6 +171,7 @@ export function SelectItem({
 }: React.ComponentProps<typeof BaseSelect.Item>) {
   return (
     <BaseSelect.Item
+      data-slot="select-item"
       className={cn(
         'flex items-center text-foreground py-2 px-2.5 gap-3.5 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
@@ -198,7 +206,13 @@ export function SelectGroup({
   className,
   ...props
 }: React.ComponentProps<typeof BaseSelect.Group>) {
-  return <BaseSelect.Group className={cn(className)} {...props} />;
+  return (
+    <BaseSelect.Group
+      data-slot="select-group"
+      className={cn(className)}
+      {...props}
+    />
+  );
 }
 
 export function SelectGroupLabel({
@@ -207,6 +221,7 @@ export function SelectGroupLabel({
 }: React.ComponentProps<typeof BaseSelect.GroupLabel>) {
   return (
     <BaseSelect.GroupLabel
+      data-slot="select-group-label"
       className={cn('px-2.5 py-1.5 text-sm font-medium text-dimmed', className)}
       {...props}
     />
@@ -219,6 +234,7 @@ export function SelectSeparator({
 }: React.ComponentProps<typeof BaseSelect.Separator>) {
   return (
     <BaseSelect.Separator
+      data-slot="select-separator"
       className={cn('h-px my-1 bg-border02', className)}
       {...props}
     />

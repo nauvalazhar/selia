@@ -4,13 +4,13 @@ import { cn } from 'lib/utils';
 export function Popover({
   ...props
 }: React.ComponentProps<typeof BasePopover.Root>) {
-  return <BasePopover.Root {...props} />;
+  return <BasePopover.Root data-slot="popover" {...props} />;
 }
 
 export function PopoverTrigger({
   ...props
 }: React.ComponentProps<typeof BasePopover.Trigger>) {
-  return <BasePopover.Trigger {...props} />;
+  return <BasePopover.Trigger data-slot="popover-trigger" {...props} />;
 }
 
 export function PopoverContent({
@@ -25,6 +25,7 @@ export function PopoverContent({
     <BasePopover.Portal>
       <BasePopover.Positioner sideOffset={12} {...props}>
         <BasePopover.Popup
+          data-slot="popover-content"
           {...popupProps}
           className={cn(
             'flex flex-col gap-1.5',
@@ -65,6 +66,7 @@ export function PopoverTitle({
 }: React.ComponentProps<typeof BasePopover.Title>) {
   return (
     <BasePopover.Title
+      data-slot="popover-title"
       {...props}
       className={cn('text-lg font-semibold', className)}
     />
@@ -77,6 +79,7 @@ export function PopoverDescription({
 }: React.ComponentProps<typeof BasePopover.Description>) {
   return (
     <BasePopover.Description
+      data-slot="popover-description"
       {...props}
       className={cn('text-muted leading-relaxed', className)}
     />

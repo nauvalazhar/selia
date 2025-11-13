@@ -5,6 +5,7 @@ import { cn } from 'lib/utils';
 export function Pagination({ ...props }: React.ComponentProps<'nav'>) {
   return (
     <nav
+      data-slot="pagination"
       aria-label="Pagination"
       {...props}
       className={cn('flex justify-center', props.className)}
@@ -17,7 +18,11 @@ export function PaginationList({
   ...props
 }: React.ComponentProps<'ul'>) {
   return (
-    <ul className="flex items-center gap-1" {...props}>
+    <ul
+      data-slot="pagination-list"
+      className="flex items-center gap-1"
+      {...props}
+    >
       {children}
     </ul>
   );
@@ -38,6 +43,7 @@ export function PaginationItem({
         defaultTagName: 'a',
         render,
         props: {
+          'data-slot': 'pagination-link',
           'aria-current': active ? 'page' : undefined,
           'aria-disabled': disabled ? true : undefined,
           className: cn(

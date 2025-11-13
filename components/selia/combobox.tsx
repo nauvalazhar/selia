@@ -7,7 +7,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export function Combobox({
   ...props
 }: React.ComponentProps<typeof BaseCombobox.Root>) {
-  return <BaseCombobox.Root {...props} />;
+  return <BaseCombobox.Root data-slot="combobox" {...props} />;
 }
 
 export const comboboxTriggerVariants = cva(
@@ -45,6 +45,7 @@ export function ComboboxTrigger({
   VariantProps<typeof comboboxTriggerVariants>) {
   return (
     <BaseCombobox.Trigger
+      data-slot="combobox-trigger"
       {...props}
       role="combobox"
       className={cn('h-9.5', comboboxTriggerVariants({ variant, className }))}
@@ -81,7 +82,7 @@ export function ComboboxValue({
   placeholder?: string;
 }) {
   return (
-    <BaseCombobox.Value {...props}>
+    <BaseCombobox.Value data-slot="combobox-value" {...props}>
       {(value: string | ComboboxItem) => (
         <ComboboxRenderValue value={value} placeholder={placeholder} />
       )}
@@ -125,6 +126,7 @@ export function ComboboxInput({
 }) {
   return (
     <BaseCombobox.Chips
+      data-slot="combobox-chips"
       role="combobox"
       className={cn(
         'min-h-9.5 py-1 flex items-center flex-wrap gap-1.5',
@@ -186,6 +188,7 @@ export function ComboboxContent({
       <BaseCombobox.Backdrop />
       <BaseCombobox.Positioner sideOffset={6} {...props}>
         <BaseCombobox.Popup
+          data-slot="combobox-content"
           {...popupProps}
           className={cn(
             'bg-popover ring ring-popover-border rounded shadow',
@@ -210,6 +213,7 @@ export function ComboboxSearch({
 }: React.ComponentProps<typeof BaseCombobox.Input>) {
   return (
     <BaseCombobox.Input
+      data-slot="combobox-search"
       {...props}
       className={cn(
         'outline-none h-9.5 px-2.5 w-full border-b border-input-border mb-2',
@@ -225,6 +229,7 @@ export function ComboboxEmpty({
 }: React.ComponentProps<typeof BaseCombobox.Empty>) {
   return (
     <BaseCombobox.Empty
+      data-slot="combobox-empty"
       {...props}
       className={cn('px-2.5 py-2 text-dimmed empty:p-0')}
     />
@@ -237,6 +242,7 @@ export function ComboboxList({
 }: React.ComponentProps<typeof BaseCombobox.List>) {
   return (
     <BaseCombobox.List
+      data-slot="combobox-list"
       {...props}
       className={cn('space-y-1 outline-none', className)}
     />
@@ -250,6 +256,7 @@ export function ComboboxItem({
 }: React.ComponentProps<typeof BaseCombobox.Item>) {
   return (
     <BaseCombobox.Item
+      data-slot="combobox-item"
       {...props}
       className={cn(
         'flex items-center text-foreground gap-3.5 py-2 px-2.5 rounded select-none',
@@ -285,7 +292,11 @@ export function ComboboxGroup({
   ...props
 }: React.ComponentProps<typeof BaseCombobox.Group>) {
   return (
-    <BaseCombobox.Group {...props} className={cn('space-y-1', className)} />
+    <BaseCombobox.Group
+      data-slot="combobox-group"
+      {...props}
+      className={cn('space-y-1', className)}
+    />
   );
 }
 
@@ -296,6 +307,7 @@ export function ComboboxGroupLabel({
 }: React.ComponentProps<typeof BaseCombobox.GroupLabel>) {
   return (
     <BaseCombobox.GroupLabel
+      data-slot="combobox-group-label"
       {...props}
       className={cn('px-2.5 py-1.5 text-sm font-medium text-dimmed', className)}
     />
@@ -308,6 +320,7 @@ export function ComboboxSeparator({
 }: React.ComponentProps<typeof BaseCombobox.Separator>) {
   return (
     <BaseCombobox.Separator
+      data-slot="combobox-separator"
       {...props}
       className={cn('h-px my-1 bg-border02', className)}
     />

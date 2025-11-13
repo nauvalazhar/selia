@@ -27,6 +27,7 @@ export function Avatar({
   VariantProps<typeof avatarVariants>) {
   return (
     <BaseAvatar.Root
+      data-slot="avatar"
       className={cn(avatarVariants({ size, className }))}
       {...props}
     />
@@ -39,6 +40,7 @@ export function AvatarImage({
 }: React.ComponentProps<typeof BaseAvatar.Image>) {
   return (
     <BaseAvatar.Image
+      data-slot="avatar-image"
       className={cn('size-full rounded-full', className)}
       {...props}
     />
@@ -51,6 +53,7 @@ export function AvatarFallback({
 }: React.ComponentProps<typeof BaseAvatar.Fallback>) {
   return (
     <BaseAvatar.Fallback
+      data-slot="avatar-fallback"
       className={cn(
         'flex items-center justify-center size-full rounded-full',
         className,
@@ -89,6 +92,7 @@ export function AvatarIndicator({
 }: React.ComponentProps<'div'> & VariantProps<typeof avatarIndicatorVariants>) {
   return (
     <div
+      data-slot="avatar-indicator"
       className={cn(avatarIndicatorVariants({ position, size, className }))}
       {...props}
     />

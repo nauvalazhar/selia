@@ -7,7 +7,7 @@ export function Slider({
   ...props
 }: React.ComponentProps<typeof BaseSlider.Root>) {
   return (
-    <BaseSlider.Root {...props}>
+    <BaseSlider.Root data-slot="slider" {...props}>
       <BaseSlider.Control className={cn('touch-none select-none', className)}>
         <BaseSlider.Track className="h-1.5 w-full rounded-full bg-input">
           <BaseSlider.Indicator className="rounded-full bg-primary" />
@@ -24,6 +24,7 @@ export function SliderThumb({
 }: React.ComponentProps<typeof BaseSlider.Thumb>) {
   return (
     <BaseSlider.Thumb
+      data-slot="slider-thumb"
       className={cn(
         'size-4 bg-white ring ring-primary rounded-full shadow',
         'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-foreground',

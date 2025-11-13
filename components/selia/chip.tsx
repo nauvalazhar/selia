@@ -45,6 +45,7 @@ export function Chip({
     defaultTagName: 'div',
     render,
     props: {
+      'data-slot': 'chip',
       className: cn(chipVariants({ variant, size, pill, className })),
       ...props,
     },
@@ -54,6 +55,7 @@ export function Chip({
 export function ChipButton({ ...props }: useRender.ComponentProps<'button'>) {
   return (
     <button
+      data-slot="chip-button"
       className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
       {...props}
     />

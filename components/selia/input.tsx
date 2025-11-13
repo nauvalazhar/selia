@@ -32,6 +32,7 @@ export function Input({
   VariantProps<typeof inputVariants>) {
   return (
     <BaseInput
+      data-slot="input"
       className={cn(inputVariants({ variant, className }))}
       {...props}
     />

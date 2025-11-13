@@ -8,6 +8,7 @@ export function Fieldset({
 }: React.ComponentProps<typeof BaseFieldset.Root>) {
   return (
     <BaseFieldset.Root
+      data-slot="fieldset"
       className={cn(
         'flex flex-col',
         '*:data-[slot=text]:mt-2 *:data-[slot=text]:text-muted',
@@ -26,6 +27,7 @@ export function FieldsetLegend({
 }: React.ComponentProps<typeof BaseFieldset.Legend>) {
   return (
     <BaseFieldset.Legend
+      data-slot="fieldset-legend"
       className={cn('font-semibold text-foreground text-lg', className)}
       {...props}
     />
