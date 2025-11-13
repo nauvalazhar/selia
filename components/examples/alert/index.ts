@@ -10,6 +10,15 @@ export const examples = {
       })),
     ),
   },
+  solid: {
+    name: 'Solid Variant',
+    path: 'components/examples/alert/solid.tsx',
+    component: React.lazy(() =>
+      import('./solid').then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
   light: {
     name: 'Light Variant',
     path: 'components/examples/alert/light.tsx',

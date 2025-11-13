@@ -15,7 +15,7 @@ export function TableOfContents() {
   }, []);
 
   return (
-    <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto">
+    <div className="sticky top-10 max-h-[calc(100vh-8rem)] overflow-y-auto">
       <h3 className="text-sm font-semibold text-foreground mb-4">
         On this page
       </h3>

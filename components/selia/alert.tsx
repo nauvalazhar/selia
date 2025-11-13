@@ -4,10 +4,11 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 export const alertVariants = cva(
   [
-    'w-full px-3.5 py-3 min-h-11 rounded font-medium',
+    'w-full px-3.5 min-h-11 rounded font-medium',
     '*:[svg]:size-4.5 *:[svg]:shrink-0',
     'items-center gap-x-2.5 gap-y-1 flex',
     'has-[>[data-slot=alert-description]]:grid',
+    'has-[>[data-slot=alert-description]]:py-3',
     'has-[>svg]:grid-cols-[calc(var(--spacing)*4.5)_1fr_auto]',
   ],
   {
@@ -35,7 +36,7 @@ export const alertVariants = cva(
           'bg-gradient-tertiary text-tertiary-foreground',
           '*:data-[slot=alert-description]:text-tertiary-foreground/80',
         ],
-        light: 'bg-secondary/10 text-secondary-foreground ring ring-secondary',
+        light: 'bg-secondary/20 text-secondary-foreground ring ring-secondary',
         'destructive-light':
           'bg-destructive/20 text-destructive ring ring-destructive [&_svg]:text-destructive',
         'info-light': 'bg-info/10 text-info ring ring-info [&_svg]:text-info',

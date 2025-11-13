@@ -34,18 +34,21 @@ export function SidebarHeader({
 
 export function SidebarContent({
   className,
+  render,
   ...props
-}: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="sidebar-content"
-      className={cn(
+}: useRender.ComponentProps<'div'>) {
+  return useRender({
+    defaultTagName: 'div',
+    render,
+    props: {
+      'data-slot': 'sidebar-content',
+      className: cn(
         'flex flex-col gap-2.5 px-2.5 h-full overflow-y-auto',
         className,
-      )}
-      {...props}
-    />
-  );
+      ),
+      ...props,
+    },
+  });
 }
 
 export function SidebarLogo({
