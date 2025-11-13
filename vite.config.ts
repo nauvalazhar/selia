@@ -5,10 +5,12 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import mdx from '@mdx-js/rollup';
 import path from 'node:path';
 import rehypeShiki from '@shikijs/rehype';
-import rehypeMdxCodeProps from 'rehype-mdx-code-props';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { transformerNotationHighlight } from '@shikijs/transformers';
 import type { ShikiTransformer } from 'shiki';
 import { h } from 'hastscript';
+import rehypeToc from '@jsdevtools/rehype-toc';
 
 const transformers: ShikiTransformer[] = [
   transformerNotationHighlight(),
@@ -37,6 +39,23 @@ export default defineConfig({
   plugins: [
     mdx({
       rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeToc,
+          {
+            headings: ['h1', 'h2', 'h3'],
+            position: 'beforeend',
+          },
+        ],
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'wrap',
+            properties: {
+              className: ['anchor'],
+            },
+          },
+        ],
         [
           rehypeShiki,
           {

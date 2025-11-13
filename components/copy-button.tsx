@@ -9,7 +9,7 @@ export function CopyButton() {
     <Button
       size="xs-icon"
       variant="secondary-plain"
-      className="absolute top-2 right-2 *:[svg]:text-dimmed"
+      className="absolute top-1.5 right-2 *:[svg]:text-dimmed"
       pill
       onClick={(e) => {
         e.preventDefault();

@@ -14,6 +14,9 @@ import path from 'node:path';
 import { Link, Outlet, useLocation } from 'react-router';
 import { MDXProvider } from '@mdx-js/react';
 import mdxComponents from 'components/mdx-components';
+import { examples, type ExampleName } from 'components/examples';
+import { highlightCode, highlightExamples } from '~/lib/highlighter';
+import { TableOfContents } from 'components/table-of-contents';
 
 function humanName(name: string) {
   return (
@@ -26,16 +29,16 @@ export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const pathname = url.pathname.replace('/docs/', '');
 
+  if (!(pathname in examples)) {
+    throw new Response('Not Found', { status: 404 });
+  }
+
+  const componentExamples = await examples[pathname as ExampleName]();
+  const sources = await highlightExamples(componentExamples);
+
   const components = await readdir(
     path.join(import.meta.dirname, '../../components/selia'),
   );
-
-  const source = await Bun.file(
-    path.join(
-      import.meta.dirname,
-      '../../components/examples/alert-example.tsx',
-    ),
-  ).text();
 
   const componentsMap = components.map((component) => {
     return {
@@ -44,11 +47,11 @@ export async function loader({ request }: Route.LoaderArgs) {
     };
   });
 
-  return { componentsMap };
+  return { componentsMap, sources };
 }
 
 export default function LayoutDocs({
-  loaderData: { componentsMap },
+  loaderData: { componentsMap, sources },
 }: Route.ComponentProps) {
   const location = useLocation();
 
@@ -100,15 +103,20 @@ export default function LayoutDocs({
             className={cn(
               'flex-1 max-w-2xl mx-auto text-zinc-300',
               '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-6',
-              '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2]:mb-3 *:[h2]:mt-14',
+              '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2,h3]:mb-3',
+              '*:[h2+h3]:mt-8 *:[h2]:mt-14',
+              '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
+              '**:[h1,h2,h3]:text-foreground',
               '*:[p]:mb-6',
             )}
           >
             <MDXProvider components={mdxComponents}>
-              <Outlet />
+              <Outlet context={{ sources }} />
             </MDXProvider>
           </article>
-          <aside className="w-64">Table of contents</aside>
+          <aside className="w-64">
+            <TableOfContents />
+          </aside>
         </div>
       </main>
     </div>

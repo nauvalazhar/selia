@@ -8,31 +8,31 @@ import {
 
 export default function AlertExample() {
   return (
-    <div className="w-6/12 flex flex-col gap-4">
-      <Alert>
+    <>
+      <Alert variant="light">
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="tertiary">
+      <Alert variant="tertiary-light">
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="destructive">
+      <Alert variant="destructive-light">
         <XCircleIcon />
         Payment failed. Check your card details.
       </Alert>
-      <Alert variant="info">
+      <Alert variant="info-light">
         <InfoIcon />
         Some useful information here.
       </Alert>
-      <Alert variant="success">
+      <Alert variant="success-light">
         <CheckCircle2Icon />
         Your changes have been saved successfully.
       </Alert>
-      <Alert variant="warning">
+      <Alert variant="warning-light">
         <TriangleAlertIcon />
         Some features may not work.
       </Alert>
-    </div>
+    </>
   );
 }

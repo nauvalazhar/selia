@@ -1,36 +1,15 @@
-import { Alert, AlertTitle, AlertDescription } from 'components/selia/alert';
 import { Preview, PreviewDemo, PreviewCode } from 'components/preview';
 import { InfoIcon, XCircleIcon, CheckCircle2Icon, TriangleAlertIcon } from 'lucide-react';
+import { examples } from 'components/examples/alert';
 
 # Alert
 
 Component to display alerts.
 
-<Preview>
+<Preview name="basic">
   <PreviewDemo>
-  <Alert>
-    <InfoIcon />
-    We will announce the winner of the contest soon.
-  </Alert>
-  <Alert>
-    <InfoIcon />
-    <AlertTitle>New Release</AlertTitle>
-    <AlertDescription>
-      We have released a new version of our app. Please update to the latest version.
-    </AlertDescription>
-  </Alert>
+   <examples.basic.component /> 
   </PreviewDemo>
-  <PreviewCode>
-  ```tsx
-  <Alert>
-    <InfoIcon />
-    <AlertTitle>New Release</AlertTitle>
-    <AlertDescription>
-      We have released a new version of our app. Please update to the latest version.
-    </AlertDescription>
-  </Alert>
-  ```
-  </PreviewCode>
 </Preview>
 
 ## Anatomy
@@ -49,3 +28,35 @@ import {
   <AlertDescription />
 </Alert>
 ```
+
+## Usage
+
+### Action
+
+Add an action to the alert by using the `AlertAction` component.
+
+<Preview name="action">
+  <PreviewDemo>
+   <examples.action.component /> 
+  </PreviewDemo>
+</Preview>
+
+### Light Variant
+
+Use the `light` variant to create a light alert.
+
+<Preview name="light">
+  <PreviewDemo>
+   <examples.light.component /> 
+  </PreviewDemo>
+</Preview>
+
+### Description
+
+Add a description to the alert by using the `AlertDescription` component.
+
+<Preview name="description">
+  <PreviewDemo>
+   <examples.description.component /> 
+  </PreviewDemo>
+</Preview>

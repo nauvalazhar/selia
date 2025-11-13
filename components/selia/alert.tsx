@@ -6,8 +6,9 @@ export const alertVariants = cva(
   [
     'w-full px-3.5 py-3 min-h-11 rounded font-medium',
     '*:[svg]:size-4.5 *:[svg]:shrink-0',
-    'grid items-center gap-x-2.5 gap-y-1',
-    'has-[>svg]:grid-cols-[calc(var(--spacing)*4.5)_1fr]',
+    'items-center gap-x-2.5 gap-y-1 flex',
+    'has-[>[data-slot=alert-description]]:grid',
+    'has-[>svg]:grid-cols-[calc(var(--spacing)*4.5)_1fr_auto]',
   ],
   {
     variants: {
@@ -102,7 +103,10 @@ export function AlertAction({
   return (
     <div
       data-slot="alert-action"
-      className={cn('ml-auto flex items-center gap-1.5', className)}
+      className={cn(
+        'ml-auto flex items-center gap-1.5 col-start-3 row-start-1 row-span-2 self-center',
+        className,
+      )}
       {...props}
     />
   );
