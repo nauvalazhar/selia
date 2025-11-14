@@ -1,3 +1,98 @@
+import { Preview, PreviewDemo } from 'components/preview';
+import { examples } from 'components/examples/item';
+
 # Item
 
 Versatile component for combining media, text, and actions in flexible layouts.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Guidelines
+
+You can treat the `Item` component as a classic media object component. 
+It is flexible and can be used in various ways.
+Consider using it before creating a new component.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Item>
+  <ItemMedia />
+  <ItemContent>
+    <ItemTitle />
+    <ItemDescription />
+    <ItemMeta />
+  </ItemContent>
+  <ItemAction />
+</Item>
+```
+
+## Usage
+
+### Variant
+
+The `Item` component can be used with various variants.
+
+<Preview name="variant">
+  <PreviewDemo>
+    <examples.variant.component />
+  </PreviewDemo>
+</Preview>
+
+### Outline
+
+We also have outline variants to create a more subtle appearance.
+
+<Preview name="outline">
+  <PreviewDemo>
+    <examples.outline.component />
+  </PreviewDemo>
+</Preview>
+
+### Plain
+
+This is useful when you want to put an item in a list of items.
+It will have no background color and no border – just a simple item.
+
+<Preview name="plain">
+  <PreviewDemo>
+    <examples.plain.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+The `IconBox` component can be used to add an icon to the item.
+
+<Preview name="icon">
+  <PreviewDemo>
+    <examples.icon.component />
+  </PreviewDemo>
+</Preview>
+
+### Meta
+
+You may want to add a meta information such as a timestamp or a status.
+This can be achieved by using the `ItemMeta` component.
+
+<Preview name="meta">
+  <PreviewDemo>
+    <examples.meta.component />
+  </PreviewDemo>
+</Preview>
+
+### Stack
+
+The `Stack` component can be used to stack items together.
+
+<Preview name="stack">
+  <PreviewDemo>
+    <examples.stack.component />
+  </PreviewDemo>
+</Preview>

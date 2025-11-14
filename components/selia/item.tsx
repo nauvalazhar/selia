@@ -19,6 +19,8 @@ export const itemVariants = cva(
           'has-[[data-checked]]:bg-primary/10',
         ],
         plain: 'bg-transparent',
+        primary: 'bg-primary/10',
+        'primary-outline': 'border-primary/20 border',
         destructive: 'bg-destructive/10',
         'destructive-outline': 'border-destructive/20 border',
         info: 'bg-info/10',
