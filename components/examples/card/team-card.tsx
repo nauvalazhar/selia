@@ -2,9 +2,7 @@ import {
   Card,
   CardBody,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardHeaderContent,
   CardTitle,
 } from 'components/selia/card';
 import { Button } from 'components/selia/button';
@@ -14,12 +12,10 @@ import { Divider } from 'components/selia/divider';
 
 export default function TeamCardExample() {
   return (
-    <Card className="w-full lg:w-7/12">
+    <Card className="w-full lg:w-8/12">
       <CardHeader>
-        <CardHeaderContent>
-          <CardTitle>Team Members</CardTitle>
-          <CardDescription>Member can access this workspace.</CardDescription>
-        </CardHeaderContent>
+        <CardTitle>Team Members</CardTitle>
+        <CardDescription>Member can access this workspace.</CardDescription>
       </CardHeader>
       <CardBody className="p-0">
         <div className="flex items-center px-6 py-4">
@@ -106,16 +102,6 @@ export default function TeamCardExample() {
           </div>
         </div>
       </CardBody>
-      <CardFooter className="p-0">
-        <Button
-          variant="secondary-plain"
-          block
-          className="p-4 h-auto rounded-b-3xl rounded-t-none"
-          render={<a href="#" />}
-        >
-          View More
-        </Button>
-      </CardFooter>
     </Card>
   );
 }

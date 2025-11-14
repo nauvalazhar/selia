@@ -4,8 +4,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardHeaderActions,
-  CardHeaderContent,
+  CardHeaderAction,
   CardTitle,
 } from 'components/selia/card';
 import { Button } from 'components/selia/button';
@@ -16,17 +15,15 @@ export default function CardActionExample() {
   return (
     <Card>
       <CardHeader>
-        <CardHeaderContent>
-          <CardTitle>User Profile</CardTitle>
-          <CardDescription>
-            Your personal information and settings.
-          </CardDescription>
-        </CardHeaderContent>
-        <CardHeaderActions>
+        <CardTitle>User Profile</CardTitle>
+        <CardDescription>
+          Your personal information and settings.
+        </CardDescription>
+        <CardHeaderAction>
           <Button variant="secondary" size="icon">
             <Settings2Icon />
           </Button>
-        </CardHeaderActions>
+        </CardHeaderAction>
       </CardHeader>
       <CardBody>
         <Text>This is a card component with a description and footer.</Text>

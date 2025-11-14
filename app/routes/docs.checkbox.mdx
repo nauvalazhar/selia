@@ -1,3 +1,47 @@
+import { examples } from 'components/examples/checkbox';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Checkbox
 
 Allow users to select multiple options from a set of choices.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Checkbox />
+
+<CheckboxGroup>
+  <CheckboxGroupLabel />
+  <Checkbox />
+</CheckboxGroup>
+```
+
+## Usage
+
+### Group
+
+Allow users to select multiple options from a set of choices with `CheckboxGroup` component.
+
+<Preview name="group">
+  <PreviewDemo>
+    <examples.group.component />
+  </PreviewDemo>
+</Preview>
+
+### Group Nested
+
+Allow users to select multiple options from a set of choices with nested options with `CheckboxGroup` component.
+
+<Preview name="groupNested">
+  <PreviewDemo>
+    <examples.groupNested.component />
+  </PreviewDemo>
+</Preview>

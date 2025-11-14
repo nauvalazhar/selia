@@ -19,11 +19,11 @@ export const examples = {
       })),
     ),
   },
-  light: {
-    name: 'Light Variant',
-    path: 'components/examples/alert/light.tsx',
+  subtle: {
+    name: 'Subtle Variant',
+    path: 'components/examples/alert/subtle.tsx',
     component: React.lazy(() =>
-      import('./light').then((mod) => ({
+      import('./subtle').then((mod) => ({
         default: mod.default,
       })),
     ),

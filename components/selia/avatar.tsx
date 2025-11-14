@@ -68,8 +68,8 @@ export const avatarIndicatorVariants = cva(
   {
     variants: {
       position: {
-        top: 'top-0.5 right-0.5',
-        bottom: 'bottom-0.5 right-0.5',
+        top: 'top-0 right-0',
+        bottom: 'bottom-0 right-0',
       },
       size: {
         sm: 'size-2.5',

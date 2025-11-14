@@ -1,3 +1,47 @@
+import { examples } from 'components/examples/avatar';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Avatar
 
 Display user profile pictures or initials in a circular or rounded format.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Avatar>
+  <AvatarImage />
+  <AvatarFallback />
+  <AvatarIndicator />
+</Avatar>
+```
+
+## Usage
+
+### Initials
+
+Create an avatar with only initials.
+
+<Preview name="initial">
+  <PreviewDemo>
+    <examples.initial.component />
+  </PreviewDemo>
+</Preview>
+
+### Indicator
+
+The `AvatarIndicator` component lets you add a small indicator to the avatar.
+It can be used to indicate the presence of a new message, a notification, or a badge.
+
+<Preview name="indicator">
+  <PreviewDemo>
+    <examples.indicator.component />
+  </PreviewDemo>
+</Preview>

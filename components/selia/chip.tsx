@@ -20,7 +20,7 @@ export const chipVariants = cva(
       size: {
         sm: 'text-sm px-1.5 h-5 rounded-md [&_svg]:size-3.5',
         md: 'px-2 h-6.5 rounded-lg [&_svg]:size-4',
-        lg: 'px-2.5 h-7 rounded-xl [&_svg]:size-4.5',
+        lg: 'px-2.5 h-7.5 rounded-lg [&_svg]:size-4.5',
       },
       pill: {
         true: 'rounded-full',

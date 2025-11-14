@@ -1,3 +1,138 @@
+import { examples } from 'components/examples/button';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Button
 
 Trigger actions and events with clickable interactive elements.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Button />
+```
+
+## Usage
+
+### Variants
+
+The `variant` prop can be used to change the variant of the button.
+
+<Preview name="variants">
+  <PreviewDemo>
+    <examples.variants.component />
+  </PreviewDemo>
+</Preview>
+
+### Subtle Colors
+
+You may want to use subtle buttons to create a more subtle appearance.
+This can be achieved by using the `variant="*-subtle"` prop.
+
+<Preview name="subtle">
+  <PreviewDemo>
+    <examples.subtle.component />
+  </PreviewDemo>
+</Preview>
+
+### Outline
+
+Outline buttons are buttons that have a border.
+This can be achieved by using the `variant="*-outline"` prop.
+
+<Preview name="outline">
+  <PreviewDemo>
+    <examples.outline.component />
+  </PreviewDemo>
+</Preview>
+
+### Plain Colors
+
+Plain buttons are buttons that have no background color.
+This can be achieved by using the `variant="*-plain"` prop.
+
+<Preview name="plain">
+  <PreviewDemo>
+    <examples.plain.component />
+  </PreviewDemo>
+</Preview>
+
+### Size
+
+Buttons come in a variety of sizes. Use the `size` prop to change the size of the button.
+
+<Preview name="size">
+  <PreviewDemo>
+    <examples.size.component />
+  </PreviewDemo>
+</Preview>
+
+### Block
+
+Use the `block` prop to make the button fill the width of its container.
+
+<Preview name="block">
+  <PreviewDemo>
+    <examples.block.component />
+  </PreviewDemo>
+</Preview>
+
+### Pill
+
+Use the `pill` prop to create a pill-shaped button.
+
+<Preview name="pill">
+  <PreviewDemo>
+    <examples.pill.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+Buttons can have icons. Place the icon inside the button and it will be sized automatically.
+You can also use the `size="icon"` prop to create an icon-only button.
+
+<Preview name="icon">
+  <PreviewDemo>
+    <examples.icon.component />
+  </PreviewDemo>
+</Preview>
+
+### Progress
+
+Use the `progress` prop to show a loading indicator.
+
+<Preview name="progress">
+  <PreviewDemo>
+    <examples.progress.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon with Progress
+
+When using an icon with progress, the icon will be hidden during the loading state and the spinner will be shown instead.
+
+<Preview name="iconProgress">
+  <PreviewDemo>
+    <examples.iconProgress.component />
+  </PreviewDemo>
+</Preview>
+
+
+### Link
+
+You may want to use buttons as links.
+This can be achieved by using the `render` prop to render a custom element.
+
+<Preview name="link">
+  <PreviewDemo>
+    <examples.link.component />
+  </PreviewDemo>
+</Preview>

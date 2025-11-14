@@ -1,3 +1,73 @@
+import { examples } from 'components/examples/badge';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Badge
 
 Small labels to highlight status, counts, or categories on elements.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Badge />
+```
+
+## Usage
+
+### Variants
+
+Badges come in a variety of variants, each with its own color and style.
+
+<Preview name="variants">
+  <PreviewDemo>
+    <examples.variants.component />
+  </PreviewDemo>
+</Preview>
+
+### Subtle Colors
+
+You may want to use subtle badges to create a more subtle appearance.
+This can be achieved by using the `variant="*-subtle"` prop.
+
+<Preview name="subtle">
+  <PreviewDemo>
+    <examples.subtle.component />
+  </PreviewDemo>
+</Preview>
+
+### Size
+
+The `size` prop can be used to change the size of the badge.
+
+<Preview name="size">
+  <PreviewDemo>
+    <examples.size.component />
+  </PreviewDemo>
+</Preview>
+
+### Pill
+
+The `pill` prop can be used to create a pill-shaped badge.
+
+<Preview name="pill">
+  <PreviewDemo>
+    <examples.pill.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+You can add an icon to the badge.
+
+<Preview name="icon">
+  <PreviewDemo>
+    <examples.icon.component />
+  </PreviewDemo>
+</Preview>

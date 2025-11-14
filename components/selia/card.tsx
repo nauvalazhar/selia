@@ -3,12 +3,12 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
 export const cardVariants = cva(
-  ['text-foreground ring ring-card-border rounded-3xl'],
+  'text-foreground ring ring-card-border rounded-[calc(var(--radius)*2)]',
   {
     variants: {
       variant: {
         default: 'bg-card',
-        gradient: 'bg-gradient-card',
+        alternative: 'bg-gradient-card',
       },
     },
     defaultVariants: { variant: 'default' },
@@ -30,7 +30,15 @@ export function Card({
 }
 
 export const cardHeaderVariants = cva(
-  'p-6 flex gap-3.5 border-b border-card-border',
+  [
+    'p-6 gap-x-3.5 gap-y-2 border-b border-card-border',
+    'grid grid-cols-[1fr_auto]',
+    'has-[svg]:grid-cols-[auto_1fr_auto]',
+    'has-[[data-slot=iconbox]]:*:data-[slot=card-description]:col-start-2',
+    '**:[svg,[data-slot=iconbox]]:row-span-2',
+    '*:data-[slot=iconbox]:row-span-2',
+    '*:data-[slot=card-description]:row-start-2',
+  ],
   {
     variants: {
       align: {
@@ -59,19 +67,6 @@ export function CardHeader({
   );
 }
 
-export function CardHeaderContent({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="card-header-content"
-      className={cn('flex flex-col gap-2', className)}
-      {...props}
-    />
-  );
-}
-
 export function CardHeaderAction({
   className,
   ...props
@@ -79,7 +74,10 @@ export function CardHeaderAction({
   return (
     <div
       data-slot="card-header-action"
-      className={cn('ml-auto flex items-center gap-2', className)}
+      className={cn(
+        'col-start-3 row-start-1 row-span-2 ml-auto flex items-center gap-2',
+        className,
+      )}
       {...props}
     />
   );
@@ -123,7 +121,7 @@ export function CardFooter({
       data-slot="card-footer"
       className={cn(
         'flex items-center gap-1.5',
-        'p-6 bg-card-footer border-t border-card-border rounded-b-3xl',
+        'p-6 bg-card-footer border-t border-card-border rounded-b-[calc(var(--radius)*2)]',
         className,
       )}
       {...props}

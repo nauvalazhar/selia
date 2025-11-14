@@ -9,27 +9,27 @@ import {
 export default function AlertExample() {
   return (
     <>
-      <Alert variant="light">
+      <Alert variant="secondary-subtle">
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="tertiary-light">
+      <Alert variant="tertiary-subtle">
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="destructive-light">
+      <Alert variant="destructive-subtle">
         <XCircleIcon />
         Payment failed. Check your card details.
       </Alert>
-      <Alert variant="info-light">
+      <Alert variant="info-subtle">
         <InfoIcon />
         Some useful information here.
       </Alert>
-      <Alert variant="success-light">
+      <Alert variant="success-subtle">
         <CheckCircle2Icon />
         Your changes have been saved successfully.
       </Alert>
-      <Alert variant="warning-light">
+      <Alert variant="warning-subtle">
         <TriangleAlertIcon />
         Some features may not work.
       </Alert>

@@ -40,7 +40,7 @@ export const buttonVariants = cva(
           'after:rounded outline-secondary',
         ],
         'secondary-subtle': [
-          'bg-secondary/15 hover:bg-secondary/25 text-secondary-foreground',
+          'bg-secondary/50 hover:bg-secondary/90 text-secondary-foreground',
           'after:content-none outline-secondary',
         ],
         'secondary-outline': [
@@ -49,7 +49,7 @@ export const buttonVariants = cva(
           'after:content-none outline-secondary',
         ],
         'secondary-plain': [
-          'text-secondary-foreground hover:bg-secondary/25',
+          'text-secondary-foreground hover:bg-secondary/60',
           'after:content-none outline-secondary shadow-none',
         ],
         tertiary: [

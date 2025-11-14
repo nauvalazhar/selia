@@ -36,16 +36,17 @@ export const alertVariants = cva(
           'bg-gradient-tertiary text-tertiary-foreground',
           '*:data-[slot=alert-description]:text-tertiary-foreground/80',
         ],
-        light: 'bg-secondary/20 text-secondary-foreground ring ring-secondary',
-        'destructive-light':
-          'bg-destructive/20 text-destructive ring ring-destructive [&_svg]:text-destructive',
-        'info-light': 'bg-info/10 text-info ring ring-info [&_svg]:text-info',
-        'success-light':
-          'bg-success/20 text-success ring ring-success [&_svg]:text-success',
-        'warning-light':
-          'bg-warning/20 text-warning ring ring-warning [&_svg]:text-warning',
-        'tertiary-light':
-          'bg-tertiary/20 text-tertiary ring ring-tertiary [&_svg]:text-tertiary',
+        'secondary-subtle':
+          'bg-secondary/15 text-secondary-foreground ring ring-secondary',
+        'destructive-subtle':
+          'bg-destructive/15 text-destructive ring ring-destructive [&_svg]:text-destructive',
+        'info-subtle': 'bg-info/15 text-info ring ring-info [&_svg]:text-info',
+        'success-subtle':
+          'bg-success/15 text-success ring ring-success [&_svg]:text-success',
+        'warning-subtle':
+          'bg-warning/15 text-warning ring ring-warning [&_svg]:text-warning',
+        'tertiary-subtle':
+          'bg-tertiary/15 text-tertiary ring ring-tertiary [&_svg]:text-tertiary',
       },
     },
     defaultVariants: {

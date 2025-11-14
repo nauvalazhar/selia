@@ -1,3 +1,61 @@
+import { examples } from 'components/examples/chip';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Chip
 
 Interactive compact elements for tags, filters, or selections.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Guidelines
+
+We have the `Chip` and `Badge` components. Here are the guidelines for using them:
+
+- Use chips to represent tags, filters, or interactive elements.
+- Use badges to represent status, counts, or static elements.
+
+If you need a multiple tag selector, please consider using the [combobox component](/docs/combobox) for more complex use cases.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Chip>
+  <ChipButton />
+</Chip>
+```
+
+### Variants
+
+Chips come in a variety of variants, each with its own color and style.
+
+<Preview name="variant">
+  <PreviewDemo>
+    <examples.variant.component />
+  </PreviewDemo>
+</Preview>
+
+### Size
+
+Chips come in a variety of sizes, each with its own height and font size.
+
+<Preview name="size">
+  <PreviewDemo>
+    <examples.size.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+Chips can also contain icons, which are used to represent the chip's content.
+
+<Preview name="icon">
+  <PreviewDemo>
+    <examples.icon.component />
+  </PreviewDemo>
+</Preview>

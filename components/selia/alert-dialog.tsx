@@ -39,12 +39,12 @@ export function AlertDialogContent({
           'fixed left-1/2 -translate-x-1/2 -translate-y-1/2',
           'top-[calc(50%+1.25rem*var(--nested-dialogs))]',
           'bg-dialog text-dialog-foreground backdrop-blur-sm',
-          'ring ring-dialog-border rounded-3xl shadow',
+          'ring ring-dialog-border rounded-[calc(var(--radius)*2)] shadow',
           'scale-[calc(1-0.1*var(--nested-dialogs))]',
           'outline-none transition-all w-md',
           'data-[nested-dialog-open]:after:absolute',
           'data-[nested-dialog-open]:after:inset-0',
-          'data-[nested-dialog-open]:after:rounded-3xl',
+          'data-[nested-dialog-open]:after:rounded-[calc(var(--radius)*2)]',
           'data-[nested-dialog-open]:after:bg-black/20',
           'data-[nested-dialog-open]:after:z-10',
           'data-[starting-style]:opacity-0 data-[ending-style]:opacity-0',
@@ -133,7 +133,7 @@ export function AlertDialogFooter({
       {...props}
       className={cn(
         'flex items-center justify-end gap-1.5',
-        'px-6 py-3.5 bg-surface01 border-t border-border01 rounded-b-2xl',
+        'px-6 py-3.5 bg-surface01 border-t border-border01 rounded-b-[calc(var(--radius)*2)]',
         className,
       )}
     >
