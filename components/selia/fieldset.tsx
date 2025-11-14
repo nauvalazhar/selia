@@ -11,7 +11,7 @@ export function Fieldset({
       data-slot="fieldset"
       className={cn(
         'flex flex-col',
-        '*:data-[slot=text]:mt-2 *:data-[slot=text]:text-muted',
+        '*:data-[slot=text]:text-muted',
         '*:data-[slot=text]:mb-6',
         '[&_[data-slot="field"]:not([data-layout="inline"])]:not-last:mb-6',
         className,
@@ -28,7 +28,7 @@ export function FieldsetLegend({
   return (
     <BaseFieldset.Legend
       data-slot="fieldset-legend"
-      className={cn('font-semibold text-foreground text-lg', className)}
+      className={cn('font-semibold text-foreground text-lg mb-2', className)}
       {...props}
     />
   );

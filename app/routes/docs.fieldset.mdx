@@ -1,3 +1,34 @@
+import { examples } from 'components/examples/fieldset';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Fieldset
 
 Group related form controls with an optional legend or description.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Fieldset>
+  <FieldsetLegend />
+</Fieldset>
+```
+
+## Usage
+
+### Complex
+
+Here is an example of a complex fieldset with a legend, description, and multiple fields.
+
+<Preview name="complex">
+  <PreviewDemo>
+    <examples.complex.component />
+  </PreviewDemo>
+</Preview>

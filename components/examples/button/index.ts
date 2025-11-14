@@ -109,4 +109,13 @@ export const examples = {
       })),
     ),
   },
+  disabled: {
+    name: 'Disabled',
+    path: 'components/examples/button/disabled.tsx',
+    component: React.lazy(() =>
+      import('./disabled').then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
 };

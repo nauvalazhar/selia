@@ -1,9 +1,5 @@
 import { Input } from 'components/selia/input';
 
 export default function InputDisableExample() {
-  return (
-    <div className="w-6/12">
-      <Input placeholder="Enter your text" disabled />
-    </div>
-  );
+  return <Input placeholder="Enter your text" disabled className="lg:w-6/12" />;
 }

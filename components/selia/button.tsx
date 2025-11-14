@@ -11,7 +11,7 @@ export const buttonVariants = cva(
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
-    'disabled:opacity-70',
+    'disabled:opacity-70 disabled:pointer-events-none',
   ],
   {
     variants: {

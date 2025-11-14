@@ -1,3 +1,52 @@
+import { Preview, PreviewDemo } from 'components/preview';
+import { examples } from 'components/examples/input';
+
 # Input
 
 Single-line text field for user data entry and form submission.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Input />
+```
+
+## Usage
+
+### Subtle
+
+Use the `variant="subtle"` prop to make the input have a subtle background color.
+
+<Preview name="subtle">
+  <PreviewDemo>
+    <examples.subtle.component />
+  </PreviewDemo>
+</Preview>
+
+### File
+
+Use the `type="file"` prop to make the input a file input.
+
+<Preview name="file">
+  <PreviewDemo>
+    <examples.file.component />
+  </PreviewDemo>
+</Preview>
+
+### Disable
+
+Use the `disabled` prop to make the input disabled.
+
+<Preview name="disable">
+  <PreviewDemo>
+    <examples.disable.component />
+  </PreviewDemo>
+</Preview>

@@ -6,12 +6,17 @@ import {
   FieldLabel,
 } from 'components/selia/field';
 import { Input } from 'components/selia/input';
+import { Text } from 'components/selia/text';
 
 export default function FieldsetExample() {
   return (
-    <div className="w-6/12">
+    <div className="lg:w-8/12">
       <Fieldset>
         <FieldsetLegend>Personal Information</FieldsetLegend>
+        <Text>
+          This information will be used to create your account. You can always
+          change this information later.
+        </Text>
         <Field>
           <FieldLabel htmlFor="name1">Name</FieldLabel>
           <Input id="name1" placeholder="Enter your name" required />

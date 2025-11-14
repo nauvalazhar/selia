@@ -1,3 +1,37 @@
+import { examples } from 'components/examples/field';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Field
 
 Wrapper component for form inputs with label and validation support.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Field>
+  <FieldLabel />
+  <Input />
+  <FieldError />
+  <FieldDescription />
+</Field>
+```
+
+## Usage
+
+### Control
+
+Field could contain a control element, such as an input, textarea, select, etc. Here is an example of a field containing a select element.
+
+<Preview name="select">
+  <PreviewDemo>
+    <examples.select.component />
+  </PreviewDemo>
+</Preview>

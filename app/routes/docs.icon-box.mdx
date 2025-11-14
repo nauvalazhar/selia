@@ -1,3 +1,55 @@
+import { examples } from 'components/examples/icon-box';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Icon Box
 
 Container for displaying icons with consistent sizing and alignment.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<IconBox>
+  <Svg />
+</IconBox>
+```
+
+## Usage
+
+### Variants
+
+Icon boxes come in a variety of variants, each with its own color and style.
+Use the `variant` prop to change the variant of the icon box.
+
+<Preview name="variant">
+  <PreviewDemo>
+    <examples.variant.component />
+  </PreviewDemo>
+</Preview>
+
+### Size
+
+You can change the size of the icon box by using the `size` prop.
+
+<Preview name="size">
+  <PreviewDemo>
+    <examples.size.component />
+  </PreviewDemo>
+</Preview>
+
+### Circle
+
+You can make the icon box circular by using the `circle` prop.
+
+<Preview name="circle">
+  <PreviewDemo>
+    <examples.circle.component />
+  </PreviewDemo>
+</Preview>
