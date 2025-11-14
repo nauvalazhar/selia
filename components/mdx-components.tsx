@@ -16,7 +16,7 @@ export default {
       <pre
         {...props}
         className={cn(
-          'flex flex-col',
+          'flex flex-col my-4',
           '*:data-filename:flex *:data-filename:font-sans',
           '*:data-filename:font-semibold *:data-filename:text-sm',
           '*:data-filename:text-dimmed *:data-filename:select-none',

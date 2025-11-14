@@ -129,8 +129,8 @@ export function ComboboxInput({
       data-slot="combobox-chips"
       role="combobox"
       className={cn(
-        'min-h-9.5 py-1 flex items-center flex-wrap gap-1.5',
         comboboxTriggerVariants({ variant, pill, className }),
+        'min-h-9.5 py-1 flex items-center flex-wrap gap-1.5',
       )}
       ref={ref}
     >
@@ -191,7 +191,7 @@ export function ComboboxContent({
           data-slot="combobox-content"
           {...popupProps}
           className={cn(
-            'bg-popover ring ring-popover-border rounded shadow',
+            'bg-popover ring ring-popover-border rounded shadow overflow-y-auto',
             'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',
             'max-w-(--available-width) origin-(--transform-origin)',
             'p-1 outline-none transition-[transform,scale,opacity]',
@@ -214,6 +214,7 @@ export function ComboboxSearch({
   return (
     <BaseCombobox.Input
       data-slot="combobox-search"
+      placeholder="Search item"
       {...props}
       className={cn(
         'outline-none h-9.5 px-2.5 w-full border-b border-input-border mb-2',

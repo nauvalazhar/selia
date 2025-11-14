@@ -18,7 +18,7 @@ export function Preview<K extends string>({
   const { sources } = useOutletContext<SourceContext<K>>();
 
   return (
-    <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col">
+    <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
         <div className="px-6 h-14 flex items-center border-b border-border01 w-full">
           <span className="text-sm font-medium text-dim">{title}</span>

@@ -1,3 +1,56 @@
+import { examples } from 'components/examples/combobox';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Combobox
 
 Combined input and dropdown for selecting or entering values with autocomplete.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Combobox>
+  <ComboboxInput />
+  <ComboboxTrigger>
+    <ComboboxValue />
+  </ComboboxTrigger>
+  <ComboboxContent>
+    <ComboboxSearch />
+    <ComboboxEmpty />
+    <ComboboxList>
+      <ComboboxItem />
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+## Usage
+
+### Variants
+
+Combobox comes in a variety of variants, each with its own color and style.
+You can choose between a `subtle` or `plain` variant.
+
+<Preview name="variant">
+  <PreviewDemo>
+    <examples.variant.component />
+  </PreviewDemo>
+</Preview>
+
+### Multiple Select
+
+Allow users to select multiple options from a set of choices with `Combobox` component.
+
+<Preview name="multiple">
+  <PreviewDemo>
+    <examples.multiple.component />
+  </PreviewDemo>
+</Preview>
+
