@@ -44,12 +44,14 @@ export async function loader({ request }: Route.LoaderArgs) {
     path.join(import.meta.dirname, '../../components/selia'),
   );
 
-  const componentsMap = components.map((component) => {
-    return {
-      name: humanName(component),
-      slug: component.replace('.tsx', ''),
-    };
-  });
+  const componentsMap = components
+    .map((component) => {
+      return {
+        name: humanName(component),
+        slug: component.replace('.tsx', ''),
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return { componentsMap, sources, name: humanName(pathname) };
 }

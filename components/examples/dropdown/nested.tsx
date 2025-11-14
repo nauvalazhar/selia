@@ -2,13 +2,15 @@ import {
   Dropdown,
   DropdownContent,
   DropdownItem,
+  DropdownSubmenu,
+  DropdownSubmenuTrigger,
   DropdownTrigger,
   DropdownSeparator,
 } from 'components/selia/dropdown';
 import { Button } from 'components/selia/button';
 import { ChevronDownIcon } from 'lucide-react';
 
-export default function DropdownExample() {
+export default function DropdownNestedExample() {
   return (
     <>
       <Dropdown>
@@ -21,6 +23,16 @@ export default function DropdownExample() {
         />
         <DropdownContent>
           <DropdownItem>Add to library</DropdownItem>
+          <DropdownSubmenu>
+            <DropdownSubmenuTrigger
+              render={<DropdownItem>Add to playlist</DropdownItem>}
+            />
+            <DropdownContent>
+              <DropdownItem>Recently added</DropdownItem>
+              <DropdownItem>Recently played</DropdownItem>
+              <DropdownItem>Rock Playlist</DropdownItem>
+            </DropdownContent>
+          </DropdownSubmenu>
           <DropdownItem>Add to queue</DropdownItem>
           <DropdownSeparator />
           <DropdownItem>Play next</DropdownItem>

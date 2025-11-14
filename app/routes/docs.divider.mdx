@@ -1,3 +1,35 @@
+import { Preview, PreviewDemo } from 'components/preview';
+import { examples } from 'components/examples/divider';
+
 # Divider
 
 Visual separator to organize and divide content sections.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Divider>
+  <DividerText />
+</Divider>
+```
+
+## Usage
+
+### Text
+
+You can add text to the divider by using the `DividerText` component.
+Use the `variant` prop to change the position of the text.
+
+<Preview name="text">
+  <PreviewDemo>
+    <examples.text.component />
+  </PreviewDemo>
+</Preview>

@@ -8,13 +8,13 @@ import {
 import { Button } from 'components/selia/button';
 import { ChevronDownIcon } from 'lucide-react';
 
-export default function DropdownExample() {
+export default function DropdownTriggerExample() {
   return (
     <>
       <Dropdown>
         <DropdownTrigger
           render={
-            <Button>
+            <Button variant="secondary">
               Dropdown <ChevronDownIcon />
             </Button>
           }
