@@ -126,9 +126,9 @@ export default function LayoutDocs({
                 '**:[p_code]:text-foreground **:[p_code]:font-medium',
                 '[&>p:first-of-type]:text-lg',
                 '[&>p:first-of-type]:text-muted',
-                '**:[ul]:list-[square] **:[ul]:pl-4 **:[ul]:mb-2',
-                '**:[ul]:leading-relaxed',
-                '[p_a]:text-foreground **:[p_a]:font-medium **:[p_a]:border-b',
+                '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
+                '*:[ul]:leading-relaxed',
+                '[p_a]:text-foreground *:[p_a]:font-medium *:[p_a]:border-b',
               )}
             >
               <MDXProvider components={mdxComponents}>

@@ -1,3 +1,24 @@
+import { Preview, PreviewDemo } from 'components/preview';
+import { examples } from 'components/examples/pagination';
+
 # Pagination
 
 Navigate through pages of content with numbered or directional controls.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Pagination>
+  <PaginationList>
+    <PaginationItem />
+  </PaginationList>
+</Pagination>
+```

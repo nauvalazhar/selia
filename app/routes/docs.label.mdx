@@ -1,3 +1,24 @@
+import { Preview, PreviewDemo } from 'components/preview';
+import { examples } from 'components/examples/label';
+
 # Label
 
 Text descriptions that identify and provide context for form controls.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Guidelines
+
+While you can use the `Field` component to group inputs and labels, the `Label` component is still useful for labeling checkboxes, radio buttons, or switches.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Label />
+```
