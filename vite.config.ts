@@ -45,6 +45,9 @@ export default defineConfig({
           {
             headings: ['h1', 'h2', 'h3'],
             position: 'beforeend',
+            cssClasses: {
+              toc: 'hidden',
+            },
           },
         ],
         [

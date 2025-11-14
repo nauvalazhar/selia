@@ -55,7 +55,7 @@ export function PreviewCode({
       <ScrollArea.Viewport
         className={cn(
           '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-          'h-full overscroll-contain',
+          'h-full overscroll-contain **:[pre]:-mx-1 **:[pre]:-mb-1',
         )}
       >
         {children}

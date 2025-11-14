@@ -28,7 +28,9 @@ export default function AlertDialogBasicExample() {
         </AlertDialogBody>
         <AlertDialogFooter>
           <AlertDialogClose>Close</AlertDialogClose>
-          <Button>Confirm</Button>
+          <AlertDialogClose
+            render={<Button variant="primary">Confirm</Button>}
+          />
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
