@@ -145,13 +145,18 @@ export function DialogFooter({
 export function DialogClose({
   className,
   children,
+  render,
   ...props
 }: React.ComponentProps<typeof BaseDialog.Close>) {
   return (
     <BaseDialog.Close
       data-slot="dialog-close"
+      render={render}
       {...props}
-      className={cn(buttonVariants({ variant: 'secondary-plain' }), className)}
+      className={cn(
+        !render && buttonVariants({ variant: 'secondary-plain' }),
+        className,
+      )}
     >
       {children}
     </BaseDialog.Close>

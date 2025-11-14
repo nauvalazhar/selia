@@ -1,3 +1,56 @@
+import { Preview, PreviewDemo } from 'components/preview';
+import { examples } from 'components/examples/dialog';
+
 # Dialog
 
 Modal windows that focus user attention on specific content or actions.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Dialog>
+  <DialogTrigger />
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle />
+    </DialogHeader>
+    <DialogBody>
+      <DialogDescription />
+    </DialogBody>
+    <DialogFooter>
+      <DialogClose />
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+## Usage
+
+### Trigger
+
+You can pass a custom trigger element to the `DialogTrigger` component
+by using the `render` prop.
+
+<Preview name="trigger">
+  <PreviewDemo>
+    <examples.trigger.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+An icon can be added to the `DialogHeader` component by using the `IconBox` component.
+
+<Preview name="icon">
+  <PreviewDemo>
+    <examples.icon.component />
+  </PreviewDemo>
+</Preview>

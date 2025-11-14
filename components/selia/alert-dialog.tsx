@@ -144,14 +144,19 @@ export function AlertDialogFooter({
 
 export function AlertDialogClose({
   className,
+  render,
   children,
   ...props
 }: React.ComponentProps<typeof BaseAlertDialog.Close>) {
   return (
     <BaseAlertDialog.Close
       data-slot="alert-dialog-close"
+      render={render}
       {...props}
-      className={cn(buttonVariants({ variant: 'secondary-plain' }), className)}
+      className={cn(
+        !render && buttonVariants({ variant: 'secondary-plain' }),
+        className,
+      )}
     >
       {children}
     </BaseAlertDialog.Close>
