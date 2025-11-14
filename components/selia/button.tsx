@@ -144,7 +144,7 @@ export const buttonVariants = cva(
         ],
       },
       size: {
-        xs: 'h-7 px-2 rounded-lg after:rounded-lg *:[svg]:size-4',
+        xs: 'h-7 px-2 rounded-lg after:rounded-lg *:[svg]:size-4 text-sm',
         'xs-icon': 'size-7.5 rounded-lg after:rounded-lg *:[svg]:size-4',
         sm: 'h-8.5 px-3 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
         'sm-icon':
