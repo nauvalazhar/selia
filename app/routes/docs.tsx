@@ -121,9 +121,9 @@ export default function LayoutDocs({
                 '*:[h2+h3]:mt-8 *:[h2]:mt-14',
                 '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
                 '**:[h1,h2,h3]:text-foreground',
-                '*:[p]:mb-2 *:[p]:leading-loose *:[p]:font-medium',
-                '**:[p_code]:before:content-["`"] **:[p_code]:after:content-["`"]',
-                '**:[p_code]:text-foreground **:[p_code]:font-medium',
+                '*:[p]:mb-2 *:[p]:leading-loose [&>p]:font-medium',
+                '[&>p>code]:before:content-["`"] [&>p>code]:after:content-["`"]',
+                '[&>p>code]:text-foreground [&>p>code]:font-medium',
                 '[&>p:first-of-type]:text-lg',
                 '[&>p:first-of-type]:text-muted',
                 '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
@@ -148,7 +148,7 @@ export default function LayoutDocs({
 function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
   return (
     <ScrollArea.Root className="h-full pt-4">
-      <ScrollArea.Viewport className={cn('h-full overscroll-contain pr-8')}>
+      <ScrollArea.Viewport className={cn('h-full pr-8')}>
         {children}
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar

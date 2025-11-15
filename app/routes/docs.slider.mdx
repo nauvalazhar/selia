@@ -1,3 +1,22 @@
+import { examples } from 'components/examples/slider';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Slider
 
 Interactive control for selecting values within a defined range.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Slider>
+  <SliderThumb />
+</Slider>
+```

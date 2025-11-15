@@ -38,7 +38,7 @@ export function TooltipContent({
           {children}
           <BaseTooltip.Arrow
             className={cn(
-              'data-[side=bottom]:top-[-8px] data-[side=left]:right-[-12px] data-[side=left]:rotate-90 data-[side=right]:left-[-12px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180',
+              'data-[side=bottom]:top-[-7px] data-[side=left]:right-[-10px] data-[side=left]:rotate-90 data-[side=right]:left-[-10px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-7px] data-[side=top]:rotate-180',
             )}
           >
             <svg width="20" height="10" viewBox="0 0 20 10" fill="none">

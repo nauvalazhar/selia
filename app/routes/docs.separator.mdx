@@ -1,3 +1,32 @@
+import { examples } from 'components/examples/separator';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Separator
 
 Dividing element to create visual distinction between content groups.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Separator orientation="horizontal" />
+```
+
+## Usage
+
+### Vertical
+
+To create a vertical separator, pass the `orientation` prop to the `Separator` component.
+
+<Preview name="vertical">
+  <PreviewDemo>
+    <examples.vertical.component />
+  </PreviewDemo>
+</Preview>

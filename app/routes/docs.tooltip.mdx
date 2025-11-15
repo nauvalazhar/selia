@@ -1,3 +1,35 @@
+import { examples } from 'components/examples/tooltip';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Tooltip
 
 Contextual hints that appear on hover to explain interface elements.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Tooltip>
+  <TooltipTrigger />
+  <TooltipContent />
+</Tooltip>
+```
+
+## Usage
+
+### Position
+
+Tooltip can be positioned in different directions.
+
+<Preview name="position">
+  <PreviewDemo>
+    <examples.position.component />
+  </PreviewDemo>
+</Preview>

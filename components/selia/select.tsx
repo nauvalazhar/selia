@@ -20,7 +20,7 @@ export const selectVariants = cva(
     'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-colors',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'flex items-center gap-2.5 cursor-default',
-    'disabled:opacity-70',
+    'data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
@@ -97,11 +97,26 @@ function SelectRenderValue({
   value,
   placeholder,
 }: {
-  value: string | SelectItem | null;
+  value: string | SelectItem | SelectItem[] | null;
   placeholder: string;
 }) {
-  if (!value) {
+  if (!value || (Array.isArray(value) && value.length === 0)) {
     return <span className="text-dimmed">{placeholder}</span>;
+  }
+
+  if (Array.isArray(value)) {
+    const firstValue = value[0];
+    const firstValueLabel =
+      typeof firstValue === 'object' ? firstValue.label : firstValue;
+    const additionalValues =
+      value.length > 1 ? ` ( +${value.length - 1} more)` : '';
+
+    return (
+      <>
+        {firstValueLabel}
+        {additionalValues}
+      </>
+    );
   }
 
   if (typeof value === 'object') {
@@ -177,6 +192,7 @@ export function SelectItem({
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-accent04 data-[selected]:bg-accent04',
         'focus-visible:outline-none',
+        'data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
       )}
       {...props}

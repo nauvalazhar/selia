@@ -1,3 +1,32 @@
+import { examples } from 'components/examples/textarea';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Textarea
 
 Multi-line text input for longer content and descriptions.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Textarea />
+```
+
+## Usage
+
+### Subtle
+
+To create a subtle textarea, use the `variant="subtle"` prop.
+
+<Preview name="subtle">
+  <PreviewDemo>
+    <examples.subtle.component />
+  </PreviewDemo>
+</Preview>

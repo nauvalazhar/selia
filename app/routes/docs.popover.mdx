@@ -1,3 +1,26 @@
+import { examples } from 'components/examples/popover';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Popover
 
 Display additional content in a floating overlay near a trigger element.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Popover>
+  <PopoverTrigger />
+  <PopoverContent>
+    <PopoverTitle />
+    <PopoverDescription />
+  </PopoverContent>
+</Popover>
+```

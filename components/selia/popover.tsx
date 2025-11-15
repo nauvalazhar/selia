@@ -28,7 +28,7 @@ export function PopoverContent({
           data-slot="popover-content"
           {...popupProps}
           className={cn(
-            'flex flex-col gap-1.5',
+            'flex flex-col gap-1.5 items-start',
             'bg-popover ring ring-popover-border rounded shadow',
             'p-4 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
@@ -68,7 +68,7 @@ export function PopoverTitle({
     <BasePopover.Title
       data-slot="popover-title"
       {...props}
-      className={cn('text-lg font-semibold', className)}
+      className={cn('font-semibold', className)}
     />
   );
 }

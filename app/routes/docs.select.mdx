@@ -1,3 +1,71 @@
+import { examples } from 'components/examples/select';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Select
 
 Dropdown menu for choosing single option from a list.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Select>
+  <SelectTrigger>
+    <SelectValue />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectList>
+      <SelectItem />
+    </SelectList>
+  </SelectContent>
+</Select>
+```
+
+## Usage
+
+### Multiple
+
+To allow users to select multiple options, pass the `multiple` prop to the `Select` component.
+
+<Preview name="multiple">
+  <PreviewDemo>
+    <examples.multiple.component />
+  </PreviewDemo>
+</Preview>
+
+### Group
+
+To group options, pass the `group` prop to the `Select` component.
+
+<Preview name="group">
+  <PreviewDemo>
+    <examples.group.component />
+  </PreviewDemo>
+</Preview>
+
+### Icon
+
+To add an icon to an option, you can place the icon inside the `SelectItem` component.
+
+<Preview name="icon">
+  <PreviewDemo>
+    <examples.icon.component />
+  </PreviewDemo>
+</Preview>
+
+### Disable
+
+To disable an option, pass the `disabled` prop to the `SelectItem` component.
+
+<Preview name="disable">
+  <PreviewDemo>
+    <examples.disable.component />
+  </PreviewDemo>
+</Preview>

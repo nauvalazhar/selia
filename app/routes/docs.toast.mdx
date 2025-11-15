@@ -1,3 +1,53 @@
+import { examples } from 'components/examples/toast';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Toast
 
 Brief notification messages that appear temporarily at screen top.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Toast />
+```
+
+## Usage
+
+### Variants
+
+Toast comes in a variety of variants, each with its own color and style.
+
+<Preview name="variant">
+  <PreviewDemo>
+    <examples.variant.component />
+  </PreviewDemo>
+</Preview>
+
+### Promise
+
+Toast can also be used to display a promise.
+
+<Preview name="promise">
+  <PreviewDemo>
+    <examples.promise.component />
+  </PreviewDemo>
+</Preview>
+
+### Item
+
+Toast can be used to display a custom component.
+In this example, we are using the `Item` component to display a custom toast.
+
+<Preview name="item">
+  <PreviewDemo>
+    <examples.item.component />
+  </PreviewDemo>
+</Preview>

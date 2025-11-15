@@ -1,3 +1,51 @@
+import { examples } from 'components/examples/table';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Table
 
 Organize and display data in rows and columns in a tabular format.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<TableContainer>
+  <Table>
+    <TableCaption />
+    <TableHeader>
+      <TableRow>
+        <TableHead />
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell />
+      </TableRow>
+    </TableBody>
+    <TableFooter>
+      <TableRow>
+        <TableCell />
+      </TableRow>
+    </TableFooter>
+  </Table>
+</TableContainer>
+```
+
+## Usage
+
+### Card
+
+You can wrap the `Table` component in a `Card` component to create a card table.
+
+<Preview name="card">
+  <PreviewDemo>
+    <examples.card.component />
+  </PreviewDemo>
+</Preview>

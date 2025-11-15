@@ -1,3 +1,52 @@
+import { examples } from 'components/examples/text';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Text
 
 Basic text component with built-in styling and semantic variants.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Text />
+```
+
+## Usage
+
+### Link
+
+To create a link, use the `Link` component.
+
+<Preview name="link">
+  <PreviewDemo>
+    <examples.link.component />
+  </PreviewDemo>
+</Preview>
+
+### Strong
+
+To create a strong text, use the `Strong` component.
+
+<Preview name="strong">
+  <PreviewDemo>
+    <examples.strong.component />
+  </PreviewDemo>
+</Preview>
+
+### Code
+
+To create a code text, use the `Code` component.
+
+<Preview name="code">
+  <PreviewDemo>
+    <examples.code.component />
+  </PreviewDemo>
+</Preview>

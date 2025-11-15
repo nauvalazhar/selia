@@ -1,22 +1,25 @@
+import { Label } from 'components/selia/label';
 import { Radio, RadioGroup, RadioGroupLabel } from 'components/selia/radio';
 import { Text } from 'components/selia/text';
 
-export default function RadioExample() {
+export default function RadioBasicExample() {
   return (
     <RadioGroup defaultValue="pink-floyd" aria-labelledby="radio-example">
-      <RadioGroupLabel id="radio-example">Your favorite band?</RadioGroupLabel>
-      <label className="flex items-center gap-x-2.5">
+      <RadioGroupLabel id="radio-example">
+        Select your favorite band
+      </RadioGroupLabel>
+      <Label>
         <Radio value="pink-floyd" />
-        <Text render={<span />}>Pink Floyd</Text>
-      </label>
-      <label className="flex items-center gap-x-2.5">
+        Pink Floyd
+      </Label>
+      <Label>
         <Radio value="the-beatles" />
-        <Text render={<span />}>The Beatles</Text>
-      </label>
-      <label className="flex items-center gap-x-2.5">
+        The Beatles
+      </Label>
+      <Label>
         <Radio value="led-zeppelin" />
-        <Text render={<span />}>Led Zeppelin</Text>
-      </label>
+        Led Zeppelin
+      </Label>
     </RadioGroup>
   );
 }

@@ -108,7 +108,11 @@ export function CardDescription({
 
 export function CardBody({ className, ...props }: React.ComponentProps<'div'>) {
   return (
-    <div data-slot="card-body" className={cn('p-6', className)} {...props} />
+    <div
+      data-slot="card-body"
+      className={cn('p-6 *:data-[slot=table-container]:-m-6', className)}
+      {...props}
+    />
   );
 }
 

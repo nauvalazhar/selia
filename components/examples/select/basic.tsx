@@ -7,31 +7,28 @@ import {
   SelectValue,
 } from 'components/selia/select';
 
-const options = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
-  { value: 'option4', label: 'Option 4' },
-  { value: 'option5', label: 'Option 5' },
-];
-
-export default function SelectExample() {
+export default function SelectBasicExample() {
   return (
-    <div className="w-6/12">
-      <Select items={options}>
-        <SelectTrigger>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectList>
-            {options.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectList>
-        </SelectContent>
-      </Select>
-    </div>
+    <Select items={options}>
+      <SelectTrigger className="w-64">
+        <SelectValue placeholder="Football club" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectList>
+          {options.map((option) => (
+            <SelectItem key={option.value} value={option}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectList>
+      </SelectContent>
+    </Select>
   );
 }
+
+const options = [
+  { value: 'liverpool', label: 'Liverpool' },
+  { value: 'man-city', label: 'Manchester City' },
+  { value: 'chelsea', label: 'Chelsea' },
+  { value: 'arsenal', label: 'Arsenal' },
+];

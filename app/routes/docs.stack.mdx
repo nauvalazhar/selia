@@ -1,3 +1,32 @@
+import { examples } from 'components/examples/stack';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Stack
 
 Layout component for arranging elements vertically or horizontally with spacing.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Stack />
+```
+
+## Usage
+
+### Row
+
+To create a row stack, pass the `direction="row"` prop to the `Stack` component.
+
+<Preview name="row">
+  <PreviewDemo>
+    <examples.row.component />
+  </PreviewDemo>
+</Preview>

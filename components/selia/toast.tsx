@@ -1,5 +1,4 @@
 import { buttonVariants } from 'components/selia/button';
-import { IconBox } from 'components/selia/icon-box';
 import { cn } from 'lib/utils';
 import {
   Toaster,
@@ -113,7 +112,6 @@ const icons: ToasterProps['icons'] = {
 export function Toast() {
   return (
     <Toaster
-      duration={100000}
       position="top-center"
       icons={icons}
       toastOptions={{

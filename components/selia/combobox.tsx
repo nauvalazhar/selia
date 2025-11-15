@@ -16,7 +16,7 @@ export const comboboxTriggerVariants = cva(
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'has-focus:ring-primary has-focus:ring-2',
     'flex items-center gap-2.5 cursor-default',
-    'disabled:opacity-70',
+    'data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
@@ -265,6 +265,7 @@ export function ComboboxItem({
         'data-[highlighted]:bg-accent04 data-[selected]:bg-accent04',
         'focus-visible:outline-none',
         'pl-10 data-[selected]:pl-2.5',
+        'data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
       )}
     >

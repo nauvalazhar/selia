@@ -6,32 +6,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from 'components/selia/select';
-import { Building2Icon, Users2Icon, UserIcon } from 'lucide-react';
-
-const optionsWithIcon = [
-  { value: 'user', label: 'Personal', icon: <UserIcon /> },
-  { value: 'organization', label: 'Organization', icon: <Building2Icon /> },
-  { value: 'team', label: 'Team', icon: <Users2Icon /> },
-];
+import { BookIcon, PencilIcon, Gamepad2Icon } from 'lucide-react';
 
 export default function SelectIconExample() {
   return (
-    <div className="w-6/12">
-      <Select items={optionsWithIcon}>
-        <SelectTrigger>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectList>
-            {optionsWithIcon.map((option) => (
-              <SelectItem key={option.value} value={option}>
-                {option.icon}
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectList>
-        </SelectContent>
-      </Select>
-    </div>
+    <Select items={optionsWithIcon}>
+      <SelectTrigger className="w-64">
+        <SelectValue placeholder="Your hobby" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectList>
+          {optionsWithIcon.map((option) => (
+            <SelectItem key={option.value} value={option}>
+              {option.icon}
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectList>
+      </SelectContent>
+    </Select>
   );
 }
+
+const optionsWithIcon = [
+  { value: 'reading', label: 'Readingj', icon: <BookIcon /> },
+  { value: 'writing', label: 'Writing', icon: <PencilIcon /> },
+  { value: 'gaming', label: 'Gaming', icon: <Gamepad2Icon /> },
+];
