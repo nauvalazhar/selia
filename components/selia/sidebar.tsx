@@ -115,8 +115,9 @@ export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
     line: {
       true: [
         'relative before:absolute before:top-0 before:bottom-1',
-        'before:z-[-1] before:left-3.5 before:w-px before:bg-border01',
+        'before:left-3.5 before:w-px before:bg-border01',
         '**:data-[slot=sidebar-item]:pl-7',
+        '**:data-[slot=sidebar-item]:hover:bg-accent01/60',
         '**:data-[slot=sidebar-item]:data-active:bg-accent01/60',
         '**:data-[slot=sidebar-item]:data-active:before:absolute',
         '**:data-[slot=sidebar-item]:data-active:before:w-0.5',
@@ -151,7 +152,7 @@ export function SidebarList({
 }
 
 const sidebarItemClasses = [
-  'flex items-center gap-2.5 w-full',
+  'flex items-center gap-2.5 w-full relative z-10',
   'text-foreground font-medium cursor-pointer',
   'transition-colors duration-75 hover:bg-accent01',
   '[&_svg]:size-4 [&_svg]:text-muted',
@@ -221,7 +222,10 @@ export function SidebarGroupAction({
   return (
     <div
       data-slot="sidebar-group-action"
-      className={cn('ml-auto flex items-center gap-1.5 px-2.5', className)}
+      className={cn(
+        'ml-auto flex items-center gap-1.5 px-2.5 **:[svg]:size-4.5',
+        className,
+      )}
       {...props}
     >
       {children}

@@ -1,3 +1,66 @@
+import { examples } from 'components/examples/sidebar';
+import { Preview, PreviewDemo } from 'components/preview';
+
 # Sidebar
 
-Flexible panel component for navigation or content with customizable positioning.
+Flexible panel component for navigation with customizable positioning.
+
+<Preview name="basic">
+  <PreviewDemo>
+    <examples.basic.component />
+  </PreviewDemo>
+</Preview>
+
+## Guidelines
+
+Sidebar does not enforce any position or width:
+- You may use `fixed` positioning to place the sidebar on the left or right side.
+- You also need to set the sidebar width as needed.
+- To make it on/off-canvas, you should handle it in your layout component, not in the sidebar component.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Sidebar>
+  <SidebarHeader>
+    <SidebarLogo />
+  </SidebarHeader>
+  <SidebarContent>
+    <SidebarMenu>
+      <SidebarGroup>
+        <SidebarGroupTitle />
+        <SidebarGroupAction />
+      </SidebarGroup>
+      <SidebarList>
+        <SidebarItem />
+      </SidebarList>
+    </SidebarMenu>
+  </SidebarContent>
+  <SidebarFooter>
+  </SidebarFooter>
+</Sidebar>
+```
+
+## Usage
+
+### Compact
+
+To make the sidebar compact, pass the `size="compact"` prop to the `SidebarList` component.
+
+<Preview name="compact">
+  <PreviewDemo>
+    <examples.compact.component />
+  </PreviewDemo>
+</Preview>
+
+### Line
+
+You can use the `line` prop to the `SidebarList` component. It will add a line to the sidebar list items.
+
+<Preview name="line">
+  <PreviewDemo>
+    <examples.line.component />
+  </PreviewDemo>
+</Preview>
