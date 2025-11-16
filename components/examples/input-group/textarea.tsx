@@ -27,7 +27,7 @@ export default function InputGroupTextareaExample() {
       <InputGroupBar>
         <InputGroupText className="text-sm">
           <PieChartIcon />
-          1000 credits remaining
+          1000 credits
         </InputGroupText>
         <Select defaultValue="gpt-4o">
           <SelectTrigger className="ml-auto w-auto mr-2" variant="plain">

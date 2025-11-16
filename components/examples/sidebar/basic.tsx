@@ -16,7 +16,7 @@ import {
 } from 'components/selia/sidebar';
 import {
   ChartAreaIcon,
-  ChevronRightIcon,
+  ChevronsUpDownIcon,
   HomeIcon,
   LogOutIcon,
   Package2Icon,
@@ -121,11 +121,11 @@ export default function SidebarBasicExample() {
                         john.doe@example.com
                       </span>
                     </div>
-                    <ChevronRightIcon className="ml-auto" />
+                    <ChevronsUpDownIcon className="ml-auto" />
                   </SidebarItem>
                 }
               />
-              <DropdownContent className="w-40" side="right">
+              <DropdownContent className="w-40 w-(--anchor-width)" side="top">
                 <DropdownItem>
                   <UserIcon />
                   Profile

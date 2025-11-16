@@ -6,9 +6,17 @@ import {
   CardTitle,
 } from 'components/selia/card';
 import { Button } from 'components/selia/button';
-import { Text } from 'components/selia/text';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
-import { Divider } from 'components/selia/divider';
+import { Stack } from 'components/selia/stack';
+import {
+  Item,
+  ItemAction,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from 'components/selia/item';
+import { Separator } from 'components/selia/separator';
 
 export default function TeamCardExample() {
   return (
@@ -18,89 +26,97 @@ export default function TeamCardExample() {
         <CardDescription>Member can access this workspace.</CardDescription>
       </CardHeader>
       <CardBody className="p-0">
-        <div className="flex items-center px-6 py-4">
-          <Avatar className="shrink-0">
-            <AvatarImage src="/avatar01.png" alt="Avatar" />
-            <AvatarFallback>MB</AvatarFallback>
-          </Avatar>
-          <div className="ml-3">
-            <Text className="font-medium">Marina Brown</Text>
-            <Text className="text-sm text-muted">marina.brown@example.com</Text>
-          </div>
-          <div className="ml-auto">
-            <Button variant="secondary" size="sm">
-              Edit
-            </Button>
-          </div>
-        </div>
-        <Divider />
-        <div className="flex items-center px-6 py-4">
-          <Avatar className="shrink-0">
-            <AvatarImage src="/avatar02.png" alt="Avatar" />
-            <AvatarFallback>SO</AvatarFallback>
-          </Avatar>
-          <div className="ml-3">
-            <Text className="font-medium">Sarah O'Connor</Text>
-            <Text className="text-sm text-muted">
-              sarah.oconnor@example.com
-            </Text>
-          </div>
-          <div className="ml-auto">
-            <Button variant="secondary" size="sm">
-              Edit
-            </Button>
-          </div>
-        </div>
-        <Divider />
-        <div className="flex items-center px-6 py-4">
-          <Avatar className="shrink-0">
-            <AvatarImage src="/avatar03.png" alt="Avatar" />
-            <AvatarFallback>WM</AvatarFallback>
-          </Avatar>
-          <div className="ml-3">
-            <Text className="font-medium">William Martin</Text>
-            <Text className="text-sm text-muted">
-              william.martin@example.com
-            </Text>
-          </div>
-          <div className="ml-auto">
-            <Button variant="secondary" size="sm">
-              Edit
-            </Button>
-          </div>
-        </div>
-        <Divider />
-        <div className="flex items-center px-6 py-4">
-          <Avatar className="shrink-0">
-            <AvatarImage src="/avatar04.png" alt="Avatar" />
-            <AvatarFallback>AJ</AvatarFallback>
-          </Avatar>
-          <div className="ml-3">
-            <Text className="font-medium">Adam Johnson</Text>
-            <Text className="text-sm text-muted">adam.johnson@example.com</Text>
-          </div>
-          <div className="ml-auto">
-            <Button variant="secondary" size="sm">
-              Edit
-            </Button>
-          </div>
-        </div>
-        <Divider />
-        <div className="flex items-center px-6 py-4">
-          <Avatar className="shrink-0">
-            <AvatarImage src="/avatar05.png" alt="Avatar" />
-            <AvatarFallback>SA</AvatarFallback>
-          </Avatar>
-          <div className="ml-3">
-            <Text className="font-medium">Sarah Adams</Text>
-            <Text className="text-sm text-muted">sarah.adams@example.com</Text>
-          </div>
-          <div className="ml-auto">
-            <Button variant="secondary" size="sm">
-              Edit
-            </Button>
-          </div>
-        </div>
+        <Stack>
+          <Item>
+            <ItemMedia>
+              <Avatar>
+                <AvatarImage src="/avatar01.png" alt="Avatar" />
+                <AvatarFallback>MB</AvatarFallback>
+              </Avatar>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Marina Brown</ItemTitle>
+              <ItemDescription>marina@example.com</ItemDescription>
+            </ItemContent>
+            <ItemAction>
+              <Button variant="secondary" size="sm">
+                Edit
+              </Button>
+            </ItemAction>
+          </Item>
+          <Separator />
+          <Item>
+            <ItemMedia>
+              <Avatar>
+                <AvatarImage src="/avatar02.png" alt="Avatar" />
+                <AvatarFallback>SO</AvatarFallback>
+              </Avatar>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Sarah O'Connor</ItemTitle>
+              <ItemDescription>sarah@example.com</ItemDescription>
+            </ItemContent>
+            <ItemAction>
+              <Button variant="secondary" size="sm">
+                Edit
+              </Button>
+            </ItemAction>
+          </Item>
+          <Separator />
+          <Item>
+            <ItemMedia>
+              <Avatar>
+                <AvatarImage src="/avatar03.png" alt="Avatar" />
+                <AvatarFallback>WM</AvatarFallback>
+              </Avatar>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>William Martin</ItemTitle>
+              <ItemDescription>william@example.com</ItemDescription>
+            </ItemContent>
+            <ItemAction>
+              <Button variant="secondary" size="sm">
+                Edit
+              </Button>
+            </ItemAction>
+          </Item>
+          <Separator />
+          <Item>
+            <ItemMedia>
+              <Avatar>
+                <AvatarImage src="/avatar04.png" alt="Avatar" />
+                <AvatarFallback>AJ</AvatarFallback>
+              </Avatar>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Adam Johnson</ItemTitle>
+              <ItemDescription>adam@example.com</ItemDescription>
+            </ItemContent>
+            <ItemAction>
+              <Button variant="secondary" size="sm">
+                Edit
+              </Button>
+            </ItemAction>
+          </Item>
+          <Separator />
+          <Item>
+            <ItemMedia>
+              <Avatar>
+                <AvatarImage src="/avatar05.png" alt="Avatar" />
+                <AvatarFallback>SA</AvatarFallback>
+              </Avatar>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Sarah Adams</ItemTitle>
+              <ItemDescription>sarah@example.com</ItemDescription>
+            </ItemContent>
+            <ItemAction>
+              <Button variant="secondary" size="sm">
+                Edit
+              </Button>
+            </ItemAction>
+          </Item>
+        </Stack>
       </CardBody>
     </Card>
   );

@@ -41,7 +41,7 @@ export function AlertDialogContent({
           'bg-dialog text-dialog-foreground backdrop-blur-sm',
           'ring ring-dialog-border rounded-[calc(var(--radius)*2)] shadow',
           'scale-[calc(1-0.1*var(--nested-dialogs))]',
-          'outline-none transition-all w-md',
+          'outline-none transition-all w-md max-w-[calc(100%-2rem)]',
           'data-[nested-dialog-open]:after:absolute',
           'data-[nested-dialog-open]:after:inset-0',
           'data-[nested-dialog-open]:after:rounded-[calc(var(--radius)*2)]',

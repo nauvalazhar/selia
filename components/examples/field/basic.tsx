@@ -8,7 +8,7 @@ import { Input } from 'components/selia/input';
 
 export default function FieldExample() {
   return (
-    <div className="w-6/12">
+    <div className="lg:w-6/12 w-full">
       <Field>
         <FieldLabel htmlFor="name">Name</FieldLabel>
         <Input id="name" placeholder="Enter your name" required />

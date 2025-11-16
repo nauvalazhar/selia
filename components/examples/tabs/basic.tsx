@@ -5,7 +5,7 @@ import { Tabs, TabsItem, TabsList, TabsPanel } from 'components/selia/tabs';
 
 export default function TabsBasicExample() {
   return (
-    <Tabs defaultValue="account" className="lg:w-6/12">
+    <Tabs defaultValue="account" className="lg:w-6/12 w-full">
       <TabsList>
         <TabsItem value="account">Account</TabsItem>
         <TabsItem value="password">Password</TabsItem>

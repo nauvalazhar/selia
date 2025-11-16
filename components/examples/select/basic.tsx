@@ -10,7 +10,7 @@ import {
 export default function SelectBasicExample() {
   return (
     <Select items={options}>
-      <SelectTrigger className="w-64">
+      <SelectTrigger className="lg:w-64">
         <SelectValue placeholder="Football club" />
       </SelectTrigger>
       <SelectContent>

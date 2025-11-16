@@ -14,7 +14,7 @@ import { Card, CardBody, CardHeader, CardTitle } from 'components/selia/card';
 
 export default function TableBasicExample() {
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Users</CardTitle>
       </CardHeader>

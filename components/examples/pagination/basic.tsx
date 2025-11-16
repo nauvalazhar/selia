@@ -11,13 +11,13 @@ export default function PaginationBasicExample() {
       <PaginationList>
         <PaginationItem disabled>
           <ChevronLeftIcon />
-          Previous
+          <span className="hidden sm:inline">Previous</span>
         </PaginationItem>
         <PaginationItem active>1</PaginationItem>
         <PaginationItem>2</PaginationItem>
         <PaginationItem>3</PaginationItem>
         <PaginationItem>
-          Next
+          <span className="hidden sm:inline">Next</span>
           <ChevronRightIcon />
         </PaginationItem>
       </PaginationList>

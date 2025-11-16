@@ -2,7 +2,7 @@ import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const stackVariants = cva(
-  'flex flex-col gap-2.5 *:data-[slot=separator]:-my-2.5',
+  'flex flex-col gap-2.5 flex-wrap *:data-[slot=separator]:-my-2.5',
   {
     variants: {
       direction: {

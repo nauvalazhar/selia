@@ -7,7 +7,7 @@ export const buttonVariants = cva(
   [
     'relative font-semibold select-none',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
-    'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100 after:transition-opacity',
+    'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100 active:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
@@ -22,16 +22,16 @@ export const buttonVariants = cva(
           'after:rounded outline-primary',
         ],
         'primary-subtle': [
-          'bg-primary/15 hover:bg-primary/25 text-primary',
+          'bg-primary/15 hover:bg-primary/25 active:bg-primary/25 text-primary',
           'after:content-none outline-primary',
         ],
         'primary-outline': [
           'text-primary',
-          'border-2 border-primary hover:bg-primary/15',
+          'border-2 border-primary hover:bg-primary/15 active:bg-primary/15',
           'after:content-none outline-primary',
         ],
         'primary-plain': [
-          'text-primary hover:bg-primary/25',
+          'text-primary hover:bg-primary/25 active:bg-primary/25',
           'after:content-none outline-primary',
         ],
         secondary: [
@@ -40,34 +40,34 @@ export const buttonVariants = cva(
           'after:rounded outline-secondary',
         ],
         'secondary-subtle': [
-          'bg-secondary/50 hover:bg-secondary/90 text-secondary-foreground',
+          'bg-secondary/50 hover:bg-secondary/90 active:bg-secondary/90 text-secondary-foreground',
           'after:content-none outline-secondary',
         ],
         'secondary-outline': [
           'text-secondary-foreground',
-          'border-2 border-secondary hover:bg-secondary/15',
+          'border-2 border-secondary hover:bg-secondary/15 active:bg-secondary/15',
           'after:content-none outline-secondary',
         ],
         'secondary-plain': [
-          'text-secondary-foreground hover:bg-secondary/60',
+          'text-secondary-foreground hover:bg-secondary/60 active:bg-secondary/60',
           'after:content-none outline-secondary shadow-none',
         ],
         tertiary: [
-          'bg-gradient-tertiary text-tertiary-foreground',
+          'bg-gradient-tertiary hover:bg-gradient-tertiary/90 active:bg-gradient-tertiary/90 text-tertiary-foreground',
           'inset-shadow-2xs inset-shadow-background/15 shadow',
           'after:rounded after:bg-background/10 focus-visible:outline-tertiary',
         ],
         'tertiary-subtle': [
-          'bg-tertiary/15 hover:bg-tertiary/25 text-tertiary',
+          'bg-tertiary/15 hover:bg-tertiary/25 active:bg-tertiary/25 text-tertiary',
           'after:content-none outline-tertiary',
         ],
         'tertiary-outline': [
           'text-tertiary',
-          'border-2 border-tertiary hover:bg-tertiary/15',
+          'border-2 border-tertiary hover:bg-tertiary/15 active:bg-tertiary/15',
           'after:content-none outline-tertiary',
         ],
         'tertiary-plain': [
-          'text-tertiary hover:bg-tertiary/25',
+          'text-tertiary hover:bg-tertiary/25 active:bg-tertiary/25',
           'after:content-none outline-tertiary',
         ],
         destructive: [
@@ -76,16 +76,16 @@ export const buttonVariants = cva(
           'after:rounded outline-destructive',
         ],
         'destructive-subtle': [
-          'bg-destructive/15 hover:bg-destructive/25 text-destructive',
+          'bg-destructive/15 hover:bg-destructive/25 active:bg-destructive/25 text-destructive',
           'after:content-none outline-destructive',
         ],
         'destructive-outline': [
           'text-destructive',
-          'border-2 border-destructive hover:bg-destructive/15',
+          'border-2 border-destructive hover:bg-destructive/15 active:bg-destructive/15',
           'after:content-none outline-destructive',
         ],
         'destructive-plain': [
-          'text-destructive hover:bg-destructive/25',
+          'text-destructive hover:bg-destructive/25 active:bg-destructive/25',
           'after:content-none outline-destructive',
         ],
         info: [
@@ -94,16 +94,16 @@ export const buttonVariants = cva(
           'after:rounded outline-info',
         ],
         'info-subtle': [
-          'bg-info/15 hover:bg-info/25 text-info',
+          'bg-info/15 hover:bg-info/25 active:bg-info/25 text-info',
           'after:content-none outline-info',
         ],
         'info-outline': [
           'text-info',
-          'border-2 border-info hover:bg-info/15',
+          'border-2 border-info hover:bg-info/15 active:bg-info/15',
           'after:content-none outline-info',
         ],
         'info-plain': [
-          'text-info hover:bg-info/25',
+          'text-info hover:bg-info/25 active:bg-info/25',
           'after:content-none outline-info',
         ],
         success: [
@@ -112,16 +112,16 @@ export const buttonVariants = cva(
           'after:rounded outline-success',
         ],
         'success-subtle': [
-          'bg-success/15 hover:bg-success/25 text-success',
+          'bg-success/15 hover:bg-success/25 active:bg-success/25 text-success',
           'after:content-none outline-success',
         ],
         'success-outline': [
           'text-success',
-          'border-2 border-success hover:bg-success/15',
+          'border-2 border-success hover:bg-success/15 active:bg-success/15',
           'after:content-none outline-success',
         ],
         'success-plain': [
-          'text-success hover:bg-success/25',
+          'text-success hover:bg-success/25 active:bg-success/25',
           'after:content-none outline-success',
         ],
         warning: [
@@ -130,16 +130,16 @@ export const buttonVariants = cva(
           'after:rounded outline-warning',
         ],
         'warning-subtle': [
-          'bg-warning/15 hover:bg-warning/25 text-warning',
+          'bg-warning/15 hover:bg-warning/25 active:bg-warning/25 text-warning',
           'after:content-none outline-warning',
         ],
         'warning-outline': [
           'text-warning',
-          'border-2 border-warning hover:bg-warning/15',
+          'border-2 border-warning hover:bg-warning/15 active:bg-warning/15',
           'after:content-none outline-warning',
         ],
         'warning-plain': [
-          'text-warning hover:bg-warning/25',
+          'text-warning hover:bg-warning/25 active:bg-warning/25',
           'after:content-none outline-warning',
         ],
       },

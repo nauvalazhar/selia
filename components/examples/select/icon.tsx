@@ -11,7 +11,7 @@ import { BookIcon, PencilIcon, Gamepad2Icon } from 'lucide-react';
 export default function SelectIconExample() {
   return (
     <Select items={optionsWithIcon}>
-      <SelectTrigger className="w-64">
+      <SelectTrigger className="lg:w-64">
         <SelectValue placeholder="Your hobby" />
       </SelectTrigger>
       <SelectContent>

@@ -157,6 +157,7 @@ const sidebarItemClasses = [
   'transition-colors duration-75 hover:bg-accent01',
   '[&_svg]:size-4 [&_svg]:text-muted',
   'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
+  'data-popup-open:bg-accent01',
 ];
 
 export function SidebarItem({

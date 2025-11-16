@@ -13,7 +13,7 @@ import { Separator } from 'components/selia/separator';
 
 export default function ItemStackExample() {
   return (
-    <Stack>
+    <Stack className="w-full">
       <Item variant="plain">
         <ItemMedia>
           <Avatar>
@@ -23,7 +23,7 @@ export default function ItemStackExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Marina Brown</ItemTitle>
-          <ItemDescription>marina.brown@example.com</ItemDescription>
+          <ItemDescription>marina@example.com</ItemDescription>
         </ItemContent>
         <ItemAction>
           <Button variant="secondary" size="sm">
@@ -41,7 +41,7 @@ export default function ItemStackExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Sarah O'Connor</ItemTitle>
-          <ItemDescription>sarah.oconnor@example.com</ItemDescription>
+          <ItemDescription>sarah@example.com</ItemDescription>
         </ItemContent>
         <ItemAction>
           <Button variant="secondary" size="sm">
@@ -59,7 +59,7 @@ export default function ItemStackExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>William Martin</ItemTitle>
-          <ItemDescription>william.martin@example.com</ItemDescription>
+          <ItemDescription>william@example.com</ItemDescription>
         </ItemContent>
         <ItemAction>
           <Button variant="secondary" size="sm">
@@ -77,7 +77,7 @@ export default function ItemStackExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Adam Johnson</ItemTitle>
-          <ItemDescription>adam.johnson@example.com</ItemDescription>
+          <ItemDescription>adam@example.com</ItemDescription>
         </ItemContent>
         <ItemAction>
           <Button variant="secondary" size="sm">
@@ -95,7 +95,7 @@ export default function ItemStackExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Sarah Adams</ItemTitle>
-          <ItemDescription>sarah.adams@example.com</ItemDescription>
+          <ItemDescription>sarah@example.com</ItemDescription>
         </ItemContent>
         <ItemAction>
           <Button variant="secondary" size="sm">

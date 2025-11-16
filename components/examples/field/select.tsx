@@ -10,7 +10,7 @@ import {
 
 export default function FieldSelectExample() {
   return (
-    <div className="lg:w-6/12">
+    <div className="lg:w-6/12 w-full">
       <Field>
         <FieldLabel htmlFor="name">Name</FieldLabel>
         <Select>

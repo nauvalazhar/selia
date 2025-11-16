@@ -36,15 +36,22 @@ export function Preview<K extends string>({
   );
 }
 
-export function PreviewDemo({ ...props }: React.ComponentProps<'div'>) {
+export function PreviewDemo({
+  children,
+  ...props
+}: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'flex min-h-40 bg-surface00 items-center justify-center',
-        'p-6 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
+        'flex min-h-40 bg-surface00 items-center justify-center flex-wrap',
+        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
       )}
       {...props}
-    />
+    >
+      <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 max-md:w-full">
+        {children}
+      </div>
+    </div>
   );
 }
 

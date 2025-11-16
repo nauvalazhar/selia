@@ -223,7 +223,7 @@ export default function LayoutDocs({
 function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
   return (
     <ScrollArea.Root className="h-full pt-4">
-      <ScrollArea.Viewport className={cn('h-full lg:pr-8')}>
+      <ScrollArea.Viewport className={cn('h-full lg:pr-8 max-lg:pb-20')}>
         {children}
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar
@@ -315,7 +315,7 @@ function Navbar() {
             <span className="font-semibold text-lg">Selia</span>
           </Link>
           <Button
-            variant="secondary"
+            variant="secondary-subtle"
             size="sm"
             className="lg:hidden"
             onClick={() => setMenuOpen(!menuOpen)}

@@ -12,7 +12,7 @@ import {
 export default function SelectGroupExample() {
   return (
     <Select>
-      <SelectTrigger className="w-64">
+      <SelectTrigger className="lg:w-64">
         <SelectValue placeholder="Your favorite football club" />
       </SelectTrigger>
       <SelectContent>

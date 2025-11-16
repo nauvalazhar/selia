@@ -150,7 +150,7 @@ export function SelectContent({
           {...popupProps}
           className={cn(
             'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow',
-            'p-1 outline-none',
+            'p-1 outline-none max-lg:w-(--anchor-width)',
             className,
           )}
         >

@@ -24,9 +24,7 @@ export default function DropdownNestedExample() {
         <DropdownContent>
           <DropdownItem>Add to library</DropdownItem>
           <DropdownSubmenu>
-            <DropdownSubmenuTrigger
-              render={<DropdownItem>Add to playlist</DropdownItem>}
-            />
+            <DropdownSubmenuTrigger>Add to playlist</DropdownSubmenuTrigger>
             <DropdownContent>
               <DropdownItem>Recently added</DropdownItem>
               <DropdownItem>Recently played</DropdownItem>
