@@ -207,7 +207,7 @@ export default function LayoutDocs({
               )}
             >
               <MDXProvider components={mdxComponents}>
-                <Outlet context={{ sources }} />
+                <Outlet key={location.pathname} context={{ sources }} />
               </MDXProvider>
             </article>
             <aside className="w-64">
