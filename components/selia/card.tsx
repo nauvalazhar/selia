@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
 export const cardVariants = cva(
-  'text-foreground ring ring-card-border rounded-[calc(var(--radius)*2)]',
+  'text-foreground ring ring-card-border rounded-3xl',
   {
     variants: {
       variant: {
@@ -125,7 +125,7 @@ export function CardFooter({
       data-slot="card-footer"
       className={cn(
         'flex items-center gap-1.5',
-        'p-6 bg-card-footer border-t border-card-border rounded-b-[calc(var(--radius)*2)]',
+        'p-6 bg-card-footer border-t border-card-border rounded-b-3xl',
         className,
       )}
       {...props}
