@@ -1,5 +1,4 @@
 import { cn } from 'lib/utils';
-import { ScrollArea } from '@base-ui-components/react/scroll-area';
 import { useOutletContext } from 'react-router';
 
 interface SourceContext<T extends string = string> {
@@ -53,29 +52,16 @@ export function PreviewDemo({ ...props }: React.ComponentProps<'div'>) {
 export function PreviewCode({
   children,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Root>) {
+}: React.ComponentProps<'div'>) {
   return (
-    <ScrollArea.Root {...props} className="h-72">
-      <ScrollArea.Viewport
-        className={cn(
-          '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-          'h-full overscroll-contain **:[pre]:-mx-1 **:[pre]:-mb-1',
-        )}
-      >
-        {children}
-      </ScrollArea.Viewport>
-      <ScrollArea.Scrollbar
-        className={cn(
-          'm-1 flex w-1 justify-center',
-          'opacity-0 transition-opacity delay-300 pointer-events-none',
-          'data-[hovering]:opacity-100 data-[hovering]:delay-0',
-          'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
-          'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
-          'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
-        )}
-      >
-        <ScrollArea.Thumb className="w-full rounded bg-surface04" />
-      </ScrollArea.Scrollbar>
-    </ScrollArea.Root>
+    <div
+      className={cn(
+        '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
+        'h-full overscroll-contain **:[pre]:-mx-1 **:[pre]:-mb-1 max-h-72 overflow-auto',
+      )}
+      {...props}
+    >
+      {children}
+    </div>
   );
 }
