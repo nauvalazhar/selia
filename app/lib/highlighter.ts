@@ -31,9 +31,9 @@ export async function highlightCode(path: string) {
   return html;
 }
 
-export async function highlightExamples<
-  T extends Record<string, { path: string }>,
->(examples: T): Promise<Record<keyof T, string>> {
+export async function highlightExamples(
+  examples: Record<string, { path: string }>,
+): Promise<Record<string, string>> {
   return Object.fromEntries(
     await Promise.all(
       Object.entries(examples).map(async ([key, { path }]) => [

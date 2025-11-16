@@ -11,7 +11,7 @@ import {
 
 export default function ItemBasicExample() {
   return (
-    <div className="flex flex-col gap-4 lg:w-8/12 w-full">
+    <div className="flex flex-col gap-4 2xl:w-8/12 xl:w-10/12 w-full">
       <Item className="items-center">
         <ItemMedia>
           <img

@@ -10,7 +10,7 @@ import {
 
 export default function InputGroupSelectExample() {
   return (
-    <InputGroup>
+    <InputGroup className="w-full 2xl:w-8/12 xl:w-10/12">
       <InputGroupAddon>
         <Select defaultValue="USD">
           <SelectTrigger>

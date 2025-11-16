@@ -14,7 +14,7 @@ import { Label } from 'components/selia/label';
 
 export default function FieldsetComplexExample() {
   return (
-    <div className="lg:w-8/12">
+    <div className="2xl:w-8/12 xl:w-10/12">
       <Fieldset>
         <FieldsetLegend>Personal Information</FieldsetLegend>
         <Text>

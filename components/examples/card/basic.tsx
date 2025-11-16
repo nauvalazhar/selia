@@ -12,7 +12,7 @@ import { Input } from 'components/selia/input';
 
 export default function CardExample() {
   return (
-    <Card className="lg:w-8/12 w-full">
+    <Card className="2xl:w-8/12 xl:w-10/12 w-full">
       <CardHeader>
         <CardTitle>User Settings</CardTitle>
       </CardHeader>

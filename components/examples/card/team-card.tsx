@@ -20,7 +20,7 @@ import { Separator } from 'components/selia/separator';
 
 export default function TeamCardExample() {
   return (
-    <Card className="w-full lg:w-8/12">
+    <Card className="w-full 2xl:w-8/12 xl:w-10/12">
       <CardHeader>
         <CardTitle>Team Members</CardTitle>
         <CardDescription>Member can access this workspace.</CardDescription>

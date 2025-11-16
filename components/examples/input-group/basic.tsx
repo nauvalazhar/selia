@@ -8,7 +8,7 @@ import { SearchIcon } from 'lucide-react';
 
 export default function InputGroupBasicExample() {
   return (
-    <div className="flex flex-col gap-4 lg:w-8/12">
+    <div className="flex flex-col gap-4 2xl:w-8/12 xl:w-10/12 w-full">
       <InputGroup>
         <InputGroupAddon>
           <InputGroupText>https://</InputGroupText>

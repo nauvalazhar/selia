@@ -34,26 +34,11 @@ export default function InputGroupTextareaExample() {
             <SelectValue placeholder="Model" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="gpt-4o">GPT-4o</SelectItem>
-            <SelectItem value="gpt-4o-mini">GPT-4o Mini</SelectItem>
-            <SelectItem value="gpt-4">GPT-4</SelectItem>
-            <SelectItem value="gpt-4-turbo">GPT-4 Turbo</SelectItem>
-            <SelectItem value="gpt-4-vision">GPT-4 Vision</SelectItem>
-            <SelectItem value="gpt-4-vision-preview">
-              GPT-4 Vision Preview
-            </SelectItem>
-            <SelectItem value="gpt-4-vision-preview-2">
-              GPT-4 Vision Preview 2
-            </SelectItem>
-            <SelectItem value="gpt-4-vision-preview-3">
-              GPT-4 Vision Preview 3
-            </SelectItem>
-            <SelectItem value="gpt-4-vision-preview-4">
-              GPT-4 Vision Preview 4
-            </SelectItem>
-            <SelectItem value="gpt-4-vision-preview-5">
-              GPT-4 Vision Preview 5
-            </SelectItem>
+            <SelectItem value="gpt">GPT</SelectItem>
+            <SelectItem value="gemini">Gemini</SelectItem>
+            <SelectItem value="claude">Claude</SelectItem>
+            <SelectItem value="llama">Llama</SelectItem>
+            <SelectItem value="grok">Grok</SelectItem>
           </SelectContent>
         </Select>
         <Button variant="tertiary-subtle">Send</Button>

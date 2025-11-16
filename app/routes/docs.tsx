@@ -12,10 +12,6 @@ import { cn } from 'lib/utils';
 import { readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { Link, Outlet, redirect, useLocation } from 'react-router';
-import { MDXProvider } from '@mdx-js/react';
-import mdxComponents from 'components/mdx-components';
-import { examples, type ExampleName } from 'components/examples';
-import { highlightExamples } from '~/lib/highlighter';
 import { TableOfContents } from 'components/table-of-contents';
 import { ScrollArea } from '@base-ui-components/react';
 import { Button } from 'components/selia/button';
@@ -23,8 +19,7 @@ import {
   ListTreeIcon,
   MenuIcon,
   SearchIcon,
-  SidebarCloseIcon,
-  SidebarOpenIcon,
+  SidebarIcon,
   XIcon,
 } from 'lucide-react';
 import { Kbd } from 'components/selia/kbd';
@@ -64,12 +59,6 @@ export async function loader({ request }: Route.LoaderArgs) {
   }
 
   let componentExamples = null;
-  let sources = null;
-
-  if (pathname in examples) {
-    componentExamples = await examples[pathname as ExampleName]();
-    sources = await highlightExamples(componentExamples);
-  }
 
   let componentsFolder = '../../components/selia';
 
@@ -90,30 +79,35 @@ export async function loader({ request }: Route.LoaderArgs) {
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  return { componentsMap, sources, name: humanName(pathname) };
+  return { componentsMap, name: humanName(pathname) };
 }
 
 export default function LayoutDocs({
-  loaderData: { componentsMap, sources, name },
+  loaderData: { componentsMap, name },
 }: Route.ComponentProps) {
   const location = useLocation();
-  const { isSidebarOpen, toggleSidebar, closeSidebar, toogleContents } =
-    useLayoutStore(
-      useShallow((state) => ({
-        isSidebarOpen: state.isSidebarOpen,
-        toggleSidebar: state.toggleSidebar,
-        closeSidebar: state.closeSidebar,
-        toogleContents: state.toggleContents,
-      })),
-    );
+  const {
+    isSidebarOpen,
+    isContentsOpen,
+    toggleSidebar,
+    closeSidebar,
+    toogleContents,
+  } = useLayoutStore(
+    useShallow((state) => ({
+      isSidebarOpen: state.isSidebarOpen,
+      isContentsOpen: state.isContentsOpen,
+      toggleSidebar: state.toggleSidebar,
+      closeSidebar: state.closeSidebar,
+      toogleContents: state.toggleContents,
+    })),
+  );
 
   useEffect(() => {
     closeSidebar();
   }, [location.pathname]);
 
   return (
-    <div>
-      <title>{`${name} - Selia`}</title>
+    <>
       <Navbar />
 
       <div
@@ -130,7 +124,7 @@ export default function LayoutDocs({
           pill
           onClick={toogleContents}
         >
-          <ListTreeIcon />
+          {isContentsOpen ? <XIcon /> : <ListTreeIcon />}
           Contents
         </Button>
         <Button
@@ -140,7 +134,7 @@ export default function LayoutDocs({
           block
           pill
         >
-          {isSidebarOpen ? <SidebarCloseIcon /> : <SidebarOpenIcon />}
+          {isSidebarOpen ? <XIcon /> : <SidebarIcon />}
           Sidebar
         </Button>
       </div>
@@ -150,7 +144,7 @@ export default function LayoutDocs({
           className={cn(
             'lg:sticky top-0 max-h-dvh lg:w-72 px-2.5 lg:px-0',
             'fixed z-30 w-full max-lg:h-full bg-surface01 lg:bg-transparent transition-all',
-            isSidebarOpen ? 'left-0' : '-left-full',
+            isSidebarOpen ? 'right-0' : '-right-full',
           )}
         >
           <SidebarContent render={<SidebarScrollArea />}>
@@ -189,35 +183,14 @@ export default function LayoutDocs({
         </Sidebar>
         <main className="w-full">
           <div className="flex px-4 py-10 md:p-10 gap-6 justify-between">
-            <article
-              className={cn(
-                'flex-1 w-full xl:max-w-xl 2xl:max-w-2xl mx-auto text-zinc-300',
-                '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-4',
-                '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2,h3]:mb-3',
-                '*:[h2+h3]:mt-8 *:[h2]:mt-14',
-                '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
-                '**:[h1,h2,h3]:text-foreground',
-                '*:[p]:mb-2 *:[p]:leading-loose [&>p]:font-medium',
-                '[&>p>code]:before:content-["`"] [&>p>code]:after:content-["`"]',
-                '[&>p>code]:text-foreground [&>p>code]:font-medium',
-                '[&>p:first-of-type]:text-lg',
-                '[&>p:first-of-type]:text-muted',
-                '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
-                '*:[ul]:leading-relaxed',
-                '[p_a]:text-foreground *:[p_a]:font-medium *:[p_a]:border-b',
-              )}
-            >
-              <MDXProvider components={mdxComponents}>
-                <Outlet key={location.pathname} context={{ sources }} />
-              </MDXProvider>
-            </article>
+            <Outlet />
             <aside className="w-64">
               <TableOfContents />
             </aside>
           </div>
         </main>
       </div>
-    </div>
+    </>
   );
 }
 

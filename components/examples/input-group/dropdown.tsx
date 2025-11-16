@@ -11,7 +11,7 @@ import { ChevronDownIcon, MoreHorizontalIcon } from 'lucide-react';
 
 export default function InputGroupDropdownExample() {
   return (
-    <InputGroup>
+    <InputGroup className="w-full 2xl:w-8/12 xl:w-10/12">
       <Input placeholder="Message" />
       <InputGroupAddon align="end">
         <Dropdown>
