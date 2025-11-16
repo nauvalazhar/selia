@@ -6,4 +6,9 @@ import {
 } from '@react-router/dev/routes';
 import { flatRoutes } from '@react-router/fs-routes';
 
-export default flatRoutes() satisfies RouteConfig;
+// export default [
+//   index('routes/_index.tsx'),
+//   layout('routes/docs.tsx', [route('docs/:path', 'routes/docs.view.tsx')]),
+// ] satisfies RouteConfig;
+
+export default flatRoutes();

@@ -1,4 +1,6 @@
 import type { Config } from '@react-router/dev/config';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
 
 export default {
   // Config options...

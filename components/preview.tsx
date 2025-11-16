@@ -1,24 +1,19 @@
 import { cn } from 'lib/utils';
-import { useOutletContext } from 'react-router';
 import { Button } from './selia/button';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { useRef, useState } from 'react';
 
-interface SourceContext<T extends string = string> {
-  sources: Record<T, string>;
-}
-
-export function Preview<K extends string>({
+export function Preview({
   children,
   title,
   name,
+  sources,
 }: {
   children: React.ReactNode;
   title?: string;
-  name: K;
+  name: string;
+  sources?: Record<string, string>;
 }) {
-  const { sources } = useOutletContext<SourceContext<K>>();
-
   return (
     <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
@@ -27,7 +22,7 @@ export function Preview<K extends string>({
         </div>
       )}
       {children}
-      {sources[name] && (
+      {sources && sources[name] && (
         <PreviewCode>
           <div dangerouslySetInnerHTML={{ __html: sources[name] }} />
         </PreviewCode>
