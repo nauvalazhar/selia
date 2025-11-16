@@ -18,7 +18,11 @@ export function Preview<K extends string>({
   const { sources } = useOutletContext<SourceContext<K>>();
 
   return (
-    <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4">
+    <div
+      className={cn(
+        'relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4',
+      )}
+    >
       {title && (
         <div className="px-6 h-14 flex items-center border-b border-border01 w-full">
           <span className="text-sm font-medium text-dim">{title}</span>
@@ -39,7 +43,7 @@ export function PreviewDemo({ ...props }: React.ComponentProps<'div'>) {
     <div
       className={cn(
         'flex min-h-40 bg-surface00 items-center justify-center',
-        'p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
+        'p-4 lg:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
       )}
       {...props}
     />

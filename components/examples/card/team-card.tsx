@@ -27,7 +27,7 @@ export default function TeamCardExample() {
       </CardHeader>
       <CardBody className="p-0">
         <Stack>
-          <Item>
+          <Item variant="plain">
             <ItemMedia>
               <Avatar>
                 <AvatarImage src="/avatar01.png" alt="Avatar" />
@@ -45,7 +45,7 @@ export default function TeamCardExample() {
             </ItemAction>
           </Item>
           <Separator />
-          <Item>
+          <Item variant="plain">
             <ItemMedia>
               <Avatar>
                 <AvatarImage src="/avatar02.png" alt="Avatar" />
@@ -63,7 +63,7 @@ export default function TeamCardExample() {
             </ItemAction>
           </Item>
           <Separator />
-          <Item>
+          <Item variant="plain">
             <ItemMedia>
               <Avatar>
                 <AvatarImage src="/avatar03.png" alt="Avatar" />
@@ -81,7 +81,7 @@ export default function TeamCardExample() {
             </ItemAction>
           </Item>
           <Separator />
-          <Item>
+          <Item variant="plain">
             <ItemMedia>
               <Avatar>
                 <AvatarImage src="/avatar04.png" alt="Avatar" />
@@ -99,7 +99,7 @@ export default function TeamCardExample() {
             </ItemAction>
           </Item>
           <Separator />
-          <Item>
+          <Item variant="plain">
             <ItemMedia>
               <Avatar>
                 <AvatarImage src="/avatar05.png" alt="Avatar" />
