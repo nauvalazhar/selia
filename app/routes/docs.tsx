@@ -56,7 +56,7 @@ const prologue = [
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
-  const pathname = url.pathname.replace('/docs/', '');
+  const pathname = url.pathname.replace('/docs/', '').replace(/\/$/, '');
 
   if (pathname === '/docs' || pathname === '') {
     return redirect('/docs/introduction');
@@ -70,8 +70,14 @@ export async function loader({ request }: Route.LoaderArgs) {
     sources = await highlightExamples(componentExamples);
   }
 
+  let componentsFolder = '../../components/selia';
+
+  if (process.env.NODE_ENV === 'production') {
+    componentsFolder = '../../../components/selia';
+  }
+
   const components = await readdir(
-    path.join(import.meta.dirname, '../../components/selia'),
+    path.join(import.meta.dirname, componentsFolder),
   );
 
   const componentsMap = components
@@ -142,7 +148,7 @@ export default function LayoutDocs({
         <Sidebar
           className={cn(
             'lg:sticky top-0 max-h-dvh lg:w-72 px-2.5 lg:px-0',
-            'fixed z-30 w-full h-full bg-surface01 lg:bg-transparent transition-all',
+            'fixed z-30 w-full max-lg:h-full bg-surface01 lg:bg-transparent transition-all',
             isSidebarOpen ? 'left-0' : '-left-full',
           )}
         >

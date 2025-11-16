@@ -18,7 +18,7 @@ export default function Index() {
           <h1 className="text-2xl font-medium tracking-tight">
             A user interface for humans and computers
           </h1>
-          <div className="col-start-2">
+          <div className="col-start-2 mt-2 lg:mt-0">
             <Text className="text-muted mb-4 lg:w-10/12">
               Built with Tailwind CSS and Base UI Components. Still in early
               development.
