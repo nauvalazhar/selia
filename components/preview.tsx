@@ -15,7 +15,6 @@ export function Preview({
   name: string;
   sources: Record<string, string>;
 }) {
-  console.log(sources);
   return (
     <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
