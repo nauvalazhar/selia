@@ -56,6 +56,7 @@ const prologue = [
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
+  console.log(url.pathname);
   const pathname = url.pathname.replace('/docs/', '').replace(/\/$/, '');
 
   if (pathname === '/docs' || pathname === '') {
