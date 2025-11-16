@@ -1,19 +1,22 @@
 import { cn } from 'lib/utils';
-import { Button } from './selia/button';
-import { CheckIcon, CopyIcon } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { ScrollArea } from '@base-ui-components/react/scroll-area';
+import { useOutletContext } from 'react-router';
 
-export function Preview({
+interface SourceContext<T extends string = string> {
+  sources: Record<T, string>;
+}
+
+export function Preview<K extends string>({
   children,
   title,
   name,
-  sources,
 }: {
   children: React.ReactNode;
   title?: string;
-  name: string;
-  sources?: Record<string, string>;
+  name: K;
 }) {
+  const { sources } = useOutletContext<SourceContext<K>>();
+
   return (
     <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
@@ -22,7 +25,7 @@ export function Preview({
         </div>
       )}
       {children}
-      {sources && sources[name] && (
+      {sources[name] && (
         <PreviewCode>
           <div dangerouslySetInnerHTML={{ __html: sources[name] }} />
         </PreviewCode>
@@ -31,72 +34,44 @@ export function Preview({
   );
 }
 
-export function PreviewDemo({
-  children,
-  ...props
-}: React.ComponentProps<'div'>) {
+export function PreviewDemo({ ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'flex min-h-40 bg-surface00 items-center justify-center flex-wrap',
-        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
+        'flex min-h-40 bg-surface00 items-center justify-center',
+        'p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
       )}
       {...props}
-    >
-      <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 w-full">
-        {children}
-      </div>
-    </div>
+    />
   );
 }
 
-export function PreviewCode({ children }: React.ComponentProps<'div'>) {
-  const [isCopied, setIsCopied] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const codeText = ref.current?.querySelector('code')?.textContent;
-
-    setIsCopied(true);
-    navigator.clipboard.writeText(codeText ?? '');
-    setTimeout(() => setIsCopied(false), 1000);
-  };
-
+export function PreviewCode({
+  children,
+  ...props
+}: React.ComponentProps<typeof ScrollArea.Root>) {
   return (
-    <div
-      ref={ref}
-      className={cn(
-        '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-      )}
-    >
-      <div className="w-full border-b border-border01 flex justify-between items-center py-2 px-2.5">
-        <span className="text-sm font-medium text-dimmed select-none">
-          Source
-        </span>
-        <Button
-          size="xs"
-          variant="secondary-subtle"
-          pill
-          className="text-muted"
-          onClick={handleCopy}
-        >
-          {isCopied ? (
-            <>
-              <CheckIcon /> Copied
-            </>
-          ) : (
-            <>
-              <CopyIcon /> Copy
-            </>
-          )}
-        </Button>
-      </div>
-      <div className="h-full overscroll-contain overflow-auto max-h-72">
+    <ScrollArea.Root {...props} className="h-72">
+      <ScrollArea.Viewport
+        className={cn(
+          '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
+          'h-full overscroll-contain **:[pre]:-mx-1 **:[pre]:-mb-1',
+        )}
+      >
         {children}
-      </div>
-    </div>
+      </ScrollArea.Viewport>
+      <ScrollArea.Scrollbar
+        className={cn(
+          'm-1 flex w-1 justify-center',
+          'opacity-0 transition-opacity delay-300 pointer-events-none',
+          'data-[hovering]:opacity-100 data-[hovering]:delay-0',
+          'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
+          'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
+          'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
+        )}
+      >
+        <ScrollArea.Thumb className="w-full rounded bg-surface04" />
+      </ScrollArea.Scrollbar>
+    </ScrollArea.Root>
   );
 }
