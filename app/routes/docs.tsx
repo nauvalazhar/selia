@@ -90,13 +90,19 @@ export default function LayoutDocs({
   loaderData: { componentsMap, sources, name },
 }: Route.ComponentProps) {
   const location = useLocation();
-  const { isSidebarOpen, toggleSidebar, toogleContents } = useLayoutStore(
-    useShallow((state) => ({
-      isSidebarOpen: state.isSidebarOpen,
-      toggleSidebar: state.toggleSidebar,
-      toogleContents: state.toggleContents,
-    })),
-  );
+  const { isSidebarOpen, toggleSidebar, closeSidebar, toogleContents } =
+    useLayoutStore(
+      useShallow((state) => ({
+        isSidebarOpen: state.isSidebarOpen,
+        toggleSidebar: state.toggleSidebar,
+        closeSidebar: state.closeSidebar,
+        toogleContents: state.toggleContents,
+      })),
+    );
+
+  useEffect(() => {
+    closeSidebar();
+  }, [location.pathname]);
 
   return (
     <div>

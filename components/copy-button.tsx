@@ -7,24 +7,31 @@ export function CopyButton() {
 
   return (
     <Button
-      size="xs-icon"
-      variant="secondary-plain"
-      className="absolute top-1.5 right-2 *:[svg]:text-dimmed"
+      size="xs"
+      variant="secondary-subtle"
+      className="absolute top-1.5 right-2 text-muted z-10"
       pill
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        const codeText = e.currentTarget
-          .closest('pre')
-          ?.querySelector('code')?.textContent;
+        const codeText =
+          e.currentTarget.parentElement?.querySelector('code')?.textContent;
 
         navigator.clipboard.writeText(codeText ?? '');
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
+        setTimeout(() => setIsCopied(false), 1000);
       }}
     >
-      {isCopied ? <CheckIcon /> : <CopyIcon />}
+      {isCopied ? (
+        <>
+          <CheckIcon /> Copied
+        </>
+      ) : (
+        <>
+          <CopyIcon /> Copy
+        </>
+      )}
     </Button>
   );
 }

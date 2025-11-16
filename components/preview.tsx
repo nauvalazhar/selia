@@ -1,6 +1,8 @@
 import { cn } from 'lib/utils';
-import { ScrollArea } from '@base-ui-components/react/scroll-area';
 import { useOutletContext } from 'react-router';
+import { Button } from './selia/button';
+import { CheckIcon, CopyIcon } from 'lucide-react';
+import { useRef, useState } from 'react';
 
 interface SourceContext<T extends string = string> {
   sources: Record<T, string>;
@@ -46,32 +48,53 @@ export function PreviewDemo({ ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-export function PreviewCode({
-  children,
-  ...props
-}: React.ComponentProps<typeof ScrollArea.Root>) {
+export function PreviewCode({ children }: React.ComponentProps<'div'>) {
+  const [isCopied, setIsCopied] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const codeText = ref.current?.querySelector('code')?.textContent;
+
+    setIsCopied(true);
+    navigator.clipboard.writeText(codeText ?? '');
+    setTimeout(() => setIsCopied(false), 1000);
+  };
+
   return (
-    <ScrollArea.Root {...props} className="h-72">
-      <ScrollArea.Viewport
-        className={cn(
-          '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-          'h-full overscroll-contain **:[pre]:-mx-1 **:[pre]:-mb-1',
-        )}
-      >
+    <div
+      ref={ref}
+      className={cn(
+        '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
+      )}
+    >
+      <div className="w-full border-b border-border01 flex justify-between items-center py-2 px-2.5">
+        <span className="text-sm font-medium text-dimmed select-none">
+          Source
+        </span>
+        <Button
+          size="xs"
+          variant="secondary-subtle"
+          pill
+          className="text-muted"
+          onClick={handleCopy}
+        >
+          {isCopied ? (
+            <>
+              <CheckIcon /> Copied
+            </>
+          ) : (
+            <>
+              <CopyIcon /> Copy
+            </>
+          )}
+        </Button>
+      </div>
+      <div className="h-full overscroll-contain overflow-auto max-h-72">
         {children}
-      </ScrollArea.Viewport>
-      <ScrollArea.Scrollbar
-        className={cn(
-          'm-1 flex w-1 justify-center',
-          'opacity-0 transition-opacity delay-300 pointer-events-none',
-          'data-[hovering]:opacity-100 data-[hovering]:delay-0',
-          'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
-          'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
-          'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
-        )}
-      >
-        <ScrollArea.Thumb className="w-full rounded bg-surface04" />
-      </ScrollArea.Scrollbar>
-    </ScrollArea.Root>
+      </div>
+    </div>
   );
 }

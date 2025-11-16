@@ -27,7 +27,7 @@ export function TableOfContents() {
         'lg:sticky lg:top-10 max-h-[calc(100vh-8rem)] overflow-y-auto',
         'transition-opacity',
         'max-lg:fixed bottom-16 left-4 right-4 z-20',
-        'max-lg:bg-surface01/90 max-lg:rounded max-lg:p-4 max-lg:ring ring-border01 max-lg:backdrop-blur-sm',
+        'max-lg:bg-surface01/95 max-lg:rounded max-lg:p-4 max-lg:ring ring-border01 max-lg:backdrop-blur-sm',
         tocNav ? 'opacity-100' : 'opacity-0',
         isContentsOpen
           ? 'max-lg:opacity-100'
