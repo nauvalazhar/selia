@@ -52,13 +52,10 @@ const prologue = [
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const pathname = url.pathname.replace('/docs/', '').replace(/\/$/, '');
-  console.log(pathname);
 
   if (pathname === '/docs' || pathname === '') {
     return redirect('/docs/introduction');
   }
-
-  let componentExamples = null;
 
   let componentsFolder = '../../components/selia';
 

@@ -57,55 +57,61 @@ export async function loader({ params }: Route.LoaderArgs) {
     sources = await highlightExamples(componentExamples);
   }
 
-  const source = await Bun.file(
-    path.join(import.meta.dirname, `docs.${pathname}.mdx`),
-  ).text();
+  try {
+    const source = await Bun.file(
+      path.join(process.cwd(), 'app/routes', `docs.${pathname}.mdx`),
+    ).text();
 
-  const { code: mdxCode } = await bundleMDX({
-    source,
-    cwd: import.meta.dirname,
-    mdxOptions(options) {
-      options.rehypePlugins = [
-        ...(options.rehypePlugins || []),
-        ...[
-          rehypeSlug,
-          [
-            rehypeToc,
-            {
-              headings: ['h1', 'h2', 'h3'],
-              position: 'beforeend',
-              cssClasses: {
-                toc: 'hidden',
+    const { code: mdxCode } = await bundleMDX({
+      source,
+      cwd: import.meta.dirname,
+      mdxOptions(options) {
+        options.rehypePlugins = [
+          ...(options.rehypePlugins || []),
+          ...[
+            rehypeSlug,
+            [
+              rehypeToc,
+              {
+                headings: ['h1', 'h2', 'h3'],
+                position: 'beforeend',
+                cssClasses: {
+                  toc: 'hidden',
+                },
               },
-            },
-          ],
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: 'wrap',
-              properties: {
-                className: ['anchor'],
+            ],
+            [
+              rehypeAutolinkHeadings,
+              {
+                behavior: 'wrap',
+                properties: {
+                  className: ['anchor'],
+                },
               },
-            },
+            ],
+            [
+              rehypeShiki,
+              {
+                theme: 'tokyo-night',
+                transformers,
+              },
+            ],
           ],
-          [
-            rehypeShiki,
-            {
-              theme: 'tokyo-night',
-              transformers,
-            },
-          ],
-        ],
-      ];
-      return options;
-    },
-  });
+        ];
+        return options;
+      },
+    });
 
-  return {
-    mdxCode,
-    sources,
-    name: humanName(pathname),
-  };
+    return {
+      mdxCode,
+      sources,
+      name: humanName(pathname),
+    };
+  } catch (error) {
+    console.log('cwd', process.cwd());
+    console.error(error);
+    throw new Error(`Failed to load documentation for ${pathname}`);
+  }
 }
 
 const components = {

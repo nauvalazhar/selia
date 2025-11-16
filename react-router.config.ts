@@ -5,6 +5,7 @@ import path from 'node:path';
 export default {
   // Config options...
   // Server-side render by default, to enable SPA mode set this to `false`
+  // prerender: true,
   // async prerender({ getStaticPaths }) {
   //   const components = await readdir(
   //     path.join(import.meta.dirname, 'components/selia'),
