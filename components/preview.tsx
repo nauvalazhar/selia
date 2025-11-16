@@ -48,7 +48,7 @@ export function PreviewDemo({
       )}
       {...props}
     >
-      <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 max-md:w-full">
+      <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 w-full">
         {children}
       </div>
     </div>
