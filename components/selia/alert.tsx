@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 export const alertVariants = cva(
   [
-    'w-full px-3.5 min-h-11 rounded font-medium',
+    'w-full px-3.5 py-1.5 min-h-11 rounded font-medium',
     '*:[svg]:size-4.5 *:[svg]:shrink-0',
     'items-center gap-x-2.5 gap-y-1 flex',
     'has-[>[data-slot=alert-description]]:grid',

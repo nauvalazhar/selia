@@ -11,7 +11,7 @@ import type { Route } from './+types/docs';
 import { cn } from 'lib/utils';
 import { readdir } from 'node:fs/promises';
 import path from 'node:path';
-import { Link, Outlet, useLocation } from 'react-router';
+import { Link, Outlet, redirect, useLocation } from 'react-router';
 import { MDXProvider } from '@mdx-js/react';
 import mdxComponents from 'components/mdx-components';
 import { examples, type ExampleName } from 'components/examples';
@@ -19,8 +19,18 @@ import { highlightExamples } from '~/lib/highlighter';
 import { TableOfContents } from 'components/table-of-contents';
 import { ScrollArea } from '@base-ui-components/react';
 import { Button } from 'components/selia/button';
-import { SearchIcon } from 'lucide-react';
+import {
+  ListTreeIcon,
+  MenuIcon,
+  SearchIcon,
+  SidebarCloseIcon,
+  SidebarOpenIcon,
+  XIcon,
+} from 'lucide-react';
 import { Kbd } from 'components/selia/kbd';
+import { useEffect, useRef, useState } from 'react';
+import { useLayoutStore } from '~/lib/layout-store';
+import { useShallow } from 'zustand/react/shallow';
 
 function humanName(name: string) {
   return (
@@ -29,16 +39,36 @@ function humanName(name: string) {
   );
 }
 
+const prologue = [
+  {
+    title: 'Introduction',
+    path: '/docs/introduction',
+  },
+  {
+    title: 'Installation',
+    path: '/docs/installation',
+  },
+  {
+    title: 'Customization',
+    path: '/docs/customization',
+  },
+];
+
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const pathname = url.pathname.replace('/docs/', '');
 
-  if (!(pathname in examples)) {
-    throw new Response('Not Found', { status: 404 });
+  if (pathname === '/docs' || pathname === '') {
+    return redirect('/docs/introduction');
   }
 
-  const componentExamples = await examples[pathname as ExampleName]();
-  const sources = await highlightExamples(componentExamples);
+  let componentExamples = null;
+  let sources = null;
+
+  if (pathname in examples) {
+    componentExamples = await examples[pathname as ExampleName]();
+    sources = await highlightExamples(componentExamples);
+  }
 
   const components = await readdir(
     path.join(import.meta.dirname, '../../components/selia'),
@@ -60,37 +90,70 @@ export default function LayoutDocs({
   loaderData: { componentsMap, sources, name },
 }: Route.ComponentProps) {
   const location = useLocation();
+  const { isSidebarOpen, toggleSidebar, toogleContents } = useLayoutStore(
+    useShallow((state) => ({
+      isSidebarOpen: state.isSidebarOpen,
+      toggleSidebar: state.toggleSidebar,
+      toogleContents: state.toggleContents,
+    })),
+  );
 
   return (
     <div>
       <title>{`${name} - Selia`}</title>
       <Navbar />
 
+      <div
+        className={cn(
+          'lg:hidden fixed bottom-4 right-4 left-4 z-40 *:backdrop-blur-sm',
+          'flex rounded-full bg-secondary',
+          '*:h-10 *:first:rounded-r-none *:last:rounded-l-none',
+        )}
+      >
+        <Button
+          variant="secondary"
+          size="sm"
+          block
+          pill
+          onClick={toogleContents}
+        >
+          <ListTreeIcon />
+          Contents
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={toggleSidebar}
+          block
+          pill
+        >
+          {isSidebarOpen ? <SidebarCloseIcon /> : <SidebarOpenIcon />}
+          Sidebar
+        </Button>
+      </div>
+
       <div className="flex container mx-auto">
-        <Sidebar className="sticky top-0 max-h-dvh w-72">
+        <Sidebar
+          className={cn(
+            'lg:sticky top-0 max-h-dvh lg:w-72 px-2.5 lg:px-0',
+            'fixed z-30 w-full h-full bg-surface01 lg:bg-transparent transition-all',
+            isSidebarOpen ? 'left-0' : '-left-full',
+          )}
+        >
           <SidebarContent render={<SidebarScrollArea />}>
             <SidebarMenu>
               <SidebarGroup>
                 <SidebarGroupTitle>Prologue</SidebarGroupTitle>
                 <SidebarList line size="compact">
-                  <SidebarItem
-                    active={location.pathname === '/docs'}
-                    render={<Link to="/docs" />}
-                  >
-                    Introduction
-                  </SidebarItem>
-                  <SidebarItem
-                    active={location.pathname === '/docs/installation'}
-                    render={<Link to="/docs/installation" />}
-                  >
-                    Installation
-                  </SidebarItem>
-                  <SidebarItem
-                    active={location.pathname === '/docs/customization'}
-                    render={<Link to="/docs/customization" />}
-                  >
-                    Customization
-                  </SidebarItem>
+                  {prologue.map((item) => (
+                    <SidebarItem
+                      key={item.path}
+                      active={location.pathname === item.path}
+                      render={<Link to={item.path} />}
+                    >
+                      {item.title}
+                    </SidebarItem>
+                  ))}
                 </SidebarList>
               </SidebarGroup>
               <SidebarGroup>
@@ -112,10 +175,10 @@ export default function LayoutDocs({
           </SidebarContent>
         </Sidebar>
         <main className="w-full">
-          <div className="flex p-10 gap-6 justify-between">
+          <div className="flex px-4 py-10 md:p-10 gap-6 justify-between">
             <article
               className={cn(
-                'flex-1 xl:max-w-xl 2xl:max-w-2xl mx-auto text-zinc-300',
+                'flex-1 w-full xl:max-w-xl 2xl:max-w-2xl mx-auto text-zinc-300',
                 '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-4',
                 '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2,h3]:mb-3',
                 '*:[h2+h3]:mt-8 *:[h2]:mt-14',
@@ -148,7 +211,7 @@ export default function LayoutDocs({
 function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
   return (
     <ScrollArea.Root className="h-full pt-4">
-      <ScrollArea.Viewport className={cn('h-full pr-8')}>
+      <ScrollArea.Viewport className={cn('h-full lg:pr-8')}>
         {children}
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar
@@ -168,9 +231,21 @@ function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
 }
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   return (
-    <nav className="h-14 border-b border-border00 w-full">
-      <div className="container mx-auto px-2.5 h-full">
+    <nav
+      className={cn(
+        'h-14 border-b border-border00 w-full relative z-20 transition-colors',
+        menuOpen ? 'max-md:bg-surface01' : '',
+      )}
+    >
+      <div className="container mx-auto px-4 md:px-2.5 h-full">
         <div className="flex items-center w-full h-full justify-between">
           <Link to="/" className="flex items-center gap-2.5">
             <svg
@@ -227,12 +302,31 @@ function Navbar() {
             </svg>
             <span className="font-semibold text-lg">Selia</span>
           </Link>
+          <Button
+            variant="secondary"
+            size="sm"
+            className="lg:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <XIcon /> : <MenuIcon />}
+            Menu
+          </Button>
           <ul
             className={cn(
-              'flex items-center gap-6',
+              'flex lg:gap-6',
+              'max-lg:flex-col max-md:border-b max-md:border-border01',
+              'max-lg:absolute w-full lg:w-auto',
+              'left-0 lg:left-auto lg:items-center',
+              'bg-surface01 lg:bg-transparent',
               '**:[a]:text-muted **:[a]:font-medium',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75',
+              'max-lg:**:[a]:px-4 max-lg:**:[a]:py-2.5',
+              'max-lg:**:[a]:flex max-lg:top-14',
+              'max-lg:transition-all',
+              menuOpen
+                ? 'max-lg:opacity-100'
+                : 'max-lg:opacity-0 max-lg:invisible',
             )}
           >
             <li>
@@ -245,7 +339,12 @@ function Navbar() {
               <Link to="/docs/blocks">Blocks</Link>
             </li>
             <li>
-              <Button variant="secondary" size="sm" pill>
+              <Button
+                variant="secondary"
+                size="sm"
+                pill
+                className="max-lg:hidden"
+              >
                 <SearchIcon />
                 Search
                 <Kbd className="ml-6">⌘ K</Kbd>

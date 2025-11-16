@@ -39,7 +39,7 @@ export function PreviewDemo({ ...props }: React.ComponentProps<'div'>) {
     <div
       className={cn(
         'flex min-h-40 bg-surface00 items-center justify-center',
-        'p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
+        'p-6 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border01',
       )}
       {...props}
     />
