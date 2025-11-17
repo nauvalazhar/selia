@@ -6,7 +6,7 @@ export const iconBoxVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-accent03 text-foreground',
+        default: 'bg-accent-03 text-foreground',
         primary: 'bg-gradient-primary text-primary-foreground',
         secondary: 'bg-gradient-secondary text-secondary-foreground',
         tertiary: 'bg-gradient-tertiary text-tertiary-foreground',

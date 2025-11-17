@@ -47,8 +47,8 @@ export function DropdownContent({
 const dropdownItemClasses = [
   'flex items-center text-foreground gap-3.5 py-2 px-2.5 rounded',
   'cursor-default select-none',
-  'data-[highlighted]:bg-accent04 data-[selected]:bg-accent04',
-  'data-[popup-open]:bg-accent04',
+  'data-[highlighted]:bg-accent-04 data-[selected]:bg-accent-04',
+  'data-[popup-open]:bg-accent-04',
   'focus-visible:outline-none',
   '[&_svg]:size-4 [&_svg]:text-foreground',
   '*:data-[slot=switch]:ml-auto',
@@ -72,7 +72,7 @@ export function DropdownSeparator({
   return (
     <BaseMenu.Separator
       data-slot="dropdown-separator"
-      className={cn('h-px my-1 bg-border04', props.className)}
+      className={cn('h-px my-1 bg-boder-04', props.className)}
       {...props}
     />
   );

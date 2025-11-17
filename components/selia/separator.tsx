@@ -2,7 +2,7 @@ import { Separator as BaseSeparator } from '@base-ui-components/react/separator'
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
-export const separatorVariants = cva('bg-border02', {
+export const separatorVariants = cva('bg-boder-02', {
   variants: {
     orientation: {
       horizontal: 'w-full h-px my-6',

@@ -1,51 +1,48 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
-@plugin '@tailwindcss/typography';
 
 :root {
-  --surface00: #161718;
-  --surface01: #1d1e20;
-  --surface02: #222325;
-  --surface03: #2c2d30;
-  --surface04: #313135;
-
-  --accent00: #27272a;
-  --accent01: #2e3033;
-  --accent02: #333538;
-  --accent03: #424348;
-  --accent04: #47474d;
-  --accent05: #585860;
-  --border00: #222425;
-  --border01: #292b2d;
-  --border02: #2e3032;
-  --border03: #38393d;
-  --border04: #3d3d43;
-  --border05: #4e4e55;
-
-  --background: var(--surface00);
+  --surface-00: #161718;
+  --surface-01: #1d1e20;
+  --surface-02: #222325;
+  --surface-03: #2c2d30;
+  --surface-04: #313135;
+  --accent-00: #27272a;
+  --accent-01: #2e3033;
+  --accent-02: #333538;
+  --accent-03: #424348;
+  --accent-04: #47474d;
+  --accent-05: #585860;
+  --boder-00: #222425;
+  --boder-01: #292b2d;
+  --boder-02: #2e3032;
+  --boder-03: #38393d;
+  --boder-04: #3d3d43;
+  --boder-05: #4e4e55;
+  --background: var(--surface-00);
   --foreground: #f7f7f8;
   --subtle: #e9e9ec;
-  --muted: #B9BBC0;
+  --muted: #b9bbc0;
   --dimmed: #999ba3;
-  --input-background: var(--surface03);
-  --input-subtle-background: var(--surface02);
+  --input-background: var(--surface-03);
+  --input-subtle-background: var(--surface-02);
   --input-border: #424348;
   --avatar-background: #313135;
   --avatar-foreground: #f7f7f8;
-  --card-background: var(--surface02);
+  --card-background: var(--surface-02);
   --card-border: #2a2b2d;
-  --card-footer-background: var(--surface01);
+  --card-footer-background: var(--surface-01);
   --popover-background: #313135;
   --popover-foreground: #f7f7f8;
   --popover-border: #45454a;
   --dialog-background: rgba(34, 35, 37, 0.9);
   --dialog-foreground: #f7f7f8;
   --dialog-border: #2e3032;
-  --toast-background: var(--surface04);
+  --toast-background: var(--surface-04);
   --toast-foreground: var(--foreground);
-  --toast-border: var(--border04);
-  --tabs-background: var(--surface03);
+  --toast-border: var(--boder-04);
+  --tabs-background: var(--surface-03);
   --tabs-foreground: var(--foreground);
   --primary-background: #336ff1;
   --primary-foreground: var(--foreground);
@@ -65,11 +62,11 @@
   --success-foreground: var(--foreground);
   --info-background: #0597ff;
   --info-foreground: var(--foreground);
-  --kbd-background: #43454C;
+  --kbd-background: #43454c;
   --kbd-foreground: var(--foreground);
-  --kbd-border: #484B51;
-  --accent03-gradient: linear-gradient(180deg, #424348 0%, #3a3b40 100%);
-  --accent04-gradient: linear-gradient(180deg, #424248 0%, #3b3b40 100%);
+  --kbd-border: #484b51;
+  --accent-03-gradient: linear-gradient(180deg, #424348 0%, #3a3b40 100%);
+  --accent-04-gradient: linear-gradient(180deg, #424248 0%, #3b3b40 100%);
   --card-gradient: linear-gradient(
     180deg,
     rgba(32, 33, 35, 0.96) 0%,
@@ -97,7 +94,9 @@
   --font-sans:
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -126,21 +125,21 @@
   --color-warning: var(--warning-background);
   --color-warning-foreground: var(--warning-foreground);
   --background-image-gradient-warning: var(--gradient-warning);
-  --color-border: var(--border00);
-  --color-border00: var(--border00);
-  --color-border01: var(--border01);
-  --color-border02: var(--border02);
-  --color-border03: var(--border03);
-  --color-border04: var(--border04);
-  --color-border05: var(--border05);
-  --color-accent00: var(--accent00);
-  --color-accent01: var(--accent01);
-  --color-accent02: var(--accent02);
-  --color-accent03: var(--accent03);
-  --color-accent04: var(--accent04);
-  --color-accent05: var(--accent05);
-  --background-image-gradient-accent03: var(--accent03-gradient);
-  --background-image-gradient-accent04: var(--accent04-gradient);
+  --color-border: var(--boder-00);
+  --color-boder-00: var(--boder-00);
+  --color-boder-01: var(--boder-01);
+  --color-boder-02: var(--boder-02);
+  --color-boder-03: var(--boder-03);
+  --color-boder-04: var(--boder-04);
+  --color-boder-05: var(--boder-05);
+  --color-accent-00: var(--accent-00);
+  --color-accent-01: var(--accent-01);
+  --color-accent-02: var(--accent-02);
+  --color-accent-03: var(--accent-03);
+  --color-accent-04: var(--accent-04);
+  --color-accent-05: var(--accent-05);
+  --background-image-gradient-accent-03: var(--accent-03-gradient);
+  --background-image-gradient-accent-04: var(--accent-04-gradient);
   --color-avatar: var(--avatar-background);
   --color-avatar-foreground: var(--avatar-foreground);
   --color-card: var(--card-background);
@@ -166,11 +165,11 @@
   --color-toast-foreground: var(--toast-foreground);
   --color-toast-border: var(--toast-border);
 
-  --color-surface00: var(--surface00);
-  --color-surface01: var(--surface01);
-  --color-surface02: var(--surface02);
-  --color-surface03: var(--surface03);
-  --color-surface04: var(--surface04);
+  --color-surface-00: var(--surface-00);
+  --color-surface-01: var(--surface-01);
+  --color-surface-02: var(--surface-02);
+  --color-surface-03: var(--surface-03);
+  --color-surface-04: var(--surface-04);
   --color-subtle: var(--subtle);
   --color-muted: var(--muted);
   --color-dimmed: var(--dimmed);

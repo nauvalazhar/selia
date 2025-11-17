@@ -103,7 +103,7 @@ export default function LayoutDocs({
         <Sidebar
           className={cn(
             'lg:sticky top-0 max-h-dvh lg:w-72 px-1.5 lg:px-0',
-            'fixed z-30 w-full max-lg:h-dvh bg-surface01 lg:bg-transparent transition-all',
+            'fixed z-30 w-full max-lg:h-dvh bg-surface-01 lg:bg-transparent transition-all',
             isSidebarOpen ? 'right-0' : '-right-full',
           )}
         >
@@ -160,7 +160,7 @@ function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
           'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
         )}
       >
-        <ScrollArea.Thumb className="w-full rounded bg-surface04" />
+        <ScrollArea.Thumb className="w-full rounded bg-surface-04" />
       </ScrollArea.Scrollbar>
     </ScrollArea.Root>
   );
@@ -177,8 +177,8 @@ function Navbar() {
   return (
     <nav
       className={cn(
-        'h-16 border-b border-border00 w-full relative z-20 transition-colors',
-        menuOpen ? 'max-md:bg-surface01' : '',
+        'h-16 border-b border-boder-00 w-full relative z-20 transition-colors',
+        menuOpen ? 'max-md:bg-surface-01' : '',
       )}
     >
       <div className="container mx-auto px-4 md:px-2.5 h-full">
@@ -196,10 +196,10 @@ function Navbar() {
           <ul
             className={cn(
               'flex lg:gap-6',
-              'max-lg:flex-col max-md:border-b max-md:border-border01',
+              'max-lg:flex-col max-md:border-b max-md:border-boder-01',
               'max-lg:absolute w-full lg:w-auto',
               'left-0 lg:left-auto lg:items-center',
-              'bg-surface01 lg:bg-transparent',
+              'bg-surface-01 lg:bg-transparent',
               '**:[a]:text-muted **:[a]:font-medium',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75',

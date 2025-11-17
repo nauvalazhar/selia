@@ -25,8 +25,8 @@ export const selectVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-input ring ring-input-border hover:ring-border05',
-        subtle: 'bg-input-subtle ring ring-input-border hover:ring-border05',
+        default: 'bg-input ring ring-input-border hover:ring-boder-05',
+        subtle: 'bg-input-subtle ring ring-input-border hover:ring-boder-05',
         plain: 'bg-transparent hover:bg-input',
       },
       pill: {
@@ -144,7 +144,7 @@ export function SelectContent({
     <BaseSelect.Portal>
       <BaseSelect.Backdrop />
       <BaseSelect.Positioner {...props}>
-        <BaseSelect.ScrollUpArrow className="top-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-foreground flex items-center justify-around bg-accent04" />
+        <BaseSelect.ScrollUpArrow className="top-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-foreground flex items-center justify-around bg-accent-04" />
         <BaseSelect.Popup
           data-slot="select-content"
           {...popupProps}
@@ -157,7 +157,7 @@ export function SelectContent({
           <BaseSelect.Arrow />
           {children}
         </BaseSelect.Popup>
-        <BaseSelect.ScrollDownArrow className="bottom-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-foreground flex items-center justify-around bg-accent04" />
+        <BaseSelect.ScrollDownArrow className="bottom-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-foreground flex items-center justify-around bg-accent-04" />
       </BaseSelect.Positioner>
     </BaseSelect.Portal>
   );
@@ -190,7 +190,7 @@ export function SelectItem({
       className={cn(
         'flex items-center text-foreground py-2 px-2.5 gap-3.5 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
-        'data-[highlighted]:bg-accent04 data-[selected]:bg-accent04',
+        'data-[highlighted]:bg-accent-04 data-[selected]:bg-accent-04',
         'focus-visible:outline-none',
         'data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
@@ -251,7 +251,7 @@ export function SelectSeparator({
   return (
     <BaseSelect.Separator
       data-slot="select-separator"
-      className={cn('h-px my-1 bg-border02', className)}
+      className={cn('h-px my-1 bg-boder-02', className)}
       {...props}
     />
   );

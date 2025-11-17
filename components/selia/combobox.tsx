@@ -21,8 +21,8 @@ export const comboboxTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-input ring ring-input-border hover:ring-border05',
-        subtle: 'bg-input-subtle ring ring-input-border hover:ring-border05',
+        default: 'bg-input ring ring-input-border hover:ring-boder-05',
+        subtle: 'bg-input-subtle ring ring-input-border hover:ring-boder-05',
         plain: 'bg-transparent hover:bg-input',
       },
       pill: {
@@ -262,7 +262,7 @@ export function ComboboxItem({
       className={cn(
         'flex items-center text-foreground gap-3.5 py-2 px-2.5 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
-        'data-[highlighted]:bg-accent04 data-[selected]:bg-accent04',
+        'data-[highlighted]:bg-accent-04 data-[selected]:bg-accent-04',
         'focus-visible:outline-none',
         'pl-10 data-[selected]:pl-2.5',
         'data-disabled:opacity-70 data-disabled:pointer-events-none',
@@ -324,7 +324,7 @@ export function ComboboxSeparator({
     <BaseCombobox.Separator
       data-slot="combobox-separator"
       {...props}
-      className={cn('h-px my-1 bg-border02', className)}
+      className={cn('h-px my-1 bg-boder-02', className)}
     />
   );
 }

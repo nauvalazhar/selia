@@ -14,7 +14,7 @@ export const alertVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-surface02 text-foreground',
+        default: 'bg-surface-02 text-foreground',
         secondary: 'bg-gradient-secondary text-secondary-foreground',
         danger: [
           'bg-gradient-danger text-danger-foreground',
