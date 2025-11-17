@@ -13,13 +13,19 @@ interface LayoutStore {
 
 export const useLayoutStore = create<LayoutStore>((set) => ({
   isSidebarOpen: false,
-  openSidebar: () => set({ isSidebarOpen: true }),
-  closeSidebar: () => set({ isSidebarOpen: false }),
+  openSidebar: () => set({ isSidebarOpen: true, isContentsOpen: false }),
+  closeSidebar: () => set({ isSidebarOpen: false, isContentsOpen: false }),
   toggleSidebar: () =>
-    set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
+    set((state) => ({
+      isSidebarOpen: !state.isSidebarOpen,
+      isContentsOpen: false,
+    })),
   isContentsOpen: false,
-  openContents: () => set({ isContentsOpen: true }),
-  closeContents: () => set({ isContentsOpen: false }),
+  openContents: () => set({ isContentsOpen: true, isSidebarOpen: false }),
+  closeContents: () => set({ isContentsOpen: false, isSidebarOpen: false }),
   toggleContents: () =>
-    set((state) => ({ isContentsOpen: !state.isContentsOpen })),
+    set((state) => ({
+      isContentsOpen: !state.isContentsOpen,
+      isSidebarOpen: false,
+    })),
 }));

@@ -25,13 +25,13 @@ export function TableOfContents() {
     <div
       className={cn(
         'lg:sticky lg:top-10 max-lg:overflow-y-auto',
-        'transition-opacity',
-        'max-lg:fixed bottom-16 left-4 right-4 z-20',
+        'transition-all',
+        'max-lg:fixed left-4 right-4 z-20',
         'max-lg:bg-surface01/95 max-lg:rounded max-lg:p-4 max-lg:ring ring-border01 max-lg:backdrop-blur-sm',
         tocNav ? 'opacity-100' : 'opacity-0',
         isContentsOpen
-          ? 'max-lg:opacity-100'
-          : 'max-lg:opacity-0 max-lg:invisible',
+          ? 'max-lg:opacity-100 bottom-16'
+          : 'max-lg:opacity-0 max-lg:invisible bottom-10',
       )}
     >
       <h3 className="text-sm font-semibold text-foreground mb-4">

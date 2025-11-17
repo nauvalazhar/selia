@@ -3,8 +3,10 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupTitle,
+  SidebarHeader,
   SidebarItem,
   SidebarList,
+  SidebarLogo,
   SidebarMenu,
 } from 'components/selia/sidebar';
 import type { Route } from './+types/docs';
@@ -110,9 +112,10 @@ export default function LayoutDocs({
 
       <div
         className={cn(
-          'lg:hidden fixed bottom-4 right-4 left-4 z-40 *:backdrop-blur-sm',
+          'lg:hidden fixed bottom-4 right-4 z-40 *:backdrop-blur-sm',
           'flex rounded-full bg-secondary',
           '*:h-10 *:first:rounded-r-none *:last:rounded-l-none',
+          '*:first:after:rounded-r-none *:last:after:rounded-l-none',
         )}
       >
         <Button
@@ -140,11 +143,14 @@ export default function LayoutDocs({
       <div className="flex container mx-auto">
         <Sidebar
           className={cn(
-            'lg:sticky top-0 max-h-dvh lg:w-72 px-2.5 lg:px-0',
+            'lg:sticky top-0 max-h-dvh lg:w-72 px-1.5 lg:px-0',
             'fixed z-30 w-full max-lg:h-full bg-surface01 lg:bg-transparent transition-all',
             isSidebarOpen ? 'right-0' : '-right-full',
           )}
         >
+          <SidebarHeader className="lg:hidden">
+            <Logo />
+          </SidebarHeader>
           <SidebarContent render={<SidebarScrollArea />}>
             <SidebarMenu>
               <SidebarGroup>
@@ -225,67 +231,13 @@ function Navbar() {
   return (
     <nav
       className={cn(
-        'h-14 border-b border-border00 w-full relative z-20 transition-colors',
+        'h-16 border-b border-border00 w-full relative z-20 transition-colors',
         menuOpen ? 'max-md:bg-surface01' : '',
       )}
     >
       <div className="container mx-auto px-4 md:px-2.5 h-full">
         <div className="flex items-center w-full h-full justify-between">
-          <Link to="/" className="flex items-center gap-2.5">
-            <svg
-              className="size-8.5"
-              width="1000"
-              height="1000"
-              viewBox="0 0 1000 1000"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_448_30)">
-                <rect
-                  width="1000"
-                  height="1000"
-                  rx="220"
-                  fill="url(#paint0_linear_448_30)"
-                />
-                <path
-                  d="M417.175 186.466C440.739 155.817 484.687 150.075 515.335 173.64L680.016 300.259C710.665 323.823 716.407 367.771 692.842 398.419L634.752 473.971L414.578 304.685C383.93 281.121 378.187 237.173 401.752 206.525L417.175 186.466Z"
-                  fill="white"
-                />
-                <rect
-                  x="346.904"
-                  y="277.858"
-                  width="512.257"
-                  height="165.303"
-                  rx="70"
-                  transform="rotate(37.5557 346.904 277.858)"
-                  fill="white"
-                  fillOpacity="0.8"
-                />
-                <path
-                  d="M363.586 524.406L584.571 694.315C615.219 717.88 620.961 761.828 597.397 792.476L581.974 812.535C558.409 843.183 514.461 848.925 483.813 825.361L318.322 698.119C287.674 674.554 281.931 630.606 305.496 599.958L363.586 524.406Z"
-                  fill="white"
-                  fillOpacity="0.6"
-                />
-              </g>
-              <defs>
-                <linearGradient
-                  id="paint0_linear_448_30"
-                  x1="500"
-                  y1="0"
-                  x2="500"
-                  y2="1000"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#4A7FF2" />
-                  <stop offset="1" stopColor="#336FF1" />
-                </linearGradient>
-                <clipPath id="clip0_448_30">
-                  <rect width="1000" height="1000" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-            <span className="font-semibold text-lg">Selia</span>
-          </Link>
+          <Logo />
           <Button
             variant="secondary-subtle"
             size="sm"
@@ -306,11 +258,11 @@ function Navbar() {
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75',
               'max-lg:**:[a]:px-4 max-lg:**:[a]:py-2.5',
-              'max-lg:**:[a]:flex max-lg:top-14',
+              'max-lg:**:[a]:flex',
               'max-lg:transition-all',
               menuOpen
-                ? 'max-lg:opacity-100'
-                : 'max-lg:opacity-0 max-lg:invisible',
+                ? 'max-lg:opacity-100 max-lg:top-16'
+                : 'max-lg:opacity-0 max-lg:invisible max-lg:top-10',
             )}
           >
             <li>
@@ -338,5 +290,65 @@ function Navbar() {
         </div>
       </div>
     </nav>
+  );
+}
+
+function Logo() {
+  return (
+    <Link to="/" className="flex items-center gap-2.5">
+      <svg
+        className="size-8.5"
+        width="1000"
+        height="1000"
+        viewBox="0 0 1000 1000"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_448_30)">
+          <rect
+            width="1000"
+            height="1000"
+            rx="220"
+            fill="url(#paint0_linear_448_30)"
+          />
+          <path
+            d="M417.175 186.466C440.739 155.817 484.687 150.075 515.335 173.64L680.016 300.259C710.665 323.823 716.407 367.771 692.842 398.419L634.752 473.971L414.578 304.685C383.93 281.121 378.187 237.173 401.752 206.525L417.175 186.466Z"
+            fill="white"
+          />
+          <rect
+            x="346.904"
+            y="277.858"
+            width="512.257"
+            height="165.303"
+            rx="70"
+            transform="rotate(37.5557 346.904 277.858)"
+            fill="white"
+            fillOpacity="0.8"
+          />
+          <path
+            d="M363.586 524.406L584.571 694.315C615.219 717.88 620.961 761.828 597.397 792.476L581.974 812.535C558.409 843.183 514.461 848.925 483.813 825.361L318.322 698.119C287.674 674.554 281.931 630.606 305.496 599.958L363.586 524.406Z"
+            fill="white"
+            fillOpacity="0.6"
+          />
+        </g>
+        <defs>
+          <linearGradient
+            id="paint0_linear_448_30"
+            x1="500"
+            y1="0"
+            x2="500"
+            y2="1000"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#4A7FF2" />
+            <stop offset="1" stopColor="#336FF1" />
+          </linearGradient>
+          <clipPath id="clip0_448_30">
+            <rect width="1000" height="1000" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      <span className="font-semibold text-lg">Selia</span>
+    </Link>
   );
 }

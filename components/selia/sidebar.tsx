@@ -24,8 +24,8 @@ export function SidebarHeader({
   return (
     <header
       data-slot="sidebar-header"
-      className={cn('py-4 px-2.5', className)}
       {...props}
+      className={cn('py-4 px-2.5', className)}
     >
       {children}
     </header>
