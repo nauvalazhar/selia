@@ -18,5 +18,5 @@ export default {
       }),
     ];
   },
-  // ssr: false,
+  ssr: false,
 } satisfies Config;
