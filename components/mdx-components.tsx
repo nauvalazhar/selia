@@ -1,5 +1,7 @@
+import { ScrollArea } from '@base-ui-components/react';
 import { CopyButton } from 'components/copy-button';
 import { cn } from 'lib/utils';
+import { useState } from 'react';
 
 export default {
   h1: ({ children, ...props }: React.ComponentProps<'h1'>) => {
@@ -11,29 +13,52 @@ export default {
   h3: ({ children, ...props }: React.ComponentProps<'h3'>) => {
     return <h3 {...props}>{children}</h3>;
   },
-  pre: ({ children, ...props }: React.ComponentProps<'pre'>) => {
+  pre: ({
+    children,
+    style: _style,
+    clip,
+    ...props
+  }: React.ComponentProps<'pre'> & {
+    filename?: string;
+    clip?: boolean;
+  }) => {
+    const filename = props.filename;
+    const [isClipOpen, setIsClipOpen] = useState(false);
+
     return (
-      <div className="relative">
-        <CopyButton />
-        <pre
-          {...props}
-          className={cn(
-            'flex flex-col my-4',
-            '*:data-filename:flex *:data-filename:font-sans',
-            '*:data-filename:font-semibold *:data-filename:text-sm',
-            '*:data-filename:text-dimmed *:data-filename:select-none',
-            '*:data-filename:-mx-1 *:data-filename:-mt-1',
-            '*:data-filename:px-4 *:data-filename:h-10',
-            '*:data-filename:items-center',
-            'rounded-3xl !bg-surface-01/50 p-1 border border-boder-01',
-            'relative outline-none leading-relaxed',
-            '*:[code]:w-full *:[code]:rounded-3xl',
-            '*:[code]:p-4 *:[code]:bg-surface-01',
-            '*:[code]:border *:[code]:border-boder-02',
+      <div className="w-full bg-surface-01 rounded-3xl p-1 ring ring-boder-01 my-4 [&+p]:mt-8">
+        <header className="flex px-2.5 h-10 items-center justify-between mb-1">
+          {filename && (
+            <span className="text-sm font-semibold text-dimmed">
+              {filename}
+            </span>
           )}
-        >
-          {children}
-        </pre>
+          <CopyButton />
+        </header>
+        <div className="relative w-full bg-surface-02/80 ring ring-boder-02 rounded-3xl px-4 py-4.5 **:[code,pre]:outline-none flex flex-col">
+          <ScrollArea.Root
+            className={cn(
+              clip && !isClipOpen ? 'h-72 overflow-hidden -mb-4' : '',
+            )}
+          >
+            <ScrollArea.Viewport>
+              <pre {...props}>{children}</pre>
+            </ScrollArea.Viewport>
+          </ScrollArea.Root>
+          {clip && (
+            <button
+              className={cn(
+                'flex items-center justify-center w-full absolute bottom-0 inset-x-0 py-4',
+                'bg-linear-to-b from-surface-02/50 to-surface-02 rounded-b-3xl cursor-pointer',
+                'font-semibold text-sm text-muted hover:text-foreground transition-colors',
+                'outline-none',
+              )}
+              onClick={() => setIsClipOpen(!isClipOpen)}
+            >
+              {isClipOpen ? 'Hide Code' : 'Show Code'}
+            </button>
+          )}
+        </div>
       </div>
     );
   },

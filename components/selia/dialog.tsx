@@ -1,5 +1,5 @@
 import { Dialog as BaseDialog } from '@base-ui-components/react/dialog';
-import { buttonVariants } from 'components/selia/button';
+import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 
 export function Dialog({

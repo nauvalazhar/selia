@@ -1,5 +1,5 @@
 import { useRender } from '@base-ui-components/react';
-import { buttonVariants } from 'components/selia/button';
+import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 
 export function Pagination({ ...props }: React.ComponentProps<'nav'>) {

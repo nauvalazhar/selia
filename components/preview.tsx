@@ -10,7 +10,7 @@ import * as ALL_EXAMPLES from 'components/examples';
 import { ScrollArea } from '@base-ui-components/react';
 
 const highlighter = await createHighlighterCore({
-  themes: [import('@shikijs/themes/tokyo-night')],
+  themes: [import('@shikijs/themes/ayu-dark')],
   langs: [
     import('@shikijs/langs/tsx'),
     import('@shikijs/langs/typescript'),
@@ -131,7 +131,7 @@ export function PreviewCode({ children }: { children: string }) {
         <ScrollArea.Viewport className="h-full overscroll-contain overflow-auto max-h-72">
           <ShikiHighlighter
             language="tsx"
-            theme="tokyo-night"
+            theme="ayu-dark"
             className="**:[pre]:!p-0 **:[pre]:!overflow-visible"
             showLanguage={false}
             highlighter={highlighter}

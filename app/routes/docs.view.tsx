@@ -2,7 +2,6 @@ import type { Route } from './+types/docs.view';
 import path from 'node:path';
 import type { ShikiTransformer } from 'shiki';
 import { transformerNotationHighlight } from '@shikijs/transformers';
-import { h } from 'hastscript';
 import { useMemo } from 'react';
 import { Preview, PreviewDemo } from 'components/preview';
 import { cn } from 'lib/utils';
@@ -16,13 +15,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import { componentName } from '~/lib/components';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ArrowRightLeftIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from 'lucide-react';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { Link } from 'react-router';
 
 const transformers: ShikiTransformer[] = [
@@ -32,18 +25,10 @@ const transformers: ShikiTransformer[] = [
       const raw = this.options.meta?.__raw;
       // "filename=\"Basic Alert\""
       const filename = raw?.match(/filename="([^"]+)"/)?.[1]?.replace(/"/g, '');
+      const clip = raw?.match(/clip/)?.[0];
 
-      if (!filename) return;
-
-      const span = h(
-        'span',
-        {
-          'data-filename': filename,
-        },
-        filename,
-      );
-
-      node.children.unshift(span);
+      node.properties.filename = filename;
+      node.properties.clip = clip ? true : false;
     },
   },
 ];
@@ -113,7 +98,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
           [
             rehypeShiki,
             {
-              theme: 'tokyo-night',
+              theme: 'ayu-dark',
               transformers,
             },
           ],
@@ -174,7 +159,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
             '[&>p:first-of-type]:mb-8',
             '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
             '*:[ul]:leading-relaxed',
-            '[p_a]:text-foreground *:[p_a]:font-medium *:[p_a]:border-b',
+            '[p_a]:text-foreground **:[p_a]:font-medium **:[p_a]:border-b',
           )}
         >
           <MDXRemote

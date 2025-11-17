@@ -1,4 +1,4 @@
-import { buttonVariants } from 'components/selia/button';
+import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 import {
   Toaster,

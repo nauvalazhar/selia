@@ -1,5 +1,5 @@
 import { AlertDialog as BaseAlertDialog } from '@base-ui-components/react/alert-dialog';
-import { buttonVariants } from 'components/selia/button';
+import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 
 export function AlertDialog({
