@@ -102,6 +102,7 @@ export default function LayoutDocs({
   useEffect(() => {
     closeSidebar();
   }, [location.pathname]);
+  const pathname = location.pathname.replace(/\/$/, '');
 
   return (
     <>
@@ -152,7 +153,7 @@ export default function LayoutDocs({
                   {prologue.map((item) => (
                     <SidebarItem
                       key={item.path}
-                      active={location.pathname === item.path}
+                      active={pathname === item.path}
                       render={<Link to={item.path} />}
                     >
                       {item.title}
@@ -167,7 +168,7 @@ export default function LayoutDocs({
                     <SidebarItem
                       key={component.slug}
                       className="capitalize"
-                      active={location.pathname === `/docs/${component.slug}`}
+                      active={pathname === `/docs/${component.slug}`}
                       render={<Link to={`/docs/${component.slug}`} />}
                     >
                       {component.name}

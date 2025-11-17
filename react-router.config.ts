@@ -1,19 +1,21 @@
 import type { Config } from '@react-router/dev/config';
-import { readdir } from 'node:fs/promises';
-import path from 'node:path';
 
 export default {
   // Config options...
   // Server-side render by default, to enable SPA mode set this to `false`
   async prerender({ getStaticPaths }) {
-    const components = await readdir(
-      path.join(import.meta.dirname, 'components/selia'),
-    );
+    const components = await import.meta.glob('./app/routes/docs.*.mdx');
     return [
       ...getStaticPaths(),
-      ...components.map(
-        (component) => `/docs/${component.replace('.tsx', '')}`,
-      ),
+      ...Object.keys(components).map((component) => {
+        const filename = component
+          .split('/')
+          .pop()
+          ?.replace('.mdx', '')
+          .replace('docs.', '');
+
+        return `/docs/${filename}`;
+      }),
     ];
   },
   // ssr: false,
