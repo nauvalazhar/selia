@@ -29,7 +29,7 @@ export default function SelectIconExample() {
 }
 
 const optionsWithIcon = [
-  { value: 'reading', label: 'Readingj', icon: <BookIcon /> },
+  { value: 'reading', label: 'Reading', icon: <BookIcon /> },
   { value: 'writing', label: 'Writing', icon: <PencilIcon /> },
   { value: 'gaming', label: 'Gaming', icon: <Gamepad2Icon /> },
 ];

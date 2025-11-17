@@ -8,7 +8,7 @@ export default function Index() {
     <>
       <title>Selia – User interface for humans</title>
 
-      <div className="container mx-auto py-14 max-sm:px-4 flex items-center justify-center h-screen">
+      <div className="container mx-auto py-14 max-sm:px-4 flex items-center justify-center h-dvh">
         <div className="w-full lg:w-4/12 mx-auto md:grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5">
           <img
             src="/selia.png"

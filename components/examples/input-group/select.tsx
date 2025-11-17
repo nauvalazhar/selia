@@ -16,7 +16,7 @@ export default function InputGroupSelectExample() {
           <SelectTrigger>
             <SelectValue placeholder="USD" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-lg:w-auto">
             <SelectItem value="USD">USD</SelectItem>
             <SelectItem value="EUR">EUR</SelectItem>
             <SelectItem value="GBP">GBP</SelectItem>

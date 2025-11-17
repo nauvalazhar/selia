@@ -6,13 +6,10 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarList,
-  SidebarLogo,
   SidebarMenu,
 } from 'components/selia/sidebar';
 import type { Route } from './+types/docs';
 import { cn } from 'lib/utils';
-import { readdir } from 'node:fs/promises';
-import path from 'node:path';
 import { Link, Outlet, redirect, useLocation } from 'react-router';
 import { TableOfContents } from 'components/table-of-contents';
 import { ScrollArea } from '@base-ui-components/react';
@@ -25,31 +22,10 @@ import {
   XIcon,
 } from 'lucide-react';
 import { Kbd } from 'components/selia/kbd';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
-
-function humanName(name: string) {
-  return (
-    name.charAt(0).toUpperCase() +
-    name.slice(1).replace('.tsx', '').replace(/-/g, ' ')
-  );
-}
-
-const prologue = [
-  {
-    title: 'Introduction',
-    path: '/docs/introduction',
-  },
-  {
-    title: 'Installation',
-    path: '/docs/installation',
-  },
-  {
-    title: 'Customization',
-    path: '/docs/customization',
-  },
-];
+import { getSidebarMenu } from '~/lib/sidebar';
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
@@ -59,30 +35,13 @@ export async function loader({ request }: Route.LoaderArgs) {
     return redirect('/docs/introduction');
   }
 
-  let componentsFolder = '../../components/selia';
+  const sidebarMenu = await getSidebarMenu();
 
-  if (process.env.NODE_ENV === 'production') {
-    componentsFolder = '../../../components/selia';
-  }
-
-  const components = await readdir(
-    path.join(import.meta.dirname, componentsFolder),
-  );
-
-  const componentsMap = components
-    .map((component) => {
-      return {
-        name: humanName(component),
-        slug: component.replace('.tsx', ''),
-      };
-    })
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  return { componentsMap, name: humanName(pathname) };
+  return { sidebarMenu };
 }
 
 export default function LayoutDocs({
-  loaderData: { componentsMap, name },
+  loaderData: { sidebarMenu },
 }: Route.ComponentProps) {
   const location = useLocation();
   const {
@@ -144,7 +103,7 @@ export default function LayoutDocs({
         <Sidebar
           className={cn(
             'lg:sticky top-0 max-h-dvh lg:w-72 px-1.5 lg:px-0',
-            'fixed z-30 w-full max-lg:h-full bg-surface01 lg:bg-transparent transition-all',
+            'fixed z-30 w-full max-lg:h-dvh bg-surface01 lg:bg-transparent transition-all',
             isSidebarOpen ? 'right-0' : '-right-full',
           )}
         >
@@ -153,40 +112,27 @@ export default function LayoutDocs({
           </SidebarHeader>
           <SidebarContent render={<SidebarScrollArea />}>
             <SidebarMenu>
-              <SidebarGroup>
-                <SidebarGroupTitle>Prologue</SidebarGroupTitle>
-                <SidebarList line size="compact">
-                  {prologue.map((item) => (
-                    <SidebarItem
-                      key={item.path}
-                      active={pathname === item.path}
-                      render={<Link to={item.path} />}
-                    >
-                      {item.title}
-                    </SidebarItem>
-                  ))}
-                </SidebarList>
-              </SidebarGroup>
-              <SidebarGroup>
-                <SidebarGroupTitle>Components</SidebarGroupTitle>
-                <SidebarList line size="compact">
-                  {componentsMap.map((component) => (
-                    <SidebarItem
-                      key={component.slug}
-                      className="capitalize"
-                      active={pathname === `/docs/${component.slug}`}
-                      render={<Link to={`/docs/${component.slug}`} />}
-                    >
-                      {component.name}
-                    </SidebarItem>
-                  ))}
-                </SidebarList>
-              </SidebarGroup>
+              {sidebarMenu.map((group) => (
+                <SidebarGroup key={group.title}>
+                  <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
+                  <SidebarList line size="compact">
+                    {group.items.map((item) => (
+                      <SidebarItem
+                        key={item.path}
+                        active={pathname === item.path}
+                        render={<Link to={item.path} />}
+                      >
+                        {item.name}
+                      </SidebarItem>
+                    ))}
+                  </SidebarList>
+                </SidebarGroup>
+              ))}
             </SidebarMenu>
           </SidebarContent>
         </Sidebar>
         <main className="w-full">
-          <div className="flex px-4 py-10 md:p-10 gap-6 justify-between">
+          <div className="flex px-4 py-10 md:p-10 gap-6 justify-between w-full flex-wrap">
             <Outlet />
             <aside className="w-64">
               <TableOfContents />
@@ -200,7 +146,7 @@ export default function LayoutDocs({
 
 function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
   return (
-    <ScrollArea.Root className="h-full pt-4">
+    <ScrollArea.Root className="h-full lg:pt-4">
       <ScrollArea.Viewport className={cn('h-full lg:pr-8 max-lg:pb-20')}>
         {children}
       </ScrollArea.Viewport>

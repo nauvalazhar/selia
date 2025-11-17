@@ -7,6 +7,7 @@ import ShikiHighlighter from 'react-shiki/core';
 import { createHighlighterCore, createJavaScriptRegexEngine } from 'shiki';
 import { useParams } from 'react-router';
 import * as ALL_EXAMPLES from 'components/examples';
+import { ScrollArea } from '@base-ui-components/react';
 
 const highlighter = await createHighlighterCore({
   themes: [import('@shikijs/themes/tokyo-night')],
@@ -126,17 +127,31 @@ export function PreviewCode({ children }: { children: string }) {
           )}
         </Button>
       </div>
-      <div className="h-full overscroll-contain overflow-auto max-h-72">
-        <ShikiHighlighter
-          language="tsx"
-          theme="tokyo-night"
-          className="**:[pre]:!p-0"
-          showLanguage={false}
-          highlighter={highlighter}
+      <ScrollArea.Root>
+        <ScrollArea.Viewport className="h-full overscroll-contain overflow-auto max-h-72">
+          <ShikiHighlighter
+            language="tsx"
+            theme="tokyo-night"
+            className="**:[pre]:!p-0 **:[pre]:!overflow-visible"
+            showLanguage={false}
+            highlighter={highlighter}
+          >
+            {children}
+          </ShikiHighlighter>
+        </ScrollArea.Viewport>
+        <ScrollArea.Scrollbar
+          className={cn(
+            'flex w-1 justify-center',
+            'opacity-0 transition-opacity delay-300 pointer-events-none',
+            'data-[hovering]:opacity-100 data-[hovering]:delay-0',
+            'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
+            'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
+            'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
+          )}
         >
-          {children}
-        </ShikiHighlighter>
-      </div>
+          <ScrollArea.Thumb className="w-full rounded bg-surface04" />
+        </ScrollArea.Scrollbar>
+      </ScrollArea.Root>
     </div>
   );
 }
