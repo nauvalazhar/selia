@@ -9,7 +9,7 @@ export default function Variants() {
       <Badge variant="success">Success</Badge>
       <Badge variant="info">Info</Badge>
       <Badge variant="warning">Warning</Badge>
-      <Badge variant="destructive">Destructive</Badge>
+      <Badge variant="danger">Danger</Badge>
     </>
   );
 }

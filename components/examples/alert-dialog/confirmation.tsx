@@ -41,7 +41,7 @@ export default function AlertDialogBasicExample() {
         setDialogOpen(open);
       }}
     >
-      <DialogTrigger render={<Button variant="destructive">Delete</Button>} />
+      <DialogTrigger render={<Button variant="danger">Delete</Button>} />
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Feedback</DialogTitle>
@@ -73,7 +73,7 @@ export default function AlertDialogBasicExample() {
           <AlertDialogFooter>
             <AlertDialogClose>Cancel</AlertDialogClose>
             <Button
-              variant="destructive"
+              variant="danger"
               onClick={() => {
                 setConfirmationOpen(false);
                 setDialogOpen(false);

@@ -9,7 +9,7 @@ export default function Subtle() {
       <Badge variant="success-subtle">Success</Badge>
       <Badge variant="info-subtle">Info</Badge>
       <Badge variant="warning-subtle">Warning</Badge>
-      <Badge variant="destructive-subtle">Destructive</Badge>
+      <Badge variant="danger-subtle">Danger</Badge>
     </>
   );
 }

@@ -14,9 +14,7 @@ import { Button } from 'components/selia/button';
 export default function AlertDialogBasicExample() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="destructive">Delete</Button>}
-      />
+      <AlertDialogTrigger render={<Button variant="danger">Delete</Button>} />
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure?</AlertDialogTitle>
@@ -28,7 +26,7 @@ export default function AlertDialogBasicExample() {
         </AlertDialogBody>
         <AlertDialogFooter>
           <AlertDialogClose>Cancel</AlertDialogClose>
-          <Button variant="destructive">Delete</Button>
+          <Button variant="danger">Delete</Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

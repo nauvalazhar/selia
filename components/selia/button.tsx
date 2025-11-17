@@ -70,23 +70,23 @@ export const buttonVariants = cva(
           'text-tertiary hover:bg-tertiary/25 active:bg-tertiary/25',
           'after:content-none outline-tertiary',
         ],
-        destructive: [
-          'bg-gradient-destructive text-destructive-foreground',
+        danger: [
+          'bg-gradient-danger text-danger-foreground',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
-          'after:rounded outline-destructive',
+          'after:rounded outline-danger',
         ],
-        'destructive-subtle': [
-          'bg-destructive/15 hover:bg-destructive/25 active:bg-destructive/25 text-destructive',
-          'after:content-none outline-destructive',
+        'danger-subtle': [
+          'bg-danger/15 hover:bg-danger/25 active:bg-danger/25 text-danger',
+          'after:content-none outline-danger',
         ],
-        'destructive-outline': [
-          'text-destructive',
-          'border-2 border-destructive hover:bg-destructive/15 active:bg-destructive/15',
-          'after:content-none outline-destructive',
+        'danger-outline': [
+          'text-danger',
+          'border-2 border-danger hover:bg-danger/15 active:bg-danger/15',
+          'after:content-none outline-danger',
         ],
-        'destructive-plain': [
-          'text-destructive hover:bg-destructive/25 active:bg-destructive/25',
-          'after:content-none outline-destructive',
+        'danger-plain': [
+          'text-danger hover:bg-danger/25 active:bg-danger/25',
+          'after:content-none outline-danger',
         ],
         info: [
           'bg-gradient-info text-info-foreground',

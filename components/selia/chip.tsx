@@ -14,8 +14,7 @@ export const chipVariants = cva(
         success: 'bg-success ring-success text-success-foreground',
         info: 'bg-info ring-info text-info-foreground',
         warning: 'bg-warning ring-warning text-warning-foreground',
-        destructive:
-          'bg-destructive ring-destructive text-destructive-foreground',
+        danger: 'bg-danger ring-danger text-danger-foreground',
       },
       size: {
         sm: 'text-sm px-1.5 h-5 rounded-md [&_svg]:size-3.5',

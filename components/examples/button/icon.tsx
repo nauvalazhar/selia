@@ -7,7 +7,7 @@ export default function ButtonIconExample() {
       <Button variant="secondary" size="icon">
         <PlayIcon />
       </Button>
-      <Button variant="destructive">
+      <Button variant="danger">
         <Trash2Icon /> Delete
       </Button>
     </>

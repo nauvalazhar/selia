@@ -8,7 +8,7 @@ export default function ButtonProgressExample() {
   return (
     <div className="flex flex-col items-start justify-center text-center gap-2">
       <Button
-        variant="destructive"
+        variant="danger"
         progress={pending}
         onClick={() => {
           setPending(true);

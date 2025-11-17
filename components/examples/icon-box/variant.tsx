@@ -32,7 +32,7 @@ export default function IconBoxVariantExample() {
       <IconBox variant="warning">
         <TriangleAlertIcon />
       </IconBox>
-      <IconBox variant="destructive">
+      <IconBox variant="danger">
         <Trash2Icon />
       </IconBox>
     </>

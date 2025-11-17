@@ -104,18 +104,18 @@ export default function ItemVariantExample() {
           </Button>
         </ItemAction>
       </Item>
-      <Item variant="destructive">
+      <Item variant="danger">
         <ItemMedia>
-          <IconBox variant="destructive">
+          <IconBox variant="danger">
             <Trash2Icon />
           </IconBox>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Destructive</ItemTitle>
+          <ItemTitle>Danger</ItemTitle>
           <ItemDescription>This item is dangerous.</ItemDescription>
         </ItemContent>
         <ItemAction>
-          <Button size="sm" variant="destructive" pill>
+          <Button size="sm" variant="danger" pill>
             Delete
           </Button>
         </ItemAction>

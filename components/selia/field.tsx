@@ -48,7 +48,7 @@ export function FieldError({
   return (
     <BaseField.Error
       data-slot="field-error"
-      className={cn('text-destructive', className)}
+      className={cn('text-danger', className)}
       {...props}
     />
   );

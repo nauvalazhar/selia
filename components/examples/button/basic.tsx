@@ -6,7 +6,7 @@ export default function Basic() {
       <Button>Default</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="tertiary">Tertiary</Button>
-      <Button variant="destructive">Destructive</Button>
+      <Button variant="danger">Danger</Button>
     </>
   );
 }

@@ -72,7 +72,7 @@ export default function DropdownGroupExample() {
           </DropdownSubmenu>
         </DropdownGroup>
         <DropdownSeparator />
-        <DropdownItem className="text-destructive">
+        <DropdownItem className="text-danger">
           Quit App
           <Kbd className="ml-auto">⌘ Q</Kbd>
         </DropdownItem>

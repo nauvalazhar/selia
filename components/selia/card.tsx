@@ -110,7 +110,10 @@ export function CardBody({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-body"
-      className={cn('p-6 *:data-[slot=table-container]:-m-6', className)}
+      className={cn(
+        'p-6 *:data-[slot=table-container]:-m-6 **:data-[slot=item]:px-6',
+        className,
+      )}
       {...props}
     />
   );

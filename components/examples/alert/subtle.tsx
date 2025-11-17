@@ -17,7 +17,7 @@ export default function AlertExample() {
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="destructive-subtle">
+      <Alert variant="danger-subtle">
         <XCircleIcon />
         Payment failed. Check your card details.
       </Alert>

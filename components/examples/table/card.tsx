@@ -47,7 +47,7 @@ export default function TableBasicExample() {
                 <TableCell>Jane Doe</TableCell>
                 <TableCell>jane.doe@example.com</TableCell>
                 <TableCell>
-                  <Badge variant="destructive">Blocked</Badge>
+                  <Badge variant="danger">Blocked</Badge>
                 </TableCell>
                 <TableCell>
                   <Button variant="secondary" size="sm">

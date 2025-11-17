@@ -10,7 +10,7 @@ export default function IconBoxExample() {
       <IconBox variant="info">
         <InfoIcon />
       </IconBox>
-      <IconBox variant="destructive">
+      <IconBox variant="danger">
         <Trash2Icon />
       </IconBox>
     </>

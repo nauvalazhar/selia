@@ -24,9 +24,9 @@ export const badgeVariants = cva(
         warning: 'bg-warning text-warning-foreground',
         'warning-subtle': 'bg-warning/15 text-warning',
         'warning-outline': 'border-warning text-warning',
-        destructive: 'bg-destructive text-destructive-foreground',
-        'destructive-subtle': 'bg-destructive/15 text-destructive',
-        'destructive-outline': 'border-destructive text-destructive',
+        danger: 'bg-danger text-danger-foreground',
+        'danger-subtle': 'bg-danger/15 text-danger',
+        'danger-outline': 'border-danger text-danger',
       },
       size: {
         sm: 'px-1 h-5 rounded-[calc(var(--radius)*0.5)] text-xs [&_svg]:size-3',

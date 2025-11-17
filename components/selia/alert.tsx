@@ -16,9 +16,9 @@ export const alertVariants = cva(
       variant: {
         default: 'bg-surface02 text-foreground',
         secondary: 'bg-gradient-secondary text-secondary-foreground',
-        destructive: [
-          'bg-gradient-destructive text-destructive-foreground',
-          '*:data-[slot=alert-description]:text-destructive-foreground/80',
+        danger: [
+          'bg-gradient-danger text-danger-foreground',
+          '*:data-[slot=alert-description]:text-danger-foreground/80',
         ],
         info: [
           'bg-gradient-info text-info-foreground',
@@ -38,8 +38,8 @@ export const alertVariants = cva(
         ],
         'secondary-subtle':
           'bg-secondary/15 text-secondary-foreground ring ring-secondary',
-        'destructive-subtle':
-          'bg-destructive/15 text-destructive ring ring-destructive [&_svg]:text-destructive',
+        'danger-subtle':
+          'bg-danger/15 text-danger ring ring-danger [&_svg]:text-danger',
         'info-subtle': 'bg-info/15 text-info ring ring-info [&_svg]:text-info',
         'success-subtle':
           'bg-success/15 text-success ring ring-success [&_svg]:text-success',

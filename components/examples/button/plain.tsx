@@ -6,7 +6,7 @@ export default function Plain() {
       <Button variant="primary-plain">Primary</Button>
       <Button variant="secondary-plain">Secondary</Button>
       <Button variant="tertiary-plain">Tertiary</Button>
-      <Button variant="destructive-plain">Destructive</Button>
+      <Button variant="danger-plain">Danger</Button>
       <Button variant="info-plain">Info</Button>
       <Button variant="success-plain">Success</Button>
       <Button variant="warning-plain">Warning</Button>

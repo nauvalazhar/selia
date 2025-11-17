@@ -10,7 +10,7 @@ export const iconBoxVariants = cva(
         primary: 'bg-gradient-primary text-primary-foreground',
         secondary: 'bg-gradient-secondary text-secondary-foreground',
         tertiary: 'bg-gradient-tertiary text-tertiary-foreground',
-        destructive: 'bg-gradient-destructive text-destructive-foreground',
+        danger: 'bg-gradient-danger text-danger-foreground',
         info: 'bg-gradient-info text-info-foreground',
         success: 'bg-gradient-success text-success-foreground',
         warning: 'bg-gradient-warning text-warning-foreground',

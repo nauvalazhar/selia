@@ -17,7 +17,7 @@ export default function AlertSolidExample() {
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="destructive">
+      <Alert variant="danger">
         <XCircleIcon />
         Payment failed. Check your card details.
       </Alert>

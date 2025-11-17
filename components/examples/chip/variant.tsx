@@ -9,7 +9,7 @@ export default function Variants() {
       <Chip variant="success">Success</Chip>
       <Chip variant="info">Info</Chip>
       <Chip variant="warning">Warning</Chip>
-      <Chip variant="destructive">Destructive</Chip>
+      <Chip variant="danger">Danger</Chip>
     </>
   );
 }
