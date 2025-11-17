@@ -7,7 +7,7 @@ Setup Selia for your project.
 First, install the dependencies:
 
 ```bash filename="Terminal"
-bun i @base-ui-components/react tailwind-merge clsx
+pnpm add @base-ui-components/react tailwind-merge clsx class-variance-authority
 ```
 
 ## Tailwind
@@ -264,7 +264,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-## Font Family
+## Path Aliases
+
+Add the `baseUrl` compiler option to your `tsconfig.json` file:
+
+```json filename="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+  }
+}
+```
+
+## Font Family (optional)
 
 You can use any font you like, but Selia was designed with [Inter](https://fonts.google.com/specimen/Inter) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono).
 
@@ -286,5 +298,5 @@ Add the following to your CSS file:
 Use the following command to download all the components:
 
 ```bash filename="Terminal"
-bunx degit nauvalazhar/selia/components/selia components/selia
+pnpx degit nauvalazhar/selia/components/selia components/selia
 ```
