@@ -3,6 +3,18 @@ import { Button } from './selia/button';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { Suspense, useRef, useState } from 'react';
 import { Spinner } from './selia/spinner';
+import ShikiHighlighter from 'react-shiki/core';
+import { createHighlighterCore, createJavaScriptRegexEngine } from 'shiki';
+
+const highlighter = await createHighlighterCore({
+  themes: [import('@shikijs/themes/tokyo-night')],
+  langs: [
+    import('@shikijs/langs/tsx'),
+    import('@shikijs/langs/typescript'),
+    import('@shikijs/langs/css'),
+  ],
+  engine: createJavaScriptRegexEngine(),
+});
 
 export function Preview({
   children,
@@ -23,11 +35,7 @@ export function Preview({
         </div>
       )}
       {children}
-      {sources && sources[name] && (
-        <PreviewCode>
-          <div dangerouslySetInnerHTML={{ __html: sources[name] }} />
-        </PreviewCode>
-      )}
+      {sources && sources[name] && <PreviewCode>{sources[name]}</PreviewCode>}
     </div>
   );
 }
@@ -46,15 +54,14 @@ export function PreviewDemo({
     >
       <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 w-full">
         <Suspense fallback={<Spinner className="size-6" />}>
-          {' '}
-          {children}{' '}
+          {children}
         </Suspense>
       </div>
     </div>
   );
 }
 
-export function PreviewCode({ children }: React.ComponentProps<'div'>) {
+export function PreviewCode({ children }: { children: string }) {
   const [isCopied, setIsCopied] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -99,7 +106,15 @@ export function PreviewCode({ children }: React.ComponentProps<'div'>) {
         </Button>
       </div>
       <div className="h-full overscroll-contain overflow-auto max-h-72">
-        {children}
+        <ShikiHighlighter
+          language="tsx"
+          theme="tokyo-night"
+          className="**:[pre]:!p-0"
+          showLanguage={false}
+          highlighter={highlighter}
+        >
+          {children}
+        </ShikiHighlighter>
       </div>
     </div>
   );

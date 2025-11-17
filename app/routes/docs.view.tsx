@@ -50,11 +50,18 @@ export async function loader({ params }: Route.LoaderArgs) {
   const pathname = params.path;
 
   let componentExamples;
-  let sources;
+  let sources: Record<string, string> = {};
 
   if (pathname in examples) {
     componentExamples = await examples[pathname as ExampleName]();
-    sources = await highlightExamples(componentExamples);
+    sources = Object.fromEntries(
+      await Promise.all(
+        Object.entries(componentExamples).map(async ([key, { path }]) => [
+          key,
+          await Bun.file(path).text(),
+        ]),
+      ),
+    );
   }
 
   try {
