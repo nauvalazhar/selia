@@ -1,44 +1,38 @@
-export const examples = {
-  'alert-dialog': () => import('./alert-dialog').then((m) => m.examples),
-  alert: () => import('./alert').then((m) => m.examples),
-  avatar: () => import('./avatar').then((m) => m.examples),
-  badge: () => import('./badge').then((m) => m.examples),
-  button: () => import('./button').then((m) => m.examples),
-  card: () => import('./card').then((m) => m.examples),
-  checkbox: () => import('./checkbox').then((m) => m.examples),
-  chip: () => import('./chip').then((m) => m.examples),
-  combobox: () => import('./combobox').then((m) => m.examples),
-  dialog: () => import('./dialog').then((m) => m.examples),
-  divider: () => import('./divider').then((m) => m.examples),
-  dropdown: () => import('./dropdown').then((m) => m.examples),
-  field: () => import('./field').then((m) => m.examples),
-  fieldset: () => import('./fieldset').then((m) => m.examples),
-  heading: () => import('./heading').then((m) => m.examples),
-  'icon-box': () => import('./icon-box').then((m) => m.examples),
-  'input-group': () => import('./input-group').then((m) => m.examples),
-  input: () => import('./input').then((m) => m.examples),
-  item: () => import('./item').then((m) => m.examples),
-  kbd: () => import('./kbd').then((m) => m.examples),
-  label: () => import('./label').then((m) => m.examples),
-  pagination: () => import('./pagination').then((m) => m.examples),
-  popover: () => import('./popover').then((m) => m.examples),
-  progress: () => import('./progress').then((m) => m.examples),
-  radio: () => import('./radio').then((m) => m.examples),
-  select: () => import('./select').then((m) => m.examples),
-  separator: () => import('./separator').then((m) => m.examples),
-  sidebar: () => import('./sidebar').then((m) => m.examples),
-  slider: () => import('./slider').then((m) => m.examples),
-  spinner: () => import('./spinner').then((m) => m.examples),
-  stack: () => import('./stack').then((m) => m.examples),
-  switch: () => import('./switch').then((m) => m.examples),
-  table: () => import('./table').then((m) => m.examples),
-  tabs: () => import('./tabs').then((m) => m.examples),
-  text: () => import('./text').then((m) => m.examples),
-  textarea: () => import('./textarea').then((m) => m.examples),
-  toast: () => import('./toast').then((m) => m.examples),
-  tooltip: () => import('./tooltip').then((m) => m.examples),
-};
-
-export type ExampleName = keyof typeof examples;
-
-export const exampleNames = Object.keys(examples) as ExampleName[];
+export { examples as alert } from './alert';
+export { examples as alertDialog } from './alert-dialog';
+export { examples as avatar } from './avatar';
+export { examples as badge } from './badge';
+export { examples as button } from './button';
+export { examples as card } from './card';
+export { examples as checkbox } from './checkbox';
+export { examples as chip } from './chip';
+export { examples as combobox } from './combobox';
+export { examples as dialog } from './dialog';
+export { examples as divider } from './divider';
+export { examples as dropdown } from './dropdown';
+export { examples as field } from './field';
+export { examples as fieldset } from './fieldset';
+export { examples as heading } from './heading';
+export { examples as iconBox } from './icon-box';
+export { examples as input } from './input';
+export { examples as inputGroup } from './input-group';
+export { examples as item } from './item';
+export { examples as kbd } from './kbd';
+export { examples as label } from './label';
+export { examples as pagination } from './pagination';
+export { examples as popover } from './popover';
+export { examples as progress } from './progress';
+export { examples as radio } from './radio';
+export { examples as select } from './select';
+export { examples as separator } from './separator';
+export { examples as sidebar } from './sidebar';
+export { examples as slider } from './slider';
+export { examples as spinner } from './spinner';
+export { examples as stack } from './stack';
+export { examples as switch } from './switch';
+export { examples as table } from './table';
+export { examples as tabs } from './tabs';
+export { examples as text } from './text';
+export { examples as textarea } from './textarea';
+export { examples as toast } from './toast';
+export { examples as tooltip } from './tooltip';

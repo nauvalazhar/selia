@@ -5,6 +5,8 @@ import { Suspense, useRef, useState } from 'react';
 import { Spinner } from './selia/spinner';
 import ShikiHighlighter from 'react-shiki/core';
 import { createHighlighterCore, createJavaScriptRegexEngine } from 'shiki';
+import { useParams } from 'react-router';
+import * as ALL_EXAMPLES from 'components/examples';
 
 const highlighter = await createHighlighterCore({
   themes: [import('@shikijs/themes/tokyo-night')],
@@ -18,15 +20,28 @@ const highlighter = await createHighlighterCore({
 
 export function Preview({
   children,
+  component,
   title,
   name,
   sources,
 }: {
+  component?: string;
   children: React.ReactNode;
   title?: string;
   name: string;
   sources: Record<string, string>;
 }) {
+  const { path } = useParams();
+  const pathname = path?.replace(/-([a-z])/g, (_, letter) =>
+    letter.toUpperCase(),
+  );
+  const exampleName = component ?? pathname;
+
+  const exampleComponents =
+    ALL_EXAMPLES[exampleName as keyof typeof ALL_EXAMPLES];
+  const ExampleComponent =
+    exampleComponents[name as keyof typeof exampleComponents].component;
+
   return (
     <div className="relative p-1 bg-surface01 w-full ring ring-border01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
@@ -34,7 +49,13 @@ export function Preview({
           <span className="text-sm font-medium text-dim">{title}</span>
         </div>
       )}
-      {children}
+
+      {ExampleComponent && (
+        <PreviewDemo>
+          <ExampleComponent />
+        </PreviewDemo>
+      )}
+
       {sources && sources[name] && <PreviewCode>{sources[name]}</PreviewCode>}
     </div>
   );

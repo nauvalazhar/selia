@@ -1,20 +1,19 @@
 import type { Route } from './+types/docs.view';
-import { examples, type ExampleName } from 'components/examples';
-import { highlightExamples } from '~/lib/highlighter';
-import { bundleMDX } from 'mdx-bundler';
-import { getMDXComponent } from 'mdx-bundler/client';
 import path from 'node:path';
 import type { ShikiTransformer } from 'shiki';
 import { transformerNotationHighlight } from '@shikijs/transformers';
 import { h } from 'hastscript';
-import rehypeToc from '@jsdevtools/rehype-toc';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeShiki from '@shikijs/rehype';
 import { useMemo } from 'react';
 import { Preview, PreviewDemo } from 'components/preview';
 import { cn } from 'lib/utils';
 import mdxComponents from 'components/mdx-components';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
+import * as ALL_EXAMPLES from 'components/examples';
+import rehypeSlug from 'rehype-slug';
+import rehypeToc from '@jsdevtools/rehype-toc';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeShiki from '@shikijs/rehype';
 
 function humanName(name: string) {
   return (
@@ -48,18 +47,34 @@ const transformers: ShikiTransformer[] = [
 
 export async function loader({ params }: Route.LoaderArgs) {
   const pathname = params.path;
+  const componentName = pathname.replace(/-([a-z])/g, (_, letter) =>
+    letter.toUpperCase(),
+  );
 
-  let componentExamples;
   let sources: Record<string, string> = {};
 
-  if (pathname in examples) {
-    componentExamples = await examples[pathname as ExampleName]();
+  if (componentName in ALL_EXAMPLES) {
     sources = Object.fromEntries(
       await Promise.all(
-        Object.entries(componentExamples).map(async ([key, { path }]) => [
-          key,
-          await Bun.file(path).text(),
-        ]),
+        Object.entries(
+          ALL_EXAMPLES[componentName as keyof typeof ALL_EXAMPLES],
+        ).map(async ([key, { path }]) => {
+          let source = await Bun.file(path).text();
+          source = source.replace(
+            /import\s*{([^}]*)}\s*from/g,
+            (match, group) => {
+              // Remove newlines and all whitespace for easier comma cleanup
+              let cleaned = group
+                .replace(/[\r\n]+/g, ' ') // Remove all newlines
+                .replace(/\s+/g, ' ') // Collapse whitespace
+                .replace(/,(\s*,)+/g, ',') // Remove accidental double commas
+                .replace(/,\s*$/, ' '); // Remove any trailing comma at the end
+              return `import {${cleaned}} from`;
+            },
+          );
+
+          return [key, source];
+        }),
       ),
     );
   }
@@ -69,43 +84,37 @@ export async function loader({ params }: Route.LoaderArgs) {
       path.join(process.cwd(), 'app/routes', `docs.${pathname}.mdx`),
     ).text();
 
-    const { code: mdxCode } = await bundleMDX({
-      source,
-      cwd: import.meta.dirname,
-      mdxOptions(options) {
-        options.rehypePlugins = [
-          ...(options.rehypePlugins || []),
-          ...[
-            rehypeSlug,
-            [
-              rehypeToc,
-              {
-                headings: ['h1', 'h2', 'h3'],
-                position: 'beforeend',
-                cssClasses: {
-                  toc: 'hidden',
-                },
+    const mdxCode = await serialize(source, {
+      mdxOptions: {
+        rehypePlugins: [
+          rehypeSlug,
+          [
+            rehypeToc,
+            {
+              headings: ['h1', 'h2', 'h3'],
+              position: 'beforeend',
+              cssClasses: {
+                toc: 'hidden',
               },
-            ],
-            [
-              rehypeAutolinkHeadings,
-              {
-                behavior: 'wrap',
-                properties: {
-                  className: ['anchor'],
-                },
-              },
-            ],
-            [
-              rehypeShiki,
-              {
-                theme: 'tokyo-night',
-                transformers,
-              },
-            ],
+            },
           ],
-        ];
-        return options;
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: 'wrap',
+              properties: {
+                className: ['anchor'],
+              },
+            },
+          ],
+          [
+            rehypeShiki,
+            {
+              theme: 'tokyo-night',
+              transformers,
+            },
+          ],
+        ],
       },
     });
 
@@ -126,10 +135,11 @@ const components = {
   PreviewDemo,
 };
 
-export default function DocsView({ loaderData }: Route.ComponentProps) {
+export default function DocsView({
+  loaderData,
+  params: { path },
+}: Route.ComponentProps) {
   const { mdxCode, sources, name } = loaderData;
-
-  const Content = useMemo(() => getMDXComponent(mdxCode), [mdxCode]);
 
   const memoizedComponents = useMemo(
     () => ({
@@ -162,11 +172,9 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
           '[p_a]:text-foreground *:[p_a]:font-medium *:[p_a]:border-b',
         )}
       >
-        <Content
-          components={{
-            ...components,
-            ...memoizedComponents,
-          }}
+        <MDXRemote
+          {...mdxCode}
+          components={{ ...components, ...memoizedComponents }}
         />
       </article>
     </>
