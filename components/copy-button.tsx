@@ -9,7 +9,7 @@ export function CopyButton() {
     <Button
       size="xs"
       variant="secondary-subtle"
-      className="absolute top-1.5 right-2 text-muted z-10"
+      className="absolute top-1.5 right-2 text-muted z-10 text-sm"
       pill
       onClick={(e) => {
         e.preventDefault();

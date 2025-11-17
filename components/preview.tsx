@@ -84,7 +84,7 @@ export function PreviewCode({ children }: React.ComponentProps<'div'>) {
           size="xs"
           variant="secondary-subtle"
           pill
-          className="text-muted"
+          className="text-muted text-sm"
           onClick={handleCopy}
         >
           {isCopied ? (
