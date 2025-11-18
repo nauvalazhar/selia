@@ -39,6 +39,7 @@
   --dialog-background: rgba(34, 35, 37, 0.9);
   --dialog-foreground: #f7f7f8;
   --dialog-border: #2e3032;
+  --dialog-footer-background: var(--surface-01);
   --toast-background: var(--surface-04);
   --toast-foreground: var(--foreground);
   --toast-border: var(--boder-04);
@@ -159,6 +160,7 @@
   --color-dialog: var(--dialog-background);
   --color-dialog-foreground: var(--dialog-foreground);
   --color-dialog-border: var(--dialog-border);
+  --color-dialog-footer: var(--dialog-footer-background);
   --color-tabs: var(--tabs-background);
   --color-tabs-foreground: var(--tabs-foreground);
   --color-toast: var(--toast-background);

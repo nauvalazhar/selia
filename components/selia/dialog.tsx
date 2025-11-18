@@ -133,7 +133,7 @@ export function DialogFooter({
       {...props}
       className={cn(
         'flex items-center justify-end gap-1.5',
-        'px-6 py-3.5 bg-surface-01 border-t border-boder-01 rounded-b-2xl',
+        'px-6 py-3.5 bg-dialog-footer border-t border-dialog-border rounded-b-2xl',
         className,
       )}
     >

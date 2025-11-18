@@ -10,6 +10,7 @@ export default [
   index('routes/_index.tsx'),
   layout('routes/docs.tsx', [route('docs/:path', 'routes/docs.view.tsx')]),
   route('testing', 'routes/testing.tsx'),
+  route('playground', 'routes/playground.tsx'),
 ] satisfies RouteConfig;
 
 // export default flatRoutes();
