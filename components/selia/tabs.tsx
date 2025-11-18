@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Tabs as BaseTabs } from '@base-ui-components/react/tabs';
 import { cn } from 'lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 export function Tabs({
   className,
@@ -15,18 +16,31 @@ export function Tabs({
   );
 }
 
+export const tabsListVariants = cva(
+  'relative z-0 flex items-center bg-tabs p-1 rounded-xl',
+  {
+    variants: {
+      variant: {
+        line: '',
+      },
+    },
+    defaultVariants: {
+      variant: 'line',
+    },
+  },
+);
+
 export function TabsList({
   className,
+  variant,
   children,
   ...props
-}: React.ComponentProps<typeof BaseTabs.List>) {
+}: React.ComponentProps<typeof BaseTabs.List> &
+  VariantProps<typeof tabsListVariants>) {
   return (
     <BaseTabs.List
       data-slot="tabs-list"
-      className={cn(
-        'relative z-0 flex items-center bg-tabs p-1 rounded-xl',
-        className,
-      )}
+      className={cn(tabsListVariants({ variant }), className)}
       {...props}
     >
       {children}

@@ -1,4 +1,5 @@
 import { ScrollArea } from '@base-ui-components/react';
+import { CodeTabs, CodeTabsPanel } from 'components/code-tabs';
 import { CopyButton } from 'components/copy-button';
 import { cn } from 'lib/utils';
 import { useState } from 'react';
@@ -35,13 +36,15 @@ export default {
           )}
           <CopyButton />
         </header>
-        <div className="relative w-full bg-surface-02/80 ring ring-boder-02 rounded-3xl px-4 py-4.5 **:[code,pre]:outline-none flex flex-col">
+        <div className="relative w-full bg-surface-02/80 ring ring-boder-02 rounded-3xl **:[code,pre]:outline-none flex flex-col">
           <ScrollArea.Root
             className={cn(
-              clip && !isClipOpen ? 'h-72 overflow-hidden -mb-4' : '',
+              clip && !isClipOpen
+                ? 'h-72 overflow-hidden pointer-events-none'
+                : '',
             )}
           >
-            <ScrollArea.Viewport>
+            <ScrollArea.Viewport className="px-4 py-4.5 rounded-3xl h-full">
               <pre {...props}>{children}</pre>
             </ScrollArea.Viewport>
           </ScrollArea.Root>
@@ -65,4 +68,6 @@ export default {
   code: ({ children, ...props }: React.ComponentProps<'code'>) => {
     return <code {...props}>{children}</code>;
   },
+  CodeTabs,
+  CodeTabsPanel,
 };

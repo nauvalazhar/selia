@@ -1,4 +1,5 @@
 import { codeToHtml } from 'shiki';
+import { createHighlighterCore, createJavaScriptRegexEngine } from 'shiki';
 
 const cache = new Map<string, string>();
 
@@ -43,3 +44,14 @@ export async function highlightExamples(
     ),
   );
 }
+
+export const highlighter = await createHighlighterCore({
+  themes: [import('@shikijs/themes/ayu-dark')],
+  langs: [
+    import('@shikijs/langs/tsx'),
+    import('@shikijs/langs/typescript'),
+    import('@shikijs/langs/css'),
+    import('@shikijs/langs/bash'),
+  ],
+  engine: createJavaScriptRegexEngine(),
+});

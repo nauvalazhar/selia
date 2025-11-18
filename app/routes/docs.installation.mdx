@@ -6,9 +6,20 @@ Setup Selia for your project.
 
 First, install the dependencies:
 
-```bash filename="Terminal"
-pnpm add @base-ui-components/react tailwind-merge clsx class-variance-authority
-```
+<CodeTabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <CodeTabsPanel value="npm" language="bash">
+    npm install @base-ui-components/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn add @base-ui-components/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpm add @base-ui-components/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bun add @base-ui-components/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel> 
+</CodeTabs>
 
 ## Tailwind
 
@@ -297,6 +308,14 @@ Add the following to your CSS file:
 
 Use the following command to download all the components:
 
-```bash filename="Terminal"
-pnpx degit nauvalazhar/selia/components/selia components/selia
-```
+<CodeTabs items={['npx', 'pnpx', 'bunx']}>
+  <CodeTabsPanel value="npx" language="bash">
+    npx degit nauvalazhar/selia/components/selia components/selia
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpx" language="bash">
+    pnpx degit nauvalazhar/selia/components/selia components/selia
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bunx" language="bash">
+    bunx degit nauvalazhar/selia/components/selia components/selia
+  </CodeTabsPanel>
+</CodeTabs>
