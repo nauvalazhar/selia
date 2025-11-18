@@ -8,6 +8,7 @@ import {
 } from 'react-router';
 
 import type { Route } from './+types/root';
+import './selia.css';
 import './app.css';
 import { Toast } from 'components/selia/toast';
 
