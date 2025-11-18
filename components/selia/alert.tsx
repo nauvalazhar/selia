@@ -39,14 +39,14 @@ export const alertVariants = cva(
         'secondary-subtle':
           'bg-secondary/15 text-secondary-foreground ring ring-secondary',
         'danger-subtle':
-          'bg-danger/15 text-danger ring ring-danger [&_svg]:text-danger',
-        'info-subtle': 'bg-info/15 text-info ring ring-info [&_svg]:text-info',
+          'bg-danger/15 text-danger ring ring-danger *:[svg]:text-danger',
+        'info-subtle': 'bg-info/15 text-info ring ring-info *:[svg]:text-info',
         'success-subtle':
-          'bg-success/15 text-success ring ring-success [&_svg]:text-success',
+          'bg-success/15 text-success ring ring-success *:[svg]:text-success',
         'warning-subtle':
-          'bg-warning/15 text-warning ring ring-warning [&_svg]:text-warning',
+          'bg-warning/15 text-warning ring ring-warning *:[svg]:text-warning',
         'tertiary-subtle':
-          'bg-tertiary/15 text-tertiary ring ring-tertiary [&_svg]:text-tertiary',
+          'bg-tertiary/15 text-tertiary ring ring-tertiary *:[svg]:text-tertiary',
       },
     },
     defaultVariants: {

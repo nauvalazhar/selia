@@ -50,7 +50,7 @@ const dropdownItemClasses = [
   'data-[highlighted]:bg-accent-04 data-[selected]:bg-accent-04',
   'data-[popup-open]:bg-accent-04',
   'focus-visible:outline-none',
-  '[&_svg]:size-4 [&_svg]:text-foreground',
+  '*:[svg]:size-4 *:[svg]:text-foreground',
   '*:data-[slot=switch]:ml-auto',
 ];
 

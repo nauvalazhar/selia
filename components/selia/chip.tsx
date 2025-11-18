@@ -17,9 +17,9 @@ export const chipVariants = cva(
         danger: 'bg-danger ring-danger text-danger-foreground',
       },
       size: {
-        sm: 'text-sm px-1.5 h-5 rounded-md [&_svg]:size-3.5',
-        md: 'px-2 h-6.5 rounded-lg [&_svg]:size-4',
-        lg: 'px-2.5 h-7.5 rounded-lg [&_svg]:size-4.5',
+        sm: 'text-sm px-1.5 h-5 rounded-md *:[svg]:size-3.5',
+        md: 'px-2 h-6.5 rounded-lg *:[svg]:size-4',
+        lg: 'px-2.5 h-7.5 rounded-lg *:[svg]:size-4.5',
       },
       pill: {
         true: 'rounded-full',

@@ -68,7 +68,7 @@ export function TabsItem({
         'h-8 py-1 px-3 text-muted flex-1 font-medium',
         'data-selected:text-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-        '[&_svg]:size-4',
+        '*:[svg]:size-4',
         className,
       )}
       {...props}
