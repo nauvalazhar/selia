@@ -15,6 +15,7 @@ import { TableOfContents } from 'components/table-of-contents';
 import { ScrollArea } from '@base-ui-components/react';
 import { Button } from 'components/selia/button';
 import {
+  ExternalLinkIcon,
   ListTreeIcon,
   MenuIcon,
   SearchIcon,
@@ -184,15 +185,24 @@ function Navbar() {
       <div className="container mx-auto px-4 md:px-2.5 h-full">
         <div className="flex items-center w-full h-full justify-between">
           <Logo />
-          <Button
-            variant="secondary-subtle"
-            size="sm"
-            className="lg:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <XIcon /> : <MenuIcon />}
-            Menu
-          </Button>
+          <div className="flex items-center gap-2.5">
+            <Button
+              variant="secondary-subtle"
+              size="sm-icon"
+              className="lg:hidden"
+            >
+              <SearchIcon />
+            </Button>
+            <Button
+              variant="secondary-subtle"
+              size="sm"
+              className="lg:hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <XIcon /> : <MenuIcon />}
+              Menu
+            </Button>
+          </div>
           <ul
             className={cn(
               'flex lg:gap-6',
@@ -202,7 +212,8 @@ function Navbar() {
               'bg-surface-01 lg:bg-transparent',
               '**:[a]:text-muted **:[a]:font-medium',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
-              '**:[a]:duration-75',
+              '**:[a]:duration-75 **:[a]:flex **:[a]:items-center **:[a]:gap-2.5',
+              '**:[svg]:size-4',
               'max-lg:**:[a]:px-4 max-lg:**:[a]:py-2.5',
               'max-lg:**:[a]:flex',
               'max-lg:transition-all',
@@ -219,6 +230,16 @@ function Navbar() {
             </li>
             <li>
               <Link to="/docs/blocks">Blocks</Link>
+            </li>
+            <li>
+              <a
+                href="https://github.com/nauvalazhar/selia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+                <ExternalLinkIcon />
+              </a>
             </li>
             <li>
               <Button
