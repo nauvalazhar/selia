@@ -36,7 +36,12 @@ export default {
           )}
           <CopyButton />
         </header>
-        <div className="relative w-full bg-surface-02/80 ring ring-border-02 rounded-3xl **:[code,pre]:outline-none flex flex-col">
+        <div
+          className={cn(
+            'relative w-full bg-surface-02/80 ring ring-border-02 rounded-3xl **:[code,pre]:outline-none flex flex-col',
+            '**:[code]:w-full **:[code]:inline-block',
+          )}
+        >
           <ScrollArea.Root
             className={cn(
               clip && !isClipOpen
@@ -45,7 +50,18 @@ export default {
             )}
           >
             <ScrollArea.Viewport className="px-4 py-4.5 rounded-3xl h-full">
-              <pre {...props}>{children}</pre>
+              <pre
+                {...props}
+                className={cn(
+                  '[&:has(.highlighted)_.line:not(.highlighted)]:opacity-70 hover:[&_.line]:!opacity-100',
+                  '[&_.highlighted]:bg-linear-to-r [&_.highlighted]:from-primary/20 [&_.highlighted]:to-primary/5',
+                  '[&_.highlighted]:border-l-2 [&_.highlighted]:border-primary',
+                  '[&_.highlighted]:-m-4 [&_.highlighted]:pl-4 [&_.highlighted]:transition-opacity',
+                  '[&_.highlighted]:w-[calc(100%+2rem)] [&_.highlighted]:inline-block',
+                )}
+              >
+                {children}
+              </pre>
             </ScrollArea.Viewport>
           </ScrollArea.Root>
           {clip && (
