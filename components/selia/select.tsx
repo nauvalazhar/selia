@@ -25,8 +25,8 @@ export const selectVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-input ring ring-input-border hover:ring-boder-05',
-        subtle: 'bg-input-subtle ring ring-input-border hover:ring-boder-05',
+        default: 'bg-input ring ring-input-border hover:ring-border-05',
+        subtle: 'bg-input-subtle ring ring-input-border hover:ring-border-05',
         plain: 'bg-transparent hover:bg-input',
       },
       pill: {
@@ -251,7 +251,7 @@ export function SelectSeparator({
   return (
     <BaseSelect.Separator
       data-slot="select-separator"
-      className={cn('h-px my-1 bg-boder-02', className)}
+      className={cn('h-px my-1 bg-border-02', className)}
       {...props}
     />
   );

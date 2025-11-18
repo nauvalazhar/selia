@@ -115,7 +115,7 @@ export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
     line: {
       true: [
         'relative before:absolute before:top-0 before:bottom-1',
-        'before:left-3.5 before:w-px before:bg-boder-01',
+        'before:left-3.5 before:w-px before:bg-border-01',
         '**:data-[slot=sidebar-item]:pl-7',
         '**:data-[slot=sidebar-item]:hover:bg-accent-01/60',
         '**:data-[slot=sidebar-item]:data-active:bg-accent-01/60',

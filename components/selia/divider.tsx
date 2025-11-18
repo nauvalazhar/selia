@@ -6,7 +6,7 @@ export function Divider({ className, ...props }: React.ComponentProps<'hr'>) {
   return (
     <hr
       data-slot="divider"
-      className={cn('border-boder-02', className)}
+      className={cn('border-border-02', className)}
       {...props}
     />
   );
@@ -15,11 +15,11 @@ export function Divider({ className, ...props }: React.ComponentProps<'hr'>) {
 export const dividerTextVariants = cva('flex items-center gap-2.5', {
   variants: {
     variant: {
-      default: 'before:bg-boder-02 before:h-px before:w-full',
+      default: 'before:bg-border-02 before:h-px before:w-full',
       center:
-        'before:bg-boder-02 after:bg-boder-02 before:h-px before:w-full after:h-px after:w-full',
-      left: 'after:bg-boder-02 after:h-px after:w-full',
-      right: 'before:bg-boder-02 before:h-px before:w-full',
+        'before:bg-border-02 after:bg-border-02 before:h-px before:w-full after:h-px after:w-full',
+      left: 'after:bg-border-02 after:h-px after:w-full',
+      right: 'before:bg-border-02 before:h-px before:w-full',
     },
   },
   defaultVariants: {

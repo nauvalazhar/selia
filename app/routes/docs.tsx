@@ -178,7 +178,7 @@ function Navbar() {
   return (
     <nav
       className={cn(
-        'h-16 border-b border-boder-00 w-full relative z-20 transition-colors',
+        'h-16 border-b border-border-00 w-full relative z-20 transition-colors',
         menuOpen ? 'max-md:bg-surface-01' : '',
       )}
     >
@@ -206,7 +206,7 @@ function Navbar() {
           <ul
             className={cn(
               'flex lg:gap-6',
-              'max-lg:flex-col max-md:border-b max-md:border-boder-01',
+              'max-lg:flex-col max-md:border-b max-md:border-border-01',
               'max-lg:absolute w-full lg:w-auto',
               'left-0 lg:left-auto lg:items-center',
               'bg-surface-01 lg:bg-transparent',

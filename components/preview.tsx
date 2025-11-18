@@ -44,9 +44,9 @@ export function Preview({
     exampleComponents[name as keyof typeof exampleComponents].component;
 
   return (
-    <div className="relative p-1 bg-surface-01 w-full ring ring-boder-01 rounded-3xl mb-6 flex flex-col my-4">
+    <div className="relative p-1 bg-surface-01 w-full ring ring-border-01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
-        <div className="px-6 h-14 flex items-center border-b border-boder-01 w-full">
+        <div className="px-6 h-14 flex items-center border-b border-border-01 w-full">
           <span className="text-sm font-medium text-dim">{title}</span>
         </div>
       )}
@@ -70,7 +70,7 @@ export function PreviewDemo({
     <div
       className={cn(
         'flex min-h-40 bg-surface-00 items-center justify-center flex-wrap',
-        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-boder-01',
+        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border-01',
       )}
       {...props}
     >
@@ -105,7 +105,7 @@ export function PreviewCode({ children }: { children: string }) {
         '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
       )}
     >
-      <div className="w-full border-b border-boder-01 flex justify-between items-center py-2 px-2.5">
+      <div className="w-full border-b border-border-01 flex justify-between items-center py-2 px-2.5">
         <span className="text-sm font-medium text-dimmed select-none">
           Source
         </span>

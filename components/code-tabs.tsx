@@ -38,7 +38,7 @@ export function CodeTabs({
     <Tabs
       defaultValue={items[0]}
       className={cn(
-        'p-1 bg-surface-01 rounded-3xl ring ring-boder-01 items-start gap-0',
+        'p-1 bg-surface-01 rounded-3xl ring ring-border-01 items-start gap-0',
         'relative',
       )}
     >
@@ -93,7 +93,7 @@ export function CodeTabsPanel({
   return (
     <TabsPanel value={value} keepMounted className="w-full mt-1 outline-none">
       <ScrollArea.Root>
-        <ScrollArea.Viewport className="bg-surface-02/80 ring ring-boder-02 rounded-3xl px-4 py-4.5 outline-none">
+        <ScrollArea.Viewport className="bg-surface-02/80 ring ring-border-02 rounded-3xl px-4 py-4.5 outline-none">
           <ShikiHighlighter
             language={language}
             theme="ayu-dark"

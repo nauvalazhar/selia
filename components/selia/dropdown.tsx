@@ -72,7 +72,7 @@ export function DropdownSeparator({
   return (
     <BaseMenu.Separator
       data-slot="dropdown-separator"
-      className={cn('h-px my-1 bg-boder-04', props.className)}
+      className={cn('h-px my-1 bg-border-04', props.className)}
       {...props}
     />
   );

@@ -27,7 +27,7 @@ export default {
     const [isClipOpen, setIsClipOpen] = useState(false);
 
     return (
-      <div className="w-full bg-surface-01 rounded-3xl p-1 ring ring-boder-01 my-4 [&+p]:mt-8">
+      <div className="w-full bg-surface-01 rounded-3xl p-1 ring ring-border-01 my-4 [&+p]:mt-8">
         <header className="flex px-2.5 h-10 items-center justify-between mb-1">
           {filename && (
             <span className="text-sm font-semibold text-dimmed">
@@ -36,7 +36,7 @@ export default {
           )}
           <CopyButton />
         </header>
-        <div className="relative w-full bg-surface-02/80 ring ring-boder-02 rounded-3xl **:[code,pre]:outline-none flex flex-col">
+        <div className="relative w-full bg-surface-02/80 ring ring-border-02 rounded-3xl **:[code,pre]:outline-none flex flex-col">
           <ScrollArea.Root
             className={cn(
               clip && !isClipOpen
