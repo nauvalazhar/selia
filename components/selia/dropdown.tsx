@@ -93,7 +93,7 @@ export function DropdownSubmenuTrigger({
       {...props}
       className={cn(
         dropdownItemClasses,
-        'after:bg-chevron-right after:size-4 after:ml-auto',
+        'after:bg-chevron-right-dark dark:after:bg-chevron-right-dark after:size-4 after:ml-auto',
         props.className,
       )}
     />

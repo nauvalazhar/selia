@@ -42,7 +42,7 @@ export function CodeTabs({
         'relative',
       )}
     >
-      <div className="flex items-center justify-between w-full px-2.5">
+      <div className="flex items-center justify-between w-full px-2.5 dark">
         <TabsList variant="line" className="bg-transparent px-0">
           {items.map((item) => (
             <TabsItem key={item} value={item}>

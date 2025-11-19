@@ -21,14 +21,22 @@ export default function AvatarInitialExample() {
       <Avatar size="md">
         <AvatarImage src="/avatar02.png" alt="Avatar" />
         <AvatarFallback>BS</AvatarFallback>
-        <AvatarIndicator position="top" className="bg-red-500" size="lg">
+        <AvatarIndicator
+          position="top"
+          className="bg-red-500 text-white"
+          size="lg"
+        >
           3
         </AvatarIndicator>
       </Avatar>
       <Avatar size="md">
         <AvatarImage src="/avatar03.png" alt="Avatar" />
         <AvatarFallback>BS</AvatarFallback>
-        <AvatarIndicator position="bottom" className="bg-blue-500" size="lg">
+        <AvatarIndicator
+          position="bottom"
+          className="bg-blue-500 text-white"
+          size="lg"
+        >
           <VerifiedIcon />
         </AvatarIndicator>
       </Avatar>

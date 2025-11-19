@@ -153,7 +153,7 @@ export function SidebarList({
 
 const sidebarItemClasses = [
   'flex items-center gap-2.5 w-full relative z-10',
-  'text-foreground font-medium cursor-pointer',
+  'text-foreground cursor-pointer',
   'transition-colors duration-75 hover:bg-accent',
   '**:[svg]:size-4 **:[svg]:text-muted',
   'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',

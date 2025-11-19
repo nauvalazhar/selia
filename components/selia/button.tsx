@@ -8,7 +8,7 @@ export const buttonVariants = cva(
     'relative font-semibold select-none',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
     'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100 active:after:opacity-100 after:transition-opacity',
-    'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
+    'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 shadow',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
     'disabled:opacity-70 disabled:pointer-events-none',
@@ -18,6 +18,7 @@ export const buttonVariants = cva(
       variant: {
         primary: [
           'bg-gradient-primary text-primary-foreground',
+          'ring ring-primary-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-primary',
         ],
@@ -36,6 +37,7 @@ export const buttonVariants = cva(
         ],
         secondary: [
           'bg-gradient-secondary text-secondary-foreground',
+          'ring ring-secondary-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-secondary',
         ],
@@ -54,6 +56,7 @@ export const buttonVariants = cva(
         ],
         tertiary: [
           'bg-gradient-tertiary hover:bg-gradient-tertiary/90 active:bg-gradient-tertiary/90 text-tertiary-foreground',
+          'ring ring-tertiary-border',
           'inset-shadow-2xs inset-shadow-background/15 shadow',
           'after:rounded after:bg-background/10 focus-visible:outline-tertiary',
         ],
@@ -72,6 +75,7 @@ export const buttonVariants = cva(
         ],
         danger: [
           'bg-gradient-danger text-danger-foreground',
+          'ring ring-danger-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-danger',
         ],
@@ -90,6 +94,7 @@ export const buttonVariants = cva(
         ],
         info: [
           'bg-gradient-info text-info-foreground',
+          'ring ring-info-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-info',
         ],
@@ -108,6 +113,7 @@ export const buttonVariants = cva(
         ],
         success: [
           'bg-gradient-success text-success-foreground',
+          'ring ring-success-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-success',
         ],
@@ -126,6 +132,7 @@ export const buttonVariants = cva(
         ],
         warning: [
           'bg-gradient-warning text-warning-foreground',
+          'ring ring-warning-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-warning',
         ],

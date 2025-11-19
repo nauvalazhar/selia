@@ -37,13 +37,4 @@ export const examples = {
       })),
     ),
   },
-  alternative: {
-    name: 'Alternative',
-    path: 'components/examples/card/alternative.tsx',
-    component: React.lazy(() =>
-      import('./alternative').then((mod) => ({
-        default: mod.default,
-      })),
-    ),
-  },
 };

@@ -70,7 +70,7 @@ export function PreviewDemo({
     <div
       className={cn(
         'flex min-h-40 bg-surface-00 items-center justify-center flex-wrap',
-        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border-01',
+        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border dark:border-border-01',
       )}
       {...props}
     >
@@ -105,8 +105,8 @@ export function PreviewCode({ children }: { children: string }) {
         '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
       )}
     >
-      <div className="w-full border-b border-border-01 flex justify-between items-center py-2 px-2.5">
-        <span className="text-sm font-medium text-dimmed select-none">
+      <div className="w-full border-b border-border-01 flex justify-between items-center py-2 px-2.5 dark">
+        <span className="text-sm font-medium text-white/50 select-none">
           Source
         </span>
         <Button

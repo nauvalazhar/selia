@@ -161,7 +161,7 @@ function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
           'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
         )}
       >
-        <ScrollArea.Thumb className="w-full rounded bg-surface-04" />
+        <ScrollArea.Thumb className="w-full rounded bg-secondary dark:bg-surface-04" />
       </ScrollArea.Scrollbar>
     </ScrollArea.Root>
   );
@@ -178,7 +178,7 @@ function Navbar() {
   return (
     <nav
       className={cn(
-        'h-16 border-b border-border-00 w-full relative z-20 transition-colors',
+        'h-16 border-b border-border w-full relative z-20 transition-colors',
         menuOpen ? 'max-md:bg-surface-01' : '',
       )}
     >
@@ -210,7 +210,7 @@ function Navbar() {
               'max-lg:absolute w-full lg:w-auto',
               'left-0 lg:left-auto lg:items-center',
               'bg-surface-01 lg:bg-transparent',
-              '**:[a]:text-muted **:[a]:font-medium',
+              '**:[a]:text-muted',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75 **:[a]:flex **:[a]:items-center **:[a]:gap-2.5',
               '**:[svg]:size-4',

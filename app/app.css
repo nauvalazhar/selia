@@ -1,3 +1,49 @@
+:root {
+  --surface-00: oklch(0.9697 0.0017 247.84);
+  --surface-01: oklch(0.2348 0.0041 264.49);
+  --surface-02: oklch(0.2559 0.004 264.5);
+  --surface-03: oklch(0.2973 0.0056 271.23);
+  --surface-04: oklch(0.3147 0.0071 285.99);
+
+  --accent-00: oklch(0.2739 0.0055 286.03);
+  --accent-01: oklch(0.3084 0.0061 258.35);
+  --accent-02: oklch(0.3281 0.006 258.35);
+  --accent-03: oklch(0.3838 0.0085 276.94);
+  --accent-04: oklch(0.4001 0.01 285.94);
+
+  --border-00: oklch(0.2586 0.0035 228.93);
+  --border-01: oklch(0.2878 0.0046 247.99);
+  --border-02: oklch(0.308 0.0046 247.98);
+  --border-03: oklch(0.3451 0.0071 274.78);
+  --border-04: oklch(0.3893 0.0117 285.84);
+  --border-05: oklch(0.4265 0.0115 285.9);
+}
+
+.dark {
+  --surface-00: oklch(0.2039 0.0025 247.95);
+}
+
+@theme inline {
+  --color-surface-00: var(--surface-00);
+  --color-surface-01: var(--surface-01);
+  --color-surface-02: var(--surface-02);
+  --color-surface-03: var(--surface-03);
+  --color-surface-04: var(--surface-04);
+
+  --color-accent-00: var(--accent-00);
+  --color-accent-01: var(--accent-01);
+  --color-accent-02: var(--accent-02);
+  --color-accent-03: var(--accent-03);
+  --color-accent-04: var(--accent-04);
+
+  --color-border-00: var(--border-00);
+  --color-border-01: var(--border-01);
+  --color-border-02: var(--border-02);
+  --color-border-03: var(--border-03);
+  --color-border-04: var(--border-04);
+  --color-border-05: var(--border-05);
+}
+
 @layer base {
   .root {
     isolation: isolate;

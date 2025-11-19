@@ -25,7 +25,7 @@ export function CheckboxGroupLabel({
     render,
     props: {
       'data-slot': 'checkbox-group-label',
-      className: cn('text-foreground', props.className),
+      className: cn('text-foreground font-medium', props.className),
       ...props,
     },
   });
@@ -48,7 +48,7 @@ export function Checkbox({
       )}
     >
       <BaseCheckbox.Indicator
-        className="data-[unchecked]:hidden flex text-foreground"
+        className="data-[unchecked]:hidden flex"
         render={(props, state) => (
           <span {...props}>
             {state.indeterminate ? (
@@ -74,7 +74,7 @@ export function Checkbox({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="3"
-                className="size-3"
+                className="size-3 text-primary-foreground"
                 viewBox="0 0 24 24"
               >
                 <path d="M20 6 9 17l-5-5"></path>

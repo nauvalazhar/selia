@@ -145,7 +145,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
       <div className="flex-1 w-full xl:max-w-xl 2xl:max-w-2xl mx-auto">
         <article
           className={cn(
-            'text-zinc-300',
+            'text-zinc-600 dark:text-zinc-300',
             '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-4',
             '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2,h3]:mb-3',
             '*:[h2+h3]:mt-8 *:[h2]:mt-14',

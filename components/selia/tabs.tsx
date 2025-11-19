@@ -50,6 +50,7 @@ export function TabsList({
           'translate-x-(--active-tab-left) -translate-y-1/2',
           'rounded-xl z-[-1] transition-all',
           'bg-tabs-accent shadow inset-shadow-2xs inset-shadow-white/15',
+          'ring ring-tabs-border',
         )}
       />
     </BaseTabs.List>
@@ -83,7 +84,7 @@ export function TabsPanel({
   return (
     <BaseTabs.Panel
       data-slot="tabs-panel"
-      className={cn(className)}
+      className={cn('outline-none', className)}
       {...props}
     />
   );
