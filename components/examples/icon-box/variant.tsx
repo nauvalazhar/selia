@@ -17,9 +17,6 @@ export default function IconBoxVariantExample() {
       <IconBox variant="primary">
         <SettingsIcon />
       </IconBox>
-      <IconBox variant="secondary">
-        <SettingsIcon />
-      </IconBox>
       <IconBox variant="tertiary">
         <SettingsIcon />
       </IconBox>

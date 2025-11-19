@@ -49,7 +49,7 @@ export function TabsList({
           'absolute top-1/2 left-0 h-8 w-(--active-tab-width)',
           'translate-x-(--active-tab-left) -translate-y-1/2',
           'rounded-xl z-[-1] transition-all',
-          'bg-gradient-accent-03 shadow inset-shadow-2xs inset-shadow-white/15',
+          'bg-tabs-accent shadow inset-shadow-2xs inset-shadow-white/15',
         )}
       />
     </BaseTabs.List>

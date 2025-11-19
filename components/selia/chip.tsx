@@ -7,7 +7,6 @@ export const chipVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-accent-03 ring-accent-04 text-foreground',
         primary: 'bg-primary ring-primary text-primary-foreground',
         secondary: 'bg-secondary ring-secondary text-secondary-foreground',
         tertiary: 'bg-tertiary ring-tertiary text-tertiary-foreground',
@@ -26,7 +25,7 @@ export const chipVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'secondary',
       size: 'md',
     },
   },

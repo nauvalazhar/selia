@@ -3,7 +3,3 @@
     isolation: isolate;
   }
 }
-
-@theme {
-  --color-surface-01: oklch(0.9605 0.0046 258.32);
-}

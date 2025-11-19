@@ -115,10 +115,10 @@ export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
     line: {
       true: [
         'relative before:absolute before:top-0 before:bottom-1',
-        'before:left-3.5 before:w-px before:bg-border-01',
+        'before:left-3.5 before:w-px before:bg-border',
         '**:data-[slot=sidebar-item]:pl-7',
-        '**:data-[slot=sidebar-item]:hover:bg-accent-01/60',
-        '**:data-[slot=sidebar-item]:data-active:bg-accent-01/60',
+        '**:data-[slot=sidebar-item]:hover:bg-accent/60',
+        '**:data-[slot=sidebar-item]:data-active:bg-accent/60',
         '**:data-[slot=sidebar-item]:data-active:before:absolute',
         '**:data-[slot=sidebar-item]:data-active:before:w-0.5',
         '**:data-[slot=sidebar-item]:data-active:before:left-3.5',
@@ -154,10 +154,10 @@ export function SidebarList({
 const sidebarItemClasses = [
   'flex items-center gap-2.5 w-full relative z-10',
   'text-foreground font-medium cursor-pointer',
-  'transition-colors duration-75 hover:bg-accent-01',
+  'transition-colors duration-75 hover:bg-accent',
   '**:[svg]:size-4 **:[svg]:text-muted',
   'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
-  'data-popup-open:bg-accent-01',
+  'data-popup-open:bg-accent',
 ];
 
 export function SidebarItem({
@@ -174,11 +174,7 @@ export function SidebarItem({
         props: {
           'data-slot': 'sidebar-item',
           'data-active': active ? true : undefined,
-          className: cn(
-            sidebarItemClasses,
-            active && 'bg-accent-01',
-            className,
-          ),
+          className: cn(sidebarItemClasses, active && 'bg-accent', className),
           ...props,
         },
       })}

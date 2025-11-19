@@ -5,7 +5,7 @@ export function Table({ ...props }: React.ComponentProps<'table'>) {
     <table
       data-slot="table"
       {...props}
-      className={cn('w-full text-foreground text-left', props.className)}
+      className={cn('w-full text-table-foreground text-left', props.className)}
     />
   );
 }
@@ -36,7 +36,7 @@ export function TableHead({ ...props }: React.ComponentProps<'th'>) {
       data-slot="table-head"
       {...props}
       className={cn(
-        'px-6 py-3.5 text-muted font-medium bg-accent-01 border-y border-border-04',
+        'px-6 py-3.5 text-muted font-medium bg-table-head border-y border-table-border',
         props.className,
       )}
     />
@@ -55,7 +55,7 @@ export function TableRow({ ...props }: React.ComponentProps<'tr'>) {
       data-slot="table-row"
       {...props}
       className={cn(
-        'border-b border-border-02 last:border-none hover:bg-accent-01',
+        'border-b border-table-border last:border-none hover:bg-table-accent',
         props.className,
       )}
     />
