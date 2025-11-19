@@ -1,108 +1,22 @@
 import * as React from 'react';
-import { Dialog } from '@base-ui-components/react/dialog';
-import { Autocomplete } from '@base-ui-components/react/autocomplete';
+import * as ALL_EXAMPLES from 'components/examples';
 
 export default function ExampleCommandPalette() {
-  const [open, setOpen] = React.useState(false);
-
-  function handleItemClick(item: Item) {
-    // eslint-disable-next-line no-console
-    console.log('Command executed:', item);
-    setOpen(false);
-  }
-
   return (
-    <div className="w-md">
-      <Autocomplete.Root open items={groupedItems} autoHighlight>
-        <Autocomplete.Input
-          className="w-full border-b border-gray-200 bg-[canvas] px-4 py-4 text-base text-gray-900 outline-none focus-visible:outline-none dark:border-gray-300 dark:text-gray-50"
-          placeholder="Search for apps and commands..."
-        />
-
-        <Autocomplete.Empty className="flex h-[min(25.5rem,50dvh)] items-center justify-center px-4 py-4 text-[0.925rem] leading-4 text-gray-600 empty:m-0 empty:h-0 empty:p-0 empty:hidden dark:text-gray-400">
-          No results found.
-        </Autocomplete.Empty>
-
-        <Autocomplete.List className="h-[min(25.5rem,50dvh)] overflow-auto overscroll-contain px-4 py-2 text-base text-gray-900 scroll-pt-2 scroll-pb-2 empty:h-0 empty:p-0 dark:text-gray-50">
-          {(group: Group) => (
-            <Autocomplete.Group
-              key={group.value}
-              items={group.items}
-              className="pb-2 last:pb-0"
-            >
-              <Autocomplete.GroupLabel className="cursor-default select-none px-2 py-2 text-[0.875rem] leading-4 text-gray-600 dark:text-gray-400">
-                {group.value}
-              </Autocomplete.GroupLabel>
-              <Autocomplete.Collection>
-                {(item: Item) => (
-                  <Autocomplete.Item
-                    key={item.value}
-                    value={item.value}
-                    className="group relative grid h-8 cursor-default select-none grid-cols-[1fr_auto] items-center gap-3 rounded-md px-2 text-base leading-4 text-gray-900 outline-none data-[highlighted]:relative data-[highlighted]:text-gray-900 data-[highlighted]:before:absolute data-[highlighted]:before:inset-0 data-[highlighted]:before:-z-[1] data-[highlighted]:before:rounded data-[highlighted]:before:bg-gray-200 data-[highlighted]:before:content-[''] dark:text-gray-50 dark:data-[highlighted]:before:bg-gray-300/30"
-                    onClick={() => handleItemClick(item)}
-                  >
-                    <span className="font-medium">{item.label}</span>
-                    <span className="text-[0.75rem] text-gray-500 group-data-[highlighted]:text-gray-900 dark:text-gray-400 dark:group-data-[highlighted]:text-gray-900">
-                      {group.value === 'Suggestions'
-                        ? 'Application'
-                        : 'Command'}
-                    </span>
-                  </Autocomplete.Item>
-                )}
-              </Autocomplete.Collection>
-            </Autocomplete.Group>
-          )}
-        </Autocomplete.List>
-
-        <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-3 text-xs text-gray-600 dark:border-gray-300 dark:bg-gray-200/10 dark:text-gray-400">
-          <div className="flex items-center gap-2">
-            <span>Open Application</span>
-            <kbd className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border border-gray-300 bg-gray-100 px-1 text-[0.6875rem] font-medium leading-none text-gray-700 shadow-sm dark:border-gray-300 dark:bg-gray-200/10 dark:text-gray-100">
-              ↵
-            </kbd>
-          </div>
-          <div className="flex items-center gap-2">
-            <span>Actions</span>
-            <kbd className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border border-gray-300 bg-gray-100 px-1 text-[0.6875rem] font-medium leading-none text-gray-700 shadow-sm dark:border-gray-300 dark:bg-gray-200/10 dark:text-gray-100">
-              ⌘
-            </kbd>
-            <kbd className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border border-gray-300 bg-gray-100 px-1 text-[0.6875rem] font-medium leading-none text-gray-700 shadow-sm dark:border-gray-300 dark:bg-gray-200/10 dark:text-gray-100">
-              K
-            </kbd>
-          </div>
+    <div className="w-4/12 mx-auto">
+      {Object.entries(ALL_EXAMPLES).map(([key, value]) => (
+        <div key={key} className="mb-10">
+          <h2 className="text-2xl font-bold">{key}</h2>
+          {Object.entries(value).map(([key, child]) => (
+            <div key={key} className="mb-10">
+              <h3 className="text-xl font-bold">{child.name}</h3>
+              <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 w-full">
+                <child.component />
+              </div>
+            </div>
+          ))}
         </div>
-      </Autocomplete.Root>
+      ))}
     </div>
   );
 }
-
-export interface Item {
-  value: string;
-  label: string;
-}
-
-export interface Group {
-  value: string;
-  items: Item[];
-}
-
-export const suggestions: Item[] = [
-  { value: 'linear', label: 'Linear' },
-  { value: 'figma', label: 'Figma' },
-  { value: 'slack', label: 'Slack' },
-  { value: 'youtube', label: 'YouTube' },
-  { value: 'raycast', label: 'Raycast' },
-];
-
-export const commands: Item[] = [
-  { value: 'clipboard-history', label: 'Clipboard History' },
-  { value: 'import-extension', label: 'Import Extension' },
-  { value: 'create-snippet', label: 'Create Snippet' },
-  { value: 'system-preferences', label: 'System Preferences' },
-  { value: 'window-management', label: 'Window Management' },
-];
-
-export const groupedItems: Group[] = [
-  { value: 'Suggestions', items: suggestions },
-  { value: 'Commands', items: commands },
-];
