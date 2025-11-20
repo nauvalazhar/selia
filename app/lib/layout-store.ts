@@ -3,6 +3,10 @@ import { create } from 'zustand';
 interface LayoutStore {
   isSidebarOpen: boolean;
   isContentsOpen: boolean;
+  isCmdkOpen: boolean;
+  openCmdk: () => void;
+  closeCmdk: () => void;
+  toggleCmdk: () => void;
   openSidebar: () => void;
   closeSidebar: () => void;
   toggleSidebar: () => void;
@@ -26,6 +30,14 @@ export const useLayoutStore = create<LayoutStore>((set) => ({
   toggleContents: () =>
     set((state) => ({
       isContentsOpen: !state.isContentsOpen,
+      isSidebarOpen: false,
+    })),
+  isCmdkOpen: false,
+  openCmdk: () => set({ isCmdkOpen: true, isSidebarOpen: false }),
+  closeCmdk: () => set({ isCmdkOpen: false, isSidebarOpen: false }),
+  toggleCmdk: () =>
+    set((state) => ({
+      isCmdkOpen: !state.isCmdkOpen,
       isSidebarOpen: false,
     })),
 }));

@@ -10,7 +10,7 @@ import {
 } from 'components/selia/sidebar';
 import type { Route } from './+types/docs';
 import { cn } from 'lib/utils';
-import { Link, Outlet, redirect, useLocation } from 'react-router';
+import { Link, Outlet, redirect, useLocation, useNavigate } from 'react-router';
 import { TableOfContents } from 'components/table-of-contents';
 import { ScrollArea } from '@base-ui-components/react';
 import { Button } from 'components/selia/button';
@@ -22,12 +22,38 @@ import {
   SidebarIcon,
   XIcon,
 } from 'lucide-react';
-import { Kbd } from 'components/selia/kbd';
+import { Kbd, KbdGroup } from 'components/selia/kbd';
 import { useEffect, useState } from 'react';
 import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
 import { getSidebarMenu } from '~/lib/sidebar';
 import { ThemeToggle } from 'components/theme-toggle';
+import { Command, CommandContent, CommandBody } from 'components/selia/command';
+import {
+  Autocomplete,
+  AutocompleteInput,
+  AutocompleteEmpty,
+  AutocompleteList,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteCollection,
+  AutocompleteItem,
+  AutocompleteFooter,
+  AutocompleteFooterItem,
+  AutocompleteFooterText,
+} from 'components/selia/autocomplete';
+import { useHotkeys } from 'react-hotkeys-hook';
+
+type Item = {
+  value: string;
+  label: string;
+  meta?: string;
+};
+
+type Group = {
+  value: string;
+  items: Item[];
+};
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
@@ -38,12 +64,21 @@ export async function loader({ request }: Route.LoaderArgs) {
   }
 
   const sidebarMenu = await getSidebarMenu();
+  const items = sidebarMenu.map((m) => ({
+    value: m.title,
+    label: m.title,
+    items: m.items.map((i) => ({
+      value: i.path,
+      label: i.name,
+      meta: 'Documentation',
+    })),
+  }));
 
-  return { sidebarMenu };
+  return { sidebarMenu, items };
 }
 
 export default function LayoutDocs({
-  loaderData: { sidebarMenu },
+  loaderData: { sidebarMenu, items },
 }: Route.ComponentProps) {
   const location = useLocation();
   const {
@@ -65,11 +100,13 @@ export default function LayoutDocs({
   useEffect(() => {
     closeSidebar();
   }, [location.pathname]);
+
   const pathname = location.pathname.replace(/\/$/, '');
 
   return (
     <>
       <Navbar />
+      <Cmdk items={items} />
 
       <div
         className={cn(
@@ -171,6 +208,7 @@ function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const toggleCmdk = useLayoutStore((state) => state.toggleCmdk);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -191,6 +229,7 @@ function Navbar() {
               variant="secondary-subtle"
               size="sm-icon"
               className="lg:hidden"
+              onClick={() => toggleCmdk()}
             >
               <SearchIcon />
             </Button>
@@ -249,6 +288,7 @@ function Navbar() {
                 size="sm"
                 pill
                 className="max-lg:hidden"
+                onClick={() => toggleCmdk()}
               >
                 <SearchIcon />
                 Search
@@ -322,5 +362,77 @@ function Logo() {
       </svg>
       <span className="font-semibold text-lg">Selia</span>
     </Link>
+  );
+}
+
+function Cmdk({ items }: { items: Group[] }) {
+  const { isCmdkOpen, openCmdk, closeCmdk, toggleCmdk } = useLayoutStore(
+    useShallow((state) => ({
+      isCmdkOpen: state.isCmdkOpen,
+      openCmdk: state.openCmdk,
+      closeCmdk: state.closeCmdk,
+      toggleCmdk: state.toggleCmdk,
+    })),
+  );
+  const navigate = useNavigate();
+
+  useHotkeys('meta+k', () => toggleCmdk());
+
+  function handleItemClick(item: Item) {
+    closeCmdk();
+    navigate(item.value);
+  }
+
+  return (
+    <Command open={isCmdkOpen} onOpenChange={toggleCmdk}>
+      <CommandContent>
+        <Autocomplete open items={items} autoHighlight>
+          <CommandBody>
+            <div className="flex items-center border-b border-dialog-border px-5 gap-1">
+              <SearchIcon className="size-4 text-muted" />
+              <AutocompleteInput placeholder="Search for pages..." />
+            </div>
+
+            <AutocompleteEmpty>No results found.</AutocompleteEmpty>
+
+            <AutocompleteList>
+              {(group: Group) => (
+                <AutocompleteGroup key={group.value} items={group.items}>
+                  <AutocompleteGroupLabel>{group.value}</AutocompleteGroupLabel>
+                  <AutocompleteCollection>
+                    {(item: Item) => (
+                      <AutocompleteItem
+                        key={item.value}
+                        value={item.value}
+                        onClick={() => handleItemClick(item)}
+                      >
+                        <span>{item.label}</span>
+                        <span className="ml-auto text-xs text-dimmed">
+                          {item.meta}
+                        </span>
+                      </AutocompleteItem>
+                    )}
+                  </AutocompleteCollection>
+                </AutocompleteGroup>
+              )}
+            </AutocompleteList>
+          </CommandBody>
+
+          <AutocompleteFooter className="px-5 pt-3 pb-2.5">
+            <AutocompleteFooterItem>
+              <Kbd>↵</Kbd>
+              <AutocompleteFooterText>Select Item</AutocompleteFooterText>
+            </AutocompleteFooterItem>
+            <AutocompleteFooterItem>
+              <KbdGroup>
+                <Kbd>↑</Kbd>
+                <Kbd>↓</Kbd>
+              </KbdGroup>
+              <AutocompleteFooterText>Navigate</AutocompleteFooterText>
+            </AutocompleteFooterItem>
+          </AutocompleteFooter>
+        </Autocomplete>
+      </CommandContent>
+    </Command>
   );
 }
