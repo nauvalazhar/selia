@@ -4,7 +4,7 @@ import { cn } from 'lib/utils';
 export const kbdVariants = cva(
   [
     'inline-flex items-center gap-1 px-1.5 h-5.5',
-    'ring ring-kbd-border rounded-md text-sm font-medium',
+    'ring ring-kbd-border rounded-md text-sm/8 font-medium',
   ],
   {
     variants: {
