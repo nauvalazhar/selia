@@ -5,7 +5,7 @@ import { cn } from 'lib/utils';
 
 export const buttonVariants = cva(
   [
-    'relative font-semibold select-none',
+    'relative font-medium select-none',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
     'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100 active:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',

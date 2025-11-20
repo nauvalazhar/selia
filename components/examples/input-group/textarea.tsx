@@ -41,7 +41,7 @@ export default function InputGroupTextareaExample() {
             <SelectItem value="grok">Grok</SelectItem>
           </SelectContent>
         </Select>
-        <Button variant="tertiary-subtle">Send</Button>
+        <Button variant="tertiary">Send</Button>
       </InputGroupBar>
     </InputGroup>
   );

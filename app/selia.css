@@ -14,7 +14,6 @@
   --input: oklch(1 0 0);
   --input-subtle: oklch(0.9764 0.0013 286.38);
   --input-border: oklch(0.8892 0.0041 286.32);
-  --input-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.1);
   --input-accent-border: oklch(0.7907 0.0084 286.21);
   --avatar: oklch(0.9217 0.0029 264.54);
   --avatar-foreground: var(--foreground);
@@ -128,7 +127,6 @@
   --input: oklch(0.2973 0.0056 271.23);
   --input-subtle: oklch(0.2559 0.004 264.5);
   --input-border: oklch(0.3893 0.0117 285.84);
-  --input-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.1);
   --input-accent-border: oklch(0.4265 0.0115 285.9);
   --avatar: oklch(0.3147 0.0071 285.99);
   --avatar-foreground: var(--foreground);
@@ -304,7 +302,6 @@
   --radius: 0.75rem;
   --shadow: var(--shadow);
   --shadow-card: var(--card-shadow);
-  --shadow-input: var(--input-shadow);
 
   --text-sm: 0.75rem;
   --text-base: 0.875rem;
