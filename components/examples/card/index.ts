@@ -37,4 +37,13 @@ export const examples = {
       })),
     ),
   },
+  login: {
+    name: 'Login',
+    path: 'components/examples/card/login.tsx',
+    component: React.lazy(() =>
+      import('./login').then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
 };

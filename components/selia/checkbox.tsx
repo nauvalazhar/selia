@@ -39,10 +39,10 @@ export function Checkbox({
       data-slot="checkbox"
       {...props}
       className={cn(
-        'size-4 shrink-0 flex items-center justify-center rounded-sm ring ring-input-border bg-input',
+        'size-4 shrink-0 flex items-center justify-center rounded-sm border border-input-border bg-input',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-        'data-[checked]:bg-primary data-[checked]:ring-primary',
-        'transition-colors duration-75',
+        'data-[checked]:bg-primary data-[checked]:border-primary',
+        'transition-colors duration-75 hover:border-input-accent-border',
         'disabled::opacity-70 disabled:pointer-events-none',
         props.className,
       )}
