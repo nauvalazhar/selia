@@ -105,7 +105,7 @@ export default function LayoutDocs({
         <Sidebar
           className={cn(
             'lg:sticky top-0 max-h-dvh lg:w-72 px-1.5 lg:px-0',
-            'fixed z-30 w-full max-lg:h-dvh bg-surface-01 lg:bg-transparent transition-all',
+            'fixed z-30 w-full max-lg:h-dvh bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent transition-all',
             isSidebarOpen ? 'right-0' : '-right-full',
           )}
         >
@@ -180,7 +180,7 @@ function Navbar() {
     <nav
       className={cn(
         'h-16 border-b border-border w-full relative z-20 transition-colors',
-        menuOpen ? 'max-md:bg-surface-01' : '',
+        menuOpen ? 'max-md:bg-popover dark:max-md:bg-surface-01' : '',
       )}
     >
       <div className="container mx-auto px-4 md:px-2.5 h-full">
@@ -206,15 +206,16 @@ function Navbar() {
           </div>
           <ul
             className={cn(
-              'flex lg:gap-6',
-              'max-lg:flex-col max-md:border-b max-md:border-border-01',
+              'flex',
+              'max-lg:flex-col max-md:border-border :max-md:border-b dark:max-md:border-border-01',
               'max-lg:absolute w-full lg:w-auto',
               'left-0 lg:left-auto lg:items-center',
-              'bg-surface-01 lg:bg-transparent',
+              'bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent',
               '**:[a]:text-muted',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75 **:[a]:flex **:[a]:items-center **:[a]:gap-2.5',
               '**:[svg]:size-4',
+              '*:mx-3',
               'max-lg:**:[a]:px-4 max-lg:**:[a]:py-2.5',
               'max-lg:**:[a]:flex',
               'max-lg:transition-all',
@@ -242,10 +243,7 @@ function Navbar() {
                 <ExternalLinkIcon />
               </a>
             </li>
-            <li>
-              <ThemeToggle />
-            </li>
-            <li>
+            <li className="!mr-1.5">
               <Button
                 variant="secondary"
                 size="sm"
@@ -256,6 +254,9 @@ function Navbar() {
                 Search
                 <Kbd className="ml-6">⌘ K</Kbd>
               </Button>
+            </li>
+            <li className="!ml-0">
+              <ThemeToggle />
             </li>
           </ul>
         </div>

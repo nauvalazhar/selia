@@ -25,23 +25,15 @@ export function ThemeToggle() {
   let label = null;
 
   if (theme === 'dark') {
-    label = (
-      <>
-        <MoonIcon /> Dark
-      </>
-    );
+    label = <MoonIcon />;
   } else if (theme === 'light') {
     label = (
       <>
-        <SunIcon /> Light
+        <SunIcon />
       </>
     );
   } else if (theme === 'system') {
-    label = (
-      <>
-        <Laptop2Icon /> System
-      </>
-    );
+    label = <Laptop2Icon />;
   }
 
   if (!label) return null;
@@ -50,7 +42,12 @@ export function ThemeToggle() {
     <Dropdown>
       <DropdownTrigger
         render={
-          <Button variant="secondary-plain" pill className="max-lg:hidden">
+          <Button
+            variant="secondary-plain"
+            size="icon"
+            pill
+            className="max-lg:hidden"
+          >
             {label}
           </Button>
         }
