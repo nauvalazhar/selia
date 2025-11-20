@@ -255,7 +255,7 @@ function Navbar() {
                 <Kbd className="ml-6">⌘ K</Kbd>
               </Button>
             </li>
-            <li className="!ml-0">
+            <li className="!ml-0 max-lg:hidden">
               <ThemeToggle />
             </li>
           </ul>

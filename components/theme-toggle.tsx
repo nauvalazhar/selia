@@ -17,12 +17,12 @@ export function ThemeToggle() {
     document.documentElement.classList.toggle(
       'dark',
       theme === 'dark' ||
-        (theme === 'system' &&
+        ((!theme || theme === 'system') &&
           window.matchMedia('(prefers-color-scheme: dark)').matches),
     );
   }, [theme]);
 
-  let label = null;
+  let label = <Laptop2Icon />;
 
   if (theme === 'dark') {
     label = <MoonIcon />;
@@ -32,22 +32,13 @@ export function ThemeToggle() {
         <SunIcon />
       </>
     );
-  } else if (theme === 'system') {
-    label = <Laptop2Icon />;
   }
-
-  if (!label) return null;
 
   return (
     <Dropdown>
       <DropdownTrigger
         render={
-          <Button
-            variant="secondary-plain"
-            size="icon"
-            pill
-            className="max-lg:hidden"
-          >
+          <Button variant="secondary-plain" size="icon" pill>
             {label}
           </Button>
         }

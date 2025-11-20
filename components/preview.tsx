@@ -44,20 +44,26 @@ export function Preview({
     exampleComponents[name as keyof typeof exampleComponents].component;
 
   return (
-    <div className="relative p-0.5 bg-surface-01 w-full ring ring-border-01 rounded-3xl mb-6 flex flex-col my-4">
-      {title && (
-        <div className="px-6 h-14 flex items-center border-b border-border-01 w-full">
-          <span className="text-sm font-medium text-dim">{title}</span>
-        </div>
-      )}
+    <div className="max-md:-mx-4">
+      <div
+        className={cn(
+          'relative md:p-0.5 lg:bg-surface-01 w-full md:ring ring-border-01 md:rounded-3xl mb-6 flex flex-col my-4',
+        )}
+      >
+        {title && (
+          <div className="px-6 h-14 flex items-center border-b border-border-01 w-full">
+            <span className="text-sm font-medium text-dim">{title}</span>
+          </div>
+        )}
 
-      {ExampleComponent && (
-        <PreviewDemo>
-          <ExampleComponent />
-        </PreviewDemo>
-      )}
+        {ExampleComponent && (
+          <PreviewDemo>
+            <ExampleComponent />
+          </PreviewDemo>
+        )}
 
-      {sources && sources[name] && <PreviewCode>{sources[name]}</PreviewCode>}
+        {sources && sources[name] && <PreviewCode>{sources[name]}</PreviewCode>}
+      </div>
     </div>
   );
 }
@@ -70,7 +76,7 @@ export function PreviewDemo({
     <div
       className={cn(
         'flex min-h-40 bg-surface-00 items-center justify-center flex-wrap',
-        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border dark:border-border-01',
+        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap md:rounded-3xl border border-border dark:border-border-01',
       )}
       {...props}
     >
@@ -99,59 +105,62 @@ export function PreviewCode({ children }: { children: string }) {
   };
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-      )}
-    >
-      <div className="w-full border-b border-border-01 flex justify-between items-center py-2 px-2.5 dark">
-        <span className="text-sm font-medium text-white/50 select-none">
-          Source
-        </span>
-        <Button
-          size="xs"
-          variant="secondary-subtle"
-          pill
-          className="text-muted text-sm"
-          onClick={handleCopy}
-        >
-          {isCopied ? (
-            <>
-              <CheckIcon /> Copied
-            </>
-          ) : (
-            <>
-              <CopyIcon /> Copy
-            </>
-          )}
-        </Button>
-      </div>
-      <ScrollArea.Root>
-        <ScrollArea.Viewport className="h-full overscroll-contain overflow-auto max-h-72">
-          <ShikiHighlighter
-            language="tsx"
-            theme="ayu-dark"
-            className="**:[pre]:!p-0 **:[pre]:!overflow-visible"
-            showLanguage={false}
-            highlighter={highlighter}
+    <div className="px-4 md:px-0">
+      <div
+        ref={ref}
+        className={cn(
+          '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
+          'bg-surface-01 md:bg-transparent rounded-3xl md:rounded-none p-1 md:p-0 mt-2 md:mt-0',
+        )}
+      >
+        <div className="w-full border-b border-border-01 flex justify-between items-center py-2 px-2.5 dark">
+          <span className="text-sm font-medium text-white/50 select-none">
+            Source
+          </span>
+          <Button
+            size="xs"
+            variant="secondary-subtle"
+            pill
+            className="text-muted text-sm"
+            onClick={handleCopy}
           >
-            {children}
-          </ShikiHighlighter>
-        </ScrollArea.Viewport>
-        <ScrollArea.Scrollbar
-          className={cn(
-            'flex w-1 justify-center',
-            'opacity-0 transition-opacity delay-300 pointer-events-none',
-            'data-[hovering]:opacity-100 data-[hovering]:delay-0',
-            'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
-            'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
-            'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
-          )}
-        >
-          <ScrollArea.Thumb className="w-full rounded bg-surface-04" />
-        </ScrollArea.Scrollbar>
-      </ScrollArea.Root>
+            {isCopied ? (
+              <>
+                <CheckIcon /> Copied
+              </>
+            ) : (
+              <>
+                <CopyIcon /> Copy
+              </>
+            )}
+          </Button>
+        </div>
+        <ScrollArea.Root>
+          <ScrollArea.Viewport className="h-full overscroll-contain overflow-auto max-h-72">
+            <ShikiHighlighter
+              language="tsx"
+              theme="ayu-dark"
+              className="**:[pre]:!p-0 **:[pre]:!overflow-visible"
+              showLanguage={false}
+              highlighter={highlighter}
+            >
+              {children}
+            </ShikiHighlighter>
+          </ScrollArea.Viewport>
+          <ScrollArea.Scrollbar
+            className={cn(
+              'flex w-1 justify-center',
+              'opacity-0 transition-opacity delay-300 pointer-events-none',
+              'data-[hovering]:opacity-100 data-[hovering]:delay-0',
+              'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
+              'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
+              'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
+            )}
+          >
+            <ScrollArea.Thumb className="w-full rounded bg-surface-04" />
+          </ScrollArea.Scrollbar>
+        </ScrollArea.Root>
+      </div>
     </div>
   );
 }
