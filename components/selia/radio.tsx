@@ -49,7 +49,7 @@ export function Radio({
       )}
       {...props}
     >
-      <BaseRadio.Indicator className="size-2 rounded-full bg-foreground" />
+      <BaseRadio.Indicator className="size-2 rounded-full bg-primary-foreground" />
     </BaseRadio.Root>
   );
 }

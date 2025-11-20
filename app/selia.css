@@ -11,9 +11,9 @@
   --dimmed: oklch(0.607 0.014 271.18);
   --border: oklch(0.906 0.0046 258.33);
   --separator: oklch(0.906 0.0046 258.33);
-  --input: oklch(0.9524 0.0013 286.37);
+  --input: oklch(0.9373 0.0013 286.37);
   --input-subtle: oklch(0.9764 0.0013 286.38);
-  --input-border: oklch(0.9045 0.004 286.32);
+  --input-border: oklch(0.8892 0.0041 286.32);
   --input-accent-border: oklch(0.8467 0.0069 286.25);
   --avatar: oklch(0.9217 0.0029 264.54);
   --avatar-foreground: var(--foreground);
