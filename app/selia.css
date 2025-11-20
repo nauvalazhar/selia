@@ -69,7 +69,7 @@
   --info-border: oklch(0.5703 0.160671 249.8244);
   --kbd: oklch(0.9197 0.004 286.32);
   --kbd-foreground: var(--foreground);
-  --kbd-border: oklch(0.8776 0.0068 286.26);
+  --kbd-border: oklch(0.8377 0.0083 286.22);
 
   --shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
 

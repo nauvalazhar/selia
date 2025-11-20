@@ -5,7 +5,7 @@ export default function KbdBasicExample() {
     <>
       <Kbd>Ctrl + C</Kbd>
       <Kbd>Alt + F4</Kbd>
-      <Kbd>⌘ B</Kbd>
+      <Kbd variant="outline">Ctrl + V</Kbd>
     </>
   );
 }
