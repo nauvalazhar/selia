@@ -44,7 +44,7 @@ export function Preview({
     exampleComponents[name as keyof typeof exampleComponents].component;
 
   return (
-    <div className="relative p-1 bg-surface-01 w-full ring ring-border-01 rounded-3xl mb-6 flex flex-col my-4">
+    <div className="relative p-0.5 bg-surface-01 w-full ring ring-border-01 rounded-3xl mb-6 flex flex-col my-4">
       {title && (
         <div className="px-6 h-14 flex items-center border-b border-border-01 w-full">
           <span className="text-sm font-medium text-dim">{title}</span>

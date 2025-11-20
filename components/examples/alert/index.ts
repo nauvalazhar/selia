@@ -46,4 +46,13 @@ export const examples = {
       })),
     ),
   },
+  button: {
+    name: 'Alert with Button',
+    path: 'components/examples/alert/button.tsx',
+    component: React.lazy(() =>
+      import('./button').then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
 };

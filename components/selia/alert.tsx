@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { buttonVariants } from 'components/selia/button';
 
 export const alertVariants = cva(
   [
@@ -14,26 +15,35 @@ export const alertVariants = cva(
   {
     variants: {
       variant: {
-        secondary: 'bg-gradient-secondary text-secondary-foreground',
+        secondary: [
+          'bg-gradient-secondary text-secondary-foreground',
+          '**:data-[slot=alert-button]:hover:bg-tertiary/15',
+        ],
         danger: [
           'bg-gradient-danger text-danger-foreground',
           '*:data-[slot=alert-description]:text-danger-foreground/80',
+          '**:data-[slot=alert-button]:text-white',
         ],
         info: [
           'bg-gradient-info text-info-foreground',
           '*:data-[slot=alert-description]:text-info-foreground/80',
+          '**:data-[slot=alert-button]:text-white',
         ],
         success: [
           'bg-gradient-success text-success-foreground',
           '*:data-[slot=alert-description]:text-success-foreground/80',
+          '**:data-[slot=alert-button]:text-white',
         ],
         warning: [
           'bg-gradient-warning text-warning-foreground',
           '*:data-[slot=alert-description]:text-warning-foreground/80',
+          '**:data-[slot=alert-button]:text-white',
         ],
         tertiary: [
           'bg-gradient-tertiary text-tertiary-foreground',
           '*:data-[slot=alert-description]:text-tertiary-foreground/80',
+          '**:data-[slot=alert-button]:text-white',
+          '**:data-[slot=alert-button]:hover:bg-secondary/20',
         ],
         'secondary-subtle':
           'bg-secondary/15 text-secondary-foreground ring ring-secondary',
@@ -107,6 +117,26 @@ export function AlertAction({
       className={cn(
         'ml-auto flex items-center gap-1.5 col-start-3 row-start-1 row-span-2 self-center',
         className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export function AlertButton({
+  className,
+  ...props
+}: React.ComponentProps<'button'>) {
+  return (
+    <button
+      data-slot="alert-button"
+      className={cn(
+        buttonVariants({
+          variant: 'tertiary-plain',
+          size: 'xs',
+          pill: true,
+          className,
+        }),
       )}
       {...props}
     />

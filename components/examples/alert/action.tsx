@@ -1,5 +1,4 @@
-import { Alert, AlertAction } from 'components/selia/alert';
-import { Button } from 'components/selia/button';
+import { Alert, AlertAction, AlertButton } from 'components/selia/alert';
 import { CheckCircle2Icon, InfoIcon } from 'lucide-react';
 
 export default function AlertExample() {
@@ -9,9 +8,15 @@ export default function AlertExample() {
         <InfoIcon />
         Message deleted successfully.
         <AlertAction>
-          <Button variant="tertiary" size="xs" pill>
-            Undo
-          </Button>
+          <AlertButton>Undo</AlertButton>
+        </AlertAction>
+      </Alert>
+
+      <Alert variant="tertiary">
+        <InfoIcon />
+        Some neutral message here.
+        <AlertAction>
+          <AlertButton>Action</AlertButton>
         </AlertAction>
       </Alert>
 
@@ -19,9 +24,7 @@ export default function AlertExample() {
         <CheckCircle2Icon />
         Your changes have been saved successfully.
         <AlertAction>
-          <Button variant="secondary-plain" size="xs" pill>
-            Refresh
-          </Button>
+          <AlertButton>Refresh</AlertButton>
         </AlertAction>
       </Alert>
     </>
