@@ -27,6 +27,7 @@ import { useEffect, useState } from 'react';
 import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
 import { getSidebarMenu } from '~/lib/sidebar';
+import { ThemeToggle } from 'components/theme-toggle';
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
@@ -240,6 +241,9 @@ function Navbar() {
                 GitHub
                 <ExternalLinkIcon />
               </a>
+            </li>
+            <li>
+              <ThemeToggle />
             </li>
             <li>
               <Button

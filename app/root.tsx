@@ -34,12 +34,25 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const localTheme = localStorage.theme ? JSON.parse(localStorage.theme)?.state?.theme : undefined;
+
+              document.documentElement.classList.toggle("dark", 
+                localTheme === 'dark' ||
+                  ((!('theme' in localStorage) || localTheme === 'system') && window.matchMedia("(prefers-color-scheme: dark)").matches)
+              );
+            `,
+          }}
+        />
       </head>
       <body className="bg-background">
         <div className="root">{children}</div>
