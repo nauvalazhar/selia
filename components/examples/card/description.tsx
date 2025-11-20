@@ -2,6 +2,7 @@ import {
   Card,
   CardBody,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from 'components/selia/card';
@@ -19,6 +20,9 @@ export default function CardDescriptionExample() {
       <CardBody>
         <Text>This is a card component with a description and footer.</Text>
       </CardBody>
+      <CardFooter>
+        <Text>This is the footer of the card.</Text>
+      </CardFooter>
     </Card>
   );
 }
