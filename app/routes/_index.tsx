@@ -23,7 +23,11 @@ export default function Index() {
               Built with Tailwind CSS and Base UI Components. Still in early
               development.
             </Text>
-            <Button variant="primary" pill render={<Link to="/docs/alert" />}>
+            <Button
+              variant="primary"
+              pill
+              render={<Link to="/docs/installation" />}
+            >
               Get started
               <ArrowRightIcon />
             </Button>
