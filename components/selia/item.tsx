@@ -12,7 +12,11 @@ export const itemVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-item border border-card-border',
+        default: [
+          'bg-item border border-card-border',
+          'has-[[data-checked]]:ring-primary has-[[data-checked]]:ring-2',
+          'has-[[data-checked]]:bg-primary/10',
+        ],
         outline: [
           'ring ring-item-border',
           'has-[[data-checked]]:ring-primary has-[[data-checked]]:ring-2',
