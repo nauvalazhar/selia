@@ -13,7 +13,7 @@ export function Progress({
       className={cn('flex flex-wrap gap-1.5 justify-between', className)}
     >
       {children}
-      <BaseProgress.Track className="h-1.5 w-full rounded-full bg-input">
+      <BaseProgress.Track className="h-1.5 w-full rounded-full bg-track">
         <BaseProgress.Indicator className="rounded-full bg-primary transition-all duration-500" />
       </BaseProgress.Track>
     </BaseProgress.Root>
@@ -28,7 +28,7 @@ export function ProgressLabel({
     <BaseProgress.Label
       data-slot="progress-label"
       {...props}
-      className={cn('font-semibold text-foreground', className)}
+      className={cn('font-medium text-foreground', className)}
     />
   );
 }

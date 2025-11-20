@@ -159,7 +159,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
             '[&>p:first-of-type]:mb-8',
             '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
             '*:[ul]:leading-relaxed',
-            '[p_a]:text-foreground **:[p_a]:font-medium **:[p_a]:border-b',
+            '[&>p_a]:text-foreground [&>p_a]:font-medium [&>p_a]:border-b',
           )}
         >
           <MDXRemote

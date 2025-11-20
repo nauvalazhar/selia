@@ -9,7 +9,7 @@ export function Slider({
   return (
     <BaseSlider.Root data-slot="slider" {...props}>
       <BaseSlider.Control className={cn('touch-none select-none', className)}>
-        <BaseSlider.Track className="h-1.5 w-full rounded-full bg-input">
+        <BaseSlider.Track className="h-1.5 w-full rounded-full bg-track">
           <BaseSlider.Indicator className="rounded-full bg-primary" />
           {children}
         </BaseSlider.Track>

@@ -48,7 +48,7 @@ export function PaginationItem({
           'aria-disabled': disabled ? true : undefined,
           className: cn(
             buttonVariants({
-              variant: active ? 'secondary' : 'secondary-plain',
+              variant: active ? 'tertiary-subtle' : 'secondary-plain',
             }),
             'cursor-pointer',
             active && 'pointer-events-none',

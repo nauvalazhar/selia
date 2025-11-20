@@ -21,7 +21,7 @@ export default function StackBasicExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Marina Brown</ItemTitle>
-          <ItemDescription>marina.brown@example.com</ItemDescription>
+          <ItemDescription>marina@example.com</ItemDescription>
         </ItemContent>
       </Item>
       <Separator />
@@ -34,7 +34,7 @@ export default function StackBasicExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Sarah O'Connor</ItemTitle>
-          <ItemDescription>sarah.oconnor@example.com</ItemDescription>
+          <ItemDescription>sarah@example.com</ItemDescription>
         </ItemContent>
       </Item>
       <Separator />
@@ -47,7 +47,7 @@ export default function StackBasicExample() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>William Martin</ItemTitle>
-          <ItemDescription>william.martin@example.com</ItemDescription>
+          <ItemDescription>william@example.com</ItemDescription>
         </ItemContent>
       </Item>
     </Stack>

@@ -17,7 +17,7 @@ export default function PopoverBasicExample() {
         <PopoverDescription>
           Upgrade to Pro to get more features and access to exclusive content.
         </PopoverDescription>
-        <Button size="sm" variant="tertiary-subtle" pill>
+        <Button size="sm" variant="tertiary" pill>
           Upgrade
           <ArrowRightIcon />
         </Button>
