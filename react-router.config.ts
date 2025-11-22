@@ -1,4 +1,5 @@
 import type { Config } from '@react-router/dev/config';
+import { blocks } from 'components/blocks';
 
 export default {
   // Config options...
@@ -16,9 +17,9 @@ export default {
 
         return `/docs/${filename}`;
       }),
-      // ...Object.keys(blocks).map((block) => {
-      //   return `/block/${block}`;
-      // }),
+      ...Object.keys(blocks).map((block) => {
+        return `/block/${block}`;
+      }),
     ];
   },
   ssr: false,

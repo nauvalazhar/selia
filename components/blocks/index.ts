@@ -1,5 +1,4 @@
 import React from 'react';
-import LoginBlock from './login';
 
 export const blocks = {
   login: {
