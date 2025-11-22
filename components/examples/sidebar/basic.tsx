@@ -109,6 +109,7 @@ export default function SidebarBasicExample() {
             <Dropdown>
               <DropdownTrigger
                 data-slot="sidebar-item"
+                nativeButton={false}
                 render={
                   <SidebarItem>
                     <Avatar size="sm">
@@ -125,7 +126,7 @@ export default function SidebarBasicExample() {
                   </SidebarItem>
                 }
               />
-              <DropdownContent className="w-40 w-(--anchor-width)" side="top">
+              <DropdownContent className="w-(--anchor-width)" side="top">
                 <DropdownItem>
                   <UserIcon />
                   Profile

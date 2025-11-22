@@ -30,13 +30,15 @@ export function Card({
 
 export const cardHeaderVariants = cva(
   [
-    'p-6 gap-x-3.5 gap-y-2 border-b border-card-border',
+    'p-6 gap-x-3.5 gap-y-2 border-b border-card-divider',
     'grid grid-cols-[1fr_auto]',
     'has-[svg]:grid-cols-[auto_1fr_auto]',
     'has-[[data-slot=iconbox]]:*:data-[slot=card-description]:col-start-2',
     '**:[svg,[data-slot=iconbox]]:row-span-2',
     '*:data-[slot=iconbox]:row-span-2',
     '*:data-[slot=card-description]:row-start-2',
+    'not-[:has([data-slot=iconbox])]:items-center',
+    '*:[[data-slot=card-title]:not(:has(+[data-slot=card-description]))]:row-span-2',
   ],
   {
     variants: {
@@ -111,6 +113,9 @@ export function CardBody({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="card-body"
       className={cn(
         'p-6 *:data-[slot=table-container]:-m-6 **:data-[slot=item]:px-6',
+        '*:data-[slot=stack]:-m-6',
+        '[&_tbody>tr:last-child>td:first-child]:rounded-bl-3xl',
+        '[&_tbody>tr:last-child>td:last-child]:rounded-br-3xl',
         className,
       )}
       {...props}
@@ -127,7 +132,7 @@ export function CardFooter({
       data-slot="card-footer"
       className={cn(
         'flex items-center gap-1.5',
-        'p-6 bg-card-footer border-t border-card-border rounded-b-3xl',
+        'p-6 bg-card-footer border-t border-card-divider rounded-b-3xl',
         className,
       )}
       {...props}

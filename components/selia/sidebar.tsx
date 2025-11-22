@@ -111,6 +111,12 @@ export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
         '**:data-[slot=sidebar-item]:py-1.5',
         '**:data-[slot=sidebar-item]:rounded-xl',
       ],
+      loose: [
+        '**:data-[slot=sidebar-item]:min-h-10',
+        '**:data-[slot=sidebar-item]:px-2.5',
+        '**:data-[slot=sidebar-item]:py-2.5',
+        '**:data-[slot=sidebar-item]:rounded-xl',
+      ],
     },
     line: {
       true: [
@@ -249,7 +255,7 @@ export function SidebarCollapsibleTrigger({
       data-slot="sidebar-item"
       className={cn(
         sidebarItemClasses,
-        'after:bg-chevron-down after:size-4 after:ml-auto',
+        'after:bg-chevron-down-dark dark:after:bg-chevron-down after:size-4 after:ml-auto',
         'after:transition-transform after:duration-100',
         'data-[panel-open]:after:rotate-180',
         className,

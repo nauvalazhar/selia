@@ -25,7 +25,7 @@ export default function TeamCardExample() {
         <CardTitle>Team Members</CardTitle>
         <CardDescription>Member can access this workspace.</CardDescription>
       </CardHeader>
-      <CardBody className="p-0">
+      <CardBody>
         <Stack>
           <Item variant="plain">
             <ItemMedia>

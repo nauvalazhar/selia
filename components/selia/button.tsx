@@ -28,7 +28,7 @@ export const buttonVariants = cva(
         ],
         'primary-outline': [
           'text-primary',
-          'border-2 border-primary hover:bg-primary/15 active:bg-primary/15',
+          'border border-primary hover:bg-primary/15 active:bg-primary/15',
           'after:content-none outline-primary',
         ],
         'primary-plain': [
@@ -47,7 +47,7 @@ export const buttonVariants = cva(
         ],
         'secondary-outline': [
           'text-secondary-foreground',
-          'border-2 border-secondary hover:bg-secondary/15 active:bg-secondary/15',
+          'border border-secondary hover:bg-secondary/15 active:bg-secondary/15',
           'after:content-none outline-secondary',
         ],
         'secondary-plain': [
@@ -66,7 +66,7 @@ export const buttonVariants = cva(
         ],
         'tertiary-outline': [
           'text-tertiary',
-          'border-2 border-tertiary hover:bg-tertiary/15 active:bg-tertiary/15',
+          'border border-tertiary hover:bg-tertiary/15 active:bg-tertiary/15',
           'after:content-none outline-tertiary',
         ],
         'tertiary-plain': [
@@ -85,7 +85,7 @@ export const buttonVariants = cva(
         ],
         'danger-outline': [
           'text-danger',
-          'border-2 border-danger hover:bg-danger/15 active:bg-danger/15',
+          'border border-danger hover:bg-danger/15 active:bg-danger/15',
           'after:content-none outline-danger',
         ],
         'danger-plain': [
@@ -104,7 +104,7 @@ export const buttonVariants = cva(
         ],
         'info-outline': [
           'text-info',
-          'border-2 border-info hover:bg-info/15 active:bg-info/15',
+          'border border-info hover:bg-info/15 active:bg-info/15',
           'after:content-none outline-info',
         ],
         'info-plain': [
@@ -123,7 +123,7 @@ export const buttonVariants = cva(
         ],
         'success-outline': [
           'text-success',
-          'border-2 border-success hover:bg-success/15 active:bg-success/15',
+          'border border-success hover:bg-success/15 active:bg-success/15',
           'after:content-none outline-success',
         ],
         'success-plain': [
@@ -142,7 +142,7 @@ export const buttonVariants = cva(
         ],
         'warning-outline': [
           'text-warning',
-          'border-2 border-warning hover:bg-warning/15 active:bg-warning/15',
+          'border border-warning hover:bg-warning/15 active:bg-warning/15',
           'after:content-none outline-warning',
         ],
         'warning-plain': [
@@ -153,14 +153,14 @@ export const buttonVariants = cva(
       size: {
         xs: 'h-7 px-2 rounded-lg after:rounded-lg *:[svg]:size-4',
         'xs-icon': 'size-7.5 rounded-lg after:rounded-lg *:[svg]:size-4',
-        sm: 'h-8.5 px-3 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
+        sm: 'h-8.5 px-2 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
         'sm-icon':
           'size-8.5 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
         md: 'h-9.5 px-4 rounded *:[svg]:size-4.5',
         icon: 'size-9.5 rounded *:[svg]:size-4.5',
-        lg: 'h-10.5 px-5 rounded-[14px] after:rounded-[14px] *:[svg]:size-5.5',
+        lg: 'h-11.5 px-5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
         'lg-icon':
-          'size-10.5 rounded-[14px] after:rounded-[14px] *:[svg]:size-5.5',
+          'size-11.5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
       },
       pill: {
         true: 'rounded-full after:rounded-full',

@@ -17,6 +17,7 @@ import { componentName } from '~/lib/components';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { Link } from 'react-router';
+import { getSources } from '~/lib/source';
 
 const transformers: ShikiTransformer[] = [
   transformerNotationHighlight(),
@@ -42,29 +43,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   let sources: Record<string, string> = {};
 
   if (componentKey in ALL_EXAMPLES) {
-    sources = Object.fromEntries(
-      await Promise.all(
-        Object.entries(
-          ALL_EXAMPLES[componentKey as keyof typeof ALL_EXAMPLES],
-        ).map(async ([key, { path }]) => {
-          let source = await Bun.file(path).text();
-          source = source.replace(
-            /import\s*{([^}]*)}\s*from/g,
-            (match, group) => {
-              // Remove newlines and all whitespace for easier comma cleanup
-              let cleaned = group
-                .replace(/[\r\n]+/g, ' ') // Remove all newlines
-                .replace(/\s+/g, ' ') // Collapse whitespace
-                .replace(/,(\s*,)+/g, ',') // Remove accidental double commas
-                .replace(/,\s*$/, ' '); // Remove any trailing comma at the end
-              return `import {${cleaned}} from`;
-            },
-          );
-
-          return [key, source];
-        }),
-      ),
-    );
+    sources = await getSources(componentKey);
   }
 
   try {

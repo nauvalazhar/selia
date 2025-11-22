@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import './app.css';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *):not(.not-dark, .not-dark *));
 
 :root {
   --background: oklch(0.9697 0.0017 247.84);
@@ -9,19 +9,21 @@
   --accent: oklch(0.8969 0.0046 258.33);
   --muted: oklch(0.503 0.0117 267.27);
   --dimmed: oklch(0.607 0.014 271.18);
-  --border: oklch(0.906 0.0046 258.33);
-  --separator: oklch(0.906 0.0046 258.33);
+  --border: oklch(0.9368 0.0029 264.54);
+  --separator: oklch(0.9368 0.0029 264.54);
   --input: oklch(1 0 0);
   --input-subtle: oklch(0.9764 0.0013 286.38);
-  --input-border: oklch(0.8892 0.0041 286.32);
+  --input-border: oklch(0.9285 0.0027 286.35);
   --input-accent-border: oklch(0.7907 0.0084 286.21);
   --track: oklch(0.9222 0.0013 286.37);
   --avatar: oklch(0.9217 0.0029 264.54);
   --avatar-foreground: var(--foreground);
   --card: oklch(0.9851 0 0);
-  --card-border: oklch(0.9373 0.0013 286.37);
+  --card-border: transparent;
+  --card-divider: oklch(0.9373 0.0013 286.37);
   --card-footer: oklch(0.9605 0.0046 258.32);
-  --card-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+  --card-shadow:
+    0 5px 10px -3px rgb(0 0 0 / 0.05), 0 8px 3px -4px rgb(0 0 0 / 0.02);
   --item: oklch(0.9851 0 0);
   --item-border: oklch(0.9464 0.0013 286.37);
   --chip: oklch(0.9694 0.0011 197.14);
@@ -39,8 +41,8 @@
   --toast-border: oklch(0.907 0.0013 286.37);
   --table: transparent;
   --table-foreground: var(--foreground);
-  --table-border: oklch(0.9222 0.0013 286.37);
-  --table-head: oklch(0.9524 0.0013 286.37);
+  --table-divider: oklch(0.9368 0.0029 264.54);
+  --table-head: oklch(0.9614 0.0013 286.37);
   --table-accent: oklch(0.9544 0.0011 197.14);
   --tabs: oklch(0.9373 0.0013 286.37);
   --tabs-foreground: var(--foreground);
@@ -134,7 +136,9 @@
   --avatar-foreground: var(--foreground);
   --card: oklch(0.2559 0.004 264.5);
   --card-border: oklch(0.2878 0.0046 247.99);
+  --card-divider: oklch(0.2878 0.0046 247.99);
   --card-footer: oklch(0.2348 0.0041 264.49);
+  --card-shadow: 0 8px 6px -4px rgb(0 0 0 / 0.08);
   --item: oklch(0.2559 0.004 264.5);
   --item-border: oklch(0.3451 0.0071 274.78);
   --chip: oklch(0.3838 0.0085 276.94);
@@ -152,9 +156,9 @@
   --toast-border: oklch(0.3893 0.0117 285.84);
   --table: transparent;
   --table-foreground: var(--foreground);
-  --table-border: oklch(0.308 0.0046 247.98);
+  --table-divider: oklch(0.308 0.0046 247.98);
   --table-head: oklch(0.3084 0.0061 258.35);
-  --table-accent: oklch(0.2739 0.0055 286.03);
+  --table-accent: oklch(0.2888 0.0039 264.5);
   --tabs: oklch(0.2973 0.0056 271.23);
   --tabs-foreground: var(--foreground);
   --tabs-accent: oklch(0.3838 0.0085 276.94);
@@ -262,6 +266,7 @@
   --color-avatar-foreground: var(--avatar-foreground);
   --color-card: var(--card);
   --color-card-border: var(--card-border);
+  --color-card-divider: var(--card-divider);
   --color-card-footer: var(--card-footer);
   --color-item: var(--item);
   --color-item-border: var(--item-border);
@@ -291,7 +296,7 @@
   --color-toast-border: var(--toast-border);
   --color-table: var(--table);
   --color-table-foreground: var(--table-foreground);
-  --color-table-border: var(--table-border);
+  --color-table-divider: var(--table-divider);
   --color-table-head: var(--table-head);
   --color-table-accent: var(--table-accent);
   --color-chip: var(--chip);

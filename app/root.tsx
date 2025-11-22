@@ -5,11 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
+  useRouteLoaderData,
 } from 'react-router';
 
 import type { Route } from './+types/root';
 import './selia.css';
 import { Toast } from 'components/selia/toast';
+import { getSidebarMenu } from './lib/sidebar';
+import { Cmdk } from 'components/cmdk';
+import { blocks } from 'components/blocks';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -32,7 +37,74 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export async function loader({ request }: Route.LoaderArgs) {
+  const sidebarMenu = await getSidebarMenu();
+  const menu = sidebarMenu.map((m) => ({
+    value: m.title,
+    label: m.title,
+    items: m.items.map((i) => ({
+      value: i.path,
+      label: i.name,
+      meta: 'Documentation',
+    })),
+  }));
+
+  const blocksItems = [
+    {
+      value: 'Blocks',
+      label: 'Blocks',
+      items: Object.entries(blocks).map(([key, { name }]) => ({
+        value: `/blocks#${key}`,
+        label: name,
+        meta: 'Block',
+      })),
+    },
+  ];
+
+  const items = [
+    ...menu,
+    ...blocksItems,
+    {
+      value: 'Pages',
+      label: 'Pages',
+      items: [
+        {
+          value: '/blocks',
+          label: 'Blocks',
+          meta: 'Page',
+        },
+      ],
+    },
+    {
+      value: 'Themes',
+      label: 'Themes',
+      items: [
+        {
+          value: 'toggle-light',
+          label: 'Light Mode',
+          meta: 'Theme',
+        },
+        {
+          value: 'toggle-dark',
+          label: 'Dark Mode',
+          meta: 'Theme',
+        },
+      ],
+    },
+  ];
+
+  return { items };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useRouteLoaderData<typeof loader>('root');
+
+  let items = [] as any[];
+
+  if (data && 'items' in data) {
+    items = data.items;
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -56,6 +128,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-background">
         <div className="root">{children}</div>
+        <Cmdk items={items} />
         <Toast />
         <ScrollRestoration />
         <Scripts />

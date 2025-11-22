@@ -34,6 +34,7 @@
     "react-hotkeys-hook": "^5.2.1",
     "react-router": "^7.9.2",
     "react-shiki": "^0.9.0",
+    "recharts": "^3.4.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-mdx-code-props": "^3.0.1",
     "rehype-slug": "^6.0.0",

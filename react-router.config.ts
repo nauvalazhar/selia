@@ -16,6 +16,9 @@ export default {
 
         return `/docs/${filename}`;
       }),
+      // ...Object.keys(blocks).map((block) => {
+      //   return `/block/${block}`;
+      // }),
     ];
   },
   ssr: false,

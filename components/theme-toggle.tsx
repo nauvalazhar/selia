@@ -7,20 +7,10 @@ import {
   DropdownItem,
   DropdownTrigger,
 } from 'components/selia/dropdown';
-import { useEffect } from 'react';
 
 export function ThemeToggle() {
   const theme = useThemeStore((state) => state.theme);
   const setTheme = useThemeStore((state) => state.setTheme);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle(
-      'dark',
-      theme === 'dark' ||
-        ((!theme || theme === 'system') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches),
-    );
-  }, [theme]);
 
   let label = <Laptop2Icon />;
 
