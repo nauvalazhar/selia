@@ -16,7 +16,7 @@ export default function CardLoginExample() {
   const [pending, setPending] = useState(false);
 
   return (
-    <Card className="w-full lg:w-8/12">
+    <Card className="w-full lg:w-9/12 xl:w-8/12">
       <CardHeader align="center">
         <CardTitle>Sign in to your account</CardTitle>
         <CardDescription>

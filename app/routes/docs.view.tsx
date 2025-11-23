@@ -13,7 +13,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
-import { componentName } from '~/lib/components';
+import { componentName } from '~/lib/utils';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { Link } from 'react-router';

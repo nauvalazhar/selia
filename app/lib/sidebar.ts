@@ -1,4 +1,5 @@
-import { componentName, getComponents } from '~/lib/components';
+import { getComponents } from '~/lib/components';
+import { componentName } from '~/lib/utils';
 
 export async function getSidebarMenu() {
   const components = await getComponents();
