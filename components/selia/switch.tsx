@@ -10,7 +10,7 @@ export function Switch({
       data-slot="switch"
       className={cn(
         'w-9 h-5 rounded-full flex items-center px-0.5',
-        'ring ring-input-border bg-track',
+        'ring ring-input-border bg-track inset-shadow-xs inset-shadow-black/10 dark:inset-shadow-none',
         'data-checked:bg-primary data-checked:ring-primary',
         'transition-colors duration-75',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',

@@ -25,6 +25,7 @@ export function TabsList({
       data-slot="tabs-list"
       className={cn(
         'relative z-0 flex items-center bg-tabs p-1 rounded-xl',
+        'inset-shadow-xs inset-shadow-black/10 dark:inset-shadow-none',
         className,
       )}
       {...props}
@@ -35,7 +36,7 @@ export function TabsList({
           'absolute top-1/2 left-0 h-8 w-(--active-tab-width)',
           'translate-x-(--active-tab-left) -translate-y-1/2',
           'rounded-xl z-[-1] transition-all',
-          'bg-tabs-accent shadow inset-shadow-2xs inset-shadow-white/15',
+          'bg-tabs-accent shadow inset-shadow-2xs inset-shadow-white/15 dark:inset-shadow-black/15',
           'ring ring-tabs-border',
         )}
       />

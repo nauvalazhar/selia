@@ -27,6 +27,7 @@ import {
   MenuIcon,
   Package2Icon,
   PlusIcon,
+  SearchIcon,
   SettingsIcon,
   ShoppingBagIcon,
   SidebarCloseIcon,
@@ -96,6 +97,8 @@ import {
   TableHeader,
   TableRow,
 } from 'components/selia/table';
+import { Input } from 'components/selia/input';
+import { InputGroup, InputGroupAddon } from 'components/selia/input-group';
 
 const data = [
   {
@@ -566,7 +569,12 @@ function Layout({
         {sidebar}
       </div>
       <main className={cn('transition-all', sidebarOpen ? 'ml-72' : 'ml-0')}>
-        <nav className="h-16 flex items-center gap-2.5 px-4">
+        <nav
+          className={cn(
+            'h-16 flex items-center gap-2.5',
+            sidebarOpen ? 'pr-2.5' : 'px-2.5',
+          )}
+        >
           <Button
             variant="secondary-plain"
             size="sm-icon"
@@ -576,7 +584,12 @@ function Layout({
           </Button>
           <Heading size="sm">Dashboard</Heading>
         </nav>
-        <div className="min-h-[calc(100vh-4rem)] flex flex-col gap-6 p-4">
+        <div
+          className={cn(
+            'min-h-[calc(100vh-4rem)] flex flex-col gap-6',
+            sidebarOpen ? 'pr-4' : 'px-4',
+          )}
+        >
           {children}
         </div>
       </main>
@@ -592,16 +605,17 @@ function AppSidebar() {
           <img src="/selia.png" alt="Selia" className="size-8" />
           <span className="font-semibold">Selia</span>
         </SidebarLogo>
+        <InputGroup className="mt-4 mb-2">
+          <InputGroupAddon>
+            <SearchIcon />
+          </InputGroupAddon>
+          <Input placeholder="Search" />
+        </InputGroup>
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
           <SidebarGroup>
             <SidebarGroupTitle>Navigation</SidebarGroupTitle>
-            <SidebarGroupAction>
-              <button>
-                <PlusIcon />
-              </button>
-            </SidebarGroupAction>
             <SidebarList>
               <SidebarItem href="#" active>
                 <HomeIcon />
@@ -635,19 +649,6 @@ function AppSidebar() {
                   </SidebarList>
                 </SidebarSubmenu>
               </SidebarCollapsible>
-            </SidebarList>
-          </SidebarGroup>
-          <SidebarGroup>
-            <SidebarGroupTitle>Settings</SidebarGroupTitle>
-            <SidebarList>
-              <SidebarItem href="#">
-                <SettingsIcon />
-                Settings
-              </SidebarItem>
-              <SidebarItem href="#">
-                <UserIcon />
-                Profile
-              </SidebarItem>
             </SidebarList>
           </SidebarGroup>
         </SidebarMenu>

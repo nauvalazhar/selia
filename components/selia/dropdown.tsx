@@ -29,11 +29,11 @@ export function DropdownContent({
           data-slot="dropdown-content"
           {...popupProps}
           className={cn(
-            'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow',
+            'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
             'p-1 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
-            '**:data-[slot=item]:p-0',
+            '**:data-[slot=item]:p-0 min-w-32',
             className,
           )}
         >
@@ -45,7 +45,7 @@ export function DropdownContent({
 }
 
 const dropdownItemClasses = [
-  'flex items-center text-foreground gap-3.5 py-2 px-2.5 rounded',
+  'flex items-center text-foreground gap-3.5 py-2.5 px-3 rounded',
   'cursor-default select-none',
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
   'data-[popup-open]:bg-popover-accent',
@@ -72,7 +72,7 @@ export function DropdownSeparator({
   return (
     <BaseMenu.Separator
       data-slot="dropdown-separator"
-      className={cn('h-px my-1 bg-popover-border', props.className)}
+      className={cn('h-px my-1 bg-separator', props.className)}
       {...props}
     />
   );
@@ -113,7 +113,7 @@ export function DropdownGroupLabel({
     <BaseMenu.GroupLabel
       data-slot="dropdown-group-label"
       className={cn(
-        'px-2.5 py-1.5 text-dimmed font-medium text-sm',
+        'px-3 py-1.5 text-dimmed font-medium text-sm',
         props.className,
       )}
       {...props}
@@ -145,7 +145,7 @@ export function DropdownCheckboxItem({
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="3"
-          className="size-4"
+          className="size-4 text-primary"
           viewBox="0 0 24 24"
         >
           <path d="M20 6 9 17l-5-5"></path>
@@ -185,7 +185,7 @@ export function DropdownRadioItem({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="fill-foreground !w-2 mx-auto"
+          className="fill-primary !w-2 mx-auto"
         >
           <circle cx="12" cy="12" r="10" />
         </svg>

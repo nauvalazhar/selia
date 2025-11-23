@@ -30,7 +30,7 @@ export function Card({
 
 export const cardHeaderVariants = cva(
   [
-    'p-6 gap-x-3.5 gap-y-2 border-b border-card-divider',
+    'p-6 gap-x-3.5 gap-y-2 border-b border-card-separator',
     'grid grid-cols-[1fr_auto]',
     'has-[svg]:grid-cols-[auto_1fr_auto]',
     'has-[[data-slot=iconbox]]:*:data-[slot=card-description]:col-start-2',
@@ -132,7 +132,7 @@ export function CardFooter({
       data-slot="card-footer"
       className={cn(
         'flex items-center gap-1.5',
-        'p-6 bg-card-footer border-t border-card-divider rounded-b-3xl',
+        'p-6 bg-card-footer border-t border-card-separator rounded-b-3xl',
         className,
       )}
       {...props}

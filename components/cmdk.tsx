@@ -43,12 +43,10 @@ export function Cmdk({ items }: { items: Group[] }) {
   const setTheme = useThemeStore((state) => state.setTheme);
   const navigate = useNavigate();
 
-  useHotkeys('meta+k', () => toggleCmdk());
+  useHotkeys(['meta+k', 'ctrl+k'], () => toggleCmdk());
 
   function handleItemClick(item: Item) {
     closeCmdk();
-
-    console.log(item.value);
 
     switch (item.value) {
       case 'toggle-light':

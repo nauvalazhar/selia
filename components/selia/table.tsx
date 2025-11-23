@@ -36,7 +36,7 @@ export function TableHead({ ...props }: React.ComponentProps<'th'>) {
       data-slot="table-head"
       {...props}
       className={cn(
-        'px-6 py-2 text-muted font-medium bg-table-head border-y border-table-divider',
+        'px-6 py-2 text-muted font-medium bg-table-head border-y border-table-separator',
         props.className,
       )}
     />
@@ -55,7 +55,7 @@ export function TableRow({ ...props }: React.ComponentProps<'tr'>) {
       data-slot="table-row"
       {...props}
       className={cn(
-        'border-b border-table-divider last:border-none hover:bg-table-accent',
+        'border-b border-table-separator last:border-none hover:bg-table-accent',
         props.className,
       )}
     />

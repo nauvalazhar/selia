@@ -22,9 +22,9 @@ export const comboboxTriggerVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-input ring ring-input-border hover:ring-input-accent-border',
+          'bg-input ring ring-input-border hover:ring-input-accent-border shadow-input',
         subtle:
-          'bg-input-subtle ring ring-input-border hover:ring-input-accent-border',
+          'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
         plain: 'bg-transparent hover:bg-input',
       },
       pill: {
@@ -193,7 +193,7 @@ export function ComboboxContent({
           data-slot="combobox-content"
           {...popupProps}
           className={cn(
-            'bg-popover ring ring-popover-border rounded shadow overflow-y-auto',
+            'bg-popover ring ring-popover-border rounded shadow-popover overflow-y-auto',
             'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',
             'max-w-(--available-width) origin-(--transform-origin)',
             'p-1 outline-none transition-[transform,scale,opacity]',
@@ -219,7 +219,7 @@ export function ComboboxSearch({
       placeholder="Search item"
       {...props}
       className={cn(
-        'outline-none h-9.5 px-2.5 w-full border-b border-input-border mb-2',
+        'outline-none h-10 px-2.5 w-full border-b border-input-border mb-2',
         className,
       )}
     />
@@ -234,7 +234,7 @@ export function ComboboxEmpty({
     <BaseCombobox.Empty
       data-slot="combobox-empty"
       {...props}
-      className={cn('px-2.5 py-2 text-dimmed empty:p-0')}
+      className={cn('px-3 py-1.5 text-dimmed empty:p-0')}
     />
   );
 }
@@ -247,7 +247,7 @@ export function ComboboxList({
     <BaseCombobox.List
       data-slot="combobox-list"
       {...props}
-      className={cn('space-y-1 outline-none', className)}
+      className={cn('space-y-0.5 outline-none', className)}
     />
   );
 }
@@ -262,7 +262,7 @@ export function ComboboxItem({
       data-slot="combobox-item"
       {...props}
       className={cn(
-        'flex items-center text-foreground gap-3.5 py-2 px-2.5 rounded select-none',
+        'flex items-center text-foreground gap-3.5 py-2.5 px-3 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',

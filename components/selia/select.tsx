@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Select as BaseSelect } from '@base-ui-components/react/select';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { Chip } from './chip';
 
 export type SelectItem = {
   value: string;
@@ -26,9 +27,9 @@ export const selectVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-input ring ring-input-border hover:ring-input-accent-border',
+          'bg-input ring ring-input-border hover:ring-input-accent-border shadow-input',
         subtle:
-          'bg-input-subtle ring ring-input-border hover:ring-input-accent-border',
+          'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
         plain: 'bg-transparent hover:bg-input',
       },
       pill: {
@@ -111,7 +112,13 @@ function SelectRenderValue({
     const firstValueLabel =
       typeof firstValue === 'object' ? firstValue.label : firstValue;
     const additionalValues =
-      value.length > 1 ? ` ( +${value.length - 1} more)` : '';
+      value.length > 1 ? (
+        <Chip variant="secondary" className="ml-1.5" size="sm">
+          +{value.length - 1} more
+        </Chip>
+      ) : (
+        ''
+      );
 
     return (
       <>
@@ -151,7 +158,7 @@ export function SelectContent({
           data-slot="select-content"
           {...popupProps}
           className={cn(
-            'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow',
+            'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
             'p-1 outline-none max-lg:w-(--anchor-width)',
             className,
           )}
@@ -173,7 +180,7 @@ export function SelectList({
     <BaseSelect.List
       data-slot="select-list"
       className={cn(
-        'space-y-1 max-h-(--available-height) overflow-y-auto relative',
+        'space-y-0.5 max-h-(--available-height) overflow-y-auto relative',
         className,
       )}
       {...props}
@@ -190,7 +197,7 @@ export function SelectItem({
     <BaseSelect.Item
       data-slot="select-item"
       className={cn(
-        'flex items-center text-foreground py-2 px-2.5 gap-3.5 rounded select-none',
+        'flex items-center text-foreground py-2.5 px-3 gap-3.5 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',
@@ -204,7 +211,7 @@ export function SelectItem({
       </BaseSelect.ItemText>
       <BaseSelect.ItemIndicator className="ml-auto">
         <svg
-          className="h-4 w-4"
+          className="size-4 text-primary"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"
@@ -240,7 +247,7 @@ export function SelectGroupLabel({
   return (
     <BaseSelect.GroupLabel
       data-slot="select-group-label"
-      className={cn('px-2.5 py-1.5 text-sm font-medium text-dimmed', className)}
+      className={cn('px-3 py-1.5 text-sm font-medium text-dimmed', className)}
       {...props}
     />
   );

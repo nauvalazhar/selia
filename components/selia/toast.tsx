@@ -9,8 +9,8 @@ import {
 
 const toastClasses: ToastClassnames = {
   toast: cn(
-    'bg-toast/90 border border-toast-border rounded p-4 w-(--width) gap-0.5',
-    'flex items-start gap-2.5 overflow-hidden backdrop-blur-sm shadow',
+    'bg-toast border border-toast-border rounded p-4 w-(--width) gap-0.5',
+    'flex items-start gap-2.5 overflow-hidden shadow',
     'data-[type=success]:**:data-icon:*:[svg]:fill-success/20',
     'data-[type=success]:**:data-icon:*:[svg]:stroke-success',
     'data-[type=info]:**:data-icon:*:[svg]:fill-info/20',

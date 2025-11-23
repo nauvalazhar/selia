@@ -10,7 +10,7 @@ const InputGroupContext = React.createContext<{
 
 export const inputGroupVariants = cva(
   [
-    'relative flex flex-wrap',
+    'relative flex flex-wrap transition-all shadow-input',
     'ring ring-input-border hover:ring-input-accent-border',
     '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-primary',
     '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-2',
@@ -23,7 +23,7 @@ export const inputGroupVariants = cva(
     variants: {
       variant: {
         default: 'bg-input',
-        subtle: 'bg-input-subtle',
+        subtle: 'bg-input/60',
       },
       size: {
         md: '[&>textarea]:py-3 rounded',
