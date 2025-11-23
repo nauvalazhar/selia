@@ -2,17 +2,7 @@ import * as React from 'react';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-export function Divider({ className, ...props }: React.ComponentProps<'hr'>) {
-  return (
-    <hr
-      data-slot="divider"
-      className={cn('border-separator', className)}
-      {...props}
-    />
-  );
-}
-
-export const dividerTextVariants = cva('flex items-center gap-2.5', {
+export const dividerVariants = cva('flex items-center gap-2.5', {
   variants: {
     variant: {
       default: 'before:bg-separator before:h-px before:w-full',
@@ -27,16 +17,16 @@ export const dividerTextVariants = cva('flex items-center gap-2.5', {
   },
 });
 
-export function DividerText({
+export function Divider({
   children,
   variant,
   className,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof dividerTextVariants>) {
+}: React.ComponentProps<'div'> & VariantProps<typeof dividerVariants>) {
   return (
     <div
-      data-slot="divider-text"
-      className={cn(dividerTextVariants({ variant, className }))}
+      data-slot="divider"
+      className={cn(dividerVariants({ variant, className }))}
       {...props}
     >
       <span className="text-sm text-dimmed text-nowrap">{children}</span>

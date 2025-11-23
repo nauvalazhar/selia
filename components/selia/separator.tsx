@@ -5,8 +5,8 @@ import { cn } from 'lib/utils';
 export const separatorVariants = cva('bg-separator', {
   variants: {
     orientation: {
-      horizontal: 'w-full h-px my-6',
-      vertical: 'w-px min-h-5 h-full mx-6',
+      horizontal: 'w-full h-px',
+      vertical: 'w-px min-h-5 h-full',
     },
   },
   defaultVariants: {

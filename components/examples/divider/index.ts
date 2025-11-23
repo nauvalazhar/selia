@@ -10,13 +10,4 @@ export const examples = {
       })),
     ),
   },
-  text: {
-    name: 'Text',
-    path: 'components/examples/divider/text.tsx',
-    component: React.lazy(() =>
-      import('./text').then((mod) => ({
-        default: mod.default,
-      })),
-    ),
-  },
 };

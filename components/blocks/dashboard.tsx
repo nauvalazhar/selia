@@ -287,7 +287,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardBody>
               <Stack>
-                <Item render={<a href="#" />}>
+                <Item render={<a href="#" />} variant="plain">
                   <ItemMedia>
                     <img
                       src="https://images.unsplash.com/photo-1545127398-14699f92334b"
@@ -298,10 +298,10 @@ export default function Dashboard() {
                     <ItemTitle>Golden Beats Headphones</ItemTitle>
                     <ItemDescription>$120.00</ItemDescription>
                   </ItemContent>
-                  <ItemMeta className="ml-auto">40 sales</ItemMeta>
+                  <ItemMeta className="ml-auto shrink-0">40 sales</ItemMeta>
                 </Item>
                 <Separator />
-                <Item render={<a href="#" />}>
+                <Item render={<a href="#" />} variant="plain">
                   <ItemMedia>
                     <img
                       src="https://images.unsplash.com/photo-1516962126636-27ad087061cc"
@@ -312,10 +312,10 @@ export default function Dashboard() {
                     <ItemTitle>Polaroid Pronto 600 Instant Camera</ItemTitle>
                     <ItemDescription>$730.00</ItemDescription>
                   </ItemContent>
-                  <ItemMeta className="ml-auto">40 sales</ItemMeta>
+                  <ItemMeta className="ml-auto shrink-0">40 sales</ItemMeta>
                 </Item>
                 <Separator />
-                <Item render={<a href="#" />}>
+                <Item render={<a href="#" />} variant="plain">
                   <ItemMedia>
                     <img
                       src="https://images.unsplash.com/photo-1549482199-bc1ca6f58502"
@@ -326,10 +326,10 @@ export default function Dashboard() {
                     <ItemTitle>Black Leather Strap Smartwatch</ItemTitle>
                     <ItemDescription>$600.00</ItemDescription>
                   </ItemContent>
-                  <ItemMeta className="ml-auto">12 sales</ItemMeta>
+                  <ItemMeta className="ml-auto shrink-0">12 sales</ItemMeta>
                 </Item>
                 <Separator />
-                <Item render={<a href="#" />}>
+                <Item render={<a href="#" />} variant="plain">
                   <ItemMedia>
                     <img
                       src="https://images.unsplash.com/photo-1619008054959-921a896885c7"
@@ -340,10 +340,10 @@ export default function Dashboard() {
                     <ItemTitle>DJI Remote Controller</ItemTitle>
                     <ItemDescription>$350.00</ItemDescription>
                   </ItemContent>
-                  <ItemMeta className="ml-auto">21 sales</ItemMeta>
+                  <ItemMeta className="ml-auto shrink-0">21 sales</ItemMeta>
                 </Item>
                 <Separator />
-                <Item render={<a href="#" />}>
+                <Item render={<a href="#" />} variant="plain">
                   <ItemMedia>
                     <img
                       src="https://images.unsplash.com/photo-1605034313761-73ea4a0cfbf3"
@@ -354,7 +354,7 @@ export default function Dashboard() {
                     <ItemTitle>PUMA Suede Classic Grey Sneakers</ItemTitle>
                     <ItemDescription>$120.00</ItemDescription>
                   </ItemContent>
-                  <ItemMeta className="ml-auto">28 sales</ItemMeta>
+                  <ItemMeta className="ml-auto shrink-0">28 sales</ItemMeta>
                 </Item>
               </Stack>
             </CardBody>

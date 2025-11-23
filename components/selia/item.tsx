@@ -5,9 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const itemVariants = cva(
   [
     'relative flex flex-1 text-left transition-colors [a]:cursor-pointer',
-    'after:absolute after:bg-white/5 after:opacity-0 after:transition-opacity',
-    '[a,button]:after:inset-0',
-    '[a,button]:hover:after:opacity-100',
+    '[a,button]:hover:bg-accent',
   ],
   {
     variants: {
@@ -22,7 +20,7 @@ export const itemVariants = cva(
           'has-[[data-checked]]:ring-primary has-[[data-checked]]:ring-2',
           'has-[[data-checked]]:bg-primary/10',
         ],
-        plain: 'bg-transparent',
+        plain: 'bg-transparent !rounded-none',
         primary: 'bg-primary/10',
         'primary-outline': 'border-primary/20 border',
         danger: 'bg-danger/10',
@@ -37,9 +35,9 @@ export const itemVariants = cva(
         'tertiary-outline': 'border-tertiary/20 border',
       },
       size: {
-        sm: 'p-3.5 rounded-xl after:rounded-xl gap-2.5',
-        md: 'p-4 rounded-2xl after:rounded-2xl gap-3',
-        lg: 'p-4.5 rounded-3xl after:rounded-3xl gap-3.5',
+        sm: 'p-3.5 rounded-xl gap-2.5',
+        md: 'p-4 rounded-2xl gap-3',
+        lg: 'p-4.5 rounded-3xl gap-3.5',
       },
       direction: {
         row: 'flex-row',

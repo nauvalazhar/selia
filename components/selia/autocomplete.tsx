@@ -30,7 +30,7 @@ export function AutocompleteEmpty({
       data-slot="autocomplete-empty"
       {...props}
       className={cn(
-        'flex items-center justify-center px-2.5 py-2 text-muted text-center',
+        'flex items-center justify-center px-3 py-2.5 text-muted text-center',
         'empty:h-0 empty:p-0 empty:hidden',
         className,
       )}
@@ -75,7 +75,7 @@ export function AutocompleteGroupLabel({
     <BaseAutocomplete.GroupLabel
       data-slot="autocomplete-group-label"
       {...props}
-      className={cn('px-2.5 py-1.5 text-sm font-medium text-dimmed', className)}
+      className={cn('px-3 py-1.5 text-sm font-medium text-dimmed', className)}
     />
   );
 }
@@ -100,7 +100,7 @@ export function AutocompleteItem({
       data-slot="autocomplete-item"
       {...props}
       className={cn(
-        'flex items-center gap-3.5 text-foreground px-2.5 py-2 rounded',
+        'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         className,
       )}
@@ -116,7 +116,7 @@ export function AutocompleteFooter({
     <footer
       data-slot="autocomplete-footer"
       {...props}
-      className={cn('px-2.5 py-3 flex items-center gap-6', className)}
+      className={cn('px-3 py-2.5 flex items-center gap-6', className)}
     />
   );
 }
