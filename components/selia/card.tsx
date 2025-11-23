@@ -114,8 +114,8 @@ export function CardBody({ className, ...props }: React.ComponentProps<'div'>) {
       className={cn(
         'p-6 *:data-[slot=table-container]:-m-6 **:data-[slot=item]:px-6',
         '*:data-[slot=stack]:-m-6',
-        '[&_tbody>tr:last-child>td:first-child]:rounded-bl-3xl',
-        '[&_tbody>tr:last-child>td:last-child]:rounded-br-3xl',
+        'not-[:has(caption)]:[&_tbody>tr:last-child>td:first-child]:rounded-bl-3xl',
+        'not-[:has(caption)]:[&_tbody>tr:last-child>td:last-child]:rounded-br-3xl',
         className,
       )}
       {...props}

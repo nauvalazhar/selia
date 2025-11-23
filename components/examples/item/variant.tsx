@@ -19,7 +19,7 @@ import {
 
 export default function ItemVariantExample() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full">
       <Item>
         <ItemMedia>
           <IconBox>
@@ -30,11 +30,6 @@ export default function ItemVariantExample() {
           <ItemTitle>Regular</ItemTitle>
           <ItemDescription>Just a simple item with an icon.</ItemDescription>
         </ItemContent>
-        <ItemAction>
-          <Button size="sm" variant="tertiary" pill>
-            Action
-          </Button>
-        </ItemAction>
       </Item>
       <Item variant="primary">
         <ItemMedia>
@@ -48,11 +43,6 @@ export default function ItemVariantExample() {
             You can change the settings of the app.
           </ItemDescription>
         </ItemContent>
-        <ItemAction>
-          <Button size="sm" variant="primary" pill>
-            Edit
-          </Button>
-        </ItemAction>
       </Item>
       <Item variant="info">
         <ItemMedia>
@@ -64,11 +54,6 @@ export default function ItemVariantExample() {
           <ItemTitle>Information</ItemTitle>
           <ItemDescription>This item is good.</ItemDescription>
         </ItemContent>
-        <ItemAction>
-          <Button size="sm" variant="info" pill>
-            Learn
-          </Button>
-        </ItemAction>
       </Item>
       <Item variant="success">
         <ItemMedia>
@@ -80,11 +65,6 @@ export default function ItemVariantExample() {
           <ItemTitle>Success</ItemTitle>
           <ItemDescription>This item is working as expected.</ItemDescription>
         </ItemContent>
-        <ItemAction>
-          <Button size="sm" variant="success" pill>
-            Success
-          </Button>
-        </ItemAction>
       </Item>
       <Item variant="warning">
         <ItemMedia>
@@ -98,11 +78,6 @@ export default function ItemVariantExample() {
             This item is not working as expected.
           </ItemDescription>
         </ItemContent>
-        <ItemAction>
-          <Button size="sm" variant="warning" pill>
-            Fix Now
-          </Button>
-        </ItemAction>
       </Item>
       <Item variant="danger">
         <ItemMedia>
@@ -114,11 +89,6 @@ export default function ItemVariantExample() {
           <ItemTitle>Danger</ItemTitle>
           <ItemDescription>This item is dangerous.</ItemDescription>
         </ItemContent>
-        <ItemAction>
-          <Button size="sm" variant="danger" pill>
-            Delete
-          </Button>
-        </ItemAction>
       </Item>
     </div>
   );

@@ -24,7 +24,7 @@ export default function ItemBasicExample() {
           <ItemDescription>AI chatbot</ItemDescription>
         </ItemContent>
         <ItemAction>
-          <Button size="sm" variant="tertiary" pill>
+          <Button size="sm" pill>
             Install
           </Button>
         </ItemAction>
