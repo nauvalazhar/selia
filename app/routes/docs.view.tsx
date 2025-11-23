@@ -15,9 +15,10 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import { componentName } from '~/lib/utils';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
-import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { ChevronLeftIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { getSources } from '~/lib/source';
+import { Alert, AlertDescription, AlertTitle } from 'components/selia/alert';
 
 const transformers: ShikiTransformer[] = [
   transformerNotationHighlight(),
@@ -103,6 +104,10 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
 const components = {
   ...mdxComponents,
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  InfoIcon,
   PreviewDemo,
 };
 
