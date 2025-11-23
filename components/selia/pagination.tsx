@@ -1,4 +1,4 @@
-import { useRender } from '@base-ui-components/react';
+import { useRender } from '@base-ui-components/react/use-render';
 import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 

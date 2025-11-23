@@ -1,4 +1,4 @@
-import { useRender } from '@base-ui-components/react';
+import { useRender } from '@base-ui-components/react/use-render';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 

@@ -1,5 +1,5 @@
 import { Checkbox as BaseCheckbox } from '@base-ui-components/react/checkbox';
-import { useRender } from '@base-ui-components/react';
+import { useRender } from '@base-ui-components/react/use-render';
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui-components/react/checkbox-group';
 import { cn } from 'lib/utils';
 
