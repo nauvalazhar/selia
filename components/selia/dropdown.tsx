@@ -93,7 +93,7 @@ export function DropdownSubmenuTrigger({
       {...props}
       className={cn(
         dropdownItemClasses,
-        'after:bg-chevron-right-dark dark:after:bg-chevron-right-dark after:size-4 after:ml-auto',
+        'after:bg-chevron-right-dark dark:after:bg-chevron-right after:size-4 after:ml-auto',
         props.className,
       )}
     />
@@ -185,7 +185,7 @@ export function DropdownRadioItem({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="fill-primary !w-2 mx-auto"
+          className="fill-primary stroke-primary !w-2 mx-auto"
         >
           <circle cx="12" cy="12" r="10" />
         </svg>

@@ -280,7 +280,7 @@ export function ComboboxItem({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-4"
+          className="size-4 text-primary"
         >
           <path d="M20 6 9 17l-5-5" />
         </svg>

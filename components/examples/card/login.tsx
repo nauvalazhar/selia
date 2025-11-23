@@ -10,7 +10,7 @@ import {
 import { Input } from 'components/selia/input';
 import { Field, FieldLabel } from 'components/selia/field';
 import { Text, TextLink } from 'components/selia/text';
-import { DividerText } from 'components/selia/divider';
+import { Divider } from 'components/selia/divider';
 
 export default function CardLoginExample() {
   const [pending, setPending] = useState(false);
@@ -90,9 +90,9 @@ export default function CardLoginExample() {
             Login with GitHub
           </Button>
         </div>
-        <DividerText variant="center" className="my-2">
+        <Divider variant="center" className="my-2">
           Or continue with email
-        </DividerText>
+        </Divider>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input id="email" type="email" placeholder="Enter your email" />
