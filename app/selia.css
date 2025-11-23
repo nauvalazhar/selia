@@ -45,7 +45,7 @@
   --toast-border: oklch(0.9384 0.0018 247.84);
   --table: transparent;
   --table-foreground: var(--foreground);
-  --table-separator: oklch(0.915 0.0024 247.85);
+  --table-separator: oklch(0.9306 0.002 247.84);
   --table-head: oklch(0.9539 0.0013 247.84);
   --table-accent: oklch(0.9461 0.0015 247.84);
   --tabs: oklch(0.9384 0.0018 247.84);

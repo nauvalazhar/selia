@@ -47,7 +47,7 @@ import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
 import { Badge } from 'components/selia/badge';
 import { Button } from 'components/selia/button';
 import { Heading } from 'components/selia/heading';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from 'lib/utils';
 import {
   Card,
@@ -99,6 +99,7 @@ import {
 } from 'components/selia/table';
 import { Input } from 'components/selia/input';
 import { InputGroup, InputGroupAddon } from 'components/selia/input-group';
+import { Kbd } from 'components/selia/kbd';
 
 const data = [
   {
@@ -134,7 +135,7 @@ const data = [
 export default function Dashboard() {
   return (
     <Layout sidebar={<AppSidebar />}>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           icon={<ShoppingBagIcon />}
           title="Total Sales"
@@ -164,8 +165,8 @@ export default function Dashboard() {
           changeType="increase"
         />
       </div>
-      <div className="flex gap-4">
-        <div className="w-8/12">
+      <div className="flex gap-4 lg:flex-nowrap flex-wrap">
+        <div className="w-full lg:w-8/12">
           <Card>
             <CardHeader>
               <CardTitle>Sales</CardTitle>
@@ -187,7 +188,7 @@ export default function Dashboard() {
             <CardBody>
               <div
                 className={cn(
-                  'w-full h-[480px] [&_*]:outline-none',
+                  'w-full h-[200px] md:h-[480px] [&_*]:outline-none',
                   '[&_.recharts-cartesian-axis-tick-value]:text-sm [&_.recharts-cartesian-axis-tick-value]:fill-dimmed',
                 )}
               >
@@ -280,7 +281,7 @@ export default function Dashboard() {
             </CardBody>
           </Card>
         </div>
-        <div className="w-4/12">
+        <div className="w-full lg:w-4/12">
           <Card>
             <CardHeader>
               <CardTitle>Best Selling</CardTitle>
@@ -554,25 +555,49 @@ function Layout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  useEffect(() => {
+    const windowResize = () => {
+      if (window.innerWidth < 1024) {
+        setSidebarOpen(false);
+      } else {
+        setSidebarOpen(true);
+      }
+    };
+
+    windowResize();
+    window.addEventListener('resize', windowResize);
+    return () => window.removeEventListener('resize', windowResize);
+  }, []);
+
   function handleSidebarOpen() {
     setSidebarOpen(!sidebarOpen);
   }
 
   return (
-    <div>
+    <>
       <div
         className={cn(
-          'fixed top-0 w-72 h-dvh *:h-full transition-all',
+          'fixed inset-0 bg-black backdrop-blur-sm z-10 transition-all',
+          'max-lg:block hidden',
+          sidebarOpen ? 'opacity-40 visible' : 'opacity-0 invisible',
+        )}
+        onClick={handleSidebarOpen}
+      />
+      <div
+        className={cn(
+          'fixed top-0 z-50 w-full max-w-72 md:w-72 h-dvh *:h-full transition-all',
           sidebarOpen ? 'left-0' : '-left-full',
         )}
       >
         {sidebar}
       </div>
-      <main className={cn('transition-all', sidebarOpen ? 'ml-72' : 'ml-0')}>
+      <main
+        className={cn('transition-all', sidebarOpen ? 'xl:ml-72' : 'xl:ml-0')}
+      >
         <nav
           className={cn(
-            'h-16 flex items-center gap-2.5',
-            sidebarOpen ? 'pr-2.5' : 'px-2.5',
+            'h-16 flex items-center gap-2.5 max-lg:px-4',
+            sidebarOpen ? 'xl:pr-4' : 'xl:px-4',
           )}
         >
           <Button
@@ -583,33 +608,40 @@ function Layout({
             {sidebarOpen ? <SidebarCloseIcon /> : <SidebarOpenIcon />}
           </Button>
           <Heading size="sm">Dashboard</Heading>
+          <div className="ml-auto"></div>
         </nav>
         <div
           className={cn(
-            'min-h-[calc(100vh-4rem)] flex flex-col gap-6',
-            sidebarOpen ? 'pr-4' : 'px-4',
+            'min-h-[calc(100vh-4rem)] flex flex-col gap-6 max-lg:px-4 pb-6',
+            sidebarOpen ? 'xl:pr-4' : 'xl:px-4',
           )}
         >
           {children}
         </div>
       </main>
-    </div>
+    </>
   );
 }
 
 function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar
+      size="loose"
+      className="bg-background xl:bg-transparent max-lg:border-r border-border"
+    >
       <SidebarHeader>
         <SidebarLogo>
           <img src="/selia.png" alt="Selia" className="size-8" />
           <span className="font-semibold">Selia</span>
         </SidebarLogo>
-        <InputGroup className="mt-4 mb-2">
+        <InputGroup className="mt-4">
           <InputGroupAddon>
             <SearchIcon />
           </InputGroupAddon>
           <Input placeholder="Search" />
+          <InputGroupAddon align="end">
+            <Kbd>/</Kbd>
+          </InputGroupAddon>
         </InputGroup>
       </SidebarHeader>
       <SidebarContent>
@@ -632,9 +664,6 @@ function AppSidebar() {
               <SidebarItem>
                 <Package2Icon />
                 Orders
-                <Badge className="ml-auto" size="sm" pill variant="info">
-                  10
-                </Badge>
               </SidebarItem>
               <SidebarCollapsible>
                 <SidebarCollapsibleTrigger>
@@ -661,15 +690,15 @@ function AppSidebar() {
                 data-slot="sidebar-item"
                 nativeButton={false}
                 render={
-                  <SidebarItem>
-                    <Avatar size="sm">
-                      <AvatarImage src="/avatar05.png" alt="Avatar" />
+                  <SidebarItem className="border border-border">
+                    <Avatar>
+                      <AvatarImage src="/human01.jpg" alt="Avatar" />
                       <AvatarFallback>BS</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
-                      <span className="font-medium">John Doe</span>
+                      <span className="font-medium">Anna Thompson</span>
                       <span className="text-sm text-muted">
-                        john.doe@example.com
+                        anna@example.com
                       </span>
                     </div>
                     <ChevronsUpDownIcon className="ml-auto" />
