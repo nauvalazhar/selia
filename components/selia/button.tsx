@@ -7,7 +7,8 @@ export const buttonVariants = cva(
   [
     'relative font-medium select-none',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
-    'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100 active:after:opacity-100 after:transition-opacity',
+    'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100',
+    'active:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
@@ -92,73 +93,16 @@ export const buttonVariants = cva(
           'text-danger hover:bg-danger/25 active:bg-danger/25',
           'after:content-none outline-danger',
         ],
-        info: [
-          'bg-gradient-info text-info-foreground',
-          'ring ring-info-border',
-          'inset-shadow-2xs inset-shadow-white/15 shadow',
-          'after:rounded outline-info',
-        ],
-        'info-subtle': [
-          'bg-info/15 hover:bg-info/25 active:bg-info/25 text-info',
-          'after:content-none outline-info',
-        ],
-        'info-outline': [
-          'text-info',
-          'border border-info hover:bg-info/15 active:bg-info/15',
-          'after:content-none outline-info',
-        ],
-        'info-plain': [
-          'text-info hover:bg-info/25 active:bg-info/25',
-          'after:content-none outline-info',
-        ],
-        success: [
-          'bg-gradient-success text-success-foreground',
-          'ring ring-success-border',
-          'inset-shadow-2xs inset-shadow-white/15 shadow',
-          'after:rounded outline-success',
-        ],
-        'success-subtle': [
-          'bg-success/15 hover:bg-success/25 active:bg-success/25 text-success',
-          'after:content-none outline-success',
-        ],
-        'success-outline': [
-          'text-success',
-          'border border-success hover:bg-success/15 active:bg-success/15',
-          'after:content-none outline-success',
-        ],
-        'success-plain': [
-          'text-success hover:bg-success/25 active:bg-success/25',
-          'after:content-none outline-success',
-        ],
-        warning: [
-          'bg-gradient-warning text-warning-foreground',
-          'ring ring-warning-border',
-          'inset-shadow-2xs inset-shadow-white/15 shadow',
-          'after:rounded outline-warning',
-        ],
-        'warning-subtle': [
-          'bg-warning/15 hover:bg-warning/25 active:bg-warning/25 text-warning',
-          'after:content-none outline-warning',
-        ],
-        'warning-outline': [
-          'text-warning',
-          'border border-warning hover:bg-warning/15 active:bg-warning/15',
-          'after:content-none outline-warning',
-        ],
-        'warning-plain': [
-          'text-warning hover:bg-warning/25 active:bg-warning/25',
-          'after:content-none outline-warning',
-        ],
       },
       size: {
         xs: 'h-7 px-2 rounded-lg after:rounded-lg *:[svg]:size-4',
         'xs-icon': 'size-7.5 rounded-lg after:rounded-lg *:[svg]:size-4',
-        sm: 'h-8.5 px-2 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
+        sm: 'h-8.5 px-3 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
         'sm-icon':
           'size-8.5 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
         md: 'h-9.5 px-4 rounded *:[svg]:size-4.5',
         icon: 'size-9.5 rounded *:[svg]:size-4.5',
-        lg: 'h-11.5 px-5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
+        lg: 'h-11.5 px-5.5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
         'lg-icon':
           'size-11.5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
       },

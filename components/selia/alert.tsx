@@ -16,31 +16,31 @@ export const alertVariants = cva(
     variants: {
       variant: {
         secondary: [
-          'bg-gradient-secondary text-secondary-foreground',
+          'bg-secondary text-secondary-foreground',
           '**:data-[slot=alert-button]:hover:bg-tertiary/15',
         ],
         danger: [
-          'bg-gradient-danger text-danger-foreground',
+          'bg-danger text-danger-foreground',
           '*:data-[slot=alert-description]:text-danger-foreground/80',
           '**:data-[slot=alert-button]:text-white',
         ],
         info: [
-          'bg-gradient-info text-info-foreground',
+          'bg-info text-info-foreground',
           '*:data-[slot=alert-description]:text-info-foreground/80',
           '**:data-[slot=alert-button]:text-white',
         ],
         success: [
-          'bg-gradient-success text-success-foreground',
+          'bg-success text-success-foreground',
           '*:data-[slot=alert-description]:text-success-foreground/80',
           '**:data-[slot=alert-button]:text-white',
         ],
         warning: [
-          'bg-gradient-warning text-warning-foreground',
+          'bg-warning text-warning-foreground',
           '*:data-[slot=alert-description]:text-warning-foreground/80',
           '**:data-[slot=alert-button]:text-white',
         ],
         tertiary: [
-          'bg-gradient-tertiary text-tertiary-foreground',
+          'bg-tertiary text-tertiary-foreground',
           '*:data-[slot=alert-description]:text-tertiary-foreground/80',
           '**:data-[slot=alert-button]:text-white',
           '**:data-[slot=alert-button]:hover:bg-secondary/20',

@@ -7,9 +7,6 @@ export default function Outline() {
       <Button variant="secondary-outline">Secondary</Button>
       <Button variant="tertiary-outline">Tertiary</Button>
       <Button variant="danger-outline">Danger</Button>
-      <Button variant="info-outline">Info</Button>
-      <Button variant="success-outline">Success</Button>
-      <Button variant="warning-outline">Warning</Button>
     </>
   );
 }
