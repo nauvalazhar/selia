@@ -99,6 +99,7 @@ export default function LayoutDocs({
             'fixed z-30 w-full max-lg:h-dvh bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent transition-all',
             isSidebarOpen ? 'right-0' : '-right-full',
           )}
+          size="compact"
         >
           <SidebarHeader className="lg:hidden">
             <Logo />
@@ -108,7 +109,7 @@ export default function LayoutDocs({
               {sidebarMenu.map((group) => (
                 <SidebarGroup key={group.title}>
                   <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
-                  <SidebarList line size="compact">
+                  <SidebarList line>
                     {group.items.map((item) => (
                       <SidebarItem
                         key={item.path}

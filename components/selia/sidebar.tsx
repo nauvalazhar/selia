@@ -3,14 +3,65 @@ import { cn } from 'lib/utils';
 import { Collapsible as BaseCollapsible } from '@base-ui-components/react/collapsible';
 import { cva, type VariantProps } from 'class-variance-authority';
 
+export const sidebarVariants = cva('flex flex-col gap-2.5', {
+  variants: {
+    size: {
+      default: [
+        '**:data-[slot=sidebar-item]:min-h-8.5',
+        '**:data-[slot=sidebar-item]:px-2.5',
+        '**:data-[slot=sidebar-item]:py-2',
+        '**:data-[slot=sidebar-item]:rounded-xl',
+        '**:data-[slot=sidebar-header]:px-2.5',
+        '**:data-[slot=sidebar-logo]:px-2.5',
+        '**:data-[slot=sidebar-content]:px-2.5',
+        '**:data-[slot=sidebar-group-title]:px-2.5',
+        '**:data-[slot=sidebar-group-action]:px-2.5',
+        '**:data-[slot=sidebar-footer]:px-2.5',
+      ],
+      compact: [
+        '**:data-[slot=sidebar-item]:min-h-8',
+        '**:data-[slot=sidebar-item]:px-2.5',
+        '**:data-[slot=sidebar-item]:py-1.5',
+        '**:data-[slot=sidebar-item]:rounded-xl',
+        '**:data-[slot=sidebar-header]:px-2.5',
+        '**:data-[slot=sidebar-logo]:px-2.5',
+        '**:data-[slot=sidebar-content]:px-2.5',
+        '**:data-[slot=sidebar-group-title]:px-2.5',
+        '**:data-[slot=sidebar-group-action]:px-2.5',
+        '**:data-[slot=sidebar-footer]:px-2.5',
+        2,
+      ],
+      loose: [
+        '**:data-[slot=sidebar-item]:min-h-10',
+        '**:data-[slot=sidebar-item]:px-3',
+        '**:data-[slot=sidebar-item]:py-2',
+        '**:data-[slot=sidebar-item]:rounded-xl',
+        '**:data-[slot=sidebar-header]:px-3',
+        '**:data-[slot=sidebar-logo]:px-3',
+        '**:data-[slot=sidebar-content]:px-3',
+        '**:data-[slot=sidebar-group-title]:px-3',
+        '**:data-[slot=sidebar-group-action]:px-3',
+        '**:data-[slot=sidebar-footer]:px-3',
+        '**:data-line:before:left-4',
+        '**:data-line:**:data-[slot=sidebar-item]:pl-7.5',
+        '**:data-line:**:data-[slot=sidebar-item]:data-active:before:left-4',
+      ],
+    },
+  },
+  defaultVariants: {
+    size: 'default',
+  },
+});
+
 export function Sidebar({
   className,
+  size,
   ...props
-}: React.ComponentProps<'aside'>) {
+}: React.ComponentProps<'aside'> & VariantProps<typeof sidebarVariants>) {
   return (
     <aside
       data-slot="sidebar"
-      className={cn('flex flex-col gap-2.5', className)}
+      className={cn(sidebarVariants({ size, className }))}
       {...props}
     />
   );
@@ -25,7 +76,7 @@ export function SidebarHeader({
     <header
       data-slot="sidebar-header"
       {...props}
-      className={cn('py-4 px-2.5', className)}
+      className={cn('pt-4', className)}
     >
       {children}
     </header>
@@ -43,7 +94,7 @@ export function SidebarContent({
     props: {
       'data-slot': 'sidebar-content',
       className: cn(
-        'flex flex-col gap-2.5 px-2.5 h-full overflow-y-auto',
+        'flex flex-col gap-2.5 h-full overflow-y-auto py-4',
         className,
       ),
       ...props,
@@ -59,7 +110,7 @@ export function SidebarLogo({
   return (
     <div
       data-slot="sidebar-logo"
-      className={cn('flex items-center gap-2.5 px-2.5 select-none', className)}
+      className={cn('flex items-center gap-2.5 select-none', className)}
       {...props}
     >
       {children}
@@ -75,7 +126,7 @@ export function SidebarFooter({
   return (
     <footer
       data-slot="sidebar-footer"
-      className={cn('mt-auto py-4 px-2.5', className)}
+      className={cn('mt-auto pb-4', className)}
       {...props}
     >
       {children}
@@ -98,26 +149,6 @@ export function SidebarMenu({
 
 export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
   variants: {
-    size: {
-      default: [
-        '**:data-[slot=sidebar-item]:min-h-8.5',
-        '**:data-[slot=sidebar-item]:px-2.5',
-        '**:data-[slot=sidebar-item]:py-2',
-        '**:data-[slot=sidebar-item]:rounded-xl',
-      ],
-      compact: [
-        '**:data-[slot=sidebar-item]:min-h-8',
-        '**:data-[slot=sidebar-item]:px-2.5',
-        '**:data-[slot=sidebar-item]:py-1.5',
-        '**:data-[slot=sidebar-item]:rounded-xl',
-      ],
-      loose: [
-        '**:data-[slot=sidebar-item]:min-h-10',
-        '**:data-[slot=sidebar-item]:px-2.5',
-        '**:data-[slot=sidebar-item]:py-2.5',
-        '**:data-[slot=sidebar-item]:rounded-xl',
-      ],
-    },
     line: {
       true: [
         'relative before:absolute before:top-0 before:bottom-1',
@@ -135,21 +166,21 @@ export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
     },
   },
   defaultVariants: {
-    size: 'default',
+    line: false,
   },
 });
 
 export function SidebarList({
   className,
   line,
-  size,
   children,
   ...props
 }: React.ComponentProps<'ul'> & VariantProps<typeof sidebarListVariants>) {
   return (
     <ul
       data-slot="sidebar-list"
-      className={cn(sidebarListVariants({ line, size, className }))}
+      data-line={line ? true : undefined}
+      className={cn(sidebarListVariants({ line, className }))}
       {...props}
     >
       {children}
@@ -213,7 +244,7 @@ export function SidebarGroupTitle({
   return (
     <span
       data-slot="sidebar-group-title"
-      className={cn('text-sm font-medium text-dimmed px-2.5', className)}
+      className={cn('text-sm font-medium text-dimmed', className)}
       {...props}
     >
       {children}
@@ -230,7 +261,7 @@ export function SidebarGroupAction({
     <div
       data-slot="sidebar-group-action"
       className={cn(
-        'ml-auto flex items-center gap-1.5 px-2.5 **:[svg]:size-4.5',
+        'ml-auto flex items-center gap-1.5 **:[svg]:size-4',
         className,
       )}
       {...props}

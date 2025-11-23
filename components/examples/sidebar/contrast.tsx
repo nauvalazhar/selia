@@ -10,9 +10,9 @@ import {
   SidebarMenu,
 } from 'components/selia/sidebar';
 
-export default function SidebarCompactExample() {
+export default function SidebarContrastExample() {
   return (
-    <Sidebar className="lg:w-72" size="compact">
+    <Sidebar className="lg:w-72" size="loose">
       <SidebarHeader>
         <SidebarLogo>
           <img src="/selia.png" alt="Selia" className="size-8" />

@@ -22,4 +22,18 @@ export const examples = {
       import('./line').then((mod) => ({ default: mod.default })),
     ),
   },
+  loose: {
+    name: 'Loose',
+    path: 'components/examples/sidebar/loose.tsx',
+    component: React.lazy(() =>
+      import('./loose').then((mod) => ({ default: mod.default })),
+    ),
+  },
+  background: {
+    name: 'Background',
+    path: 'components/examples/sidebar/background.tsx',
+    component: React.lazy(() =>
+      import('./background').then((mod) => ({ default: mod.default })),
+    ),
+  },
 };

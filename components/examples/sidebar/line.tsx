@@ -12,7 +12,7 @@ import {
 
 export default function SidebarLineExample() {
   return (
-    <Sidebar className="lg:w-72">
+    <Sidebar className="lg:w-72" size="compact">
       <SidebarHeader>
         <SidebarLogo>
           <img src="/selia.png" alt="Selia" className="size-8" />
@@ -23,7 +23,7 @@ export default function SidebarLineExample() {
         <SidebarMenu>
           <SidebarGroup>
             <SidebarGroupTitle>Prologue</SidebarGroupTitle>
-            <SidebarList size="compact" line>
+            <SidebarList line>
               <SidebarItem href="#">Introduction</SidebarItem>
               <SidebarItem href="#">Installation</SidebarItem>
               <SidebarItem href="#">Customization</SidebarItem>
@@ -32,7 +32,7 @@ export default function SidebarLineExample() {
           </SidebarGroup>
           <SidebarGroup>
             <SidebarGroupTitle>Components</SidebarGroupTitle>
-            <SidebarList size="compact" line>
+            <SidebarList line>
               <SidebarItem href="#">Button</SidebarItem>
               <SidebarItem href="#">Card</SidebarItem>
               <SidebarItem href="#">Input</SidebarItem>
