@@ -30,7 +30,7 @@ export function CommandBody({
     <DialogBody
       {...props}
       className={cn(
-        'space-y-0 bg-dialog border border-dialog-border rounded-3xl',
+        'space-y-0 bg-dialog border border-dialog-border rounded-xl',
         'bg-dialog shadow p-0',
         '**:data-[slot=autocomplete-list]:px-2.5 **:data-[slot=autocomplete-list]:py-1.5',
         className,

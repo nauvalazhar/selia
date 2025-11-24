@@ -39,12 +39,12 @@ export function DialogContent({
           'fixed left-1/2 -translate-x-1/2 -translate-y-1/2',
           'top-[calc(50%+1.25rem*var(--nested-dialogs))]',
           'bg-dialog text-dialog-foreground backdrop-blur-sm',
-          'ring ring-dialog-border rounded-3xl shadow',
+          'ring ring-dialog-border rounded-xl shadow',
           'scale-[calc(1-0.1*var(--nested-dialogs))]',
           'outline-none transition-all w-md max-w-[calc(100%-2rem)]',
           'data-[nested-dialog-open]:after:absolute',
           'data-[nested-dialog-open]:after:inset-0',
-          'data-[nested-dialog-open]:after:rounded-3xl',
+          'data-[nested-dialog-open]:after:rounded-xl',
           'data-[nested-dialog-open]:after:bg-black/20',
           'data-[nested-dialog-open]:after:z-10',
           'data-[starting-style]:opacity-0 data-[ending-style]:opacity-0',
@@ -133,7 +133,7 @@ export function DialogFooter({
       {...props}
       className={cn(
         'flex items-center justify-end gap-1.5',
-        'px-6 py-3.5 bg-dialog-footer border-t border-dialog-border rounded-b-2xl',
+        'px-6 py-3.5 bg-dialog-footer border-t border-dialog-border rounded-b-xl',
         className,
       )}
     >

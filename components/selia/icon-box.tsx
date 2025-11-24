@@ -22,10 +22,9 @@ export const iconBoxVariants = cva(
         'warning-subtle': 'bg-warning/10 text-warning',
       },
       size: {
-        sm: 'size-7 rounded-lg *:[svg]:size-3.5',
+        sm: 'size-7 rounded-sm *:[svg]:size-3.5',
         md: 'size-9 rounded *:[svg]:size-4.5',
-        lg: 'size-11 rounded-xl *:[svg]:size-5',
-        xl: 'size-13 rounded-2xl *:[svg]:size-5.5',
+        lg: 'size-13 rounded-lg *:[svg]:size-5.5',
       },
       circle: {
         true: 'rounded-full',

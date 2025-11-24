@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
 export const cardVariants = cva(
-  'text-foreground ring ring-card-border rounded-3xl shadow-card',
+  'text-foreground ring ring-card-border rounded-xl shadow-card',
   {
     variants: {
       variant: {
@@ -114,8 +114,8 @@ export function CardBody({ className, ...props }: React.ComponentProps<'div'>) {
       className={cn(
         'p-6 *:data-[slot=table-container]:-m-6 **:data-[slot=item]:px-6',
         '*:data-[slot=stack]:-m-6',
-        'not-[:has(caption)]:[&_tbody>tr:last-child>td:first-child]:rounded-bl-3xl',
-        'not-[:has(caption)]:[&_tbody>tr:last-child>td:last-child]:rounded-br-3xl',
+        'not-[:has(caption)]:[&_tbody>tr:last-child>td:first-child]:rounded-bl-xl',
+        'not-[:has(caption)]:[&_tbody>tr:last-child>td:last-child]:rounded-br-xl',
         className,
       )}
       {...props}
@@ -132,7 +132,7 @@ export function CardFooter({
       data-slot="card-footer"
       className={cn(
         'flex items-center gap-1.5',
-        'p-6 bg-card-footer border-t border-card-separator rounded-b-3xl',
+        'p-6 bg-card-footer border-t border-card-separator rounded-b-xl',
         className,
       )}
       {...props}

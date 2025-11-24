@@ -24,7 +24,7 @@ export function TabsList({
     <BaseTabs.List
       data-slot="tabs-list"
       className={cn(
-        'relative z-0 flex items-center bg-tabs p-1 rounded-xl',
+        'relative z-0 flex items-center bg-tabs p-1 rounded',
         'inset-shadow-xs inset-shadow-black/10 dark:inset-shadow-none',
         className,
       )}
@@ -35,7 +35,7 @@ export function TabsList({
         className={cn(
           'absolute top-1/2 left-0 h-8 w-(--active-tab-width)',
           'translate-x-(--active-tab-left) -translate-y-1/2',
-          'rounded-xl z-[-1] transition-all',
+          'rounded z-[-1] transition-all',
           'bg-tabs-accent shadow inset-shadow-2xs inset-shadow-white/15 dark:inset-shadow-black/15',
           'ring ring-tabs-border',
         )}
@@ -52,7 +52,7 @@ export function TabsItem({
     <BaseTabs.Tab
       data-slot="tabs-item"
       className={cn(
-        'flex items-center justify-center gap-2.5 rounded-xl',
+        'flex items-center justify-center gap-2.5 rounded',
         'h-8 py-1 px-3 text-muted flex-1 font-medium',
         'data-selected:text-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',

@@ -35,9 +35,9 @@ export const itemVariants = cva(
         'tertiary-outline': 'border-tertiary/20 border',
       },
       size: {
-        sm: 'p-3.5 rounded-xl gap-2.5',
-        md: 'p-4 rounded-2xl gap-3',
-        lg: 'p-4.5 rounded-3xl gap-3.5',
+        sm: 'p-3.5 rounded gap-2.5',
+        md: 'p-4 rounded-lg gap-3',
+        lg: 'p-4.5 rounded-xl gap-3.5',
       },
       direction: {
         row: 'flex-row',
@@ -127,7 +127,7 @@ export function ItemMedia({
     <div
       data-slot="item-media"
       className={cn(
-        'shrink-0 *:[img]:size-11 *:[img]:rounded-xl *:[[data-slot=iconbox]]:size-9 *:[svg]:size-4.5',
+        'shrink-0 *:[img]:size-11 *:[img]:rounded *:[[data-slot=iconbox]]:size-9 *:[svg]:size-4.5',
         className,
       )}
       {...props}

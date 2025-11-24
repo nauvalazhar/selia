@@ -742,7 +742,7 @@ function StatCard({
   return (
     <Card>
       <CardBody>
-        <IconBox size="xl" variant="info-subtle" className="mb-4">
+        <IconBox size="lg" variant="info-subtle" className="mb-4">
           {icon}
         </IconBox>
         <Heading size="sm" className="font-medium text-dimmed">
