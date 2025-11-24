@@ -1,6 +1,16 @@
 import React from 'react';
 
-export const blocks = {
+type Block = {
+  [key: string]: {
+    name: string;
+    description: string;
+    pathIndex?: string;
+    path: string;
+    component: React.LazyExoticComponent<React.ComponentType<any>>;
+  };
+};
+
+export const blocks: Block = {
   login: {
     name: 'Login',
     description: 'A simple login form with Google and GitHub authentication.',
@@ -12,7 +22,8 @@ export const blocks = {
   dashboard: {
     name: 'Dashboard',
     description: 'A simple dashboard with a sidebar and a main content area.',
-    path: 'components/blocks/dashboard.tsx',
+    pathIndex: 'page.tsx',
+    path: 'components/blocks/dashboard',
     component: React.lazy(() =>
       import('./dashboard').then((mod) => ({ default: mod.default })),
     ),

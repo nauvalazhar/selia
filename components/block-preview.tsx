@@ -12,28 +12,41 @@ import {
   Code2Icon,
   CodeIcon,
   CopyIcon,
+  FileIcon,
   MoonIcon,
   SunIcon,
 } from 'lucide-react';
 import { Separator } from './selia/separator';
 import { Button } from './selia/button';
 import { useThemeStore } from '~/lib/theme-store';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupTitle,
+  SidebarItem,
+  SidebarList,
+  SidebarMenu,
+} from 'components/selia/sidebar';
 
 export function BlockPreview({
   name,
   code,
+  codeIndex,
   title,
   description,
 }: {
   name: string;
   title: string;
-  code: string;
+  code: string | Record<string, any>;
+  codeIndex?: string;
   description: string;
 }) {
   const theme = useThemeStore((state) => state.theme);
   const [isCopied, setIsCopied] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [tab, setTab] = useState<'preview' | 'code'>('preview');
 
   useEffect(() => {
     setIsDark(
@@ -52,9 +65,13 @@ export function BlockPreview({
 
   function handleCopy(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
+    const codeText =
+      e.currentTarget.parentElement?.parentElement?.parentElement?.parentElement?.querySelector(
+        'code',
+      )?.textContent;
 
-    if (code) {
-      navigator.clipboard.writeText(code);
+    if (codeText) {
+      navigator.clipboard.writeText(codeText);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 1000);
     }
@@ -66,7 +83,7 @@ export function BlockPreview({
   }
 
   return (
-    <Tabs defaultValue="preview">
+    <Tabs defaultValue={tab} onValueChange={setTab}>
       <div className="bg-surface-01 rounded-3xl p-1 scroll-mt-8" id={name}>
         <header className="dark px-4 py-1.5 mb-1">
           <div className="border-b border-border mb-2 pb-2 flex items-center gap-3">
@@ -83,31 +100,35 @@ export function BlockPreview({
               <TabsItem value="code">Code</TabsItem>
             </TabsList>
             <div className="flex items-center gap-2">
-              <Button
-                size="xs-icon"
-                variant="tertiary-subtle"
-                pill
-                onClick={handleTheme}
-              >
-                {isDark ? <MoonIcon /> : <SunIcon />}
-              </Button>
-              <Button
-                size="xs"
-                variant="tertiary-subtle"
-                pill
-                className="text-muted text-sm"
-                onClick={handleCopy}
-              >
-                {isCopied ? (
-                  <>
-                    <CheckIcon /> Copied
-                  </>
-                ) : (
-                  <>
-                    <CopyIcon /> Copy
-                  </>
-                )}
-              </Button>
+              {tab === 'preview' && (
+                <Button
+                  size="xs-icon"
+                  variant="tertiary-subtle"
+                  pill
+                  onClick={handleTheme}
+                >
+                  {isDark ? <MoonIcon /> : <SunIcon />}
+                </Button>
+              )}
+              {tab === 'code' && (
+                <Button
+                  size="xs"
+                  variant="tertiary-subtle"
+                  pill
+                  className="text-muted text-sm"
+                  onClick={handleCopy}
+                >
+                  {isCopied ? (
+                    <>
+                      <CheckIcon /> Copied
+                    </>
+                  ) : (
+                    <>
+                      <CopyIcon /> Copy
+                    </>
+                  )}
+                </Button>
+              )}
             </div>
           </div>
         </header>
@@ -119,25 +140,65 @@ export function BlockPreview({
           />
         </TabsPanel>
         <TabsPanel value="code" keepMounted>
-          <ScrollArea.Root>
-            <ScrollArea.Viewport className="bg-surface-03/50 ring ring-border-02 rounded-3xl px-4 py-4.5 outline-none max-h-[calc(100vh-10rem)]">
-              <ShikiHighlighter
-                language="tsx"
-                theme="ayu-dark"
-                showLanguage={false}
-                highlighter={highlighter}
-                showLineNumbers
-                className={cn(
-                  'outline-none *:outline-none *:!bg-transparent *:!overflow-visible',
-                  '*:!p-0',
-                )}
-              >
-                {code}
-              </ShikiHighlighter>
-            </ScrollArea.Viewport>
-          </ScrollArea.Root>
+          <CodePanel code={code} codeIndex={codeIndex} />
         </TabsPanel>
       </div>
     </Tabs>
+  );
+}
+
+function CodePanel({
+  code,
+  codeIndex,
+}: {
+  code: string | Record<string, any>;
+  codeIndex?: string;
+}) {
+  const files = typeof code === 'object' ? Object.keys(code) : [];
+  const [selectedFile, setSelectedFile] = useState(codeIndex);
+
+  return (
+    <div className="flex">
+      {files.length > 0 ? (
+        <Sidebar className="w-72 shrink-0 dark hidden lg:block" size="compact">
+          <SidebarContent>
+            <SidebarMenu>
+              <SidebarGroup>
+                <SidebarGroupTitle>Files</SidebarGroupTitle>
+                <SidebarList>
+                  {files.map((file) => (
+                    <SidebarItem
+                      key={file}
+                      onClick={() => setSelectedFile(file)}
+                      active={selectedFile === file}
+                    >
+                      <FileIcon />
+                      {file}
+                    </SidebarItem>
+                  ))}
+                </SidebarList>
+              </SidebarGroup>
+            </SidebarMenu>
+          </SidebarContent>
+        </Sidebar>
+      ) : null}
+      <ScrollArea.Root className="w-full overflow-hidden">
+        <ScrollArea.Viewport className="bg-surface-03/50 ring ring-border-02 rounded-3xl px-4 py-4.5 outline-none max-h-[calc(100vh-10rem)]">
+          <ShikiHighlighter
+            language="tsx"
+            theme="ayu-dark"
+            showLanguage={false}
+            highlighter={highlighter}
+            showLineNumbers
+            className={cn(
+              'outline-none *:outline-none *:!bg-transparent *:!overflow-visible',
+              '*:!p-0',
+            )}
+          >
+            {typeof code === 'object' ? code[selectedFile] : code}
+          </ShikiHighlighter>
+        </ScrollArea.Viewport>
+      </ScrollArea.Root>
+    </div>
   );
 }
