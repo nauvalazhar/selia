@@ -25,7 +25,7 @@ export const blocks: Block = {
     pathIndex: 'page.tsx',
     path: 'components/blocks/dashboard',
     component: React.lazy(() =>
-      import('./dashboard').then((mod) => ({ default: mod.default })),
+      import('./dashboard/page').then((mod) => ({ default: mod.default })),
     ),
   },
 };
