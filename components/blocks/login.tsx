@@ -16,7 +16,7 @@ export default function LoginBlock() {
   const [pending, setPending] = useState(false);
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
+    <div className="w-full lg:h-screen flex items-center justify-center p-4">
       <Card className="w-full lg:w-5/12 xl:w-md">
         <CardHeader align="center">
           <CardTitle>Sign in to your account</CardTitle>
