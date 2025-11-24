@@ -1,151 +1,64 @@
-import {
-  Sidebar,
-  SidebarCollapsible,
-  SidebarCollapsibleTrigger,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupTitle,
-  SidebarHeader,
-  SidebarItem,
-  SidebarList,
-  SidebarLogo,
-  SidebarMenu,
-  SidebarSubmenu,
-} from 'components/selia/sidebar';
-import {
-  ChartAreaIcon,
-  ChevronsUpDownIcon,
-  HomeIcon,
-  LogOutIcon,
-  Package2Icon,
-  PlusIcon,
-  SettingsIcon,
-  ShoppingBagIcon,
-  TagsIcon,
-  UserIcon,
-} from 'lucide-react';
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownTrigger,
-} from 'components/selia/dropdown';
-import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
+import { Card, CardBody } from 'components/selia/card';
+import { Avatar, AvatarImage, AvatarIndicator } from 'components/selia/avatar';
+import { Heading } from 'components/selia/heading';
+import { Text } from 'components/selia/text';
+import { Chip } from 'components/selia/chip';
+import { Button } from 'components/selia/button';
+import { Separator } from 'components/selia/separator';
 import { Badge } from 'components/selia/badge';
 
 export default function SidebarBasicExample() {
   return (
-    <div className="flex gap-4 h-screen">
-      <Sidebar className="lg:w-72" size="loose">
-        <SidebarHeader>
-          <SidebarLogo>
-            <img src="/selia.png" alt="Selia" className="size-8" />
-            <span className="font-semibold text-foreground">Selia</span>
-          </SidebarLogo>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarMenu>
-            <SidebarGroup>
-              <SidebarGroupTitle>Navigation</SidebarGroupTitle>
-              <SidebarGroupAction>
-                <button className="text-foreground">
-                  <PlusIcon />
-                </button>
-              </SidebarGroupAction>
-              <SidebarList line>
-                <SidebarItem href="#" active>
-                  <HomeIcon />
-                  Dashboard
-                </SidebarItem>
-                <SidebarItem href="#">
-                  <ShoppingBagIcon />
-                  Products
-                </SidebarItem>
-                <SidebarItem>
-                  <TagsIcon />
-                  Categories
-                </SidebarItem>
-                <SidebarItem>
-                  <Package2Icon />
-                  Orders
-                  <Badge className="ml-auto" size="sm" pill variant="info">
-                    10
-                  </Badge>
-                </SidebarItem>
-                <SidebarCollapsible>
-                  <SidebarCollapsibleTrigger>
-                    <ChartAreaIcon />
-                    Reports
-                  </SidebarCollapsibleTrigger>
-                  <SidebarSubmenu>
-                    <SidebarList>
-                      <SidebarItem href="#">Sales</SidebarItem>
-                      <SidebarItem href="#">Traffic</SidebarItem>
-                      <SidebarItem href="#">Conversion</SidebarItem>
-                    </SidebarList>
-                  </SidebarSubmenu>
-                </SidebarCollapsible>
-              </SidebarList>
-            </SidebarGroup>
-            <SidebarGroup>
-              <SidebarGroupTitle>Settings</SidebarGroupTitle>
-              <SidebarList>
-                <SidebarItem href="#">
-                  <SettingsIcon />
-                  Settings
-                </SidebarItem>
-                <SidebarItem href="#">
-                  <UserIcon />
-                  Profile
-                </SidebarItem>
-              </SidebarList>
-            </SidebarGroup>
-          </SidebarMenu>
-        </SidebarContent>
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarList>
-              <Dropdown>
-                <DropdownTrigger
-                  data-slot="sidebar-item"
-                  nativeButton={false}
-                  render={
-                    <SidebarItem>
-                      <Avatar size="sm">
-                        <AvatarImage src="/avatar05.png" alt="Avatar" />
-                        <AvatarFallback>BS</AvatarFallback>
-                      </Avatar>
-                      <div className="flex flex-col">
-                        <span className="font-medium">John Doe</span>
-                        <span className="text-sm text-muted">
-                          john.doe@example.com
-                        </span>
-                      </div>
-                      <ChevronsUpDownIcon className="ml-auto" />
-                    </SidebarItem>
-                  }
-                />
-                <DropdownContent className="w-(--anchor-width)" side="top">
-                  <DropdownItem>
-                    <UserIcon />
-                    Profile
-                  </DropdownItem>
-                  <DropdownItem>
-                    <SettingsIcon />
-                    Settings
-                  </DropdownItem>
-                  <DropdownItem>
-                    <LogOutIcon />
-                    Logout
-                  </DropdownItem>
-                </DropdownContent>
-              </Dropdown>
-            </SidebarList>
-          </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
+    <div className="flex gap-4 h-screen items-center justify-center p-8 bg-gray-100">
+      <Card className="w-full max-w-96 p-1.5">
+        <img
+          src="https://images.unsplash.com/photo-1757622427605-99ddf76f8bbb?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          className="w-full h-44 bg-muted rounded-[calc(var(--radius-xl)+6px)] object-cover object-top"
+        />
+
+        <CardBody>
+          <Avatar className="size-20 -mt-18 mx-auto ring-3 ring-card">
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=880&auto=format&fit=crop"
+              alt="John Morton"
+            />
+          </Avatar>
+
+          <Heading size="md" level={2} className="text-center mt-2">
+            John Morton
+          </Heading>
+
+          <Text className="text-center text-dimmed w-8/12 mx-auto mb-4">
+            UI/UX designer with 6+ years experience.
+          </Text>
+
+          <div className="flex items-center justify-center gap-4">
+            <div className="text-center flex-1">
+              <Text className="text-xl font-medium">12k</Text>
+              <Text className="text-dimmed">Followers</Text>
+            </div>
+            <Separator orientation="vertical" />
+            <div className="text-center flex-1">
+              <Text className="text-xl font-medium">785</Text>
+              <Text className="text-dimmed">Following</Text>
+            </div>
+            <Separator orientation="vertical" />
+            <div className="text-center flex-1">
+              <Text className="text-xl font-medium">137</Text>
+              <Text className="text-dimmed">Posts</Text>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mt-4">
+            <Button variant="secondary-subtle" size="lg" block>
+              Message
+            </Button>
+            <Button variant="tertiary" size="lg" block>
+              Follow
+            </Button>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
 }
