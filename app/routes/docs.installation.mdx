@@ -42,7 +42,7 @@ Your CSS should include the following:
 ```css filename="app.css" clip
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *):not(.not-dark, .not-dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: oklch(0.9616 0.0011 247.83);
