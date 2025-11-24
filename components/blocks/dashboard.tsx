@@ -608,7 +608,6 @@ function Layout({
             {sidebarOpen ? <SidebarCloseIcon /> : <SidebarOpenIcon />}
           </Button>
           <Heading size="sm">Dashboard</Heading>
-          <div className="ml-auto"></div>
         </nav>
         <div
           className={cn(

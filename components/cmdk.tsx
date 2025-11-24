@@ -43,7 +43,10 @@ export function Cmdk({ items }: { items: Group[] }) {
   const setTheme = useThemeStore((state) => state.setTheme);
   const navigate = useNavigate();
 
-  useHotkeys(['meta+k', 'ctrl+k'], () => toggleCmdk());
+  useHotkeys(['meta+k', 'ctrl+k'], (e: KeyboardEvent) => {
+    e.preventDefault();
+    toggleCmdk();
+  });
 
   function handleItemClick(item: Item) {
     closeCmdk();

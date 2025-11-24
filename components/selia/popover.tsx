@@ -28,7 +28,7 @@ export function PopoverContent({
           data-slot="popover-content"
           {...popupProps}
           className={cn(
-            'flex flex-col gap-1.5 items-start',
+            'flex flex-col gap-1.5 items-start text-popover-foreground',
             'bg-popover ring ring-popover-border rounded shadow',
             'p-4 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
