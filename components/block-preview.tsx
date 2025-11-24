@@ -12,6 +12,7 @@ import {
   Code2Icon,
   CodeIcon,
   CopyIcon,
+  ExternalLinkIcon,
   FileIcon,
   MoonIcon,
   SunIcon,
@@ -82,6 +83,11 @@ export function BlockPreview({
     setIsDark(!isDark);
   }
 
+  function handleOpenPreview(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    window.open(`/block/${name}`, '_blank');
+  }
+
   return (
     <Tabs defaultValue={tab} onValueChange={setTab}>
       <div className="bg-surface-01 rounded-3xl p-1 scroll-mt-8" id={name}>
@@ -108,6 +114,16 @@ export function BlockPreview({
                   onClick={handleTheme}
                 >
                   {isDark ? <MoonIcon /> : <SunIcon />}
+                </Button>
+              )}
+              {tab === 'preview' && (
+                <Button
+                  size="xs-icon"
+                  variant="tertiary-subtle"
+                  pill
+                  onClick={handleOpenPreview}
+                >
+                  <ExternalLinkIcon />
                 </Button>
               )}
               {tab === 'code' && (
