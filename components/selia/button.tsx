@@ -95,16 +95,14 @@ export const buttonVariants = cva(
         ],
       },
       size: {
-        xs: 'h-7 px-2 rounded-lg after:rounded-lg *:[svg]:size-4',
-        'xs-icon': 'size-7.5 rounded-lg after:rounded-lg *:[svg]:size-4',
-        sm: 'h-8.5 px-3 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
-        'sm-icon':
-          'size-8.5 rounded-[10px] after:rounded-[10px] *:[svg]:size-4.5',
+        xs: 'h-7 px-2 rounded-sm after:rounded-sm *:[svg]:size-4',
+        'xs-icon': 'size-7.5 rounded-sm after:rounded-sm *:[svg]:size-4',
+        sm: 'h-8.5 px-3 rounded after:rounded *:[svg]:size-4.5',
+        'sm-icon': 'size-8.5 rounded after:rounded *:[svg]:size-4.5',
         md: 'h-9.5 px-4 rounded *:[svg]:size-4.5',
         icon: 'size-9.5 rounded *:[svg]:size-4.5',
-        lg: 'h-11.5 px-5.5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
-        'lg-icon':
-          'size-11.5 rounded-[14px] after:rounded-[14px] *:[svg]:size-4.5',
+        lg: 'h-11.5 px-5.5 rounded-lg after:rounded-lg *:[svg]:size-4.5',
+        'lg-icon': 'size-11.5 rounded-lg after:rounded-lg *:[svg]:size-4.5',
       },
       pill: {
         true: 'rounded-full after:rounded-full',

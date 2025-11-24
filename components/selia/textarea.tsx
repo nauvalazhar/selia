@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 export const textareaVariants = cva(
   [
-    'w-full text-foreground placeholder:text-dimmed transition-colors shadow-input',
+    'w-full text-foreground placeholder:text-dimmed transition-colors shadow-input rounded',
     'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2',
     'disabled:opacity-70',
   ],
@@ -14,8 +14,8 @@ export const textareaVariants = cva(
         subtle: 'bg-input/60',
       },
       size: {
-        md: 'min-h-24 p-2.5 rounded',
-        lg: 'min-h-28 p-3.5 rounded-xl',
+        md: 'min-h-24 p-2.5',
+        lg: 'min-h-28 p-3.5',
       },
     },
     defaultVariants: {

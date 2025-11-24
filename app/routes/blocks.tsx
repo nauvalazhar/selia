@@ -3,12 +3,12 @@ import { Button } from 'components/selia/button';
 import { Text } from 'components/selia/text';
 import { ArrowDownCircleIcon } from 'lucide-react';
 import { useLoaderData } from 'react-router';
-import { getBlocks } from '~/lib/source';
+import { getBlockSources } from '~/lib/source';
 import { blocks } from 'components/blocks';
 import { BlockPreview } from 'components/block-preview';
 
 export async function loader() {
-  const sources = await getBlocks();
+  const sources = await getBlockSources();
 
   return { sources };
 }
@@ -33,15 +33,18 @@ export default function Blocks() {
       </div>
 
       <div id="blocks" className="py-10 flex flex-col gap-20">
-        {Object.entries(blocks).map(([key, { name, description }]) => (
-          <BlockPreview
-            key={key}
-            name={key}
-            title={name}
-            description={description}
-            code={sources[key as keyof typeof sources]}
-          />
-        ))}
+        {Object.entries(blocks).map(
+          ([key, { name, description, pathIndex }]) => (
+            <BlockPreview
+              key={key}
+              name={key}
+              title={name}
+              description={description}
+              codeIndex={pathIndex}
+              code={sources[key as keyof typeof sources]}
+            />
+          ),
+        )}
       </div>
     </div>
   );

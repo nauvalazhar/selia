@@ -45,12 +45,12 @@ export function DropdownContent({
 }
 
 const dropdownItemClasses = [
-  'flex items-center text-foreground gap-3.5 py-2.5 px-3 rounded',
+  'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded',
   'cursor-default select-none',
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
   'data-[popup-open]:bg-popover-accent',
   'focus-visible:outline-none',
-  '*:[svg]:size-4 *:[svg]:text-foreground',
+  '*:[svg]:size-4 *:[svg]:text-popover-foreground',
   '*:data-[slot=switch]:ml-auto',
 ];
 

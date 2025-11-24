@@ -105,14 +105,14 @@ function ComboboxRenderValue({
 
   if (typeof value === 'object') {
     return (
-      <div className="flex items-center gap-2.5 *:[svg]:size-4 *:[svg]:text-foreground">
+      <div className="flex items-center gap-2.5 *:[svg]:size-4 *:[svg]:text-popover-foreground">
         {value.icon}
-        <span className="text-foreground">{value.label}</span>
+        <span className="text-popover-foreground">{value.label}</span>
       </div>
     );
   }
 
-  return <span className="text-foreground">{value}</span>;
+  return <span className="text-popover-foreground">{value}</span>;
 }
 
 export function ComboboxInput({
@@ -262,7 +262,7 @@ export function ComboboxItem({
       data-slot="combobox-item"
       {...props}
       className={cn(
-        'flex items-center text-foreground gap-3.5 py-2.5 px-3 rounded select-none',
+        'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',

@@ -1,5 +1,8 @@
 import * as ALL_EXAMPLES from 'components/examples';
 import { blocks } from 'components/blocks';
+import { stat } from 'node:fs/promises';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
 
 function clean(source: string) {
   return source.replace(/import\s*{([^}]*)}\s*from/g, (match, group) => {
@@ -28,12 +31,35 @@ export async function getSources(componentKey: string) {
   );
 }
 
-export async function getBlocks() {
+async function readFilesRecursively(dir: string): Promise<Record<string, any>> {
+  const files = await readdir(dir, { withFileTypes: true });
+  const result: Record<string, any> = {};
+
+  for (const entry of files) {
+    const resolvedPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      result[entry.name] = await readFilesRecursively(resolvedPath);
+    } else if (entry.isFile()) {
+      let fileContent = await Bun.file(resolvedPath).text();
+      fileContent = clean(fileContent);
+      result[entry.name] = fileContent;
+    }
+  }
+  return result;
+}
+
+export async function getBlockSources() {
   return Object.fromEntries(
     await Promise.all(
       Object.entries(blocks).map(async ([key, { path }]) => {
-        let source = await Bun.file(path).text();
-        source = clean(source);
+        const stats = await stat(path);
+        let source;
+        if (stats.isDirectory()) {
+          source = await readFilesRecursively(path);
+        } else {
+          let fileContent = await Bun.file(path).text();
+          source = clean(fileContent);
+        }
         return [key, source];
       }),
     ),
