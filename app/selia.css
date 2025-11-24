@@ -24,7 +24,7 @@
   --card-separator: oklch(0.9306 0.002 247.84);
   --card-footer: oklch(0.9616 0.0011 247.83);
   --card-shadow:
-    0px 5px 10px rgba(0, 0, 0, 0.05), 0px 8px 3px -4px rgba(0, 0, 0, 0.02);
+    0px 5px 10px rgba(0, 0, 0, 0.03), 0px 8px 3px -4px rgba(0, 0, 0, 0.02);
   --item: oklch(0.9847 0.0004 247.83);
   --item-border: oklch(0.9384 0.0018 247.84);
   --chip: oklch(0.9616 0.0011 247.83);

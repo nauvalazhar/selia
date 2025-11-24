@@ -5,7 +5,7 @@ import { Text } from 'components/selia/text';
 import { Button } from 'components/selia/button';
 import { Separator } from 'components/selia/separator';
 
-export default function SidebarBasicExample() {
+export default function ProfileBlock() {
   return (
     <div className="flex gap-4 h-screen items-center justify-center p-8">
       <Card className="w-full max-w-80 p-1.5">

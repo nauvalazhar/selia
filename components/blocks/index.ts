@@ -11,6 +11,14 @@ type Block = {
 };
 
 export const blocks: Block = {
+  profile: {
+    name: 'Profile',
+    description: 'A simple profile block with buttons and a separator.',
+    path: 'components/blocks/profile.tsx',
+    component: React.lazy(() =>
+      import('./profile').then((mod) => ({ default: mod.default })),
+    ),
+  },
   login: {
     name: 'Login',
     description: 'A simple login form with Google and GitHub authentication.',
