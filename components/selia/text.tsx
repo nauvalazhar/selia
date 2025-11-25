@@ -11,7 +11,12 @@ export function Text({
     render,
     props: {
       'data-slot': 'text',
-      className: cn('text-base/6 text-foreground', className),
+      className: cn(
+        'text-base/6 text-foreground',
+        'has-[svg]:inline-flex has-[svg]:items-center has-[svg]:gap-2',
+        '*:[svg]:size-3 *:[svg]:shrink-0',
+        className,
+      ),
       ...props,
     },
   });

@@ -58,10 +58,10 @@ export function BlockPreview({
   }, [theme]);
 
   useEffect(() => {
-    iframeRef.current?.contentDocument?.documentElement.classList.toggle(
-      'dark',
-      isDark,
-    );
+    const target = iframeRef.current?.contentDocument?.documentElement;
+    target?.classList.toggle('dark', isDark);
+    target?.classList.toggle('scheme-dark', isDark);
+    target?.classList.toggle('scheme-light', !isDark);
   }, [isDark]);
 
   function handleCopy(e: React.MouseEvent<HTMLButtonElement>) {
@@ -211,7 +211,7 @@ function CodePanel({
               '*:!p-0',
             )}
           >
-            {typeof code === 'object' ? code[selectedFile] : code}
+            {typeof code === 'object' ? code[selectedFile ?? ''] : code}
           </ShikiHighlighter>
         </ScrollArea.Viewport>
       </ScrollArea.Root>
