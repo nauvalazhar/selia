@@ -32,7 +32,7 @@ export default function FieldsetComplexExample() {
           <FieldError match="valueMissing">This is required</FieldError>
         </Field>
       </Fieldset>
-      <Separator />
+      <Separator className="my-6" />
       <Fieldset>
         <FieldsetLegend>Security</FieldsetLegend>
         <Text>Set up your security preferences to protect your account.</Text>
@@ -61,7 +61,7 @@ export default function FieldsetComplexExample() {
           <FieldError match="valueMissing">Passwords do not match</FieldError>
         </Field>
       </Fieldset>
-      <Separator />
+      <Separator className="my-6" />
       <Fieldset>
         <FieldsetLegend>Notifications</FieldsetLegend>
         <Text>
@@ -87,22 +87,22 @@ export default function FieldsetComplexExample() {
           </Label>
         </CheckboxGroup>
       </Fieldset>
-      <Separator />
+      <Separator className="my-6" />
       <Fieldset>
         <FieldsetLegend>Theme</FieldsetLegend>
         <Text>Choose your preferred theme for the interface.</Text>
         <Field>
           <RadioGroup defaultValue="system">
             <Label>
-              <Radio name="theme" id="system" value="system" />
+              <Radio value="system" />
               System
             </Label>
             <Label>
-              <Radio name="theme" id="light" value="light" />
+              <Radio value="light" />
               Light
             </Label>
             <Label>
-              <Radio name="theme" id="dark" value="dark" />
+              <Radio value="dark" />
               Dark
             </Label>
           </RadioGroup>
