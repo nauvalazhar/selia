@@ -1,5 +1,6 @@
 export { examples as alert } from './alert';
 export { examples as alertDialog } from './alert-dialog';
+export { examples as collapsible } from './collapsible';
 export { examples as avatar } from './avatar';
 export { examples as badge } from './badge';
 export { examples as button } from './button';
