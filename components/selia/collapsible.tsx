@@ -70,7 +70,7 @@ export function CollapsibleTrigger({
         'flex items-center gap-2.5 select-none cursor-pointer',
         'data-panel-open:border-b border-card-border transition-all duration-100',
         'outline-none focus-visible:ring-2 focus-visible:ring-primary',
-        '**:[svg]:size-4',
+        '**:[svg]:size-4 text-left leading-relaxed font-medium w-full',
         '**:data-[slot=expandable-indicator]:transition-all',
         '**:data-[slot=expandable-indicator]:duration-100',
         expandableIndicator && [
