@@ -155,7 +155,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
           className={cn(
             'flex justify-between *:flex *:items-center **:[svg]:size-4',
             '*:text-muted *:hover:text-foreground *:transition-colors',
-            '*:duration-75 *:gap-2.5 *:font-semibold mt-20',
+            '*:duration-75 *:gap-2.5 *:font-medium mt-20',
           )}
         >
           {menuNextPrev.prev && (

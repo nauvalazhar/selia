@@ -49,15 +49,15 @@ export function Navbar() {
           <ul
             className={cn(
               'flex',
-              'max-lg:flex-col max-md:border-border :max-md:border-b dark:max-md:border-border-01',
+              'max-lg:flex-col max-md:border-border max-md:border-b dark:max-md:border-border-01',
               'max-lg:absolute w-full lg:w-auto',
               'left-0 lg:left-auto lg:items-center',
-              'bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent',
+              'bg-white dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent',
               '**:[a]:text-muted',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75 **:[a]:flex **:[a]:items-center **:[a]:gap-2.5',
               '**:[svg]:size-4',
-              '*:mx-3',
+              '*:mx-1 min-lg:*:mx-3',
               'max-lg:**:[a]:px-4 max-lg:**:[a]:py-2.5',
               'max-lg:**:[a]:flex',
               'max-lg:transition-all',
