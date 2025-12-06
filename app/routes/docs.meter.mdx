@@ -1,0 +1,22 @@
+# Meter
+
+Visual indicators showing numeric values in a range.
+
+<Preview name="basic" />
+
+## Guidelines
+
+We have both `Meter` and `Progress` components. Here are the guidelines for using them:
+- Use `Meter` when you want to show static numeric values in a range.
+- Use `Progress` when you want to show a progress of a task in a horizontal bar.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Meter>
+  <MeterLabel />
+  <MeterValue />
+</Meter>
+```

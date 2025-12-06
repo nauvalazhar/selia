@@ -19,6 +19,7 @@ export { examples as inputGroup } from './input-group';
 export { examples as item } from './item';
 export { examples as kbd } from './kbd';
 export { examples as label } from './label';
+export { examples as meter } from './meter';
 export { examples as pagination } from './pagination';
 export { examples as popover } from './popover';
 export { examples as progress } from './progress';
