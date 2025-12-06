@@ -7,41 +7,61 @@ export const sidebarVariants = cva('flex flex-col gap-2.5', {
   variants: {
     size: {
       default: [
-        '**:data-[slot=sidebar-item]:min-h-8.5',
-        '**:data-[slot=sidebar-item]:px-2.5',
-        '**:data-[slot=sidebar-item]:py-2',
-        '**:data-[slot=sidebar-item]:rounded',
-        '**:data-[slot=sidebar-header]:px-2.5',
-        '**:data-[slot=sidebar-content]:px-2.5',
+        '**:data-[slot=sidebar-item-button]:min-h-8.5',
+        '**:data-[slot=sidebar-item-button]:px-2.5',
+        '**:data-[slot=sidebar-item-button]:py-2',
+        '**:data-[slot=sidebar-item-button]:rounded',
+        '**:data-[slot=sidebar-item-action]:size-8.5',
+        '[&_[data-slot=sidebar-item-button]:has(+[data-slot=sidebar-item-action])]:pr-7',
+        '**:data-[slot=sidebar-header]:px-4',
+        '**:data-[slot=sidebar-header]:pt-4',
+        '**:data-[slot=sidebar-content]:px-4',
+        '**:data-[slot=sidebar-content]:pb-4',
+        'has-[>[data-slot=sidebar-header]]:[&_[data-slot=sidebar-content]]:pt-4',
         '**:data-[slot=sidebar-group-title]:px-2.5',
         '**:data-[slot=sidebar-group-action]:px-2.5',
-        '**:data-[slot=sidebar-footer]:px-2.5',
+        '**:data-[slot=sidebar-footer]:px-4',
+        '**:data-[slot=sidebar-footer]:pb-4',
+        '**:data-[slot=sidebar-submenu]:pl-2',
+        '**:data-[slot=sidebar-submenu]:ml-4.5',
       ],
       compact: [
-        '**:data-[slot=sidebar-item]:min-h-8',
-        '**:data-[slot=sidebar-item]:px-2.5',
-        '**:data-[slot=sidebar-item]:py-1.5',
-        '**:data-[slot=sidebar-item]:rounded',
-        '**:data-[slot=sidebar-header]:px-2.5',
-        '**:data-[slot=sidebar-content]:px-2.5',
+        '**:data-[slot=sidebar-item-button]:min-h-8',
+        '**:data-[slot=sidebar-item-button]:px-2.5',
+        '**:data-[slot=sidebar-item-button]:py-1.5',
+        '**:data-[slot=sidebar-item-button]:rounded',
+        '**:data-[slot=sidebar-item-action]:size-8',
+        '[&_[data-slot=sidebar-item-button]:has(+[data-slot=sidebar-item-action])]:pr-7',
+        '**:data-[slot=sidebar-header]:px-3.5',
+        '**:data-[slot=sidebar-header]:pt-3.5',
+        '**:data-[slot=sidebar-content]:px-3.5',
+        '**:data-[slot=sidebar-content]:pb-3.5',
+        'has-[>[data-slot=sidebar-header]]:[&_[data-slot=sidebar-content]]:pt-3.5',
         '**:data-[slot=sidebar-group-title]:px-2.5',
         '**:data-[slot=sidebar-group-action]:px-2.5',
-        '**:data-[slot=sidebar-footer]:px-2.5',
-        2,
+        '**:data-[slot=sidebar-footer]:px-3.5',
+        '**:data-[slot=sidebar-footer]:pb-3.5',
+        '**:data-[slot=sidebar-submenu]:pl-1.5',
+        '**:data-[slot=sidebar-submenu]:ml-4.5',
       ],
       loose: [
-        '**:data-[slot=sidebar-item]:min-h-10',
-        '**:data-[slot=sidebar-item]:px-3',
-        '**:data-[slot=sidebar-item]:py-2',
-        '**:data-[slot=sidebar-item]:rounded',
-        '**:data-[slot=sidebar-header]:px-4',
-        '**:data-[slot=sidebar-content]:px-4',
+        '**:data-[slot=sidebar-item-button]:min-h-10',
+        '**:data-[slot=sidebar-item-button]:px-3',
+        '**:data-[slot=sidebar-item-button]:py-2',
+        '**:data-[slot=sidebar-item-button]:rounded',
+        '**:data-[slot=sidebar-item-action]:size-10',
+        '[&_[data-slot=sidebar-item-button]:has(+[data-slot=sidebar-item-action])]:pr-7.5',
+        '**:data-[slot=sidebar-header]:px-4.5',
+        '**:data-[slot=sidebar-header]:pt-4.5',
+        '**:data-[slot=sidebar-content]:px-4.5',
+        '**:data-[slot=sidebar-content]:pb-4.5',
+        'has-[>[data-slot=sidebar-header]]:[&_[data-slot=sidebar-content]]:pt-4.5',
         '**:data-[slot=sidebar-group-title]:px-3',
         '**:data-[slot=sidebar-group-action]:px-3',
-        '**:data-[slot=sidebar-footer]:px-4',
-        '**:data-line:before:left-4',
-        '**:data-line:**:data-[slot=sidebar-item]:pl-7.5',
-        '**:data-line:**:data-[slot=sidebar-item]:data-active:before:left-4',
+        '**:data-[slot=sidebar-footer]:px-4.5',
+        '**:data-[slot=sidebar-footer]:pb-4.5',
+        '**:data-[slot=sidebar-submenu]:pl-1.5',
+        '**:data-[slot=sidebar-submenu]:ml-5',
       ],
     },
   },
@@ -51,8 +71,8 @@ export const sidebarVariants = cva('flex flex-col gap-2.5', {
 });
 
 export function Sidebar({
-  className,
   size,
+  className,
   ...props
 }: React.ComponentProps<'aside'> & VariantProps<typeof sidebarVariants>) {
   return (
@@ -70,11 +90,7 @@ export function SidebarHeader({
   ...props
 }: React.ComponentProps<'header'>) {
   return (
-    <header
-      data-slot="sidebar-header"
-      {...props}
-      className={cn('pt-4', className)}
-    >
+    <header data-slot="sidebar-header" {...props} className={cn(className)}>
       {children}
     </header>
   );
@@ -90,10 +106,7 @@ export function SidebarContent({
     render,
     props: {
       'data-slot': 'sidebar-content',
-      className: cn(
-        'flex flex-col gap-2.5 h-full overflow-y-auto py-4',
-        className,
-      ),
+      className: cn('flex flex-col gap-2.5 h-full overflow-y-auto', className),
       ...props,
     },
   });
@@ -107,7 +120,10 @@ export function SidebarLogo({
   return (
     <div
       data-slot="sidebar-logo"
-      className={cn('flex items-center gap-2.5 select-none', className)}
+      className={cn(
+        'flex items-center gap-2.5 select-none text-lg text-foreground',
+        className,
+      )}
       {...props}
     >
       {children}
@@ -123,7 +139,7 @@ export function SidebarFooter({
   return (
     <footer
       data-slot="sidebar-footer"
-      className={cn('mt-auto pb-4', className)}
+      className={cn('mt-auto', className)}
       {...props}
     >
       {children}
@@ -138,46 +154,21 @@ export function SidebarMenu({
   return (
     <nav
       data-slot="sidebar-menu"
-      className={cn('flex flex-col gap-6', className)}
+      className={cn('flex flex-col gap-4.5', className)}
       {...props}
     />
   );
 }
 
-export const sidebarListVariants = cva('flex flex-col gap-0.5 w-full', {
-  variants: {
-    line: {
-      true: [
-        'relative before:absolute before:top-0 before:bottom-1',
-        'before:left-3.5 before:w-px before:bg-border',
-        '**:data-[slot=sidebar-item]:pl-7',
-        '**:data-[slot=sidebar-item]:hover:bg-accent/60',
-        '**:data-[slot=sidebar-item]:data-active:bg-accent/60',
-        '**:data-[slot=sidebar-item]:data-active:before:absolute',
-        '**:data-[slot=sidebar-item]:data-active:before:w-0.5',
-        '**:data-[slot=sidebar-item]:data-active:before:left-3.5',
-        '**:data-[slot=sidebar-item]:data-active:before:rounded-full',
-        '**:data-[slot=sidebar-item]:data-active:before:h-4',
-        '**:data-[slot=sidebar-item]:data-active:before:bg-primary',
-      ],
-    },
-  },
-  defaultVariants: {
-    line: false,
-  },
-});
-
 export function SidebarList({
   className,
-  line,
   children,
   ...props
-}: React.ComponentProps<'ul'> & VariantProps<typeof sidebarListVariants>) {
+}: React.ComponentProps<'ul'>) {
   return (
     <ul
       data-slot="sidebar-list"
-      data-line={line ? true : undefined}
-      className={cn(sidebarListVariants({ line, className }))}
+      className={cn('flex flex-col gap-0.5 w-full', className)}
       {...props}
     >
       {children}
@@ -185,35 +176,81 @@ export function SidebarList({
   );
 }
 
-const sidebarItemClasses = [
-  'flex items-center gap-2.5 w-full relative z-10',
-  'text-foreground cursor-pointer',
-  'transition-colors duration-75 hover:bg-accent',
-  '**:[svg]:size-4 **:[svg]:text-muted',
-  'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
-  'data-popup-open:bg-accent',
-];
-
 export function SidebarItem({
+  className,
+  children,
+}: React.ComponentProps<'li'>) {
+  return (
+    <li
+      data-slot="sidebar-item"
+      className={cn(
+        'group/sidebar-item',
+        '**:data-[slot=sidebar-submenu]:w-auto relative flex',
+        className,
+      )}
+    >
+      {children}
+    </li>
+  );
+}
+
+export function SidebarItemAction({
+  className,
+  children,
+  showOnHover,
+}: React.ComponentProps<'div'> & {
+  showOnHover?: boolean;
+}) {
+  return (
+    <div
+      data-slot="sidebar-item-action"
+      className={cn(
+        'absolute right-0 shrink-0 z-10 **:[svg]:size-4',
+        '*:[button]:cursor-pointer',
+        'transition-all duration-100',
+        showOnHover && 'opacity-0 group-hover/sidebar-item:opacity-100',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function SidebarItemButton({
   className,
   render,
   active,
+  expandableIndicator = true,
   ...props
-}: useRender.ComponentProps<'a'> & { active?: boolean }) {
-  return (
-    <li>
-      {useRender({
-        defaultTagName: 'a',
-        render,
-        props: {
-          'data-slot': 'sidebar-item',
-          'data-active': active ? true : undefined,
-          className: cn(sidebarItemClasses, active && 'bg-accent', className),
-          ...props,
-        },
-      })}
-    </li>
-  );
+}: useRender.ComponentProps<'button'> & {
+  active?: boolean;
+  expandableIndicator?: boolean;
+}) {
+  return useRender({
+    defaultTagName: 'button',
+    render,
+    props: {
+      'data-slot': 'sidebar-item-button',
+      'data-active': active ? true : undefined,
+      className: cn(
+        'flex items-center gap-2.5 w-full relative z-10',
+        'text-foreground cursor-pointer text-left',
+        'transition-colors duration-75 hover:bg-accent',
+        '**:[svg]:size-4 **:[svg]:text-muted',
+        'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
+        'data-popup-open:bg-accent',
+        expandableIndicator && [
+          'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',
+          'data-expandable:after:transition-transform data-expandable:after:duration-100',
+          'data-expandable:data-[panel-open]:after:rotate-180',
+        ],
+        active && 'bg-accent',
+        className,
+      ),
+      ...props,
+    },
+  });
 }
 
 export function SidebarGroup({
@@ -225,7 +262,10 @@ export function SidebarGroup({
     <section
       role="group"
       data-slot="sidebar-group"
-      className={cn('flex flex-wrap gap-0.5', className)}
+      className={cn(
+        'flex flex-wrap gap-0.5 *:data-[slot=sidebar-list]:p-0',
+        className,
+      )}
       {...props}
     >
       {children}
@@ -241,7 +281,11 @@ export function SidebarGroupTitle({
   return (
     <span
       data-slot="sidebar-group-title"
-      className={cn('text-sm font-medium text-dimmed', className)}
+      className={cn(
+        'inline-flex items-center text-sm font-medium text-dimmed',
+        '**:[svg]:size-3.5',
+        className,
+      )}
       {...props}
     >
       {children}
@@ -258,7 +302,7 @@ export function SidebarGroupAction({
     <div
       data-slot="sidebar-group-action"
       className={cn(
-        'ml-auto flex items-center gap-1.5 **:[svg]:size-4',
+        'ml-auto flex items-center gap-1.5 **:[svg]:size-3.5',
         className,
       )}
       {...props}
@@ -268,10 +312,30 @@ export function SidebarGroupAction({
   );
 }
 
+export function SidebarSubmenu({
+  className,
+  ...props
+}: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="sidebar-submenu"
+      {...props}
+      className={cn('py-0.5 border-l border-border w-full', className)}
+    />
+  );
+}
+
 export function SidebarCollapsible({
+  className,
   ...props
 }: React.ComponentProps<typeof BaseCollapsible.Root>) {
-  return <BaseCollapsible.Root data-slot="sidebar-collapsible" {...props} />;
+  return (
+    <BaseCollapsible.Root
+      data-slot="sidebar-collapsible"
+      className={cn('w-full', className)}
+      {...props}
+    />
+  );
 }
 
 export function SidebarCollapsibleTrigger({
@@ -280,33 +344,30 @@ export function SidebarCollapsibleTrigger({
 }: React.ComponentProps<typeof BaseCollapsible.Trigger>) {
   return (
     <BaseCollapsible.Trigger
-      data-slot="sidebar-item"
+      data-expandable
+      {...props}
       className={cn(
-        sidebarItemClasses,
-        'after:bg-chevron-down-dark dark:after:bg-chevron-down after:size-4 after:ml-auto',
-        'after:transition-transform after:duration-100',
-        'data-[panel-open]:after:rotate-180',
+        '**:data-[slot=expandable-indicator]:transition-all',
+        '**:data-[slot=expandable-indicator]:duration-100',
+        'outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary',
         className,
       )}
-      {...props}
     />
   );
 }
 
-export function SidebarSubmenu({
+export function SidebarCollapsiblePanel({
   className,
   ...props
 }: React.ComponentProps<typeof BaseCollapsible.Panel>) {
   return (
     <BaseCollapsible.Panel
-      data-slot="sidebar-submenu"
-      render={<nav />}
+      data-slot="sidebar-collapsible-panel"
       {...props}
       className={cn(
-        'relative pl-6.5 py-0.5 transition-all duration-100',
+        'transition-all duration-100',
         'h-(--collapsible-panel-height) overflow-hidden',
         'data-[ending-style]:h-0 data-[starting-style]:h-0',
-        '**:data-[slot=sidebar-list]:before:left-2.5',
         className,
       )}
     />

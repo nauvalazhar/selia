@@ -1,6 +1,7 @@
 import {
   Sidebar,
   SidebarCollapsible,
+  SidebarCollapsiblePanel,
   SidebarCollapsibleTrigger,
   SidebarContent,
   SidebarFooter,
@@ -8,6 +9,7 @@ import {
   SidebarGroupTitle,
   SidebarHeader,
   SidebarItem,
+  SidebarItemButton,
   SidebarList,
   SidebarLogo,
   SidebarMenu,
@@ -62,34 +64,54 @@ export function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupTitle>Navigation</SidebarGroupTitle>
             <SidebarList>
-              <SidebarItem href="#" active>
-                <HomeIcon />
-                Dashboard
-              </SidebarItem>
-              <SidebarItem href="#">
-                <ShoppingBagIcon />
-                Products
+              <SidebarItem>
+                <SidebarItemButton active>
+                  <HomeIcon />
+                  Dashboard
+                </SidebarItemButton>
               </SidebarItem>
               <SidebarItem>
-                <TagsIcon />
-                Categories
+                <SidebarItemButton>
+                  <ShoppingBagIcon />
+                  Products
+                </SidebarItemButton>
               </SidebarItem>
               <SidebarItem>
-                <Package2Icon />
-                Orders
+                <SidebarItemButton>
+                  <TagsIcon />
+                  Categories
+                </SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>
+                  <Package2Icon />
+                  Orders
+                </SidebarItemButton>
               </SidebarItem>
               <SidebarCollapsible>
-                <SidebarCollapsibleTrigger>
-                  <ChartAreaIcon />
-                  Reports
-                </SidebarCollapsibleTrigger>
-                <SidebarSubmenu>
-                  <SidebarList>
-                    <SidebarItem href="#">Sales</SidebarItem>
-                    <SidebarItem href="#">Traffic</SidebarItem>
-                    <SidebarItem href="#">Conversion</SidebarItem>
-                  </SidebarList>
-                </SidebarSubmenu>
+                <SidebarCollapsibleTrigger
+                  render={
+                    <SidebarItemButton>
+                      <ChartAreaIcon />
+                      Reports
+                    </SidebarItemButton>
+                  }
+                />
+                <SidebarCollapsiblePanel>
+                  <SidebarSubmenu>
+                    <SidebarList>
+                      <SidebarItem>
+                        <SidebarItemButton>Sales</SidebarItemButton>
+                      </SidebarItem>
+                      <SidebarItem>
+                        <SidebarItemButton>Traffic</SidebarItemButton>
+                      </SidebarItem>
+                      <SidebarItem>
+                        <SidebarItemButton>Conversion</SidebarItemButton>
+                      </SidebarItem>
+                    </SidebarList>
+                  </SidebarSubmenu>
+                </SidebarCollapsiblePanel>
               </SidebarCollapsible>
             </SidebarList>
           </SidebarGroup>
@@ -98,41 +120,43 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarList>
-            <Dropdown>
-              <DropdownTrigger
-                data-slot="sidebar-item"
-                nativeButton={false}
-                render={
-                  <SidebarItem className="border border-border">
-                    <Avatar>
-                      <AvatarImage src="/human01.jpg" alt="Avatar" />
-                      <AvatarFallback>BS</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <span className="font-medium">Anna Thompson</span>
-                      <span className="text-sm text-muted">
-                        anna@example.com
-                      </span>
-                    </div>
-                    <ChevronsUpDownIcon className="ml-auto" />
-                  </SidebarItem>
-                }
-              />
-              <DropdownContent className="w-(--anchor-width)" side="top">
-                <DropdownItem>
-                  <UserIcon />
-                  Profile
-                </DropdownItem>
-                <DropdownItem>
-                  <SettingsIcon />
-                  Settings
-                </DropdownItem>
-                <DropdownItem>
-                  <LogOutIcon />
-                  Logout
-                </DropdownItem>
-              </DropdownContent>
-            </Dropdown>
+            <SidebarItem>
+              <Dropdown>
+                <DropdownTrigger
+                  data-slot="sidebar-item-button"
+                  nativeButton={false}
+                  render={
+                    <SidebarItemButton className="border border-border">
+                      <Avatar>
+                        <AvatarImage src="/human01.jpg" alt="Avatar" />
+                        <AvatarFallback>BS</AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <span className="font-medium">Anna Thompson</span>
+                        <span className="text-sm text-muted">
+                          anna@example.com
+                        </span>
+                      </div>
+                      <ChevronsUpDownIcon className="ml-auto" />
+                    </SidebarItemButton>
+                  }
+                />
+                <DropdownContent className="w-(--anchor-width)" side="top">
+                  <DropdownItem>
+                    <UserIcon />
+                    Profile
+                  </DropdownItem>
+                  <DropdownItem>
+                    <SettingsIcon />
+                    Settings
+                  </DropdownItem>
+                  <DropdownItem>
+                    <LogOutIcon />
+                    Logout
+                  </DropdownItem>
+                </DropdownContent>
+              </Dropdown>
+            </SidebarItem>
           </SidebarList>
         </SidebarMenu>
       </SidebarFooter>

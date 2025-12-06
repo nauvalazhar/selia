@@ -15,13 +15,6 @@ export const examples = {
       import('./compact').then((mod) => ({ default: mod.default })),
     ),
   },
-  line: {
-    name: 'Line',
-    path: 'components/examples/sidebar/line.tsx',
-    component: React.lazy(() =>
-      import('./line').then((mod) => ({ default: mod.default })),
-    ),
-  },
   loose: {
     name: 'Loose',
     path: 'components/examples/sidebar/loose.tsx',
@@ -34,6 +27,13 @@ export const examples = {
     path: 'components/examples/sidebar/background.tsx',
     component: React.lazy(() =>
       import('./background').then((mod) => ({ default: mod.default })),
+    ),
+  },
+  chatbot: {
+    name: 'Chatbot',
+    path: 'components/examples/sidebar/chatbot.tsx',
+    component: React.lazy(() =>
+      import('./chatbot').then((mod) => ({ default: mod.default })),
     ),
   },
 };

@@ -5,8 +5,10 @@ import {
   SidebarGroupTitle,
   SidebarHeader,
   SidebarItem,
+  SidebarItemButton,
   SidebarList,
   SidebarMenu,
+  SidebarSubmenu,
 } from 'components/selia/sidebar';
 import type { Route } from './+types/docs';
 import { cn } from 'lib/utils';
@@ -97,6 +99,8 @@ export default function LayoutDocs({
           className={cn(
             'lg:sticky top-0 max-h-dvh lg:w-72 px-1.5 lg:px-0',
             'fixed z-30 w-full max-lg:h-dvh bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent transition-all',
+            '**:data-[slot=sidebar-submenu]:ml-3.5',
+            '**:data-[slot=sidebar-submenu]:pl-1',
             isSidebarOpen ? 'right-0' : '-right-full',
           )}
           size="compact"
@@ -109,17 +113,20 @@ export default function LayoutDocs({
               {sidebarMenu.map((group) => (
                 <SidebarGroup key={group.title}>
                   <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
-                  <SidebarList line>
-                    {group.items.map((item) => (
-                      <SidebarItem
-                        key={item.path}
-                        active={pathname === item.path}
-                        render={<Link to={item.path} />}
-                      >
-                        {item.name}
-                      </SidebarItem>
-                    ))}
-                  </SidebarList>
+                  <SidebarSubmenu>
+                    <SidebarList>
+                      {group.items.map((item) => (
+                        <SidebarItem key={item.path}>
+                          <SidebarItemButton
+                            active={pathname === item.path}
+                            render={<Link to={item.path} />}
+                          >
+                            {item.name}
+                          </SidebarItemButton>
+                        </SidebarItem>
+                      ))}
+                    </SidebarList>
+                  </SidebarSubmenu>
                 </SidebarGroup>
               ))}
             </SidebarMenu>

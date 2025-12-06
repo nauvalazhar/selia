@@ -460,11 +460,9 @@ export default function ProfileBlock() {
           <Heading size="md" level={2}>
             John Morton
           </Heading>
-
           <Text className="text-muted my-4">
             UI/UX designer with 6+ years experience.
           </Text>
-
           <div className="flex gap-4 mt-4 items-center">
             <Text className="font-medium">
               <StarIcon className="fill-yellow-500 stroke-yellow-500" />
@@ -488,11 +486,9 @@ export default function ProfileBlock() {
           <Heading size="md" level={2}>
             John Morton
           </Heading>
-
           <Text className="text-muted my-4">
             UI/UX designer with 6+ years experience.
           </Text>
-
           <div className="flex gap-4 mt-4 items-center">
             <Text className="font-medium">
               <StarIcon className="fill-yellow-500 stroke-yellow-500" />

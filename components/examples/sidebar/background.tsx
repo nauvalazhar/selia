@@ -5,6 +5,7 @@ import {
   SidebarGroupTitle,
   SidebarHeader,
   SidebarItem,
+  SidebarItemButton,
   SidebarList,
   SidebarLogo,
   SidebarMenu,
@@ -12,7 +13,7 @@ import {
 
 export default function SidebarBackgroundExample() {
   return (
-    <Sidebar className="lg:w-72 bg-card" size="loose">
+    <Sidebar className="lg:w-72 rounded-2xl border border-border shadow-card bg-card">
       <SidebarHeader>
         <SidebarLogo>
           <img src="/selia.png" alt="Selia" className="size-8" />
@@ -24,24 +25,44 @@ export default function SidebarBackgroundExample() {
           <SidebarGroup>
             <SidebarGroupTitle>Prologue</SidebarGroupTitle>
             <SidebarList>
-              <SidebarItem href="#">Introduction</SidebarItem>
-              <SidebarItem href="#">Installation</SidebarItem>
-              <SidebarItem href="#">Customization</SidebarItem>
-              <SidebarItem href="#">Upgrade Guide</SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Introduction</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Installation</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Customization</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Upgrade Guide</SidebarItemButton>
+              </SidebarItem>
             </SidebarList>
           </SidebarGroup>
           <SidebarGroup>
             <SidebarGroupTitle>Components</SidebarGroupTitle>
             <SidebarList>
-              <SidebarItem href="#">Button</SidebarItem>
-              <SidebarItem href="#">Card</SidebarItem>
-              <SidebarItem href="#">Input</SidebarItem>
-              <SidebarItem href="#">Select</SidebarItem>
-              <SidebarItem href="#" active>
-                Sidebar
+              <SidebarItem>
+                <SidebarItemButton>Button</SidebarItemButton>
               </SidebarItem>
-              <SidebarItem href="#">Table</SidebarItem>
-              <SidebarItem href="#">Tabs</SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Card</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Input</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Select</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton active>Sidebar</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Table</SidebarItemButton>
+              </SidebarItem>
+              <SidebarItem>
+                <SidebarItemButton>Tabs</SidebarItemButton>
+              </SidebarItem>
             </SidebarList>
           </SidebarGroup>
         </SidebarMenu>

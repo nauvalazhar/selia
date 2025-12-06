@@ -1,6 +1,7 @@
 import {
   Sidebar,
   SidebarCollapsible,
+  SidebarCollapsiblePanel,
   SidebarCollapsibleTrigger,
   SidebarContent,
   SidebarFooter,
@@ -9,6 +10,7 @@ import {
   SidebarGroupTitle,
   SidebarHeader,
   SidebarItem,
+  SidebarItemButton,
   SidebarList,
   SidebarLogo,
   SidebarMenu,
@@ -54,50 +56,65 @@ export default function SidebarBasicExample() {
               </button>
             </SidebarGroupAction>
             <SidebarList>
-              <SidebarItem href="#" active>
-                <HomeIcon />
-                Dashboard
-              </SidebarItem>
-              <SidebarItem href="#">
-                <ShoppingBagIcon />
-                Products
+              <SidebarItem>
+                <SidebarItemButton active>
+                  <HomeIcon />
+                  Dashboard
+                </SidebarItemButton>
               </SidebarItem>
               <SidebarItem>
-                <TagsIcon />
-                Categories
+                <SidebarItemButton>
+                  <ShoppingBagIcon />
+                  Products
+                </SidebarItemButton>
               </SidebarItem>
               <SidebarItem>
-                <Package2Icon />
-                Orders
-                <Badge className="ml-auto" size="sm" pill variant="info">
-                  10
-                </Badge>
+                <SidebarItemButton>
+                  <TagsIcon />
+                  Categories
+                </SidebarItemButton>
               </SidebarItem>
               <SidebarCollapsible>
-                <SidebarCollapsibleTrigger>
-                  <ChartAreaIcon />
-                  Reports
-                </SidebarCollapsibleTrigger>
-                <SidebarSubmenu>
-                  <SidebarList>
-                    <SidebarItem href="#">Sales</SidebarItem>
-                    <SidebarItem href="#">Traffic</SidebarItem>
-                    <SidebarItem href="#">Conversion</SidebarItem>
-                  </SidebarList>
-                </SidebarSubmenu>
+                <SidebarCollapsibleTrigger
+                  render={
+                    <SidebarItemButton>
+                      <ChartAreaIcon />
+                      Reports
+                    </SidebarItemButton>
+                  }
+                />
+                <SidebarCollapsiblePanel>
+                  <SidebarSubmenu>
+                    <SidebarList>
+                      <SidebarItem>
+                        <SidebarItemButton>Sales</SidebarItemButton>
+                      </SidebarItem>
+                      <SidebarItem>
+                        <SidebarItemButton>Traffic</SidebarItemButton>
+                      </SidebarItem>
+                      <SidebarItem>
+                        <SidebarItemButton>Conversion</SidebarItemButton>
+                      </SidebarItem>
+                    </SidebarList>
+                  </SidebarSubmenu>
+                </SidebarCollapsiblePanel>
               </SidebarCollapsible>
             </SidebarList>
           </SidebarGroup>
           <SidebarGroup>
             <SidebarGroupTitle>Settings</SidebarGroupTitle>
             <SidebarList>
-              <SidebarItem href="#">
-                <SettingsIcon />
-                Settings
+              <SidebarItem>
+                <SidebarItemButton>
+                  <SettingsIcon />
+                  Settings
+                </SidebarItemButton>
               </SidebarItem>
-              <SidebarItem href="#">
-                <UserIcon />
-                Profile
+              <SidebarItem>
+                <SidebarItemButton>
+                  <UserIcon />
+                  Profile
+                </SidebarItemButton>
               </SidebarItem>
             </SidebarList>
           </SidebarGroup>
@@ -106,41 +123,43 @@ export default function SidebarBasicExample() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarList>
-            <Dropdown>
-              <DropdownTrigger
-                data-slot="sidebar-item"
-                nativeButton={false}
-                render={
-                  <SidebarItem>
-                    <Avatar size="sm">
-                      <AvatarImage src="/avatar05.png" alt="Avatar" />
-                      <AvatarFallback>BS</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <span className="font-medium">John Doe</span>
-                      <span className="text-sm text-muted">
-                        john.doe@example.com
-                      </span>
-                    </div>
-                    <ChevronsUpDownIcon className="ml-auto" />
-                  </SidebarItem>
-                }
-              />
-              <DropdownContent className="w-(--anchor-width)" side="top">
-                <DropdownItem>
-                  <UserIcon />
-                  Profile
-                </DropdownItem>
-                <DropdownItem>
-                  <SettingsIcon />
-                  Settings
-                </DropdownItem>
-                <DropdownItem>
-                  <LogOutIcon />
-                  Logout
-                </DropdownItem>
-              </DropdownContent>
-            </Dropdown>
+            <SidebarItem>
+              <Dropdown>
+                <DropdownTrigger
+                  data-slot="sidebar-item-button"
+                  nativeButton={false}
+                  render={
+                    <SidebarItemButton>
+                      <Avatar size="sm">
+                        <AvatarImage src="/avatar05.png" alt="Avatar" />
+                        <AvatarFallback>BS</AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <span className="font-medium">John Doe</span>
+                        <span className="text-sm text-muted">
+                          john.doe@example.com
+                        </span>
+                      </div>
+                      <ChevronsUpDownIcon className="ml-auto" />
+                    </SidebarItemButton>
+                  }
+                />
+                <DropdownContent className="w-(--anchor-width)" side="top">
+                  <DropdownItem>
+                    <UserIcon />
+                    Profile
+                  </DropdownItem>
+                  <DropdownItem>
+                    <SettingsIcon />
+                    Settings
+                  </DropdownItem>
+                  <DropdownItem>
+                    <LogOutIcon />
+                    Logout
+                  </DropdownItem>
+                </DropdownContent>
+              </Dropdown>
+            </SidebarItem>
           </SidebarList>
         </SidebarMenu>
       </SidebarFooter>
