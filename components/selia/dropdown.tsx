@@ -1,4 +1,5 @@
 import { Menu as BaseMenu } from '@base-ui-components/react/menu';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
 export function Dropdown({
@@ -162,34 +163,56 @@ export function DropdownRadioGroup({
   return <BaseMenu.RadioGroup data-slot="dropdown-radio-group" {...props} />;
 }
 
+export const dropdownRadioItemVariants = cva(dropdownItemClasses, {
+  variants: {
+    variant: {
+      default: 'data-[checked]:pl-3',
+      alternate: [
+        '*:data-[slot=dropdown-radio-item-indicator]:order-last',
+        '*:data-[slot=dropdown-radio-item-indicator]:ml-auto',
+        '*:data-[slot=dropdown-radio-item-indicator]:ring',
+        '*:data-[slot=dropdown-radio-item-indicator]:ring-input-border',
+        '*:data-[slot=dropdown-radio-item-indicator]:bg-input',
+      ],
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
 export function DropdownRadioItem({
+  className,
+  variant,
   children,
   ...props
-}: React.ComponentProps<typeof BaseMenu.RadioItem>) {
+}: React.ComponentProps<typeof BaseMenu.RadioItem> &
+  VariantProps<typeof dropdownRadioItemVariants>) {
   return (
     <BaseMenu.RadioItem
       data-slot="dropdown-radio-item"
       {...props}
-      className={cn(
-        dropdownItemClasses,
-        'pl-10 data-[checked]:pl-2.5',
-        props.className,
-      )}
+      className={dropdownRadioItemVariants({ variant, className })}
     >
-      <BaseMenu.RadioItemIndicator className="w-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="fill-primary stroke-primary !w-2 mx-auto"
-        >
-          <circle cx="12" cy="12" r="10" />
-        </svg>
-      </BaseMenu.RadioItemIndicator>
+      <div
+        data-slot="dropdown-radio-item-indicator"
+        className="flex items-center justify-center size-3 rounded-full"
+      >
+        <BaseMenu.RadioItemIndicator>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="fill-primary stroke-primary !w-2 mx-auto"
+          >
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+        </BaseMenu.RadioItemIndicator>
+      </div>
       {children}
     </BaseMenu.RadioItem>
   );

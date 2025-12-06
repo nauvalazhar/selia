@@ -43,11 +43,48 @@ import {
   StoreIcon,
   TrashIcon,
   UserIcon,
+  GitBranchIcon,
+  GitCommitIcon,
+  GitMergeIcon,
+  GitPullRequestIcon,
+  TagIcon,
+  BookIcon,
+  PackageIcon,
+  RocketIcon,
+  AlertCircleIcon,
+  WorkflowIcon,
+  CloudIcon,
+  StarIcon,
+  ClockIcon,
+  UploadIcon,
+  DownloadIcon,
+  ImageIcon,
+  VideoIcon,
+  MusicIcon,
+  FileTextIcon,
+  HomeIcon,
+  UsersIcon,
+  ShieldIcon,
+  FolderUpIcon,
+  ArrowRightIcon,
+  MailIcon,
+  InboxIcon,
+  SendIcon,
+  PaperclipIcon,
+  FilterIcon,
+  FolderOpenIcon,
+  AlertTriangleIcon,
+  CheckCircleIcon,
+  HelpCircleIcon,
 } from 'lucide-react';
 import {
   Dropdown,
   DropdownContent,
+  DropdownGroup,
+  DropdownGroupLabel,
   DropdownItem,
+  DropdownRadioGroup,
+  DropdownRadioItem,
   DropdownSeparator,
   DropdownTrigger,
 } from 'components/selia/dropdown';
@@ -57,10 +94,20 @@ import { Input } from 'components/selia/input';
 import { Kbd } from 'components/selia/kbd';
 import { cn } from 'lib/utils';
 import { Button } from 'components/selia/button';
+import { Badge } from 'components/selia/badge';
+import {
+  Item,
+  ItemAction,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from 'components/selia/item';
+import { IconBox } from 'components/selia/icon-box';
 
 export default function Playground() {
   return (
-    <div className="flex h-dvh gap-4 p-10">
+    <div className="flex h-dvh gap-8 p-10">
       <Sidebar
         className={cn('w-72 h-full bg-card shadow-card rounded-xl')}
         size="compact"
@@ -68,7 +115,7 @@ export default function Playground() {
         <SidebarHeader>
           <SidebarLogo>
             <img src="/selia.png" alt="Selia" className="size-8" />
-            <span className="font-semibold">Selia</span>
+            <span className="font-semibold">Code Editor</span>
           </SidebarLogo>
           <InputGroup className="mt-4">
             <InputGroupAddon>
@@ -111,52 +158,6 @@ export default function Playground() {
             </SidebarGroup>
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarList>
-              <SidebarItem>
-                <Dropdown>
-                  <DropdownTrigger
-                    data-slot="sidebar-item-button"
-                    nativeButton={false}
-                    render={
-                      <SidebarItemButton>
-                        <Avatar size="sm">
-                          <AvatarImage
-                            src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
-                            alt="Avatar"
-                          />
-                          <AvatarFallback>BS</AvatarFallback>
-                        </Avatar>
-                        <div className="flex flex-col">
-                          <span className="font-medium">Rizal Fakhri</span>
-                          <span className="text-sm text-muted">
-                            rizal@yayan.com
-                          </span>
-                        </div>
-                        <ChevronsUpDownIcon className="ml-auto" />
-                      </SidebarItemButton>
-                    }
-                  />
-                  <DropdownContent className="w-(--anchor-width)" side="top">
-                    <DropdownItem>
-                      <UserIcon />
-                      Profile
-                    </DropdownItem>
-                    <DropdownItem>
-                      <SettingsIcon />
-                      Settings
-                    </DropdownItem>
-                    <DropdownItem>
-                      <LogOutIcon />
-                      Logout
-                    </DropdownItem>
-                  </DropdownContent>
-                </Dropdown>
-              </SidebarItem>
-            </SidebarList>
-          </SidebarMenu>
-        </SidebarFooter>
       </Sidebar>
 
       <Sidebar
@@ -167,7 +168,7 @@ export default function Playground() {
           <div className="flex items-center justify-between">
             <SidebarLogo>
               <img src="/selia.png" alt="Selia" className="size-8" />
-              <span className="font-semibold text-lg">Selia</span>
+              <span className="font-semibold text-lg">Chat</span>
             </SidebarLogo>
             <Button variant="secondary-plain" size="sm-icon">
               <SidebarCloseIcon />
@@ -326,6 +327,458 @@ export default function Playground() {
                     <DropdownItem>
                       <LogOutIcon />
                       Logout
+                    </DropdownItem>
+                  </DropdownContent>
+                </Dropdown>
+              </SidebarItem>
+            </SidebarList>
+          </SidebarMenu>
+        </SidebarFooter>
+      </Sidebar>
+
+      <Sidebar
+        className={cn('w-72 h-full bg-card shadow-card rounded-xl')}
+        size="compact"
+      >
+        <SidebarHeader>
+          <SidebarLogo>
+            <img src="/selia.png" alt="Selia" className="size-8" />
+            <div className="flex flex-col">
+              <span className="font-semibold text-base">Git</span>
+              <span className="text-sm text-muted">nauvalazhar/selia</span>
+            </div>
+          </SidebarLogo>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton active>
+                    <CodeIcon />
+                    Code
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <AlertCircleIcon />
+                    Issues
+                    <Badge className="ml-auto">12</Badge>
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <GitCommitIcon />
+                    Commits
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <GitBranchIcon />
+                    Branches
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <GitPullRequestIcon />
+                    Merge Requests
+                    <Badge className="ml-auto">3</Badge>
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <TagIcon />
+                    Tags
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <BookIcon />
+                    Wiki
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <WorkflowIcon />
+                    CI/CD
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <PackageIcon />
+                    Releases
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <RocketIcon />
+                    Deployments
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarGroupTitle>Settings</SidebarGroupTitle>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <SettingsIcon />
+                    General
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <UserIcon />
+                    Members
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <ShareIcon />
+                    Integrations
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+          </SidebarMenu>
+        </SidebarFooter>
+      </Sidebar>
+
+      <Sidebar
+        className={cn('w-72 h-full bg-card shadow-card rounded-xl')}
+        size="compact"
+      >
+        <SidebarHeader>
+          <SidebarLogo>
+            <img src="/selia.png" alt="Selia" className="size-8" />
+            <span className="font-semibold">Storage</span>
+          </SidebarLogo>
+          <Dropdown>
+            <DropdownTrigger
+              render={
+                <Button variant="secondary" className="mt-4">
+                  <PlusIcon />
+                  New
+                </Button>
+              }
+            />
+            <DropdownContent className="min-w-40" align="start">
+              <DropdownItem>
+                <FolderIcon />
+                New Folder
+              </DropdownItem>
+              <DropdownItem>
+                <FileIcon />
+                New File
+              </DropdownItem>
+              <DropdownSeparator />
+              <DropdownItem>
+                <UploadIcon />
+                Upload File
+              </DropdownItem>
+              <DropdownItem>
+                <FolderUpIcon />
+                Upload Folder
+              </DropdownItem>
+            </DropdownContent>
+          </Dropdown>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton active>
+                    <HomeIcon />
+                    My Drive
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <ClockIcon />
+                    Recent
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <ShareIcon />
+                    Shared by me
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+            <SidebarGroup>
+              <SidebarGroupTitle>Folders</SidebarGroupTitle>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <FolderIcon />
+                    Work
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <FolderIcon />
+                    Personal
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <FolderIcon />
+                    Projects
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <FolderIcon />
+                    Archive
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter>
+          <Item direction="column" className="mb-4">
+            <ItemMedia>
+              <IconBox variant="primary">
+                <RocketIcon />
+              </IconBox>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Upgrade Storage</ItemTitle>
+              <ItemDescription>
+                Upgrade your storage to 15GB for $10/month.
+              </ItemDescription>
+            </ItemContent>
+            <ItemAction>
+              <Button variant="primary" size="sm">
+                Upgrade
+                <ArrowRightIcon />
+              </Button>
+            </ItemAction>
+          </Item>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <SettingsIcon />
+                    Settings
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <ShieldIcon />
+                    Privacy
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <SparklesIcon />
+                    Upgrade Storage
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+          </SidebarMenu>
+        </SidebarFooter>
+      </Sidebar>
+
+      <Sidebar
+        className={cn('w-72 h-full bg-card shadow-card rounded-xl')}
+        size="compact"
+      >
+        <SidebarHeader>
+          <SidebarLogo>
+            <img src="/selia.png" alt="Selia" className="size-8" />
+            <span className="font-semibold">Mail</span>
+          </SidebarLogo>
+          <Button variant="tertiary" block className="mt-4">
+            <PencilIcon />
+            Compose
+          </Button>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton active>
+                    <InboxIcon />
+                    Inbox
+                    <Badge className="ml-auto">12</Badge>
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <StarIcon />
+                    Starred
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <ClockIcon />
+                    Snoozed
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <SendIcon />
+                    Sent
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <FileTextIcon />
+                    Drafts
+                    <Badge className="ml-auto">3</Badge>
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <AlertTriangleIcon />
+                    Spam
+                    <Badge className="ml-auto">5</Badge>
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+            <SidebarGroup>
+              <SidebarGroupTitle>Labels</SidebarGroupTitle>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <TagIcon />
+                    Important
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <TagIcon />
+                    Work
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <TagIcon />
+                    Personal
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <TagIcon />
+                    Travel
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <PlusIcon />
+                    Create new label
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+            <SidebarGroup>
+              <SidebarList>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <FilterIcon />
+                    Filters
+                  </SidebarItemButton>
+                </SidebarItem>
+                <SidebarItem>
+                  <SidebarItemButton>
+                    <SettingsIcon />
+                    Settings
+                  </SidebarItemButton>
+                </SidebarItem>
+              </SidebarList>
+            </SidebarGroup>
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarList>
+              <SidebarItem>
+                <Dropdown>
+                  <DropdownTrigger
+                    data-slot="sidebar-item-button"
+                    render={
+                      <SidebarItemButton className="border border-border">
+                        <Avatar size="sm">
+                          <AvatarImage
+                            src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
+                            alt="Avatar"
+                          />
+                        </Avatar>
+                        <div className="flex flex-col">
+                          <span className="font-medium">Rizal Fakhri</span>
+                          <span className="text-sm text-muted">
+                            rizal@yayan.com
+                          </span>
+                        </div>
+                        <ChevronsUpDownIcon className="ml-auto" />
+                      </SidebarItemButton>
+                    }
+                  />
+                  <DropdownContent className="w-(--anchor-width)">
+                    <DropdownItem>
+                      <UserIcon />
+                      Profile
+                    </DropdownItem>
+                    <DropdownItem>
+                      <SettingsIcon />
+                      Settings
+                    </DropdownItem>
+                    <DropdownItem>
+                      <HelpCircleIcon />
+                      Help
+                    </DropdownItem>
+                    <DropdownSeparator />
+                    <DropdownGroup>
+                      <DropdownGroupLabel>Switch Account</DropdownGroupLabel>
+                      <DropdownRadioGroup defaultValue="rizal">
+                        <DropdownRadioItem value="rizal" variant="alternate">
+                          <Avatar size="sm">
+                            <AvatarImage
+                              src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
+                              alt="Avatar"
+                            />
+                            <AvatarFallback>RF</AvatarFallback>
+                          </Avatar>
+                          <div className="flex flex-col">
+                            <span className="font-medium">Rizal Fakhri</span>
+                            <span className="text-sm text-muted">
+                              rizal@yayan.com
+                            </span>
+                          </div>
+                        </DropdownRadioItem>
+                        <DropdownRadioItem value="nauval" variant="alternate">
+                          <Avatar size="sm">
+                            <AvatarImage
+                              src="https://pbs.twimg.com/profile_images/1460906228389867522/WxSzgWSs_400x400.jpg"
+                              alt="Avatar"
+                            />
+                            <AvatarFallback>NA</AvatarFallback>
+                          </Avatar>
+                          <div className="flex flex-col">
+                            <span className="font-medium">Nauval Azhar</span>
+                            <span className="text-sm text-muted">
+                              nauval@azhar.com
+                            </span>
+                          </div>
+                        </DropdownRadioItem>
+                      </DropdownRadioGroup>
+                    </DropdownGroup>
+                    <DropdownSeparator />
+                    <DropdownItem className="text-danger *:[svg]:text-danger">
+                      <LogOutIcon />
+                      Log Out
                     </DropdownItem>
                   </DropdownContent>
                 </Dropdown>
