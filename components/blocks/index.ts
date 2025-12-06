@@ -11,6 +11,46 @@ type Block = {
 };
 
 export const blocks: Block = {
+  sidebarMail: {
+    name: 'Sidebar Mail',
+    description: 'A sidebar for mail application.',
+    path: 'components/blocks/sidebar-mail.tsx',
+    component: React.lazy(() =>
+      import('./sidebar-mail').then((mod) => ({ default: mod.default })),
+    ),
+  },
+  sidebarStorage: {
+    name: 'Sidebar Storage',
+    description: 'A sidebar for storage management.',
+    path: 'components/blocks/sidebar-storage.tsx',
+    component: React.lazy(() =>
+      import('./sidebar-storage').then((mod) => ({ default: mod.default })),
+    ),
+  },
+  sidebarGit: {
+    name: 'Sidebar Git',
+    description: 'A sidebar for git application.',
+    path: 'components/blocks/sidebar-git.tsx',
+    component: React.lazy(() =>
+      import('./sidebar-git').then((mod) => ({ default: mod.default })),
+    ),
+  },
+  sidebarChat: {
+    name: 'Sidebar Chat',
+    description: 'A sidebar for chat application.',
+    path: 'components/blocks/sidebar-chat.tsx',
+    component: React.lazy(() =>
+      import('./sidebar-chat').then((mod) => ({ default: mod.default })),
+    ),
+  },
+  sidebarCode: {
+    name: 'Sidebar Code',
+    description: 'A sidebar with a file tree for code editor.',
+    path: 'components/blocks/sidebar-code.tsx',
+    component: React.lazy(() =>
+      import('./sidebar-code').then((mod) => ({ default: mod.default })),
+    ),
+  },
   profile: {
     name: 'Profile',
     description: 'A simple profile block with buttons and a separator.',
