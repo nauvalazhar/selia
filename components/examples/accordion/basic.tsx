@@ -18,7 +18,7 @@ export default function AccordionBasicExample() {
             </AccordionTrigger>
           </AccordionHeader>
           <AccordionPanel>
-            <Text>
+            <Text className="text-muted">
               Liverpool Football Club is the biggest football club in the world.
             </Text>
           </AccordionPanel>
@@ -30,7 +30,9 @@ export default function AccordionBasicExample() {
             </AccordionTrigger>
           </AccordionHeader>
           <AccordionPanel>
-            <Text>Liverpool Football Club has won 20 titles.</Text>
+            <Text className="text-muted">
+              Liverpool Football Club has won 20 titles.
+            </Text>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
@@ -40,7 +42,7 @@ export default function AccordionBasicExample() {
             </AccordionTrigger>
           </AccordionHeader>
           <AccordionPanel>
-            <Text>We will be there.</Text>
+            <Text className="text-muted">We will be there.</Text>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

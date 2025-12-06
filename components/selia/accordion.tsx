@@ -106,14 +106,14 @@ export function AccordionTrigger({
       data-expandable={expandableIndicator ? true : undefined}
       className={cn(
         'flex items-center gap-2.5 select-none cursor-pointer',
-        'data-panel-open:border-b border-card-border transition-all duration-100',
-        'outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        'data-panel-open:border-b border-card-border transition-colors duration-100',
+        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '**:[svg]:size-4 w-full text-left leading-relaxed font-medium',
         '**:data-[slot=expandable-indicator]:transition-all',
         '**:data-[slot=expandable-indicator]:duration-100',
         expandableIndicator && [
           'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',
-          'data-expandable:after:transition-transform data-expandable:after:duration-100',
+          'data-expandable:after:transition-transform data-expandable:after:duration-100 data-expandable:after:shrink-0',
           'data-expandable:data-[panel-open]:after:rotate-180',
         ],
         className,

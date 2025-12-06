@@ -11,7 +11,7 @@ export default function CollapsibleBasicExample() {
       <Collapsible className="w-full lg:w-8/12">
         <CollapsibleTrigger>What is Linux?</CollapsibleTrigger>
         <CollapsiblePanel>
-          <Text>
+          <Text className="text-muted">
             Linux is a free and open-source operating system that is based on
             the Linux kernel.
           </Text>
