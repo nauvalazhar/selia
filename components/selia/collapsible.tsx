@@ -1,0 +1,108 @@
+import { Collapsible as BaseCollapsible } from '@base-ui-components/react/collapsible';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from 'lib/utils';
+
+export const collapsibleVariants = cva('flex flex-col border', {
+  variants: {
+    size: {
+      default: [
+        'rounded-lg',
+        '**:data-[slot=collapsible-panel-content]:p-4',
+        '**:data-[slot=collapsible-trigger]:p-4',
+        '**:data-[slot=collapsible-trigger]:rounded-lg',
+        '**:[[data-slot=collapsible-trigger][data-panel-open]]:rounded-b-none',
+      ],
+      sm: [
+        'rounded',
+        '**:data-[slot=collapsible-panel-content]:p-3.5',
+        '**:data-[slot=collapsible-trigger]:p-3.5',
+        '**:data-[slot=collapsible-trigger]:rounded',
+        '**:[[data-slot=collapsible-trigger][data-panel-open]]:rounded-b-none',
+      ],
+      lg: [
+        'rounded-xl',
+        '**:data-[slot=collapsible-panel-content]:p-4.5',
+        '**:data-[slot=collapsible-trigger]:p-4.5',
+        '**:data-[slot=collapsible-trigger]:rounded-xl',
+        '**:[[data-slot=collapsible-trigger][data-panel-open]]:rounded-b-none',
+      ],
+    },
+    variant: {
+      default: 'bg-card border-card-border shadow',
+      outline: 'border-card-border border',
+      plain: 'border-transparent rounded-none',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default',
+  },
+});
+
+export function Collapsible({
+  className,
+  variant,
+  size,
+  ...props
+}: React.ComponentProps<typeof BaseCollapsible.Root> &
+  VariantProps<typeof collapsibleVariants>) {
+  return (
+    <BaseCollapsible.Root
+      data-slot="collapsible"
+      className={cn(collapsibleVariants({ variant, size, className }))}
+      {...props}
+    />
+  );
+}
+
+export function CollapsibleTrigger({
+  className,
+  expandableIndicator = true,
+  ...props
+}: React.ComponentProps<typeof BaseCollapsible.Trigger> & {
+  expandableIndicator?: boolean;
+}) {
+  return (
+    <BaseCollapsible.Trigger
+      data-slot="collapsible-trigger"
+      data-expandable={expandableIndicator ? true : undefined}
+      className={cn(
+        'flex items-center gap-2.5 select-none cursor-pointer',
+        'data-panel-open:border-b border-card-border transition-all duration-100',
+        'outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        '**:[svg]:size-4',
+        '**:data-[slot=expandable-indicator]:transition-all',
+        '**:data-[slot=expandable-indicator]:duration-100',
+        expandableIndicator && [
+          'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',
+          'data-expandable:after:transition-transform data-expandable:after:duration-100',
+          'data-expandable:data-[panel-open]:after:rotate-180',
+        ],
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export function CollapsiblePanel({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof BaseCollapsible.Panel>) {
+  return (
+    <BaseCollapsible.Panel
+      data-slot="collapsible-panel"
+      className={cn(
+        'flex flex-col gap-2.5',
+        'overflow-hidden transition-all ease-out',
+        '[&[hidden]:not([hidden=until-found])]:hidden h-[var(--collapsible-panel-height)]',
+        'data-[ending-style]:h-0 data-[starting-style]:h-0',
+        className,
+      )}
+      {...props}
+    >
+      <div data-slot="collapsible-panel-content">{children}</div>
+    </BaseCollapsible.Panel>
+  );
+}
