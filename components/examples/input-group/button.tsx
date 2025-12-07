@@ -7,7 +7,7 @@ export default function InputGroupButtonExample() {
     <InputGroup className="w-full 2xl:w-8/12 xl:w-10/12">
       <Input placeholder="Search" />
       <InputGroupAddon align="end">
-        <Button variant="tertiary" size="xs" pill>
+        <Button variant="tertiary" size="xs">
           Search
         </Button>
       </InputGroupAddon>

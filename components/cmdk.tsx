@@ -2,7 +2,14 @@ import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
 import { useNavigate } from 'react-router';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { Command, CommandContent, CommandBody } from './selia/command';
+import {
+  Command,
+  CommandContent,
+  CommandBody,
+  CommandFooterText,
+  CommandFooterItem,
+  CommandFooter,
+} from './selia/command';
 import {
   Autocomplete,
   AutocompleteInput,
@@ -12,9 +19,6 @@ import {
   AutocompleteGroupLabel,
   AutocompleteCollection,
   AutocompleteItem,
-  AutocompleteFooter,
-  AutocompleteFooterItem,
-  AutocompleteFooterText,
 } from './selia/autocomplete';
 import { SearchIcon } from 'lucide-react';
 import { Kbd, KbdGroup } from './selia/kbd';
@@ -71,7 +75,10 @@ export function Cmdk({ items }: { items: Group[] }) {
           <CommandBody>
             <div className="flex items-center border-b border-dialog-border px-5 gap-1">
               <SearchIcon className="size-4 text-muted" />
-              <AutocompleteInput placeholder="Search for pages..." />
+              <AutocompleteInput
+                placeholder="Search for pages..."
+                variant="plain"
+              />
             </div>
 
             <AutocompleteEmpty>No results found.</AutocompleteEmpty>
@@ -99,19 +106,19 @@ export function Cmdk({ items }: { items: Group[] }) {
             </AutocompleteList>
           </CommandBody>
 
-          <AutocompleteFooter className="px-5 pt-3 pb-2.5">
-            <AutocompleteFooterItem>
+          <CommandFooter className="px-5 pt-3 pb-2.5">
+            <CommandFooterItem>
               <Kbd>↵</Kbd>
-              <AutocompleteFooterText>Select Item</AutocompleteFooterText>
-            </AutocompleteFooterItem>
-            <AutocompleteFooterItem>
+              <CommandFooterText>Select Item</CommandFooterText>
+            </CommandFooterItem>
+            <CommandFooterItem>
               <KbdGroup>
                 <Kbd>↑</Kbd>
                 <Kbd>↓</Kbd>
               </KbdGroup>
-              <AutocompleteFooterText>Navigate</AutocompleteFooterText>
-            </AutocompleteFooterItem>
-          </AutocompleteFooter>
+              <CommandFooterText>Navigate</CommandFooterText>
+            </CommandFooterItem>
+          </CommandFooter>
         </Autocomplete>
       </CommandContent>
     </Command>

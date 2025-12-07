@@ -9,7 +9,7 @@
   --accent: oklch(0.9306 0.002 247.84);
   --muted: oklch(0.5076 0.0103 248.03);
   --dimmed: oklch(0.6971 0.009 247.96);
-  --shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
+  --shadow: 0 3px 4px -1px rgba(0, 0, 0, 0.05);
   --border: oklch(0.915 0.0024 247.85);
   --separator: oklch(0.915 0.0024 247.85);
   --input: oklch(1 0 0);

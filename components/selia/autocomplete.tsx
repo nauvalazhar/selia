@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Autocomplete as BaseAutocomplete } from '@base-ui-components/react/autocomplete';
 import { cn } from 'lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 export function Autocomplete({
   ...props
@@ -8,16 +9,101 @@ export function Autocomplete({
   return <BaseAutocomplete.Root data-slot="autocomplete" {...props} />;
 }
 
+export const autocompleteInputVariants = cva(
+  [
+    'h-9.5 px-2.5 w-full text-foreground rounded placeholder:text-dimmed transition-all',
+    'disabled:opacity-70 disabled:pointer-events-none',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'bg-input',
+        subtle: 'bg-input/60',
+        plain: 'bg-transparent focus:outline-none',
+      },
+    },
+    compoundVariants: [
+      {
+        variant: ['default', 'subtle'],
+        className:
+          'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2 shadow-input',
+      },
+    ],
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
 export function AutocompleteInput({
   className,
+  variant,
   ...props
-}: React.ComponentProps<typeof BaseAutocomplete.Input>) {
+}: React.ComponentProps<typeof BaseAutocomplete.Input> &
+  VariantProps<typeof autocompleteInputVariants>) {
   return (
     <BaseAutocomplete.Input
       data-slot="autocomplete-input"
       {...props}
-      className={cn('px-2.5 py-3 w-full outline-none', className)}
+      className={cn(autocompleteInputVariants({ variant, className }))}
     />
+  );
+}
+
+export function AutocompleteContent({
+  className,
+  popupProps,
+  children,
+  ...props
+}: React.ComponentProps<typeof BaseAutocomplete.Positioner> & {
+  popupProps?: BaseAutocomplete.Popup.Props;
+}) {
+  return (
+    <BaseAutocomplete.Portal>
+      <BaseAutocomplete.Backdrop />
+      <BaseAutocomplete.Positioner sideOffset={6} {...props}>
+        <BaseAutocomplete.Popup
+          data-slot="autocomplete-content"
+          {...popupProps}
+          className={cn(
+            'bg-popover ring ring-popover-border rounded shadow-popover',
+            'p-1 outline-none transition-[transform,scale,opacity]',
+            'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',
+            'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
+            'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
+            className,
+          )}
+        >
+          {children}
+        </BaseAutocomplete.Popup>
+      </BaseAutocomplete.Positioner>
+    </BaseAutocomplete.Portal>
+  );
+}
+
+export function AutocompleteIcon({
+  ...props
+}: React.ComponentProps<typeof BaseAutocomplete.Icon>) {
+  return <BaseAutocomplete.Icon data-slot="autocomplete-icon" {...props} />;
+}
+
+export function AutocompleteClear({
+  ...props
+}: React.ComponentProps<typeof BaseAutocomplete.Clear>) {
+  return <BaseAutocomplete.Clear data-slot="autocomplete-clear" {...props} />;
+}
+
+export function AutocompleteValue({
+  ...props
+}: React.ComponentProps<typeof BaseAutocomplete.Value>) {
+  return <BaseAutocomplete.Value data-slot="autocomplete-value" {...props} />;
+}
+
+export function AutocompleteTrigger({
+  ...props
+}: React.ComponentProps<typeof BaseAutocomplete.Trigger>) {
+  return (
+    <BaseAutocomplete.Trigger data-slot="autocomplete-trigger" {...props} />
   );
 }
 
@@ -91,6 +177,15 @@ export function AutocompleteCollection({
   );
 }
 
+export function AutocompleteRow({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseAutocomplete.Row>) {
+  return (
+    <div data-slot="autocomplete-row" {...props} className={cn(className)} />
+  );
+}
+
 export function AutocompleteItem({
   className,
   ...props
@@ -100,49 +195,25 @@ export function AutocompleteItem({
       data-slot="autocomplete-item"
       {...props}
       className={cn(
-        'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded',
+        'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded cursor-default',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
+        'focus-visible:outline-none',
+        '*:[svg]:size-4 *:[svg]:text-foreground',
         className,
       )}
     />
   );
 }
 
-export function AutocompleteFooter({
+export function AutocompleteSeparator({
   className,
   ...props
-}: React.ComponentProps<'footer'>) {
+}: React.ComponentProps<typeof BaseAutocomplete.Separator>) {
   return (
-    <footer
-      data-slot="autocomplete-footer"
+    <BaseAutocomplete.Separator
+      data-slot="autocomplete-separator"
       {...props}
-      className={cn('px-3 py-2.5 flex items-center gap-6', className)}
-    />
-  );
-}
-
-export function AutocompleteFooterItem({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="autocomplete-footer-item"
-      {...props}
-      className={cn('flex items-center gap-2.5', className)}
-    />
-  );
-}
-
-export function AutocompleteFooterText({
-  className,
-  ...props
-}: React.ComponentProps<'span'>) {
-  return (
-    <span
-      data-slot="autocomplete-footer-text"
-      {...props}
-      className={cn('text-sm text-muted font-medium', className)}
+      className={cn('h-px my-1 bg-separator', className)}
     />
   );
 }
