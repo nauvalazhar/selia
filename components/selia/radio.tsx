@@ -11,7 +11,7 @@ export function RadioGroup({
     <BaseRadioGroup
       data-slot="radio-group"
       {...props}
-      className={cn('flex flex-col', className)}
+      className={cn('flex flex-col gap-2.5', className)}
     />
   );
 }
