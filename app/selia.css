@@ -17,6 +17,7 @@
   --input-accent-border: oklch(0.8599 0.0041 247.87);
   --input-shadow: 0 3px 4px -1px rgba(0, 0, 0, 0.05);
   --track: oklch(0.915 0.0024 247.85);
+  --scrollbar: oklch(0.8039 0.0057 247.9);
   --avatar: oklch(0.8836 0.0034 247.86);
   --avatar-foreground: var(--foreground);
   --card: oklch(0.9847 0.0004 247.83);
@@ -142,6 +143,7 @@
   --input-shadow: 0 3px 4px -1px rgba(0, 0, 0, 0.05);
   --input-accent-border: oklch(0.4349 0.0085 248.02);
   --track: oklch(0.2994 0.0053 248);
+  --scrollbar: oklch(0.4625 0.0092 248.03);
   --avatar: oklch(0.3196 0.0058 248.01);
   --avatar-foreground: var(--foreground);
   --card: oklch(0.2579 0.0043 247.99);
@@ -318,6 +320,7 @@
   --color-separator: var(--separator);
   --color-accent: var(--accent);
   --color-border: var(--border);
+  --color-scrollbar: var(--scrollbar);
 
   --radius: var(--radius);
   --radius-xs: var(--radius-xs);

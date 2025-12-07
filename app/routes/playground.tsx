@@ -1,49 +1,16 @@
-import {
-  Field,
-  FieldDescription,
-  FieldError,
-  FieldItem,
-  FieldLabel,
-} from 'components/selia/field';
-import { Input } from 'components/selia/input';
-import { Fieldset, FieldsetLegend } from 'components/selia/fieldset';
-import { Checkbox, CheckboxGroup } from 'components/selia/checkbox';
-import { Separator } from 'components/selia/separator';
-import { Text } from 'components/selia/text';
-import { Radio, RadioGroup } from 'components/selia/radio';
-import { Label } from 'components/selia/label';
-import { Form } from 'components/selia/form';
-import { Button } from 'components/selia/button';
-import {
-  NumberField,
-  NumberFieldDecrement,
-  NumberFieldGroup,
-  NumberFieldIncrement,
-  NumberFieldInput,
-  NumberFieldScrubArea,
-  NumberFieldScrubAreaCursor,
-} from 'components/selia/number-field';
-import { MinusIcon, PlusIcon } from 'lucide-react';
+import { ScrollArea } from 'components/selia/scroll-area';
 
-export default function FieldsetComplexExample() {
+export default function Playground() {
   return (
     <div className="flex items-center justify-center h-screen">
-      <Field>
-        <NumberField>
-          <NumberFieldScrubArea>
-            <FieldLabel>Number</FieldLabel>
-          </NumberFieldScrubArea>
-          <NumberFieldGroup>
-            <NumberFieldDecrement>
-              <MinusIcon />
-            </NumberFieldDecrement>
-            <NumberFieldInput />
-            <NumberFieldIncrement>
-              <PlusIcon />
-            </NumberFieldIncrement>
-          </NumberFieldGroup>
-        </NumberField>
-      </Field>
+      <ScrollArea className="w-40 h-72 border">
+        {Array.from({ length: 100 }).map((_, index) => (
+          <div
+            key={index}
+            className="w-72 h-40 bg-linear-to-r from-primary to-primary/0 mb-4"
+          ></div>
+        ))}
+      </ScrollArea>
     </div>
   );
 }
