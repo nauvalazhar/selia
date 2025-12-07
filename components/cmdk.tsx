@@ -51,6 +51,9 @@ export function Cmdk({ items }: { items: Group[] }) {
     e.preventDefault();
     toggleCmdk();
   });
+  useHotkeys(['esc'], () => {
+    closeCmdk();
+  });
 
   function handleItemClick(item: Item) {
     closeCmdk();
@@ -78,6 +81,11 @@ export function Cmdk({ items }: { items: Group[] }) {
               <AutocompleteInput
                 placeholder="Search for pages..."
                 variant="plain"
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    closeCmdk();
+                  }
+                }}
               />
             </div>
 
