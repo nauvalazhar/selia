@@ -23,6 +23,7 @@ import {
 import { SearchIcon } from 'lucide-react';
 import { Kbd, KbdGroup } from './selia/kbd';
 import { useThemeStore } from '~/lib/theme-store';
+import { InputGroup, InputGroupAddon } from './selia/input-group';
 
 type Item = {
   value: string;
@@ -74,10 +75,12 @@ export function Cmdk({ items }: { items: Group[] }) {
   return (
     <Command open={isCmdkOpen} onOpenChange={toggleCmdk}>
       <CommandContent>
-        <Autocomplete open items={items} autoHighlight>
-          <CommandBody>
-            <div className="flex items-center border-b border-dialog-border px-5 gap-1">
-              <SearchIcon className="size-4 text-muted" />
+        <CommandBody>
+          <Autocomplete open items={items} autoHighlight>
+            <InputGroup variant="plain">
+              <InputGroupAddon>
+                <SearchIcon className="size-4 text-muted" />
+              </InputGroupAddon>
               <AutocompleteInput
                 placeholder="Search for pages..."
                 variant="plain"
@@ -87,7 +90,7 @@ export function Cmdk({ items }: { items: Group[] }) {
                   }
                 }}
               />
-            </div>
+            </InputGroup>
 
             <AutocompleteEmpty>No results found.</AutocompleteEmpty>
 
@@ -112,22 +115,22 @@ export function Cmdk({ items }: { items: Group[] }) {
                 </AutocompleteGroup>
               )}
             </AutocompleteList>
-          </CommandBody>
+          </Autocomplete>
+        </CommandBody>
 
-          <CommandFooter className="px-5 pt-3 pb-2.5">
-            <CommandFooterItem>
-              <Kbd>↵</Kbd>
-              <CommandFooterText>Select Item</CommandFooterText>
-            </CommandFooterItem>
-            <CommandFooterItem>
-              <KbdGroup>
-                <Kbd>↑</Kbd>
-                <Kbd>↓</Kbd>
-              </KbdGroup>
-              <CommandFooterText>Navigate</CommandFooterText>
-            </CommandFooterItem>
-          </CommandFooter>
-        </Autocomplete>
+        <CommandFooter>
+          <CommandFooterItem>
+            <Kbd>↵</Kbd>
+            <CommandFooterText>Select Item</CommandFooterText>
+          </CommandFooterItem>
+          <CommandFooterItem>
+            <KbdGroup>
+              <Kbd>↑</Kbd>
+              <Kbd>↓</Kbd>
+            </KbdGroup>
+            <CommandFooterText>Navigate</CommandFooterText>
+          </CommandFooterItem>
+        </CommandFooter>
       </CommandContent>
     </Command>
   );

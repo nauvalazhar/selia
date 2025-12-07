@@ -1,8 +1,21 @@
 import { cn } from 'lib/utils';
-import { Dialog, DialogBody, DialogContent } from './dialog';
+import { Dialog, DialogBody, DialogContent, DialogTrigger } from './dialog';
 
 export function Command({ ...props }: React.ComponentProps<typeof Dialog>) {
-  return <Dialog open {...props}></Dialog>;
+  return <Dialog {...props} />;
+}
+
+export function CommandTrigger({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogTrigger>) {
+  return (
+    <DialogTrigger
+      data-slot="command-trigger"
+      {...props}
+      className={cn(className)}
+    />
+  );
 }
 
 export function CommandContent({
@@ -17,9 +30,12 @@ export function CommandContent({
         '**:data-[slot=autocomplete-list]:h-[min(27rem,50dvh)]',
         '**:data-[slot=autocomplete-empty]:h-[min(27rem,50dvh)]',
         '**:data-[slot=autocomplete-input]:h-11',
+        '**:data-[slot=input-group]:px-2.5',
+        '**:data-[slot=input-group]:border-b',
+        '**:data-[slot=input-group]:border-dialog-border',
         className,
       )}
-    ></DialogContent>
+    />
   );
 }
 
@@ -48,7 +64,7 @@ export function CommandFooter({
     <footer
       data-slot="command-footer"
       {...props}
-      className={cn('px-3 py-2.5 flex items-center gap-6', className)}
+      className={cn('px-5 pt-3 pb-2.5 flex items-center gap-6', className)}
     />
   );
 }

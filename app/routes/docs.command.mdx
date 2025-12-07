@@ -1,3 +1,43 @@
 # Command
 
-Coming soon...
+An autocomplete inside a dialog for quick interaction.
+
+<Preview name="basic" />
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Command>
+  <CommandTrigger />
+  <CommandContent>
+    <CommandBody>
+      <Autocomplete>
+        <AutocompleteInput />
+        <AutocompleteTrigger />
+        <AutocompleteIcon />
+        <AutocompleteClear />
+        <AutocompleteValue />
+        <AutocompleteContent>
+          <AutocompleteEmpty />
+          <AutocompleteList>
+            <AutocompleteRow>
+              <AutocompleteItem />
+            </AutocompleteRow>
+            <AutocompleteSeparator />
+            <AutocompleteGroup>
+              <AutocompleteGroupLabel />
+            </AutocompleteGroup>
+            <AutocompleteCollection />
+          </AutocompleteList>
+        </AutocompleteContent>
+      </Autocomplete>
+    </CommandBody>
+    <CommandFooter>
+      <CommandFooterItem />
+      <CommandFooterText />
+    </CommandFooter>
+  </CommandContent>
+</Command>
+```

@@ -11,7 +11,7 @@ export function Autocomplete({
 
 export const autocompleteInputVariants = cva(
   [
-    'h-9.5 px-2.5 w-full text-foreground rounded placeholder:text-dimmed transition-all',
+    'h-9.5 px-2.5 w-full text-foreground placeholder:text-dimmed transition-all',
     'disabled:opacity-70 disabled:pointer-events-none',
   ],
   {
@@ -26,7 +26,7 @@ export const autocompleteInputVariants = cva(
       {
         variant: ['default', 'subtle'],
         className:
-          'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2 shadow-input',
+          'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2 shadow-input rounded',
       },
     ],
     defaultVariants: {
@@ -133,7 +133,7 @@ export function AutocompleteList({
       data-slot="autocomplete-list"
       {...props}
       className={cn(
-        'space-y-1 overflow-auto empty:hidden empty:h-0 empty:p-0',
+        'space-y-1 overflow-auto empty:hidden empty:h-0 empty:p-0 outline-none',
         className,
       )}
     />

@@ -10,10 +10,7 @@ const InputGroupContext = React.createContext<{
 
 export const inputGroupVariants = cva(
   [
-    'relative flex flex-wrap transition-all shadow-input rounded',
-    'ring ring-input-border hover:ring-input-accent-border',
-    '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-primary',
-    '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-2',
+    'relative flex flex-wrap transition-all',
     '[&>input,&>[role="combobox"],textarea]:flex-1',
     '[&>input,&>[role="combobox"],textarea]:bg-transparent',
     '[&>input,&>[role="combobox"],textarea]:ring-0',
@@ -24,12 +21,23 @@ export const inputGroupVariants = cva(
       variant: {
         default: 'bg-input',
         subtle: 'bg-input/60',
+        plain: 'bg-transparent focus:outline-none',
       },
       size: {
         md: '[&>textarea]:py-3',
         lg: '[&>textarea]:p-3.5',
       },
     },
+    compoundVariants: [
+      {
+        variant: ['default', 'subtle'],
+        className: [
+          'ring ring-input-border hover:ring-input-accent-border shadow-input rounded',
+          '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-primary',
+          '[&:has(>input:focus),&:has(>[role="combobox"]:focus),&:has(textarea:focus)]:ring-2',
+        ],
+      },
+    ],
     defaultVariants: {
       variant: 'default',
       size: 'md',
