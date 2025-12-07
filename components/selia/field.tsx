@@ -15,6 +15,24 @@ export function Field({
   );
 }
 
+export function FieldItem({
+  className,
+  ...props
+}: React.ComponentProps<typeof BaseField.Item>) {
+  return (
+    <BaseField.Item
+      data-slot="field-item"
+      className={cn(
+        'grid items-center gap-x-3 gap-y-1 not-last:mb-2.5',
+        'grid-cols-[auto_1fr]',
+        '[&_[data-slot=field-description]]:col-start-2',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
 export function FieldLabel({
   className,
   ...props
@@ -22,7 +40,7 @@ export function FieldLabel({
   return (
     <BaseField.Label
       data-slot="field-label"
-      className={cn('text-foreground', className)}
+      className={cn('text-foreground flex items-center gap-3', className)}
       {...props}
     />
   );

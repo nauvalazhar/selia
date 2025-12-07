@@ -3,6 +3,7 @@ export { examples as alertDialog } from './alert-dialog';
 export { examples as accordion } from './accordion';
 export { examples as autocomplete } from './autocomplete';
 export { examples as command } from './command';
+export { examples as form } from './form';
 export { examples as toggle } from './toggle';
 export { examples as toggleGroup } from './toggle-group';
 export { examples as collapsible } from './collapsible';

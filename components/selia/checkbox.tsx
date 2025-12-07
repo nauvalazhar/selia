@@ -40,7 +40,7 @@ export function Checkbox({
       {...props}
       className={cn(
         'size-4 shrink-0 flex items-center justify-center rounded-xs border border-input-border bg-input',
-        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-[checked]:bg-primary data-[checked]:border-primary',
         'transition-colors duration-75 hover:border-input-accent-border',
         'disabled::opacity-70 disabled:pointer-events-none',

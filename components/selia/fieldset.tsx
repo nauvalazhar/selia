@@ -10,7 +10,7 @@ export function Fieldset({
     <BaseFieldset.Root
       data-slot="fieldset"
       className={cn(
-        'flex flex-col',
+        'flex flex-col gap-0',
         '*:data-[slot=text]:text-muted',
         '*:data-[slot=text]:mb-6',
         '[&_[data-slot="field"]:not([data-layout="inline"])]:not-last:mb-6',

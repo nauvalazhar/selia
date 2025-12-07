@@ -11,7 +11,7 @@ export function RadioGroup({
     <BaseRadioGroup
       data-slot="radio-group"
       {...props}
-      className={cn('flex flex-col gap-2.5', className)}
+      className={cn('flex flex-col', className)}
     />
   );
 }
@@ -41,7 +41,7 @@ export function Radio({
       data-slot="radio"
       className={cn(
         'size-4 flex items-center justify-center rounded-full border border-input-border bg-input',
-        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-[checked]:bg-primary data-[checked]:border-primary',
         'transition-colors duration-75 hover:border-input-accent-border',
         'disabled::opacity-70 disabled:pointer-events-none',
