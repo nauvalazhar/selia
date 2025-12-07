@@ -1,0 +1,22 @@
+# Number Field
+
+A numeric input element with increment and decrement buttons, and a scrub area.
+
+<Preview name="basic" />
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<NumberField>
+  <NumberFieldScrubArea>
+    <Label />
+  </NumberFieldScrubArea>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
