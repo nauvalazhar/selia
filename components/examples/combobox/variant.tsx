@@ -1,6 +1,6 @@
 import {
   Combobox,
-  ComboboxContent,
+  ComboboxPopup,
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
@@ -16,7 +16,7 @@ export default function Basic() {
         <ComboboxTrigger className="w-64" variant="subtle">
           <ComboboxValue />
         </ComboboxTrigger>
-        <ComboboxContent>
+        <ComboboxPopup>
           <ComboboxSearch />
           <ComboboxEmpty>No results found</ComboboxEmpty>
           <ComboboxList>
@@ -26,13 +26,13 @@ export default function Basic() {
               </ComboboxItem>
             )}
           </ComboboxList>
-        </ComboboxContent>
+        </ComboboxPopup>
       </Combobox>
       <Combobox items={options} defaultValue={options[0]}>
         <ComboboxTrigger className="w-64" variant="plain">
           <ComboboxValue />
         </ComboboxTrigger>
-        <ComboboxContent>
+        <ComboboxPopup>
           <ComboboxSearch />
           <ComboboxEmpty>No results found</ComboboxEmpty>
           <ComboboxList>
@@ -42,7 +42,7 @@ export default function Basic() {
               </ComboboxItem>
             )}
           </ComboboxList>
-        </ComboboxContent>
+        </ComboboxPopup>
       </Combobox>
     </>
   );

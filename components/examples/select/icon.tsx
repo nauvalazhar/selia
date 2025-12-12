@@ -1,6 +1,6 @@
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectList,
   SelectTrigger,
@@ -14,7 +14,7 @@ export default function SelectIconExample() {
       <SelectTrigger className="lg:w-64">
         <SelectValue placeholder="Your hobby" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectPopup>
         <SelectList>
           {optionsWithIcon.map((option) => (
             <SelectItem key={option.value} value={option}>
@@ -23,7 +23,7 @@ export default function SelectIconExample() {
             </SelectItem>
           ))}
         </SelectList>
-      </SelectContent>
+      </SelectPopup>
     </Select>
   );
 }

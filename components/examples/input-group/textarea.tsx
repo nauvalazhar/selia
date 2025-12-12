@@ -10,7 +10,7 @@ import {
   Select,
   SelectTrigger,
   SelectValue,
-  SelectContent,
+  SelectPopup,
   SelectItem,
 } from 'components/selia/select';
 import { Button } from 'components/selia/button';
@@ -33,13 +33,13 @@ export default function InputGroupTextareaExample() {
           <SelectTrigger className="ml-auto w-auto mr-2" variant="plain">
             <SelectValue placeholder="Model" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectPopup>
             <SelectItem value="gpt">GPT</SelectItem>
             <SelectItem value="gemini">Gemini</SelectItem>
             <SelectItem value="claude">Claude</SelectItem>
             <SelectItem value="llama">Llama</SelectItem>
             <SelectItem value="grok">Grok</SelectItem>
-          </SelectContent>
+          </SelectPopup>
         </Select>
         <Button variant="tertiary">Send</Button>
       </InputGroupBar>

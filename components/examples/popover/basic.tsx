@@ -1,7 +1,7 @@
 import { Button } from 'components/selia/button';
 import {
   Popover,
-  PopoverContent,
+  PopoverPopup,
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
@@ -12,7 +12,7 @@ export default function PopoverBasicExample() {
   return (
     <Popover>
       <PopoverTrigger render={<Button>Upgrade</Button>} />
-      <PopoverContent className="w-72">
+      <PopoverPopup className="w-72">
         <PopoverTitle>Upgrade to Pro</PopoverTitle>
         <PopoverDescription>
           Upgrade to Pro to get more features and access to exclusive content.
@@ -21,7 +21,7 @@ export default function PopoverBasicExample() {
           Upgrade
           <ArrowRightIcon />
         </Button>
-      </PopoverContent>
+      </PopoverPopup>
     </Popover>
   );
 }

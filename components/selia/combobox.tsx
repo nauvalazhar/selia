@@ -177,21 +177,41 @@ export function ComboboxInput({
   );
 }
 
-export function ComboboxContent({
+export function ComboboxPopup({
   className,
-  popupProps,
   children,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseCombobox.Positioner> & {
-  popupProps?: BaseCombobox.Popup.Props;
+}: React.ComponentProps<typeof BaseCombobox.Popup> & {
+  align?: BaseCombobox.Positioner.Props['align'];
+  alignOffset?: BaseCombobox.Positioner.Props['alignOffset'];
+  side?: BaseCombobox.Positioner.Props['side'];
+  sideOffset?: BaseCombobox.Positioner.Props['sideOffset'];
+  anchor?: BaseCombobox.Positioner.Props['anchor'];
+  sticky?: BaseCombobox.Positioner.Props['sticky'];
+  positionMethod?: BaseCombobox.Positioner.Props['positionMethod'];
 }) {
   return (
     <BaseCombobox.Portal>
       <BaseCombobox.Backdrop />
-      <BaseCombobox.Positioner sideOffset={6} {...props}>
+      <BaseCombobox.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 6}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseCombobox.Popup
-          data-slot="combobox-content"
-          {...popupProps}
+          data-slot="combobox-popup"
+          {...props}
           className={cn(
             'bg-popover ring ring-popover-border rounded shadow-popover overflow-y-auto',
             'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',

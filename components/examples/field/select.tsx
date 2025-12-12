@@ -1,7 +1,7 @@
 import { Field, FieldLabel } from 'components/selia/field';
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectList,
   SelectTrigger,
@@ -17,13 +17,13 @@ export default function FieldSelectExample() {
           <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectPopup>
             <SelectList>
               <SelectItem value="option1">Option 1</SelectItem>
               <SelectItem value="option2">Option 2</SelectItem>
               <SelectItem value="option3">Option 3</SelectItem>
             </SelectList>
-          </SelectContent>
+          </SelectPopup>
         </Select>
       </Field>
     </div>

@@ -2,7 +2,7 @@ import { Input } from 'components/selia/input';
 import { InputGroup, InputGroupAddon } from 'components/selia/input-group';
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -16,7 +16,7 @@ export default function InputGroupSelectExample() {
           <SelectTrigger>
             <SelectValue placeholder="USD" />
           </SelectTrigger>
-          <SelectContent className="max-lg:w-auto">
+          <SelectPopup className="max-lg:w-auto">
             <SelectItem value="USD">USD</SelectItem>
             <SelectItem value="EUR">EUR</SelectItem>
             <SelectItem value="GBP">GBP</SelectItem>
@@ -26,7 +26,7 @@ export default function InputGroupSelectExample() {
             <SelectItem value="INR">INR</SelectItem>
             <SelectItem value="BRL">BRL</SelectItem>
             <SelectItem value="ARS">ARS</SelectItem>
-          </SelectContent>
+          </SelectPopup>
         </Select>
       </InputGroupAddon>
       <Input placeholder="Amount" />

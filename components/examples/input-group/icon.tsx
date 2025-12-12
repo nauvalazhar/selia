@@ -6,7 +6,7 @@ import {
 } from 'components/selia/input-group';
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -30,7 +30,7 @@ export default function InputGroupIconExample() {
           <SelectTrigger>
             <SelectValue placeholder="Guitar model" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectPopup>
             <SelectItem value="telecaster">Telecaster</SelectItem>
             <SelectItem value="les-paul">Les Paul</SelectItem>
             <SelectItem value="gibson">Gibson</SelectItem>
@@ -40,7 +40,7 @@ export default function InputGroupIconExample() {
             <SelectItem value="esp">ESP</SelectItem>
             <SelectItem value="prs">PRS</SelectItem>
             <SelectItem value="taylor">Taylor</SelectItem>
-          </SelectContent>
+          </SelectPopup>
         </Select>
       </InputGroup>
     </div>

@@ -140,23 +140,43 @@ function SelectRenderValue({
   return <span className="text-popover-foreground select-none">{value}</span>;
 }
 
-export function SelectContent({
-  popupProps,
+export function SelectPopup({
   children,
   className,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseSelect.Positioner> &
+}: React.ComponentProps<typeof BaseSelect.Popup> &
   VariantProps<typeof selectVariants> & {
-    popupProps?: BaseSelect.Popup.Props;
+    align?: BaseSelect.Positioner.Props['align'];
+    alignOffset?: BaseSelect.Positioner.Props['alignOffset'];
+    side?: BaseSelect.Positioner.Props['side'];
+    sideOffset?: BaseSelect.Positioner.Props['sideOffset'];
+    anchor?: BaseSelect.Positioner.Props['anchor'];
+    sticky?: BaseSelect.Positioner.Props['sticky'];
+    positionMethod?: BaseSelect.Positioner.Props['positionMethod'];
   }) {
   return (
     <BaseSelect.Portal>
       <BaseSelect.Backdrop />
-      <BaseSelect.Positioner {...props}>
+      <BaseSelect.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 6}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseSelect.ScrollUpArrow className="top-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-popover-foreground flex items-center justify-around bg-popover-accent" />
         <BaseSelect.Popup
-          data-slot="select-content"
-          {...popupProps}
+          data-slot="select-popup"
+          {...props}
           className={cn(
             'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
             'p-1 outline-none max-lg:w-(--anchor-width)',

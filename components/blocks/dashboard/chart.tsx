@@ -7,7 +7,7 @@ import {
 } from 'components/selia/card';
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectList,
   SelectTrigger,
@@ -35,13 +35,13 @@ export function Chart() {
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectPopup>
               <SelectList>
                 <SelectItem value="Last Week">Last Week</SelectItem>
                 <SelectItem value="Last Month">Last Month</SelectItem>
                 <SelectItem value="Last Year">Last Year</SelectItem>
               </SelectList>
-            </SelectContent>
+            </SelectPopup>
           </Select>
         </CardHeaderAction>
       </CardHeader>

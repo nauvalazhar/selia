@@ -57,7 +57,7 @@
   --primary-border: oklch(0.5938 0.1979 263.03);
   --secondary: oklch(0.9616 0.0011 247.83);
   --secondary-foreground: var(--foreground);
-  --secondary-border: oklch(0.9306 0.002 247.84);
+  --secondary-border: oklch(0.915 0.0024 247.85);
   --danger: oklch(0.6098 0.244 28.41);
   --danger-foreground: oklch(0.9764 0.0013 286.38);
   --danger-border: oklch(0.5416 0.2178 28.52);

@@ -1,6 +1,6 @@
 import {
   Autocomplete,
-  AutocompleteContent,
+  AutocompletePopup,
   AutocompleteEmpty,
   AutocompleteInput,
   AutocompleteItem,
@@ -14,7 +14,7 @@ export default function AutocompleteBasicExample() {
         placeholder="Search for bands..."
         className="lg:w-64 w-full"
       />
-      <AutocompleteContent>
+      <AutocompletePopup>
         <AutocompleteEmpty>No results found</AutocompleteEmpty>
         <AutocompleteList>
           {(item) => (
@@ -23,7 +23,7 @@ export default function AutocompleteBasicExample() {
             </AutocompleteItem>
           )}
         </AutocompleteList>
-      </AutocompleteContent>
+      </AutocompletePopup>
     </Autocomplete>
   );
 }

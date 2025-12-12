@@ -13,20 +13,40 @@ export function PopoverTrigger({
   return <BasePopover.Trigger data-slot="popover-trigger" {...props} />;
 }
 
-export function PopoverContent({
-  popupProps,
+export function PopoverPopup({
   children,
   className,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BasePopover.Positioner> & {
-  popupProps?: BasePopover.Popup.Props;
+}: React.ComponentProps<typeof BasePopover.Popup> & {
+  align?: BasePopover.Positioner.Props['align'];
+  alignOffset?: BasePopover.Positioner.Props['alignOffset'];
+  side?: BasePopover.Positioner.Props['side'];
+  sideOffset?: BasePopover.Positioner.Props['sideOffset'];
+  anchor?: BasePopover.Positioner.Props['anchor'];
+  sticky?: BasePopover.Positioner.Props['sticky'];
+  positionMethod?: BasePopover.Positioner.Props['positionMethod'];
 }) {
   return (
     <BasePopover.Portal>
-      <BasePopover.Positioner sideOffset={12} {...props}>
+      <BasePopover.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 12}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BasePopover.Popup
-          data-slot="popover-content"
-          {...popupProps}
+          data-slot="popover-popup"
+          {...props}
           className={cn(
             'flex flex-col gap-1.5 items-start text-popover-foreground',
             'bg-popover ring ring-popover-border rounded shadow',

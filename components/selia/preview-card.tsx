@@ -17,23 +17,43 @@ export function PreviewCardTrigger({
   );
 }
 
-export function PreviewCardContent({
+export function PreviewCardPopup({
   children,
-  popupProps,
   className,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BasePreviewCard.Positioner> & {
-  popupProps?: BasePreviewCard.Popup.Props;
-  className?: string;
+}: React.ComponentProps<typeof BasePreviewCard.Popup> & {
+  align?: BasePreviewCard.Positioner.Props['align'];
+  alignOffset?: BasePreviewCard.Positioner.Props['alignOffset'];
+  side?: BasePreviewCard.Positioner.Props['side'];
+  sideOffset?: BasePreviewCard.Positioner.Props['sideOffset'];
+  anchor?: BasePreviewCard.Positioner.Props['anchor'];
+  sticky?: BasePreviewCard.Positioner.Props['sticky'];
+  positionMethod?: BasePreviewCard.Positioner.Props['positionMethod'];
 }) {
   return (
     <BasePreviewCard.Portal>
-      <BasePreviewCard.Positioner sideOffset={8} {...props}>
+      <BasePreviewCard.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 8}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BasePreviewCard.Popup
-          {...popupProps}
+          data-slot="preview-card-popup"
+          {...props}
           className={cn(
             'flex flex-col gap-1.5 items-start text-popover-foreground',
-            'bg-popover ring ring-popover-border rounded shadow origin-(--transform-origin)',
+            'bg-popover ring ring-popover-border rounded shadow-popover origin-(--transform-origin)',
             'p-4 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
