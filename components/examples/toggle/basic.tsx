@@ -1,5 +1,5 @@
 import { Toggle } from 'components/selia/toggle';
-import { HeartIcon, StarIcon } from 'lucide-react';
+import { BookmarkIcon, HeartIcon, StarIcon } from 'lucide-react';
 
 export default function ToggleBasicExample() {
   return (
@@ -17,6 +17,14 @@ export default function ToggleBasicExample() {
         size="md-icon"
       >
         <StarIcon />
+      </Toggle>
+      <Toggle
+        aria-label="Bookmark"
+        className="data-pressed:*:[svg]:fill-blue-500 data-pressed:*:[svg]:stroke-blue-500"
+        size="md-icon"
+        variant="plain"
+      >
+        <BookmarkIcon />
       </Toggle>
     </>
   );

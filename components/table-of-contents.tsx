@@ -24,7 +24,7 @@ export function TableOfContents() {
   return (
     <div
       className={cn(
-        'lg:sticky lg:top-20 max-lg:overflow-y-auto',
+        'lg:sticky lg:top-26 max-lg:overflow-y-auto',
         'transition-all',
         'max-lg:fixed left-4 right-4 z-20',
         'max-lg:bg-popover dark:max-lg:bg-surface-01/95 max-lg:rounded',

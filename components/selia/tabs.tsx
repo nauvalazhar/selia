@@ -32,6 +32,7 @@ export function TabsList({
     >
       {children}
       <BaseTabs.Indicator
+        data-slot="tabs-indicator"
         className={cn(
           'absolute top-1/2 left-0 h-8 w-(--active-tab-width)',
           'translate-x-(--active-tab-left) -translate-y-1/2',

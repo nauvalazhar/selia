@@ -78,10 +78,11 @@ export async function loader({ params, request }: Route.LoaderArgs) {
           [
             rehypeShiki,
             {
-              theme: {
+              themes: {
                 light: 'github-light',
                 dark: 'github-dark',
               },
+              defaultColor: 'light',
               transformers,
             },
           ],

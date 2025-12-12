@@ -39,12 +39,17 @@ export function CodeTabs({
     <Tabs
       defaultValue={items[0]}
       className={cn(
-        'bg-secondary/20 rounded-3xl ring ring-border items-start gap-0',
+        'bg-code rounded-3xl ring ring-border items-start gap-0',
         'relative',
       )}
     >
       <div className="flex items-center justify-between w-full px-4 border-b border-border h-12">
-        <TabsList className="bg-transparent px-0 rounded-full *:rounded-full inset-shadow-none">
+        <TabsList
+          className={cn(
+            'bg-transparent px-0 rounded-full *:rounded-full inset-shadow-none',
+            '*:data-[slot=tabs-indicator]:bg-accent',
+          )}
+        >
           {items.map((item) => (
             <TabsItem key={item} value={item}>
               {item}
@@ -93,7 +98,7 @@ export function CodeTabsPanel({
 }) {
   return (
     <TabsPanel value={value} keepMounted className="w-full outline-none">
-      <CodeBlock language={language} className="px-4 py-3">
+      <CodeBlock language={language} className="px-4 py-4">
         {getTextFromChildren(children)}
       </CodeBlock>
     </TabsPanel>

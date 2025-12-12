@@ -3,14 +3,9 @@ import { Button } from './selia/button';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { Suspense, useRef, useState } from 'react';
 import { Spinner } from './selia/spinner';
-import ShikiHighlighter from 'react-shiki/core';
-import { createHighlighterCore, createJavaScriptRegexEngine } from 'shiki';
-import { highlighter } from '~/lib/highlighter';
 import { useParams } from 'react-router';
 import * as ALL_EXAMPLES from 'components/examples';
-import { ScrollArea } from '@base-ui-components/react';
 import { Tabs, TabsItem, TabsList, TabsPanel } from 'components/selia/tabs';
-import { useThemeStore } from '~/lib/theme-store';
 import { CodeBlock } from 'components/code-block';
 
 export function Preview({
@@ -80,7 +75,6 @@ export function PreviewDemo({
 export function PreviewCode({ children }: { children: string }) {
   const [isCopied, setIsCopied] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const _theme = useThemeStore((state) => state.theme);
 
   const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -98,11 +92,13 @@ export function PreviewCode({ children }: { children: string }) {
       ref={ref}
       className={cn(
         '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-        'bg-secondary/20 rounded-3xl p-1 mt-2 md:mt-0 ring ring-border',
+        'bg-code rounded-3xl p-1 mt-2 md:mt-0 ring ring-border',
       )}
     >
       <div className="w-full flex justify-between items-center py-2 px-4 border-b border-border">
-        <span className="font-medium text-foreground select-none">Source</span>
+        <span className="text-sm font-medium text-foreground select-none">
+          Source
+        </span>
         <Button
           size="xs"
           variant="secondary"
