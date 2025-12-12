@@ -12,6 +12,7 @@ export const kbdVariants = cva(
         default:
           'bg-kbd text-kbd-foreground shadow inset-shadow-2xs inset-shadow-white/15',
         outline: 'ring ring-kbd-border text-kbd-foreground',
+        plain: 'ring-0',
       },
     },
     defaultVariants: {

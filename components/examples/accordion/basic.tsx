@@ -10,7 +10,7 @@ import { Text } from 'components/selia/text';
 export default function AccordionBasicExample() {
   return (
     <div className="flex items-center justify-center w-full">
-      <Accordion className="w-80" size="lg">
+      <Accordion className="w-96">
         <AccordionItem>
           <AccordionHeader>
             <AccordionTrigger>

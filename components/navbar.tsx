@@ -20,7 +20,8 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'h-16 border-b border-border w-full relative z-20 transition-colors',
+        'h-16 border-b border-border w-full z-20 transition-colors sticky top-0 bg-backgorund/95',
+        'backdrop-blur-md',
         menuOpen ? 'max-md:bg-popover dark:max-md:bg-surface-01' : '',
       )}
     >
@@ -29,7 +30,7 @@ export function Navbar() {
           <Logo />
           <div className="flex items-center gap-2.5">
             <Button
-              variant="secondary-subtle"
+              variant="secondary"
               size="sm-icon"
               className="lg:hidden"
               onClick={() => toggleCmdk()}
@@ -37,7 +38,7 @@ export function Navbar() {
               <SearchIcon />
             </Button>
             <Button
-              variant="secondary-subtle"
+              variant="secondary"
               size="sm"
               className="lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}

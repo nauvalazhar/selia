@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 export const textareaVariants = cva(
   [
-    'w-full text-foreground placeholder:text-dimmed transition-colors shadow-input rounded',
+    'w-full text-foreground placeholder:text-dimmed transition-all shadow-input rounded',
     'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2',
     'disabled:opacity-70',
   ],

@@ -2,33 +2,51 @@ import { Menu as BaseMenu } from '@base-ui-components/react/menu';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
-export function Dropdown({
-  ...props
-}: React.ComponentProps<typeof BaseMenu.Root>) {
-  return <BaseMenu.Root data-slot="dropdown" {...props} />;
+export function Menu({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
+  return <BaseMenu.Root data-slot="menu" {...props} />;
 }
 
-export function DropdownTrigger({
+export function MenuTrigger({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Trigger>) {
-  return <BaseMenu.Trigger data-slot="dropdown-trigger" {...props} />;
+  return <BaseMenu.Trigger data-slot="menu-trigger" {...props} />;
 }
 
-export function DropdownContent({
-  popupProps,
+export function MenuPopup({
   children,
   className,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseMenu.Positioner> & {
-  popupProps?: BaseMenu.Popup.Props;
+}: React.ComponentProps<typeof BaseMenu.Popup> & {
+  align?: BaseMenu.Positioner.Props['align'];
+  alignOffset?: BaseMenu.Positioner.Props['alignOffset'];
+  side?: BaseMenu.Positioner.Props['side'];
+  sideOffset?: BaseMenu.Positioner.Props['sideOffset'];
+  anchor?: BaseMenu.Positioner.Props['anchor'];
+  sticky?: BaseMenu.Positioner.Props['sticky'];
+  positionMethod?: BaseMenu.Positioner.Props['positionMethod'];
 }) {
   return (
     <BaseMenu.Portal>
       <BaseMenu.Backdrop />
-      <BaseMenu.Positioner sideOffset={6} {...props}>
+      <BaseMenu.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 6}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseMenu.Popup
-          data-slot="dropdown-content"
-          {...popupProps}
+          data-slot="menu-popup"
+          {...props}
           className={cn(
             'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
             'p-1 outline-none transition-[transform,scale,opacity]',
@@ -45,7 +63,7 @@ export function DropdownContent({
   );
 }
 
-const dropdownItemClasses = [
+const menuItemClassName = [
   'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded',
   'cursor-default select-none',
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
@@ -55,45 +73,45 @@ const dropdownItemClasses = [
   '*:data-[slot=switch]:ml-auto',
 ];
 
-export function DropdownItem({
+export function MenuItem({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Item>) {
   return (
     <BaseMenu.Item
-      data-slot="dropdown-item"
+      data-slot="menu-item"
       {...props}
-      className={cn(dropdownItemClasses, props.className)}
+      className={cn(menuItemClassName, props.className)}
     />
   );
 }
 
-export function DropdownSeparator({
+export function MenuSeparator({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Separator>) {
   return (
     <BaseMenu.Separator
-      data-slot="dropdown-separator"
+      data-slot="menu-separator"
       className={cn('h-px my-1 bg-separator', props.className)}
       {...props}
     />
   );
 }
 
-export function DropdownSubmenu({
+export function MenuSubmenu({
   ...props
 }: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
-  return <BaseMenu.SubmenuRoot data-slot="dropdown-submenu" {...props} />;
+  return <BaseMenu.SubmenuRoot data-slot="menu-submenu" {...props} />;
 }
 
-export function DropdownSubmenuTrigger({
+export function MenuSubmenuTrigger({
   ...props
 }: React.ComponentProps<typeof BaseMenu.SubmenuTrigger>) {
   return (
     <BaseMenu.SubmenuTrigger
-      data-slot="dropdown-submenu-trigger"
+      data-slot="menu-submenu-trigger"
       {...props}
       className={cn(
-        dropdownItemClasses,
+        menuItemClassName,
         'after:bg-chevron-right-dark dark:after:bg-chevron-right after:size-4 after:ml-auto',
         props.className,
       )}
@@ -101,18 +119,18 @@ export function DropdownSubmenuTrigger({
   );
 }
 
-export function DropdownGroup({
+export function MenuGroup({
   ...props
 }: React.ComponentProps<typeof BaseMenu.Group>) {
-  return <BaseMenu.Group data-slot="dropdown-group" {...props} />;
+  return <BaseMenu.Group data-slot="menu-group" {...props} />;
 }
 
-export function DropdownGroupLabel({
+export function MenuGroupLabel({
   ...props
 }: React.ComponentProps<typeof BaseMenu.GroupLabel>) {
   return (
     <BaseMenu.GroupLabel
-      data-slot="dropdown-group-label"
+      data-slot="menu-group-label"
       className={cn(
         'px-3 py-1.5 text-dimmed font-medium text-sm',
         props.className,
@@ -122,16 +140,16 @@ export function DropdownGroupLabel({
   );
 }
 
-export function DropdownCheckboxItem({
+export function MenuCheckboxItem({
   children,
   ...props
 }: React.ComponentProps<typeof BaseMenu.CheckboxItem>) {
   return (
     <BaseMenu.CheckboxItem
-      data-slot="dropdown-checkbox-item"
+      data-slot="menu-checkbox-item"
       {...props}
       className={cn(
-        dropdownItemClasses,
+        menuItemClassName,
         'pl-10 data-[checked]:pl-2.5',
         props.className,
       )}
@@ -157,22 +175,22 @@ export function DropdownCheckboxItem({
   );
 }
 
-export function DropdownRadioGroup({
+export function MenuRadioGroup({
   ...props
 }: React.ComponentProps<typeof BaseMenu.RadioGroup>) {
-  return <BaseMenu.RadioGroup data-slot="dropdown-radio-group" {...props} />;
+  return <BaseMenu.RadioGroup data-slot="menu-radio-group" {...props} />;
 }
 
-export const dropdownRadioItemVariants = cva(dropdownItemClasses, {
+export const menuRadioItemVariants = cva(menuItemClassName, {
   variants: {
     variant: {
       default: 'data-[checked]:pl-3',
       alternate: [
-        '*:data-[slot=dropdown-radio-item-indicator]:order-last',
-        '*:data-[slot=dropdown-radio-item-indicator]:ml-auto',
-        '*:data-[slot=dropdown-radio-item-indicator]:ring',
-        '*:data-[slot=dropdown-radio-item-indicator]:ring-input-border',
-        '*:data-[slot=dropdown-radio-item-indicator]:bg-input',
+        '*:data-[slot=menu-radio-item-indicator]:order-last',
+        '*:data-[slot=menu-radio-item-indicator]:ml-auto',
+        '*:data-[slot=menu-radio-item-indicator]:ring',
+        '*:data-[slot=menu-radio-item-indicator]:ring-input-border',
+        '*:data-[slot=menu-radio-item-indicator]:bg-input',
       ],
     },
   },
@@ -181,21 +199,21 @@ export const dropdownRadioItemVariants = cva(dropdownItemClasses, {
   },
 });
 
-export function DropdownRadioItem({
+export function MenuRadioItem({
   className,
   variant,
   children,
   ...props
 }: React.ComponentProps<typeof BaseMenu.RadioItem> &
-  VariantProps<typeof dropdownRadioItemVariants>) {
+  VariantProps<typeof menuRadioItemVariants>) {
   return (
     <BaseMenu.RadioItem
-      data-slot="dropdown-radio-item"
+      data-slot="menu-radio-item"
       {...props}
-      className={dropdownRadioItemVariants({ variant, className })}
+      className={menuRadioItemVariants({ variant, className })}
     >
       <div
-        data-slot="dropdown-radio-item-indicator"
+        data-slot="menu-radio-item-indicator"
         className="flex items-center justify-center size-3 rounded-full"
       >
         <BaseMenu.RadioItemIndicator>

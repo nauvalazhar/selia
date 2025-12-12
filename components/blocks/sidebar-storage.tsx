@@ -12,12 +12,12 @@ import {
   SidebarMenu,
 } from 'components/selia/sidebar';
 import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownItem,
-  DropdownSeparator,
-} from 'components/selia/dropdown';
+  Menu,
+  MenuTrigger,
+  MenuPopup,
+  MenuItem,
+  MenuSeparator,
+} from 'components/selia/menu';
 import { Button } from 'components/selia/button';
 import {
   PlusIcon,
@@ -41,8 +41,8 @@ export default function SidebarStorage() {
           <img src="/selia.png" alt="Selia" className="size-8" />
           <span className="font-semibold">Storage</span>
         </SidebarLogo>
-        <Dropdown>
-          <DropdownTrigger
+        <Menu>
+          <MenuTrigger
             render={
               <Button variant="secondary" className="mt-4">
                 <PlusIcon />
@@ -50,26 +50,26 @@ export default function SidebarStorage() {
               </Button>
             }
           />
-          <DropdownContent className="min-w-40" align="start">
-            <DropdownItem>
+          <MenuPopup className="min-w-40" align="start">
+            <MenuItem>
               <FolderIcon />
               New Folder
-            </DropdownItem>
-            <DropdownItem>
+            </MenuItem>
+            <MenuItem>
               <FileIcon />
               New File
-            </DropdownItem>
-            <DropdownSeparator />
-            <DropdownItem>
+            </MenuItem>
+            <MenuSeparator />
+            <MenuItem>
               <UploadIcon />
               Upload File
-            </DropdownItem>
-            <DropdownItem>
+            </MenuItem>
+            <MenuItem>
               <FolderUpIcon />
               Upload Folder
-            </DropdownItem>
-          </DropdownContent>
-        </Dropdown>
+            </MenuItem>
+          </MenuPopup>
+        </Menu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>

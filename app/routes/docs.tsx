@@ -97,7 +97,7 @@ export default function LayoutDocs({
       <div className="flex container mx-auto">
         <Sidebar
           className={cn(
-            'lg:sticky top-0 max-h-dvh lg:w-72 px-1.5 lg:px-0',
+            'lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] max-h-dvh lg:w-64 px-1.5 lg:px-0 shrink-0',
             'fixed z-30 w-full max-lg:h-dvh bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent transition-all',
             '**:data-[slot=sidebar-submenu]:ml-3.5',
             '**:data-[slot=sidebar-submenu]:pl-1',
@@ -109,36 +109,34 @@ export default function LayoutDocs({
             <Logo />
           </SidebarHeader>
           <SidebarContent render={<SidebarScrollArea />}>
-            <SidebarMenu>
+            <SidebarMenu className="py-11">
               {sidebarMenu.map((group) => (
                 <SidebarGroup key={group.title}>
                   <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
-                  <SidebarSubmenu>
-                    <SidebarList>
-                      {group.items.map((item) => (
-                        <SidebarItem key={item.path}>
-                          <SidebarItemButton
-                            active={pathname === item.path}
-                            render={<Link to={item.path} />}
-                          >
-                            {item.name}
-                          </SidebarItemButton>
-                        </SidebarItem>
-                      ))}
-                    </SidebarList>
-                  </SidebarSubmenu>
+                  <SidebarList>
+                    {group.items.map((item) => (
+                      <SidebarItem key={item.path}>
+                        <SidebarItemButton
+                          active={pathname === item.path}
+                          render={<Link to={item.path} />}
+                        >
+                          {item.name}
+                        </SidebarItemButton>
+                      </SidebarItem>
+                    ))}
+                  </SidebarList>
                 </SidebarGroup>
               ))}
             </SidebarMenu>
           </SidebarContent>
         </Sidebar>
-        <main className="w-full">
-          <div className="flex px-4 py-10 md:p-10 gap-6 justify-between w-full flex-wrap">
+        <main className="w-full min-w-0 flex px-4 py-10 md:p-10 gap-12 justify-between max-lg:flex-wrap">
+          <div className="w-full min-w-0 2xl:w-3xl mx-auto">
             <Outlet />
-            <aside className="w-64">
-              <TableOfContents />
-            </aside>
           </div>
+          <aside className="w-64">
+            <TableOfContents />
+          </aside>
         </main>
       </div>
     </>
@@ -147,7 +145,7 @@ export default function LayoutDocs({
 
 function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
   return (
-    <ScrollArea.Root className="h-full lg:pt-4">
+    <ScrollArea.Root className="h-full">
       <ScrollArea.Viewport className={cn('h-full lg:pr-8 pb-10 max-lg:pb-20')}>
         {children}
       </ScrollArea.Viewport>

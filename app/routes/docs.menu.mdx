@@ -1,0 +1,57 @@
+# Menu
+
+Reveal a list of actions or options when triggered by a button.
+
+<Preview name="basic" />
+## Anatomy
+
+Import the component and assemble its parts:
+
+```tsx filename="Anatomy"
+<Menu>
+  <MenuTrigger />
+  <MenuPopup>
+    <MenuItem />
+    <MenuSeparator />
+    <MenuGroup>
+      <MenuGroupLabel />
+    </MenuGroup>
+    <MenuRadioGroup>
+      <MenuRadioItem />
+    </MenuRadioGroup>
+    <MenuCheckboxItem />
+    <MenuSubmenu>
+      <MenuSubmenuTrigger />
+    </MenuSubmenu>
+  </MenuPopup>
+</Menu>
+```
+
+## Usage
+
+### Trigger
+
+You can pass a custom trigger element to the `MenuTrigger` component
+by using the `render` prop.
+
+<Preview name="trigger" />
+### Icon
+
+You can add an icon directly to the menu item.
+
+<Preview name="icon" />
+### Nested
+
+Menu items can be nested to create a hierarchy of options.
+
+<Preview name="nested" />
+### Group
+
+You can group menu items by using the `MenuGroup` component and add a label to the group by using the `MenuGroupLabel` component.
+
+<Preview name="group" />
+### Radio
+
+Let users select a single option from a set of choices with `MenuRadioGroup` component or multiple options with `MenuCheckboxItem` component.
+
+<Preview name="radio" />

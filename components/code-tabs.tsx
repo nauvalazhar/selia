@@ -6,6 +6,7 @@ import { ScrollArea } from '@base-ui-components/react';
 import { cn } from 'lib/utils';
 import { Button } from 'components/selia/button';
 import { CheckIcon, CopyIcon } from 'lucide-react';
+import { CodeBlock } from 'components/code-block';
 
 export function CodeTabs({
   children,
@@ -38,12 +39,12 @@ export function CodeTabs({
     <Tabs
       defaultValue={items[0]}
       className={cn(
-        'p-1 bg-surface-01 rounded-3xl ring ring-border-01 items-start gap-0',
+        'bg-secondary/20 rounded-3xl ring ring-border items-start gap-0',
         'relative',
       )}
     >
-      <div className="flex items-center justify-between w-full px-2.5 dark">
-        <TabsList className="bg-transparent px-0 rounded-full *:rounded-full">
+      <div className="flex items-center justify-between w-full px-4 border-b border-border h-12">
+        <TabsList className="bg-transparent px-0 rounded-full *:rounded-full inset-shadow-none">
           {items.map((item) => (
             <TabsItem key={item} value={item}>
               {item}
@@ -52,7 +53,7 @@ export function CodeTabs({
         </TabsList>
         <Button
           size="xs"
-          variant="secondary-subtle"
+          variant="secondary"
           pill
           className="text-muted text-sm"
           onClick={handleCopy}
@@ -91,23 +92,10 @@ export function CodeTabsPanel({
   language?: string;
 }) {
   return (
-    <TabsPanel value={value} keepMounted className="w-full mt-1 outline-none">
-      <ScrollArea.Root>
-        <ScrollArea.Viewport className="bg-surface-02/80 ring ring-border-02 rounded-3xl px-4 py-4.5 outline-none">
-          <ShikiHighlighter
-            language={language}
-            theme="ayu-dark"
-            showLanguage={false}
-            highlighter={highlighter}
-            className={cn(
-              'outline-none *:outline-none *:!bg-transparent *:!overflow-visible',
-              '*:!p-0',
-            )}
-          >
-            {getTextFromChildren(children)}
-          </ShikiHighlighter>
-        </ScrollArea.Viewport>
-      </ScrollArea.Root>
+    <TabsPanel value={value} keepMounted className="w-full outline-none">
+      <CodeBlock language={language} className="px-4 py-3">
+        {getTextFromChildren(children)}
+      </CodeBlock>
     </TabsPanel>
   );
 }

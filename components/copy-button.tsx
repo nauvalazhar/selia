@@ -8,8 +8,8 @@ export function CopyButton() {
   return (
     <Button
       size="xs"
-      variant="secondary-subtle"
-      className="text-muted z-10 text-sm"
+      variant="secondary"
+      className="z-10 text-sm"
       pill
       onClick={(e) => {
         e.preventDefault();

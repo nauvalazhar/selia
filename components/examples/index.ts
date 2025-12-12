@@ -19,7 +19,7 @@ export { examples as chip } from './chip';
 export { examples as combobox } from './combobox';
 export { examples as dialog } from './dialog';
 export { examples as divider } from './divider';
-export { examples as dropdown } from './dropdown';
+export { examples as menu } from './menu';
 export { examples as field } from './field';
 export { examples as fieldset } from './fieldset';
 export { examples as heading } from './heading';

@@ -3,16 +3,16 @@ import { Button } from 'components/selia/button';
 export default function ButtonExample() {
   return (
     <>
-      <Button variant="tertiary" size="xs">
+      <Button variant="outline" size="xs">
         Extra Small
       </Button>
-      <Button variant="tertiary" size="sm">
+      <Button variant="outline" size="sm">
         Small
       </Button>
-      <Button variant="tertiary" size="md">
+      <Button variant="outline" size="md">
         Medium
       </Button>
-      <Button variant="tertiary" size="lg">
+      <Button variant="outline" size="lg">
         Large
       </Button>
     </>

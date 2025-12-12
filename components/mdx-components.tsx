@@ -27,18 +27,16 @@ export default {
     const [isClipOpen, setIsClipOpen] = useState(false);
 
     return (
-      <div className="w-full bg-surface-01 rounded-3xl p-1 ring ring-border-01 my-4 [&+p]:mt-8">
-        <header className="flex px-2.5 h-10 items-center justify-between mb-1 dark">
+      <div className="w-full bg-secondary/20 rounded-3xl ring ring-border my-4 [&+p]:mt-8">
+        <header className="flex px-4 h-12 items-center justify-between mb-1 border-b border-border">
           {filename && (
-            <span className="text-sm font-semibold text-dimmed">
-              {filename}
-            </span>
+            <span className="font-semibold text-dimmed">{filename}</span>
           )}
           <CopyButton />
         </header>
         <div
           className={cn(
-            'relative w-full bg-surface-03/50 ring ring-border-02 rounded-3xl **:[code,pre]:outline-none flex flex-col',
+            'relative w-full **:[code,pre]:outline-none flex flex-col',
             '**:[code]:w-full **:[code]:inline-block',
           )}
         >
@@ -68,7 +66,7 @@ export default {
             <button
               className={cn(
                 'flex items-center justify-center w-full absolute bottom-0 inset-x-0 py-4 dark',
-                'bg-linear-to-b from-surface-02/50 to-surface-02 rounded-b-3xl cursor-pointer',
+                'bg-linear-to-b from-background/50 to-background rounded-b-3xl cursor-pointer',
                 'font-semibold text-sm text-muted hover:text-foreground transition-colors',
                 'outline-none',
               )}

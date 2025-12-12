@@ -22,12 +22,7 @@ import {
   SparklesIcon,
   UserIcon,
 } from 'lucide-react';
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownTrigger,
-} from 'components/selia/dropdown';
+import { Menu, MenuPopup, MenuItem, MenuTrigger } from 'components/selia/menu';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
 
 export default function SidebarChatbotExample() {
@@ -103,8 +98,8 @@ export default function SidebarChatbotExample() {
         <SidebarMenu>
           <SidebarList>
             <SidebarItem>
-              <Dropdown>
-                <DropdownTrigger
+              <Menu>
+                <MenuTrigger
                   data-slot="sidebar-item-button"
                   nativeButton={false}
                   render={
@@ -124,21 +119,21 @@ export default function SidebarChatbotExample() {
                     </SidebarItemButton>
                   }
                 />
-                <DropdownContent className="w-(--anchor-width)" side="top">
-                  <DropdownItem>
+                <MenuPopup className="w-(--anchor-width)" side="top">
+                  <MenuItem>
                     <UserIcon />
                     Profile
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <SettingsIcon />
                     Settings
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <LogOutIcon />
                     Logout
-                  </DropdownItem>
-                </DropdownContent>
-              </Dropdown>
+                  </MenuItem>
+                </MenuPopup>
+              </Menu>
             </SidebarItem>
           </SidebarList>
         </SidebarMenu>
@@ -168,4 +163,3 @@ const recentChats = [
   { title: 'Excluding components from dark mode styling' },
   { title: 'Mengatasi hydration error pada Next.js' },
 ];
-

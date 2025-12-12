@@ -28,7 +28,7 @@ export function DialogContent({
     <BaseDialog.Portal>
       <BaseDialog.Backdrop
         className={cn(
-          'fixed inset-0 min-h-dvh bg-black/60 transition-[color,opacity]',
+          'fixed inset-0 min-h-dvh bg-black/60 transition-[color,opacity] backdrop-blur-sm',
           'data-[starting-style]:opacity-0 data-[ending-style]:opacity-0',
         )}
       />
@@ -153,10 +153,7 @@ export function DialogClose({
       data-slot="dialog-close"
       render={render}
       {...props}
-      className={cn(
-        !render && buttonVariants({ variant: 'secondary-plain' }),
-        className,
-      )}
+      className={cn(!render && buttonVariants({ variant: 'plain' }), className)}
     >
       {children}
     </BaseDialog.Close>

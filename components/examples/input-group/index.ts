@@ -15,11 +15,11 @@ export const examples = {
       import('./icon').then((mod) => ({ default: mod.default })),
     ),
   },
-  dropdown: {
-    name: 'Dropdown',
-    path: 'components/examples/input-group/dropdown.tsx',
+  menu: {
+    name: 'Menu',
+    path: 'components/examples/input-group/menu.tsx',
     component: React.lazy(() =>
-      import('./dropdown').then((mod) => ({ default: mod.default })),
+      import('./menu').then((mod) => ({ default: mod.default })),
     ),
   },
   select: {

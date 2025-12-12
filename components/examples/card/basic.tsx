@@ -1,11 +1,5 @@
 import { Button } from 'components/selia/button';
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from 'components/selia/card';
+import { Card, CardBody, CardHeader, CardTitle } from 'components/selia/card';
 import { Field, FieldLabel } from 'components/selia/field';
 import { Fieldset } from 'components/selia/fieldset';
 import { Input } from 'components/selia/input';
@@ -31,12 +25,10 @@ export default function CardExample() {
             <Input placeholder="Enter your password" />
           </Field>
         </Fieldset>
-      </CardBody>
-      <CardFooter>
-        <Button variant="primary" className="ml-auto">
+        <Button variant="primary" size="lg" block className="mt-6">
           Save Changes
         </Button>
-      </CardFooter>
+      </CardBody>
     </Card>
   );
 }
