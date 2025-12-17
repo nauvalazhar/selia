@@ -9,7 +9,8 @@ export function Toolbar({
     <BaseToolbar.Root
       data-slot="toolbar"
       className={cn(
-        'flex items-center bg-card border border-card-border rounded-lg p-1',
+        'flex items-center bg-background ring ring-card-border rounded-lg p-1',
+        '*:data-[slot=toggle-group]:p-0',
         className,
       )}
       {...props}
@@ -24,7 +25,7 @@ export function ToolbarButton({
   return (
     <BaseToolbar.Button
       data-slot="toolbar-button"
-      className={cn('flex', className)}
+      className={cn(className)}
       {...props}
     />
   );
@@ -37,7 +38,7 @@ export function ToolbarLink({
   return (
     <BaseToolbar.Link
       data-slot="toolbar-link"
-      className={cn('flex', className)}
+      className={cn(className)}
       {...props}
     />
   );
@@ -50,7 +51,7 @@ export function ToolbarInput({
   return (
     <BaseToolbar.Input
       data-slot="toolbar-input"
-      className={cn('flex', className)}
+      className={cn(className)}
       {...props}
     />
   );
@@ -76,7 +77,7 @@ export function ToolbarSeparator({
   return (
     <BaseToolbar.Separator
       data-slot="toolbar-separator"
-      className={cn('h-4 w-px bg-card-separator mx-4', className)}
+      className={cn('h-4 w-px bg-separator mx-4', className)}
       {...props}
     />
   );

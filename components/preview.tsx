@@ -13,11 +13,13 @@ export function Preview({
   component,
   name,
   sources,
+  start,
 }: {
   component?: string;
   children: React.ReactNode;
   name: string;
   sources: Record<string, string>;
+  start?: boolean;
 }) {
   const { path } = useParams();
   const pathname = path?.replace(/-([a-z])/g, (_, letter) =>
@@ -38,7 +40,7 @@ export function Preview({
       </TabsList>
       <TabsPanel value="preview" className="w-full">
         {ExampleComponent && (
-          <PreviewDemo>
+          <PreviewDemo start={start}>
             <ExampleComponent />
           </PreviewDemo>
         )}
@@ -53,17 +55,24 @@ export function Preview({
 
 export function PreviewDemo({
   children,
+  start,
   ...props
-}: React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & { start?: boolean }) {
   return (
     <div
       className={cn(
         'flex min-h-[500px] bg-background items-center justify-center flex-wrap',
         'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border',
+        'overflow-auto',
       )}
       {...props}
     >
-      <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 w-full">
+      <div
+        className={cn(
+          'flex items-center flex-wrap gap-x-2.5 gap-y-4 w-full',
+          start ? 'justify-start' : 'justify-center',
+        )}
+      >
         <Suspense fallback={<Spinner className="size-6" />}>
           {children}
         </Suspense>

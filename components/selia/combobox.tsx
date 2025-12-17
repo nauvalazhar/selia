@@ -25,7 +25,7 @@ export const comboboxTriggerVariants = cva(
           'bg-input ring ring-input-border hover:ring-input-accent-border shadow-input',
         subtle:
           'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
-        plain: 'bg-transparent hover:bg-input',
+        plain: 'bg-transparent hover:bg-accent',
       },
       pill: {
         true: 'rounded-full',

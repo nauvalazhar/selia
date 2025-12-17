@@ -22,17 +22,19 @@ export const toggleGroupVariants = cva(
           '*:data-[slot=toggle]:min-w-[calc(var(--spacing)*8.5-4px)]',
         ],
         'sm-icon': [
-          '*:data-[slot=toggle]:size-[calc(var(--spacing)*8.5-4px)]',
-          '*:data-[slot=toggle]:min-w-[calc(var(--spacing)*8.5-4px)]',
+          '*:data-[slot=toggle]:size-8.5',
           '*:data-[slot=toggle]:px-0',
+          'not-[[data-variant=plain]]:*:data-[slot=toggle]:size-[calc(var(--spacing)*8.5-4px)]',
+          'not-[[data-variant=plain]]:*:data-[slot=toggle]:min-w-[calc(var(--spacing)*8.5-4px)]',
         ],
         md: [
           '*:data-[slot=toggle]:h-[calc(var(--spacing)*9.5-4px)]',
           '*:data-[slot=toggle]:min-w-[calc(var(--spacing)*9.5-4px)]',
         ],
         'md-icon': [
-          '*:data-[slot=toggle]:size-[calc(var(--spacing)*9.5-4px)]',
+          '*:data-[slot=toggle]:size-9.5',
           '*:data-[slot=toggle]:px-0',
+          'not-[[data-variant=plain]]:*:data-[slot=toggle]:size-[calc(var(--spacing)*9.5-4px)]',
         ],
       },
       orientation: {
@@ -58,6 +60,9 @@ export function ToggleGroup({
   return (
     <BaseToggleGroup
       data-slot="toggle-group"
+      data-variant={variant}
+      data-size={size}
+      orientation={orientation}
       className={cn(
         toggleGroupVariants({ variant, orientation, size, className }),
       )}

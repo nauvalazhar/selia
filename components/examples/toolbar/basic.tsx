@@ -37,9 +37,9 @@ import {
   UnderlineIcon,
 } from 'lucide-react';
 
-export default function Playground() {
+export default function ToolbarBasicExample() {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="pr-20">
       <Toolbar>
         <ToolbarGroup aria-label="Indentation">
           <ToolbarButton render={<Button variant="plain" size="icon" />}>
@@ -106,7 +106,7 @@ export default function Playground() {
         <ToolbarSeparator />
         <Select defaultValue="Arial">
           <SelectTrigger variant="plain">
-            <SelectValue placeholder="Font" />
+            <SelectValue placeholder="Font" className="max-w-24 truncate" />
           </SelectTrigger>
           <SelectPopup>
             <SelectList>

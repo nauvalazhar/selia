@@ -22,6 +22,7 @@ export { examples as divider } from './divider';
 export { examples as menu } from './menu';
 export { examples as field } from './field';
 export { examples as fieldset } from './fieldset';
+export { examples as toolbar } from './toolbar';
 export { examples as heading } from './heading';
 export { examples as iconBox } from './icon-box';
 export { examples as input } from './input';
