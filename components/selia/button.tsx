@@ -42,7 +42,7 @@ export const buttonVariants = cva(
           'after:rounded outline-danger',
         ],
         outline: [
-          'text-foreground **:[svg]:text-foreground',
+          'text-foreground **:[svg]:text-foreground shadow',
           'ring ring-border hover:bg-accent active:bg-accent',
           'after:content-none outline-border',
         ],

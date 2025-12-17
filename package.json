@@ -38,6 +38,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-mdx-code-props": "^3.0.1",
     "rehype-slug": "^6.0.0",
+    "remark-frontmatter": "^5.0.0",
     "shiki": "^3.13.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",

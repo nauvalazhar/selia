@@ -19,6 +19,7 @@ import { ChevronLeftIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { getSources } from '~/lib/source';
 import { Alert, AlertDescription, AlertTitle } from 'components/selia/alert';
+import { DocsButtons } from 'components/docs-buttons';
 
 const transformers: ShikiTransformer[] = [
   transformerNotationHighlight(),
@@ -53,6 +54,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
     ).text();
 
     const mdxCode = await serialize(source, {
+      parseFrontmatter: true,
       mdxOptions: {
         rehypePlugins: [
           rehypeSlug,
@@ -96,6 +98,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
     return {
       mdxCode,
+      pageRaw: source,
       sources,
       menuNextPrev,
       name: componentName(pathname),
@@ -116,12 +119,15 @@ const components = {
 };
 
 export default function DocsView({ loaderData }: Route.ComponentProps) {
-  const { mdxCode, sources, name, menuNextPrev } = loaderData;
+  const { mdxCode, pageRaw, sources, name, menuNextPrev } = loaderData;
 
   const memoizedComponents = useMemo(
     () => ({
       Preview: (props: React.ComponentProps<typeof Preview>) => (
         <Preview {...props} sources={sources ?? {}} />
+      ),
+      DocsButtons: (props: React.ComponentProps<typeof DocsButtons>) => (
+        <DocsButtons {...props} pageRaw={pageRaw} />
       ),
     }),
     [sources],
