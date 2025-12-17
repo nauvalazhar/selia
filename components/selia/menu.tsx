@@ -91,7 +91,7 @@ export function MenuSeparator({
   return (
     <BaseMenu.Separator
       data-slot="menu-separator"
-      className={cn('h-px my-1 bg-separator', props.className)}
+      className={cn('h-px my-1 bg-popover-separator', props.className)}
       {...props}
     />
   );

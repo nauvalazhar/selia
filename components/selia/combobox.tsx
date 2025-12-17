@@ -297,7 +297,7 @@ export function ComboboxItem({
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
           className="size-4 text-primary"
@@ -346,7 +346,7 @@ export function ComboboxSeparator({
     <BaseCombobox.Separator
       data-slot="combobox-separator"
       {...props}
-      className={cn('h-px my-1 bg-popover-border', className)}
+      className={cn('h-px my-1 bg-popover-separator', className)}
     />
   );
 }

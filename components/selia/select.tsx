@@ -236,7 +236,7 @@ export function SelectItem({
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -280,7 +280,7 @@ export function SelectSeparator({
   return (
     <BaseSelect.Separator
       data-slot="select-separator"
-      className={cn('h-px my-1 bg-popover-border', className)}
+      className={cn('h-px my-1 bg-popover-separator', className)}
       {...props}
     />
   );

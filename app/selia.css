@@ -34,6 +34,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: var(--foreground);
   --popover-border: oklch(0.9384 0.0018 247.84);
+  --popover-separator: oklch(0.9384 0.0018 247.84);
   --popover-shadow:
     0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --popover-accent: oklch(0.9616 0.0011 247.83);
@@ -123,6 +124,7 @@
   --popover: oklch(0.3196 0.0058 248.01);
   --popover-foreground: var(--foreground);
   --popover-border: oklch(0.3974 0.0076 248.02);
+  --popover-separator: oklch(0.3974 0.0076 248.02);
   --popover-shadow:
     0px 90px 40px rgba(0, 0, 0, 0.03), 0px 40px 50px rgba(0, 0, 0, 0.05),
     0px 14px 22px rgba(0, 0, 0, 0.06);
@@ -216,6 +218,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover-border: var(--popover-border);
+  --color-popover-separator: var(--popover-separator);
   --color-popover-accent: var(--popover-accent);
   --color-kbd: var(--kbd);
   --color-kbd-foreground: var(--kbd-foreground);

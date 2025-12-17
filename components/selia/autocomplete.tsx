@@ -233,7 +233,7 @@ export function AutocompleteSeparator({
     <BaseAutocomplete.Separator
       data-slot="autocomplete-separator"
       {...props}
-      className={cn('h-px my-1 bg-separator', className)}
+      className={cn('h-px my-1 bg-popover-separator', className)}
     />
   );
 }
