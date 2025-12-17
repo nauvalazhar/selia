@@ -1,5 +1,5 @@
 import { cn } from 'lib/utils';
-import { Dialog, DialogBody, DialogContent, DialogTrigger } from './dialog';
+import { Dialog, DialogBody, DialogPopup, DialogTrigger } from './dialog';
 
 export function Command({ ...props }: React.ComponentProps<typeof Dialog>) {
   return <Dialog {...props} />;
@@ -21,12 +21,12 @@ export function CommandTrigger({
 export function CommandContent({
   className,
   ...props
-}: React.ComponentProps<typeof DialogContent>) {
+}: React.ComponentProps<typeof DialogPopup>) {
   return (
-    <DialogContent
+    <DialogPopup
       {...props}
       className={cn(
-        'p-1 bg-dialog-footer/90',
+        'p-1 bg-dialog-footer/90 md:min-w-xl',
         '**:data-[slot=autocomplete-list]:h-[min(27rem,50dvh)]',
         '**:data-[slot=autocomplete-empty]:h-[min(27rem,50dvh)]',
         '**:data-[slot=autocomplete-input]:h-11',

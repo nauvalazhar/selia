@@ -1,4 +1,4 @@
-import { AlertDialog as BaseAlertDialog } from '@base-ui-components/react/alert-dialog';
+import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog';
 import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 
@@ -19,7 +19,7 @@ export function AlertDialogTrigger({
   );
 }
 
-export function AlertDialogContent({
+export function AlertDialogPopup({
   className,
   children,
   ...props
@@ -28,12 +28,12 @@ export function AlertDialogContent({
     <BaseAlertDialog.Portal>
       <BaseAlertDialog.Backdrop
         className={cn(
-          'fixed inset-0 min-h-dvh bg-black/60 transition-[color,opacity]',
+          'fixed inset-0 min-h-dvh bg-black/60 transition-[color,opacity] backdrop-blur-sm',
           'data-[starting-style]:opacity-0 data-[ending-style]:opacity-0',
         )}
       />
       <BaseAlertDialog.Popup
-        data-slot="alert-dialog-content"
+        data-slot="alert-dialog-popup"
         {...props}
         className={cn(
           'fixed left-1/2 -translate-x-1/2 -translate-y-1/2',
@@ -153,10 +153,7 @@ export function AlertDialogClose({
       data-slot="alert-dialog-close"
       render={render}
       {...props}
-      className={cn(
-        !render && buttonVariants({ variant: 'secondary-plain' }),
-        className,
-      )}
+      className={cn(!render && buttonVariants({ variant: 'plain' }), className)}
     >
       {children}
     </BaseAlertDialog.Close>

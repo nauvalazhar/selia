@@ -1,4 +1,4 @@
-import { Form as BaseForm } from '@base-ui-components/react/form';
+import { Form as BaseForm } from '@base-ui/react/form';
 import { cn } from 'lib/utils';
 
 export function Form({

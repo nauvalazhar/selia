@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tabs as BaseTabs } from '@base-ui-components/react/tabs';
+import { Tabs as BaseTabs } from '@base-ui/react/tabs';
 import { cn } from 'lib/utils';
 
 export function Tabs({
@@ -32,6 +32,7 @@ export function TabsList({
     >
       {children}
       <BaseTabs.Indicator
+        data-slot="tabs-indicator"
         className={cn(
           'absolute top-1/2 left-0 h-8 w-(--active-tab-width)',
           'translate-x-(--active-tab-left) -translate-y-1/2',
@@ -54,7 +55,7 @@ export function TabsItem({
       className={cn(
         'flex items-center justify-center gap-2.5 rounded',
         'h-8 py-1 px-3 text-muted flex-1 font-medium',
-        'data-selected:text-foreground',
+        'data-active:text-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '*:[svg]:size-4',
         className,

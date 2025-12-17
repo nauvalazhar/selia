@@ -1,6 +1,6 @@
-import { useRender } from '@base-ui-components/react/use-render';
-import { Radio as BaseRadio } from '@base-ui-components/react/radio';
-import { RadioGroup as BaseRadioGroup } from '@base-ui-components/react/radio-group';
+import { useRender } from '@base-ui/react/use-render';
+import { Radio as BaseRadio } from '@base-ui/react/radio';
+import { RadioGroup as BaseRadioGroup } from '@base-ui/react/radio-group';
 import { cn } from 'lib/utils';
 
 export function RadioGroup({
@@ -40,7 +40,7 @@ export function Radio({
     <BaseRadio.Root
       data-slot="radio"
       className={cn(
-        'size-4 flex items-center justify-center rounded-full border border-input-border bg-input',
+        'size-4 flex items-center justify-center rounded-full border border-input-border bg-input shadow-input',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-[checked]:bg-primary data-[checked]:border-primary',
         'transition-colors duration-75 hover:border-input-accent-border',

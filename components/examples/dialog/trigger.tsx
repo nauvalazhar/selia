@@ -3,7 +3,7 @@ import {
   Dialog,
   DialogBody,
   DialogClose,
-  DialogContent,
+  DialogPopup,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -16,7 +16,7 @@ export default function DialogTriggerExample() {
   return (
     <Dialog>
       <DialogTrigger render={<Button variant="tertiary">Open Dialog</Button>} />
-      <DialogContent>
+      <DialogPopup>
         <DialogHeader>
           <DialogTitle>Feedback</DialogTitle>
         </DialogHeader>
@@ -28,7 +28,7 @@ export default function DialogTriggerExample() {
           <DialogClose>Close</DialogClose>
           <DialogClose render={<Button>Send Feedback</Button>} />
         </DialogFooter>
-      </DialogContent>
+      </DialogPopup>
     </Dialog>
   );
 }

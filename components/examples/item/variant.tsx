@@ -2,7 +2,6 @@ import { Button } from 'components/selia/button';
 import { IconBox } from 'components/selia/icon-box';
 import {
   Item,
-  ItemAction,
   ItemContent,
   ItemDescription,
   ItemMedia,
@@ -19,7 +18,7 @@ import {
 
 export default function ItemVariantExample() {
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4">
       <Item>
         <ItemMedia>
           <IconBox>

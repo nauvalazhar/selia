@@ -1,7 +1,8 @@
-
 # Alert Dialog
 
 Some actions require confirmation from the user.
+
+<DocsButtons externalDoc="https://base-ui.com/react/components/alert-dialog" />
 
 <Preview name="basic" />
 ## Anatomy
@@ -11,7 +12,7 @@ Import the component and assemble its parts:
 ```tsx filename="Anatomy"
 <AlertDialog>
   <AlertDialogTrigger />
-  <AlertDialogContent>
+  <AlertDialogPopup>
     <AlertDialogHeader>
       <AlertDialogTitle />
     </AlertDialogHeader>
@@ -21,7 +22,7 @@ Import the component and assemble its parts:
     <AlertDialogFooter>
       <AlertDialogClose />
     </AlertDialogFooter>
-  </AlertDialogContent>
+  </AlertDialogPopup>
 </AlertDialog>
 ```
 
@@ -40,7 +41,7 @@ An icon can be added to the `AlertDialogHeader` component by using the `IconBox`
 <Preview name="icon" />
 ### Confirmation
 
-You may want to alert the user before closing the dialog. 
+You may want to alert the user before closing the dialog.
 This can be achieved by nesting the `AlertDialog` component inside the `Dialog` component.
 
 Try to input some feedback and then click the "Cancel" button. You will be prompted with a confirmation dialog.

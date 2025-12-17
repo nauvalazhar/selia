@@ -5,7 +5,7 @@ import { Tabs, TabsItem, TabsList, TabsPanel } from './selia/tabs';
 import { highlighter } from '~/lib/highlighter';
 import ShikiHighlighter from 'react-shiki/core';
 import { cn } from 'lib/utils';
-import { ScrollArea } from '@base-ui-components/react/scroll-area';
+import { ScrollArea } from '@base-ui/react/scroll-area';
 import { IconBox } from './selia/icon-box';
 import {
   CheckIcon,
@@ -26,9 +26,11 @@ import {
   SidebarGroup,
   SidebarGroupTitle,
   SidebarItem,
+  SidebarItemButton,
   SidebarList,
   SidebarMenu,
 } from 'components/selia/sidebar';
+import { CodeBlock } from './code-block';
 
 export function BlockPreview({
   name,
@@ -90,8 +92,11 @@ export function BlockPreview({
 
   return (
     <Tabs defaultValue={tab} onValueChange={setTab}>
-      <div className="bg-surface-01 rounded-3xl p-1 scroll-mt-8" id={name}>
-        <header className="dark px-4 py-1.5 mb-1">
+      <div
+        className="bg-background border border-border rounded-3xl p-1 scroll-mt-8 shadow-card"
+        id={name}
+      >
+        <header className="px-4 py-1.5 mb-1">
           <div className="border-b border-border mb-2 pb-2 flex items-center gap-3">
             <IconBox variant="primary" size="sm">
               <CodeIcon />
@@ -109,7 +114,7 @@ export function BlockPreview({
               {tab === 'preview' && (
                 <Button
                   size="xs-icon"
-                  variant="tertiary-subtle"
+                  variant="secondary"
                   pill
                   onClick={handleTheme}
                 >
@@ -119,7 +124,7 @@ export function BlockPreview({
               {tab === 'preview' && (
                 <Button
                   size="xs-icon"
-                  variant="tertiary-subtle"
+                  variant="secondary"
                   pill
                   onClick={handleOpenPreview}
                 >
@@ -129,7 +134,7 @@ export function BlockPreview({
               {tab === 'code' && (
                 <Button
                   size="xs"
-                  variant="tertiary-subtle"
+                  variant="secondary"
                   pill
                   className="text-muted text-sm"
                   onClick={handleCopy}
@@ -152,7 +157,7 @@ export function BlockPreview({
           <iframe
             ref={iframeRef}
             src={`/block/${name}`}
-            className="size-full h-[calc(100vh-10rem)] rounded-3xl"
+            className="size-full h-[calc(100vh-10rem)] rounded-3xl border border-border bg-background"
           />
         </TabsPanel>
         <TabsPanel value="code" keepMounted>
@@ -176,20 +181,21 @@ function CodePanel({
   return (
     <div className="flex">
       {files.length > 0 ? (
-        <Sidebar className="w-72 shrink-0 dark hidden lg:block" size="compact">
+        <Sidebar className="w-72 shrink-0 hidden lg:block" size="compact">
           <SidebarContent>
             <SidebarMenu>
               <SidebarGroup>
                 <SidebarGroupTitle>Files</SidebarGroupTitle>
                 <SidebarList>
                   {files.map((file) => (
-                    <SidebarItem
-                      key={file}
-                      onClick={() => setSelectedFile(file)}
-                      active={selectedFile === file}
-                    >
-                      <FileIcon />
-                      {file}
+                    <SidebarItem key={file}>
+                      <SidebarItemButton
+                        active={selectedFile === file}
+                        onClick={() => setSelectedFile(file)}
+                      >
+                        <FileIcon />
+                        {file}
+                      </SidebarItemButton>
                     </SidebarItem>
                   ))}
                 </SidebarList>
@@ -198,23 +204,14 @@ function CodePanel({
           </SidebarContent>
         </Sidebar>
       ) : null}
-      <ScrollArea.Root className="w-full overflow-hidden">
-        <ScrollArea.Viewport className="bg-surface-03/50 ring ring-border-02 rounded-3xl px-4 py-4.5 outline-none max-h-[calc(100vh-10rem)]">
-          <ShikiHighlighter
-            language="tsx"
-            theme="ayu-dark"
-            showLanguage={false}
-            highlighter={highlighter}
-            showLineNumbers
-            className={cn(
-              'outline-none *:outline-none *:!bg-transparent *:!overflow-visible',
-              '*:!p-0',
-            )}
-          >
-            {typeof code === 'object' ? code[selectedFile ?? ''] : code}
-          </ShikiHighlighter>
-        </ScrollArea.Viewport>
-      </ScrollArea.Root>
+
+      <CodeBlock
+        language="tsx"
+        className="w-full max-h-[calc(100vh-10rem)] bg-code rounded-3xl p-1 ring ring-border"
+        syntaxClassName="p-4"
+      >
+        {typeof code === 'object' ? code[selectedFile ?? ''] : code}
+      </CodeBlock>
     </div>
   );
 }

@@ -1,55 +1,14 @@
-import { Collapsible as BaseCollapsible } from '@base-ui-components/react/collapsible';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { Collapsible as BaseCollapsible } from '@base-ui/react/collapsible';
 import { cn } from 'lib/utils';
-
-export const collapsibleVariants = cva('flex flex-col border', {
-  variants: {
-    size: {
-      default: [
-        'rounded-lg',
-        '**:data-[slot=collapsible-panel-content]:p-4',
-        '**:data-[slot=collapsible-trigger]:p-4',
-        '**:data-[slot=collapsible-trigger]:rounded-lg',
-        '**:[[data-slot=collapsible-trigger][data-panel-open]]:rounded-b-none',
-      ],
-      sm: [
-        'rounded',
-        '**:data-[slot=collapsible-panel-content]:p-3.5',
-        '**:data-[slot=collapsible-trigger]:p-3.5',
-        '**:data-[slot=collapsible-trigger]:rounded',
-        '**:[[data-slot=collapsible-trigger][data-panel-open]]:rounded-b-none',
-      ],
-      lg: [
-        'rounded-xl',
-        '**:data-[slot=collapsible-panel-content]:p-4.5',
-        '**:data-[slot=collapsible-trigger]:p-4.5',
-        '**:data-[slot=collapsible-trigger]:rounded-xl',
-        '**:[[data-slot=collapsible-trigger][data-panel-open]]:rounded-b-none',
-      ],
-    },
-    variant: {
-      default: 'bg-card border-card-border shadow',
-      outline: 'border-card-border border',
-      plain: 'border-transparent rounded-none',
-    },
-  },
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
-  },
-});
 
 export function Collapsible({
   className,
-  variant,
-  size,
   ...props
-}: React.ComponentProps<typeof BaseCollapsible.Root> &
-  VariantProps<typeof collapsibleVariants>) {
+}: React.ComponentProps<typeof BaseCollapsible.Root>) {
   return (
     <BaseCollapsible.Root
       data-slot="collapsible"
-      className={cn(collapsibleVariants({ variant, size, className }))}
+      className={cn('flex flex-col', className)}
       {...props}
     />
   );
@@ -68,7 +27,7 @@ export function CollapsibleTrigger({
       data-expandable={expandableIndicator ? true : undefined}
       className={cn(
         'flex items-center gap-2.5 select-none cursor-pointer',
-        'data-panel-open:border-b border-card-border transition-colors duration-100',
+        'transition-colors duration-100 py-2',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '**:[svg]:size-4 text-left leading-relaxed font-medium w-full',
         '**:data-[slot=expandable-indicator]:transition-all',

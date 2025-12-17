@@ -1,4 +1,4 @@
-import { useRender } from '@base-ui-components/react/use-render';
+import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
@@ -7,12 +7,8 @@ export const chipVariants = cva('inline-flex items-center ring font-medium', {
     variant: {
       default: 'bg-chip ring-chip-border text-foreground',
       primary: 'bg-primary ring-primary text-primary-foreground',
-      secondary: 'bg-secondary ring-secondary text-secondary-foreground',
-      tertiary: 'bg-tertiary ring-tertiary text-tertiary-foreground',
-      success: 'bg-success ring-success text-success-foreground',
-      info: 'bg-info ring-info text-info-foreground',
-      warning: 'bg-warning ring-warning text-warning-foreground',
-      danger: 'bg-danger ring-danger text-danger-foreground',
+      outline: 'ring-chip-border text-foreground',
+      plain: 'bg-transparent ring-transparent text-foreground',
     },
     size: {
       sm: 'text-sm px-1.5 h-5 rounded-sm **:[svg]:size-3.5 gap-1',

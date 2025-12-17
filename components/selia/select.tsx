@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Select as BaseSelect } from '@base-ui-components/react/select';
+import { Select as BaseSelect } from '@base-ui/react/select';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Chip } from './chip';
@@ -18,7 +18,7 @@ export function Select({
 
 export const selectVariants = cva(
   [
-    'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-all',
+    'h-9.5 px-3.5 w-full bg-input rounded placeholder:text-dimmed transition-all',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'flex items-center gap-2.5 cursor-default',
     'data-disabled:opacity-70 data-disabled:pointer-events-none',
@@ -30,7 +30,7 @@ export const selectVariants = cva(
           'bg-input ring ring-input-border hover:ring-input-accent-border shadow-input',
         subtle:
           'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
-        plain: 'bg-transparent hover:bg-input',
+        plain: 'bg-transparent hover:bg-accent',
       },
       pill: {
         true: 'rounded-full',
@@ -113,7 +113,7 @@ function SelectRenderValue({
       typeof firstValue === 'object' ? firstValue.label : firstValue;
     const additionalValues =
       value.length > 1 ? (
-        <Chip variant="secondary" className="ml-1.5" size="sm">
+        <Chip className="ml-1.5" size="sm">
           +{value.length - 1} more
         </Chip>
       ) : (
@@ -140,23 +140,43 @@ function SelectRenderValue({
   return <span className="text-popover-foreground select-none">{value}</span>;
 }
 
-export function SelectContent({
-  popupProps,
+export function SelectPopup({
   children,
   className,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseSelect.Positioner> &
+}: React.ComponentProps<typeof BaseSelect.Popup> &
   VariantProps<typeof selectVariants> & {
-    popupProps?: BaseSelect.Popup.Props;
+    align?: BaseSelect.Positioner.Props['align'];
+    alignOffset?: BaseSelect.Positioner.Props['alignOffset'];
+    side?: BaseSelect.Positioner.Props['side'];
+    sideOffset?: BaseSelect.Positioner.Props['sideOffset'];
+    anchor?: BaseSelect.Positioner.Props['anchor'];
+    sticky?: BaseSelect.Positioner.Props['sticky'];
+    positionMethod?: BaseSelect.Positioner.Props['positionMethod'];
   }) {
   return (
     <BaseSelect.Portal>
       <BaseSelect.Backdrop />
-      <BaseSelect.Positioner {...props}>
+      <BaseSelect.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 6}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseSelect.ScrollUpArrow className="top-1 left-1 right-1 z-10 absolute rounded h-5 text-xs text-popover-foreground flex items-center justify-around bg-popover-accent" />
         <BaseSelect.Popup
-          data-slot="select-content"
-          {...popupProps}
+          data-slot="select-popup"
+          {...props}
           className={cn(
             'group origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
             'p-1 outline-none max-lg:w-(--anchor-width)',
@@ -216,7 +236,7 @@ export function SelectItem({
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -260,7 +280,7 @@ export function SelectSeparator({
   return (
     <BaseSelect.Separator
       data-slot="select-separator"
-      className={cn('h-px my-1 bg-popover-border', className)}
+      className={cn('h-px my-1 bg-popover-separator', className)}
       {...props}
     />
   );

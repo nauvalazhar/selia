@@ -2,7 +2,7 @@ import {
   AlertDialog,
   AlertDialogBody,
   AlertDialogClose,
-  AlertDialogContent,
+  AlertDialogPopup,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -10,7 +10,7 @@ import {
 } from 'components/selia/alert-dialog';
 import {
   Dialog,
-  DialogContent,
+  DialogPopup,
   DialogHeader,
   DialogTitle,
   DialogDescription,
@@ -42,7 +42,7 @@ export default function AlertDialogBasicExample() {
       }}
     >
       <DialogTrigger render={<Button variant="danger">Delete</Button>} />
-      <DialogContent>
+      <DialogPopup>
         <DialogHeader>
           <DialogTitle>Feedback</DialogTitle>
         </DialogHeader>
@@ -58,10 +58,10 @@ export default function AlertDialogBasicExample() {
           <DialogClose>Cancel</DialogClose>
           <Button onClick={() => setDialogOpen(false)}>Submit</Button>
         </DialogFooter>
-      </DialogContent>
+      </DialogPopup>
 
       <AlertDialog open={confirmationOpen} onOpenChange={setConfirmationOpen}>
-        <AlertDialogContent>
+        <AlertDialogPopup>
           <AlertDialogHeader>
             <AlertDialogTitle>Discard Feedback?</AlertDialogTitle>
           </AlertDialogHeader>
@@ -82,7 +82,7 @@ export default function AlertDialogBasicExample() {
               Discard
             </Button>
           </AlertDialogFooter>
-        </AlertDialogContent>
+        </AlertDialogPopup>
       </AlertDialog>
     </Dialog>
   );

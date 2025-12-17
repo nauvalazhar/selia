@@ -1,6 +1,6 @@
 import {
   Combobox,
-  ComboboxContent,
+  ComboboxPopup,
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
@@ -15,7 +15,7 @@ export default function Basic() {
       <ComboboxTrigger className="w-64">
         <ComboboxValue />
       </ComboboxTrigger>
-      <ComboboxContent>
+      <ComboboxPopup>
         <ComboboxSearch />
         <ComboboxEmpty>No results found</ComboboxEmpty>
         <ComboboxList>
@@ -25,7 +25,7 @@ export default function Basic() {
             </ComboboxItem>
           )}
         </ComboboxList>
-      </ComboboxContent>
+      </ComboboxPopup>
     </Combobox>
   );
 }

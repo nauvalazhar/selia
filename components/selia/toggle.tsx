@@ -1,4 +1,4 @@
-import { Toggle as BaseToggle } from '@base-ui-components/react/toggle';
+import { Toggle as BaseToggle } from '@base-ui/react/toggle';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
@@ -40,6 +40,7 @@ export function Toggle({
   return (
     <BaseToggle
       data-slot="toggle"
+      data-size={size}
       className={cn(toggleVariants({ variant, size, className }))}
       {...props}
     >

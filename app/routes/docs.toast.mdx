@@ -1,9 +1,11 @@
-
 # Toast
 
 Brief notification messages that appear temporarily at screen top.
 
+<DocsButtons externalDoc="https://base-ui.com/react/components/toast" />
+
 <Preview name="basic" />
+
 ## Anatomy
 
 Import the component and assemble its parts:
@@ -13,6 +15,58 @@ Import the component and assemble its parts:
 ```
 
 ## Usage
+
+Add the `Toast` component to your top-level component such as `root.tsx` or `layout.tsx`.
+
+```tsx filename="root.tsx"
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body className="bg-background">
+        <div className="root">{children}</div>
+// [!code highlight:1]
+        <Toast />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+To create a toast, use the `toastManager` object.
+
+```tsx filename="root.tsx"
+import { toastManager } from 'components/selia/toast';
+
+toastManager.create({
+  title: 'Toast',
+  description: 'This is a toast',
+  type: 'success',
+});
+```
+
+Or use the `anchoredToastManager` object to create an anchored toast.
+
+```tsx filename="root.tsx"
+import { anchoredToastManager } from 'components/selia/toast';
+
+anchoredToastManager.create({
+  title: 'Toast',
+  description: 'This is a toast',
+  type: 'success',
+  positionerProps: {
+    anchor: buttonRef.current,
+    sideOffset: 8,
+  },
+});
+```
 
 ### Variants
 
@@ -24,9 +78,3 @@ Toast comes in a variety of variants, each with its own color and style.
 Toast can also be used to display a promise.
 
 <Preview name="promise" />
-### Item
-
-Toast can be used to display a custom component.
-In this example, we are using the `Item` component to display a custom toast.
-
-<Preview name="item" />

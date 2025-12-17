@@ -28,14 +28,8 @@ import {
   TagsIcon,
   UserIcon,
 } from 'lucide-react';
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownTrigger,
-} from 'components/selia/dropdown';
+import { Menu, MenuPopup, MenuItem, MenuTrigger } from 'components/selia/menu';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
-import { Badge } from 'components/selia/badge';
 
 export default function SidebarBasicExample() {
   return (
@@ -124,41 +118,44 @@ export default function SidebarBasicExample() {
         <SidebarMenu>
           <SidebarList>
             <SidebarItem>
-              <Dropdown>
-                <DropdownTrigger
+              <Menu>
+                <MenuTrigger
                   data-slot="sidebar-item-button"
                   nativeButton={false}
                   render={
                     <SidebarItemButton>
                       <Avatar size="sm">
-                        <AvatarImage src="/avatar05.png" alt="Avatar" />
-                        <AvatarFallback>BS</AvatarFallback>
+                        <AvatarImage
+                          src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
+                          alt="Avatar"
+                        />
+                        <AvatarFallback>RF</AvatarFallback>
                       </Avatar>
                       <div className="flex flex-col">
-                        <span className="font-medium">John Doe</span>
+                        <span className="font-medium">Rizal Fakhri</span>
                         <span className="text-sm text-muted">
-                          john.doe@example.com
+                          rizal@yayan.com
                         </span>
                       </div>
                       <ChevronsUpDownIcon className="ml-auto" />
                     </SidebarItemButton>
                   }
                 />
-                <DropdownContent className="w-(--anchor-width)" side="top">
-                  <DropdownItem>
+                <MenuPopup className="w-(--anchor-width)" side="top">
+                  <MenuItem>
                     <UserIcon />
                     Profile
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <SettingsIcon />
                     Settings
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <LogOutIcon />
                     Logout
-                  </DropdownItem>
-                </DropdownContent>
-              </Dropdown>
+                  </MenuItem>
+                </MenuPopup>
+              </Menu>
             </SidebarItem>
           </SidebarList>
         </SidebarMenu>

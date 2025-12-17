@@ -1,6 +1,6 @@
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectGroup,
   SelectGroupLabel,
   SelectItem,
@@ -15,7 +15,7 @@ export default function SelectGroupExample() {
       <SelectTrigger className="lg:w-64">
         <SelectValue placeholder="Your favorite football club" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectPopup>
         <SelectList>
           {optionsGrouped.map((group) => (
             <SelectGroup key={group.label}>
@@ -28,7 +28,7 @@ export default function SelectGroupExample() {
             </SelectGroup>
           ))}
         </SelectList>
-      </SelectContent>
+      </SelectPopup>
     </Select>
   );
 }

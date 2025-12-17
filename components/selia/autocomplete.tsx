@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autocomplete as BaseAutocomplete } from '@base-ui-components/react/autocomplete';
+import { Autocomplete as BaseAutocomplete } from '@base-ui/react/autocomplete';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -50,21 +50,41 @@ export function AutocompleteInput({
   );
 }
 
-export function AutocompleteContent({
+export function AutocompletePopup({
   className,
-  popupProps,
   children,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseAutocomplete.Positioner> & {
-  popupProps?: BaseAutocomplete.Popup.Props;
+}: React.ComponentProps<typeof BaseAutocomplete.Popup> & {
+  align?: BaseAutocomplete.Positioner.Props['align'];
+  alignOffset?: BaseAutocomplete.Positioner.Props['alignOffset'];
+  side?: BaseAutocomplete.Positioner.Props['side'];
+  sideOffset?: BaseAutocomplete.Positioner.Props['sideOffset'];
+  anchor?: BaseAutocomplete.Positioner.Props['anchor'];
+  sticky?: BaseAutocomplete.Positioner.Props['sticky'];
+  positionMethod?: BaseAutocomplete.Positioner.Props['positionMethod'];
 }) {
   return (
     <BaseAutocomplete.Portal>
       <BaseAutocomplete.Backdrop />
-      <BaseAutocomplete.Positioner sideOffset={6} {...props}>
+      <BaseAutocomplete.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 8}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseAutocomplete.Popup
-          data-slot="autocomplete-content"
-          {...popupProps}
+          data-slot="autocomplete-popup"
+          {...props}
           className={cn(
             'bg-popover ring ring-popover-border rounded shadow-popover',
             'p-1 outline-none transition-[transform,scale,opacity]',
@@ -213,7 +233,7 @@ export function AutocompleteSeparator({
     <BaseAutocomplete.Separator
       data-slot="autocomplete-separator"
       {...props}
-      className={cn('h-px my-1 bg-separator', className)}
+      className={cn('h-px my-1 bg-popover-separator', className)}
     />
   );
 }

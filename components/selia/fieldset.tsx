@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cn } from 'lib/utils';
-import { Fieldset as BaseFieldset } from '@base-ui-components/react/fieldset';
+import { Fieldset as BaseFieldset } from '@base-ui/react/fieldset';
 
 export function Fieldset({
   className,

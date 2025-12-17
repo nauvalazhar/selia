@@ -1,6 +1,6 @@
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectList,
   SelectTrigger,
@@ -13,7 +13,7 @@ export default function SelectBasicExample() {
       <SelectTrigger className="lg:w-64">
         <SelectValue placeholder="Football club" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectPopup>
         <SelectList>
           {options.map((option) => (
             <SelectItem
@@ -25,7 +25,7 @@ export default function SelectBasicExample() {
             </SelectItem>
           ))}
         </SelectList>
-      </SelectContent>
+      </SelectPopup>
     </Select>
   );
 }

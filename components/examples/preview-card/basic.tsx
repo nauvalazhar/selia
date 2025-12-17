@@ -1,6 +1,6 @@
 import {
   PreviewCard,
-  PreviewCardContent,
+  PreviewCardPopup,
   PreviewCardTrigger,
 } from 'components/selia/preview-card';
 import { Text } from 'components/selia/text';
@@ -15,7 +15,7 @@ export default function PreviewCardBasicExample() {
         </PreviewCardTrigger>{' '}
         based in Liverpool, England.
       </Text>
-      <PreviewCardContent className="max-w-72">
+      <PreviewCardPopup className="max-w-72">
         <img
           src="https://images.unsplash.com/photo-1731931594172-2e96a6a9acbf?q=80&w=500"
           className="w-full h-auto rounded mb-2"
@@ -27,7 +27,7 @@ export default function PreviewCardBasicExample() {
           or as part of a larger sports organization as a subsidiary of the
           parent club or organization.
         </Text>
-      </PreviewCardContent>
+      </PreviewCardPopup>
     </PreviewCard>
   );
 }

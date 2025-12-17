@@ -1,4 +1,4 @@
-import { useRender } from '@base-ui-components/react/use-render';
+import { useRender } from '@base-ui/react/use-render';
 import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
 
@@ -29,35 +29,42 @@ export function PaginationList({
 }
 
 export function PaginationItem({
+  children,
+  ...props
+}: React.ComponentProps<'li'>) {
+  return (
+    <li data-slot="pagination-item" {...props}>
+      {children}
+    </li>
+  );
+}
+
+export function PaginationButton({
   active,
   disabled,
   render,
   ...props
-}: useRender.ComponentProps<'a'> & {
+}: useRender.ComponentProps<'button'> & {
   active?: boolean;
   disabled?: boolean;
 }) {
-  return (
-    <li>
-      {useRender({
-        defaultTagName: 'a',
-        render,
-        props: {
-          'data-slot': 'pagination-link',
-          'aria-current': active ? 'page' : undefined,
-          'aria-disabled': disabled ? true : undefined,
-          className: cn(
-            buttonVariants({
-              variant: active ? 'tertiary-subtle' : 'secondary-plain',
-            }),
-            'cursor-pointer',
-            active && 'pointer-events-none',
-            disabled && 'pointer-events-none opacity-70',
-            props.className,
-          ),
-          ...props,
-        },
-      })}
-    </li>
-  );
+  return useRender({
+    defaultTagName: 'button',
+    render,
+    props: {
+      'data-slot': 'pagination-button',
+      'aria-current': active ? 'page' : undefined,
+      'aria-disabled': disabled ? true : undefined,
+      className: cn(
+        buttonVariants({
+          variant: active ? 'secondary' : 'plain',
+        }),
+        'cursor-pointer',
+        active && 'pointer-events-none',
+        disabled && 'pointer-events-none opacity-70',
+        props.className,
+      ),
+      ...props,
+    },
+  });
 }

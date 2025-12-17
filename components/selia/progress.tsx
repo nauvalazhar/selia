@@ -1,4 +1,4 @@
-import { Progress as BaseProgress } from '@base-ui-components/react/progress';
+import { Progress as BaseProgress } from '@base-ui/react/progress';
 import { cn } from 'lib/utils';
 
 export function Progress({

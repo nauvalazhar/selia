@@ -33,12 +33,12 @@ import {
 } from 'lucide-react';
 import { Button } from 'components/selia/button';
 import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownItem,
-  DropdownSeparator,
-} from 'components/selia/dropdown';
+  Menu,
+  MenuTrigger,
+  MenuPopup,
+  MenuItem,
+  MenuSeparator,
+} from 'components/selia/menu';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
 import { SidebarCloseIcon } from 'lucide-react';
 
@@ -54,7 +54,7 @@ export default function SidebarChat() {
             <img src="/selia.png" alt="Selia" className="size-8" />
             <span className="font-semibold text-lg">Chat</span>
           </SidebarLogo>
-          <Button variant="secondary-plain" size="sm-icon">
+          <Button variant="plain" size="sm-icon">
             <SidebarCloseIcon />
           </Button>
         </div>
@@ -130,34 +130,34 @@ export default function SidebarChat() {
                     </span>
                   </SidebarItemButton>
                   <SidebarItemAction showOnHover>
-                    <Dropdown>
-                      <DropdownTrigger className="text-foreground size-full flex justify-center items-center">
+                    <Menu>
+                      <MenuTrigger className="text-foreground size-full flex justify-center items-center">
                         <EllipsisIcon />
-                      </DropdownTrigger>
-                      <DropdownContent className="w-52">
-                        <DropdownItem>
+                      </MenuTrigger>
+                      <MenuPopup className="w-52">
+                        <MenuItem>
                           <PinIcon />
                           Pin
-                        </DropdownItem>
-                        <DropdownItem>
+                        </MenuItem>
+                        <MenuItem>
                           <ShareIcon />
                           Share
-                        </DropdownItem>
-                        <DropdownItem>
+                        </MenuItem>
+                        <MenuItem>
                           <PencilIcon />
                           Rename
-                        </DropdownItem>
-                        <DropdownItem>
+                        </MenuItem>
+                        <MenuItem>
                           <ArchiveIcon />
                           Archive
-                        </DropdownItem>
-                        <DropdownSeparator />
-                        <DropdownItem className="text-danger *:[svg]:text-danger">
+                        </MenuItem>
+                        <MenuSeparator />
+                        <MenuItem className="text-danger *:[svg]:text-danger">
                           <TrashIcon />
                           Delete
-                        </DropdownItem>
-                      </DropdownContent>
-                    </Dropdown>
+                        </MenuItem>
+                      </MenuPopup>
+                    </Menu>
                   </SidebarItemAction>
                 </SidebarItem>
               ))}
@@ -169,8 +169,8 @@ export default function SidebarChat() {
         <SidebarMenu>
           <SidebarList>
             <SidebarItem>
-              <Dropdown>
-                <DropdownTrigger
+              <Menu>
+                <MenuTrigger
                   data-slot="sidebar-item-button"
                   nativeButton={false}
                   render={
@@ -190,26 +190,26 @@ export default function SidebarChat() {
                     </SidebarItemButton>
                   }
                 />
-                <DropdownContent className="w-(--anchor-width)" side="top">
-                  <DropdownItem>
+                <MenuPopup className="w-(--anchor-width)" side="top">
+                  <MenuItem>
                     <SparklesIcon />
                     Upgrade Plan
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <PaletteIcon />
                     Personalization
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <SettingsIcon />
                     Settings
-                  </DropdownItem>
-                  <DropdownSeparator />
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuSeparator />
+                  <MenuItem>
                     <LogOutIcon />
                     Logout
-                  </DropdownItem>
-                </DropdownContent>
-              </Dropdown>
+                  </MenuItem>
+                </MenuPopup>
+              </Menu>
             </SidebarItem>
           </SidebarList>
         </SidebarMenu>

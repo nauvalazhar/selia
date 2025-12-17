@@ -1,6 +1,6 @@
 import {
   Select,
-  SelectContent,
+  SelectPopup,
   SelectItem,
   SelectList,
   SelectTrigger,
@@ -29,7 +29,7 @@ export default function SelectRenderExample() {
             }
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectPopup>
           <SelectList>
             {optionsWithIcon.map((option) => (
               <SelectItem key={option.value} value={option}>
@@ -38,7 +38,7 @@ export default function SelectRenderExample() {
               </SelectItem>
             ))}
           </SelectList>
-        </SelectContent>
+        </SelectPopup>
       </Select>
     </div>
   );

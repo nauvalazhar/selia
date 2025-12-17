@@ -13,7 +13,7 @@ import { Separator } from 'components/selia/separator';
 
 export default function ItemStackExample() {
   return (
-    <Stack className="w-full">
+    <Stack className="min-lg:w-8/12">
       <Item variant="plain">
         <ItemMedia>
           <Avatar>

@@ -8,7 +8,7 @@ export default function AlertExample() {
         <InfoIcon />
         Some neutral message here.
       </Alert>
-      <Alert variant="tertiary">
+      <Alert variant="success">
         <InfoIcon />
         <AlertTitle>Alert Title</AlertTitle>
         <AlertDescription>Alert Description</AlertDescription>

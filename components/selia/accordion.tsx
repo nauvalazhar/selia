@@ -1,61 +1,14 @@
-import { Accordion as BaseAccordion } from '@base-ui-components/react/accordion';
+import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import { cn } from 'lib/utils';
-import { cva, type VariantProps } from 'class-variance-authority';
-
-export const accordionVariants = cva(
-  [
-    'flex flex-col border',
-    '**:data-[slot=accordion-item]:first:**:[[data-slot=accordion-trigger]]:rounded-b-none',
-    '**:data-[slot=accordion-item]:not-last:not-first:**:[[data-slot=accordion-trigger]]:rounded-none',
-    '**:data-[slot=accordion-item]:last:**:[[data-slot=accordion-trigger]]:rounded-t-none',
-    '**:data-[slot=accordion-item]:last:**:[[data-slot=accordion-trigger][data-panel-open]]:rounded-none',
-  ],
-  {
-    variants: {
-      size: {
-        default: [
-          'rounded-lg',
-          '**:data-[slot=accordion-panel-content]:p-4',
-          '**:data-[slot=accordion-trigger]:p-4',
-          '**:data-[slot=accordion-trigger]:rounded-lg',
-        ],
-        sm: [
-          'rounded',
-          '**:data-[slot=accordion-panel-content]:p-3.5',
-          '**:data-[slot=accordion-trigger]:p-3.5',
-          '**:data-[slot=accordion-trigger]:rounded',
-        ],
-        lg: [
-          'rounded-xl',
-          '**:data-[slot=accordion-panel-content]:p-4.5',
-          '**:data-[slot=accordion-trigger]:p-4.5',
-          '**:data-[slot=accordion-trigger]:rounded-xl',
-        ],
-      },
-      variant: {
-        default: 'bg-card border-card-border shadow',
-        outline: 'border-card-border border',
-        plain: 'border-transparent rounded-none',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  },
-);
 
 export function Accordion({
   className,
-  variant,
-  size,
   ...props
-}: React.ComponentProps<typeof BaseAccordion.Root> &
-  VariantProps<typeof accordionVariants>) {
+}: React.ComponentProps<typeof BaseAccordion.Root>) {
   return (
     <BaseAccordion.Root
       data-slot="accordion"
-      className={cn(accordionVariants({ variant, size, className }))}
+      className={cn('flex flex-col', className)}
       {...props}
     />
   );
@@ -106,7 +59,7 @@ export function AccordionTrigger({
       data-expandable={expandableIndicator ? true : undefined}
       className={cn(
         'flex items-center gap-2.5 select-none cursor-pointer',
-        'data-panel-open:border-b border-card-border transition-colors duration-100',
+        'transition-colors duration-100 py-4',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '**:[svg]:size-4 w-full text-left leading-relaxed font-medium',
         '**:data-[slot=expandable-indicator]:transition-all',
@@ -140,7 +93,9 @@ export function AccordionPanel({
       )}
       {...props}
     >
-      <div data-slot="accordion-panel-content">{children}</div>
+      <div data-slot="accordion-panel-content" className="pb-2">
+        {children}
+      </div>
     </BaseAccordion.Panel>
   );
 }

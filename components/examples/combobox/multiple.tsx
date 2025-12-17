@@ -1,6 +1,6 @@
 import {
   Combobox,
-  ComboboxContent,
+  ComboboxPopup,
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
@@ -18,7 +18,7 @@ export default function Basic() {
         className="w-64"
         ref={anchorRef}
       />
-      <ComboboxContent anchor={anchorRef}>
+      <ComboboxPopup anchor={anchorRef}>
         <ComboboxEmpty>No results found</ComboboxEmpty>
         <ComboboxList>
           {(item) => (
@@ -27,7 +27,7 @@ export default function Basic() {
             </ComboboxItem>
           )}
         </ComboboxList>
-      </ComboboxContent>
+      </ComboboxPopup>
     </Combobox>
   );
 }

@@ -31,17 +31,24 @@ import {
 } from 'lucide-react';
 import { Badge } from 'components/selia/badge';
 import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownItem,
-  DropdownSeparator,
-  DropdownGroup,
-  DropdownGroupLabel,
-  DropdownRadioGroup,
-  DropdownRadioItem,
-} from 'components/selia/dropdown';
+  Menu,
+  MenuTrigger,
+  MenuPopup,
+  MenuItem,
+  MenuSeparator,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuRadioGroup,
+  MenuRadioItem,
+} from 'components/selia/menu';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from 'components/selia/item';
 
 export default function SidebarMail() {
   return (
@@ -158,8 +165,8 @@ export default function SidebarMail() {
         <SidebarMenu>
           <SidebarList>
             <SidebarItem>
-              <Dropdown>
-                <DropdownTrigger
+              <Menu>
+                <MenuTrigger
                   data-slot="sidebar-item-button"
                   render={
                     <SidebarItemButton className="border border-border">
@@ -179,62 +186,75 @@ export default function SidebarMail() {
                     </SidebarItemButton>
                   }
                 />
-                <DropdownContent className="w-(--anchor-width)">
-                  <DropdownItem>
+                <MenuPopup className="w-(--anchor-width)">
+                  <MenuItem>
                     <UserIcon />
                     Profile
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <SettingsIcon />
                     Settings
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <HelpCircleIcon />
                     Help
-                  </DropdownItem>
-                  <DropdownSeparator />
-                  <DropdownGroup>
-                    <DropdownGroupLabel>Switch Account</DropdownGroupLabel>
-                    <DropdownRadioGroup defaultValue="rizal">
-                      <DropdownRadioItem value="rizal" variant="alternate">
-                        <Avatar size="sm">
-                          <AvatarImage
-                            src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
-                            alt="Avatar"
-                          />
-                          <AvatarFallback>RF</AvatarFallback>
-                        </Avatar>
-                        <div className="flex flex-col">
-                          <span className="font-medium">Rizal Fakhri</span>
-                          <span className="text-sm text-muted">
+                  </MenuItem>
+                  <MenuSeparator />
+                  <MenuGroup>
+                    <MenuGroupLabel>Switch Account</MenuGroupLabel>
+                    <MenuRadioGroup defaultValue="rizal">
+                      <MenuRadioItem
+                        value="rizal"
+                        variant="alternate"
+                        data-slot="menu-radio-item"
+                        render={<Item variant="plain" />}
+                      >
+                        <ItemMedia>
+                          <Avatar size="sm">
+                            <AvatarImage
+                              src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
+                              alt="Avatar"
+                            />
+                            <AvatarFallback>RF</AvatarFallback>
+                          </Avatar>
+                        </ItemMedia>
+                        <ItemContent>
+                          <ItemTitle>Rizal Fakhri</ItemTitle>
+                          <ItemDescription className="text-sm">
                             rizal@yayan.com
-                          </span>
-                        </div>
-                      </DropdownRadioItem>
-                      <DropdownRadioItem value="nauval" variant="alternate">
-                        <Avatar size="sm">
-                          <AvatarImage
-                            src="https://pbs.twimg.com/profile_images/1460906228389867522/WxSzgWSs_400x400.jpg"
-                            alt="Avatar"
-                          />
-                          <AvatarFallback>NA</AvatarFallback>
-                        </Avatar>
-                        <div className="flex flex-col">
-                          <span className="font-medium">Nauval Azhar</span>
-                          <span className="text-sm text-muted">
+                          </ItemDescription>
+                        </ItemContent>
+                      </MenuRadioItem>
+                      <MenuRadioItem
+                        value="nauval"
+                        variant="alternate"
+                        render={<Item variant="plain" />}
+                      >
+                        <ItemMedia>
+                          <Avatar size="sm">
+                            <AvatarImage
+                              src="https://pbs.twimg.com/profile_images/1460906228389867522/WxSzgWSs_400x400.jpg"
+                              alt="Avatar"
+                            />
+                            <AvatarFallback>NA</AvatarFallback>
+                          </Avatar>
+                        </ItemMedia>
+                        <ItemContent>
+                          <ItemTitle>Nauval Azhar</ItemTitle>
+                          <ItemDescription className="text-sm">
                             nauval@azhar.com
-                          </span>
-                        </div>
-                      </DropdownRadioItem>
-                    </DropdownRadioGroup>
-                  </DropdownGroup>
-                  <DropdownSeparator />
-                  <DropdownItem className="text-danger *:[svg]:text-danger">
+                          </ItemDescription>
+                        </ItemContent>
+                      </MenuRadioItem>
+                    </MenuRadioGroup>
+                  </MenuGroup>
+                  <MenuSeparator />
+                  <MenuItem className="text-danger *:[svg]:text-danger">
                     <LogOutIcon />
                     Log Out
-                  </DropdownItem>
-                </DropdownContent>
-              </Dropdown>
+                  </MenuItem>
+                </MenuPopup>
+              </Menu>
             </SidebarItem>
           </SidebarList>
         </SidebarMenu>

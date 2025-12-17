@@ -27,12 +27,7 @@ import {
   TagsIcon,
   UserIcon,
 } from 'lucide-react';
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownTrigger,
-} from 'components/selia/dropdown';
+import { Menu, MenuPopup, MenuItem, MenuTrigger } from 'components/selia/menu';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
 import { InputGroup, InputGroupAddon } from 'components/selia/input-group';
 import { Input } from 'components/selia/input';
@@ -121,8 +116,8 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarList>
             <SidebarItem>
-              <Dropdown>
-                <DropdownTrigger
+              <Menu>
+                <MenuTrigger
                   data-slot="sidebar-item-button"
                   nativeButton={false}
                   render={
@@ -141,21 +136,21 @@ export function AppSidebar() {
                     </SidebarItemButton>
                   }
                 />
-                <DropdownContent className="w-(--anchor-width)" side="top">
-                  <DropdownItem>
+                <MenuPopup className="w-(--anchor-width)" side="top">
+                  <MenuItem>
                     <UserIcon />
                     Profile
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <SettingsIcon />
                     Settings
-                  </DropdownItem>
-                  <DropdownItem>
+                  </MenuItem>
+                  <MenuItem>
                     <LogOutIcon />
                     Logout
-                  </DropdownItem>
-                </DropdownContent>
-              </Dropdown>
+                  </MenuItem>
+                </MenuPopup>
+              </Menu>
             </SidebarItem>
           </SidebarList>
         </SidebarMenu>

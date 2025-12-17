@@ -1,5 +1,4 @@
 import { Button } from 'components/selia/button';
-import { Text } from 'components/selia/text';
 import { useState } from 'react';
 
 export default function ButtonProgressExample() {
@@ -18,7 +17,6 @@ export default function ButtonProgressExample() {
       >
         Delete Chat
       </Button>
-      <Text className="text-sm">(Click the button to see the loading)</Text>
     </div>
   );
 }

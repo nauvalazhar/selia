@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Combobox as BaseCombobox } from '@base-ui-components/react/combobox';
+import { Combobox as BaseCombobox } from '@base-ui/react/combobox';
 import { cn } from 'lib/utils';
 import { Chip } from './chip';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -25,7 +25,7 @@ export const comboboxTriggerVariants = cva(
           'bg-input ring ring-input-border hover:ring-input-accent-border shadow-input',
         subtle:
           'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
-        plain: 'bg-transparent hover:bg-input',
+        plain: 'bg-transparent hover:bg-accent',
       },
       pill: {
         true: 'rounded-full',
@@ -177,21 +177,41 @@ export function ComboboxInput({
   );
 }
 
-export function ComboboxContent({
+export function ComboboxPopup({
   className,
-  popupProps,
   children,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseCombobox.Positioner> & {
-  popupProps?: BaseCombobox.Popup.Props;
+}: React.ComponentProps<typeof BaseCombobox.Popup> & {
+  align?: BaseCombobox.Positioner.Props['align'];
+  alignOffset?: BaseCombobox.Positioner.Props['alignOffset'];
+  side?: BaseCombobox.Positioner.Props['side'];
+  sideOffset?: BaseCombobox.Positioner.Props['sideOffset'];
+  anchor?: BaseCombobox.Positioner.Props['anchor'];
+  sticky?: BaseCombobox.Positioner.Props['sticky'];
+  positionMethod?: BaseCombobox.Positioner.Props['positionMethod'];
 }) {
   return (
     <BaseCombobox.Portal>
       <BaseCombobox.Backdrop />
-      <BaseCombobox.Positioner sideOffset={6} {...props}>
+      <BaseCombobox.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 6}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseCombobox.Popup
-          data-slot="combobox-content"
-          {...popupProps}
+          data-slot="combobox-popup"
+          {...props}
           className={cn(
             'bg-popover ring ring-popover-border rounded shadow-popover overflow-y-auto',
             'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',
@@ -277,7 +297,7 @@ export function ComboboxItem({
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
           className="size-4 text-primary"
@@ -326,7 +346,7 @@ export function ComboboxSeparator({
     <BaseCombobox.Separator
       data-slot="combobox-separator"
       {...props}
-      className={cn('h-px my-1 bg-popover-border', className)}
+      className={cn('h-px my-1 bg-popover-separator', className)}
     />
   );
 }

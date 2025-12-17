@@ -5,12 +5,8 @@ export default function Variants() {
     <>
       <Chip>Default</Chip>
       <Chip variant="primary">Primary</Chip>
-      <Chip variant="secondary">Secondary</Chip>
-      <Chip variant="tertiary">Tertiary</Chip>
-      <Chip variant="success">Success</Chip>
-      <Chip variant="info">Info</Chip>
-      <Chip variant="warning">Warning</Chip>
-      <Chip variant="danger">Danger</Chip>
+      <Chip variant="outline">Outline</Chip>
+      <Chip variant="plain">Plain</Chip>
     </>
   );
 }

@@ -1,6 +1,6 @@
-import { Checkbox as BaseCheckbox } from '@base-ui-components/react/checkbox';
-import { useRender } from '@base-ui-components/react/use-render';
-import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui-components/react/checkbox-group';
+import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
+import { useRender } from '@base-ui/react/use-render';
+import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group';
 import { cn } from 'lib/utils';
 
 export function CheckboxGroup({
@@ -39,7 +39,7 @@ export function Checkbox({
       data-slot="checkbox"
       {...props}
       className={cn(
-        'size-4 shrink-0 flex items-center justify-center rounded-xs border border-input-border bg-input',
+        'size-4 shrink-0 flex items-center justify-center rounded-xs border border-input-border bg-input shadow-input',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-[checked]:bg-primary data-[checked]:border-primary',
         'transition-colors duration-75 hover:border-input-accent-border',

@@ -1,7 +1,8 @@
-
 # Pagination
 
 Navigate through pages of content with numbered or directional controls.
+
+<DocsButtons />
 
 <Preview name="basic" />
 ## Anatomy
@@ -11,7 +12,9 @@ Import the component and assemble its parts:
 ```tsx filename="Anatomy"
 <Pagination>
   <PaginationList>
-    <PaginationItem />
+    <PaginationItem>
+      <PaginationButton />
+    </PaginationItem>
   </PaginationList>
 </Pagination>
 ```

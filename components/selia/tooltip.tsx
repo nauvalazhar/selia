@@ -1,4 +1,4 @@
-import { Tooltip as BaseTooltip } from '@base-ui-components/react/tooltip';
+import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip';
 import { cn } from 'lib/utils';
 
 export function Tooltip({
@@ -13,20 +13,40 @@ export function TooltipTrigger({
   return <BaseTooltip.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
-export function TooltipContent({
-  popupProps,
+export function TooltipPopup({
   children,
   className,
+  align,
+  alignOffset,
+  side,
+  sideOffset,
+  anchor,
+  sticky,
+  positionMethod,
   ...props
-}: React.ComponentProps<typeof BaseTooltip.Positioner> & {
-  popupProps?: BaseTooltip.Popup.Props;
+}: React.ComponentProps<typeof BaseTooltip.Popup> & {
+  align?: BaseTooltip.Positioner.Props['align'];
+  alignOffset?: BaseTooltip.Positioner.Props['alignOffset'];
+  side?: BaseTooltip.Positioner.Props['side'];
+  sideOffset?: BaseTooltip.Positioner.Props['sideOffset'];
+  anchor?: BaseTooltip.Positioner.Props['anchor'];
+  sticky?: BaseTooltip.Positioner.Props['sticky'];
+  positionMethod?: BaseTooltip.Positioner.Props['positionMethod'];
 }) {
   return (
     <BaseTooltip.Portal>
-      <BaseTooltip.Positioner sideOffset={6} {...props}>
+      <BaseTooltip.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset || 12}
+        anchor={anchor}
+        sticky={sticky}
+        positionMethod={positionMethod}
+      >
         <BaseTooltip.Popup
-          data-slot="tooltip-content"
-          {...popupProps}
+          data-slot="tooltip-popup"
+          {...props}
           className={cn(
             'bg-tertiary text-tertiary-foreground rounded shadow',
             'text-sm p-2 outline-none transition-[transform,scale,opacity]',

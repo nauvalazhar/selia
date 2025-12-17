@@ -3,34 +3,23 @@ import { Button } from './selia/button';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { Suspense, useRef, useState } from 'react';
 import { Spinner } from './selia/spinner';
-import ShikiHighlighter from 'react-shiki/core';
-import { createHighlighterCore, createJavaScriptRegexEngine } from 'shiki';
 import { useParams } from 'react-router';
 import * as ALL_EXAMPLES from 'components/examples';
-import { ScrollArea } from '@base-ui-components/react';
-
-const highlighter = await createHighlighterCore({
-  themes: [import('@shikijs/themes/ayu-dark')],
-  langs: [
-    import('@shikijs/langs/tsx'),
-    import('@shikijs/langs/typescript'),
-    import('@shikijs/langs/css'),
-  ],
-  engine: createJavaScriptRegexEngine(),
-});
+import { Tabs, TabsItem, TabsList, TabsPanel } from 'components/selia/tabs';
+import { CodeBlock } from 'components/code-block';
 
 export function Preview({
   children,
   component,
-  title,
   name,
   sources,
+  start,
 }: {
   component?: string;
   children: React.ReactNode;
-  title?: string;
   name: string;
   sources: Record<string, string>;
+  start?: boolean;
 }) {
   const { path } = useParams();
   const pathname = path?.replace(/-([a-z])/g, (_, letter) =>
@@ -44,44 +33,51 @@ export function Preview({
     exampleComponents[name as keyof typeof exampleComponents].component;
 
   return (
-    <div className="max-md:-mx-4">
-      <div
-        className={cn(
-          'relative md:p-0.5 lg:bg-surface-01 w-full md:ring ring-border-01 md:rounded-3xl mb-6 flex flex-col my-4',
-        )}
-      >
-        {title && (
-          <div className="px-6 h-14 flex items-center border-b border-border-01 w-full">
-            <span className="text-sm font-medium text-dim">{title}</span>
-          </div>
-        )}
-
+    <Tabs className="my-6 flex flex-col items-start" defaultValue="preview">
+      <TabsList className="inline-flex rounded-3xl *:rounded-3xl">
+        <TabsItem value="preview">Preview</TabsItem>
+        <TabsItem value="code">Code</TabsItem>
+      </TabsList>
+      <TabsPanel value="preview" className="w-full">
         {ExampleComponent && (
-          <PreviewDemo>
+          <PreviewDemo start={start}>
             <ExampleComponent />
           </PreviewDemo>
         )}
+      </TabsPanel>
 
+      <TabsPanel value="code" className="w-full">
         {sources && sources[name] && <PreviewCode>{sources[name]}</PreviewCode>}
-      </div>
-    </div>
+      </TabsPanel>
+    </Tabs>
   );
 }
 
 export function PreviewDemo({
   children,
+  start,
   ...props
-}: React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & { start?: boolean }) {
   return (
     <div
       className={cn(
-        'flex min-h-40 bg-surface-00 items-center justify-center flex-wrap',
-        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap md:rounded-3xl border border-border dark:border-border-01',
+        'flex min-h-[500px] bg-background items-center justify-center flex-wrap',
+        'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border',
+        'overflow-auto relative',
       )}
       {...props}
     >
-      <div className="flex items-center justify-center flex-wrap gap-x-2.5 gap-y-4 w-full">
-        <Suspense fallback={<Spinner className="size-6" />}>
+      <div
+        className={cn(
+          'flex items-center flex-wrap gap-x-2.5 gap-y-4 w-full',
+          start ? 'justify-start' : 'justify-center',
+        )}
+      >
+        <Suspense
+          fallback={
+            <Spinner className="size-6 absolute left-1/2 top-1/2 -translate-1/2" />
+          }
+        >
           {children}
         </Suspense>
       </div>
@@ -105,62 +101,38 @@ export function PreviewCode({ children }: { children: string }) {
   };
 
   return (
-    <div className="px-4 md:px-0">
-      <div
-        ref={ref}
-        className={cn(
-          '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
-          'bg-surface-01 md:bg-transparent rounded-3xl md:rounded-none p-1 md:p-0 mt-2 md:mt-0',
-        )}
-      >
-        <div className="w-full border-b border-border-01 flex justify-between items-center py-2 px-2.5 dark">
-          <span className="text-sm font-medium text-white/50 select-none">
-            Source
-          </span>
-          <Button
-            size="xs"
-            variant="secondary-subtle"
-            pill
-            className="text-muted text-sm"
-            onClick={handleCopy}
-          >
-            {isCopied ? (
-              <>
-                <CheckIcon /> Copied
-              </>
-            ) : (
-              <>
-                <CopyIcon /> Copy
-              </>
-            )}
-          </Button>
-        </div>
-        <ScrollArea.Root>
-          <ScrollArea.Viewport className="h-full overscroll-contain overflow-auto max-h-72">
-            <ShikiHighlighter
-              language="tsx"
-              theme="ayu-dark"
-              className="**:[pre]:!p-0 **:[pre]:!overflow-visible"
-              showLanguage={false}
-              highlighter={highlighter}
-            >
-              {children}
-            </ShikiHighlighter>
-          </ScrollArea.Viewport>
-          <ScrollArea.Scrollbar
-            className={cn(
-              'flex w-1 justify-center',
-              'opacity-0 transition-opacity delay-300 pointer-events-none',
-              'data-[hovering]:opacity-100 data-[hovering]:delay-0',
-              'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
-              'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
-              'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
-            )}
-          >
-            <ScrollArea.Thumb className="w-full rounded bg-surface-04" />
-          </ScrollArea.Scrollbar>
-        </ScrollArea.Root>
+    <div
+      ref={ref}
+      className={cn(
+        '**:[pre]:!bg-transparent **:[pre]:p-4 **:[pre]:outline-none **:[code]:leading-relaxed',
+        'bg-code rounded-3xl p-1 mt-2 md:mt-0 ring ring-border',
+      )}
+    >
+      <div className="w-full flex justify-between items-center py-2 px-4 border-b border-border">
+        <span className="text-sm font-medium text-foreground select-none">
+          Source
+        </span>
+        <Button
+          size="xs"
+          variant="secondary"
+          pill
+          onClick={handleCopy}
+          className="text-sm"
+        >
+          {isCopied ? (
+            <>
+              <CheckIcon /> Copied
+            </>
+          ) : (
+            <>
+              <CopyIcon /> Copy
+            </>
+          )}
+        </Button>
       </div>
+      <CodeBlock language="tsx" className="h-[500px]">
+        {children}
+      </CodeBlock>
     </div>
   );
 }

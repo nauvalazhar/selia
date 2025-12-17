@@ -46,7 +46,10 @@ export async function highlightExamples(
 }
 
 export const highlighter = await createHighlighterCore({
-  themes: [import('@shikijs/themes/ayu-dark')],
+  themes: [
+    import('@shikijs/themes/github-dark'),
+    import('@shikijs/themes/github-light'),
+  ],
   langs: [
     import('@shikijs/langs/tsx'),
     import('@shikijs/langs/typescript'),

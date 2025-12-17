@@ -1,4 +1,5 @@
-import { NumberField as BaseNumberField } from '@base-ui-components/react/number-field';
+import { NumberField as BaseNumberField } from '@base-ui/react/number-field';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
 export function NumberField({
@@ -53,26 +54,41 @@ export function NumberFieldScrubAreaCursor({
   );
 }
 
+export const NumberFieldGroupVariants = cva(
+  [
+    'flex h-9.5 rounded',
+    'hover:not-[:focus-within]:ring-input-accent-border',
+    'focus-within:ring-2 focus-within:ring-primary focus-within:outline-0',
+    '**:[svg]:size-4.5',
+    '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
+    '*:[button]:transition-all *:[button]:duration-100',
+    '*:first:rounded-l *:last:rounded-r',
+    '*:[button]:hover:bg-accent',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'ring ring-input-border bg-input shadow-input',
+        plain: 'bg-transparent hover:bg-accent',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
 export function NumberFieldGroup({
   className,
+  variant,
   ...props
-}: React.ComponentProps<typeof BaseNumberField.Group>) {
+}: React.ComponentProps<typeof BaseNumberField.Group> &
+  VariantProps<typeof NumberFieldGroupVariants>) {
   return (
     <BaseNumberField.Group
       data-slot="number-field-group"
       {...props}
-      className={cn(
-        'flex h-9.5 rounded',
-        'ring ring-input-border bg-input shadow-input',
-        'hover:ring-input-accent-border',
-        '**:[svg]:size-4.5',
-        '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
-        '*:[button]:transition-all *:[button]:duration-100',
-        '*:first:border-r *:last:border-l *:border-input-border',
-        '*:first:rounded-l *:last:rounded-r',
-        '*:[button]:hover:bg-accent',
-        className,
-      )}
+      className={cn(NumberFieldGroupVariants({ variant, className }))}
     />
   );
 }
@@ -112,9 +128,8 @@ export function NumberFieldInput({
       data-slot="number-field-input"
       {...props}
       className={cn(
-        'w-20 px-2.5 z-10 text-center',
+        'w-20 px-2.5 z-10 text-center outline-none',
         'text-foreground placeholder:text-dimmed transition-all',
-        'hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2',
         'disabled:opacity-70 disabled:pointer-events-none',
         className,
       )}

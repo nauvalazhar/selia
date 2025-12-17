@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRender } from '@base-ui-components/react/use-render';
+import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
@@ -7,8 +7,8 @@ export const buttonVariants = cva(
   [
     'relative font-medium select-none',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
-    'after:absolute after:inset-0 after:bg-white/10 after:opacity-0 hover:after:opacity-100',
-    'active:after:opacity-100 after:transition-opacity',
+    'after:absolute after:inset-0 after:bg-white/15 after:opacity-0 hover:after:opacity-100',
+    'active:after:opacity-100 data-popup-open:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
@@ -18,80 +18,37 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          'bg-gradient-primary text-primary-foreground',
+          'bg-primary text-primary-foreground **:[svg]:text-primary-foreground',
           'ring ring-primary-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-primary',
         ],
-        'primary-subtle': [
-          'bg-primary/15 hover:bg-primary/25 active:bg-primary/25 text-primary',
-          'after:content-none outline-primary',
-        ],
-        'primary-outline': [
-          'text-primary',
-          'border border-primary hover:bg-primary/15 active:bg-primary/15',
-          'after:content-none outline-primary',
-        ],
-        'primary-plain': [
-          'text-primary hover:bg-primary/25 active:bg-primary/25',
-          'after:content-none outline-primary',
-        ],
         secondary: [
-          'bg-gradient-secondary text-secondary-foreground',
+          'bg-secondary text-secondary-foreground **:[svg]:text-secondary-foreground',
           'ring ring-secondary-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-secondary',
         ],
-        'secondary-subtle': [
-          'bg-secondary/50 hover:bg-secondary/90 active:bg-secondary/90 text-secondary-foreground',
-          'after:content-none outline-secondary',
-        ],
-        'secondary-outline': [
-          'text-secondary-foreground',
-          'border border-secondary hover:bg-secondary/15 active:bg-secondary/15',
-          'after:content-none outline-secondary',
-        ],
-        'secondary-plain': [
-          'text-secondary-foreground hover:bg-secondary/60 active:bg-secondary/60',
-          'after:content-none outline-secondary shadow-none',
-        ],
         tertiary: [
-          'bg-gradient-tertiary hover:bg-gradient-tertiary/90 active:bg-gradient-tertiary/90 text-tertiary-foreground',
+          'bg-tertiary text-tertiary-foreground **:[svg]:text-tertiary-foreground',
           'ring ring-tertiary-border',
           'inset-shadow-2xs inset-shadow-background/15 shadow',
           'after:rounded after:bg-background/10 focus-visible:outline-tertiary',
         ],
-        'tertiary-subtle': [
-          'bg-tertiary/15 hover:bg-tertiary/25 active:bg-tertiary/25 text-tertiary',
-          'after:content-none outline-tertiary',
-        ],
-        'tertiary-outline': [
-          'text-tertiary',
-          'border border-tertiary hover:bg-tertiary/15 active:bg-tertiary/15',
-          'after:content-none outline-tertiary',
-        ],
-        'tertiary-plain': [
-          'text-tertiary hover:bg-tertiary/25 active:bg-tertiary/25',
-          'after:content-none outline-tertiary',
-        ],
         danger: [
-          'bg-gradient-danger text-danger-foreground',
+          'bg-danger text-danger-foreground **:[svg]:text-danger-foreground',
           'ring ring-danger-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-danger',
         ],
-        'danger-subtle': [
-          'bg-danger/15 hover:bg-danger/25 active:bg-danger/25 text-danger',
-          'after:content-none outline-danger',
+        outline: [
+          'text-foreground **:[svg]:text-foreground shadow',
+          'ring ring-border hover:bg-accent data-popup-open:bg-accent active:bg-accent',
+          'after:content-none outline-border',
         ],
-        'danger-outline': [
-          'text-danger',
-          'border border-danger hover:bg-danger/15 active:bg-danger/15',
-          'after:content-none outline-danger',
-        ],
-        'danger-plain': [
-          'text-danger hover:bg-danger/25 active:bg-danger/25',
-          'after:content-none outline-danger',
+        plain: [
+          'text-foreground hover:bg-accent data-popup-open:bg-accent active:bg-accent **:[svg]:text-foreground',
+          'after:content-none outline-border',
         ],
       },
       size: {
@@ -146,6 +103,7 @@ export function Button({
     render,
     props: {
       'data-slot': 'button',
+      'data-size': size,
       ...props,
       className: cn(
         buttonVariants({ variant, size, pill, progress, block, className }),

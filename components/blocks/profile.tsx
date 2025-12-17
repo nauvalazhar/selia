@@ -47,7 +47,7 @@ export default function ProfileBlock() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <Button variant="secondary-subtle" size="lg" block>
+            <Button variant="secondary" size="lg" block>
               Message
             </Button>
             <Button variant="tertiary" size="lg" block>
@@ -94,7 +94,7 @@ export default function ProfileBlock() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <Button variant="secondary-subtle" size="lg" block>
+            <Button variant="secondary" size="lg" block>
               Message
             </Button>
             <Button variant="tertiary" size="lg" block>
@@ -154,7 +154,7 @@ export default function ProfileBlock() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <Button variant="secondary-subtle" size="lg" block>
+            <Button variant="secondary" size="lg" block>
               Message
             </Button>
             <Button variant="tertiary" size="lg" block>
@@ -212,7 +212,7 @@ export default function ProfileBlock() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <Button variant="secondary-subtle" size="lg" block>
+            <Button variant="secondary" size="lg" block>
               Message
             </Button>
             <Button variant="tertiary" size="lg" block>
@@ -269,7 +269,7 @@ export default function ProfileBlock() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <Button variant="secondary-subtle" size="lg" block>
+            <Button variant="secondary" size="lg" block>
               Message
             </Button>
             <Button variant="tertiary" size="lg" block>
@@ -324,7 +324,7 @@ export default function ProfileBlock() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <Button variant="secondary-subtle" size="lg" block>
+            <Button variant="secondary" size="lg" block>
               Message
             </Button>
             <Button variant="tertiary" size="lg" block>
@@ -385,7 +385,7 @@ export default function ProfileBlock() {
             <Button variant="tertiary" size="lg" block>
               Get In Touch
             </Button>
-            <Button variant="secondary-subtle" size="lg-icon">
+            <Button variant="secondary" size="lg-icon">
               <ShareIcon />
             </Button>
           </div>
@@ -441,7 +441,7 @@ export default function ProfileBlock() {
             <Button variant="tertiary" size="lg" block>
               Get In Touch
             </Button>
-            <Button variant="secondary-subtle" size="lg-icon">
+            <Button variant="secondary" size="lg-icon">
               <ShareIcon />
             </Button>
           </div>

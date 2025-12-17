@@ -11,11 +11,11 @@ const componentDescriptions = {
   Checkbox: 'Allow users to select multiple options from a set of choices.',
   Chip: 'Interactive compact elements for tags, filters, or selections.',
   Combobox:
-    'Combined input and dropdown for selecting or entering values with autocomplete.',
+    'Combined input and menu for selecting or entering values with autocomplete.',
   Dialog:
     'Modal windows that focus user attention on specific content or actions.',
   Divider: 'Visual separator to organize and divide content sections.',
-  Dropdown: 'Reveal a list of actions or options when triggered by a button.',
+  Menu: 'Reveal a list of actions or options when triggered by a button.',
   Field: 'Wrapper component for form inputs with label and validation support.',
   Fieldset:
     'Group related form controls with an optional legend or description.',
@@ -36,7 +36,7 @@ const componentDescriptions = {
     'Display additional content in a floating overlay near a trigger element.',
   Progress: 'Visual indicators showing task completion or loading status.',
   Radio: 'Allow users to select a single option from a set of choices.',
-  Select: 'Dropdown menu for choosing single option from a list.',
+  Select: 'Menu menu for choosing single option from a list.',
   Separator:
     'Dividing element to create visual distinction between content groups.',
   Sidebar:
