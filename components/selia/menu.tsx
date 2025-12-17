@@ -24,17 +24,23 @@ export const menuPopupVariants = cva(
     variants: {
       size: {
         sm: [
-          '**:data-[slot=menu-item]:px-1.5',
-          '**:data-[slot=menu-item]:py-1',
-          '**:data-[slot=menu-item]:rounded-sm',
+          '**:data-[slot$=item]:gap-2.5',
+          '**:data-[slot$=item]:px-2',
+          '**:data-[slot$=item]:py-1.5',
+          '**:data-[slot=menu-checkbox-item]:pl-8.5',
+          '**:data-[slot=menu-checkbox-item]:data-[checked]:pl-2',
+          '**:data-[slot$=item]:rounded-sm',
           '**:data-[slot=menu-submenu-trigger]:px-1.5',
           '**:data-[slot=menu-submenu-trigger]:py-1',
           '**:data-[slot=menu-submenu-trigger]:rounded-sm',
         ],
         md: [
-          '**:data-[slot=menu-item]:px-3',
-          '**:data-[slot=menu-item]:py-2.5',
-          '**:data-[slot=menu-item]:rounded',
+          '**:data-[slot$=item]:gap-3.5',
+          '**:data-[slot$=item]:px-3',
+          '**:data-[slot$=item]:py-2.5',
+          '**:data-[slot=menu-checkbox-item]:pl-10',
+          '**:data-[slot=menu-checkbox-item]:data-[checked]:pl-2.5',
+          '**:data-[slot$=item]:rounded',
           '**:data-[slot=menu-submenu-trigger]:px-3',
           '**:data-[slot=menu-submenu-trigger]:py-2.5',
           '**:data-[slot=menu-submenu-trigger]:rounded',
@@ -93,7 +99,7 @@ export function MenuPopup({
 }
 
 const menuItemClassName = [
-  'flex items-center text-popover-foreground gap-3.5',
+  'flex items-center text-popover-foreground',
   'cursor-default select-none',
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
   'data-[popup-open]:bg-popover-accent',
@@ -210,11 +216,7 @@ export function MenuCheckboxItem({
     <BaseMenu.CheckboxItem
       data-slot="menu-checkbox-item"
       {...props}
-      className={cn(
-        menuItemClassName,
-        'pl-10 data-[checked]:pl-2.5',
-        props.className,
-      )}
+      className={cn(menuItemClassName, props.className)}
     >
       <BaseMenu.CheckboxItemIndicator className="w-4">
         <svg

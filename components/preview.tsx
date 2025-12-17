@@ -126,7 +126,9 @@ export function PreviewCode({ children }: { children: string }) {
           )}
         </Button>
       </div>
-      <CodeBlock language="tsx">{children}</CodeBlock>
+      <CodeBlock language="tsx" className="h-[500px]">
+        {children}
+      </CodeBlock>
     </div>
   );
 }

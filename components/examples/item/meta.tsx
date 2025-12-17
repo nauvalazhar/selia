@@ -26,13 +26,13 @@ export default function ItemMetaExample() {
           <ItemMeta className="mb-2.5">5 minutes ago</ItemMeta>
           <ItemDescription>Don't let me leave, Murph!</ItemDescription>
           <div className="-mx-2 mt-2.5">
-            <Button size="xs" variant="tertiary-plain" pill>
+            <Button size="xs" variant="plain" pill>
               Reply
             </Button>
           </div>
         </ItemContent>
         <ItemAction>
-          <Button size="xs-icon" pill variant="tertiary-plain">
+          <Button size="xs-icon" pill variant="plain">
             <HeartIcon />
           </Button>
         </ItemAction>

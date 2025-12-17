@@ -17,6 +17,10 @@ export async function getSidebarMenu() {
           path: '/docs/installation',
         },
         {
+          name: 'Composition',
+          path: '/docs/composition',
+        },
+        {
           name: 'Customization',
           path: '/docs/customization',
         },

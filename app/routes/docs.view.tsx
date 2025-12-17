@@ -15,7 +15,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import { componentName } from '~/lib/utils';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
-import { ChevronLeftIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, InfoIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { getSources } from '~/lib/source';
 import { Alert, AlertDescription, AlertTitle } from 'components/selia/alert';
@@ -169,14 +169,14 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
       >
         {menuNextPrev.prev && (
           <Link to={menuNextPrev.prev.path}>
-            <ChevronLeftIcon />
+            <ArrowLeftIcon />
             {menuNextPrev.prev.name}
           </Link>
         )}
         {menuNextPrev.next && (
           <Link to={menuNextPrev.next.path}>
             {menuNextPrev.next.name}
-            <ChevronRightIcon />
+            <ArrowRightIcon />
           </Link>
         )}
       </div>

@@ -54,7 +54,7 @@ export default function SidebarChat() {
             <img src="/selia.png" alt="Selia" className="size-8" />
             <span className="font-semibold text-lg">Chat</span>
           </SidebarLogo>
-          <Button variant="secondary-plain" size="sm-icon">
+          <Button variant="plain" size="sm-icon">
             <SidebarCloseIcon />
           </Button>
         </div>

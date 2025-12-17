@@ -1,0 +1,95 @@
+# Composition
+
+A guide to composing Selia components.
+
+<DocsButtons />
+
+Selia strives for visual cohesion. Components are meant to work beautifully together right out of the box, with minimal configuration required.
+
+## Design Approach
+
+We achieve this through two key mechanisms:
+
+### 1. Plain Variant
+
+Some components include a `plain` variant that strips away visual styling like backgrounds, borders, and shadows. This allows them to be seamlessly nested inside other components without visual conflicts.
+
+The `plain` variant can mean different things depending on the component. In `Button`, `plain` removes the background color in its normal state while adding visual emphasis on hover. However, in components like InputGroup, `plain` is primarily intended for composition—stripping away styling so it can be nested within other components, as we do with `Command`.
+
+### 2. Contextual Styling
+
+Parent components apply contextual styling to their children via `data-slot` attributes. This ensures composed components look cohesive without manual styling.
+
+```tsx filename="selia/command.tsx"
+<DialogPopup className="[&_[data-slot=input-group]]:border-b [&_[data-slot=input-group]]:px-2.5">
+  {children}
+</DialogPopup>
+```
+
+Not all components require the `plain` variant for composition. For example, the `Input` component within `InputGroup` automatically has its background, shadow, and border removed—because in this context, `Input` is already part of `InputGroup`'s control structure.
+
+## Why This Approach?
+
+We expect certain components to be frequently composed together. Rather than requiring you to add styling manually each time, we handle it by default.
+
+### Common Composition Patterns
+
+Here are some common examples:
+<br />
+
+**Command with InputGroup:**
+```tsx filename="InputGroup in Command"
+<Command>
+  ...
+  <InputGroup variant="plain">
+    <Input placeholder="Search..." />
+  </InputGroup>
+  ...
+</Command>
+```
+
+Here, `variant="plain"` removes `InputGroup`'s default styling, while Command applies its own contextual styling (height, padding) to match its design.
+<br />
+
+**Table in Card:**
+```tsx filename="TableContainer in Card Body"
+<Card>
+  <CardBody>
+    <TableContainer>
+      ...
+    </TableContainer>
+  </CardBody>
+</Card>
+```
+
+The `CardBody` component applies negative margins to `TableContainer` children, creating a clean edge-to-edge layout without the table being cramped by the card's padding.
+
+<br />
+**Item in Menu:**
+```tsx filename="Item as MenuRadioItem"
+<Menu>
+  ...
+  <MenuRadioItem
+    render={<Item variant="plain" />}
+  >
+    <ItemMedia>
+      <Avatar size="sm">
+        <AvatarImage
+          src="..."
+          alt="Avatar"
+        />
+        <AvatarFallback>NA</AvatarFallback>
+      </Avatar>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Nauval Azhar</ItemTitle>
+      <ItemDescription className="text-sm">
+        nauval@azhar.com
+      </ItemDescription>
+    </ItemContent>
+  </MenuRadioItem>
+  ...
+</Menu>
+```
+
+The `Item` component adapts its styling when used inside `Menu`, maintaining consistent padding and hover states.

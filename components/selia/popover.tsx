@@ -49,7 +49,7 @@ export function PopoverPopup({
           {...props}
           className={cn(
             'flex flex-col gap-1.5 items-start text-popover-foreground',
-            'bg-popover ring ring-popover-border rounded shadow',
+            'bg-popover ring ring-popover-border rounded shadow-popover',
             'p-4 outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
