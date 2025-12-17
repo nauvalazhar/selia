@@ -103,6 +103,7 @@ export function Button({
     render,
     props: {
       'data-slot': 'button',
+      'data-size': size,
       ...props,
       className: cn(
         buttonVariants({ variant, size, pill, progress, block, className }),

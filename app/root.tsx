@@ -11,7 +11,7 @@ import {
 
 import type { Route } from './+types/root';
 import './selia.css';
-import { ToastProvider } from 'components/selia/toast';
+import { Toast } from 'components/selia/toast';
 import { getSidebarMenu } from './lib/sidebar';
 import { Cmdk } from 'components/cmdk';
 import { blocks } from 'components/blocks';
@@ -127,9 +127,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
       </head>
       <body className="bg-background">
-        <ToastProvider>
-          <div className="root">{children}</div>
-        </ToastProvider>
+        <div className="root">{children}</div>
+        <Toast />
         <Cmdk items={items} />
         <ScrollRestoration />
         <Scripts />

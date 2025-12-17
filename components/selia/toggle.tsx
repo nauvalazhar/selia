@@ -40,6 +40,7 @@ export function Toggle({
   return (
     <BaseToggle
       data-slot="toggle"
+      data-size={size}
       className={cn(toggleVariants({ variant, size, className }))}
       {...props}
     >

@@ -5,7 +5,7 @@ import { cn } from 'lib/utils';
 export const toastManager = BaseToast.createToastManager();
 export const anchoredToastManager = BaseToast.createToastManager();
 
-export function ToastProvider({ children }: BaseToast.Provider.Props) {
+export function Toast() {
   return (
     <>
       <BaseToast.Provider toastManager={toastManager}>
@@ -14,8 +14,6 @@ export function ToastProvider({ children }: BaseToast.Provider.Props) {
       <BaseToast.Provider toastManager={anchoredToastManager}>
         <AnchoredToasts />
       </BaseToast.Provider>
-
-      {children}
     </>
   );
 }

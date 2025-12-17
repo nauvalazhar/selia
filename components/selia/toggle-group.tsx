@@ -3,31 +3,54 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
 export const toggleGroupVariants = cva(
-  ['flex items-center gap-0.5 ring rounded'],
+  [
+    'flex items-center gap-0.5 ring rounded p-0.5',
+    '*:data-[slot=toggle]:shadow-none',
+    '*:data-[slot=toggle]:ring-0',
+  ],
   {
     variants: {
       variant: {
-        default: [
-          'ring-border shadow',
-          '*:data-[slot=toggle]:shadow-none',
-          '*:data-[slot=toggle]:ring-0',
+        default: 'ring-border shadow',
+        outline: 'ring-border',
+        plain: 'ring-transparent',
+      },
+      size: {
+        sm: [
+          '*:data-[slot=toggle]:px-3',
+          '*:data-[slot=toggle]:h-[calc(var(--spacing)*8.5-4px)]',
+          '*:data-[slot=toggle]:min-w-[calc(var(--spacing)*8.5-4px)]',
         ],
-        outline: [
-          'ring-border',
-          '*:data-[slot=toggle]:shadow-none',
-          '*:data-[slot=toggle]:ring-0',
+        'sm-icon': [
+          '*:data-[slot=toggle]:size-[calc(var(--spacing)*8.5-4px)]',
+          '*:data-[slot=toggle]:min-w-[calc(var(--spacing)*8.5-4px)]',
+          '*:data-[slot=toggle]:px-0',
         ],
-        plain: 'ring-transparent gap-2.5',
+        md: [
+          '*:data-[slot=toggle]:h-[calc(var(--spacing)*9.5-4px)]',
+          '*:data-[slot=toggle]:min-w-[calc(var(--spacing)*9.5-4px)]',
+        ],
+        'md-icon': [
+          '*:data-[slot=toggle]:size-[calc(var(--spacing)*9.5-4px)]',
+          '*:data-[slot=toggle]:px-0',
+        ],
+      },
+      orientation: {
+        horizontal: 'flex-row',
+        vertical: 'flex-col',
       },
     },
     defaultVariants: {
       variant: 'default',
+      size: 'md',
     },
   },
 );
 
 export function ToggleGroup({
   className,
+  orientation,
+  size,
   variant,
   ...props
 }: React.ComponentProps<typeof BaseToggleGroup> &
@@ -35,7 +58,9 @@ export function ToggleGroup({
   return (
     <BaseToggleGroup
       data-slot="toggle-group"
-      className={cn(toggleGroupVariants({ variant, className }))}
+      className={cn(
+        toggleGroupVariants({ variant, orientation, size, className }),
+      )}
       {...props}
     />
   );
