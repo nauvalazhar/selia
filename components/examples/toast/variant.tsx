@@ -1,5 +1,5 @@
 import { Button } from 'components/selia/button';
-import { toast } from 'components/selia/toast';
+import { toastManager } from 'components/selia/toast';
 
 export default function ToastBasicExample() {
   return (
@@ -7,7 +7,8 @@ export default function ToastBasicExample() {
       <Button
         variant="secondary"
         onClick={() =>
-          toast('Default Toast', {
+          toastManager.add({
+            title: 'Default Toast',
             description: 'This is a default toast',
           })
         }
@@ -17,8 +18,10 @@ export default function ToastBasicExample() {
       <Button
         variant="secondary"
         onClick={() =>
-          toast.info('Info Toast', {
+          toastManager.add({
+            title: 'Info Toast',
             description: 'This is a info toast',
+            type: 'info',
           })
         }
       >
@@ -27,8 +30,10 @@ export default function ToastBasicExample() {
       <Button
         variant="secondary"
         onClick={() =>
-          toast.success('Success Toast', {
+          toastManager.add({
+            title: 'Success Toast',
             description: 'This is a success toast',
+            type: 'success',
           })
         }
       >
@@ -37,8 +42,10 @@ export default function ToastBasicExample() {
       <Button
         variant="secondary"
         onClick={() =>
-          toast.warning('Warning Toast', {
+          toastManager.add({
+            title: 'Warning Toast',
             description: 'This is a warning toast',
+            type: 'warning',
           })
         }
       >
@@ -47,8 +54,10 @@ export default function ToastBasicExample() {
       <Button
         variant="secondary"
         onClick={() =>
-          toast.error('Error Toast', {
+          toastManager.add({
+            title: 'Error Toast',
             description: 'This is a error toast',
+            type: 'error',
           })
         }
       >

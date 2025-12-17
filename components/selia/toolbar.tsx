@@ -1,4 +1,4 @@
-import { Toolbar as BaseToolbar } from '@base-ui-components/react/toolbar';
+import { Toolbar as BaseToolbar } from '@base-ui/react/toolbar';
 import { cn } from 'lib/utils';
 
 export function Toolbar({

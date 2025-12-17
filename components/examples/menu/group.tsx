@@ -25,7 +25,7 @@ export default function MenuGroupExample() {
     <Menu>
       <MenuTrigger
         render={
-          <Button variant="tertiary">
+          <Button variant="secondary">
             Menu <ChevronDownIcon />
           </Button>
         }

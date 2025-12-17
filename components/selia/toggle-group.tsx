@@ -1,4 +1,4 @@
-import { ToggleGroup as BaseToggleGroup } from '@base-ui-components/react/toggle-group';
+import { ToggleGroup as BaseToggleGroup } from '@base-ui/react/toggle-group';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 

@@ -14,7 +14,7 @@ export default function MenuExample() {
       <Menu>
         <MenuTrigger
           render={
-            <Button>
+            <Button variant="secondary">
               Menu <ChevronDownIcon />
             </Button>
           }

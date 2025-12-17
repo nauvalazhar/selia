@@ -1,39 +1,149 @@
+import { Toast as BaseToast, type ToastObject } from '@base-ui/react/toast';
 import { buttonVariants } from './button';
 import { cn } from 'lib/utils';
-import {
-  Toaster,
-  toast as sonnerToast,
-  type ToastClassnames,
-  type ToasterProps,
-} from 'sonner';
 
-const toastClasses: ToastClassnames = {
-  toast: cn(
-    'bg-toast border border-toast-border rounded p-4 w-(--width) gap-0.5',
-    'flex items-start gap-2.5 overflow-hidden shadow',
-    'data-[type=success]:**:data-icon:*:[svg]:fill-success/20',
-    'data-[type=success]:**:data-icon:*:[svg]:stroke-success',
-    'data-[type=info]:**:data-icon:*:[svg]:fill-info/20',
-    'data-[type=info]:**:data-icon:*:[svg]:stroke-info',
-    'data-[type=warning]:**:data-icon:*:[svg]:fill-warning/20',
-    'data-[type=warning]:**:data-icon:*:[svg]:stroke-warning',
-    'data-[type=error]:**:data-icon:*:[svg]:fill-danger/20',
-    'data-[type=error]:**:data-icon:*:[svg]:stroke-danger',
-    '*:data-[slot=button]:ml-auto',
-    '*:data-[slot=button]:self-center',
-    '**:data-[slot=item]:p-0',
-  ),
-  icon: '*:[svg]:size-5 relative has-[.sonner-loader]:size-5',
-  title: 'text-toast-foreground font-medium',
-  description: 'text-muted',
-  actionButton: buttonVariants({
-    variant: 'tertiary-subtle',
-    size: 'xs',
-    className: 'ml-auto self-center',
-  }),
-};
+export const toastManager = BaseToast.createToastManager();
+export const anchoredToastManager = BaseToast.createToastManager();
 
-const icons: ToasterProps['icons'] = {
+export function ToastProvider({ children }: BaseToast.Provider.Props) {
+  return (
+    <>
+      <BaseToast.Provider toastManager={toastManager}>
+        <StackedToasts />
+      </BaseToast.Provider>
+      <BaseToast.Provider toastManager={anchoredToastManager}>
+        <AnchoredToasts />
+      </BaseToast.Provider>
+
+      {children}
+    </>
+  );
+}
+
+function StackedToasts() {
+  const { toasts } = BaseToast.useToastManager();
+
+  return (
+    <BaseToast.Portal>
+      <BaseToast.Viewport className="fixed top-4 right-0 left-0 mx-auto flex">
+        {toasts.map((toast) => (
+          <BaseToast.Root
+            key={toast.id}
+            toast={toast}
+            swipeDirection="up"
+            className={cn(
+              'absolute right-0 top-0 left-0 z-[calc(1000-var(--toast-index))] mx-auto w-sm origin-top',
+              'rounded border border-toast-border bg-toast p-4 shadow-lg select-none h-(--height)',
+              'after:absolute after:bottom-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full',
+              '[--gap:0.75rem] [--peek:0.75rem] [--scale:calc(max(0,1-(var(--toast-index)*0.1)))] [--shrink:calc(1-var(--scale))]',
+              '[--height:var(--toast-frontmost-height,var(--toast-height))] [--offset-y:calc(var(--toast-offset-y)+(var(--toast-index)*var(--gap))+var(--toast-swipe-movement-y))]',
+              '[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)+(var(--toast-index)*var(--peek))+(var(--shrink)*var(--height))))_scale(var(--scale))]',
+              '[transition:transform_0.5s_cubic-bezier(0.22,1,0.36,1),opacity_0.5s,height_0.15s]',
+              'data-[starting-style]:[transform:translateY(-150%)]',
+              'data-[ending-style]:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]',
+              'data-[ending-style]:data-[swipe-direction=left]:[transform:translateX(calc(var(--toast-swipe-movement-x)-150%))_translateY(var(--offset-y))]',
+              'data-[ending-style]:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]',
+              'data-[ending-style]:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-150%))]',
+              '[&[data-ending-style]:not([data-limited]):not([data-swipe-direction])]:[transform:translateY(-150%)]',
+              'data-[ending-style]:opacity-0',
+              'data-[limited]:opacity-0',
+              'data-[expanded]:h-[var(--toast-height)]',
+              'data-[expanded]:data-[ending-style]:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]',
+              'data-[expanded]:data-[ending-style]:data-[swipe-direction=left]:[transform:translateX(calc(var(--toast-swipe-movement-x)-150%))_translateY(var(--offset-y))]',
+              'data-[expanded]:data-[ending-style]:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]',
+              'data-[expanded]:data-[ending-style]:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-150%))]',
+              'data-[expanded]:[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--offset-y)))]',
+            )}
+          >
+            <ToastContent toast={toast} />
+          </BaseToast.Root>
+        ))}
+      </BaseToast.Viewport>
+    </BaseToast.Portal>
+  );
+}
+
+function AnchoredToasts() {
+  const { toasts } = BaseToast.useToastManager();
+
+  return (
+    <BaseToast.Portal>
+      <BaseToast.Viewport className="outline-0">
+        {toasts.map((toast) => (
+          <BaseToast.Positioner
+            key={toast.id}
+            toast={toast}
+            className="z-[calc(1000-var(--toast-index))]"
+          >
+            <BaseToast.Root
+              toast={toast}
+              className={cn(
+                'group flex w-max origin-(--transform-origin) flex-col outline-none',
+                'shadow bg-toast border border-toast-border rounded',
+                'transition-[transform,scale,opacity]',
+                'data-ending-style:scale-90 data-ending-style:opacity-0',
+                'data-starting-style:scale-90 data-starting-style:opacity-0',
+                toast.data?.size === 'sm' ? 'p-2' : 'p-4',
+              )}
+            >
+              <ToastContent toast={toast} />
+            </BaseToast.Root>
+          </BaseToast.Positioner>
+        ))}
+      </BaseToast.Viewport>
+    </BaseToast.Portal>
+  );
+}
+
+function ToastContent({ toast }: { toast: ToastObject<Object> }) {
+  return (
+    <BaseToast.Content
+      className={cn(
+        'overflow-hidden transition-opacity data-behind:pointer-events-none data-behind:opacity-0',
+        'data-expanded:opacity-100 data-expanded:pointer-events-auto',
+        'flex gap-2.5 items-center',
+      )}
+    >
+      {toast.type && (
+        <ToastIcon type={toast.type}>{icons[toast.type]}</ToastIcon>
+      )}
+      <div>
+        <BaseToast.Title className="text-foreground font-medium" />
+        <BaseToast.Description className="text-muted" />
+      </div>
+      <BaseToast.Action
+        className={cn(
+          'text-sm ml-auto',
+          buttonVariants({ variant: 'tertiary', size: 'xs' }),
+        )}
+      />
+    </BaseToast.Content>
+  );
+}
+
+function ToastIcon({
+  type,
+  children,
+}: {
+  type?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={cn(
+        '*:[svg]:w-4.5 self-start',
+        type === 'success' && '*:[svg]:fill-success/20 *:[svg]:stroke-success',
+        type === 'info' && '*:[svg]:fill-info/20 *:[svg]:stroke-info',
+        type === 'warning' && '*:[svg]:fill-warning/20 *:[svg]:stroke-warning',
+        type === 'error' && '*:[svg]:fill-danger/20 *:[svg]:stroke-danger',
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+const icons: Record<string, React.ReactNode> = {
   loading: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -108,18 +218,3 @@ const icons: ToasterProps['icons'] = {
     </svg>
   ),
 };
-
-export function Toast() {
-  return (
-    <Toaster
-      position="top-center"
-      icons={icons}
-      toastOptions={{
-        unstyled: true,
-        classNames: toastClasses,
-      }}
-    />
-  );
-}
-
-export { sonnerToast as toast };

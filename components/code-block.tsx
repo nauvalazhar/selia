@@ -31,7 +31,7 @@ export function CodeBlock({
           light: 'github-light',
           dark: 'github-dark',
         }}
-        defaultColor={theme}
+        defaultColor="light"
         className={cn(
           '**:[pre]:!p-0 **:[pre]:!overflow-visible **:[pre]:!bg-transparent',
         )}

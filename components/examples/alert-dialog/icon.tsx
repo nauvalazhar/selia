@@ -2,7 +2,7 @@ import {
   AlertDialog,
   AlertDialogBody,
   AlertDialogClose,
-  AlertDialogContent,
+  AlertDialogPopup,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -17,7 +17,7 @@ export default function AlertDialogBasicExample() {
   return (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="danger">Delete</Button>} />
-      <AlertDialogContent>
+      <AlertDialogPopup>
         <AlertDialogHeader>
           <IconBox variant="danger">
             <Trash2Icon />
@@ -31,9 +31,9 @@ export default function AlertDialogBasicExample() {
         </AlertDialogBody>
         <AlertDialogFooter>
           <AlertDialogClose>Cancel</AlertDialogClose>
-          <Button variant="danger">Delete</Button>
+          <AlertDialogClose render={<Button variant="danger">Delete</Button>} />
         </AlertDialogFooter>
-      </AlertDialogContent>
+      </AlertDialogPopup>
     </AlertDialog>
   );
 }

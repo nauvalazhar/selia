@@ -2,7 +2,7 @@ import {
   AlertDialog,
   AlertDialogBody,
   AlertDialogClose,
-  AlertDialogContent,
+  AlertDialogPopup,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -15,24 +15,24 @@ export default function AlertDialogBasicExample() {
   return (
     <AlertDialog>
       <AlertDialogTrigger
-        render={<Button variant="primary">Open Alert Dialog</Button>}
+        render={<Button variant="danger">Delete File</Button>}
       />
-      <AlertDialogContent>
+      <AlertDialogPopup>
         <AlertDialogHeader>
-          <AlertDialogTitle>Alert Dialog</AlertDialogTitle>
+          <AlertDialogTitle>Delete File</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogBody>
           <AlertDialogDescription>
-            Alert Dialog Description
+            Are you sure you want to delete this file?
           </AlertDialogDescription>
         </AlertDialogBody>
         <AlertDialogFooter>
-          <AlertDialogClose>Close</AlertDialogClose>
+          <AlertDialogClose>Cancel</AlertDialogClose>
           <AlertDialogClose
-            render={<Button variant="primary">Confirm</Button>}
+            render={<Button variant="danger">Delete File</Button>}
           />
         </AlertDialogFooter>
-      </AlertDialogContent>
+      </AlertDialogPopup>
     </AlertDialog>
   );
 }

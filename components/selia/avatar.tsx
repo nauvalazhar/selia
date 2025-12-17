@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar as BaseAvatar } from '@base-ui-components/react/avatar';
+import { Avatar as BaseAvatar } from '@base-ui/react/avatar';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 

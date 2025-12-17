@@ -1,4 +1,4 @@
-import { NumberField as BaseNumberField } from '@base-ui-components/react/number-field';
+import { NumberField as BaseNumberField } from '@base-ui/react/number-field';
 import { cn } from 'lib/utils';
 
 export function NumberField({
@@ -64,11 +64,11 @@ export function NumberFieldGroup({
       className={cn(
         'flex h-9.5 rounded',
         'ring ring-input-border bg-input shadow-input',
-        'hover:ring-input-accent-border',
+        'hover:not-[:focus-within]:ring-input-accent-border',
+        'focus-within:ring-2 focus-within:ring-primary focus-within:outline-0',
         '**:[svg]:size-4.5',
         '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
         '*:[button]:transition-all *:[button]:duration-100',
-        '*:first:border-r *:last:border-l *:border-input-border',
         '*:first:rounded-l *:last:rounded-r',
         '*:[button]:hover:bg-accent',
         className,
@@ -112,9 +112,8 @@ export function NumberFieldInput({
       data-slot="number-field-input"
       {...props}
       className={cn(
-        'w-20 px-2.5 z-10 text-center',
+        'w-20 px-2.5 z-10 text-center outline-none',
         'text-foreground placeholder:text-dimmed transition-all',
-        'hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2',
         'disabled:opacity-70 disabled:pointer-events-none',
         className,
       )}

@@ -3,7 +3,7 @@ import {
   Dialog,
   DialogBody,
   DialogClose,
-  DialogContent,
+  DialogPopup,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -18,9 +18,9 @@ export default function DialogIconExample() {
   return (
     <Dialog>
       <DialogTrigger render={<Button>Open Dialog</Button>} />
-      <DialogContent>
+      <DialogPopup>
         <DialogHeader>
-          <IconBox variant="secondary">
+          <IconBox>
             <MessageSquareIcon />
           </IconBox>
           <DialogTitle>Feedback</DialogTitle>
@@ -33,7 +33,7 @@ export default function DialogIconExample() {
           <DialogClose>Close</DialogClose>
           <DialogClose render={<Button>Send Feedback</Button>} />
         </DialogFooter>
-      </DialogContent>
+      </DialogPopup>
     </Dialog>
   );
 }

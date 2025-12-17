@@ -30,7 +30,6 @@ import {
 } from 'lucide-react';
 import { Menu, MenuPopup, MenuItem, MenuTrigger } from 'components/selia/menu';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/selia/avatar';
-import { Badge } from 'components/selia/badge';
 
 export default function SidebarBasicExample() {
   return (
@@ -126,13 +125,16 @@ export default function SidebarBasicExample() {
                   render={
                     <SidebarItemButton>
                       <Avatar size="sm">
-                        <AvatarImage src="/avatar05.png" alt="Avatar" />
-                        <AvatarFallback>BS</AvatarFallback>
+                        <AvatarImage
+                          src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
+                          alt="Avatar"
+                        />
+                        <AvatarFallback>RF</AvatarFallback>
                       </Avatar>
                       <div className="flex flex-col">
-                        <span className="font-medium">John Doe</span>
+                        <span className="font-medium">Rizal Fakhri</span>
                         <span className="text-sm text-muted">
-                          john.doe@example.com
+                          rizal@yayan.com
                         </span>
                       </div>
                       <ChevronsUpDownIcon className="ml-auto" />

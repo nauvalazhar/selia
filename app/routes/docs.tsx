@@ -14,7 +14,7 @@ import type { Route } from './+types/docs';
 import { cn } from 'lib/utils';
 import { Link, Outlet, redirect, useLocation, useNavigate } from 'react-router';
 import { TableOfContents } from 'components/table-of-contents';
-import { ScrollArea } from '@base-ui-components/react';
+import { ScrollArea } from '@base-ui/react';
 import { Button } from 'components/selia/button';
 import { ListTreeIcon, SidebarIcon, XIcon } from 'lucide-react';
 import { useEffect } from 'react';

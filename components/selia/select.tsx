@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Select as BaseSelect } from '@base-ui-components/react/select';
+import { Select as BaseSelect } from '@base-ui/react/select';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Chip } from './chip';
@@ -18,7 +18,7 @@ export function Select({
 
 export const selectVariants = cva(
   [
-    'h-9.5 px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-all',
+    'h-9.5 px-3.5 w-full bg-input rounded placeholder:text-dimmed transition-all',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'flex items-center gap-2.5 cursor-default',
     'data-disabled:opacity-70 data-disabled:pointer-events-none',
@@ -113,7 +113,7 @@ function SelectRenderValue({
       typeof firstValue === 'object' ? firstValue.label : firstValue;
     const additionalValues =
       value.length > 1 ? (
-        <Chip variant="secondary" className="ml-1.5" size="sm">
+        <Chip className="ml-1.5" size="sm">
           +{value.length - 1} more
         </Chip>
       ) : (

@@ -1,4 +1,4 @@
-import { Menu as BaseMenu } from '@base-ui-components/react/menu';
+import { Menu as BaseMenu } from '@base-ui/react/menu';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
@@ -115,6 +115,39 @@ export function MenuSubmenuTrigger({
         'after:bg-chevron-right-dark dark:after:bg-chevron-right after:size-4 after:ml-auto',
         props.className,
       )}
+    />
+  );
+}
+
+export function MenuSubPopup({
+  align,
+  alignOffset,
+  side,
+  sideOffset = 5,
+  anchor,
+  sticky,
+  positionMethod,
+  ...props
+}: React.ComponentProps<typeof BaseMenu.Popup> & {
+  align?: BaseMenu.Positioner.Props['align'];
+  alignOffset?: BaseMenu.Positioner.Props['alignOffset'];
+  side?: BaseMenu.Positioner.Props['side'];
+  sideOffset?: BaseMenu.Positioner.Props['sideOffset'];
+  anchor?: BaseMenu.Positioner.Props['anchor'];
+  sticky?: BaseMenu.Positioner.Props['sticky'];
+  positionMethod?: BaseMenu.Positioner.Props['positionMethod'];
+}) {
+  return (
+    <MenuPopup
+      data-slot="menu-sub-popup"
+      align={align}
+      alignOffset={alignOffset}
+      side={side}
+      sideOffset={sideOffset}
+      anchor={anchor}
+      sticky={sticky}
+      positionMethod={positionMethod}
+      {...props}
     />
   );
 }

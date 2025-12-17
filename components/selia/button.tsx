@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRender } from '@base-ui-components/react/use-render';
+import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'lib/utils';
 
@@ -18,36 +18,36 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          'bg-primary text-primary-foreground',
+          'bg-primary text-primary-foreground **:[svg]:text-primary-foreground',
           'ring ring-primary-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-primary',
         ],
         secondary: [
-          'bg-secondary text-secondary-foreground',
+          'bg-secondary text-secondary-foreground **:[svg]:text-secondary-foreground',
           'ring ring-secondary-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-secondary',
         ],
         tertiary: [
-          'bg-tertiary hover:bg-tertiary/90 active:bg-tertiary/90 text-tertiary-foreground',
+          'bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground **:[svg]:text-tertiary-foreground',
           'ring ring-tertiary-border',
           'inset-shadow-2xs inset-shadow-background/15 shadow',
           'after:rounded after:bg-background/10 focus-visible:outline-tertiary',
         ],
         danger: [
-          'bg-danger text-danger-foreground',
+          'bg-danger text-danger-foreground **:[svg]:text-danger-foreground',
           'ring ring-danger-border',
           'inset-shadow-2xs inset-shadow-white/15 shadow',
           'after:rounded outline-danger',
         ],
         outline: [
-          'text-foreground shadow',
+          'text-foreground **:[svg]:text-foreground',
           'ring ring-border hover:bg-accent active:bg-accent',
           'after:content-none outline-border',
         ],
         plain: [
-          'text-foregorund hover:bg-accent active:bg-accent',
+          'text-foreground hover:bg-accent active:bg-accent **:[svg]:text-foreground',
           'after:content-none outline-border',
         ],
       },

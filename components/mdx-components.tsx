@@ -1,4 +1,4 @@
-import { ScrollArea } from '@base-ui-components/react';
+import { ScrollArea } from '@base-ui/react';
 import { CodeTabs, CodeTabsPanel } from 'components/code-tabs';
 import { CopyButton } from 'components/copy-button';
 import { cn } from 'lib/utils';

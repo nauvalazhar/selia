@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autocomplete as BaseAutocomplete } from '@base-ui-components/react/autocomplete';
+import { Autocomplete as BaseAutocomplete } from '@base-ui/react/autocomplete';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -77,7 +77,7 @@ export function AutocompletePopup({
         align={align}
         alignOffset={alignOffset}
         side={side}
-        sideOffset={sideOffset || 6}
+        sideOffset={sideOffset || 8}
         anchor={anchor}
         sticky={sticky}
         positionMethod={positionMethod}

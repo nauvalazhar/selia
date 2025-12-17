@@ -10,6 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectList,
 } from 'components/selia/select';
 import { GuitarIcon, SearchIcon } from 'lucide-react';
 
@@ -31,15 +32,17 @@ export default function InputGroupIconExample() {
             <SelectValue placeholder="Guitar model" />
           </SelectTrigger>
           <SelectPopup>
-            <SelectItem value="telecaster">Telecaster</SelectItem>
-            <SelectItem value="les-paul">Les Paul</SelectItem>
-            <SelectItem value="gibson">Gibson</SelectItem>
-            <SelectItem value="fender">Fender</SelectItem>
-            <SelectItem value="rickenbacker">Rickenbacker</SelectItem>
-            <SelectItem value="ibanez">Ibanez</SelectItem>
-            <SelectItem value="esp">ESP</SelectItem>
-            <SelectItem value="prs">PRS</SelectItem>
-            <SelectItem value="taylor">Taylor</SelectItem>
+            <SelectList>
+              <SelectItem value="telecaster">Telecaster</SelectItem>
+              <SelectItem value="les-paul">Les Paul</SelectItem>
+              <SelectItem value="gibson">Gibson</SelectItem>
+              <SelectItem value="fender">Fender</SelectItem>
+              <SelectItem value="rickenbacker">Rickenbacker</SelectItem>
+              <SelectItem value="ibanez">Ibanez</SelectItem>
+              <SelectItem value="esp">ESP</SelectItem>
+              <SelectItem value="prs">PRS</SelectItem>
+              <SelectItem value="taylor">Taylor</SelectItem>
+            </SelectList>
           </SelectPopup>
         </Select>
       </InputGroup>

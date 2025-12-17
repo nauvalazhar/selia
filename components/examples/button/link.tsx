@@ -5,7 +5,7 @@ export default function Link() {
   return (
     <>
       <Button
-        variant="primary-subtle"
+        variant="plain"
         render={
           <a
             href="https://dev.nauv.al"

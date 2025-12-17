@@ -1,5 +1,4 @@
 import { Button } from 'components/selia/button';
-import { Text } from 'components/selia/text';
 import { ArrowRightCircleIcon } from 'lucide-react';
 import { useState } from 'react';
 
@@ -20,7 +19,6 @@ export default function ButtonIconProgressExample() {
         Send Message
         <ArrowRightCircleIcon />
       </Button>
-      <Text className="text-sm">(Click the button to see the loading)</Text>
     </div>
   );
 }

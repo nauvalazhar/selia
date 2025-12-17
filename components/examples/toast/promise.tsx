@@ -1,28 +1,40 @@
 import { Button } from 'components/selia/button';
-import { toast } from 'components/selia/toast';
+import { toastManager } from 'components/selia/toast';
 
 export default function ToastPromiseExample() {
   return (
     <Button
       variant="primary"
       onClick={() => {
-        const promise = new Promise<{ name: string }>((resolve) => {
-          setTimeout(() => {
-            resolve({
-              name: 'MacBook Pro',
-            });
-          }, 1000);
-        });
-
-        toast.promise(promise, {
-          loading: 'Adding to cart...',
-          success: (data: { name: string }) => {
-            return {
-              message: 'Added to cart',
-              description: `You have added ${data.name} to your cart!`,
-            };
+        toastManager.promise(
+          new Promise<string>((resolve, reject) => {
+            const shouldSucceed = Math.random() > 0.3;
+            setTimeout(() => {
+              if (shouldSucceed) {
+                resolve('Item added to cart');
+              } else {
+                reject(new Error('Failed to add item to cart'));
+              }
+            }, 2000);
+          }),
+          {
+            loading: 'Adding to cart...',
+            success: () => ({
+              title: 'Item Added',
+              description: 'Item has been added to your cart',
+              actionProps: {
+                children: 'View Cart',
+                onClick: () => {
+                  console.log('View Cart');
+                },
+              },
+            }),
+            error: () => ({
+              title: 'Error',
+              description: 'Failed to add item to cart',
+            }),
           },
-        });
+        );
       }}
     >
       Add to cart

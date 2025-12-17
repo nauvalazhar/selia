@@ -1,6 +1,6 @@
-import { useRender } from '@base-ui-components/react/use-render';
-import { Radio as BaseRadio } from '@base-ui-components/react/radio';
-import { RadioGroup as BaseRadioGroup } from '@base-ui-components/react/radio-group';
+import { useRender } from '@base-ui/react/use-render';
+import { Radio as BaseRadio } from '@base-ui/react/radio';
+import { RadioGroup as BaseRadioGroup } from '@base-ui/react/radio-group';
 import { cn } from 'lib/utils';
 
 export function RadioGroup({

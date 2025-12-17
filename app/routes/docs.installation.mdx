@@ -4,17 +4,15 @@ Setup Selia for your project.
 
 <Alert variant="info" className="mb-4">
   <InfoIcon />
-  <AlertTitle>
-    Development Status
-  </AlertTitle>
+  <AlertTitle>Development Status</AlertTitle>
   <AlertDescription>
-    Selia is in an early, experimental stage and is not even considered "unstable" yet.
-    However, it is available to try and explore—feedback and experimentation are welcome!
+    Selia is in an early, experimental stage and is not even considered
+    "unstable" yet. However, it is available to try and explore—feedback and
+    experimentation are welcome!
   </AlertDescription>
 </Alert>
 
 Before we start, make sure you have Tailwind CSS installed in your project. If you don't, you can follow the [Tailwind CSS installation guide](https://tailwindcss.com/docs/installation).
-
 
 ## Dependencies
 
@@ -22,17 +20,17 @@ First, install the dependencies:
 
 <CodeTabs items={['npm', 'yarn', 'pnpm', 'bun']}>
   <CodeTabsPanel value="npm" language="bash">
-    npm install @base-ui-components/react tailwind-merge clsx class-variance-authority
+    npm install @base-ui/react tailwind-merge clsx class-variance-authority
   </CodeTabsPanel>
   <CodeTabsPanel value="yarn" language="bash">
-    yarn add @base-ui-components/react tailwind-merge clsx class-variance-authority
+    yarn add @base-ui/react tailwind-merge clsx class-variance-authority
   </CodeTabsPanel>
   <CodeTabsPanel value="pnpm" language="bash">
-    pnpm add @base-ui-components/react tailwind-merge clsx class-variance-authority
+    pnpm add @base-ui/react tailwind-merge clsx class-variance-authority
   </CodeTabsPanel>
   <CodeTabsPanel value="bun" language="bash">
-    bun add @base-ui-components/react tailwind-merge clsx class-variance-authority
-  </CodeTabsPanel> 
+    bun add @base-ui/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
 </CodeTabs>
 
 ## Tailwind
@@ -458,7 +456,7 @@ Add the `baseUrl` compiler option to your `tsconfig.json` file:
 ```json filename="tsconfig.json"
 {
   "compilerOptions": {
-    "baseUrl": ".",  // [!code highlight]
+    "baseUrl": "." // [!code highlight]
   }
 }
 ```
@@ -484,7 +482,6 @@ Add the following to your CSS file:
 
 You don’t need to install a separate icon library. We embed icons as SVGs directly inside the components that need them.
 This way, you’re free to use any icon library you like, without worrying about breaking other components.
-
 
 ## Components
 

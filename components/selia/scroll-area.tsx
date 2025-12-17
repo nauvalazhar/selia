@@ -1,4 +1,4 @@
-import { ScrollArea as BaseScrollArea } from '@base-ui-components/react/scroll-area';
+import { ScrollArea as BaseScrollArea } from '@base-ui/react/scroll-area';
 import { cn } from 'lib/utils';
 
 export function ScrollArea({

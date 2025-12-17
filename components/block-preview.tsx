@@ -5,7 +5,7 @@ import { Tabs, TabsItem, TabsList, TabsPanel } from './selia/tabs';
 import { highlighter } from '~/lib/highlighter';
 import ShikiHighlighter from 'react-shiki/core';
 import { cn } from 'lib/utils';
-import { ScrollArea } from '@base-ui-components/react/scroll-area';
+import { ScrollArea } from '@base-ui/react/scroll-area';
 import { IconBox } from './selia/icon-box';
 import {
   CheckIcon,

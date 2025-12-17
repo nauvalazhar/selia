@@ -17,7 +17,7 @@ export default function MenuRadioExample() {
     <Menu>
       <MenuTrigger
         render={
-          <Button variant="tertiary">
+          <Button variant="secondary">
             Menu <ChevronDownIcon />
           </Button>
         }
