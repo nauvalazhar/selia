@@ -43,4 +43,11 @@ export const examples = {
       import('./textarea').then((mod) => ({ default: mod.default })),
     ),
   },
+  label: {
+    name: 'Label',
+    path: 'components/examples/input-group/label.tsx',
+    component: React.lazy(() =>
+      import('./label').then((mod) => ({ default: mod.default })),
+    ),
+  },
 };

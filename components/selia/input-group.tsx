@@ -1,6 +1,7 @@
 import { cn } from 'lib/utils';
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { useRender } from '@base-ui/react/use-render';
 
 export const inputGroupVariants = cva(
   [
@@ -58,6 +59,7 @@ export const inputGroupAddonVariants = cva(
     'flex items-center gap-1.5 shrink-0',
     '**:[svg]:size-4 **:[svg]:text-dimmed',
     '[&_[role="combobox"]]:not-focus:ring-0',
+    '[&_[role="combobox"]]:shadow-none',
     '[&.items-start,&.items-end]:py-3',
   ],
   {
@@ -72,8 +74,10 @@ export const inputGroupAddonVariants = cva(
     compoundVariants: [
       {
         align: ['start', 'end'],
-        className:
+        className: [
           '[&_button:not([role="combobox"])]:h-7 [&_button:not([role="combobox"])]:px-2',
+          'has-[>button:not([role="combobox"])]:-mr-1',
+        ],
       },
     ],
     defaultVariants: {
@@ -84,26 +88,21 @@ export const inputGroupAddonVariants = cva(
 
 export function InputGroupAddon({
   className,
-  children,
   align,
+  render,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) {
-  return (
-    <div
-      data-slot="input-group-addon"
-      data-align={align}
-      className={cn(inputGroupAddonVariants({ align, className }))}
-      onClick={(e) => {
-        if ((e.target as HTMLElement).closest('button')) {
-          return;
-        }
-        e.currentTarget.parentElement?.querySelector('input')?.focus();
-      }}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+}: useRender.ComponentProps<'div'> &
+  VariantProps<typeof inputGroupAddonVariants>) {
+  return useRender({
+    defaultTagName: 'div',
+    render,
+    props: {
+      'data-slot': 'input-group-addon',
+      'data-align': align,
+      className: cn(inputGroupAddonVariants({ align, className })),
+      ...props,
+    },
+  });
 }
 
 export function InputGroupText({
