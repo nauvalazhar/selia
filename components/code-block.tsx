@@ -8,10 +8,12 @@ export function CodeBlock({
   children,
   language = 'jsx',
   className,
+  syntaxClassName,
 }: {
   children: string;
   language?: string;
   className?: string;
+  syntaxClassName?: string;
 }) {
   const _theme = useThemeStore((state) => state.theme);
 
@@ -34,6 +36,7 @@ export function CodeBlock({
         defaultColor="light"
         className={cn(
           '**:[pre]:!p-0 **:[pre]:!overflow-visible **:[pre]:!bg-transparent',
+          syntaxClassName,
         )}
         showLanguage={false}
         highlighter={highlighter}
