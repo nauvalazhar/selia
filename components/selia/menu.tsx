@@ -12,6 +12,41 @@ export function MenuTrigger({
   return <BaseMenu.Trigger data-slot="menu-trigger" {...props} />;
 }
 
+export const menuPopupVariants = cva(
+  [
+    'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
+    'p-1 outline-none transition-[transform,scale,opacity]',
+    'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
+    'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
+    '**:data-[slot=item]:p-0 min-w-32',
+  ],
+  {
+    variants: {
+      size: {
+        sm: [
+          '**:data-[slot=menu-item]:px-1.5',
+          '**:data-[slot=menu-item]:py-1',
+          '**:data-[slot=menu-item]:rounded-sm',
+          '**:data-[slot=menu-submenu-trigger]:px-1.5',
+          '**:data-[slot=menu-submenu-trigger]:py-1',
+          '**:data-[slot=menu-submenu-trigger]:rounded-sm',
+        ],
+        md: [
+          '**:data-[slot=menu-item]:px-3',
+          '**:data-[slot=menu-item]:py-2.5',
+          '**:data-[slot=menu-item]:rounded',
+          '**:data-[slot=menu-submenu-trigger]:px-3',
+          '**:data-[slot=menu-submenu-trigger]:py-2.5',
+          '**:data-[slot=menu-submenu-trigger]:rounded',
+        ],
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  },
+);
+
 export function MenuPopup({
   children,
   className,
@@ -22,6 +57,7 @@ export function MenuPopup({
   anchor,
   sticky,
   positionMethod,
+  size,
   ...props
 }: React.ComponentProps<typeof BaseMenu.Popup> & {
   align?: BaseMenu.Positioner.Props['align'];
@@ -31,7 +67,7 @@ export function MenuPopup({
   anchor?: BaseMenu.Positioner.Props['anchor'];
   sticky?: BaseMenu.Positioner.Props['sticky'];
   positionMethod?: BaseMenu.Positioner.Props['positionMethod'];
-}) {
+} & VariantProps<typeof menuPopupVariants>) {
   return (
     <BaseMenu.Portal>
       <BaseMenu.Backdrop />
@@ -47,14 +83,7 @@ export function MenuPopup({
         <BaseMenu.Popup
           data-slot="menu-popup"
           {...props}
-          className={cn(
-            'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
-            'p-1 outline-none transition-[transform,scale,opacity]',
-            'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
-            'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
-            '**:data-[slot=item]:p-0 min-w-32',
-            className,
-          )}
+          className={cn(menuPopupVariants({ size, className }))}
         >
           {children}
         </BaseMenu.Popup>
@@ -64,7 +93,7 @@ export function MenuPopup({
 }
 
 const menuItemClassName = [
-  'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded',
+  'flex items-center text-popover-foreground gap-3.5',
   'cursor-default select-none',
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
   'data-[popup-open]:bg-popover-accent',
@@ -136,7 +165,7 @@ export function MenuSubPopup({
   anchor?: BaseMenu.Positioner.Props['anchor'];
   sticky?: BaseMenu.Positioner.Props['sticky'];
   positionMethod?: BaseMenu.Positioner.Props['positionMethod'];
-}) {
+} & VariantProps<typeof menuPopupVariants>) {
   return (
     <MenuPopup
       data-slot="menu-sub-popup"

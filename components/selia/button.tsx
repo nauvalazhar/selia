@@ -8,7 +8,7 @@ export const buttonVariants = cva(
     'relative font-medium select-none',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
     'after:absolute after:inset-0 after:bg-white/15 after:opacity-0 hover:after:opacity-100',
-    'active:after:opacity-100 after:transition-opacity',
+    'active:after:opacity-100 data-popup-open:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
@@ -30,7 +30,7 @@ export const buttonVariants = cva(
           'after:rounded outline-secondary',
         ],
         tertiary: [
-          'bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground **:[svg]:text-tertiary-foreground',
+          'bg-tertiary text-tertiary-foreground **:[svg]:text-tertiary-foreground',
           'ring ring-tertiary-border',
           'inset-shadow-2xs inset-shadow-background/15 shadow',
           'after:rounded after:bg-background/10 focus-visible:outline-tertiary',
@@ -43,11 +43,11 @@ export const buttonVariants = cva(
         ],
         outline: [
           'text-foreground **:[svg]:text-foreground shadow',
-          'ring ring-border hover:bg-accent active:bg-accent',
+          'ring ring-border hover:bg-accent data-popup-open:bg-accent active:bg-accent',
           'after:content-none outline-border',
         ],
         plain: [
-          'text-foreground hover:bg-accent active:bg-accent **:[svg]:text-foreground',
+          'text-foreground hover:bg-accent data-popup-open:bg-accent active:bg-accent **:[svg]:text-foreground',
           'after:content-none outline-border',
         ],
       },

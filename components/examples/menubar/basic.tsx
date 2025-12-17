@@ -11,7 +11,7 @@ import {
 } from 'components/selia/menu';
 import { Menubar } from 'components/selia/menubar';
 
-export default function Playground() {
+export default function MenubarBasicExample() {
   return (
     <Menubar>
       <Menu>
@@ -22,13 +22,13 @@ export default function Playground() {
             </Button>
           }
         />
-        <MenuPopup>
+        <MenuPopup size="sm">
           <MenuItem>New File</MenuItem>
           <MenuItem>Open</MenuItem>
           <MenuItem>Save</MenuItem>
           <MenuSubmenu>
             <MenuSubmenuTrigger render={<MenuItem>Export</MenuItem>} />
-            <MenuSubPopup>
+            <MenuSubPopup size="sm">
               <MenuItem>PNG</MenuItem>
               <MenuItem>JPG</MenuItem>
               <MenuItem>PDF</MenuItem>
@@ -46,7 +46,7 @@ export default function Playground() {
             </Button>
           }
         />
-        <MenuPopup>
+        <MenuPopup size="sm">
           <MenuItem>Cut</MenuItem>
           <MenuItem>Copy</MenuItem>
           <MenuItem>Paste</MenuItem>
@@ -60,12 +60,12 @@ export default function Playground() {
             </Button>
           }
         />
-        <MenuPopup>
+        <MenuPopup size="sm">
           <MenuItem>Zoom In</MenuItem>
           <MenuItem>Zoom Out</MenuItem>
           <MenuSubmenu>
             <MenuSubmenuTrigger render={<MenuItem>Layout</MenuItem>} />
-            <MenuSubPopup>
+            <MenuSubPopup size="sm">
               <MenuItem>Single Page</MenuItem>
               <MenuItem>Two Pages</MenuItem>
               <MenuItem>Continous</MenuItem>

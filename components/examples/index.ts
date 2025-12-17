@@ -6,6 +6,7 @@ export { examples as command } from './command';
 export { examples as numberField } from './number-field';
 export { examples as previewCard } from './preview-card';
 export { examples as scrollArea } from './scroll-area';
+export { examples as menubar } from './menubar';
 export { examples as form } from './form';
 export { examples as toggle } from './toggle';
 export { examples as toggleGroup } from './toggle-group';

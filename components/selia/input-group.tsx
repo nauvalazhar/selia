@@ -76,7 +76,7 @@ export const inputGroupAddonVariants = cva(
         align: ['start', 'end'],
         className: [
           '[&_button:not([role="combobox"])]:h-7 [&_button:not([role="combobox"])]:px-2',
-          'has-[>button:not([role="combobox"])]:-mr-1',
+          'has-[>button:not([role="combobox"])]:-mx-1',
         ],
       },
     ],
