@@ -63,7 +63,7 @@ export function PreviewDemo({
       className={cn(
         'flex min-h-[500px] bg-background items-center justify-center flex-wrap',
         'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border',
-        'overflow-auto',
+        'overflow-auto relative',
       )}
       {...props}
     >
@@ -73,7 +73,11 @@ export function PreviewDemo({
           start ? 'justify-start' : 'justify-center',
         )}
       >
-        <Suspense fallback={<Spinner className="size-6" />}>
+        <Suspense
+          fallback={
+            <Spinner className="size-6 absolute left-1/2 top-1/2 -translate-1/2" />
+          }
+        >
           {children}
         </Suspense>
       </div>

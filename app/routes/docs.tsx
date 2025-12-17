@@ -144,9 +144,11 @@ export default function LayoutDocs({
 
 function SidebarScrollArea({ children }: { children?: React.ReactNode }) {
   return (
-    <ScrollArea.Root className="h-full">
-      <ScrollArea.Viewport className={cn('h-full lg:pr-8 pb-10 max-lg:pb-20')}>
-        {children}
+    <ScrollArea.Root className="h-full -ml-1">
+      <ScrollArea.Viewport
+        className={cn('h-full lg:pr-8 pb-10 max-lg:pb-20 outline-none')}
+      >
+        <ScrollArea.Content className="pl-1">{children}</ScrollArea.Content>
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar
         className={cn(
