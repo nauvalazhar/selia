@@ -67,13 +67,14 @@ export default function LayoutDocs({
         className={cn(
           'lg:hidden fixed bottom-4 right-4 z-40 *:backdrop-blur-sm',
           'flex rounded-full bg-secondary',
-          '*:h-10 *:first:rounded-r-none *:last:rounded-l-none',
+          '*:first:rounded-r-none *:last:rounded-l-none',
           '*:first:after:rounded-r-none *:last:after:rounded-l-none',
+          '*:text-sm',
         )}
       >
         <Button
           variant="secondary"
-          size="sm"
+          size="xs"
           block
           pill
           onClick={toogleContents}
@@ -83,7 +84,7 @@ export default function LayoutDocs({
         </Button>
         <Button
           variant="secondary"
-          size="sm"
+          size="xs"
           onClick={toggleSidebar}
           block
           pill
@@ -104,9 +105,6 @@ export default function LayoutDocs({
           )}
           size="compact"
         >
-          <SidebarHeader className="lg:hidden">
-            <Logo />
-          </SidebarHeader>
           <SidebarContent render={<SidebarScrollArea />}>
             <SidebarMenu className="py-11">
               {sidebarMenu.map((group) => (
@@ -129,7 +127,7 @@ export default function LayoutDocs({
             </SidebarMenu>
           </SidebarContent>
         </Sidebar>
-        <main className="w-full min-w-0 flex px-4 py-10 md:p-10 gap-12 justify-between max-lg:flex-wrap">
+        <main className="w-full min-w-0 flex py-6 md:p-10 gap-12 justify-between max-lg:flex-wrap">
           <div className="w-full min-w-0 2xl:w-3xl mx-auto">
             <Outlet />
           </div>

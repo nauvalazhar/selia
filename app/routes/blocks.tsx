@@ -19,7 +19,7 @@ export default function Blocks() {
   return (
     <div className="container mx-auto px-4 md:px-2.5 py-8">
       <title>Blocks - Selia</title>
-      <div className="py-20">
+      <div className="py-10 md:py-20">
         <h1 className="text-6xl font-medium tracking-tight">
           User Interface Blocks
         </h1>
@@ -27,7 +27,13 @@ export default function Blocks() {
           Blocks is a collection of prebuilt user interface elements and
           layouts, constructed using the core Selia components.
         </Text>
-        <Button className="mt-6" render={<a href="#blocks" />}>
+        <Button
+          className="mt-6"
+          render={<a href="#blocks" />}
+          size="lg"
+          pill
+          variant="secondary"
+        >
           Browse <ArrowDownCircleIcon />
         </Button>
       </div>
