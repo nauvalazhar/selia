@@ -16,7 +16,7 @@ const HomeDemo = lazy(() =>
 export default function Index() {
   return (
     <>
-      <title>Interfaces That Feel Right, Out of the Box</title>
+      <title>Interfaces That Feel Right, Out of the Box – Selia</title>
 
       <main>
         <div className="container mx-auto">
