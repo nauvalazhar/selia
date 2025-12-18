@@ -20,7 +20,7 @@ import {
   AutocompleteCollection,
   AutocompleteItem,
 } from './selia/autocomplete';
-import { SearchIcon } from 'lucide-react';
+import { MoonIcon, SearchIcon, SunIcon } from 'lucide-react';
 import { Kbd, KbdGroup } from './selia/kbd';
 import { useThemeStore } from '~/lib/theme-store';
 import { InputGroup, InputGroupAddon } from './selia/input-group';
@@ -29,6 +29,7 @@ type Item = {
   value: string;
   label: string;
   meta?: string;
+  icon?: React.ReactNode;
 };
 
 type Group = {
@@ -36,7 +37,7 @@ type Group = {
   items: Item[];
 };
 
-export function Cmdk({ items }: { items: Group[] }) {
+export function Cmdk({ items: _items }: { items: Group[] }) {
   const { isCmdkOpen, openCmdk, closeCmdk, toggleCmdk } = useLayoutStore(
     useShallow((state) => ({
       isCmdkOpen: state.isCmdkOpen,
@@ -72,6 +73,28 @@ export function Cmdk({ items }: { items: Group[] }) {
     }
   }
 
+  const items = [
+    ..._items,
+    {
+      value: 'Themes',
+      label: 'Themes',
+      items: [
+        {
+          icon: <SunIcon />,
+          value: 'toggle-light',
+          label: 'Light Mode',
+          meta: 'Theme',
+        },
+        {
+          icon: <MoonIcon />,
+          value: 'toggle-dark',
+          label: 'Dark Mode',
+          meta: 'Theme',
+        },
+      ],
+    },
+  ];
+
   return (
     <Command open={isCmdkOpen} onOpenChange={toggleCmdk}>
       <CommandContent>
@@ -105,6 +128,7 @@ export function Cmdk({ items }: { items: Group[] }) {
                         value={item.value}
                         onClick={() => handleItemClick(item)}
                       >
+                        {item.icon}
                         <span>{item.label}</span>
                         <span className="ml-auto text-xs text-dimmed">
                           {item.meta}

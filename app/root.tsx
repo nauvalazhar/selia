@@ -15,6 +15,7 @@ import { Toast } from 'components/selia/toast';
 import { getSidebarMenu } from './lib/sidebar';
 import { Cmdk } from 'components/cmdk';
 import { blocks } from 'components/blocks';
+import { MoonIcon, SunIcon } from 'lucide-react';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -72,22 +73,6 @@ export async function loader({ request }: Route.LoaderArgs) {
           value: '/blocks',
           label: 'Blocks',
           meta: 'Page',
-        },
-      ],
-    },
-    {
-      value: 'Themes',
-      label: 'Themes',
-      items: [
-        {
-          value: 'toggle-light',
-          label: 'Light Mode',
-          meta: 'Theme',
-        },
-        {
-          value: 'toggle-dark',
-          label: 'Dark Mode',
-          meta: 'Theme',
         },
       ],
     },
