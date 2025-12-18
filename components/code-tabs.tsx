@@ -1,11 +1,8 @@
 import { Tabs, TabsItem, TabsList, TabsPanel } from 'components/selia/tabs';
-import ShikiHighlighter from 'react-shiki/core';
-import { highlighter } from 'app/lib/highlighter';
-import React, { Children, isValidElement, useState } from 'react';
-import { ScrollArea } from '@base-ui/react';
+import React, { isValidElement, useState } from 'react';
 import { cn } from 'lib/utils';
 import { Button } from 'components/selia/button';
-import { CheckIcon, CopyIcon } from 'lucide-react';
+import { CheckIcon, ClipboardIcon } from 'lucide-react';
 import { CodeBlock } from 'components/code-block';
 
 export function CodeTabs({
@@ -63,15 +60,7 @@ export function CodeTabs({
           className="text-muted text-sm"
           onClick={handleCopy}
         >
-          {isCopied ? (
-            <>
-              <CheckIcon /> Copied
-            </>
-          ) : (
-            <>
-              <CopyIcon /> Copy
-            </>
-          )}
+          {isCopied ? <CheckIcon /> : <ClipboardIcon />}
         </Button>
       </div>
       {children}

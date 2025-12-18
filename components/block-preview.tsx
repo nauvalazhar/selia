@@ -95,7 +95,9 @@ export function BlockPreview({
             <IconBox variant="primary" size="sm">
               <CodeIcon />
             </IconBox>
-            <h2 className="text-foreground font-semibold">{title}</h2>
+            <h2 className="text-foreground font-semibold whitespace-nowrap">
+              {title}
+            </h2>
             <Separator orientation="vertical" className="mx-2" />
             <Text className="text-muted truncate">{description}</Text>
           </div>

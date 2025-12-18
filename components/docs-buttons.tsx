@@ -11,7 +11,7 @@ export function DocsButtons({ pageRaw, externalDoc }: DocsButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   return (
-    <div className="mb-8 border-b border-separator pb-8 flex items-center gap-3.5">
+    <div className="mb-8 flex items-center gap-3.5">
       {externalDoc && (
         <Button
           variant="outline"

@@ -20,9 +20,8 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'h-16 border-b border-separator w-full z-20 transition-colors sticky top-0 bg-backgorund/95',
-        'backdrop-blur-md',
-        menuOpen ? 'max-md:bg-popover dark:max-md:bg-surface-01' : '',
+        'h-16 w-full z-20 transition-colors sticky top-0',
+        menuOpen ? 'bg-background' : 'backdrop-blur-sm bg-background/75',
       )}
     >
       <div className="container mx-auto h-full">
@@ -30,22 +29,20 @@ export function Navbar() {
           <Logo />
           <div className="flex items-center gap-2.5">
             <Button
-              variant="secondary"
+              variant="plain"
               size="sm-icon"
               className="lg:hidden"
               onClick={() => toggleCmdk()}
             >
               <SearchIcon />
             </Button>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="lg:hidden"
+            <button
+              className="lg:hidden h-9.5 inline-flex items-center gap-2.5 *:[svg]:size-4.5 *:[svg]:shrink-0"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? <XIcon /> : <MenuIcon />}
               Menu
-            </Button>
+            </button>
           </div>
           <ul
             className={cn(
@@ -53,7 +50,7 @@ export function Navbar() {
               'max-lg:flex-col max-md:border-border max-md:border-b dark:max-md:border-border-01',
               'max-lg:absolute w-full lg:w-auto',
               'left-0 lg:left-auto lg:items-center',
-              'bg-white dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent',
+              'bg-background lg:bg-transparent dark:lg:bg-transparent',
               '**:[a]:text-muted',
               '**:[a]:hover:text-foreground **:[a]:transition-colors',
               '**:[a]:duration-75 **:[a]:flex **:[a]:items-center **:[a]:gap-2.5',

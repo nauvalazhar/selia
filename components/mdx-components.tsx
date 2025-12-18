@@ -66,13 +66,16 @@ export default {
             <button
               className={cn(
                 'flex items-center justify-center w-full absolute bottom-0 inset-x-0 py-4',
-                'bg-linear-to-b from-background/50 to-background rounded-b-3xl cursor-pointer',
                 'font-semibold text-sm text-muted hover:text-foreground transition-colors',
-                'outline-none',
+                'outline-none cursor-pointer',
+                'before:absolute before:bottom-0 before:w-full before:h-28 before:bg-linear-to-b',
+                'before:from-background/0 before:to-background before:rounded-b-3xl',
               )}
               onClick={() => setIsClipOpen(!isClipOpen)}
             >
-              {isClipOpen ? 'Hide Code' : 'Show Code'}
+              <span className="relative z-10">
+                {isClipOpen ? 'Hide Code' : 'Show Code'}
+              </span>
             </button>
           )}
         </div>

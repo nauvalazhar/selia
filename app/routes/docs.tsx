@@ -74,7 +74,7 @@ export default function LayoutDocs({
       >
         <Button
           variant="secondary"
-          size="xs"
+          size="sm"
           block
           pill
           onClick={toogleContents}
@@ -84,7 +84,7 @@ export default function LayoutDocs({
         </Button>
         <Button
           variant="secondary"
-          size="xs"
+          size="sm"
           onClick={toggleSidebar}
           block
           pill
@@ -106,7 +106,7 @@ export default function LayoutDocs({
           size="compact"
         >
           <SidebarContent render={<SidebarScrollArea />}>
-            <SidebarMenu className="py-11">
+            <SidebarMenu className="py-9">
               {sidebarMenu.map((group) => (
                 <SidebarGroup key={group.title}>
                   <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
@@ -127,7 +127,7 @@ export default function LayoutDocs({
             </SidebarMenu>
           </SidebarContent>
         </Sidebar>
-        <main className="w-full min-w-0 flex py-6 md:p-10 gap-12 justify-between max-lg:flex-wrap">
+        <main className="w-full min-w-0 flex py-6 md:py-10 gap-6 justify-between max-lg:flex-wrap">
           <div className="w-full min-w-0 2xl:w-3xl mx-auto">
             <Outlet />
           </div>
