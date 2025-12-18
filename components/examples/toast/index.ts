@@ -22,11 +22,4 @@ export const examples = {
       import('./promise').then((mod) => ({ default: mod.default })),
     ),
   },
-  item: {
-    name: 'Item',
-    path: 'components/examples/toast/item.tsx',
-    component: React.lazy(() =>
-      import('./item').then((mod) => ({ default: mod.default })),
-    ),
-  },
 };
