@@ -35,6 +35,7 @@ export const toggleGroupVariants = cva(
           '*:data-[slot=toggle]:size-9.5',
           '*:data-[slot=toggle]:px-0',
           'not-[[data-variant=plain]]:*:data-[slot=toggle]:size-[calc(var(--spacing)*9.5-4px)]',
+          'not-[[data-variant=plain]]:*:data-[slot=toggle]:min-w-[calc(var(--spacing)*9.5-4px)]',
         ],
       },
       orientation: {

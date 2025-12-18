@@ -10,8 +10,11 @@ export default function AvatarInitialExample() {
   return (
     <>
       <Avatar size="md">
-        <AvatarImage src="/avatar01.png" alt="Avatar" />
-        <AvatarFallback>BS</AvatarFallback>
+        <AvatarImage
+          src="https://pbs.twimg.com/profile_images/1881314507865411584/aXlN8o5e_400x400.jpg"
+          alt="Avatar"
+        />
+        <AvatarFallback>RF</AvatarFallback>
         <AvatarIndicator
           position="bottom"
           className="bg-green-500 outline outline-background"
@@ -19,8 +22,11 @@ export default function AvatarInitialExample() {
         />
       </Avatar>
       <Avatar size="md">
-        <AvatarImage src="/avatar02.png" alt="Avatar" />
-        <AvatarFallback>BS</AvatarFallback>
+        <AvatarImage
+          src="https://pbs.twimg.com/profile_images/1460906228389867522/WxSzgWSs_400x400.jpg"
+          alt="Avatar"
+        />
+        <AvatarFallback>NA</AvatarFallback>
         <AvatarIndicator
           position="top"
           className="bg-red-500 text-white"
@@ -30,7 +36,6 @@ export default function AvatarInitialExample() {
         </AvatarIndicator>
       </Avatar>
       <Avatar size="md">
-        <AvatarImage src="/avatar03.png" alt="Avatar" />
         <AvatarFallback>BS</AvatarFallback>
         <AvatarIndicator
           position="bottom"

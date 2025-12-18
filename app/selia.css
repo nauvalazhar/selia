@@ -139,7 +139,7 @@
   --table: transparent;
   --table-foreground: var(--foreground);
   --table-separator: oklch(0.308 0.0046 247.98);
-  --table-head: oklch(0.3095 0.0055 248.01);
+  --table-head: oklch(0.2894 0.004 247.97);
   --table-accent: oklch(0.2888 0.0039 264.5);
   --tabs: oklch(0.2994 0.0053 248);
   --tabs-foreground: var(--foreground);

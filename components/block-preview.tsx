@@ -87,7 +87,7 @@ export function BlockPreview({
   return (
     <Tabs defaultValue={tab} onValueChange={setTab}>
       <div
-        className="bg-background border border-border rounded-3xl p-1 scroll-mt-8 shadow-card"
+        className="bg-secondary dark:bg-surface-01 border border-border rounded-3xl p-1 scroll-mt-8 shadow-card"
         id={name}
       >
         <header className="px-4 py-1.5 mb-1">

@@ -20,7 +20,7 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'h-16 border-b border-border w-full z-20 transition-colors sticky top-0 bg-backgorund/95',
+        'h-16 border-b border-separator w-full z-20 transition-colors sticky top-0 bg-backgorund/95',
         'backdrop-blur-md',
         menuOpen ? 'max-md:bg-popover dark:max-md:bg-surface-01' : '',
       )}
