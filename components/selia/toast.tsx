@@ -23,14 +23,14 @@ function StackedToasts() {
 
   return (
     <BaseToast.Portal>
-      <BaseToast.Viewport className="fixed top-4 right-0 left-0 mx-auto flex">
+      <BaseToast.Viewport className="fixed top-2 md:top-4 right-0 left-0 mx-2 md:mx-auto flex">
         {toasts.map((toast) => (
           <BaseToast.Root
             key={toast.id}
             toast={toast}
             swipeDirection="up"
             className={cn(
-              'absolute right-0 top-0 left-0 z-[calc(1000-var(--toast-index))] mx-auto w-sm origin-top',
+              'absolute right-0 top-0 left-0 z-[calc(1000-var(--toast-index))] mx-auto w-sm max-w-full origin-top',
               'rounded border border-toast-border bg-toast p-4 shadow-lg select-none h-(--height)',
               'after:absolute after:bottom-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full',
               '[--gap:0.75rem] [--peek:0.75rem] [--scale:calc(max(0,1-(var(--toast-index)*0.1)))] [--shrink:calc(1-var(--scale))]',
@@ -96,25 +96,35 @@ function AnchoredToasts() {
 function ToastContent({ toast }: { toast: ToastObject<Object> }) {
   return (
     <BaseToast.Content
+      data-slot="toast-content"
       className={cn(
         'overflow-hidden transition-opacity data-behind:pointer-events-none data-behind:opacity-0',
         'data-expanded:opacity-100 data-expanded:pointer-events-auto',
-        'flex gap-2.5 items-center',
+        'flex gap-x-2.5 gap-y-0.5 items-center',
       )}
     >
       {toast.type && (
         <ToastIcon type={toast.type}>{icons[toast.type]}</ToastIcon>
       )}
-      <div>
-        <BaseToast.Title className="text-foreground font-medium" />
-        <BaseToast.Description className="text-muted" />
+      <div className="w-full flex justify-between flex-col md:flex-row items-start">
+        <div>
+          <BaseToast.Title
+            data-slot="toast-title"
+            className="text-foreground font-medium"
+          />
+          <BaseToast.Description
+            data-slot="toast-description"
+            className="text-muted col-start-1"
+          />
+        </div>
+        <BaseToast.Action
+          data-slot="toast-action"
+          className={cn(
+            'text-sm md:ml-auto shrink-0 mt-2 md:mt-0',
+            buttonVariants({ variant: 'tertiary', size: 'xs' }),
+          )}
+        />
       </div>
-      <BaseToast.Action
-        className={cn(
-          'text-sm ml-auto',
-          buttonVariants({ variant: 'tertiary', size: 'xs' }),
-        )}
-      />
     </BaseToast.Content>
   );
 }
@@ -128,6 +138,7 @@ function ToastIcon({
 }) {
   return (
     <div
+      data-slot="toast-icon"
       className={cn(
         '*:[svg]:w-4.5 self-start',
         type === 'success' && '*:[svg]:fill-success/20 *:[svg]:stroke-success',
