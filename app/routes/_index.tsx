@@ -16,12 +16,12 @@ export default function Index() {
             className="size-14 row-span-2 mb-4"
           />
           <h1 className="text-2xl font-medium tracking-tight">
-            A user interface for humans and computers
+            Interfaces That Feel Right, Out of the Box
           </h1>
           <div className="col-start-2 mt-2 lg:mt-0">
             <Text className="text-muted mb-4 lg:w-10/12">
-              Built with Tailwind CSS and Base UI Components. Still in early
-              development.
+              Selia is a collection of components designed for visual cohesion.
+              Built to work beautifully together with minimal configuration.
             </Text>
             <Button
               variant="primary"
