@@ -184,7 +184,7 @@ Below is a reference of the design tokens we use as a starting point.
 ```
 
 By default, we use OKLCH as the color representation model, but you’re free to use a different model if you prefer.
-There’s no “one-click” way to achieve a well-balanced color system—sometimes it takes hours, or even days, to arrive at the right colors.
+There’s no “one-click” way to achieve a well-balanced color system, sometimes it takes hours, or even days, to arrive at the right colors.
 
 ## Variants & Defaults
 
@@ -196,7 +196,7 @@ If a component looks better simply because it’s used inside another component,
 
 If the same adjustment appears across different contexts and represents a meaningful difference in behavior or intent, it can be formalized. This may take the form of a variant, or in some cases, a refinement of the component’s default behavior.
 
-For example, a `Button` may appear too tight when placed inside a `Card` header. In this case, the adjustment is contextual—the button isn’t wrong on its own, it just needs to adapt to where it lives. Selia handles this through contextual styling rather than introducing a new variant.
+For example, a `Button` may appear too tight when placed inside a `Card` header. In this case, the adjustment is contextual. The button isn’t wrong on its own, it just needs to adapt to where it lives. Selia handles this through contextual styling rather than introducing a new variant.
 
 On the other hand, if the same button consistently needs a more compact appearance across tables, toolbars, and dense layouts, that difference is no longer contextual. It represents a distinct usage and may be worth expressing as a variant or by refining the default.
 
