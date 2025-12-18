@@ -59,3 +59,23 @@
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
+
+@utility container {
+  padding-inline: 1rem;
+  max-width: 100%;
+
+  @variant lg {
+    padding-inline: 2rem;
+    max-width: 100%;
+  }
+
+  @variant xl {
+    padding-inline: 4rem;
+    max-width: 100%;
+  }
+
+  @variant 2xl {
+    padding-inline: 0;
+    max-width: 96rem;
+  }
+}

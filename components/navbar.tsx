@@ -25,8 +25,8 @@ export function Navbar() {
         menuOpen ? 'max-md:bg-popover dark:max-md:bg-surface-01' : '',
       )}
     >
-      <div className="container mx-auto px-4 md:px-2.5 h-full">
-        <div className="flex items-center w-full h-full justify-between">
+      <div className="container mx-auto h-full">
+        <div className="flex items-center w-full h-full justify-between md:px-2.5">
           <Logo />
           <div className="flex items-center gap-2.5">
             <Button
