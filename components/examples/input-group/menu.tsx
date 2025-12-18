@@ -6,7 +6,7 @@ import { MoreHorizontalIcon } from 'lucide-react';
 
 export default function InputGroupMenuExample() {
   return (
-    <InputGroup className="w-full 2xl:w-8/12 xl:w-10/12">
+    <InputGroup>
       <Input placeholder="Message" />
       <InputGroupAddon align="end">
         <Menu>

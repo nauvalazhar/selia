@@ -1,6 +1,6 @@
 import { cn } from 'lib/utils';
 import { Button } from './selia/button';
-import { CheckIcon, CopyIcon } from 'lucide-react';
+import { CheckIcon, ClipboardIcon } from 'lucide-react';
 import { Suspense, useRef, useState } from 'react';
 import { Spinner } from './selia/spinner';
 import { useParams } from 'react-router';
@@ -113,21 +113,13 @@ export function PreviewCode({ children }: { children: string }) {
           Source
         </span>
         <Button
-          size="xs"
+          size="xs-icon"
           variant="secondary"
           pill
           onClick={handleCopy}
           className="text-sm"
         >
-          {isCopied ? (
-            <>
-              <CheckIcon /> Copied
-            </>
-          ) : (
-            <>
-              <CopyIcon /> Copy
-            </>
-          )}
+          {isCopied ? <CheckIcon /> : <ClipboardIcon />}
         </Button>
       </div>
       <CodeBlock language="tsx" className="h-[500px]">

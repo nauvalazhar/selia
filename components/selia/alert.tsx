@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { cn } from 'lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { buttonVariants } from 'components/selia/button';
 
 export const alertVariants = cva(
   [
     'w-full px-3.5 py-1.5 min-h-11 rounded font-medium',
     '*:[svg]:size-4.5 *:[svg]:shrink-0',
-    'items-center gap-x-2.5 gap-y-1 flex',
+    'items-center gap-x-2.5 gap-y-1 flex text-foreground',
     'has-[>[data-slot=alert-description]]:grid',
     'has-[>[data-slot=alert-description]]:py-3',
     'has-[>svg]:grid-cols-[calc(var(--spacing)*4.5)_1fr_auto]',
@@ -47,9 +46,7 @@ export function AlertTitle({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
-  return (
-    <div data-slot="alert-title" className={cn('', className)} {...props} />
-  );
+  return <div data-slot="alert-title" className={cn(className)} {...props} />;
 }
 
 export function AlertDescription({

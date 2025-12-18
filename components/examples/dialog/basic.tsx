@@ -22,7 +22,7 @@ export default function DialogBasicExample() {
         </DialogHeader>
         <DialogBody>
           <DialogDescription>Please provide your feedback.</DialogDescription>
-          <Textarea placeholder="Enter your feedback" />
+          <Textarea placeholder="Enter your feedback" className="h-28" />
         </DialogBody>
         <DialogFooter>
           <DialogClose>Close</DialogClose>

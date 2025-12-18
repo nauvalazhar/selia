@@ -1,5 +1,37 @@
 # Introduction
 
-What is Selia?
+Selia is an opinionated UI library for React, built on top of Tailwind CSS and Base UI.
 
-Selia is an opinionated user interface library for building modern web applications.
+It can be used as-is, or treated as a starting point for building your own design system. 
+It is customizable by design, but opinionated by default, so common interfaces feel structured and cohesive without constant tweaking.
+
+Certain components are expected to be composed together frequently. Instead of relying on per-usage overrides, [contextual styling](/docs/design-approach) is used to handle these combinations by default.
+
+
+## Why Selia
+
+Selia (pronounced *seh-lee-uh*) is an Indonesian word that means *teratur, rapi; elok; apik*. It describes something that is well-arranged and visually pleasing.
+
+As the name implies, Selia emphasizes order and cohesion. Components are designed to look good together by default, reducing the need for extra configuration or utility classes, while still allowing adjustments when necessary.
+
+Being opinionated here is about reducing friction, not limiting flexibility. The defaults handle spacing, colors, and visual balance so you can focus more on composing meaningful interfaces.
+
+Defaults are intentional. When small styling adjustments consistently make interfaces look better, those decisions belong in the component itself, not repeated as extra classes. Through contextual styling and composition-aware variants, components feel complete by default rather than needing manual polish.
+
+Opinionated defaults only work when ownership remains with the user.
+
+## Own the Code
+
+Selia is not a traditional UI library that you install and consume as a closed package.
+
+Instead, Selia gives you direct access to the component source code. When a component is used, it becomes part of your codebase. You can read it, modify it, refactor it, or remove it entirely. There is no hidden abstraction layer and no dependency lock-in.
+
+This approach follows the same idea explored a few years ago in the *[tailwind-predesigned](https://tailwind-predesigned.vercel.app)* project, where components were meant to be owned, understood, and adapted rather than treated as opaque dependencies.
+
+The result is full control over your UI. Selia does not dictate how your system should evolve. It provides a solid starting point, then steps aside once the code is yours.
+
+## Current Status
+
+Selia is under active development. It is usable and open for experimentation, but not yet production-stable. APIs and implementation details may change over time.
+
+You are encouraged to explore, experiment, and adapt Selia to your needs.

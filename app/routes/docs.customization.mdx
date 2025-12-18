@@ -1,6 +1,6 @@
 # Customization
 
-A guide to customizing the behavior of Selia components.
+A guide to customizing Selia components while preserving their default behavior and composition.
 
 <DocsButtons />
 
@@ -8,9 +8,10 @@ A guide to customizing the behavior of Selia components.
 
 Selia uses CSS variables to store color values and other design tokens.
 This allows tokens to be referenced at runtime using the `var(--primary)` syntax or through Tailwind utilities like `text-(--primary)`.
+
 We provide a set of default tokens designed to keep Selia components clean, well-structured, and visually balanced.
 That said, you’re free to adjust these values to fit your own needs.
-Below is a reference of the design tokens we use.
+Below is a reference of the design tokens we use as a starting point.
 
 ```css filename="Design Tokens" clip
 :root {
@@ -185,6 +186,25 @@ Below is a reference of the design tokens we use.
 By default, we use OKLCH as the color representation model, but you’re free to use a different model if you prefer.
 There’s no “one-click” way to achieve a well-balanced color system—sometimes it takes hours, or even days, to arrive at the right colors.
 
+## Variants & Defaults
+
+Components are meant to feel complete by default. In most cases, you shouldn’t need extra utility classes just to make a component look acceptable in a common context.
+
+When the same adjustment appears repeatedly, it usually points to one of two situations.
+
+If a component looks better simply because it’s used inside another component, the difference is contextual. In Selia, this is handled through contextual styling, using `data-slot` and composition-aware defaults, rather than per-usage tweaks.
+
+If the same adjustment appears across different contexts and represents a meaningful difference in behavior or intent, it can be formalized. This may take the form of a variant, or in some cases, a refinement of the component’s default behavior.
+
+For example, a `Button` may appear too tight when placed inside a `Card` header. In this case, the adjustment is contextual—the button isn’t wrong on its own, it just needs to adapt to where it lives. Selia handles this through contextual styling rather than introducing a new variant.
+
+On the other hand, if the same button consistently needs a more compact appearance across tables, toolbars, and dense layouts, that difference is no longer contextual. It represents a distinct usage and may be worth expressing as a variant or by refining the default.
+
+Variants are not intended to address issues that only occur in a single place. When an adjustment is specific to one screen or context, it is usually better handled locally. A variant becomes useful when the same difference appears across multiple usages and needs to be expressed at the component level rather than through repeated overrides.
+
+Because Selia components live in your codebase, you’re free to choose the right approach.
+
+
 ## Render Link
 
 Some components, such as `<Button>` or `<SidebarItemButton>`, render a `<button>` element by default.
@@ -201,8 +221,8 @@ import { Link } from 'react-router';
 
 Refer to the [Base UI Composition Handbook](https://base-ui.com/react/handbook/composition) for a more comprehensive explanation.
 
-**Worth noting**: when using the render prop, some attributes—such as `data-slot`—may be overridden, which can affect the component’s 
-[contextual styling](/docs/composition#2-contextual-styling).
+**Worth noting**: when using the `render` prop, some attributes—such as `data-slot`—may be overridden. 
+This can break [contextual styling](/docs/composition#2-contextual-styling) if not handled explicitly.
 You may need to explicitly set `data-slot` to the original component value to preserve its contextual styles.
 
 ```tsx filename="Toggle Group Example"

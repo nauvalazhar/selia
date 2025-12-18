@@ -1,17 +1,11 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
-import { Spinner } from './selia/spinner';
+import { useEffect, useRef, useState } from 'react';
 import { Text } from './selia/text';
 import { Tabs, TabsItem, TabsList, TabsPanel } from './selia/tabs';
-import { highlighter } from '~/lib/highlighter';
-import ShikiHighlighter from 'react-shiki/core';
-import { cn } from 'lib/utils';
-import { ScrollArea } from '@base-ui/react/scroll-area';
 import { IconBox } from './selia/icon-box';
 import {
   CheckIcon,
-  Code2Icon,
+  ClipboardIcon,
   CodeIcon,
-  CopyIcon,
   ExternalLinkIcon,
   FileIcon,
   MoonIcon,
@@ -139,15 +133,7 @@ export function BlockPreview({
                   className="text-muted text-sm"
                   onClick={handleCopy}
                 >
-                  {isCopied ? (
-                    <>
-                      <CheckIcon /> Copied
-                    </>
-                  ) : (
-                    <>
-                      <CopyIcon /> Copy
-                    </>
-                  )}
+                  {isCopied ? <CheckIcon /> : <ClipboardIcon />}
                 </Button>
               )}
             </div>

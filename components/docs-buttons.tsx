@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon, CheckIcon, CopyIcon } from 'lucide-react';
+import { ArrowUpRightIcon, CheckIcon, ClipboardIcon } from 'lucide-react';
 import { Button } from './selia/button';
 import { useState } from 'react';
 
@@ -36,7 +36,7 @@ export function DocsButtons({ pageRaw, externalDoc }: DocsButtonsProps) {
           }, 1500);
         }}
       >
-        {copied ? <CheckIcon /> : <CopyIcon />}
+        {copied ? <CheckIcon /> : <ClipboardIcon />}
         Copy Page
       </Button>
     </div>

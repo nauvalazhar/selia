@@ -35,7 +35,7 @@ export const iconBoxVariants = cva(
         lg: 'size-13 rounded-lg before:rounded-lg after:rounded-lg *:[svg]:size-5.5',
       },
       circle: {
-        true: 'rounded-full',
+        true: 'rounded-full before:rounded-full after:rounded-full',
       },
     },
     defaultVariants: {

@@ -138,18 +138,18 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
       <title>{`${name} - Selia`}</title>
       <article
         className={cn(
-          'text-zinc-600 dark:text-zinc-300',
+          'text-zinc-600 dark:text-zinc-400',
           '*:[h1]:text-3xl *:[h1]:font-semibold *:[h1]:mb-4',
           '*:[h2]:text-2xl *:[h2]:font-semibold *:[h2,h3]:mb-3',
           '*:[h2+h3]:mt-8 *:[h2]:mt-14',
           '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
-          '**:[h1,h2,h3]:text-foreground',
-          '*:[p]:mb-2 *:[p]:leading-6',
+          '**:[h1,h2,h3,strong]:text-foreground',
+          '*:[p]:mb-6 *:[p]:leading-6.5',
           '[&>p>code]:before:content-["`"] [&>p>code]:after:content-["`"]',
           '[&>p>code]:text-foreground [&>p>code]:font-medium',
           '[&>p:first-of-type]:text-lg/relaxed',
           '[&>p:first-of-type]:text-muted',
-          '[&>p:first-of-type]:mb-10',
+          '[&>p:first-of-type]:mb-6',
           '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
           '*:[ul]:leading-relaxed',
           '[&>p_a]:text-foreground [&>p_a]:font-medium [&>p_a]:border-b',
@@ -167,11 +167,13 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
           '*:duration-75 *:gap-2.5 *:font-medium mt-20',
         )}
       >
-        {menuNextPrev.prev && (
+        {menuNextPrev.prev ? (
           <Link to={menuNextPrev.prev.path}>
             <ArrowLeftIcon />
             {menuNextPrev.prev.name}
           </Link>
+        ) : (
+          <span />
         )}
         {menuNextPrev.next && (
           <Link to={menuNextPrev.next.path}>

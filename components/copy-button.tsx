@@ -1,4 +1,4 @@
-import { CheckIcon, CopyIcon } from 'lucide-react';
+import { CheckIcon, ClipboardIcon } from 'lucide-react';
 import { Button } from 'components/selia/button';
 import { useState } from 'react';
 
@@ -7,7 +7,7 @@ export function CopyButton() {
 
   return (
     <Button
-      size="xs"
+      size="xs-icon"
       variant="secondary"
       className="z-10 text-sm"
       pill
@@ -27,11 +27,11 @@ export function CopyButton() {
     >
       {isCopied ? (
         <>
-          <CheckIcon /> Copied
+          <CheckIcon />
         </>
       ) : (
         <>
-          <CopyIcon /> Copy
+          <ClipboardIcon />
         </>
       )}
     </Button>
