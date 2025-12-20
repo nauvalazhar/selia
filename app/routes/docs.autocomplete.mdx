@@ -6,29 +6,51 @@ An input that suggests options as you type.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts
+import {
+  Autocomplete,
+  AutocompletePopup,
+  AutocompleteEmpty,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+} from 'components/selia/autocomplete';
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
-<Autocomplete>
-  <AutocompleteInput />
-  <AutocompleteTrigger />
-  <AutocompleteIcon />
-  <AutocompleteClear />
-  <AutocompleteValue />
+<Autocomplete items={items}>
+  <AutocompleteInput placeholder="Search for items..." />
   <AutocompletePopup>
-    <AutocompleteEmpty />
+    <AutocompleteEmpty>No results found</AutocompleteEmpty>
     <AutocompleteList>
-      <AutocompleteRow>
-        <AutocompleteItem />
-      </AutocompleteRow>
-      <AutocompleteSeparator />
-      <AutocompleteGroup>
-        <AutocompleteGroupLabel />
-      </AutocompleteGroup>
-      <AutocompleteCollection />
+      {(item) => (
+        <AutocompleteItem key={item.value} value={item}>
+          {item.label}
+        </AutocompleteItem>
+      )}
     </AutocompleteList>
   </AutocompletePopup>
 </Autocomplete>
+```
+
+The `items` prop is an array of objects that define the options to be displayed in the autocomplete popup. Each object should have a `value` and a `label` property.
+
+```ts filename="items.ts"
+const items = [
+  { value: 'radiohead', label: 'Radiohead' },
+  { value: 'deftones', label: 'Deftones' },
+  { value: 'tool', label: 'Tool' },
+  { value: 'pink-floyd', label: 'Pink Floyd' },
+  { value: 'led-zeppelin', label: 'Led Zeppelin' },
+];
 ```

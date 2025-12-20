@@ -5,27 +5,86 @@ Combined input and menu for selecting or entering values with autocomplete.
 <DocsButtons externalDoc="https://base-ui.com/react/components/combobox" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Combobox Parts"
+import {
+  Combobox,
+  ComboboxPopup,
+  ComboboxEmpty,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxSearch,
+  ComboboxTrigger,
+  ComboboxValue,
+} from 'components/selia/combobox';
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
-<Combobox>
-  <ComboboxInput />
+<Combobox items={items} defaultValue={items[0]}>
   <ComboboxTrigger>
     <ComboboxValue />
   </ComboboxTrigger>
   <ComboboxPopup>
     <ComboboxSearch />
-    <ComboboxEmpty />
+    <ComboboxEmpty>No results found</ComboboxEmpty>
     <ComboboxList>
-      <ComboboxItem />
+      {(item) => (
+        <ComboboxItem key={item.value} value={item}>
+          {item.label}
+        </ComboboxItem>
+      )}
     </ComboboxList>
   </ComboboxPopup>
 </Combobox>
 ```
 
-## Usage
+The `items` prop is an array of objects that define the options to be displayed in the autocomplete popup. Each object should have a `value` and a `label` property.
+
+```ts filename="items.ts"
+const items = [
+  { value: 'software-engineering', label: 'Software Engineering' },
+  { value: 'machine-learning', label: 'Machine Learning' },
+  { value: 'data-science', label: 'Data Science' },
+  { value: 'artificial-intelligence', label: 'Artificial Intelligence' },
+];
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    ComboboxTrigger: {
+      description: 'The trigger element that opens the popup.',
+      source: {
+        label: 'Base UI Combobox',
+        href: 'https://base-ui.com/react/components/combobox'
+      },
+      required: true,
+      props: {
+        variant: {
+          options: ['default', 'subtle', 'plain'],
+          default: 'default',
+        },
+        pill: {
+          options: ['true', 'false'],
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Variants
 

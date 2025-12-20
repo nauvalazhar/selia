@@ -100,9 +100,9 @@ export function ItemTitle({
 export function ItemDescription({
   className,
   ...props
-}: React.ComponentProps<'div'>) {
+}: React.ComponentProps<'p'>) {
   return (
-    <div
+    <p
       data-slot="item-description"
       className={cn('text-muted leading-relaxed', className)}
       {...props}

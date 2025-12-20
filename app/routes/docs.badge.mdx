@@ -5,15 +5,69 @@ Small labels to highlight status, counts, or categories on elements.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
-<Badge />
+Import the component and its related parts.
+
+```ts filename="Badge Parts"
+import { Badge } from "components/selia/badge";
 ```
 
-## Usage
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Badge>Label</Badge>
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Badge: {
+      type: 'span',
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "primary",
+            "secondary",
+            "tertiary",
+            "success",
+            "info",
+            "warning",
+            "danger",
+            "primary-outline",
+            "secondary-outline",
+            "tertiary-outline",
+            "success-outline",
+            "info-outline",
+            "warning-outline",
+            "danger-outline",
+          ],
+          default: "secondary",
+        },
+        size: {
+          name: "Size",
+          options: ["sm", "md", "lg"],
+          default: "md",
+        },
+        pill: {
+          name: "Pill",
+          options: ["true", "false"],
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Variants
 

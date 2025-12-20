@@ -6,18 +6,33 @@ Allow users to select a single option from a set of choices.
 <DocsButtons externalDoc="https://base-ui.com/react/components/radio" />
 
 <Preview name="basic" />
-## Anatomy
 
-Import the component and assemble its parts:
+## Usage
+
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Radio Parts"
+import {
+  RadioGroup,
+  RadioGroupLabel,
+  Radio
+} from "components/selia/radio";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <RadioGroup>
-  <RadioGroupLabel />
+  <RadioGroupLabel>Label</RadioGroupLabel>
   <Radio />
 </RadioGroup>
 ```
 
-## Usage
+## Examples
 
 ### Item
 

@@ -16,7 +16,7 @@ export function Select({
   return <BaseSelect.Root {...props} />;
 }
 
-export const selectVariants = cva(
+export const selectTriggerVariants = cva(
   [
     'h-9.5 px-3.5 w-full bg-input rounded placeholder:text-dimmed transition-all',
     'focus:outline-0 focus:ring-primary focus:ring-2',
@@ -32,13 +32,9 @@ export const selectVariants = cva(
           'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
         plain: 'bg-transparent hover:bg-accent',
       },
-      pill: {
-        true: 'rounded-full',
-      },
     },
     defaultVariants: {
       variant: 'default',
-      pill: false,
     },
   },
 );
@@ -47,14 +43,13 @@ export function SelectTrigger({
   className,
   children,
   variant,
-  pill,
   ...props
 }: React.ComponentProps<typeof BaseSelect.Trigger> &
-  VariantProps<typeof selectVariants>) {
+  VariantProps<typeof selectTriggerVariants>) {
   return (
     <BaseSelect.Trigger
       data-slot="select-trigger"
-      className={cn(selectVariants({ variant, pill, className }))}
+      className={cn(selectTriggerVariants({ variant, className }))}
       {...props}
     >
       {children}

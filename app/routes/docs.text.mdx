@@ -6,19 +6,78 @@ Basic text component with built-in styling and semantic variants.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
-<Text />
+Import the component and its related parts.
+
+```ts filename="Text Parts"
+import {
+  Text,
+  TextLink,
+  Strong,
+  Code
+} from "components/selia/text";
 ```
 
-## Usage
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Text>Text</Text>
+<TextLink>TextLink</TextLink>
+<Strong>Strong</Strong>
+<Code>Code</Code>
+```
+
+You may want to use the `render` prop to pass a custom link element. See the [Customization](/docs/customization#render-prop) page for more details.
+
+```tsx filename="Custom Element"
+import { Link } from "react-router";
+
+<TextLink render={<Link to="/about" />}>
+  About
+</TextLink>
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Text: {
+      description: "The text component.",
+      required: true,
+      props: {
+        render: {
+            name: "Render",
+            options: ["JSX Element"],
+            default: "<p />"
+        }
+      },
+    },
+    TextLink: {
+      description: "The text link container.",
+      required: true,
+      props: {
+        render: {
+          name: "Render",
+          options: ["JSX Element"],
+          default: "<a />"
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Link
 
-To create a link, use the `Link` component.
+To create a link, use the `TextLink` component.
 
 <Preview name="link" />
 ### Strong

@@ -5,15 +5,69 @@ Trigger actions and events with clickable interactive elements.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
-<Button />
+Import the component and its related parts.
+
+```ts filename="Button Parts"
+import { Button } from "components/selia/button";
 ```
 
-## Usage
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Button>Label</Button>
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Button: {
+      type: 'button',
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "primary",
+            "secondary",
+            "tertiary",
+            "danger",
+            "outline",
+            "plain",
+          ],
+          default: "primary",
+        },
+        size: {
+          name: "Size",
+          options: ["xs", "sm", "md", "lg", "icon", "xs-icon", "sm-icon", "lg-icon"],
+          default: "md",
+        },
+        block: {
+          name: "Block",
+          options: ["true", "false"],
+        },
+        pill: {
+          name: "Pill",
+          options: ["true", "false"],
+        },
+        progress: {
+          name: "Progress",
+          options: ["true", "false"],
+        }
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Variants
 

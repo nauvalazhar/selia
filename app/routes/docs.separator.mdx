@@ -6,15 +6,54 @@ Dividing element to create visual distinction between content groups.
 <DocsButtons externalDoc="https://base-ui.com/react/components/separator" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
-<Separator orientation="horizontal" />
+Import the component and its related parts.
+
+```ts filename="Separator Parts"
+import {
+  Separator
+} from "components/selia/separator";
 ```
 
-## Usage
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Separator />
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Separator: {
+      description: "The separator component.",
+      source: {
+        label: 'Base UI Separator',
+        href: 'https://base-ui.com/react/components/separator'
+      },
+      required: true,
+      props: {
+        orientation: {
+          name: "Orientation",
+          options: [
+            "horizontal",
+            "vertical"
+          ],
+          default: "horizontal",
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Vertical
 

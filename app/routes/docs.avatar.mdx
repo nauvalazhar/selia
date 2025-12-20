@@ -1,4 +1,3 @@
-
 # Avatar
 
 Display user profile pictures or initials in a circular or rounded format.
@@ -6,19 +5,36 @@ Display user profile pictures or initials in a circular or rounded format.
 <DocsButtons externalDoc="https://base-ui.com/react/components/avatar" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Avatar Parts"
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarIndicator
+} from "components/selia/avatar";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Avatar>
-  <AvatarImage />
-  <AvatarFallback />
-  <AvatarIndicator />
+  <AvatarImage
+    src="..."
+    alt="Avatar"
+  />
+  <AvatarFallback>NA</AvatarFallback>
 </Avatar>
 ```
 
-## Usage
+## Examples
 
 ### Initials
 

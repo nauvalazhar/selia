@@ -6,40 +6,105 @@ An autocomplete inside a dialog for quick interaction.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
+Import the component and its related parts.
+
+```ts filename="Command Parts"
+import {
+  Command,
+  CommandTrigger,
+  CommandContent,
+  CommandBody,
+  CommandFooter,
+  CommandFooterItem,
+  CommandFooterText,
+} from 'components/selia/command';
+
+import {
+  Autocomplete,
+  AutocompleteInput,
+  AutocompleteEmpty,
+  AutocompleteList,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteCollection,
+  AutocompleteItem,
+} from 'components/selia/autocomplete';
+```
+
+### Structure
+
+The expected structure and composition of the component. This component is composed of `Command` and `Autocomplete` components.
+You may also want to use `InputGroup` to wrap the `AutocompleteInput` component.
+
+```tsx filename="Anatomy" clip
 <Command>
-  <CommandTrigger />
+  <CommandTrigger>
+    Open Command
+  </CommandTrigger>
   <CommandContent>
     <CommandBody>
-      <Autocomplete>
-        <AutocompleteInput />
-        <AutocompleteTrigger />
-        <AutocompleteIcon />
-        <AutocompleteClear />
-        <AutocompleteValue />
-        <AutocompletePopup>
-          <AutocompleteEmpty />
-          <AutocompleteList>
-            <AutocompleteRow>
-              <AutocompleteItem />
-            </AutocompleteRow>
-            <AutocompleteSeparator />
-            <AutocompleteGroup>
-              <AutocompleteGroupLabel />
+      <Autocomplete items={items} open>
+        <InputGroup variant="plain">
+          <InputGroupAddon>
+            <SearchIcon />
+          </InputGroupAddon>
+          <AutocompleteInput
+            placeholder="Search apps or commands..."
+            variant="plain"
+          />
+        </InputGroup>
+        <AutocompleteEmpty>No results found.</AutocompleteEmpty>
+        <AutocompleteList>
+          {(group) => (
+            <AutocompleteGroup key={group.label} items={group.items}>
+              <AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+              <AutocompleteCollection>
+                {(item) => (
+                  <AutocompleteItem
+                    key={item.value}
+                    value={item.value}
+                  >
+                    {item.label}
+                  </AutocompleteItem>
+                )}
+              </AutocompleteCollection>
             </AutocompleteGroup>
-            <AutocompleteCollection />
-          </AutocompleteList>
-        </AutocompletePopup>
+          )}
+        </AutocompleteList>
       </Autocomplete>
     </CommandBody>
     <CommandFooter>
-      <CommandFooterItem />
-      <CommandFooterText />
+      Footer here
     </CommandFooter>
   </CommandContent>
 </Command>
+```
+
+The `items` prop is an array of objects that define the options to be displayed in the autocomplete popup. Each object should have a `value` and a `label` property.
+
+```ts filename="items.ts"
+const items = [
+  {
+    label: 'Applications',
+    items: [
+      {
+        label: 'Figma',
+        value: 'figma',
+      },
+      {
+        label: 'Adobe XD',
+        value: 'adobe-xd',
+      },
+      {
+        label: 'Sketch',
+        value: 'sketch',
+      },
+    ],
+  },
+];
+
 ```

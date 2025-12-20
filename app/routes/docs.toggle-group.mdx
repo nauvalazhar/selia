@@ -6,12 +6,56 @@ A group of toggle buttons that can be toggled on or off.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Toggle Group Parts"
+import { ToggleGroup } from "components/selia/toggle-group";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <ToggleGroup>
-  <Toggle />
+  <Toggle>Toggle</Toggle>
 </ToggleGroup>
 ```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    ToggleGroup: {
+      description: "The toggle group component.",
+      source: {
+        label: 'Base UI Toggle Group',
+        href: 'https://base-ui.com/react/components/toggle-group',
+      },
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: ["default", "outline", "plain"],
+          default: "default"
+        },
+        size: {
+          name: "Size",
+          options: ["sm", "md", "md-icon", "lg-icon"],
+          default: "md",
+        },
+        orientation: {
+          name: "Orientation",
+          options: ["horizontal", "vertical"],
+          default: "horizontal",
+        },
+      }
+    }
+  }}
+/>

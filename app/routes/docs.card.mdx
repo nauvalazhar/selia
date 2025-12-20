@@ -6,23 +6,81 @@ Flexible container for grouping related content with optional headers and footer
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Card Parts"
+import {
+  Card,
+  CardHeader,
+  CardHeaderAction,
+  CardTitle,
+  CardDescription,
+  CardBody,
+  CardFooter
+} from "components/selia/card";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Card>
   <CardHeader>
-    <CardTitle />
-    <CardDescription />
-    <CardHeaderAction />
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+    <CardHeaderAction>
+      <Button>Action</Button>
+    </CardHeaderAction>
   </CardHeader>
-  <CardBody />
-  <CardFooter />
+  <CardBody>Card content</CardBody>
+  <CardFooter>Card footer</CardFooter>
 </Card>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Card: {
+      required: true,
+      type: "div",
+    },
+    CardHeader: {
+      type: "header",
+      props: {
+        align: {
+          options: ["default", "center", "right"],
+          default: "default",
+        },
+      }
+    },
+    CardHeaderAction: {
+      type: "div",
+    },
+    CardTitle: {
+      type: "h3",
+    },
+    CardDescription: {
+      type: "p",
+    },
+    CardBody: {
+      type: "div",
+    },
+    CardFooter: {
+      type: "div",
+    },
+  }}
+/>
+
+
+## Examples
 
 ### Description
 

@@ -13,13 +13,15 @@ import rehypeSlug from 'rehype-slug';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
-import { componentName } from '~/lib/utils';
+import { componentName, extractComponents } from '~/lib/utils';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
 import { ArrowLeftIcon, ArrowRightIcon, InfoIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { getSources } from '~/lib/source';
 import { Alert, AlertDescription, AlertTitle } from 'components/selia/alert';
 import { DocsButtons } from 'components/docs-buttons';
+import { ComponentTable } from 'components/component-table';
+import { Installation } from 'components/installation';
 
 const transformers: ShikiTransformer[] = [
   transformerNotationHighlight(),
@@ -116,6 +118,8 @@ const components = {
   AlertDescription,
   InfoIcon,
   PreviewDemo,
+  ComponentTable,
+  Installation,
 };
 
 export default function DocsView({ loaderData }: Route.ComponentProps) {
@@ -145,6 +149,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
           '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
           '**:[h1,h2,h3,strong]:text-foreground',
           '*:[p]:mb-6 *:[p]:leading-6.5',
+          '*:[p+ul]:-mt-4',
           '[&>p>code]:before:content-["`"] [&>p>code]:after:content-["`"]',
           '[&>p>code]:text-foreground [&>p>code]:font-medium',
           '[&>p:first-of-type]:text-lg/relaxed',

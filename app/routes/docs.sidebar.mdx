@@ -13,9 +13,37 @@ Sidebar does not enforce any position or width:
 - You also need to set the sidebar width as needed.
 - To make it on/off-canvas, you should handle it in your layout component, not in the sidebar component.
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Sidebar Parts"
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarLogo,
+  SidebarFooter,
+  SidebarMenu,
+  SidebarList,
+  SidebarItem,
+  SidebarItemAction,
+  SidebarItemButton,
+  SidebarGroup,
+  SidebarGroupTitle,
+  SidebarGroupAction,
+  SidebarSubmenu,
+  SidebarCollapsible,
+  SidebarCollapsibleTrigger,
+  SidebarCollapsiblePanel
+} from "components/selia/sidebar";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Sidebar>
@@ -37,7 +65,27 @@ Import the component and assemble its parts:
 </Sidebar>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Sidebar: {
+      description: "The sidebar container.",
+      required: true,
+      props: {
+        size: {
+          name: "Size",
+          options: ["default", "compact", "loose"],
+          default: "default",
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Compact
 

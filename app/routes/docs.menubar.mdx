@@ -6,27 +6,38 @@ A menu bar providing commands and options for your application.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Menubar Parts"
+import { Menubar } from "components/selia/menubar";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Menubar>
   <Menu>
-    <MenuTrigger />
-    <MenuPopup>
-      <MenuItem />
-      <MenuSeparator />
-      <MenuGroup>
-        <MenuGroupLabel />
-      </MenuGroup>
-      <MenuRadioGroup>
-        <MenuRadioItem />
-      </MenuRadioGroup>
-      <MenuCheckboxItem />
+    <MenuTrigger>File</MenuTrigger>
+    <MenuPopup size="sm">
+      <MenuItem>New File</MenuItem>
+      <MenuItem>Open</MenuItem>
+      <MenuItem>Save</MenuItem>
       <MenuSubmenu>
-        <MenuSubmenuTrigger />
+        <MenuSubmenuTrigger render={<MenuItem>Export</MenuItem>} />
+        <MenuSubPopup size="sm">
+          <MenuItem>PNG</MenuItem>
+          <MenuItem>JPG</MenuItem>
+          <MenuItem>PDF</MenuItem>
+        </MenuSubPopup>
       </MenuSubmenu>
+      <MenuSeparator />
+      <MenuItem>Exit App</MenuItem>
     </MenuPopup>
   </Menu>
 </Menubar>

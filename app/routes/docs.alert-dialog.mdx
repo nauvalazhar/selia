@@ -5,28 +5,57 @@ Some actions require confirmation from the user.
 <DocsButtons externalDoc="https://base-ui.com/react/components/alert-dialog" />
 
 <Preview name="basic" />
-## Anatomy
 
-Import the component and assemble its parts:
+## Usage
+
+### Import
+
+Import the component and its related parts.
+
+```tsx filename="Alert Dialog Parts"
+import { 
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogPopup,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogBody,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogClose,
+} from 'components/selia/alert-dialog';
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <AlertDialog>
-  <AlertDialogTrigger />
+  <AlertDialogTrigger>
+    Trigger
+  </AlertDialogTrigger>
   <AlertDialogPopup>
     <AlertDialogHeader>
-      <AlertDialogTitle />
+      <AlertDialogTitle>
+        Title
+      </AlertDialogTitle>
     </AlertDialogHeader>
     <AlertDialogBody>
-      <AlertDialogDescription />
+      <AlertDialogDescription>
+        Description
+      </AlertDialogDescription>
     </AlertDialogBody>
     <AlertDialogFooter>
-      <AlertDialogClose />
+      <AlertDialogClose>
+        Close
+      </AlertDialogClose>
     </AlertDialogFooter>
   </AlertDialogPopup>
 </AlertDialog>
 ```
 
-## Usage
+## Examples
 
 ### Trigger
 

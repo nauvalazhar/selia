@@ -6,34 +6,61 @@ Organize and display data in rows and columns in a tabular format.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Table Parts"
+import {
+  Table,
+  TableContainer,
+  TableHeader,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableFooter,
+  TableCaption
+} from "components/selia/table";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <TableContainer>
   <Table>
-    <TableCaption />
+    <TableCaption>A list of your recent invoices.</TableCaption>
     <TableHeader>
       <TableRow>
-        <TableHead />
+        <TableHead>Invoice</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead>Method</TableHead>
+        <TableHead>Amount</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
       <TableRow>
-        <TableCell />
+        <TableCell>INV001</TableCell>
+        <TableCell>Paid</TableCell>
+        <TableCell>Credit Card</TableCell>
+        <TableCell>$250.00</TableCell>
       </TableRow>
     </TableBody>
     <TableFooter>
       <TableRow>
-        <TableCell />
+        <TableCell colSpan={3}>Total</TableCell>
+        <TableCell>$250.00</TableCell>
       </TableRow>
     </TableFooter>
   </Table>
 </TableContainer>
 ```
 
-## Usage
+## Examples
 
 ### Card
 

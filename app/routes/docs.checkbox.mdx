@@ -6,20 +6,38 @@ Allow users to select multiple options from a set of choices.
 <DocsButtons externalDoc="https://base-ui.com/react/components/checkbox" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="checkbox Parts"
+import {
+  CheckboxGroup,
+  CheckboxGroupLabel,
+  Checkbox
+} from "components/selia/checkbox";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
-<Checkbox />
-
 <CheckboxGroup>
-  <CheckboxGroupLabel />
+  <CheckboxGroupLabel>Group Label</CheckboxGroupLabel>
   <Checkbox />
 </CheckboxGroup>
 ```
 
-## Usage
+**Minimal Usage**
+
+```tsx filename="Minimal Usage"
+<Checkbox />
+```
+
+## Examples
 
 ### Group
 

@@ -5,9 +5,29 @@ Menu menu for choosing single option from a list.
 <DocsButtons externalDoc="https://base-ui.com/react/components/select" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="select Parts"
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectPopup,
+  SelectList,
+  SelectItem,
+  SelectGroup,
+  SelectGroupLabel,
+  SelectSeparator
+} from "components/selia/select";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Select>
@@ -16,13 +36,43 @@ Import the component and assemble its parts:
   </SelectTrigger>
   <SelectPopup>
     <SelectList>
-      <SelectItem />
+      <SelectItem>Item 1</SelectItem>
+      <SelectItem>Item 2</SelectItem>
+      <SelectItem>Item 3</SelectItem>
     </SelectList>
   </SelectPopup>
 </Select>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    SelectTrigger: {
+      description: "The select trigger component.",
+      source: {
+        label: 'Base UI Select',
+        href: 'https://base-ui.com/react/components/select'
+      },
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "subtle",
+            "plain"
+          ],
+          default: "default",
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Multiple
 

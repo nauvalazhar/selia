@@ -12,13 +12,27 @@ We have both `Meter` and `Progress` components. Here are the guidelines for usin
 - Use `Meter` when you want to show static numeric values in a range.
 - Use `Progress` when you want to show a progress of a task in a horizontal bar.
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="meter Parts"
+import {
+  Meter,
+  MeterLabel,
+  MeterValue
+} from "components/selia/meter";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
-<Meter>
-  <MeterLabel />
+<Meter value={50}>
+  <MeterLabel>Storage</MeterLabel>
   <MeterValue />
 </Meter>
 ```

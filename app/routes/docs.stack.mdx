@@ -6,15 +6,52 @@ Layout component for arranging elements vertically or horizontally with spacing.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
-<Stack />
+Import the component and its related parts.
+
+```ts filename="Stack Parts"
+import { Stack } from "components/selia/stack";
 ```
 
-## Usage
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Stack>
+  <Item />
+</Stack>
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Stack: {
+      description: "The stack container.",
+      required: true,
+      props: {
+        direction: {
+          name: "Direction",
+          options: ["row", "column"],
+          default: "column",
+        },
+        spacing: {
+          name: "Spacing",
+          options: ["sm", "md", "lg"],
+          default: "md",
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Row
 

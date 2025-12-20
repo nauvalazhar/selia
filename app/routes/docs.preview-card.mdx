@@ -6,13 +6,29 @@ A popup that appears when a link is hovered, showing a preview for sighted users
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Preview Card Parts"
+import {
+  PreviewCard,
+  PreviewCardTrigger,
+  PreviewCardPopup
+} from "components/selia/preview-card";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <PreviewCard>
-  <PreviewCardTrigger />
-  <PreviewCardPopup />
+  <PreviewCardTrigger>Trigger</PreviewCardTrigger>
+  <PreviewCardPopup>
+    Content goes here
+  </PreviewCardPopup>
 </PreviewCard>
 ```

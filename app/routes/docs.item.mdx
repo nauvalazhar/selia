@@ -12,9 +12,27 @@ You can treat the `Item` component as a classic media object component.
 It is flexible and can be used in various ways.
 Consider using it before creating a new component.
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Item Parts"
+import {
+  Item,
+  ItemContent,
+  ItemTitle,
+  ItemDescription,
+  ItemMeta,
+  ItemMedia,
+  ItemAction
+} from "components/selia/item";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Item>
@@ -28,7 +46,71 @@ Import the component and assemble its parts:
 </Item>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Item: {
+      type: "div",
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "outline",
+            "plain",
+            "primary",
+            "danger",
+            "info",
+            "success",
+            "warning",
+            "tertiary",
+            "primary-outline",
+            "danger-outline",
+            "info-outline",
+            "success-outline",
+            "warning-outline",
+            "tertiary-outline",
+          ],
+          default: "default",
+        },
+        size: {
+          name: "Size",
+          options: ["sm", "md", "lg"],
+          default: "md",
+        },
+        direction: {
+          name: "Direction",
+          options: ["row", "column"],
+          default: "row",
+        },
+      },
+    },
+    ItemContent: {
+      type: "div",
+    },
+    ItemTitle: {
+      type: "div",
+    },
+    ItemDescription: {
+      type: "p",
+    },
+    ItemMeta: {
+      type: "div",
+    },
+    ItemMedia: {
+      type: "div",
+    },
+    ItemAction: {
+      type: "div",
+    },
+  }}
+/>
+
+## Examples
 
 ### Variant
 

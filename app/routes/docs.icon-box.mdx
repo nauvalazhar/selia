@@ -6,9 +6,19 @@ Container for displaying icons with consistent sizing and alignment.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Icon Box Parts"
+import { IconBox } from "components/selia/icon-box";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <IconBox>
@@ -16,7 +26,51 @@ Import the component and assemble its parts:
 </IconBox>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    IconBox: {
+      required: true,
+      type: "div",
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "primary",
+            "secondary",
+            "tertiary",
+            "success",
+            "info",
+            "warning",
+            "danger",
+            "primary-subtle",
+            "secondary-subtle",
+            "tertiary-subtle",
+            "success-subtle",
+            "info-subtle",
+            "warning-subtle",
+            "danger-subtle",
+          ],
+          default: "primary",
+        },
+        size: {
+          name: "Size",
+          options: ["sm", "md", "lg"],
+          default: "md",
+        },
+        circle: {
+          name: "Circle",
+          options: ["true", "false"],
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Variants
 

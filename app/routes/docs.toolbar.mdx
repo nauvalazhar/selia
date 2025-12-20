@@ -6,18 +6,35 @@ A container for grouping a set of buttons and controls.
 
 <Preview name="basic" start />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Toolbar Parts"
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarLink,
+  ToolbarInput,
+  ToolbarGroup,
+  ToolbarSeparator
+} from "components/selia/toolbar";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Toolbar>
-  <ToolbarButton />
-  <ToolbarLink />
+  <ToolbarButton>Button</ToolbarButton>
+  <ToolbarLink>Link</ToolbarLink>
   <ToolbarSeparator />
   <ToolbarGroup>
-    <ToolbarButton />
-  <ToolbarGroup />
+    <ToolbarButton>Button</ToolbarButton>
+  </ToolbarGroup>
   <ToolbarInput />
 </Toolbar>
 ```

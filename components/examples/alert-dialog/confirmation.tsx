@@ -41,7 +41,7 @@ export default function AlertDialogBasicExample() {
         setDialogOpen(open);
       }}
     >
-      <DialogTrigger render={<Button variant="danger">Delete</Button>} />
+      <DialogTrigger render={<Button>Feedback</Button>} />
       <DialogPopup>
         <DialogHeader>
           <DialogTitle>Feedback</DialogTitle>

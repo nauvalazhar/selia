@@ -5,31 +5,114 @@ Reveal a list of actions or options when triggered by a button.
 <DocsButtons externalDoc="https://base-ui.com/react/components/menu" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
 
-```tsx filename="Anatomy"
+Import the component and its related parts.
+
+```ts filename="Menu Parts"
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopup,
+  MenuItem,
+  MenuSeparator,
+  MenuSubmenu,
+  MenuSubmenuTrigger,
+  MenuSubPopup,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuCheckboxItem,
+  MenuRadioGroup,
+  MenuRadioItem
+} from "components/selia/menu";
+```
+
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy" clip
 <Menu>
-  <MenuTrigger />
+  <MenuTrigger>Menu</MenuTrigger>
   <MenuPopup>
-    <MenuItem />
+    <MenuGroup>
+      <MenuGroupLabel>Account</MenuGroupLabel>
+      <MenuItem>
+        <UserIcon />
+        Profile
+      </MenuItem>
+      <MenuItem>
+        <Settings2Icon />
+        Settings
+      </MenuItem>
+    </MenuGroup>
     <MenuSeparator />
     <MenuGroup>
-      <MenuGroupLabel />
+      <MenuGroupLabel>Appearances</MenuGroupLabel>
+      <MenuSubmenu>
+        <MenuSubmenuTrigger>Theme</MenuSubmenuTrigger>
+        <MenuPopup>
+          <MenuItem>Light</MenuItem>
+          <MenuItem>Dark</MenuItem>
+          <MenuItem>System</MenuItem>
+        </MenuPopup>
+      </MenuSubmenu>
+      <MenuItem>
+        Toggle Sidebar
+      </MenuItem>
     </MenuGroup>
-    <MenuRadioGroup>
-      <MenuRadioItem />
-    </MenuRadioGroup>
-    <MenuCheckboxItem />
-    <MenuSubmenu>
-      <MenuSubmenuTrigger />
-    </MenuSubmenu>
+    <MenuSeparator />
+    <MenuItem>
+      Quit App
+    </MenuItem>
   </MenuPopup>
 </Menu>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    MenuPopup: {
+      required: true,
+      description: 'The popup container for the menu.',
+      source: {
+        label: 'Base UI Menu',
+        href: "https://base-ui.com/react/components/menu"
+      },
+      props: {
+        size: {
+          name: "Size",
+          options: ["sm", "md"],
+          default: "md",
+        },
+      }
+    },
+    MenuRadioItem: {
+      description: 'The radio item for the menu.',
+      source: {
+        label: 'Base UI Menu',
+        href: "https://base-ui.com/react/components/menu"
+      },
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "alternative"
+          ],
+          default: "default",
+        },
+      }
+    }
+  }}
+/>
+
+## Examples
 
 ### Trigger
 

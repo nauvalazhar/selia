@@ -6,15 +6,53 @@ Single-line text field for user data entry and form submission.
 <DocsButtons externalDoc="https://base-ui.com/react/components/input" />
 
 <Preview name="basic" />
-## Anatomy
 
-Import the component and assemble its parts:
+## Usage
+
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Input Parts"
+import { Input } from "components/selia/input";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Input />
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Input: {
+      description: "The input control component.",
+      required: true,
+      source: {
+        label: 'Base UI Input',
+        href: "https://base-ui.com/react/components/input"
+      },
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "subtle",
+          ],
+          default: "default",
+        },
+      },
+    },
+  }}
+/>
+
+## Examples
 
 ### Subtle
 

@@ -6,19 +6,11 @@ Brief notification messages that appear temporarily at screen top.
 
 <Preview name="basic" />
 
-## Anatomy
-
-Import the component and assemble its parts:
-
-```tsx filename="Anatomy"
-<Toast />
-```
-
 ## Usage
 
 Add the `Toast` component to your top-level component such as `root.tsx` or `layout.tsx`.
 
-```tsx filename="root.tsx"
+```tsx filename="app/root.tsx"
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -28,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="bg-background">
+      <body>
         <div className="root">{children}</div>
 // [!code highlight:1]
         <Toast />
@@ -42,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 To create a toast, use the `toastManager` object.
 
-```tsx filename="root.tsx"
+```tsx filename="component.tsx"
 import { toastManager } from 'components/selia/toast';
 
 toastManager.create({
@@ -54,7 +46,7 @@ toastManager.create({
 
 Or use the `anchoredToastManager` object to create an anchored toast.
 
-```tsx filename="root.tsx"
+```tsx filename="component.tsx"
 import { anchoredToastManager } from 'components/selia/toast';
 
 anchoredToastManager.create({
@@ -67,6 +59,10 @@ anchoredToastManager.create({
   },
 });
 ```
+
+Notice that you have to pass the element ref to the `anchor` prop. This is required for the toast to be anchored to the element.
+
+## Examples
 
 ### Variants
 

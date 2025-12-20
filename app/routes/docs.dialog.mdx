@@ -5,28 +5,48 @@ Modal windows that focus user attention on specific content or actions.
 <DocsButtons externalDoc="https://base-ui.com/react/components/dialog" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Dialog Parts"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogPopup,
+  DialogHeader,
+  DialogTitle,
+  DialogBody,
+  DialogDescription,
+  DialogFooter,
+  DialogClose
+} from "components/selia/dialog";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Dialog>
-  <DialogTrigger />
+  <DialogTrigger>Open Dialog</DialogTrigger>
   <DialogPopup>
     <DialogHeader>
-      <DialogTitle />
+      <DialogTitle>Dialog Title</DialogTitle>
     </DialogHeader>
     <DialogBody>
-      <DialogDescription />
+      <DialogDescription>Dialog Description</DialogDescription>
     </DialogBody>
     <DialogFooter>
-      <DialogClose />
+      <DialogClose>Close</DialogClose>
     </DialogFooter>
   </DialogPopup>
 </Dialog>
 ```
 
-## Usage
+## Examples
 
 ### Trigger
 

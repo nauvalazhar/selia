@@ -6,18 +6,82 @@ Component to display alerts.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```tsx filename="Alert Parts"
+import { 
+  Alert, 
+  AlertTitle, 
+  AlertDescription, 
+  AlertAction 
+} from 'components/selia/alert';
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Alert>
-  <AlertTitle />
-  <AlertDescription />
+  <AlertTitle>Alert Title</AlertTitle>
+  <AlertDescription>
+    Alert description goes here.
+  </AlertDescription>
+  <AlertAction>
+    <Button>Action</Button>
+  </AlertAction>
 </Alert>
 ```
 
-## Usage
+**Minimal Usage**
+
+```tsx filename="Minimal Usage"
+<Alert>
+  Message goes here.
+</Alert>
+```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    Alert: {
+      type: 'div',
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "info",
+            "success",
+            "warning",
+            "danger",
+            "tertiary",
+          ],
+          default: "default",
+        },
+      },
+    },
+    AlertTitle: {
+      type: 'h2',
+    },
+    AlertDescription: {
+      type: 'p',
+    },
+    AlertAction: {
+      type: 'div',
+    },
+  }}
+/>
+
+## Examples
 
 ### Variants
 

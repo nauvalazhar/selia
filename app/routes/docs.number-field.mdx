@@ -6,19 +6,71 @@ A numeric input element with increment and decrement buttons, and a scrub area.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Number Field Parts"
+import {
+  NumberField,
+  NumberFieldScrubArea,
+  NumberFieldScrubAreaCursor,
+  NumberFieldGroupVariants,
+  NumberFieldGroup,
+  NumberFieldDecrement,
+  NumberFieldIncrement,
+  NumberFieldInput
+} from "components/selia/number-field";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
-<NumberField>
-  <NumberFieldScrubArea>
-    <Label />
-  </NumberFieldScrubArea>
-  <NumberFieldGroup>
-    <NumberFieldDecrement />
-    <NumberFieldInput />
-    <NumberFieldIncrement />
-  </NumberFieldGroup>
-</NumberField>
+<Field>
+  <NumberField defaultValue={1} min={1} max={1000}>
+    <NumberFieldScrubArea>
+      <FieldLabel>Instances</FieldLabel>
+    </NumberFieldScrubArea>
+    <NumberFieldGroup>
+      <NumberFieldDecrement>
+        <MinusIcon />
+      </NumberFieldDecrement>
+      <NumberFieldInput />
+      <NumberFieldIncrement>
+        <PlusIcon />
+      </NumberFieldIncrement>
+    </NumberFieldGroup>
+  </NumberField>
+</Field>
 ```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    NumberFieldGroup: {
+      description: "The group of number field components.",
+      source: {
+        label: 'Base UI Number Field',
+        href: 'https://base-ui.com/react/components/number-field'
+      },
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "plain",
+          ],
+          default: "default",
+        },
+      },
+    },
+  }}
+/>

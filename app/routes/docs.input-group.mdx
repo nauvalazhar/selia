@@ -5,21 +5,64 @@ Combine inputs with add-ons like buttons, icons, or text labels.
 <DocsButtons />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Input Group Parts"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText
+} from "components/selia/input-group";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <InputGroup>
   <InputGroupAddon>
     <InputGroupText />
   </InputGroupAddon>
-  <InputGroupSeparator />
-  <InputGroupBar />
 </InputGroup>
 ```
 
-## Usage
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    InputGroup: {
+      type: "div",
+      required: true,
+      props: {
+        variant: {
+          name: "Variant",
+          options: [
+            "default",
+            "subtle",
+            "plain",
+          ],
+          default: "default",
+        },
+      }
+    },
+    InputGroupAddon: {
+      type: "div",
+      required: true,
+    },
+    InputGroupText: {
+      type: "span",
+    },
+  }}
+/>
+
+## Examples
 
 ### Icon
 

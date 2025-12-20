@@ -6,12 +6,27 @@ Show and hide content with a trigger.
 
 <Preview name="basic" />
 
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Collapsible Parts"
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsiblePanel
+} from "components/selia/collapsible";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Collapsible>
-  <CollapsibleTrigger />
-  <CollapsiblePanel />
+  <CollapsibleTrigger>Trigger</CollapsibleTrigger>
+  <CollapsiblePanel>Collapsible content</CollapsiblePanel>
 </Collapsible>
+```

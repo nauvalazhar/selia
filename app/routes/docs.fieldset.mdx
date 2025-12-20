@@ -6,17 +6,30 @@ Group related form controls with an optional legend or description.
 <DocsButtons externalDoc="https://base-ui.com/react/components/fieldset" />
 
 <Preview name="basic" />
-## Anatomy
+## Usage
 
-Import the component and assemble its parts:
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Fieldset Parts"
+import {
+  Fieldset,
+  FieldsetLegend
+} from "components/selia/fieldset";
+```
+
+### Structure
+
+The expected structure and composition of the component.
 
 ```tsx filename="Anatomy"
 <Fieldset>
-  <FieldsetLegend />
+  <FieldsetLegend>Legend</FieldsetLegend>
 </Fieldset>
 ```
 
-## Usage
+## Examples
 
 ### Complex
 
