@@ -32,13 +32,11 @@ export function ComponentTable({ components }: Props) {
           className="border-b border-separator last:border-none first:*:[h3]:rounded-t-[calc(var(--radius-3xl)-1px)]"
         >
           <h3 className="px-4 py-2 bg-accent/40 h-12 flex items-center border-b border-separator font-semibold">
-            &lt;{name}&gt;
+            <span className="font-mono text-sm">&lt;{name}&gt;</span>
             {spec.required && (
               <Tooltip>
                 <TooltipTrigger>
-                  <span className="text-danger ml-1 text-lg cursor-help">
-                    *
-                  </span>
+                  <span className="text-danger ml-1 cursor-help">*</span>
                 </TooltipTrigger>
                 <TooltipPopup>This component must be present.</TooltipPopup>
               </Tooltip>
@@ -80,11 +78,11 @@ export function ComponentTable({ components }: Props) {
                   <div>Options</div>
                 </div>
 
-                <div className="mt-2">
+                <div>
                   {Object.entries(spec.props).map(([key, prop]) => (
                     <div
                       key={key}
-                      className="grid grid-cols-[120px_120px_1fr] gap-3 border-b border-separator py-4 last:pb-0 last:border-none"
+                      className="grid grid-cols-[120px_120px_1fr] gap-3 border-b border-separator py-4 last:pb-0 last:border-none font-mono text-sm"
                     >
                       <div className="font-medium text-foreground">`{key}`</div>
                       <div className="text-foreground font-medium">
