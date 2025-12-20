@@ -1,6 +1,8 @@
+'use client';
+
 import { Menu as BaseMenu } from '@base-ui/react/menu';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Menu({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
   return <BaseMenu.Root data-slot="menu" {...props} />;

@@ -1,6 +1,8 @@
+'use client';
+
 import { Dialog as BaseDialog } from '@base-ui/react/dialog';
 import { buttonVariants } from './button';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Dialog({
   ...props

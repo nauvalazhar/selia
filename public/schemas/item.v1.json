@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Selia Item Manifest",
+  "description": "Defines a single distributable item in a Selia registry.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "type": {
+      "description": "The semantic type of the item. Can be a standard type or a custom string.",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["component", "block", "hook", "util", "config"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "npm": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "items": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "content": { "type": "string" },
+          "target": { "type": "string" },
+          "path": { "type": "string" },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": ["component", "block", "hook", "util", "config"]
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "required": ["name", "target", "path"]
+      }
+    }
+  },
+  "required": ["name", "version", "type", "files"]
+}

@@ -1,5 +1,7 @@
+'use client';
+
 import { Slider as BaseSlider } from '@base-ui/react/slider';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Slider({
   className,

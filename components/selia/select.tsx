@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { Select as BaseSelect } from '@base-ui/react/select';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Chip } from './chip';
 
@@ -147,7 +149,7 @@ export function SelectPopup({
   positionMethod,
   ...props
 }: React.ComponentProps<typeof BaseSelect.Popup> &
-  VariantProps<typeof selectVariants> & {
+  VariantProps<typeof selectTriggerVariants> & {
     align?: BaseSelect.Positioner.Props['align'];
     alignOffset?: BaseSelect.Positioner.Props['alignOffset'];
     side?: BaseSelect.Positioner.Props['side'];

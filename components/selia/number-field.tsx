@@ -1,6 +1,8 @@
+'use client';
+
 import { NumberField as BaseNumberField } from '@base-ui/react/number-field';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function NumberField({
   className,

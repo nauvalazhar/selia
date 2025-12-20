@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { Autocomplete as BaseAutocomplete } from '@base-ui/react/autocomplete';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export function Autocomplete({

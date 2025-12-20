@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 import { Fieldset as BaseFieldset } from '@base-ui/react/fieldset';
 
 export function Fieldset({

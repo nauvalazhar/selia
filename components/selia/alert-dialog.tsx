@@ -1,6 +1,8 @@
+'use client';
+
 import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog';
 import { buttonVariants } from './button';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function AlertDialog({
   ...props

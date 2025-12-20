@@ -1,6 +1,8 @@
+'use client';
+
 import { Separator as BaseSeparator } from '@base-ui/react/separator';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export const separatorVariants = cva('bg-separator', {
   variants: {

@@ -1,6 +1,8 @@
+'use client';
+
 import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export const chipVariants = cva('inline-flex items-center ring font-medium', {
   variants: {

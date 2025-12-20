@@ -1,5 +1,7 @@
+'use client';
+
 import { Toolbar as BaseToolbar } from '@base-ui/react/toolbar';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Toolbar({
   className,

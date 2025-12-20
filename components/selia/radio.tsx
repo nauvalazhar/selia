@@ -1,7 +1,9 @@
+'use client';
+
 import { useRender } from '@base-ui/react/use-render';
 import { Radio as BaseRadio } from '@base-ui/react/radio';
 import { RadioGroup as BaseRadioGroup } from '@base-ui/react/radio-group';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function RadioGroup({
   className,

@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { Tabs as BaseTabs } from '@base-ui/react/tabs';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Tabs({
   className,

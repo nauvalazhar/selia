@@ -1,6 +1,8 @@
+'use client';
+
 import { Toast as BaseToast, type ToastObject } from '@base-ui/react/toast';
 import { buttonVariants } from './button';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export const toastManager = BaseToast.createToastManager();
 export const anchoredToastManager = BaseToast.createToastManager();

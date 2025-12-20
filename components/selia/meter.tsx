@@ -1,5 +1,7 @@
+'use client';
+
 import { Meter as BaseMeter } from '@base-ui/react/meter';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Meter({
   className,

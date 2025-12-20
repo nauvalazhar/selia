@@ -1,5 +1,7 @@
+'use client';
+
 import { useRender } from '@base-ui/react/use-render';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 import { Collapsible as BaseCollapsible } from '@base-ui/react/collapsible';
 import { cva, type VariantProps } from 'class-variance-authority';
 

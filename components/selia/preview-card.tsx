@@ -1,5 +1,7 @@
+'use client';
+
 import { PreviewCard as BasePreviewCard } from '@base-ui/react/preview-card';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function PreviewCard({
   children,

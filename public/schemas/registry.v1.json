@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Selia Registry Manifest",
+  "description": "The entry point for a Selia-compatible registry, listing all available items.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "homepage": { "type": "string", "format": "uri" },
+    "version": { "type": "string" },
+    "items": {
+      "type": "array",
+      "description": "A map of all available items in this registry.",
+      "$ref": "item.v1.json"
+    }
+  },
+  "required": ["name", "version", "items"]
+}

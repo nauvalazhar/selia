@@ -1,5 +1,7 @@
+'use client';
+
 import { Popover as BasePopover } from '@base-ui/react/popover';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Popover({
   ...props

@@ -1,5 +1,7 @@
+'use client';
+
 import { Progress as BaseProgress } from '@base-ui/react/progress';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Progress({
   className,

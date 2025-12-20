@@ -1,6 +1,8 @@
+'use client';
+
 import { ToggleGroup as BaseToggleGroup } from '@base-ui/react/toggle-group';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export const toggleGroupVariants = cva(
   [

@@ -1,5 +1,7 @@
+'use client';
+
 import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Tooltip({
   ...props

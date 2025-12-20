@@ -1,5 +1,7 @@
+'use client';
+
 import { ScrollArea as BaseScrollArea } from '@base-ui/react/scroll-area';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function ScrollArea({
   children,

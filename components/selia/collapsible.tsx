@@ -1,5 +1,7 @@
+'use client';
+
 import { Collapsible as BaseCollapsible } from '@base-ui/react/collapsible';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Collapsible({
   className,

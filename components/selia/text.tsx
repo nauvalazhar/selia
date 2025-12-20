@@ -1,5 +1,7 @@
+'use client';
+
 import { useRender } from '@base-ui/react/use-render';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Text({
   className,

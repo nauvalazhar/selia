@@ -1,5 +1,7 @@
+'use client';
+
 import { Menubar as BaseMenubar } from '@base-ui/react/menubar';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Menubar({
   className,

@@ -1,7 +1,9 @@
+'use client';
+
 import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
 import { useRender } from '@base-ui/react/use-render';
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function CheckboxGroup({
   className,

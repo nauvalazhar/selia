@@ -1,5 +1,7 @@
+'use client';
+
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export const kbdVariants = cva(
   [

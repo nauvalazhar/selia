@@ -1,4 +1,6 @@
-import { cn } from 'lib/utils';
+'use client';
+
+import { cn } from '#utils';
 import { Dialog, DialogBody, DialogPopup, DialogTrigger } from './dialog';
 
 export function Command({ ...props }: React.ComponentProps<typeof Dialog>) {

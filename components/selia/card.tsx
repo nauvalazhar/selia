@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (

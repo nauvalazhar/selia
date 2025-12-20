@@ -1,4 +1,6 @@
-import { cn } from 'lib/utils';
+'use client';
+
+import { cn } from '#utils';
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { useRender } from '@base-ui/react/use-render';

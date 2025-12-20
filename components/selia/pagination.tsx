@@ -1,6 +1,8 @@
+'use client';
+
 import { useRender } from '@base-ui/react/use-render';
 import { buttonVariants } from './button';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Pagination({ ...props }: React.ComponentProps<'nav'>) {
   return (

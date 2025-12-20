@@ -1,4 +1,6 @@
-import { cn } from 'lib/utils';
+'use client';
+
+import { cn } from '#utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const iconBoxVariants = cva(

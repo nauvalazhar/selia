@@ -1,5 +1,7 @@
+'use client';
+
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
-import { cn } from 'lib/utils';
+import { cn } from '#utils';
 
 export function Accordion({
   className,
