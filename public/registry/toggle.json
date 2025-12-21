@@ -1,0 +1,12 @@
+{
+  "name": "toggle",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "toggle.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { Toggle as BaseToggle } from '@base-ui/react/toggle';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '#utils';\n\nconst toggleVariants = cva(\n  [\n    'inline-flex items-center justify-center gap-2.5 ring *:[svg]:size-4.5',\n    'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',\n    'transition-colors duration-100',\n    'hover:bg-accent/50 disabled:opacity-70 disabled:pointer-events-none',\n  ],\n  {\n    variants: {\n      variant: {\n        default: 'ring-border shadow data-pressed:bg-accent',\n        plain: 'ring-transparent data-pressed:bg-accent',\n      },\n      size: {\n        sm: 'h-8.5 min-w-8.5 rounded px-3',\n        'sm-icon': 'h-8.5 w-8.5 rounded',\n        md: 'h-9.5 min-w-9.5 rounded px-4',\n        'md-icon': 'h-9.5 w-9.5 rounded',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'md',\n    },\n  },\n);\n\nexport function Toggle({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: React.ComponentProps<typeof BaseToggle> &\n  VariantProps<typeof toggleVariants>) {\n  return (\n    <BaseToggle\n      data-slot=\"toggle\"\n      data-size={size}\n      className={cn(toggleVariants({ variant, size, className }))}\n      {...props}\n    >\n      {children}\n    </BaseToggle>\n  );\n}\n"
+    }
+  ]
+}

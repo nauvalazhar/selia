@@ -1,0 +1,12 @@
+{
+  "name": "fieldset",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "fieldset.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { cn } from '#utils';\nimport { Fieldset as BaseFieldset } from '@base-ui/react/fieldset';\n\nexport function Fieldset({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseFieldset.Root>) {\n  return (\n    <BaseFieldset.Root\n      data-slot=\"fieldset\"\n      className={cn(\n        'flex flex-col gap-0',\n        '*:data-[slot=text]:text-muted',\n        '*:data-[slot=text]:mb-6',\n        '[&_[data-slot=\"field\"]:not([data-layout=\"inline\"])]:not-last:mb-6',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function FieldsetLegend({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseFieldset.Legend>) {\n  return (\n    <BaseFieldset.Legend\n      data-slot=\"fieldset-legend\"\n      className={cn('font-semibold text-foreground text-lg mb-2', className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

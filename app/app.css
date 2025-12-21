@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 :root {
   --surface-00: oklch(0.9697 0.0017 247.84);
   --surface-01: oklch(0.2348 0.0041 264.49);
@@ -79,3 +81,5 @@
     max-width: 96rem;
   }
 }
+
+@import './selia.css';

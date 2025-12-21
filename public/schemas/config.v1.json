@@ -1,54 +1,68 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Selia Project Configuration",
-  "description": "Defines the Selia UI configuration for a project.",
   "type": "object",
   "properties": {
     "framework": {
-      "type": "string",
-      "enum": ["react", "vue"],
-      "description": "The project's primary JavaScript framework."
+      "type": "string"
     },
     "paths": {
       "type": "object",
-      "description": "Maps semantic targets to output directories.",
-      "properties": {
-        "components": { "type": "string" },
-        "blocks": { "type": "string" }
+      "propertyNames": {
+        "type": "string"
       },
-      "required": ["components"]
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "imports": {
       "type": "object",
-      "description": "Maps placeholder aliases to real import paths.",
-      "properties": {
-        "utils": { "type": "string" }
+      "propertyNames": {
+        "type": "string"
       },
-      "required": ["utils"]
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "registries": {
       "type": "object",
-      "description": "Configuration for component sources.",
       "properties": {
         "default": {
-          "type": "string",
-          "description": "The name of the default registry source to use."
+          "type": "string"
         },
         "sources": {
           "type": "object",
-          "description": "A map of available registry sources.",
+          "propertyNames": {
+            "type": "string"
+          },
           "additionalProperties": {
             "type": "object",
             "properties": {
-              "name": { "type": "string" },
-              "url": { "type": "string", "format": "uri" },
-              "homepage": { "type": "string", "format": "uri" }
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "homepage": {
+                "type": "string",
+                "format": "uri"
+              }
             },
-            "required": ["name", "url"]
+            "required": [
+              "name",
+              "url"
+            ],
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
-  "required": ["paths", "imports"]
+  "required": [
+    "paths",
+    "imports"
+  ],
+  "additionalProperties": false
 }

@@ -1,17 +1,792 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Selia Registry Manifest",
-  "description": "The entry point for a Selia-compatible registry, listing all available items.",
   "type": "object",
   "properties": {
-    "name": { "type": "string" },
-    "homepage": { "type": "string", "format": "uri" },
-    "version": { "type": "string" },
+    "name": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
     "items": {
       "type": "array",
-      "description": "A map of all available items in this registry.",
-      "$ref": "item.v1.json"
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "component",
+                  "block",
+                  "hook",
+                  "util",
+                  "config"
+                ]
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "dependencies": {
+            "type": "object",
+            "properties": {
+              "npm": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "type": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "component",
+                        "block",
+                        "hook",
+                        "util",
+                        "config"
+                      ]
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "target"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "files"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "setup": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "steps": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "dependencies"
+                      },
+                      "packages": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string"
+                        },
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "packages"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "detect-framework"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "saveAs": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "assert"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "check": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "dependency"
+                              },
+                              "packages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "packages"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "file-exists"
+                              },
+                              "path": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "path"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "framework"
+                              },
+                              "value": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "value"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "env"
+                              },
+                              "key": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "key"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      },
+                      "onFail": {
+                        "type": "object",
+                        "properties": {
+                          "exit": {
+                            "default": true,
+                            "type": "boolean"
+                          },
+                          "message": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "exit",
+                          "message"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name",
+                      "check",
+                      "onFail"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "prompt"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "promptType": {
+                        "type": "string",
+                        "enum": [
+                          "text",
+                          "select",
+                          "confirm",
+                          "file-search"
+                        ]
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "saveAs": {
+                        "type": "string"
+                      },
+                      "default": {},
+                      "pattern": {
+                        "type": "string"
+                      },
+                      "exclude": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "value": {
+                              "type": "string"
+                            },
+                            "label": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "value",
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "validate": {
+                        "type": "object",
+                        "properties": {
+                          "pattern": {
+                            "type": "string"
+                          },
+                          "required": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name",
+                      "promptType",
+                      "message",
+                      "saveAs"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "file-append"
+                      },
+                      "target": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "string"
+                      },
+                      "contentPath": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "target"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "file-create"
+                      },
+                      "target": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "string"
+                      },
+                      "contentPath": {
+                        "type": "string"
+                      },
+                      "overwrite": {
+                        "default": false,
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "target",
+                      "overwrite"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "file-update"
+                      },
+                      "target": {
+                        "type": "string"
+                      },
+                      "search": {
+                        "type": "string"
+                      },
+                      "replace": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "target",
+                      "search",
+                      "replace"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "file-update-json"
+                      },
+                      "target": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string"
+                        },
+                        "additionalProperties": {}
+                      },
+                      "merge": {
+                        "default": "deep",
+                        "type": "string",
+                        "enum": [
+                          "shallow",
+                          "deep"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "target",
+                      "content",
+                      "merge"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "steps"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "string"
+        }
+      ]
     }
   },
-  "required": ["name", "version", "items"]
+  "required": [
+    "name",
+    "items"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "__schema0": {
+      "anyOf": [
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "file-exists"
+                },
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "path"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "file-contains"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "pattern": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "path",
+                "pattern"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "dependency"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "name"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "env"
+                },
+                "key": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "key"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "framework"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/__schema0"
+              }
+            }
+          },
+          "required": [
+            "all"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/__schema0"
+              }
+            }
+          },
+          "required": [
+            "any"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "not": {
+              "$ref": "#/definitions/__schema0"
+            }
+          },
+          "required": [
+            "not"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
 }

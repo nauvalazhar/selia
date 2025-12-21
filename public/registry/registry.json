@@ -1,0 +1,604 @@
+{
+  "name": "selia",
+  "homepage": "https://selia.nauv.al",
+  "version": "1.0.0",
+  "items": [
+    {
+      "name": "accordion",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "npm": {
+          "@radix-ui/react-accordion": "^1.0.0"
+        }
+      },
+      "files": [
+        {
+          "name": "accordion.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "button"
+        ]
+      },
+      "files": [
+        {
+          "name": "alert-dialog.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "alert.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "autocomplete.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "avatar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "badge.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "button.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "card.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "checkbox.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "chip.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "collapsible.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "chip"
+        ]
+      },
+      "files": [
+        {
+          "name": "combobox.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "dialog"
+        ]
+      },
+      "files": [
+        {
+          "name": "command.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "dialog.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "divider",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "divider.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "field.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "fieldset",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "fieldset.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "form.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "heading",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "heading.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "icon-box",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "icon-box.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "input-group.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "input.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "item.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "kbd.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "label.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "menu",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "menu.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "menubar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "meter.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "number-field.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "button"
+        ]
+      },
+      "files": [
+        {
+          "name": "pagination.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "popover.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "preview-card",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "preview-card.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "progress.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "radio.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "scroll-area.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "chip"
+        ]
+      },
+      "files": [
+        {
+          "name": "select.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "separator.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "sidebar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "slider.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "spinner.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "stack",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "stack.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "switch.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "table.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "tabs.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "text.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "textarea.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "version": "1.0.0",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "button"
+        ]
+      },
+      "files": [
+        {
+          "name": "toast.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "toggle-group.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "toggle.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "toolbar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "version": "1.0.0",
+      "type": "component",
+      "files": [
+        {
+          "name": "tooltip.tsx",
+          "target": "components"
+        }
+      ]
+    }
+  ],
+  "setup": "setup.json"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pagination",
+  "version": "1.0.0",
+  "type": "component",
+  "dependencies": {
+    "items": [
+      "button"
+    ]
+  },
+  "files": [
+    {
+      "name": "pagination.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { useRender } from '@base-ui/react/use-render';\nimport { buttonVariants } from './button';\nimport { cn } from '#utils';\n\nexport function Pagination({ ...props }: React.ComponentProps<'nav'>) {\n  return (\n    <nav\n      data-slot=\"pagination\"\n      aria-label=\"Pagination\"\n      {...props}\n      className={cn('flex justify-center', props.className)}\n    />\n  );\n}\n\nexport function PaginationList({\n  children,\n  ...props\n}: React.ComponentProps<'ul'>) {\n  return (\n    <ul\n      data-slot=\"pagination-list\"\n      className=\"flex items-center gap-1\"\n      {...props}\n    >\n      {children}\n    </ul>\n  );\n}\n\nexport function PaginationItem({\n  children,\n  ...props\n}: React.ComponentProps<'li'>) {\n  return (\n    <li data-slot=\"pagination-item\" {...props}>\n      {children}\n    </li>\n  );\n}\n\nexport function PaginationButton({\n  active,\n  disabled,\n  render,\n  ...props\n}: useRender.ComponentProps<'button'> & {\n  active?: boolean;\n  disabled?: boolean;\n}) {\n  return useRender({\n    defaultTagName: 'button',\n    render,\n    props: {\n      'data-slot': 'pagination-button',\n      'aria-current': active ? 'page' : undefined,\n      'aria-disabled': disabled ? true : undefined,\n      className: cn(\n        buttonVariants({\n          variant: active ? 'secondary' : 'plain',\n        }),\n        'cursor-pointer',\n        active && 'pointer-events-none',\n        disabled && 'pointer-events-none opacity-70',\n        props.className,\n      ),\n      ...props,\n    },\n  });\n}\n"
+    }
+  ]
+}

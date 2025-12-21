@@ -1,0 +1,702 @@
+{
+  "$schema": "https://selia.nauv.al/schemas/registry.v1.json",
+  "name": "selia",
+  "homepage": "https://selia.nauv.al",
+  "setup": {
+    "steps": [
+      {
+        "type": "assert",
+        "name": "tailwind-installed",
+        "check": {
+          "type": "dependency",
+          "packages": ["tailwindcss"]
+        },
+        "onFail": {
+          "exit": true,
+          "message": [
+            "Tailwind CSS is not installed.",
+            "Refer to https://tailwindcss.com/docs/installation for more information."
+          ]
+        }
+      },
+      {
+        "type": "dependencies",
+        "packages": {
+          "@base-ui/react": "^1.0.0",
+          "tailwind-merge": "^3.3.1",
+          "clsx": "^2.1.1",
+          "class-variance-authority": "^0.7.1"
+        }
+      },
+      {
+        "name": "framework",
+        "type": "detect-framework"
+      },
+      {
+        "name": "css",
+        "type": "prompt",
+        "message": "Where is your main CSS file?",
+        "promptType": "file-search",
+        "pattern": "**/*.css",
+        "exclude": ["**/node_modules/**", "**/public/**", "**/dist/**"],
+        "saveAs": "paths.css",
+        "default": "app/app.css"
+      },
+      {
+        "name": "utils",
+        "type": "prompt",
+        "promptType": "text",
+        "message": "Where do you want to place your utils file?",
+        "default": "lib/utils.ts",
+        "saveAs": "paths.utils",
+        "validate": {
+          "pattern": ".*\\.ts$",
+          "required": true
+        }
+      },
+      {
+        "type": "prompt",
+        "name": "root-file",
+        "promptType": "file-search",
+        "message": "Where is your root layout file?",
+        "pattern": "**/{layout,root,__root,main,index,layout,app}.{tsx,ts,js,jsx,blade.php}",
+        "exclude": ["**/node_modules/**", "**/dist/**", "**/.next/**"],
+        "saveAs": "paths.rootFile"
+      },
+      {
+        "type": "file-append",
+        "target": "{{css}}",
+        "contentPath": "app/selia.css",
+        "condition": {
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{css}}",
+                "pattern": "@utility\\s+bg-spinner|\\.root\\s*\\{|--color-danger"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "file-create",
+        "target": "{{utils}}",
+        "contentPath": "lib/utils.ts"
+      },
+      {
+        "type": "file-update-json",
+        "target": "tsconfig.json",
+        "merge": "deep",
+        "content": {
+          "compilerOptions": {
+            "baseUrl": "."
+          }
+        }
+      },
+      {
+        "type": "file-update",
+        "target": "{{paths.rootFile}}",
+        "search": "(<body(?:\\s+[^>]*)?>)\\s*(?:\\n\\s*)?(\\{children\\}|\\{props\\.children\\}|\\{outlet\\}|<Outlet\\s*\\/>|<RouterProvider[^>]*>)\\s*(?:\\n\\s*)?(</body>)",
+        "replace": "$1\n      <div className=\"root\">\n        $2\n      </div>\n    $3",
+        "condition": {
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{paths.rootFile}}",
+                "pattern": "<div\\s+className=['\"]root['\"]"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "items": [
+    {
+      "name": "accordion",
+      "type": "component",
+      "dependencies": {
+        "npm": {
+          "@radix-ui/react-accordion": "^1.0.0"
+        }
+      },
+      "files": [
+        {
+          "name": "accordion.tsx",
+          "path": "components/selia/accordion.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "component",
+      "dependencies": {
+        "items": ["button"]
+      },
+      "files": [
+        {
+          "name": "alert-dialog.tsx",
+          "path": "components/selia/alert-dialog.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "component",
+      "files": [
+        {
+          "name": "alert.tsx",
+          "path": "components/selia/alert.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "type": "component",
+      "files": [
+        {
+          "name": "autocomplete.tsx",
+          "path": "components/selia/autocomplete.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "files": [
+        {
+          "name": "avatar.tsx",
+          "path": "components/selia/avatar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "files": [
+        {
+          "name": "badge.tsx",
+          "path": "components/selia/badge.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "files": [
+        {
+          "name": "button.tsx",
+          "path": "components/selia/button.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "component",
+      "files": [
+        {
+          "name": "card.tsx",
+          "path": "components/selia/card.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "component",
+      "files": [
+        {
+          "name": "checkbox.tsx",
+          "path": "components/selia/checkbox.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "type": "component",
+      "files": [
+        {
+          "name": "chip.tsx",
+          "path": "components/selia/chip.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "component",
+      "files": [
+        {
+          "name": "collapsible.tsx",
+          "path": "components/selia/collapsible.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "component",
+      "dependencies": {
+        "items": ["chip"]
+      },
+      "files": [
+        {
+          "name": "combobox.tsx",
+          "path": "components/selia/combobox.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "component",
+      "dependencies": {
+        "items": ["dialog"]
+      },
+      "files": [
+        {
+          "name": "command.tsx",
+          "path": "components/selia/command.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "component",
+      "files": [
+        {
+          "name": "dialog.tsx",
+          "path": "components/selia/dialog.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "divider",
+      "type": "component",
+      "files": [
+        {
+          "name": "divider.tsx",
+          "path": "components/selia/divider.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "component",
+      "files": [
+        {
+          "name": "field.tsx",
+          "path": "components/selia/field.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "fieldset",
+      "type": "component",
+      "files": [
+        {
+          "name": "fieldset.tsx",
+          "path": "components/selia/fieldset.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "component",
+      "files": [
+        {
+          "name": "form.tsx",
+          "path": "components/selia/form.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "heading",
+      "type": "component",
+      "files": [
+        {
+          "name": "heading.tsx",
+          "path": "components/selia/heading.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "icon-box",
+      "type": "component",
+      "files": [
+        {
+          "name": "icon-box.tsx",
+          "path": "components/selia/icon-box.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "component",
+      "files": [
+        {
+          "name": "input-group.tsx",
+          "path": "components/selia/input-group.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "component",
+      "files": [
+        {
+          "name": "input.tsx",
+          "path": "components/selia/input.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "component",
+      "files": [
+        {
+          "name": "item.tsx",
+          "path": "components/selia/item.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "component",
+      "files": [
+        {
+          "name": "kbd.tsx",
+          "path": "components/selia/kbd.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "component",
+      "files": [
+        {
+          "name": "label.tsx",
+          "path": "components/selia/label.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "menu",
+      "type": "component",
+      "files": [
+        {
+          "name": "menu.tsx",
+          "path": "components/selia/menu.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "component",
+      "files": [
+        {
+          "name": "menubar.tsx",
+          "path": "components/selia/menubar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "component",
+      "files": [
+        {
+          "name": "meter.tsx",
+          "path": "components/selia/meter.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "component",
+      "files": [
+        {
+          "name": "number-field.tsx",
+          "path": "components/selia/number-field.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "component",
+      "dependencies": {
+        "items": ["button"]
+      },
+      "files": [
+        {
+          "name": "pagination.tsx",
+          "path": "components/selia/pagination.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "component",
+      "files": [
+        {
+          "name": "popover.tsx",
+          "path": "components/selia/popover.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "preview-card",
+      "type": "component",
+      "files": [
+        {
+          "name": "preview-card.tsx",
+          "path": "components/selia/preview-card.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "component",
+      "files": [
+        {
+          "name": "progress.tsx",
+          "path": "components/selia/progress.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "component",
+      "files": [
+        {
+          "name": "radio.tsx",
+          "path": "components/selia/radio.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "component",
+      "files": [
+        {
+          "name": "scroll-area.tsx",
+          "path": "components/selia/scroll-area.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "component",
+      "dependencies": {
+        "items": ["chip"]
+      },
+      "files": [
+        {
+          "name": "select.tsx",
+          "path": "components/selia/select.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "component",
+      "files": [
+        {
+          "name": "separator.tsx",
+          "path": "components/selia/separator.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "component",
+      "files": [
+        {
+          "name": "sidebar.tsx",
+          "path": "components/selia/sidebar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "component",
+      "files": [
+        {
+          "name": "slider.tsx",
+          "path": "components/selia/slider.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "component",
+      "files": [
+        {
+          "name": "spinner.tsx",
+          "path": "components/selia/spinner.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "stack",
+      "type": "component",
+      "files": [
+        {
+          "name": "stack.tsx",
+          "path": "components/selia/stack.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "component",
+      "files": [
+        {
+          "name": "switch.tsx",
+          "path": "components/selia/switch.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "component",
+      "files": [
+        {
+          "name": "table.tsx",
+          "path": "components/selia/table.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "component",
+      "files": [
+        {
+          "name": "tabs.tsx",
+          "path": "components/selia/tabs.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "type": "component",
+      "files": [
+        {
+          "name": "text.tsx",
+          "path": "components/selia/text.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "component",
+      "files": [
+        {
+          "name": "textarea.tsx",
+          "path": "components/selia/textarea.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "component",
+      "dependencies": {
+        "items": ["button"]
+      },
+      "files": [
+        {
+          "name": "toast.tsx",
+          "path": "components/selia/toast.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "component",
+      "files": [
+        {
+          "name": "toggle-group.tsx",
+          "path": "components/selia/toggle-group.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "component",
+      "files": [
+        {
+          "name": "toggle.tsx",
+          "path": "components/selia/toggle.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "component",
+      "files": [
+        {
+          "name": "toolbar.tsx",
+          "path": "components/selia/toolbar.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "component",
+      "files": [
+        {
+          "name": "tooltip.tsx",
+          "path": "components/selia/tooltip.tsx",
+          "target": "components"
+        }
+      ]
+    }
+  ]
+}

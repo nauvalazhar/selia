@@ -1,0 +1,17 @@
+{
+  "name": "command",
+  "version": "1.0.0",
+  "type": "component",
+  "dependencies": {
+    "items": [
+      "dialog"
+    ]
+  },
+  "files": [
+    {
+      "name": "command.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { cn } from '#utils';\nimport { Dialog, DialogBody, DialogPopup, DialogTrigger } from './dialog';\n\nexport function Command({ ...props }: React.ComponentProps<typeof Dialog>) {\n  return <Dialog {...props} />;\n}\n\nexport function CommandTrigger({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogTrigger>) {\n  return (\n    <DialogTrigger\n      data-slot=\"command-trigger\"\n      {...props}\n      className={cn(className)}\n    />\n  );\n}\n\nexport function CommandContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPopup>) {\n  return (\n    <DialogPopup\n      {...props}\n      className={cn(\n        'p-1 bg-dialog-footer/90 md:min-w-xl',\n        '**:data-[slot=autocomplete-list]:h-[min(27rem,50dvh)]',\n        '**:data-[slot=autocomplete-empty]:h-[min(27rem,50dvh)]',\n        '**:data-[slot=autocomplete-input]:h-11',\n        '**:data-[slot=input-group]:px-2.5',\n        '**:data-[slot=input-group]:border-b',\n        '**:data-[slot=input-group]:border-dialog-border',\n        className,\n      )}\n    />\n  );\n}\n\nexport function CommandBody({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogBody>) {\n  return (\n    <DialogBody\n      {...props}\n      className={cn(\n        'space-y-0 bg-dialog border border-dialog-border rounded-xl',\n        'bg-dialog shadow p-0',\n        '**:data-[slot=autocomplete-list]:px-2.5 **:data-[slot=autocomplete-list]:py-1.5',\n        className,\n      )}\n    ></DialogBody>\n  );\n}\n\nexport function CommandFooter({\n  className,\n  ...props\n}: React.ComponentProps<'footer'>) {\n  return (\n    <footer\n      data-slot=\"command-footer\"\n      {...props}\n      className={cn('px-5 pt-3 pb-2.5 flex items-center gap-6', className)}\n    />\n  );\n}\n\nexport function CommandFooterItem({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"command-footer-item\"\n      {...props}\n      className={cn('flex items-center gap-2.5', className)}\n    />\n  );\n}\n\nexport function CommandFooterText({\n  className,\n  ...props\n}: React.ComponentProps<'span'>) {\n  return (\n    <span\n      data-slot=\"command-footer-text\"\n      {...props}\n      className={cn('text-sm text-muted font-medium', className)}\n    />\n  );\n}\n"
+    }
+  ]
+}

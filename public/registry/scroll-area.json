@@ -1,0 +1,12 @@
+{
+  "name": "scroll-area",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "scroll-area.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { ScrollArea as BaseScrollArea } from '@base-ui/react/scroll-area';\nimport { cn } from '#utils';\n\nexport function ScrollArea({\n  children,\n  className,\n  scrollbar = 'both',\n  ...props\n}: React.ComponentProps<typeof BaseScrollArea.Root> & {\n  scrollbar?: 'horizontal' | 'vertical' | 'both' | false;\n}) {\n  return (\n    <BaseScrollArea.Root\n      className={cn('overflow-hidden', className)}\n      {...props}\n    >\n      <BaseScrollArea.Viewport className=\"overscroll-contain outline-none size-full\">\n        {children}\n      </BaseScrollArea.Viewport>\n      {scrollbar === 'horizontal' && (\n        <ScrollAreaScrollbar orientation=\"horizontal\" />\n      )}\n      {scrollbar === 'vertical' && (\n        <ScrollAreaScrollbar orientation=\"vertical\" />\n      )}\n      {scrollbar === 'both' && (\n        <>\n          <ScrollAreaScrollbar orientation=\"horizontal\" />\n          <ScrollAreaScrollbar orientation=\"vertical\" />\n        </>\n      )}\n      <BaseScrollArea.Corner />\n    </BaseScrollArea.Root>\n  );\n}\n\nfunction ScrollAreaScrollbar({\n  className,\n  orientation = 'vertical',\n  ...props\n}: React.ComponentProps<typeof BaseScrollArea.Scrollbar>) {\n  return (\n    <BaseScrollArea.Scrollbar\n      {...props}\n      className={cn(\n        'flex m-1 touch-none select-none',\n        'opacity-0 transition-opacity delay-300 pointer-events-none',\n        'data-[hovering]:opacity-100 data-[hovering]:delay-0',\n        'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',\n        'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',\n        'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',\n        orientation === 'vertical'\n          ? 'w-1.5 justify-center'\n          : 'h-1.5 justify-start',\n        className,\n      )}\n      orientation={orientation}\n    >\n      <BaseScrollArea.Thumb className=\"rounded bg-scrollbar w-full\" />\n    </BaseScrollArea.Scrollbar>\n  );\n}\n"
+    }
+  ]
+}

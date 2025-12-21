@@ -393,6 +393,19 @@ Add the `baseUrl` compiler option to your `tsconfig.json` file:
 }
 ```
 
+## Portals
+
+Base UI uses portals for components that render popups, such as Dialog and Popover. 
+To make portaled components always appear on top of the entire page, add the following style to your application layout root:
+
+```tsx filename="root.tsx"
+<body>
+  <div className="root">
+    {children}
+  </div>
+</body>
+```
+
 ## Font Family (optional)
 
 You can use any font you like, but Selia was designed with [Inter](https://fonts.google.com/specimen/Inter) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono).

@@ -1,0 +1,12 @@
+{
+  "name": "slider",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "slider.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { Slider as BaseSlider } from '@base-ui/react/slider';\nimport { cn } from '#utils';\n\nexport function Slider({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof BaseSlider.Root>) {\n  return (\n    <BaseSlider.Root data-slot=\"slider\" {...props}>\n      <BaseSlider.Control className={cn('touch-none select-none', className)}>\n        <BaseSlider.Track className=\"h-1.5 w-full rounded-full bg-track\">\n          <BaseSlider.Indicator className=\"rounded-full bg-primary\" />\n          {children}\n        </BaseSlider.Track>\n      </BaseSlider.Control>\n    </BaseSlider.Root>\n  );\n}\n\nexport function SliderThumb({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseSlider.Thumb>) {\n  return (\n    <BaseSlider.Thumb\n      data-slot=\"slider-thumb\"\n      className={cn(\n        'size-4 bg-white ring ring-primary rounded-full shadow',\n        'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-foreground',\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

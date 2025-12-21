@@ -10,7 +10,7 @@ import {
 } from 'react-router';
 
 import type { Route } from './+types/root';
-import './selia.css';
+import './app.css';
 import { Toast } from 'components/selia/toast';
 import { getSidebarMenu } from './lib/sidebar';
 import { Cmdk } from 'components/cmdk';

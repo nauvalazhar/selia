@@ -1,0 +1,12 @@
+{
+  "name": "collapsible",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "collapsible.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { Collapsible as BaseCollapsible } from '@base-ui/react/collapsible';\nimport { cn } from '#utils';\n\nexport function Collapsible({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseCollapsible.Root>) {\n  return (\n    <BaseCollapsible.Root\n      data-slot=\"collapsible\"\n      className={cn('flex flex-col', className)}\n      {...props}\n    />\n  );\n}\n\nexport function CollapsibleTrigger({\n  className,\n  expandableIndicator = true,\n  ...props\n}: React.ComponentProps<typeof BaseCollapsible.Trigger> & {\n  expandableIndicator?: boolean;\n}) {\n  return (\n    <BaseCollapsible.Trigger\n      data-slot=\"collapsible-trigger\"\n      data-expandable={expandableIndicator ? true : undefined}\n      className={cn(\n        'flex items-center gap-2.5 select-none cursor-pointer',\n        'transition-colors duration-100 py-2 text-foreground',\n        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',\n        '**:[svg]:size-4 text-left leading-relaxed font-medium w-full',\n        '**:data-[slot=expandable-indicator]:transition-all',\n        '**:data-[slot=expandable-indicator]:duration-100',\n        expandableIndicator && [\n          'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',\n          'data-expandable:after:transition-transform data-expandable:after:duration-100 data-expandable:after:shrink-0',\n          'data-expandable:data-[panel-open]:after:rotate-180',\n        ],\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function CollapsiblePanel({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof BaseCollapsible.Panel>) {\n  return (\n    <BaseCollapsible.Panel\n      data-slot=\"collapsible-panel\"\n      className={cn(\n        'flex flex-col gap-2.5',\n        'overflow-hidden transition-all ease-out',\n        '[&[hidden]:not([hidden=until-found])]:hidden h-[var(--collapsible-panel-height)]',\n        'data-[ending-style]:h-0 data-[starting-style]:h-0',\n        className,\n      )}\n      {...props}\n    >\n      <div data-slot=\"collapsible-panel-content\">{children}</div>\n    </BaseCollapsible.Panel>\n  );\n}\n"
+    }
+  ]
+}

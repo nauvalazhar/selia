@@ -1,0 +1,12 @@
+{
+  "name": "field",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "field.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Field as BaseField } from '@base-ui/react/field';\nimport { cn } from '#utils';\n\nexport function Field({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseField.Root>) {\n  return (\n    <BaseField.Root\n      data-slot=\"field\"\n      className={cn('flex gap-2 flex-col', className)}\n      {...props}\n    />\n  );\n}\n\nexport function FieldItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseField.Item>) {\n  return (\n    <BaseField.Item\n      data-slot=\"field-item\"\n      className={cn(\n        'grid items-center gap-x-3 gap-y-1 not-last:mb-2.5',\n        'grid-cols-[auto_1fr]',\n        '[&_[data-slot=field-description]]:col-start-2',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function FieldLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseField.Label>) {\n  return (\n    <BaseField.Label\n      data-slot=\"field-label\"\n      className={cn('text-foreground flex items-center gap-3', className)}\n      {...props}\n    />\n  );\n}\n\nexport function FieldDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseField.Description>) {\n  return (\n    <BaseField.Description\n      data-slot=\"field-description\"\n      className={cn('text-muted text-sm leading-relaxed', className)}\n      {...props}\n    />\n  );\n}\n\nexport function FieldError({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseField.Error>) {\n  return (\n    <BaseField.Error\n      data-slot=\"field-error\"\n      className={cn('text-danger', className)}\n      {...props}\n    />\n  );\n}\n\nexport function FieldValidity({\n  ...props\n}: React.ComponentProps<typeof BaseField.Validity>) {\n  return <BaseField.Validity data-slot=\"field-validity\" {...props} />;\n}\n"
+    }
+  ]
+}

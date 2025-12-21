@@ -1,17 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Selia Item Manifest",
-  "description": "Defines a single distributable item in a Selia registry.",
   "type": "object",
   "properties": {
-    "name": { "type": "string" },
-    "version": { "type": "string" },
+    "name": {
+      "type": "string"
+    },
     "type": {
-      "description": "The semantic type of the item. Can be a standard type or a custom string.",
       "anyOf": [
         {
           "type": "string",
-          "enum": ["component", "block", "hook", "util", "config"]
+          "enum": [
+            "component",
+            "block",
+            "hook",
+            "util",
+            "config"
+          ]
         },
         {
           "type": "string"
@@ -23,25 +27,50 @@
       "properties": {
         "npm": {
           "type": "object",
-          "additionalProperties": { "type": "string" }
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
         },
-        "items": { "type": "array", "items": { "type": "string" } }
-      }
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
     },
     "files": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" },
-          "content": { "type": "string" },
-          "target": { "type": "string" },
-          "path": { "type": "string" },
+          "name": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
           "type": {
             "anyOf": [
               {
                 "type": "string",
-                "enum": ["component", "block", "hook", "util", "config"]
+                "enum": [
+                  "component",
+                  "block",
+                  "hook",
+                  "util",
+                  "config"
+                ]
               },
               {
                 "type": "string"
@@ -49,9 +78,18 @@
             ]
           }
         },
-        "required": ["name", "target", "path"]
+        "required": [
+          "name",
+          "target"
+        ],
+        "additionalProperties": false
       }
     }
   },
-  "required": ["name", "version", "type", "files"]
+  "required": [
+    "name",
+    "type",
+    "files"
+  ],
+  "additionalProperties": false
 }

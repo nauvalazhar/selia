@@ -1,0 +1,12 @@
+{
+  "name": "radio",
+  "version": "1.0.0",
+  "type": "component",
+  "files": [
+    {
+      "name": "radio.tsx",
+      "target": "components",
+      "content": "'use client';\n\nimport { useRender } from '@base-ui/react/use-render';\nimport { Radio as BaseRadio } from '@base-ui/react/radio';\nimport { RadioGroup as BaseRadioGroup } from '@base-ui/react/radio-group';\nimport { cn } from '#utils';\n\nexport function RadioGroup({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseRadioGroup>) {\n  return (\n    <BaseRadioGroup\n      data-slot=\"radio-group\"\n      {...props}\n      className={cn('flex flex-col gap-2.5', className)}\n    />\n  );\n}\n\nexport function RadioGroupLabel({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<'span'>) {\n  return useRender({\n    defaultTagName: 'span',\n    render,\n    props: {\n      'data-slot': 'radio-group-label',\n      className: cn('text-foreground', className),\n      ...props,\n    },\n  });\n}\n\nexport function Radio({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseRadio.Root>) {\n  return (\n    <BaseRadio.Root\n      data-slot=\"radio\"\n      className={cn(\n        'size-4 flex items-center justify-center rounded-full border border-input-border bg-input shadow-input',\n        'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',\n        'data-[checked]:bg-primary data-[checked]:border-primary',\n        'transition-colors duration-75 hover:border-input-accent-border',\n        'disabled::opacity-70 disabled:pointer-events-none',\n        className,\n      )}\n      {...props}\n    >\n      <BaseRadio.Indicator className=\"size-2 rounded-full bg-primary-foreground\" />\n    </BaseRadio.Root>\n  );\n}\n"
+    }
+  ]
+}
