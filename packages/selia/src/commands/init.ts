@@ -22,6 +22,12 @@ export const initCommand = new Command()
     console.log();
     intro(picocolors.bgBlue(picocolors.blackBright(' Initialize Selia ')));
 
+    log.warn(
+      picocolors.yellow(
+        'The CLI is still in development, report any issues on GitHub!',
+      ),
+    );
+
     if (options.registry) {
       log.info(
         'This feature is not available yet.\nUse default Selia registry instead.',

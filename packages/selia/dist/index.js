@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import {
   addCommand
-} from "./chunk-ZCYFSR76.js";
+} from "./chunk-4EQYFZQG.js";
 import "./chunk-J3NVL63W.js";
 import "./chunk-A2B5L7S6.js";
 import "./chunk-ZS2G2W6I.js";
@@ -14,7 +14,7 @@ import "./chunk-UCAIUO4I.js";
 import "./chunk-ICP4KZNS.js";
 import {
   initCommand
-} from "./chunk-E22NESZC.js";
+} from "./chunk-WTFXHDIT.js";
 import "./chunk-CV6HVZMJ.js";
 import "./chunk-FC2UZPB4.js";
 import "./chunk-JY7QBKUB.js";

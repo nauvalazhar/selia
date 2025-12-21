@@ -1,6 +1,6 @@
 import {
   addCommand
-} from "../chunk-ZCYFSR76.js";
+} from "../chunk-4EQYFZQG.js";
 import "../chunk-J3NVL63W.js";
 import "../chunk-A2B5L7S6.js";
 import "../chunk-ZS2G2W6I.js";

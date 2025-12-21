@@ -8,7 +8,7 @@ import { fetchItems } from '~/lib/fetch-item';
 import { resolveDependencies } from '~/lib/resolve-dependencies';
 import { resolveImportAlias, resolveTargetPath } from '~/lib/resolve-import';
 import { installDependencies } from '~/lib/install-dependencies';
-import { getRegistryFromConfig } from '~/lib/utils';
+import { abortIfCancel, getRegistryFromConfig } from '~/lib/utils';
 import picocolors from 'picocolors';
 
 import { existsSync } from 'fs';
@@ -21,9 +21,15 @@ export const addCommand = new Command()
   .option('--no-install', 'Skip installing dependencies')
   .option('--overwrite', 'Overwrite existing files without asking')
   .action(async (itemNames: string[], options) => {
-    intro(
-      `Add ${itemNames.length > 1 ? 'items' : 'item'}: ${itemNames.join(', ')}`,
+    console.log();
+    intro(picocolors.bgBlue(picocolors.blackBright(' Add Item ')));
+
+    log.warn(
+      picocolors.yellow(
+        'The CLI is still in development, report any issues on GitHub!',
+      ),
     );
+
     try {
       const config = await loadConfig();
       const s = spinner();
@@ -92,6 +98,8 @@ export const addCommand = new Command()
             { value: 'cancel', label: 'Cancel operation' },
           ],
         });
+
+        abortIfCancel(overwriteChoice);
 
         if (overwriteChoice === 'cancel') {
           outro('Cancelled');

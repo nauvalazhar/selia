@@ -15,6 +15,7 @@ import {
   installDependencies
 } from "./chunk-6V5LY26W.js";
 import {
+  abortIfCancel,
   getRegistryFromConfig
 } from "./chunk-G25NKXZU.js";
 
@@ -26,8 +27,12 @@ import path from "path";
 import picocolors from "picocolors";
 import { existsSync } from "fs";
 var addCommand = new Command().name("add").description("Add components to your project").argument("<items...>", "Items to add").option("-y, --yes", "Skip confirmation prompts").option("--no-install", "Skip installing dependencies").option("--overwrite", "Overwrite existing files without asking").action(async (itemNames, options) => {
-  intro(
-    `Add ${itemNames.length > 1 ? "items" : "item"}: ${itemNames.join(", ")}`
+  console.log();
+  intro(picocolors.bgBlue(picocolors.blackBright(" Add Item ")));
+  log.warn(
+    picocolors.yellow(
+      "The CLI is still in development, report any issues on GitHub!"
+    )
   );
   try {
     const config = await loadConfig();
@@ -77,6 +82,7 @@ var addCommand = new Command().name("add").description("Add components to your p
           { value: "cancel", label: "Cancel operation" }
         ]
       });
+      abortIfCancel(overwriteChoice);
       if (overwriteChoice === "cancel") {
         outro("Cancelled");
         process.exit(0);
@@ -123,4 +129,4 @@ var addCommand = new Command().name("add").description("Add components to your p
 export {
   addCommand
 };
-//# sourceMappingURL=chunk-ZCYFSR76.js.map
+//# sourceMappingURL=chunk-4EQYFZQG.js.map
