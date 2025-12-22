@@ -223,6 +223,91 @@
                       },
                       "type": {
                         "type": "string",
+                        "const": "detect-workdir"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "saveAs": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "const": "context-update"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string"
+                        },
+                        "additionalProperties": {}
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name",
+                      "data"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "object",
+                        "properties": {
+                          "if": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          },
+                          "unless": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/__schema0"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "type": {
+                        "type": "string",
                         "const": "assert"
                       },
                       "name": {
@@ -473,6 +558,19 @@
                       },
                       "contentPath": {
                         "type": "string"
+                      },
+                      "saveTargetAs": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
                       }
                     },
                     "required": [
@@ -520,6 +618,19 @@
                       "overwrite": {
                         "default": false,
                         "type": "boolean"
+                      },
+                      "saveTargetAs": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
                       }
                     },
                     "required": [
@@ -564,6 +675,19 @@
                       },
                       "replace": {
                         "type": "string"
+                      },
+                      "saveTargetAs": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
                       }
                     },
                     "required": [
@@ -617,6 +741,19 @@
                         "enum": [
                           "shallow",
                           "deep"
+                        ]
+                      },
+                      "saveTargetAs": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
                         ]
                       }
                     },
