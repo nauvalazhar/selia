@@ -110,6 +110,8 @@ export async function loader({ params, request }: Route.LoaderArgs) {
     sources = await getSources(componentKey);
   }
 
+  let title;
+
   try {
     let source = await Bun.file(
       path.join(process.cwd(), 'app/routes', `docs.${pathname}.mdx`),
@@ -119,6 +121,9 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       source,
       path.join(process.cwd(), 'app/routes'),
     );
+
+    const getTitle = source.match(/^# (.+)$/m);
+    title = getTitle?.[1] || name;
 
     const mdxCode = await serialize(source, {
       parseFrontmatter: true,
@@ -165,6 +170,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
     );
 
     return {
+      title,
       mdxCode,
       pageRaw: source,
       sources,
@@ -190,7 +196,7 @@ const components = {
 };
 
 export default function DocsView({ loaderData }: Route.ComponentProps) {
-  const { mdxCode, pageRaw, sources, name, menuNextPrev } = loaderData;
+  const { title, mdxCode, pageRaw, sources, name, menuNextPrev } = loaderData;
 
   const memoizedComponents = useMemo(
     () => ({
@@ -206,7 +212,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <title>{`${name} - Selia`}</title>
+      <title>{`${title} - Selia`}</title>
       <article
         className={cn(
           'text-zinc-600 dark:text-zinc-400',

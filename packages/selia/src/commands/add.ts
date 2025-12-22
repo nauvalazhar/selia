@@ -8,10 +8,11 @@ import { fetchItems } from '~/lib/fetch-item';
 import { resolveDependencies } from '~/lib/resolve-dependencies';
 import { resolveImportAlias, resolveTargetPath } from '~/lib/resolve-import';
 import { installDependencies } from '~/lib/install-dependencies';
-import { abortIfCancel, getRegistryFromConfig } from '~/lib/utils';
+import { abortIfCancel } from '~/lib/utils';
 import picocolors from 'picocolors';
 
 import { existsSync } from 'fs';
+import { resolveRegistry } from '~/lib/resolve-registry';
 
 export const addCommand = new Command()
   .name('add')
@@ -42,19 +43,19 @@ export const addCommand = new Command()
     try {
       const config = await loadConfig();
       const s = spinner();
-      const registry = getRegistryFromConfig(config);
+      const { runtimeUrl: registryUrl } = await resolveRegistry(process.cwd());
 
-      if (!registry?.url) {
+      if (!registryUrl) {
         log.error(picocolors.red('Registry not found'));
         return;
       }
 
       //   s.start(`Fetching ${itemNames.length} item(s) from registry...`);
-      const items = await fetchItems(registry.url, itemNames);
+      const items = await fetchItems(registryUrl, itemNames);
       //   s.stop(`Fetched ${items.length} item(s)`);
 
       s.start('Resolving dependencies...');
-      const resolved = await resolveDependencies(items, registry.url);
+      const resolved = await resolveDependencies(items, registryUrl);
       s.stop(
         `Resolved ${resolved.items.size} item(s) and ${Object.keys(resolved.npmPackages).length} npm package(s)`,
       );

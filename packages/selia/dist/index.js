@@ -6,8 +6,8 @@ import { program } from "commander";
 // src/commands/add.ts
 import { Command } from "commander";
 import { intro, outro, spinner as spinner2, log as log2, select } from "@clack/prompts";
-import fs5 from "fs/promises";
-import path5 from "path";
+import fs6 from "fs/promises";
+import path6 from "path";
 
 // src/lib/load-config.ts
 import fs from "fs/promises";
@@ -42,15 +42,6 @@ var defaultConfig = {
   imports: {
     utils: "@/lib/utils",
     components: "@/components/selia"
-  },
-  registries: {
-    default: "selia",
-    sources: {
-      selia: {
-        name: "selia",
-        url: "http://localhost:5173/registry"
-      }
-    }
   }
 };
 
@@ -305,16 +296,6 @@ async function isRegistryExists() {
     return false;
   }
 }
-function getRegistryFromConfig(config) {
-  if (!config.registries?.default || !config.registries.sources) {
-    return null;
-  }
-  const registry = config.registries.sources[config.registries.default];
-  if (!registry) {
-    return null;
-  }
-  return registry;
-}
 function abortIfCancel(value) {
   if (isCancel(value)) {
     cancel("Setup aborted by user.");
@@ -325,6 +306,29 @@ function abortIfCancel(value) {
 // src/commands/add.ts
 import picocolors from "picocolors";
 import { existsSync as existsSync2 } from "fs";
+
+// src/lib/resolve-registry.ts
+import fs5 from "fs/promises";
+import path5 from "path";
+async function resolveRegistry(cwd, cliRegistry) {
+  const configPath = path5.join(cwd, "selia.json");
+  let existingConfig = null;
+  try {
+    existingConfig = JSON.parse(await fs5.readFile(configPath, "utf-8"));
+  } catch {
+  }
+  const isDev = process.env.SELIA_DEV === "1" || process.env.NODE_ENV === "development";
+  const defaultRegistry = isDev ? "http://localhost:5173/registry" : "https://selia.nauv.al/registry";
+  const runtimeUrl = cliRegistry || existingConfig?.registries?.sources?.selia?.url || defaultRegistry;
+  const persist = Boolean(cliRegistry) && !existingConfig?.registries?.sources?.selia;
+  return {
+    runtimeUrl,
+    persist,
+    existingConfig
+  };
+}
+
+// src/commands/add.ts
 var addCommand = new Command().name("add").description("Add components to your project").argument("<items...>", "Items to add").option("-y, --yes", "Skip confirmation prompts").option("--no-install", "Skip installing dependencies").option("--overwrite", "Overwrite existing files without asking").action(async (itemNames, options) => {
   console.log();
   intro(picocolors.bgBlue(picocolors.blackBright(" Add Item ")));
@@ -333,7 +337,7 @@ var addCommand = new Command().name("add").description("Add components to your p
       "The CLI is still in development, report any issues on GitHub!"
     )
   );
-  if (!existsSync2(path5.join(process.cwd(), "selia.json"))) {
+  if (!existsSync2(path6.join(process.cwd(), "selia.json"))) {
     log2.error(
       picocolors.red("You can only use this command in a Selia project.")
     );
@@ -343,14 +347,14 @@ var addCommand = new Command().name("add").description("Add components to your p
   try {
     const config = await loadConfig();
     const s = spinner2();
-    const registry = getRegistryFromConfig(config);
-    if (!registry?.url) {
+    const { runtimeUrl: registryUrl } = await resolveRegistry(process.cwd());
+    if (!registryUrl) {
       log2.error(picocolors.red("Registry not found"));
       return;
     }
-    const items = await fetchItems(registry.url, itemNames);
+    const items = await fetchItems(registryUrl, itemNames);
     s.start("Resolving dependencies...");
-    const resolved = await resolveDependencies(items, registry.url);
+    const resolved = await resolveDependencies(items, registryUrl);
     s.stop(
       `Resolved ${resolved.items.size} item(s) and ${Object.keys(resolved.npmPackages).length} npm package(s)`
     );
@@ -365,12 +369,12 @@ var addCommand = new Command().name("add").description("Add components to your p
           config,
           process.cwd()
         );
-        const targetPath = path5.join(basePath, file.name);
+        const targetPath = path6.join(basePath, file.name);
         let content = file.content || "";
         content = resolveImportAlias(content, config);
         filesToWrite.push({ item, file, targetPath, content });
         if (existsSync2(targetPath)) {
-          existingFiles.push(path5.relative(process.cwd(), targetPath));
+          existingFiles.push(path6.relative(process.cwd(), targetPath));
         }
       }
     }
@@ -414,8 +418,8 @@ var addCommand = new Command().name("add").description("Add components to your p
     s.start("Writing files...");
     let filesWritten = 0;
     for (const { targetPath, content } of filesToWrite) {
-      await fs5.mkdir(path5.dirname(targetPath), { recursive: true });
-      await fs5.writeFile(targetPath, content, "utf-8");
+      await fs6.mkdir(path6.dirname(targetPath), { recursive: true });
+      await fs6.writeFile(targetPath, content, "utf-8");
       filesWritten++;
     }
     s.stop(`Wrote ${filesWritten} file(s)`);
@@ -618,20 +622,20 @@ async function fetchSetup(registryUrl) {
 }
 
 // src/lib/setup-executor.ts
-import fs7 from "fs/promises";
+import fs8 from "fs/promises";
 import { existsSync as existsSync4 } from "fs";
-import path7 from "path";
+import path8 from "path";
 import { glob as glob2 } from "glob";
 import { text, select as select2, confirm, log as log3 } from "@clack/prompts";
 import { defu as defu2 } from "defu";
 
 // src/lib/detect-framework.ts
-import fs6 from "fs/promises";
-import path6 from "path";
+import fs7 from "fs/promises";
+import path7 from "path";
 import { glob } from "glob";
 async function exists(p) {
   try {
-    await fs6.access(p);
+    await fs7.access(p);
     return true;
   } catch {
     return false;
@@ -639,8 +643,8 @@ async function exists(p) {
 }
 async function detectFramework(cwd = process.cwd()) {
   try {
-    const pkgPath = path6.join(cwd, "package.json");
-    const pkg = JSON.parse(await fs6.readFile(pkgPath, "utf-8"));
+    const pkgPath = path7.join(cwd, "package.json");
+    const pkg = JSON.parse(await fs7.readFile(pkgPath, "utf-8"));
     const deps = {
       ...pkg.dependencies,
       ...pkg.devDependencies
@@ -663,10 +667,10 @@ async function detectFramework(cwd = process.cwd()) {
     if (deps["@tanstack/react-router"])
       return ["tanstack-router", "TanStack Router"];
     if (deps["astro"]) return ["astro", "Astro"];
-    if (deps["vite"] && (await exists(path6.join(cwd, "vite.config.ts")) || await exists(path6.join(cwd, "vite.config.js")))) {
+    if (deps["vite"] && (await exists(path7.join(cwd, "vite.config.ts")) || await exists(path7.join(cwd, "vite.config.js")))) {
       return ["vite", "Vite"];
     }
-    if (await exists(path6.join(cwd, "artisan")) && await exists(path6.join(cwd, "composer.json"))) {
+    if (await exists(path7.join(cwd, "artisan")) && await exists(path7.join(cwd, "composer.json"))) {
       return ["laravel", "Laravel"];
     }
     if (deps["react"]) return ["react", "React"];
@@ -802,7 +806,7 @@ async function runAssertCheck(check, context, cwd) {
     case "dependency":
       return checkDependencies(check.packages, cwd);
     case "file-exists":
-      return existsSync4(path7.join(cwd, check.path));
+      return existsSync4(path8.join(cwd, check.path));
     case "framework":
       return check.value.includes(context.framework);
     case "env":
@@ -813,8 +817,8 @@ async function runAssertCheck(check, context, cwd) {
 }
 async function checkDependencies(packages, cwd) {
   try {
-    const pkgPath = path7.join(cwd, "package.json");
-    const pkg = JSON.parse(await fs7.readFile(pkgPath, "utf-8"));
+    const pkgPath = path8.join(cwd, "package.json");
+    const pkg = JSON.parse(await fs8.readFile(pkgPath, "utf-8"));
     const deps = {
       ...pkg.dependencies,
       ...pkg.devDependencies
@@ -918,21 +922,21 @@ async function executePrompt(step, context, cwd) {
 }
 async function executeFileAppend(step, context, cwd) {
   const target = interpolate(step.target, context);
-  const targetPath = path7.join(cwd, target);
+  const targetPath = path8.join(cwd, target);
   if (!existsSync4(targetPath)) {
     throw new Error(`File not found: ${target}`);
   }
   const content = step.content || await getContent(step.contentPath);
-  const existing = await fs7.readFile(targetPath, "utf-8");
+  const existing = await fs8.readFile(targetPath, "utf-8");
   const newContent = existing + "\n" + content;
-  await fs7.writeFile(targetPath, newContent, "utf-8");
+  await fs8.writeFile(targetPath, newContent, "utf-8");
   if (step.saveTargetAs) {
     saveTargetAs(context, step.saveTargetAs, target);
   }
 }
 async function executeFileCreate(step, context, cwd) {
   const target = interpolate(step.target, context);
-  const targetPath = path7.join(cwd, target);
+  const targetPath = path8.join(cwd, target);
   if (existsSync4(targetPath) && !step.overwrite) {
     const shouldOverwrite = await confirm({
       message: `File \`${target}\` already exists. Overwrite?`,
@@ -943,25 +947,25 @@ async function executeFileCreate(step, context, cwd) {
     }
   }
   const content = step.content || await getContent(step.contentPath);
-  await fs7.mkdir(path7.dirname(targetPath), { recursive: true });
-  await fs7.writeFile(targetPath, content, "utf-8");
+  await fs8.mkdir(path8.dirname(targetPath), { recursive: true });
+  await fs8.writeFile(targetPath, content, "utf-8");
   if (step.saveTargetAs) {
     saveTargetAs(context, step.saveTargetAs, target);
   }
 }
 async function executeFileUpdate(step, context, cwd) {
   const target = interpolate(step.target, context);
-  const targetPath = path7.join(cwd, target);
+  const targetPath = path8.join(cwd, target);
   if (!existsSync4(targetPath)) {
     throw new Error(`File not found: ${target}`);
   }
-  let content = await fs7.readFile(targetPath, "utf-8");
+  let content = await fs8.readFile(targetPath, "utf-8");
   const searchRegex = new RegExp(step.search, "gms");
   if (!searchRegex.test(content)) {
     return;
   }
   const newContent = content.replace(searchRegex, step.replace);
-  await fs7.writeFile(targetPath, newContent, "utf-8");
+  await fs8.writeFile(targetPath, newContent, "utf-8");
   log3.success(`Updated ${target}`);
   if (step.saveTargetAs) {
     saveTargetAs(context, step.saveTargetAs, target);
@@ -969,14 +973,14 @@ async function executeFileUpdate(step, context, cwd) {
 }
 async function executeFileUpdateJson(step, context, cwd) {
   const target = interpolate(step.target, context);
-  const targetPath = path7.join(cwd, target);
+  const targetPath = path8.join(cwd, target);
   let existing = {};
   if (existsSync4(targetPath)) {
-    const content = await fs7.readFile(targetPath, "utf-8");
+    const content = await fs8.readFile(targetPath, "utf-8");
     existing = JSON.parse(content);
   }
   const merged = step.merge === "deep" ? defu2(step.content, existing) : { ...existing, ...step.content };
-  await fs7.writeFile(targetPath, JSON.stringify(merged, null, 2), "utf-8");
+  await fs8.writeFile(targetPath, JSON.stringify(merged, null, 2), "utf-8");
   if (step.saveTargetAs) {
     saveTargetAs(context, step.saveTargetAs, target);
   }
@@ -992,9 +996,9 @@ function interpolate(str, context) {
   });
 }
 async function getContent(contentPath) {
-  const filePath = path7.join(process.cwd(), contentPath);
+  const filePath = path8.join(process.cwd(), contentPath);
   try {
-    return await fs7.readFile(filePath, "utf-8");
+    return await fs8.readFile(filePath, "utf-8");
   } catch (error) {
     throw new Error(
       `Failed to read content from ${filePath}: ${error instanceof Error ? error.message : "Unknown error"}`
@@ -1033,19 +1037,19 @@ async function evaluateCondition(condition, context, cwd) {
   }
   switch (condition.type) {
     case "file-exists": {
-      return existsSync4(path7.join(cwd, interpolate(condition.path, context)));
+      return existsSync4(path8.join(cwd, interpolate(condition.path, context)));
     }
     case "file-contains": {
-      const fullPath = path7.join(cwd, interpolate(condition.path, context));
+      const fullPath = path8.join(cwd, interpolate(condition.path, context));
       if (!existsSync4(fullPath)) return false;
-      const content = await fs7.readFile(fullPath, "utf-8");
+      const content = await fs8.readFile(fullPath, "utf-8");
       const regex = new RegExp(condition.pattern, "m");
       return regex.test(content);
     }
     case "dependency": {
       try {
         const pkg = JSON.parse(
-          await fs7.readFile(path7.join(cwd, "package.json"), "utf-8")
+          await fs8.readFile(path8.join(cwd, "package.json"), "utf-8")
         );
         return pkg.dependencies?.[condition.name] || pkg.devDependencies?.[condition.name];
       } catch {
@@ -1084,27 +1088,6 @@ function saveTargetAs(context, name, value) {
     return;
   }
   setNestedValue(context, name, value);
-}
-
-// src/lib/resolve-registry.ts
-import fs8 from "fs/promises";
-import path8 from "path";
-async function resolveRegistry(cwd, cliRegistry) {
-  const configPath = path8.join(cwd, "selia.json");
-  let existingConfig = null;
-  try {
-    existingConfig = JSON.parse(await fs8.readFile(configPath, "utf-8"));
-  } catch {
-  }
-  const isDev = process.env.SELIA_DEV === "1" || process.env.NODE_ENV === "development";
-  const defaultRegistry = isDev ? "http://localhost:5173/registry" : "https://selia.nauv.al/registry";
-  const runtimeUrl = cliRegistry || existingConfig?.registries?.sources?.selia?.url || defaultRegistry;
-  const persist = Boolean(cliRegistry) && !existingConfig?.registries?.sources?.selia;
-  return {
-    runtimeUrl,
-    persist,
-    existingConfig
-  };
 }
 
 // src/lib/write-config.ts

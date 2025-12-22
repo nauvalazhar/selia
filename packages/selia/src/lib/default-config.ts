@@ -10,13 +10,4 @@ export const defaultConfig = {
     utils: '@/lib/utils',
     components: '@/components/selia',
   },
-  registries: {
-    default: 'selia',
-    sources: {
-      selia: {
-        name: 'selia',
-        url: 'http://localhost:5173/registry',
-      },
-    },
-  },
 } satisfies Config;
