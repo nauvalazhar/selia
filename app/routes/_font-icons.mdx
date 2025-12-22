@@ -1,0 +1,21 @@
+## Font Family (optional)
+
+You can use any font you like, but Selia was designed with [Inter](https://fonts.google.com/specimen/Inter) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono).
+
+Add the following to your CSS file:
+
+```css filename="app.css"
+@theme inline {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+```
+
+## Icons (optional)
+
+You don’t need to install a separate icon library. We embed icons as SVGs directly inside the components that need them.
+This way, you’re free to use any icon library you like, without worrying about breaking other components.

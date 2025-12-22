@@ -92,6 +92,7 @@ export const addCommand = new Command()
 
         const overwriteChoice = await select({
           message: 'How do you want to proceed?',
+          initialValue: 'skip',
           options: [
             { value: 'overwrite', label: 'Overwrite all existing files' },
             { value: 'skip', label: 'Skip existing files' },

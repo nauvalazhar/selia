@@ -1,6 +1,5 @@
 {
   "name": "select",
-  "version": "1.0.0",
   "type": "component",
   "dependencies": {
     "items": [

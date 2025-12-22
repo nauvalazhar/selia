@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { glob } from 'glob';
 
 async function exists(p: string) {
   try {
@@ -12,7 +13,7 @@ async function exists(p: string) {
 
 export async function detectFramework(
   cwd: string = process.cwd(),
-): Promise<string> {
+): Promise<[string, string]> {
   try {
     const pkgPath = path.join(cwd, 'package.json');
     const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf-8'));
@@ -26,24 +27,35 @@ export async function detectFramework(
      * React meta-frameworks
      * ---------------------------- */
 
-    if (deps['next']) return 'next';
+    if (deps['next']) {
+      const files = await glob('{pages,src/pages}/_app.{js,ts,jsx,tsx}', {
+        cwd,
+      });
+
+      if (files.length > 0) {
+        return ['next-pages', 'Next.js Pages'];
+      }
+      return ['next', 'Next.js'];
+    }
 
     // React Router v7 (ex-Remix)
     if (deps['react-router'] && deps['@react-router/dev']) {
-      return 'react-router';
+      return ['react-router', 'React Router v7'];
     }
 
     // Remix (legacy but still exists)
-    if (deps['@remix-run/react']) return 'remix';
+    if (deps['@remix-run/react']) return ['remix', 'Remix'];
 
     // TanStack Start
-    if (deps['@tanstack/start']) return 'tanstack-start';
+    if (deps['@tanstack/react-start'])
+      return ['tanstack-start', 'TanStack Start'];
 
     // TanStack Router (standalone)
-    if (deps['@tanstack/router']) return 'tanstack-router';
+    if (deps['@tanstack/react-router'])
+      return ['tanstack-router', 'TanStack Router'];
 
     // Astro
-    if (deps['astro']) return 'astro';
+    if (deps['astro']) return ['astro', 'Astro'];
 
     /* ----------------------------
      * Vite (needs file hint)
@@ -54,7 +66,7 @@ export async function detectFramework(
       ((await exists(path.join(cwd, 'vite.config.ts'))) ||
         (await exists(path.join(cwd, 'vite.config.js'))))
     ) {
-      return 'vite';
+      return ['vite', 'Vite'];
     }
 
     /* ----------------------------
@@ -65,17 +77,17 @@ export async function detectFramework(
       (await exists(path.join(cwd, 'artisan'))) &&
       (await exists(path.join(cwd, 'composer.json')))
     ) {
-      return 'laravel';
+      return ['laravel', 'Laravel'];
     }
 
     /* ----------------------------
      * Plain React fallback
      * ---------------------------- */
 
-    if (deps['react']) return 'react';
+    if (deps['react']) return ['react', 'React'];
 
-    return 'unknown';
+    return ['unknown', 'Unknown'];
   } catch {
-    return 'unknown';
+    return ['unknown', 'Unknown'];
   }
 }

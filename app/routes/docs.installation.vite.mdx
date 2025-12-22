@@ -1,0 +1,150 @@
+# Install Selia with Vite
+
+Setting up Selia in Vite project.
+
+<DocsButtons />
+
+## Create Project
+
+Run the following command to create a new Vite project and choose React + TypeScript template:
+
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <CodeTabsPanel value="npm" language="bash">
+    npm create vite@latest
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn create vite
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpm create vite
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bun create vite
+  </CodeTabsPanel>
+</CodeTabs>
+
+## Tailwind CSS
+
+Install Tailwind CSS:
+
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <CodeTabsPanel value="npm" language="bash">
+    npm install tailwindcss @tailwindcss/vite
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn add tailwindcss @tailwindcss/vite
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpm add tailwindcss @tailwindcss/vite
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bun add tailwindcss @tailwindcss/vite
+  </CodeTabsPanel>
+</CodeTabs>
+
+Delete all content in `src/index.css` and add the following:
+
+```css filename="src/index.css"
+@import 'tailwindcss';
+```
+
+## Edit tsconfig.json
+
+Add the `baseUrl` compiler option to your `tsconfig.json` file:
+
+```json filename="tsconfig.json"
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+// [!code highlight:6]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+## Edit tsconfig.app.json
+
+Add the `baseUrl` compiler option to your `tsconfig.app.json` file:
+
+```json filename="tsconfig.app.json"
+{
+  "compilerOptions": {
+    // ...
+    // [!code highlight:4]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  // ...
+}
+```
+
+## Edit vite.config.ts
+
+Add the following configuration to resolve alias in `vite.config.ts` and add Tailwind CSS plugin:
+
+```ts filename="vite.config.ts"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+// [!code highlight:2]
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    // [!code highlight]
+    tailwindcss(),
+  ],
+  // [!code highlight:5]
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+## Selia Initialization
+
+Run the following command to init Selia:
+
+<CodeTabs items={['npx', 'pnpx', 'yarn', 'bunx']}>
+  <CodeTabsPanel value="npx" language="bash">
+    npx selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpx" language="bash">
+    pnpx selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bunx" language="bash">
+    bunx --bun selia@latest init
+  </CodeTabsPanel>
+</CodeTabs>
+
+@include "_component-cli.mdx"
+
+Import the component in your app:
+
+```tsx filename="src/App.tsx"
+import { Button } from "@/components/selia";
+
+function App() {
+	return <Button>Cool Button</Button>;
+}
+
+export default App;
+```
+
+@include "_font-icons.mdx"

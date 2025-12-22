@@ -7,14 +7,15 @@ export async function fetchSetup(registryUrl: string): Promise<Setup> {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch setup: ${response.statusText}`);
+      throw new Error(`${response.statusText}`);
     }
 
     const data = await response.json();
+
     return SetupSchema.parse(data);
   } catch (error) {
     throw new Error(
-      `Failed to fetch setup configuration: ${error instanceof Error ? 'Schema validation failed' : 'Unknown error'}`,
+      `Failed to fetch setup configuration: ${error instanceof Error ? error.message : 'Unknown error'}`,
     );
   }
 }

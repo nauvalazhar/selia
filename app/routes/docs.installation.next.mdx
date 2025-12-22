@@ -1,0 +1,57 @@
+# Install Selia with Next.js
+
+Setting up Selia in Next.js project.
+
+<DocsButtons />
+
+## Create Project
+
+Create a Next.js project with recommended settings:
+
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <CodeTabsPanel value="npm" language="bash">
+    npx create-next-app@latest my-app --yes
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn create next-app@latest my-app --yes
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpm create next-app@latest my-app --yes
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bun create next-app@latest my-app --yes
+  </CodeTabsPanel>
+</CodeTabs>
+
+## Selia Initialization
+
+Run the following command to init Selia:
+
+<CodeTabs items={['npx', 'pnpx', 'yarn', 'bunx']}>
+  <CodeTabsPanel value="npx" language="bash">
+    npx selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpx" language="bash">
+    pnpx selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bunx" language="bash">
+    bunx --bun selia@latest init
+  </CodeTabsPanel>
+</CodeTabs>
+
+@include "_component-cli.mdx"
+
+Import the component in your app:
+
+```tsx filename="app/page.tsx"
+import { Button } from "@/components/selia";
+
+export default function Page() {
+	return <Button>Cool Button</Button>;
+}
+```
+
+@include "_font-icons.mdx"

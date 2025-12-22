@@ -37,7 +37,7 @@ export function CodeTabs({
       defaultValue={items[0]}
       className={cn(
         'bg-code rounded-3xl ring ring-border items-start gap-0',
-        'relative',
+        'relative mb-6',
       )}
     >
       <div className="flex items-center justify-between w-full px-4 border-b border-border h-12">

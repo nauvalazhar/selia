@@ -5,7 +5,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useRouteLoaderData,
 } from 'react-router';
 
@@ -15,7 +14,6 @@ import { Toast } from 'components/selia/toast';
 import { getSidebarMenu } from './lib/sidebar';
 import { Cmdk } from 'components/cmdk';
 import { blocks } from 'components/blocks';
-import { MoonIcon, SunIcon } from 'lucide-react';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

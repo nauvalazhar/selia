@@ -8,6 +8,8 @@ import type { Setup, SetupStep } from '../schemas/setup-schema';
 import { detectFramework } from './detect-framework';
 import { installDependencies } from './install-dependencies';
 import { abortIfCancel } from '~/lib/utils';
+import { detectWorkdir } from '~/lib/detect-workdir';
+import picocolors from 'picocolors';
 
 export interface SetupContext {
   [key: string]: any;
@@ -17,7 +19,13 @@ interface ExecutorOptions {
   cwd?: string;
 }
 
-const executable = ['prompt', 'detect-framework', 'assert'];
+const executable = [
+  'prompt',
+  'detect-framework',
+  'detect-workdir',
+  'assert',
+  'context-update',
+];
 
 export async function executeSetup(
   setup: Setup,
@@ -25,12 +33,18 @@ export async function executeSetup(
 ): Promise<SetupContext> {
   const context: SetupContext = {};
   const cwd = options.cwd || process.cwd();
-  const steps = await resolveRunnableSteps(setup, context, cwd);
 
-  // Phase 1: Collect information (prompts & detect)
-  for (const step of steps) {
-    if (executable.includes(step.type)) {
+  // Execute steps sequentially, checking condition each time
+  for (const step of setup.steps) {
+    // Only process setup/context steps (not file operations)
+    if (!executable.includes(step.type)) {
+      continue; // Skip file operations for phase 2
+    }
+
+    // Check condition with CURRENT context
+    if (await shouldRunStep(step, context, cwd)) {
       await executeStep(step, context, cwd);
+      // Context is updated here, next step will see the new context!
     }
   }
 
@@ -43,16 +57,18 @@ export async function executeSetupActions(
   options: ExecutorOptions = {},
 ): Promise<void> {
   const cwd = options.cwd || process.cwd();
-  const steps = await resolveRunnableSteps(setup, context, cwd);
 
-  // Phase 2: Execute actions (dependencies, files, etc)
-  for (const step of steps) {
-    // Skip prompts (already done)
+  // Execute action steps sequentially
+  for (const step of setup.steps) {
+    // Skip setup steps (already done)
     if (executable.includes(step.type)) {
       continue;
     }
 
-    await executeStep(step, context, cwd);
+    // Evaluate condition with final context
+    if (await shouldRunStep(step, context, cwd)) {
+      await executeStep(step, context, cwd);
+    }
   }
 }
 
@@ -63,14 +79,23 @@ export async function previewSetupActions(
 ): Promise<string[]> {
   const actions: string[] = [];
   const cwd = options.cwd || process.cwd();
-  const steps = await resolveRunnableSteps(setup, context, cwd);
 
-  for (const step of steps) {
+  // Preview action steps only
+  for (const step of setup.steps) {
+    // Skip setup steps
+    if (executable.includes(step.type)) {
+      continue;
+    }
+
+    // Check if step will run
+    if (!(await shouldRunStep(step, context, cwd))) {
+      continue;
+    }
+
+    // Add to preview
     if (step.type === 'dependencies') {
       const count = Object.keys(step.packages).length;
-      actions.push(
-        `Install ${count} required npm package${count > 1 ? 's' : ''}`,
-      );
+      actions.push(`Install ${count} required package${count > 1 ? 's' : ''}`);
     } else if (step.type === 'file-create') {
       const target = interpolate(step.target, context);
       actions.push(`Create \`${target}\``);
@@ -104,6 +129,9 @@ async function executeStep(
     case 'detect-framework':
       await executeDetectFramework(step, context, cwd);
       break;
+    case 'detect-workdir':
+      await executeDetectWorkdir(step, context, cwd);
+      break;
     case 'prompt':
       await executePrompt(step, context, cwd);
       break;
@@ -119,6 +147,22 @@ async function executeStep(
     case 'file-update-json':
       await executeFileUpdateJson(step, context, cwd);
       break;
+    case 'context-update':
+      await executeContextUpdate(step, context, cwd);
+      break;
+  }
+}
+
+async function executeContextUpdate(
+  step: Extract<SetupStep, { type: 'context-update' }>,
+  context: SetupContext,
+  cwd: string,
+): Promise<void> {
+  for (const [key, value] of Object.entries(step.data)) {
+    const interpolatedValue =
+      typeof value === 'string' ? interpolate(value, context) : value;
+
+    setNestedValue(context, key, interpolatedValue);
   }
 }
 
@@ -191,12 +235,27 @@ async function executeDependencies(
   await installDependencies(step.packages, cwd);
 }
 
+async function executeDetectWorkdir(
+  step: Extract<SetupStep, { type: 'detect-workdir' }>,
+  context: SetupContext,
+  cwd: string,
+): Promise<void> {
+  const workdir = await detectWorkdir(cwd);
+  const saveAs = step.saveAs || step.name;
+  setNestedValue(context, saveAs, workdir);
+}
+
 async function executeDetectFramework(
   step: Extract<SetupStep, { type: 'detect-framework' }>,
   context: SetupContext,
   cwd: string,
 ): Promise<void> {
-  const framework = await detectFramework(cwd);
+  const [framework, frameworkLabel] = await detectFramework(cwd);
+
+  log.info(
+    `Framework: ${picocolors.bgWhiteBright(picocolors.black(` ${frameworkLabel} `))}`,
+  );
+
   const saveAs = step.saveAs || step.name;
   setNestedValue(context, saveAs, framework);
 }
@@ -315,6 +374,10 @@ async function executeFileAppend(
   const newContent = existing + '\n' + content;
 
   await fs.writeFile(targetPath, newContent, 'utf-8');
+
+  if (step.saveTargetAs) {
+    saveTargetAs(context, step.saveTargetAs, target);
+  }
 }
 
 async function executeFileCreate(
@@ -328,6 +391,7 @@ async function executeFileCreate(
   if (existsSync(targetPath) && !step.overwrite) {
     const shouldOverwrite = await confirm({
       message: `File \`${target}\` already exists. Overwrite?`,
+      initialValue: false,
     });
 
     if (!shouldOverwrite) {
@@ -339,6 +403,10 @@ async function executeFileCreate(
 
   await fs.mkdir(path.dirname(targetPath), { recursive: true });
   await fs.writeFile(targetPath, content, 'utf-8');
+
+  if (step.saveTargetAs) {
+    saveTargetAs(context, step.saveTargetAs, target);
+  }
 }
 
 async function executeFileUpdate(
@@ -367,6 +435,10 @@ async function executeFileUpdate(
 
   await fs.writeFile(targetPath, newContent, 'utf-8');
   log.success(`Updated ${target}`);
+
+  if (step.saveTargetAs) {
+    saveTargetAs(context, step.saveTargetAs, target);
+  }
 }
 
 async function executeFileUpdateJson(
@@ -390,6 +462,10 @@ async function executeFileUpdateJson(
       : { ...existing, ...step.content };
 
   await fs.writeFile(targetPath, JSON.stringify(merged, null, 2), 'utf-8');
+
+  if (step.saveTargetAs) {
+    saveTargetAs(context, step.saveTargetAs, target);
+  }
 }
 
 function interpolate(str: string, context: SetupContext): string {
@@ -540,4 +616,19 @@ async function resolveRunnableSteps(
   }
 
   return result;
+}
+
+function saveTargetAs(
+  context: SetupContext,
+  name: string | string[],
+  value: string,
+) {
+  if (Array.isArray(name)) {
+    for (const n of name) {
+      setNestedValue(context, n, value);
+    }
+    return;
+  }
+
+  setNestedValue(context, name, value);
 }

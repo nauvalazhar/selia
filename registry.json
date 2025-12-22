@@ -33,46 +33,26 @@
         "type": "detect-framework"
       },
       {
-        "name": "css",
-        "type": "prompt",
-        "message": "Where is your main CSS file?",
-        "promptType": "file-search",
-        "pattern": "**/*.css",
-        "exclude": ["**/node_modules/**", "**/public/**", "**/dist/**"],
-        "saveAs": "paths.css",
-        "default": "app/app.css"
+        "name": "workdir",
+        "type": "detect-workdir",
+        "saveAs": "paths.workdir"
       },
-      {
-        "name": "utils",
-        "type": "prompt",
-        "promptType": "text",
-        "message": "Where do you want to place your utils file?",
-        "default": "lib/utils.ts",
-        "saveAs": "paths.utils",
-        "validate": {
-          "pattern": ".*\\.ts$",
-          "required": true
-        }
-      },
-      {
-        "type": "prompt",
-        "name": "root-file",
-        "promptType": "file-search",
-        "message": "Where is your root layout file?",
-        "pattern": "**/{layout,root,__root,main,index,layout,app}.{tsx,ts,js,jsx,blade.php}",
-        "exclude": ["**/node_modules/**", "**/dist/**", "**/.next/**"],
-        "saveAs": "paths.rootFile"
-      },
+
       {
         "type": "file-append",
-        "target": "{{css}}",
+        "target": "{{paths.workdir}}index.css",
         "contentPath": "app/selia.css",
+        "saveTargetAs": "paths.css",
         "condition": {
+          "if": {
+            "type": "framework",
+            "value": "vite"
+          },
           "unless": {
             "any": [
               {
                 "type": "file-contains",
-                "path": "{{css}}",
+                "path": "{{paths.workdir}}index.css",
                 "pattern": "@utility\\s+bg-spinner|\\.root\\s*\\{|--color-danger"
               }
             ]
@@ -80,34 +60,250 @@
         }
       },
       {
-        "type": "file-create",
-        "target": "{{utils}}",
-        "contentPath": "lib/utils.ts"
+        "type": "file-append",
+        "target": "{{paths.workdir}}app/globals.css",
+        "contentPath": "app/selia.css",
+        "saveTargetAs": "paths.css",
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "next"
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{paths.workdir}}app/globals.css",
+                "pattern": "@utility\\s+bg-spinner|\\.root\\s*\\{|--color-danger"
+              }
+            ]
+          }
+        }
       },
       {
-        "type": "file-update-json",
-        "target": "tsconfig.json",
-        "merge": "deep",
-        "content": {
-          "compilerOptions": {
-            "baseUrl": "."
+        "type": "file-append",
+        "target": "{{paths.workdir}}app/app.css",
+        "contentPath": "app/selia.css",
+        "saveTargetAs": "paths.css",
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "react-router"
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{paths.workdir}}app/app.css",
+                "pattern": "@utility\\s+bg-spinner|\\.root\\s*\\{|--color-danger"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "file-append",
+        "target": "{{paths.workdir}}styles.css",
+        "contentPath": "app/selia.css",
+        "saveTargetAs": "paths.css",
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "tanstack-start"
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{paths.workdir}}styles.css",
+                "pattern": "@utility\\s+bg-spinner|\\.root\\s*\\{|--color-danger"
+              }
+            ]
+          }
+        }
+      },
+
+      {
+        "type": "file-update",
+        "target": "index.html",
+        "search": "(<div\\s+id=['\"]root['\"])((?!\\s+class))",
+        "replace": "$1 class=\"root\"$2",
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "vite"
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "index.html",
+                "pattern": "class=['\"][^'\"]*\\broot\\b"
+              }
+            ]
           }
         }
       },
       {
         "type": "file-update",
-        "target": "{{paths.rootFile}}",
-        "search": "(<body(?:\\s+[^>]*)?>)\\s*(?:\\n\\s*)?(\\{children\\}|\\{props\\.children\\}|\\{outlet\\}|<Outlet\\s*\\/>|<RouterProvider[^>]*>)\\s*(?:\\n\\s*)?(</body>)",
-        "replace": "$1\n      <div className=\"root\">\n        $2\n      </div>\n    $3",
+        "target": "app/layout.tsx",
+        "search": "(<body[^>]*>)(\\s*)(\\{children\\}|\\{props\\.children\\})(\\s*)(</body>)",
+        "replace": "$1$2<div className=\"root\">\n        $3\n      </div>$4$5",
         "condition": {
+          "if": {
+            "type": "framework",
+            "value": "next"
+          },
           "unless": {
             "any": [
               {
                 "type": "file-contains",
-                "path": "{{paths.rootFile}}",
-                "pattern": "<div\\s+className=['\"]root['\"]"
+                "path": "app/layout.tsx",
+                "pattern": "<div[^>]*className=['\"]root['\"]"
               }
             ]
+          }
+        }
+      },
+      {
+        "type": "file-update",
+        "target": "{{paths.workdir}}app/root.tsx",
+        "search": "(<body[^>]*>)(\\s*)(\\{children\\}|\\{props\\.children\\}|<Outlet\\s*\\/>)([\\s\\S]*?)(</body>)",
+        "replace": "$1$2<div className=\"root\">\n        $3\n      </div>$4$5",
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "react-router"
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{paths.workdir}}app/root.tsx",
+                "pattern": "<div[^>]*className=['\"]root['\"]"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "file-update",
+        "target": "{{paths.workdir}}routes/__root.tsx",
+        "search": "(<body[^>]*>)(\\s*)(\\{children\\}|\\{props\\.children\\}|<Outlet\\s*\\/>)([\\s\\S]*?)(</body>)",
+        "replace": "$1$2<div className=\"root\">\n        $3\n      </div>$4$5",
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "tanstack-start"
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-contains",
+                "path": "{{paths.workdir}}routes/__root.tsx",
+                "pattern": "<div[^>]*className=['\"]root['\"]"
+              }
+            ]
+          }
+        }
+      },
+
+      {
+        "type": "file-create",
+        "target": "{{paths.workdir}}lib/utils.ts",
+        "contentPath": "lib/utils.ts",
+        "saveTargetAs": ["paths.utils"],
+        "condition": {
+          "if": {
+            "any": [
+              {
+                "type": "framework",
+                "value": "next"
+              },
+              {
+                "type": "framework",
+                "value": "vite"
+              },
+              {
+                "type": "framework",
+                "value": "tanstack-start"
+              }
+            ]
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-exists",
+                "path": "{{paths.workdir}}lib/utils.ts"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "file-create",
+        "target": "{{paths.workdir}}app/lib/utils.ts",
+        "contentPath": "lib/utils.ts",
+        "saveTargetAs": ["paths.utils"],
+        "condition": {
+          "if": {
+            "any": [
+              {
+                "type": "framework",
+                "value": "react-router"
+              }
+            ]
+          },
+          "unless": {
+            "any": [
+              {
+                "type": "file-exists",
+                "path": "{{paths.workdir}}app/lib/utils.ts"
+              }
+            ]
+          }
+        }
+      },
+
+      {
+        "type": "context-update",
+        "name": "next-vite-path",
+        "data": {
+          "paths.components": "{{paths.workdir}}components/selia",
+          "imports.utils": "@/lib/utils.ts",
+          "imports.components": "@/components/selia"
+        },
+        "condition": {
+          "if": {
+            "any": [
+              {
+                "type": "framework",
+                "value": "next"
+              },
+              {
+                "type": "framework",
+                "value": "vite"
+              },
+              {
+                "type": "framework",
+                "value": "tanstack-start"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "context-update",
+        "name": "react-router-path",
+        "data": {
+          "paths.components": "{{paths.workdir}}app/components/selia",
+          "imports.utils": "~/lib/utils.ts",
+          "imports.components": "~/components/selia"
+        },
+        "condition": {
+          "if": {
+            "type": "framework",
+            "value": "react-router"
           }
         }
       }

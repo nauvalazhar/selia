@@ -37,7 +37,7 @@ export const initCommand = new Command()
     }
 
     try {
-      const { runtimeUrl, persist, existingConfig } = await resolveRegistry(
+      const { runtimeUrl } = await resolveRegistry(
         process.cwd(),
         options.registry,
       );
@@ -49,9 +49,6 @@ export const initCommand = new Command()
       }
 
       const s = spinner();
-
-      // Fetch registry metadata
-      //   const registry = await fetchRegistry(registryUrl);
 
       // Try to fetch setup.json
       let setup;
@@ -69,17 +66,6 @@ export const initCommand = new Command()
 
         const finalConfig = {
           ...defaultConfig,
-          //   ...(persist && {
-          //     registries: {
-          //       default: 'selia',
-          //       sources: {
-          //         selia: {
-          //           name: registry.name,
-          //           url: registryUrl,
-          //         },
-          //       },
-          //     },
-          //   }),
         } as Config;
 
         await writeConfig(finalConfig);
@@ -104,12 +90,10 @@ export const initCommand = new Command()
       actions.unshift('Create `selia.json`');
 
       // Show what will be done
-      console.log(); // spacing
       log.info('I will now perform the following actions:');
       actions.forEach((action) => {
         console.log(picocolors.dim('  • ') + action);
       });
-      console.log(); // spacing
 
       // Confirm
       if (!options.yes) {
@@ -130,21 +114,7 @@ export const initCommand = new Command()
       await executeSetupActions(setup, context);
 
       // Build final config
-      const config = {
-        ...defaultConfig,
-        ...existingConfig,
-        // ...(persist && {
-        //   registries: {
-        //     default: 'selia',
-        //     sources: {
-        //       selia: {
-        //         name: registry.name,
-        //         url: registryUrl,
-        //       },
-        //     },
-        //   },
-        // }),
-      } as Config;
+      const config = context as Config;
 
       // Write config file
       s.start('Creating config file...');
@@ -154,8 +124,8 @@ export const initCommand = new Command()
       // Show summary
       note(picocolors.dim('Config saved to: ') + picocolors.cyan('selia.json'));
 
-      outro(picocolors.green('Selia initialized successfully! ✓'));
-      log.info(
+      log.info(picocolors.green('Selia initialized successfully! ✓'));
+      outro(
         'Run ' +
           picocolors.cyan('selia add <component>') +
           ' to add components',
@@ -165,6 +135,7 @@ export const initCommand = new Command()
       log.error(
         error instanceof Error ? error.message : 'An unknown error occurred',
       );
+      console.log();
       process.exit(1);
     }
   });

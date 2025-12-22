@@ -9,7 +9,7 @@ import { flatRoutes } from '@react-router/fs-routes';
 export default [
   layout('routes/layout.tsx', [
     index('routes/_index.tsx'),
-    layout('routes/docs.tsx', [route('docs/:path', 'routes/docs.view.tsx')]),
+    layout('routes/docs.tsx', [route('docs/:path/*', 'routes/docs.view.tsx')]),
     route('blocks', 'routes/blocks.tsx'),
   ]),
   route('block/:path', 'routes/blocks.view.tsx'),

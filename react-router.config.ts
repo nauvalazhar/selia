@@ -13,7 +13,8 @@ export default {
           .split('/')
           .pop()
           ?.replace('.mdx', '')
-          .replace('docs.', '');
+          .replace('docs.', '')
+          .replace('.', '/');
 
         return `/docs/${filename}`;
       }),

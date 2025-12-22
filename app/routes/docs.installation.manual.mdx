@@ -1,0 +1,59 @@
+# Manual Installation
+
+Setup Selia manually by following the steps below.
+
+<DocsButtons />
+
+## Tailwind CSS
+
+Before we start, make sure you have Tailwind CSS installed in your project. If you don't, you can follow the [Tailwind CSS installation guide](https://tailwindcss.com/docs/installation).
+
+@include "_installation-part.mdx" framework="react" cssPath="app.css" utilsPath="lib/utils.ts"
+
+## Portals
+
+Base UI uses portals for components that render popups, such as Dialog and Popover. 
+To make portaled components always appear on top of the entire page, add the following style to your application layout root:
+
+```tsx filename="root.tsx"
+<body>
+  <div className="root">
+    {children}
+  </div>
+</body>
+```
+
+## Path Aliases
+
+Add the `baseUrl` compiler option to your `tsconfig.json` file:
+
+```json filename="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": "." // [!code highlight]
+  }
+}
+```
+
+## Selia Configuration
+
+Create a new file `selia.json` in the root of your project:
+
+```json filename="selia.json"
+{
+  "framework": "react",
+  "paths": {
+    "components": "components/selia",
+    "utils": "lib/utils.ts"
+  },
+  "imports": {
+    "components": "components/selia",
+    "utils": "lib/utils"
+  }
+}
+```
+
+@include "_component-cli.mdx"
+
+@include "_font-icons.mdx"
+

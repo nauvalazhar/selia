@@ -3,7 +3,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupTitle,
-  SidebarHeader,
   SidebarItem,
   SidebarItemButton,
   SidebarList,
@@ -20,7 +19,6 @@ import { useEffect } from 'react';
 import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
 import { getSidebarMenu } from '~/lib/sidebar';
-import { Logo } from 'components/logo';
 
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);

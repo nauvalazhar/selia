@@ -13,16 +13,59 @@ import rehypeSlug from 'rehype-slug';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
-import { componentName, extractComponents } from '~/lib/utils';
+import { componentName, processIncludes } from '~/lib/utils';
 import { getSidebarMenuNextPrev } from '~/lib/sidebar';
 import { ArrowLeftIcon, ArrowRightIcon, InfoIcon } from 'lucide-react';
-import { Link } from 'react-router';
+import { data, Link } from 'react-router';
 import { getSources } from '~/lib/source';
 import { Alert, AlertDescription, AlertTitle } from 'components/selia/alert';
 import { DocsButtons } from 'components/docs-buttons';
 import { ComponentTable } from 'components/component-table';
-import { Installation } from 'components/installation';
+import { visit } from 'unist-util-visit';
+import type { Plugin } from 'unified';
+import type { Root } from 'mdast';
 
+const remarkFileInclusion: Plugin<[], Root> = () => {
+  return async (tree) => {
+    const promises: Promise<void>[] = [];
+
+    visit(tree, 'code', (node) => {
+      const match = node.value.match(/^\[!file\s+"([^"]+)"\]$/m);
+
+      if (match) {
+        const filePath = match[1];
+
+        const promise = (async () => {
+          try {
+            const fullPath = path.join(process.cwd(), filePath);
+            const content = await Bun.file(fullPath).text();
+
+            node.value = node.value.replace(
+              /^\[!file\s+"([^"]+)"\]$/m,
+              content.trim(),
+            );
+
+            if (node.meta) {
+              if (!node.meta.includes('filename=')) {
+                node.meta += ` filename="${filePath}"`;
+              }
+            } else {
+              node.meta = `filename="${filePath}"`;
+            }
+          } catch (error) {
+            console.error(`Failed to read file: ${filePath}`, error);
+            node.value = `// Error: Could not read file "${filePath}"`;
+          }
+        })();
+
+        promises.push(promise);
+      }
+    });
+
+    // Wait semua file selesai dibaca
+    await Promise.all(promises);
+  };
+};
 const transformers: ShikiTransformer[] = [
   transformerNotationHighlight(),
   {
@@ -39,7 +82,22 @@ const transformers: ShikiTransformer[] = [
 ];
 
 export async function loader({ params, request }: Route.LoaderArgs) {
-  const pathname = params.path;
+  let pathname = params.path;
+  const subpath = params['*'];
+
+  if (pathname.includes('.')) {
+    throw data(
+      {},
+      {
+        status: 404,
+      },
+    );
+  }
+
+  if (subpath) {
+    pathname += `.${subpath}`;
+  }
+
   const componentKey = pathname.replace(/-([a-z])/g, (_, letter) =>
     letter.toUpperCase(),
   );
@@ -51,13 +109,19 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   }
 
   try {
-    const source = await Bun.file(
+    let source = await Bun.file(
       path.join(process.cwd(), 'app/routes', `docs.${pathname}.mdx`),
     ).text();
+
+    source = await processIncludes(
+      source,
+      path.join(process.cwd(), 'app/routes'),
+    );
 
     const mdxCode = await serialize(source, {
       parseFrontmatter: true,
       mdxOptions: {
+        remarkPlugins: [remarkFileInclusion],
         rehypePlugins: [
           rehypeSlug,
           [
@@ -119,7 +183,6 @@ const components = {
   InfoIcon,
   PreviewDemo,
   ComponentTable,
-  Installation,
 };
 
 export default function DocsView({ loaderData }: Route.ComponentProps) {

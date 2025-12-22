@@ -68,6 +68,21 @@ export const SetupStepSchema = z.discriminatedUnion('type', [
     saveAs: z.string().optional(),
   }),
 
+  // Detect workdir
+  BaseStepSchema.extend({
+    type: z.literal('detect-workdir'),
+    name: z.string(),
+    saveAs: z.string().optional(),
+  }),
+
+  // Context update
+  BaseStepSchema.extend({
+    type: z.literal('context-update'),
+    name: z.string(),
+    data: z.record(z.string(), z.any()),
+  }),
+
+  // Assert
   BaseStepSchema.extend({
     type: z.literal('assert'),
     name: z.string(),
@@ -135,6 +150,7 @@ export const SetupStepSchema = z.discriminatedUnion('type', [
     target: z.string(), // supports {{variable}}
     content: z.string().optional(),
     contentPath: z.string().optional(), // from registry
+    saveTargetAs: z.union([z.string(), z.array(z.string())]).optional(),
   }),
 
   // File create
@@ -144,6 +160,7 @@ export const SetupStepSchema = z.discriminatedUnion('type', [
     content: z.string().optional(),
     contentPath: z.string().optional(),
     overwrite: z.boolean().optional().default(false),
+    saveTargetAs: z.union([z.string(), z.array(z.string())]).optional(),
   }),
 
   // File update
@@ -152,6 +169,7 @@ export const SetupStepSchema = z.discriminatedUnion('type', [
     target: z.string(),
     search: z.string(), // regex pattern
     replace: z.string(), // replacement string
+    saveTargetAs: z.union([z.string(), z.array(z.string())]).optional(),
   }),
 
   // File update JSON
@@ -160,6 +178,7 @@ export const SetupStepSchema = z.discriminatedUnion('type', [
     target: z.string(),
     content: z.record(z.string(), z.any()),
     merge: z.enum(['shallow', 'deep']).optional().default('deep'),
+    saveTargetAs: z.union([z.string(), z.array(z.string())]).optional(),
   }),
 ]);
 

@@ -1,0 +1,34 @@
+## Dependencies
+
+First, install the dependencies:
+
+<CodeTabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <CodeTabsPanel value="npm" language="bash">
+    npm install @base-ui/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn add @base-ui/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpm add @base-ui/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bun add @base-ui/react tailwind-merge clsx class-variance-authority
+  </CodeTabsPanel>
+</CodeTabs>
+
+## Tailwind Configuration
+
+Your CSS should include the following:
+
+```css filename="[[cssPath]]" clip
+[!file "app/selia.css"]
+```
+
+## Helper Function
+
+Create a new helper function to merge class names:
+
+```ts filename="[[utilsPath]]"
+[!file "lib/utils.ts"]
+```
