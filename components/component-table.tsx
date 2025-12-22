@@ -72,7 +72,7 @@ export function ComponentTable({ components }: Props) {
 
             {spec.props && (
               <div className="mt-6">
-                <div className="grid grid-cols-[120px_120px_1fr] gap-3 border-b border-separator pb-2 font-medium text-muted text-sm">
+                <div className="grid grid-cols-3 lg:grid-cols-[120px_120px_1fr] lg:gap-3 border-b border-separator pb-2 font-medium text-muted text-sm">
                   <div>Name</div>
                   <div>Default</div>
                   <div>Options</div>
@@ -82,7 +82,7 @@ export function ComponentTable({ components }: Props) {
                   {Object.entries(spec.props).map(([key, prop]) => (
                     <div
                       key={key}
-                      className="grid grid-cols-[120px_120px_1fr] gap-3 border-b border-separator py-4 last:pb-0 last:border-none font-mono text-sm"
+                      className="grid grid-cols-3 lg:grid-cols-[120px_120px_1fr] lg:gap-3 border-b border-separator py-4 last:pb-0 last:border-none font-mono text-sm"
                     >
                       <div className="font-medium text-foreground">`{key}`</div>
                       <div className="text-foreground font-medium">
