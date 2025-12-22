@@ -246,11 +246,9 @@ import fs3 from "fs/promises";
 import path4 from "path";
 import { parse } from "yaml";
 async function isSinglePackageWorkspace(cwd) {
-  return true;
   try {
     const wsPath = path4.join(cwd, "pnpm-workspace.yaml");
     const raw = await fs3.readFile(wsPath, "utf-8");
-    console.log(raw);
     const ws = parse(raw);
     const packages = ws?.packages ?? [];
     return packages.length === 1 && (packages[0] === "." || packages[0] === "./");
@@ -335,6 +333,13 @@ var addCommand = new Command().name("add").description("Add components to your p
       "The CLI is still in development, report any issues on GitHub!"
     )
   );
+  if (!existsSync2(path5.join(process.cwd(), "selia.json"))) {
+    log2.error(
+      picocolors.red("You can only use this command in a Selia project.")
+    );
+    console.log();
+    return;
+  }
   try {
     const config = await loadConfig();
     const s = spinner2();

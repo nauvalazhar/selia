@@ -8,7 +8,7 @@ Setting up Selia in Vite project.
 
 Run the following command to create a new Vite project and choose React + TypeScript template:
 
-<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
   <CodeTabsPanel value="npm" language="bash">
     npm create vite@latest
   </CodeTabsPanel>
@@ -27,7 +27,7 @@ Run the following command to create a new Vite project and choose React + TypeSc
 
 Install Tailwind CSS:
 
-<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
   <CodeTabsPanel value="npm" language="bash">
     npm install tailwindcss @tailwindcss/vite
   </CodeTabsPanel>
@@ -118,17 +118,17 @@ export default defineConfig({
 
 Run the following command to init Selia:
 
-<CodeTabs items={['npx', 'pnpx', 'yarn', 'bunx']}>
-  <CodeTabsPanel value="npx" language="bash">
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
+  <CodeTabsPanel value="npm" language="bash">
     npx selia@latest init
   </CodeTabsPanel>
-  <CodeTabsPanel value="pnpx" language="bash">
+  <CodeTabsPanel value="pnpm" language="bash">
     pnpx selia@latest init
   </CodeTabsPanel>
   <CodeTabsPanel value="yarn" language="bash">
     yarn selia@latest init
   </CodeTabsPanel>
-  <CodeTabsPanel value="bunx" language="bash">
+  <CodeTabsPanel value="bun" language="bash">
     bunx --bun selia@latest init
   </CodeTabsPanel>
 </CodeTabs>
@@ -138,7 +138,7 @@ Run the following command to init Selia:
 Import the component in your app:
 
 ```tsx filename="src/App.tsx"
-import { Button } from "@/components/selia";
+import { Button } from "@/components/selia/button";
 
 function App() {
 	return <Button>Cool Button</Button>;

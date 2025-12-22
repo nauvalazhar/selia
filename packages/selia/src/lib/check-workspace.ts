@@ -3,11 +3,9 @@ import path from 'path';
 import { parse } from 'yaml';
 
 export async function isSinglePackageWorkspace(cwd: string) {
-  return true;
   try {
     const wsPath = path.join(cwd, 'pnpm-workspace.yaml');
     const raw = await fs.readFile(wsPath, 'utf-8');
-    console.log(raw);
     const ws = parse(raw);
 
     const packages = ws?.packages ?? [];

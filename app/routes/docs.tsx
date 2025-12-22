@@ -59,6 +59,14 @@ export default function LayoutDocs({
 
   const pathname = location.pathname.replace(/\/$/, '');
 
+  function isActive(path: string) {
+    if (pathname.split('/').length > 3) {
+      return pathname.startsWith(path);
+    }
+
+    return pathname === path;
+  }
+
   return (
     <>
       <div
@@ -112,7 +120,7 @@ export default function LayoutDocs({
                     {group.items.map((item) => (
                       <SidebarItem key={item.path}>
                         <SidebarItemButton
-                          active={pathname === item.path}
+                          active={isActive(item.path)}
                           render={<Link to={item.path} />}
                         >
                           {item.name}

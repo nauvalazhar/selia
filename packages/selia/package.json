@@ -1,6 +1,6 @@
 {
   "name": "selia",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "bin": {
     "selia": "./dist/index.js"
@@ -20,6 +20,7 @@
     "execa": "^9.6.1",
     "glob": "^13.0.0",
     "picocolors": "^1.1.1",
+    "yaml": "^2.8.2",
     "zod": "^4.2.1"
   },
   "devDependencies": {

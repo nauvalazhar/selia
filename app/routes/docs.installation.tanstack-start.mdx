@@ -8,7 +8,7 @@ Setting up Selia in TanStack Start project.
 
 Create a TanStack Start project with Tailwind CSS:
 
-<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
   <CodeTabsPanel value="npm" language="bash">
     npm create @tanstack/start@latest --tailwind
   </CodeTabsPanel>
@@ -27,18 +27,18 @@ Create a TanStack Start project with Tailwind CSS:
 
 Run the following command to init Selia:
 
-<CodeTabs items={['npx', 'pnpx', 'yarn', 'bunx']}>
-  <CodeTabsPanel value="npx" language="bash">
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
+  <CodeTabsPanel value="npm" language="bash">
     npx selia@latest init
   </CodeTabsPanel>
-  <CodeTabsPanel value="pnpx" language="bash">
+  <CodeTabsPanel value="pnpm" language="bash">
     pnpx selia@latest init
   </CodeTabsPanel>
   <CodeTabsPanel value="yarn" language="bash">
     yarn selia@latest init
   </CodeTabsPanel>
-  <CodeTabsPanel value="bunx" language="bash">
-    bunx --bun selia@latest init
+  <CodeTabsPanel value="bun" language="bash">
+    bunx selia@latest init
   </CodeTabsPanel>
 </CodeTabs>
 

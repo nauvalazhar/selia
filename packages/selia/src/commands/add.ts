@@ -30,6 +30,15 @@ export const addCommand = new Command()
       ),
     );
 
+    // check config file
+    if (!existsSync(path.join(process.cwd(), 'selia.json'))) {
+      log.error(
+        picocolors.red('You can only use this command in a Selia project.'),
+      );
+      console.log();
+      return;
+    }
+
     try {
       const config = await loadConfig();
       const s = spinner();

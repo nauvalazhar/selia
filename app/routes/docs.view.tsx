@@ -24,6 +24,8 @@ import { ComponentTable } from 'components/component-table';
 import { visit } from 'unist-util-visit';
 import type { Plugin } from 'unified';
 import type { Root } from 'mdast';
+import { InstallationGuides } from 'components/installation-guides';
+import { Installation } from 'components/installation';
 
 const remarkFileInclusion: Plugin<[], Root> = () => {
   return async (tree) => {
@@ -183,6 +185,8 @@ const components = {
   InfoIcon,
   PreviewDemo,
   ComponentTable,
+  InstallationGuides,
+  Installation,
 };
 
 export default function DocsView({ loaderData }: Route.ComponentProps) {

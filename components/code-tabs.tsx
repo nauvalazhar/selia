@@ -4,17 +4,24 @@ import { cn } from 'lib/utils';
 import { Button } from 'components/selia/button';
 import { CheckIcon, ClipboardIcon } from 'lucide-react';
 import { CodeBlock } from 'components/code-block';
+import { useTabsStore } from '~/lib/tabs-store';
+import { useShallow } from 'zustand/react/shallow';
 
 export function CodeTabs({
+  id,
   children,
   items,
   title,
 }: {
   children: React.ReactNode;
   items: string[];
+  id?: string;
   title?: string;
 }) {
   const [isCopied, setIsCopied] = useState(false);
+  const tabKey: string = id || 'cli';
+  const activeTab = useTabsStore((state) => state.activeTab[tabKey]);
+  const setActiveTab = useTabsStore((state) => state.setActiveTab);
 
   function handleCopy(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -34,7 +41,8 @@ export function CodeTabs({
 
   return (
     <Tabs
-      defaultValue={items[0]}
+      value={activeTab || items[0]}
+      onValueChange={(value) => setActiveTab(tabKey, value)}
       className={cn(
         'bg-code rounded-3xl ring ring-border items-start gap-0',
         'relative mb-6',

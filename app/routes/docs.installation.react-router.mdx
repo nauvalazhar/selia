@@ -8,7 +8,7 @@ Setting up Selia in React Router project.
 
 Create a React Router project:
 
-<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
   <CodeTabsPanel value="npm" language="bash">
     npx create-eact-router@latest my-app
   </CodeTabsPanel>
@@ -27,18 +27,18 @@ Create a React Router project:
 
 Run the following command to init Selia:
 
-<CodeTabs items={['npx', 'pnpx', 'yarn', 'bunx']}>
-  <CodeTabsPanel value="npx" language="bash">
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
+  <CodeTabsPanel value="npm" language="bash">
     npx selia@latest init
   </CodeTabsPanel>
-  <CodeTabsPanel value="pnpx" language="bash">
+  <CodeTabsPanel value="pnpm" language="bash">
     pnpx selia@latest init
   </CodeTabsPanel>
   <CodeTabsPanel value="yarn" language="bash">
     yarn selia@latest init
   </CodeTabsPanel>
-  <CodeTabsPanel value="bunx" language="bash">
-    bunx --bun selia@latest init
+  <CodeTabsPanel value="bun" language="bash">
+    bunx selia@latest init
   </CodeTabsPanel>
 </CodeTabs>
 
@@ -47,7 +47,7 @@ Run the following command to init Selia:
 Import the component in your app:
 
 ```tsx filename="app/routes/home.tsx"
-import { Button } from "@/components/selia";
+import { Button } from "@/components/selia/button";
 
 export default function Home() {
 	return <Button>Cool Button</Button>;
