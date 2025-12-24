@@ -215,10 +215,10 @@ export function ComboboxPopup({
           data-slot="combobox-popup"
           {...props}
           className={cn(
-            'bg-popover ring ring-popover-border rounded shadow-popover overflow-y-auto',
+            'bg-popover ring ring-popover-border rounded shadow-popover',
             'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',
             'max-w-(--available-width) origin-(--transform-origin)',
-            'p-1 outline-none transition-[transform,scale,opacity]',
+            'outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
             className,
@@ -236,15 +236,17 @@ export function ComboboxSearch({
   ...props
 }: React.ComponentProps<typeof BaseCombobox.Input>) {
   return (
-    <BaseCombobox.Input
-      data-slot="combobox-search"
-      placeholder="Search item"
-      {...props}
-      className={cn(
-        'outline-none h-10 px-2.5 w-full border-b border-input-border mb-2',
-        className,
-      )}
-    />
+    <div className="p-1">
+      <BaseCombobox.Input
+        data-slot="combobox-search"
+        placeholder="Search item"
+        {...props}
+        className={cn(
+          'outline-none h-10 px-2.5 w-full border-b border-input-border',
+          className,
+        )}
+      />
+    </div>
   );
 }
 
@@ -256,7 +258,7 @@ export function ComboboxEmpty({
     <BaseCombobox.Empty
       data-slot="combobox-empty"
       {...props}
-      className={cn('px-3 py-1.5 text-dimmed empty:p-0')}
+      className={cn('px-3 py-2.5 text-dimmed empty:p-0 text-center')}
     />
   );
 }
@@ -269,7 +271,10 @@ export function ComboboxList({
     <BaseCombobox.List
       data-slot="combobox-list"
       {...props}
-      className={cn('space-y-0.5 outline-none', className)}
+      className={cn(
+        'space-y-0.5 outline-none max-h-[min(23rem,var(--available-height))] overflow-y-auto dark:scheme-dark p-1 empty:p-0',
+        className,
+      )}
     />
   );
 }

@@ -89,7 +89,7 @@ export function AutocompletePopup({
           {...props}
           className={cn(
             'bg-popover ring ring-popover-border rounded shadow-popover',
-            'p-1 outline-none transition-[transform,scale,opacity]',
+            'outline-none transition-[transform,scale,opacity]',
             'w-(--anchor-width) max-h-[min(var(---available-height),23rem)]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
@@ -155,7 +155,8 @@ export function AutocompleteList({
       data-slot="autocomplete-list"
       {...props}
       className={cn(
-        'space-y-1 overflow-auto empty:hidden empty:h-0 empty:p-0 outline-none',
+        'space-y-1 overflow-auto empty:hidden empty:h-0 empty:p-0 outline-none dark:scheme-dark',
+        'max-h-[min(23rem,var(--available-height))] overflow-y-auto dark:scheme-dark p-1',
         className,
       )}
     />

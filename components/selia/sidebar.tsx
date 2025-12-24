@@ -108,7 +108,10 @@ export function SidebarContent({
     render,
     props: {
       'data-slot': 'sidebar-content',
-      className: cn('flex flex-col gap-2.5 h-full overflow-y-auto', className),
+      className: cn(
+        'flex flex-col gap-2.5 h-full overflow-y-auto dark:scheme-dark',
+        className,
+      ),
       ...props,
     },
   });

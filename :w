@@ -13,7 +13,6 @@ export const alertVariants = cva(
     'has-[>[data-slot=alert-description]]:py-3',
     'has-[>svg]:grid-cols-[calc(var(--spacing)*4.5)_1fr_auto]',
     'not-[:has(>svg)]:grid-cols-[1fr_auto]',
-    'not-[:has(>svg)]:[&>[data-slot=alert-description]]:col-start-1',
   ],
   {
     variants: {
