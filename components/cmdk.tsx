@@ -76,6 +76,37 @@ export function Cmdk({ items: _items }: { items: Group[] }) {
   const items = [
     ..._items,
     {
+      value: 'Installation',
+      label: 'Installation',
+      items: [
+        {
+          value: '/docs/installation/vite',
+          label: 'Vite',
+          meta: 'Framework Guide',
+        },
+        {
+          value: '/docs/installation/react-router',
+          label: 'React Router',
+          meta: 'Framework Guide',
+        },
+        {
+          value: '/docs/installation/tanstack-start',
+          label: 'TanStack Start',
+          meta: 'Framework Guide',
+        },
+        {
+          value: '/docs/installation/next',
+          label: 'Next.js',
+          meta: 'Framework Guide',
+        },
+        {
+          value: '/docs/installation/manual',
+          label: 'Manual',
+          meta: 'Framework Guide',
+        },
+      ],
+    },
+    {
       value: 'Themes',
       label: 'Themes',
       items: [
