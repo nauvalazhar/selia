@@ -29,6 +29,13 @@ const guides = [
     icon: '/tanstack.svg',
   },
   {
+    name: 'TanStack Router',
+    href: '/docs/installation/tanstack-router',
+    description:
+      'A powerful React router for client-side and full-stack react applications',
+    icon: '/tanstack.svg',
+  },
+  {
     name: 'Next.js',
     href: '/docs/installation/next',
     description:

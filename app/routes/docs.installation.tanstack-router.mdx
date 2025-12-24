@@ -1,0 +1,61 @@
+# Install Selia with TanStack Router
+
+Setting up Selia in TanStack Router project.
+
+<DocsButtons />
+
+## Create Project
+
+Create a TanStack Router project with Tailwind CSS:
+
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
+  <CodeTabsPanel value="npm" language="bash">
+    npx create-tsrouter-app@latest --template file-router --tailwind 
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn create tsrouter-app --template file-router --tailwind 
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpx create-tsrouter-app@latest --template file-router --tailwind 
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bunx create-tsrouter-app@latest --template file-router --tailwind 
+  </CodeTabsPanel>
+</CodeTabs>
+
+## Selia Initialization
+
+Run the following command to init Selia:
+
+<CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
+  <CodeTabsPanel value="npm" language="bash">
+    npx selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="pnpm" language="bash">
+    pnpx selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="yarn" language="bash">
+    yarn selia@latest init
+  </CodeTabsPanel>
+  <CodeTabsPanel value="bun" language="bash">
+    bunx selia@latest init
+  </CodeTabsPanel>
+</CodeTabs>
+
+@include "_component-cli.mdx"
+
+Import the component in your app:
+
+```tsx filename="src/routes/index.tsx"
+import { createFileRoute } from '@tanstack/react-router';
+import { Button } from '@/components/selia/button';
+
+export const Route = createFileRoute('/')({ component: App });
+
+function App() {
+	return <Button>Cool Button</Button>;
+}
+
+```
+
+@include "_font-icons.mdx"

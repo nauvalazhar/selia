@@ -38,6 +38,7 @@ export function TabsList({
         className={cn(
           'absolute top-1/2 left-0 h-8 w-(--active-tab-width)',
           'translate-x-(--active-tab-left) -translate-y-1/2',
+          'duration-100',
           'rounded z-[-1] transition-all',
           'bg-tabs-accent shadow inset-shadow-2xs inset-shadow-white/15 dark:inset-shadow-black/15',
           'ring ring-tabs-border',

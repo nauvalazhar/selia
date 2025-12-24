@@ -95,6 +95,11 @@ export function Cmdk({ items: _items }: { items: Group[] }) {
           meta: 'Framework Guide',
         },
         {
+          value: '/docs/installation/tanstack-router',
+          label: 'TanStack Router',
+          meta: 'Framework Guide',
+        },
+        {
           value: '/docs/installation/next',
           label: 'Next.js',
           meta: 'Framework Guide',

@@ -108,8 +108,16 @@
         "saveTargetAs": "paths.css",
         "condition": {
           "if": {
-            "type": "framework",
-            "value": "tanstack-start"
+            "any": [
+              {
+                "type": "framework",
+                "value": "tanstack-start"
+              },
+              {
+                "type": "framework",
+                "value": "tanstack-router"
+              }
+            ]
           },
           "unless": {
             "any": [
@@ -126,12 +134,20 @@
       {
         "type": "file-update",
         "target": "index.html",
-        "search": "(<div\\s+id=['\"]root['\"])((?!\\s+class))",
-        "replace": "$1 class=\"root\"$2",
+        "search": "(<div\\b[^>]*\\bid=['\"][^'\"]+['\"])(?![^>]*\\bclass=)",
+        "replace": "$1 class=\"root\"",
         "condition": {
           "if": {
-            "type": "framework",
-            "value": "vite"
+            "any": [
+              {
+                "type": "framework",
+                "value": "vite"
+              },
+              {
+                "type": "framework",
+                "value": "tanstack-router"
+              }
+            ]
           },
           "unless": {
             "any": [
@@ -189,9 +205,9 @@
       {
         "type": "file-update",
         "target": "{{paths.workdir}}routes/__root.tsx",
-        "search": "(<body[^>]*>)(\\s*)(\\{children\\}|\\{props\\.children\\}|<Outlet\\s*\\/>)([\\s\\S]*?)(</body>)",
-        "replace": "$1$2<div className=\"root\">\n        $3\n      </div>$4$5",
-        "condition": {
+        "search": "(\\{children\\}|\\{props\\.children\\}|<Outlet\\s*\\/>)",
+        "replace": "<div className=\"root\">\n  $1\n</div>",
+          "condition": {
           "if": {
             "type": "framework",
             "value": "tanstack-start"
@@ -227,6 +243,10 @@
               {
                 "type": "framework",
                 "value": "tanstack-start"
+              },
+              {
+                "type": "framework",
+                "value": "tanstack-router"
               }
             ]
           },
@@ -287,6 +307,10 @@
               {
                 "type": "framework",
                 "value": "tanstack-start"
+              },
+              {
+                "type": "framework",
+                "value": "tanstack-router"
               }
             ]
           }
