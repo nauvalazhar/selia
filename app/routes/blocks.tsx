@@ -17,7 +17,7 @@ export default function Blocks() {
   const { sources } = useLoaderData<typeof loader>();
 
   return (
-    <div className="container mx-auto px-4 md:px-2.5 py-8">
+    <div className="container mx-auto py-8">
       <title>Blocks - Selia</title>
       <div className="py-10 md:py-20">
         <h1 className="text-6xl font-medium tracking-tight">
