@@ -354,7 +354,6 @@ export function SidebarCollapsibleTrigger({
       className={cn(
         '**:data-[slot=expandable-indicator]:transition-all',
         '**:data-[slot=expandable-indicator]:duration-100',
-        'outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary',
         className,
       )}
     />

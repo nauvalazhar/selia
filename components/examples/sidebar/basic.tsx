@@ -68,31 +68,33 @@ export default function SidebarBasicExample() {
                   Categories
                 </SidebarItemButton>
               </SidebarItem>
-              <SidebarCollapsible>
-                <SidebarCollapsibleTrigger
-                  render={
-                    <SidebarItemButton>
-                      <ChartAreaIcon />
-                      Reports
-                    </SidebarItemButton>
-                  }
-                />
-                <SidebarCollapsiblePanel>
-                  <SidebarSubmenu>
-                    <SidebarList>
-                      <SidebarItem>
-                        <SidebarItemButton>Sales</SidebarItemButton>
-                      </SidebarItem>
-                      <SidebarItem>
-                        <SidebarItemButton>Traffic</SidebarItemButton>
-                      </SidebarItem>
-                      <SidebarItem>
-                        <SidebarItemButton>Conversion</SidebarItemButton>
-                      </SidebarItem>
-                    </SidebarList>
-                  </SidebarSubmenu>
-                </SidebarCollapsiblePanel>
-              </SidebarCollapsible>
+              <SidebarItem>
+                <SidebarCollapsible>
+                  <SidebarCollapsibleTrigger
+                    render={
+                      <SidebarItemButton>
+                        <ChartAreaIcon />
+                        Reports
+                      </SidebarItemButton>
+                    }
+                  />
+                  <SidebarCollapsiblePanel>
+                    <SidebarSubmenu>
+                      <SidebarList>
+                        <SidebarItem>
+                          <SidebarItemButton>Sales</SidebarItemButton>
+                        </SidebarItem>
+                        <SidebarItem>
+                          <SidebarItemButton>Traffic</SidebarItemButton>
+                        </SidebarItem>
+                        <SidebarItem>
+                          <SidebarItemButton>Conversion</SidebarItemButton>
+                        </SidebarItem>
+                      </SidebarList>
+                    </SidebarSubmenu>
+                  </SidebarCollapsiblePanel>
+                </SidebarCollapsible>
+              </SidebarItem>
             </SidebarList>
           </SidebarGroup>
           <SidebarGroup>
