@@ -5,7 +5,6 @@ import { Button } from 'components/selia/button';
 import { CheckIcon, ClipboardIcon } from 'lucide-react';
 import { CodeBlock } from 'components/code-block';
 import { useTabsStore } from '~/lib/tabs-store';
-import { useShallow } from 'zustand/react/shallow';
 
 export function CodeTabs({
   id,
@@ -62,7 +61,7 @@ export function CodeTabs({
           ))}
         </TabsList>
         <Button
-          size="xs"
+          size="xs-icon"
           variant="secondary"
           pill
           className="text-muted text-sm"
