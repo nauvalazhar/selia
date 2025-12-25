@@ -122,7 +122,7 @@ function ToastContent({ toast }: { toast: ToastObject<Object> }) {
         <BaseToast.Action
           data-slot="toast-action"
           className={cn(
-            'text-sm md:ml-auto shrink-0 mt-2 md:mt-0',
+            'text-sm md:ml-auto shrink-0 mt-2 md:mt-0 self-center',
             buttonVariants({ variant: 'tertiary', size: 'xs' }),
           )}
         />
