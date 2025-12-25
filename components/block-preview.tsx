@@ -57,7 +57,6 @@ export function BlockPreview({
     const target = iframeRef.current?.contentDocument?.documentElement;
     target?.classList.toggle('dark', isDark);
     target?.classList.toggle('scheme-dark', isDark);
-    target?.classList.toggle('scheme-light', !isDark);
   }, [isDark]);
 
   function handleCopy(e: React.MouseEvent<HTMLButtonElement>) {
