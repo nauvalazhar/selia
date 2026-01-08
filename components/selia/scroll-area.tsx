@@ -13,10 +13,14 @@ export function ScrollArea({
 }) {
   return (
     <BaseScrollArea.Root
+      data-slot="scroll-area"
       className={cn('overflow-hidden', className)}
       {...props}
     >
-      <BaseScrollArea.Viewport className="overscroll-contain outline-none size-full">
+      <BaseScrollArea.Viewport
+        data-slot="scroll-area-viewport"
+        className="overscroll-contain outline-none size-full"
+      >
         {children}
       </BaseScrollArea.Viewport>
       {scrollbar === 'horizontal' && (
@@ -44,6 +48,7 @@ function ScrollAreaScrollbar({
   return (
     <BaseScrollArea.Scrollbar
       {...props}
+      data-slot="scroll-area-scrollbar"
       className={cn(
         'flex m-1 touch-none select-none',
         'opacity-0 transition-opacity delay-300 pointer-events-none',
@@ -58,7 +63,10 @@ function ScrollAreaScrollbar({
       )}
       orientation={orientation}
     >
-      <BaseScrollArea.Thumb className="rounded bg-scrollbar w-full" />
+      <BaseScrollArea.Thumb
+        data-slot="scroll-area-thumb"
+        className="rounded bg-scrollbar w-full"
+      />
     </BaseScrollArea.Scrollbar>
   );
 }

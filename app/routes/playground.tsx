@@ -1,5 +1,18 @@
 import { Button } from 'components/selia/button';
 import {
+  Combobox,
+  ComboboxCollection,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxGroupLabel,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxPopup,
+  ComboboxSearch,
+  ComboboxTrigger,
+  ComboboxValue,
+} from 'components/selia/combobox';
+import {
   Menu,
   MenuItem,
   MenuPopup,
@@ -10,71 +23,73 @@ import {
   MenuTrigger,
 } from 'components/selia/menu';
 import { Menubar } from 'components/selia/menubar';
+import { InputGroup, InputGroupAddon } from 'components/selia/input-group';
+import { SearchIcon } from 'lucide-react';
 
 export default function Playground() {
   return (
-    <Menubar>
-      <Menu>
-        <MenuTrigger
-          render={
-            <Button size="xs" variant="plain">
-              File
-            </Button>
-          }
-        />
-        <MenuPopup>
-          <MenuItem>New File</MenuItem>
-          <MenuItem>Open</MenuItem>
-          <MenuItem>Save</MenuItem>
-          <MenuSubmenu>
-            <MenuSubmenuTrigger render={<MenuItem>Export</MenuItem>} />
-            <MenuSubPopup>
-              <MenuItem>PNG</MenuItem>
-              <MenuItem>JPG</MenuItem>
-              <MenuItem>PDF</MenuItem>
-            </MenuSubPopup>
-          </MenuSubmenu>
-          <MenuSeparator />
-          <MenuItem>Exit App</MenuItem>
-        </MenuPopup>
-      </Menu>
-      <Menu>
-        <MenuTrigger
-          render={
-            <Button size="xs" variant="plain">
-              Edit
-            </Button>
-          }
-        />
-        <MenuPopup>
-          <MenuItem>Cut</MenuItem>
-          <MenuItem>Copy</MenuItem>
-          <MenuItem>Paste</MenuItem>
-        </MenuPopup>
-      </Menu>
-      <Menu>
-        <MenuTrigger
-          render={
-            <Button size="xs" variant="plain">
-              View
-            </Button>
-          }
-        />
-        <MenuPopup>
-          <MenuItem>Zoom In</MenuItem>
-          <MenuItem>Zoom Out</MenuItem>
-          <MenuSubmenu>
-            <MenuSubmenuTrigger render={<MenuItem>Layout</MenuItem>} />
-            <MenuSubPopup>
-              <MenuItem>Single Page</MenuItem>
-              <MenuItem>Two Pages</MenuItem>
-              <MenuItem>Continous</MenuItem>
-            </MenuSubPopup>
-          </MenuSubmenu>
-          <MenuSeparator />
-          <MenuItem>Full Screen</MenuItem>
-        </MenuPopup>
-      </Menu>
-    </Menubar>
+    <div className="flex items-center justify-center h-screen">
+      <Combobox items={items}>
+        <ComboboxTrigger className="w-md">
+          <ComboboxValue />
+        </ComboboxTrigger>
+        <ComboboxPopup>
+          <InputGroup variant="plain">
+            <InputGroupAddon>
+              <SearchIcon />
+            </InputGroupAddon>
+            <ComboboxSearch placeholder="Search models..." />
+          </InputGroup>
+          <ComboboxEmpty>No results found</ComboboxEmpty>
+          <ComboboxList>
+            {(group) => (
+              <ComboboxGroup items={group.items} key={group.label}>
+                <ComboboxGroupLabel>{group.label}</ComboboxGroupLabel>
+                <ComboboxCollection>
+                  {(item) => (
+                    <ComboboxItem key={item.value} value={item}>
+                      {item.label}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+              </ComboboxGroup>
+            )}
+          </ComboboxList>
+        </ComboboxPopup>
+      </Combobox>
+    </div>
   );
 }
+
+const items = [
+  {
+    label: 'Rock',
+    items: [
+      {
+        label: 'Pink Floyd',
+        value: 'pink-floyd',
+      },
+      {
+        label: 'Led Zeppelin',
+        value: 'led-zeppelin',
+      },
+      {
+        label: 'The Beatles',
+        value: 'the-beatles',
+      },
+    ],
+  },
+  {
+    label: 'Metal',
+    items: [
+      {
+        label: 'Metallica',
+        value: 'metallica',
+      },
+      {
+        label: 'Megadeth',
+        value: 'megadeth',
+      },
+    ],
+  },
+];

@@ -17,7 +17,7 @@ export function MenuTrigger({
 export const menuPopupVariants = cva(
   [
     'origin-(--transform-origin) bg-popover ring ring-popover-border rounded shadow-popover',
-    'p-1 outline-none transition-[transform,scale,opacity]',
+    'p-1 outline-none transition-[transform,scale,opacity] space-y-0.5',
     'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
     'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
     '**:data-[slot=item]:p-0 min-w-32',
@@ -25,24 +25,26 @@ export const menuPopupVariants = cva(
   {
     variants: {
       size: {
-        sm: [
+        compact: [
           '**:data-[slot$=item]:gap-2.5',
           '**:data-[slot$=item]:px-2',
           '**:data-[slot$=item]:py-1.5',
           '**:data-[slot=menu-checkbox-item]:pl-8.5',
           '**:data-[slot=menu-checkbox-item]:data-[checked]:pl-2',
           '**:data-[slot$=item]:rounded-sm',
+          '**:data-[slot=menu-submenu-trigger]:gap-2.5',
           '**:data-[slot=menu-submenu-trigger]:px-1.5',
           '**:data-[slot=menu-submenu-trigger]:py-1',
           '**:data-[slot=menu-submenu-trigger]:rounded-sm',
         ],
-        md: [
+        default: [
           '**:data-[slot$=item]:gap-3.5',
           '**:data-[slot$=item]:px-3',
           '**:data-[slot$=item]:py-2.5',
           '**:data-[slot=menu-checkbox-item]:pl-10',
           '**:data-[slot=menu-checkbox-item]:data-[checked]:pl-2.5',
           '**:data-[slot$=item]:rounded',
+          '**:data-[slot=menu-submenu-trigger]:gap-3.5',
           '**:data-[slot=menu-submenu-trigger]:px-3',
           '**:data-[slot=menu-submenu-trigger]:py-2.5',
           '**:data-[slot=menu-submenu-trigger]:rounded',
@@ -50,7 +52,7 @@ export const menuPopupVariants = cva(
       },
     },
     defaultVariants: {
-      size: 'md',
+      size: 'default',
     },
   },
 );

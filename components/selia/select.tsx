@@ -251,7 +251,7 @@ export function SelectGroup({
   return (
     <BaseSelect.Group
       data-slot="select-group"
-      className={cn(className)}
+      className={cn('space-y-0.5', className)}
       {...props}
     />
   );

@@ -26,7 +26,7 @@ export default function MenuIconExample() {
           </Button>
         }
       />
-      <MenuPopup>
+      <MenuPopup className="w-56">
         <MenuItem>
           <FolderIcon />
           Upload File

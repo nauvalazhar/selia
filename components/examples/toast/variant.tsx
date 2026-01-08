@@ -55,13 +55,13 @@ export default function ToastBasicExample() {
         variant="secondary"
         onClick={() =>
           toastManager.add({
-            title: 'Error Toast',
-            description: 'This is a error toast',
-            type: 'error',
+            title: 'Danger Toast',
+            description: 'This is a danger toast',
+            type: 'danger',
           })
         }
       >
-        Error
+        Danger
       </Button>
     </>
   );

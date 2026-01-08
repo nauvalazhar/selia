@@ -28,7 +28,7 @@ export function ThemeToggle() {
           </Button>
         }
       />
-      <MenuPopup size="sm">
+      <MenuPopup size="compact">
         <MenuItem onClick={() => setTheme('light')}>
           <SunIcon /> Light
         </MenuItem>

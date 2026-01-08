@@ -221,6 +221,8 @@ export function ComboboxPopup({
             'outline-none transition-[transform,scale,opacity]',
             'data-[ending-style]:opacity-0 data-[ending-style]:scale-90',
             'data-[starting-style]:opacity-0 data-[starting-style]:scale-90',
+            'has-[>[data-slot=input-group]]:[&_[data-slot=combobox-search]]:border-none',
+            '*:data-[slot=input-group]:border-b *:data-[slot=input-group]:border-popover-separator',
             className,
           )}
         >
@@ -293,12 +295,12 @@ export function ComboboxItem({
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',
-        'pl-10 data-[selected]:pl-2.5',
         'data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
       )}
     >
-      <BaseCombobox.ItemIndicator>
+      {children}
+      <BaseCombobox.ItemIndicator className="ml-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -312,13 +314,11 @@ export function ComboboxItem({
           <path d="M20 6 9 17l-5-5" />
         </svg>
       </BaseCombobox.ItemIndicator>
-      {children}
     </BaseCombobox.Item>
   );
 }
 
 export function ComboboxGroup({
-  children,
   className,
   ...props
 }: React.ComponentProps<typeof BaseCombobox.Group>) {
@@ -326,13 +326,12 @@ export function ComboboxGroup({
     <BaseCombobox.Group
       data-slot="combobox-group"
       {...props}
-      className={cn('space-y-1', className)}
+      className={cn('space-y-0.5', className)}
     />
   );
 }
 
 export function ComboboxGroupLabel({
-  children,
   className,
   ...props
 }: React.ComponentProps<typeof BaseCombobox.GroupLabel>) {
@@ -356,4 +355,10 @@ export function ComboboxSeparator({
       className={cn('h-px my-1 bg-popover-separator', className)}
     />
   );
+}
+
+export function ComboboxCollection({
+  ...props
+}: React.ComponentProps<typeof BaseCombobox.Collection>) {
+  return <BaseCombobox.Collection {...props} />;
 }

@@ -55,4 +55,13 @@ export const examples = {
       })),
     ),
   },
+  size: {
+    name: 'Size',
+    path: 'components/examples/menu/size.tsx',
+    component: React.lazy(() =>
+      import('./size').then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
 };

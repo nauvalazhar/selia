@@ -146,7 +146,7 @@ function ToastIcon({
         type === 'success' && '*:[svg]:fill-success/20 *:[svg]:stroke-success',
         type === 'info' && '*:[svg]:fill-info/20 *:[svg]:stroke-info',
         type === 'warning' && '*:[svg]:fill-warning/20 *:[svg]:stroke-warning',
-        type === 'error' && '*:[svg]:fill-danger/20 *:[svg]:stroke-danger',
+        type === 'danger' && '*:[svg]:fill-danger/20 *:[svg]:stroke-danger',
       )}
     >
       {children}
@@ -213,7 +213,7 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M12 17h.01" />
     </svg>
   ),
-  error: (
+  danger: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

@@ -18,7 +18,7 @@ import {
 
 export default function ItemVariantExample() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full xl:w-8/12">
       <Item variant="outline">
         <ItemMedia>
           <IconBox>

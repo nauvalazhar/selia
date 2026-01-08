@@ -28,4 +28,13 @@ export const examples = {
       })),
     ),
   },
+  group: {
+    name: 'Group',
+    path: 'components/examples/combobox/group.tsx',
+    component: React.lazy(() =>
+      import('./group').then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
 };

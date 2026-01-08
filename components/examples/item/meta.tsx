@@ -17,7 +17,10 @@ export default function ItemMetaExample() {
       <Item>
         <ItemMedia>
           <Avatar>
-            <AvatarImage src="/avatar04.png" alt="Avatar" />
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&h=200&fit=crop&crop=top"
+              alt="Avatar"
+            />
             <AvatarFallback>BS</AvatarFallback>
           </Avatar>
         </ItemMedia>

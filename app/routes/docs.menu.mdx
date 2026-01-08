@@ -90,8 +90,8 @@ Each component part, its responsibility, and the props it exposes.
       props: {
         size: {
           name: "Size",
-          options: ["sm", "md"],
-          default: "md",
+          options: ["compact", "default"],
+          default: "default",
         },
       }
     },
@@ -143,3 +143,9 @@ You can group menu items by using the `MenuGroup` component and add a label to t
 Let users select a single option from a set of choices with `MenuRadioGroup` component or multiple options with `MenuCheckboxItem` component.
 
 <Preview name="radio" />
+
+### Size
+
+You may want to use a `compact` size for more space-efficient use cases.
+
+<Preview name="size" />
