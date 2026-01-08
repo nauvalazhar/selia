@@ -44,32 +44,9 @@ const guides = [
   },
 ];
 
-export function InstallationGuides() {
-  return (
-    <>
-      <h2>Framework Guides</h2>
-      <p>
-        We provide installation guides for the following frameworks. Select the
-        framework you are using to get started.
-      </p>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {guides.map((guide) => (
-          <Item key={guide.name} render={<Link to={guide.href} />}>
-            <ItemMedia className="mt-1">
-              <img src={guide.icon} alt={guide.name} />
-            </ItemMedia>
-            <ItemContent className="ml-2">
-              <ItemTitle className="text-lg">{guide.name}</ItemTitle>
-              <ItemDescription>{guide.description}</ItemDescription>
-            </ItemContent>
-          </Item>
-        ))}
-      </div>
-      <h2>Manual</h2>
-      <p>
-        If your framework is not listed, you can follow the manual installation
-        guide.
-      </p>
+export function InstallationGuides({ type }: { type: 'framework' | 'manual' }) {
+  if (type === 'manual') {
+    return (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Item render={<Link to="/docs/installation/manual" />}>
           <ItemMedia className="mt-1">
@@ -84,6 +61,22 @@ export function InstallationGuides() {
           </ItemContent>
         </Item>
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {guides.map((guide) => (
+        <Item key={guide.name} render={<Link to={guide.href} />}>
+          <ItemMedia className="mt-1">
+            <img src={guide.icon} alt={guide.name} />
+          </ItemMedia>
+          <ItemContent className="ml-2">
+            <ItemTitle className="text-lg">{guide.name}</ItemTitle>
+            <ItemDescription>{guide.description}</ItemDescription>
+          </ItemContent>
+        </Item>
+      ))}
+    </div>
   );
 }

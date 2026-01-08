@@ -61,6 +61,7 @@ export const inputGroupAddonVariants = cva(
     'flex items-center gap-1.5 shrink-0',
     '**:[svg]:size-4 **:[svg]:text-dimmed',
     '[&_[role="combobox"]]:not-focus:ring-0',
+    '[&_[role="combobox"]]:not-focus:ring-transparent',
     '[&_[role="combobox"]]:shadow-none',
     '[&.items-start,&.items-end]:py-3',
   ],
