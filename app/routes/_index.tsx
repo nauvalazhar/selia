@@ -119,6 +119,16 @@ export default function Index() {
                   <TooltipPopup>Tailwind CSS</TooltipPopup>
                 </Tooltip>
               </div>
+              <div className="text-sm mt-14 text-muted">
+                Created by{' '}
+                <a
+                  href="https://twitter.com/mhdnauvalazhar"
+                  target="_blank"
+                  className="border-b border-foreground text-foreground"
+                >
+                  Nauval
+                </a>
+              </div>
             </div>
             <div className="w-full h-full hidden xl:block">
               <Suspense>
