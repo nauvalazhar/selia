@@ -1,6 +1,6 @@
 import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useHotkeys } from 'react-hotkeys-hook';
 import {
   Command,
@@ -38,6 +38,7 @@ type Group = {
 };
 
 export function Cmdk({ items: _items }: { items: Group[] }) {
+  const location = useLocation();
   const { isCmdkOpen, openCmdk, closeCmdk, toggleCmdk } = useLayoutStore(
     useShallow((state) => ({
       isCmdkOpen: state.isCmdkOpen,
@@ -51,6 +52,9 @@ export function Cmdk({ items: _items }: { items: Group[] }) {
 
   useHotkeys(['meta+k', 'ctrl+k'], (e: KeyboardEvent) => {
     e.preventDefault();
+    if (location.pathname.startsWith('/block/')) {
+      return;
+    }
     toggleCmdk();
   });
   useHotkeys(['esc'], () => {
