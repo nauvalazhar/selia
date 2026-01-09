@@ -67,7 +67,7 @@ export const addCommand = new Command()
       const resolved = await resolveDependencies(items, registryUrl);
       const npmPackagesCount = Object.keys(resolved.npmPackages).length;
       s.stop(
-        `Resolved ${resolved.items.size} item(s) and ${npmPackagesCount} npm ${npmPackagesCount > 1 ? 'packages' : 'package'}`,
+        `Resolved ${resolved.items.size} item(s) and ${npmPackagesCount} npm package(s)`,
       );
 
       const allItems = Array.from(resolved.items.values());
@@ -151,7 +151,7 @@ export const addCommand = new Command()
       s.start('Writing files...');
       let filesWritten = 0;
       const writtenFileNames = new Set<{ name: string; targetPath: string }>();
-      for (const { targetPath, content, item, file } of filesToWrite) {
+      for (const { targetPath, content, item } of filesToWrite) {
         await fs.mkdir(path.dirname(targetPath), { recursive: true });
         await fs.writeFile(targetPath, content, 'utf-8');
         filesWritten++;
@@ -159,7 +159,7 @@ export const addCommand = new Command()
         writtenFileNames.add({ name: item.name, targetPath });
       }
 
-      s.stop(`Wrote ${filesWritten} ${filesWritten > 1 ? 'files' : 'file'}:`);
+      s.stop(`Wrote ${filesWritten} file(s):`);
 
       if (writtenFileNames.size > 0) {
         log.message(

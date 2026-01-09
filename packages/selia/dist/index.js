@@ -365,7 +365,7 @@ var addCommand = new Command().name("add").description("Add components to your p
     const resolved = await resolveDependencies(items, registryUrl);
     const npmPackagesCount = Object.keys(resolved.npmPackages).length;
     s.stop(
-      `Resolved ${resolved.items.size} item(s) and ${npmPackagesCount} npm ${npmPackagesCount > 1 ? "packages" : "package"}`
+      `Resolved ${resolved.items.size} item(s) and ${npmPackagesCount} npm package(s)`
     );
     const allItems = Array.from(resolved.items.values());
     const npmPackages = resolved.npmPackages;
@@ -427,13 +427,13 @@ var addCommand = new Command().name("add").description("Add components to your p
     s.start("Writing files...");
     let filesWritten = 0;
     const writtenFileNames = /* @__PURE__ */ new Set();
-    for (const { targetPath, content, item, file } of filesToWrite) {
+    for (const { targetPath, content, item } of filesToWrite) {
       await fs6.mkdir(path6.dirname(targetPath), { recursive: true });
       await fs6.writeFile(targetPath, content, "utf-8");
       filesWritten++;
       writtenFileNames.add({ name: item.name, targetPath });
     }
-    s.stop(`Wrote ${filesWritten} ${filesWritten > 1 ? "files" : "file"}:`);
+    s.stop(`Wrote ${filesWritten} file(s):`);
     if (writtenFileNames.size > 0) {
       log2.message(
         Array.from(writtenFileNames).map(
