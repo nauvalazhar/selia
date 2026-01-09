@@ -101,7 +101,7 @@ export function BlockPreview({
             <Text className="text-muted truncate">{description}</Text>
           </div>
           <div className="flex items-center justify-between gap-4">
-            <TabsList className="*:rounded-full rounded-full">
+            <TabsList className="*:rounded-full rounded-full w-44 *:flex-1">
               <TabsItem value="preview">Preview</TabsItem>
               <TabsItem value="code">Code</TabsItem>
             </TabsList>
