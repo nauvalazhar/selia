@@ -32,8 +32,9 @@ export default function Index() {
                 <span className="text-sm font-medium">Learn about Selia</span>
                 <ArrowRightIcon className="w-4" />
               </Button>
-              <h1 className="text-6xl/12 font-semibold tracking-tight bg-linear-to-b from-foreground to-foreground/60 bg-clip-text text-transparent 2xl:w-11/12 pb-2">
-                Interfaces That Feel Right, Out of the Box
+              <h1 className="text-6xl/12 font-semibold tracking-tight 2xl:w-11/12 pb-2">
+                Interfaces That Feel Right,{' '}
+                <span className="text-foreground/60">Out of the Box</span>
               </h1>
               <Text className="text-dimmed font-light text-xl/6.5 md:text-2xl/7 mb-4 lg:w-9/12 mt-4 mx-auto xl:mx-0">
                 Selia is a collection of components designed for visual
