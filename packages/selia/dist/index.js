@@ -125,9 +125,9 @@ async function fetchItem(registryUrl, itemName) {
     return ItemSchema.parse(data);
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Failed to fetch item "${itemName}": ${error.message}`);
+      throw new Error("Item could not be found.");
     }
-    throw error;
+    throw new Error("Failed to fetch item.");
   }
 }
 async function fetchItems(registryUrl, itemNames) {
@@ -329,14 +329,22 @@ async function resolveRegistry(cwd, cliRegistry) {
 }
 
 // src/commands/add.ts
-var addCommand = new Command().name("add").description("Add components to your project").argument("<items...>", "Items to add").option("-y, --yes", "Skip confirmation prompts").option("--no-install", "Skip installing dependencies").option("--overwrite", "Overwrite existing files without asking").action(async (itemNames, options) => {
+var addCommand = new Command().name("add").description("Add components to your project").argument("[items...]", "Items to add").option("-y, --yes", "Skip confirmation prompts").option("--no-install", "Skip installing dependencies").option("--overwrite", "Overwrite existing files without asking").action(async (itemNames, options) => {
   console.log();
   intro(picocolors.bgBlue(picocolors.blackBright(" Add Item ")));
   log2.warn(
     picocolors.yellow(
-      "The CLI is still in development, report any issues on GitHub!"
+      "The CLI is still experimental, report any issues on GitHub!"
     )
   );
+  if (itemNames.length === 0) {
+    log2.info("You must provide at least one item.");
+    log2.info(
+      `Run ${picocolors.cyan("selia add <items>")} to add items to your project.`
+    );
+    console.log();
+    return;
+  }
   if (!existsSync2(path6.join(process.cwd(), "selia.json"))) {
     log2.error(
       picocolors.red("You can only use this command in a Selia project.")
@@ -355,8 +363,9 @@ var addCommand = new Command().name("add").description("Add components to your p
     const items = await fetchItems(registryUrl, itemNames);
     s.start("Resolving dependencies...");
     const resolved = await resolveDependencies(items, registryUrl);
+    const npmPackagesCount = Object.keys(resolved.npmPackages).length;
     s.stop(
-      `Resolved ${resolved.items.size} item(s) and ${Object.keys(resolved.npmPackages).length} npm package(s)`
+      `Resolved ${resolved.items.size} item(s) and ${npmPackagesCount} npm ${npmPackagesCount > 1 ? "packages" : "package"}`
     );
     const allItems = Array.from(resolved.items.values());
     const npmPackages = resolved.npmPackages;
@@ -412,27 +421,37 @@ var addCommand = new Command().name("add").description("Add components to your p
     }
     if (filesToWrite.length === 0) {
       log2.warn("No files to write");
-      outro("Done");
+      outro("Done!");
       return;
     }
     s.start("Writing files...");
     let filesWritten = 0;
-    for (const { targetPath, content } of filesToWrite) {
+    const writtenFileNames = /* @__PURE__ */ new Set();
+    for (const { targetPath, content, item, file } of filesToWrite) {
       await fs6.mkdir(path6.dirname(targetPath), { recursive: true });
       await fs6.writeFile(targetPath, content, "utf-8");
       filesWritten++;
+      writtenFileNames.add({ name: item.name, targetPath });
     }
-    s.stop(`Wrote ${filesWritten} file(s)`);
+    s.stop(`Wrote ${filesWritten} ${filesWritten > 1 ? "files" : "file"}:`);
+    if (writtenFileNames.size > 0) {
+      log2.message(
+        Array.from(writtenFileNames).map(
+          ({ name, targetPath }) => `${picocolors.green("\u2022")} ${path6.relative(process.cwd(), targetPath)}`
+        ).join("\n")
+      );
+    }
     if (options.install && Object.keys(npmPackages).length > 0) {
       await installDependencies(npmPackages);
     }
-    outro("Components added successfully! \u2713");
+    outro("Items added successfully! \u2713");
   } catch (error) {
     log2.error(
       picocolors.red(
         error instanceof Error ? error.message : "An unknown error occurred"
       )
     );
+    console.log();
     process.exit(1);
   }
 });
@@ -1120,7 +1139,7 @@ var initCommand = new Command2().name("init").description("Initialize Selia in y
   intro2(picocolors3.bgBlue(picocolors3.blackBright(" Initialize Selia ")));
   log4.warn(
     picocolors3.yellow(
-      "The CLI is still in development, report any issues on GitHub!"
+      "The CLI is still experimental, report any issues on GitHub!"
     )
   );
   if (options.registry) {
@@ -1158,7 +1177,7 @@ var initCommand = new Command2().name("init").description("Initialize Selia in y
       await writeConfig(finalConfig);
       outro2(picocolors3.green("Config created \u2713"));
       log4.info(
-        "Run " + picocolors3.cyan("selia add <component>") + " to add components"
+        "Run " + picocolors3.cyan("selia add <items>") + " to add items to your project."
       );
       console.log();
       return;
@@ -1189,7 +1208,7 @@ var initCommand = new Command2().name("init").description("Initialize Selia in y
     note(picocolors3.dim("Config saved to: ") + picocolors3.cyan("selia.json"));
     log4.info(picocolors3.green("Selia initialized successfully! \u2713"));
     outro2(
-      "Run " + picocolors3.cyan("selia add <component>") + " to add components"
+      "Run " + picocolors3.cyan("selia add <items>") + " to add items to your project."
     );
     console.log();
   } catch (error) {
@@ -1331,10 +1350,15 @@ async function buildSetup(setup, output) {
 
 // src/commands/build.ts
 var buildCommand = new Command3().name("build").description("Build the registry").option("-o, --output <path>", "Output directory", "./public/registry").action(async (options) => {
-  intro3("Build Registry");
+  console.log();
+  intro3(picocolors5.bgBlue(picocolors5.blackBright(" Build Registry ")));
+  log6.warn(
+    picocolors5.yellow("This feature is not yet available for public use.")
+  );
   try {
     if (!await isRegistryExists()) {
       log6.error(picocolors5.red("Registry file not found: registry.json"));
+      console.log();
       process.exit(1);
     }
     const registryContent = await fs12.readFile("./registry.json", "utf-8");

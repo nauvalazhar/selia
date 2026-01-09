@@ -17,7 +17,7 @@ import { resolveRegistry } from '~/lib/resolve-registry';
 export const addCommand = new Command()
   .name('add')
   .description('Add components to your project')
-  .argument('<items...>', 'Items to add')
+  .argument('[items...]', 'Items to add')
   .option('-y, --yes', 'Skip confirmation prompts')
   .option('--no-install', 'Skip installing dependencies')
   .option('--overwrite', 'Overwrite existing files without asking')
@@ -27,9 +27,18 @@ export const addCommand = new Command()
 
     log.warn(
       picocolors.yellow(
-        'The CLI is still in development, report any issues on GitHub!',
+        'The CLI is still experimental, report any issues on GitHub!',
       ),
     );
+
+    if (itemNames.length === 0) {
+      log.info('You must provide at least one item.');
+      log.info(
+        `Run ${picocolors.cyan('selia add <items>')} to add items to your project.`,
+      );
+      console.log();
+      return;
+    }
 
     // check config file
     if (!existsSync(path.join(process.cwd(), 'selia.json'))) {
@@ -56,8 +65,9 @@ export const addCommand = new Command()
 
       s.start('Resolving dependencies...');
       const resolved = await resolveDependencies(items, registryUrl);
+      const npmPackagesCount = Object.keys(resolved.npmPackages).length;
       s.stop(
-        `Resolved ${resolved.items.size} item(s) and ${Object.keys(resolved.npmPackages).length} npm package(s)`,
+        `Resolved ${resolved.items.size} item(s) and ${npmPackagesCount} npm ${npmPackagesCount > 1 ? 'packages' : 'package'}`,
       );
 
       const allItems = Array.from(resolved.items.values());
@@ -134,33 +144,47 @@ export const addCommand = new Command()
       // Write files
       if (filesToWrite.length === 0) {
         log.warn('No files to write');
-        outro('Done');
+        outro('Done!');
         return;
       }
 
       s.start('Writing files...');
       let filesWritten = 0;
-
-      for (const { targetPath, content } of filesToWrite) {
+      const writtenFileNames = new Set<{ name: string; targetPath: string }>();
+      for (const { targetPath, content, item, file } of filesToWrite) {
         await fs.mkdir(path.dirname(targetPath), { recursive: true });
         await fs.writeFile(targetPath, content, 'utf-8');
         filesWritten++;
+        // Collect unique item names that are being written
+        writtenFileNames.add({ name: item.name, targetPath });
       }
 
-      s.stop(`Wrote ${filesWritten} file(s)`);
+      s.stop(`Wrote ${filesWritten} ${filesWritten > 1 ? 'files' : 'file'}:`);
+
+      if (writtenFileNames.size > 0) {
+        log.message(
+          Array.from(writtenFileNames)
+            .map(
+              ({ name, targetPath }) =>
+                `${picocolors.green('•')} ${path.relative(process.cwd(), targetPath)}`,
+            )
+            .join('\n'),
+        );
+      }
 
       // Install npm dependencies
       if (options.install && Object.keys(npmPackages).length > 0) {
         await installDependencies(npmPackages);
       }
 
-      outro('Components added successfully! ✓');
+      outro('Items added successfully! ✓');
     } catch (error) {
       log.error(
         picocolors.red(
           error instanceof Error ? error.message : 'An unknown error occurred',
         ),
       );
+      console.log();
       process.exit(1);
     }
   });

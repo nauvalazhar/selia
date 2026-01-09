@@ -24,7 +24,7 @@ export const initCommand = new Command()
 
     log.warn(
       picocolors.yellow(
-        'The CLI is still in development, report any issues on GitHub!',
+        'The CLI is still experimental, report any issues on GitHub!',
       ),
     );
 
@@ -73,8 +73,8 @@ export const initCommand = new Command()
         outro(picocolors.green('Config created ✓'));
         log.info(
           'Run ' +
-            picocolors.cyan('selia add <component>') +
-            ' to add components',
+            picocolors.cyan('selia add <items>') +
+            ' to add items to your project.',
         );
         console.log();
         return;
@@ -127,8 +127,8 @@ export const initCommand = new Command()
       log.info(picocolors.green('Selia initialized successfully! ✓'));
       outro(
         'Run ' +
-          picocolors.cyan('selia add <component>') +
-          ' to add components',
+          picocolors.cyan('selia add <items>') +
+          ' to add items to your project.',
       );
       console.log();
     } catch (error) {

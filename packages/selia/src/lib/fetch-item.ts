@@ -23,9 +23,10 @@ export async function fetchItem(
     return ItemSchema.parse(data);
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Failed to fetch item "${itemName}": ${error.message}`);
+      throw new Error('Item could not be found.');
     }
-    throw error;
+
+    throw new Error('Failed to fetch item.');
   }
 }
 

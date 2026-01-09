@@ -12,12 +12,18 @@ export const buildCommand = new Command()
   .description('Build the registry')
   .option('-o, --output <path>', 'Output directory', './public/registry')
   .action(async (options) => {
-    intro('Build Registry');
+    console.log();
+    intro(picocolors.bgBlue(picocolors.blackBright(' Build Registry ')));
+
+    log.warn(
+      picocolors.yellow('This feature is not yet available for public use.'),
+    );
 
     try {
       // Check if registry exists
       if (!(await isRegistryExists())) {
         log.error(picocolors.red('Registry file not found: registry.json'));
+        console.log();
         process.exit(1);
       }
 
