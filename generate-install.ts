@@ -29,7 +29,8 @@ for (const file of componentFiles) {
 
   let content = await readFile(docPath, 'utf8');
 
-  const installationTag = `<Installation name="${componentName}" />`;
+  const installationTag = `## Installation
+<Installation name="${componentName}" />`;
 
   // idempotent
   if (content.includes(installationTag)) {

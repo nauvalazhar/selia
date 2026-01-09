@@ -3,7 +3,6 @@ import { CodeTabs, CodeTabsPanel } from './code-tabs';
 export function Installation({ name }: { name: string }) {
   return (
     <>
-      <h2>Installation</h2>
       <p>Add the component to your project using the following command:</p>
       <CodeTabs items={['npm', 'pnpm', 'yarn', 'bun']} id="pm">
         <CodeTabsPanel value="npm" language="bash">

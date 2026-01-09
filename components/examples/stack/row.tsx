@@ -14,25 +14,31 @@ export default function StackRowExample() {
       <Item direction="column">
         <ItemMedia>
           <Avatar>
-            <AvatarImage src="/avatar01.png" alt="Avatar" />
-            <AvatarFallback>MB</AvatarFallback>
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=880"
+              alt="Avatar"
+            />
+            <AvatarFallback>JR</AvatarFallback>
           </Avatar>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Marina Brown</ItemTitle>
-          <ItemDescription>marina.brown@example.com</ItemDescription>
+          <ItemTitle>Jane Randy</ItemTitle>
+          <ItemDescription>jane@example.com</ItemDescription>
         </ItemContent>
       </Item>
       <Item direction="column">
         <ItemMedia>
           <Avatar>
-            <AvatarImage src="/avatar02.png" alt="Avatar" />
-            <AvatarFallback>SO</AvatarFallback>
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&h=200&fit=crop&crop=top"
+              alt="Avatar"
+            />
+            <AvatarFallback>AD</AvatarFallback>
           </Avatar>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Sarah O'Connor</ItemTitle>
-          <ItemDescription>sarah.oconnor@example.com</ItemDescription>
+          <ItemTitle>Andy Daniel</ItemTitle>
+          <ItemDescription>andy@example.com</ItemDescription>
         </ItemContent>
       </Item>
     </Stack>

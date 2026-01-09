@@ -11,43 +11,52 @@ import { Separator } from 'components/selia/separator';
 
 export default function StackBasicExample() {
   return (
-    <Stack>
+    <Stack className="w-full xl:w-6/12">
       <Item variant="plain">
         <ItemMedia>
           <Avatar>
-            <AvatarImage src="/avatar01.png" alt="Avatar" />
-            <AvatarFallback>MB</AvatarFallback>
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=880"
+              alt="Avatar"
+            />
+            <AvatarFallback>JR</AvatarFallback>
           </Avatar>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Marina Brown</ItemTitle>
-          <ItemDescription>marina@example.com</ItemDescription>
+          <ItemTitle>Jane Randy</ItemTitle>
+          <ItemDescription>jane@example.com</ItemDescription>
         </ItemContent>
       </Item>
       <Separator />
       <Item variant="plain">
         <ItemMedia>
           <Avatar>
-            <AvatarImage src="/avatar02.png" alt="Avatar" />
-            <AvatarFallback>SO</AvatarFallback>
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&h=200&fit=crop&crop=top"
+              alt="Avatar"
+            />
+            <AvatarFallback>AD</AvatarFallback>
           </Avatar>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Sarah O'Connor</ItemTitle>
-          <ItemDescription>sarah@example.com</ItemDescription>
+          <ItemTitle>Andy Daniel</ItemTitle>
+          <ItemDescription>andy@example.com</ItemDescription>
         </ItemContent>
       </Item>
       <Separator />
       <Item variant="plain">
         <ItemMedia>
           <Avatar>
-            <AvatarImage src="/avatar03.png" alt="Avatar" />
-            <AvatarFallback>WM</AvatarFallback>
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=200&h=200&auto=format&fit=crop"
+              alt="Avatar"
+            />
+            <AvatarFallback>MH</AvatarFallback>
           </Avatar>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>William Martin</ItemTitle>
-          <ItemDescription>william@example.com</ItemDescription>
+          <ItemTitle>Maggie Hudson</ItemTitle>
+          <ItemDescription>maggie@example.com</ItemDescription>
         </ItemContent>
       </Item>
     </Stack>

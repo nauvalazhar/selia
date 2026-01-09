@@ -14,7 +14,7 @@ import { Menu, MenuItem, MenuPopup, MenuTrigger } from 'components/selia/menu';
 
 export default function InputGroupTextareaExample() {
   return (
-    <InputGroup className="min-lg:w-8/12">
+    <InputGroup className="w-full min-lg:w-8/12">
       <Textarea placeholder="Ask AI anything ..." className="resize-none" />
       <InputGroupAddon align="block-end">
         <Menu>
