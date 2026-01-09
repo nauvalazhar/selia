@@ -5,7 +5,7 @@
     {
       "name": "label.tsx",
       "target": "components",
-      "content": "'use client';\r\n\r\nimport { cn } from '#utils';\r\n\r\nexport function Label({ className, ...props }: React.ComponentProps<'label'>) {\r\n  return (\r\n    <label\r\n      data-slot=\"label\"\r\n      className={cn('text-foreground flex items-center gap-3', className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n"
+      "content": "'use client';\n\nimport { cn } from '#utils';\n\nexport function Label({ className, ...props }: React.ComponentProps<'label'>) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn('text-foreground flex items-center gap-3', className)}\n      {...props}\n    />\n  );\n}\n"
     }
   ]
 }

@@ -33,8 +33,8 @@ export const menuPopupVariants = cva(
           '**:data-[slot=menu-checkbox-item]:data-[checked]:pl-2',
           '**:data-[slot$=item]:rounded-sm',
           '**:data-[slot=menu-submenu-trigger]:gap-2.5',
-          '**:data-[slot=menu-submenu-trigger]:px-1.5',
-          '**:data-[slot=menu-submenu-trigger]:py-1',
+          '**:data-[slot=menu-submenu-trigger]:px-2',
+          '**:data-[slot=menu-submenu-trigger]:py-1.5',
           '**:data-[slot=menu-submenu-trigger]:rounded-sm',
         ],
         default: [
