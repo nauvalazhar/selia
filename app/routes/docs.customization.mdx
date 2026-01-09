@@ -150,7 +150,7 @@ Below is a reference of the design tokens we use as a starting point.
   --table: transparent;
   --table-foreground: var(--foreground);
   --table-separator: oklch(0.308 0.0046 247.98);
-  --table-head: oklch(0.3095 0.0055 248.01);
+  --table-head: oklch(0.2894 0.004 247.97);
   --table-accent: oklch(0.2888 0.0039 264.5);
   --tabs: oklch(0.2994 0.0053 248);
   --tabs-foreground: var(--foreground);
@@ -159,7 +159,7 @@ Below is a reference of the design tokens we use as a starting point.
   --primary: oklch(0.5784 0.2057 262.95);
   --primary-foreground: var(--foreground);
   --primary-border: oklch(0.4217 0.1869 262.77);
-  --secondary: oklch(0.3174 0.0065 264.48);
+  --secondary: oklch(0.3564 0.0076 264.47);
   --secondary-foreground: var(--foreground);
   --secondary-border: oklch(0.2657 0.0055 286.02);
   --danger: oklch(0.5705 0.2297 28.57);
@@ -177,9 +177,9 @@ Below is a reference of the design tokens we use as a starting point.
   --info: oklch(0.6649 0.1854 249.66);
   --info-foreground: var(--foreground);
   --info-border: oklch(0.5703 0.160671 249.8244);
-  --kbd: oklch(0.3911 0.0121 273.1);
+  --kbd: oklch(0.4349 0.0085 248.02);
   --kbd-foreground: var(--foreground);
-  --kbd-border: oklch(0.4122 0.0107 264.45);
+  --kbd-border: oklch(0.5076 0.0103 248.03);
 }
 ```
 
@@ -240,6 +240,28 @@ You may need to explicitly set `data-slot` to the original component value to pr
 ```
 
 Setting the `data-slot` value to `toggle` on the `ToolbarButton` component allows `ToggleGroup` to recognize `ToolbarButton` as a toggle component.
+
+Another example where the `render` prop is useful is when you want to wrap a component with another component.
+For example, you can wrap a `DialogTrigger` with a `Tooltip` component.
+
+```tsx filename="Dialog Trigger with Tooltip"
+<Dialog>
+  <Tooltip>
+    <TooltipTrigger 
+      render={
+        <DialogTrigger 
+          render={
+            <Button variant="secondary">Open Dialog</Button>
+          } 
+        />
+      }
+    />
+    <TooltipPopup>...</TooltipPopup>
+  </Tooltip>
+  <DialogPopup>...</DialogPopup>
+</Dialog>
+```
+
 
 
 ## Creating New Components
