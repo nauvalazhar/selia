@@ -35,7 +35,7 @@ export function CodeBlock({
         }}
         defaultColor="light"
         className={cn(
-          '**:[pre]:!p-0 **:[pre]:!overflow-visible **:[pre]:!bg-transparent',
+          '**:[pre]:!p-0 **:[pre]:!overflow-visible **:[pre]:!bg-transparent **:[pre]:!outline-none',
           syntaxClassName,
         )}
         showLanguage={false}

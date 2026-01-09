@@ -5,11 +5,6 @@
     {
       "name": "accordion",
       "type": "component",
-      "dependencies": {
-        "npm": {
-          "@radix-ui/react-accordion": "^1.0.0"
-        }
-      },
       "files": [
         {
           "name": "accordion.tsx",
@@ -142,7 +137,8 @@
       "type": "component",
       "dependencies": {
         "items": [
-          "dialog"
+          "dialog",
+          "autocomplete"
         ]
       },
       "files": [
@@ -155,6 +151,11 @@
     {
       "name": "dialog",
       "type": "component",
+      "dependencies": {
+        "items": [
+          "button"
+        ]
+      },
       "files": [
         {
           "name": "dialog.tsx",

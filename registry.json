@@ -207,7 +207,7 @@
         "target": "{{paths.workdir}}routes/__root.tsx",
         "search": "(\\{children\\}|\\{props\\.children\\}|<Outlet\\s*\\/>)",
         "replace": "<div className=\"root\">\n  $1\n</div>",
-          "condition": {
+        "condition": {
           "if": {
             "type": "framework",
             "value": "tanstack-start"
@@ -337,11 +337,6 @@
     {
       "name": "accordion",
       "type": "component",
-      "dependencies": {
-        "npm": {
-          "@radix-ui/react-accordion": "^1.0.0"
-        }
-      },
       "files": [
         {
           "name": "accordion.tsx",
@@ -481,7 +476,7 @@
       "name": "command",
       "type": "component",
       "dependencies": {
-        "items": ["dialog"]
+        "items": ["dialog", "autocomplete"]
       },
       "files": [
         {
@@ -494,6 +489,9 @@
     {
       "name": "dialog",
       "type": "component",
+      "dependencies": {
+        "items": ["button"]
+      },
       "files": [
         {
           "name": "dialog.tsx",

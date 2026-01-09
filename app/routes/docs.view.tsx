@@ -111,6 +111,15 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   }
 
   let title;
+  let componentSource;
+
+  try {
+    componentSource = await Bun.file(
+      path.join(process.cwd(), 'components/selia', `${pathname}.tsx`),
+    ).text();
+  } catch (error) {
+    componentSource = '';
+  }
 
   try {
     let source = await Bun.file(
@@ -176,6 +185,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       sources,
       menuNextPrev,
       name: componentName(pathname),
+      componentSource,
     };
   } catch (error) {
     console.error(error);
@@ -192,11 +202,18 @@ const components = {
   PreviewDemo,
   ComponentTable,
   InstallationGuides,
-  Installation,
 };
 
 export default function DocsView({ loaderData }: Route.ComponentProps) {
-  const { title, mdxCode, pageRaw, sources, name, menuNextPrev } = loaderData;
+  const {
+    title,
+    mdxCode,
+    pageRaw,
+    sources,
+    name,
+    menuNextPrev,
+    componentSource,
+  } = loaderData;
 
   const memoizedComponents = useMemo(
     () => ({
@@ -205,6 +222,9 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
       ),
       DocsButtons: (props: React.ComponentProps<typeof DocsButtons>) => (
         <DocsButtons {...props} pageRaw={pageRaw} />
+      ),
+      Installation: (props: React.ComponentProps<typeof Installation>) => (
+        <Installation {...props} source={componentSource} />
       ),
     }),
     [sources],
@@ -222,14 +242,14 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
           '*:[h3]:text-xl *:[h3]:font-semibold *:[h3]:mt-12',
           '**:[h1,h2,h3,strong]:text-foreground',
           '*:[p]:mb-6 *:[p]:leading-6.5',
-          '*:[p+ul]:-mt-4',
-          '[&>p>code]:before:content-["`"] [&>p>code]:after:content-["`"]',
-          '[&>p>code]:text-foreground [&>p>code]:font-medium',
+          '*:[p+ul,p+ol]:-mt-4',
+          '[&>p>code,ol_code,ul_code]:before:content-["`"] [&>p>code,ol_code,ul_code]:after:content-["`"]',
+          '[&>p>code,ol_code,ul_code]:text-foreground [&>p>code,ol_code,ul_code]:font-medium',
           '[&>p:first-of-type]:text-lg/relaxed',
           '[&>p:first-of-type]:text-muted',
           '[&>p:first-of-type]:mb-6',
-          '*:[ul]:list-[square] *:[ul]:pl-4 *:[ul]:mb-2',
-          '*:[ul]:leading-relaxed',
+          '*:[ul]:list-[square] *:[ul,ol]:pl-4 *:[ul,ol]:mb-2',
+          '*:[ul,ol]:leading-6.5 *:[ol]:list-decimal',
           '[&>p_a]:text-foreground [&>p_a]:font-medium [&>p_a]:border-b',
         )}
       >

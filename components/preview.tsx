@@ -34,7 +34,7 @@ export function Preview({
 
   return (
     <Tabs className="my-6 flex flex-col items-start" defaultValue="preview">
-      <TabsList className="inline-flex rounded-3xl *:rounded-3xl">
+      <TabsList className="inline-flex rounded-3xl *:rounded-3xl *:flex-1 w-44">
         <TabsItem value="preview">Preview</TabsItem>
         <TabsItem value="code">Code</TabsItem>
       </TabsList>
@@ -85,7 +85,13 @@ export function PreviewDemo({
   );
 }
 
-export function PreviewCode({ children }: { children: string }) {
+export function PreviewCode({
+  children,
+  title,
+}: {
+  children: string;
+  title?: string;
+}) {
   const [isCopied, setIsCopied] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -109,8 +115,8 @@ export function PreviewCode({ children }: { children: string }) {
       )}
     >
       <div className="w-full flex justify-between items-center py-2 px-4 border-b border-border">
-        <span className="text-sm font-medium text-foreground select-none">
-          Source
+        <span className="text-sm font-medium text-dimmed">
+          {title ?? 'Source'}
         </span>
         <Button
           size="xs-icon"
