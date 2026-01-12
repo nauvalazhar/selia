@@ -42,7 +42,10 @@ export default function ToolbarBasicExample() {
     <div className="pr-20">
       <Toolbar>
         <ToolbarGroup aria-label="Indentation">
-          <ToolbarButton render={<Button variant="plain" size="icon" />}>
+          <ToolbarButton
+            render={<Button variant="plain" size="icon" />}
+            disabled
+          >
             <IndentIncreaseIcon />
           </ToolbarButton>
           <ToolbarButton render={<Button variant="plain" size="icon" />}>
@@ -50,10 +53,10 @@ export default function ToolbarBasicExample() {
           </ToolbarButton>
         </ToolbarGroup>
         <ToolbarSeparator />
-        <ToggleGroup size="md-icon" variant="plain">
+        <ToolbarGroup aria-label="Formatting">
           <ToolbarButton
             data-slot="toggle"
-            render={<Toggle />}
+            render={<Toggle variant="plain" size="md-icon" />}
             aria-label="Bold"
             value="bold"
           >
@@ -61,7 +64,7 @@ export default function ToolbarBasicExample() {
           </ToolbarButton>
           <ToolbarButton
             data-slot="toggle"
-            render={<Toggle />}
+            render={<Toggle variant="plain" size="md-icon" />}
             aria-label="Italic"
             value="italic"
           >
@@ -69,13 +72,13 @@ export default function ToolbarBasicExample() {
           </ToolbarButton>
           <ToolbarButton
             data-slot="toggle"
-            render={<Toggle />}
+            render={<Toggle variant="plain" size="md-icon" />}
             aria-label="Underline"
             value="underline"
           >
             <UnderlineIcon />
           </ToolbarButton>
-        </ToggleGroup>
+        </ToolbarGroup>
         <ToolbarSeparator />
         <ToggleGroup variant="plain" size="md-icon">
           <ToolbarButton
@@ -120,7 +123,7 @@ export default function ToolbarBasicExample() {
           </SelectPopup>
         </Select>
         <ToolbarSeparator />
-        <NumberField defaultValue={14}>
+        <NumberField defaultValue={14} min={1}>
           <NumberFieldGroup variant="plain">
             <NumberFieldDecrement>
               <MinusIcon />

@@ -21,7 +21,6 @@ import {
   ChevronsUpDownIcon,
   HomeIcon,
   LogOutIcon,
-  Package2Icon,
   PlusIcon,
   SettingsIcon,
   ShoppingBagIcon,
@@ -123,7 +122,6 @@ export default function SidebarBasicExample() {
               <Menu>
                 <MenuTrigger
                   data-slot="sidebar-item-button"
-                  nativeButton={false}
                   render={
                     <SidebarItemButton>
                       <Avatar size="sm">

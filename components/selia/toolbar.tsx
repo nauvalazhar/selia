@@ -66,7 +66,7 @@ export function ToolbarGroup({
   return (
     <BaseToolbar.Group
       data-slot="toolbar-group"
-      className={cn('flex gap-1', className)}
+      className={cn('flex gap-0.5', className)}
       {...props}
     />
   );

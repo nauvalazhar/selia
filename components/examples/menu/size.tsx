@@ -11,7 +11,6 @@ import {
 import { Button } from 'components/selia/button';
 import {
   ChevronDownIcon,
-  ChevronRightIcon,
   Laptop2Icon,
   MoonIcon,
   PaletteIcon,

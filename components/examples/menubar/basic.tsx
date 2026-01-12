@@ -22,13 +22,13 @@ export default function MenubarBasicExample() {
             </Button>
           }
         />
-        <MenuPopup size="sm">
+        <MenuPopup size="compact">
           <MenuItem>New File</MenuItem>
           <MenuItem>Open</MenuItem>
           <MenuItem>Save</MenuItem>
           <MenuSubmenu>
             <MenuSubmenuTrigger render={<MenuItem>Export</MenuItem>} />
-            <MenuSubPopup size="sm">
+            <MenuSubPopup size="compact">
               <MenuItem>PNG</MenuItem>
               <MenuItem>JPG</MenuItem>
               <MenuItem>PDF</MenuItem>
@@ -46,7 +46,7 @@ export default function MenubarBasicExample() {
             </Button>
           }
         />
-        <MenuPopup size="sm">
+        <MenuPopup size="compact">
           <MenuItem>Cut</MenuItem>
           <MenuItem>Copy</MenuItem>
           <MenuItem>Paste</MenuItem>
@@ -60,12 +60,12 @@ export default function MenubarBasicExample() {
             </Button>
           }
         />
-        <MenuPopup size="sm">
+        <MenuPopup size="compact">
           <MenuItem>Zoom In</MenuItem>
           <MenuItem>Zoom Out</MenuItem>
           <MenuSubmenu>
             <MenuSubmenuTrigger render={<MenuItem>Layout</MenuItem>} />
-            <MenuSubPopup size="sm">
+            <MenuSubPopup size="compact">
               <MenuItem>Single Page</MenuItem>
               <MenuItem>Two Pages</MenuItem>
               <MenuItem>Continous</MenuItem>

@@ -8,8 +8,8 @@ const toggleVariants = cva(
   [
     'inline-flex items-center justify-center gap-2.5 ring *:[svg]:size-4.5',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
-    'transition-colors duration-100',
-    'hover:bg-accent/50 disabled:opacity-70 disabled:pointer-events-none',
+    'transition-colors duration-100 **:[svg]:text-foreground',
+    'hover:bg-accent/50 data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {

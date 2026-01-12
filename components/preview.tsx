@@ -63,7 +63,7 @@ export function PreviewDemo({
       className={cn(
         'flex min-h-[500px] bg-background items-center justify-center flex-wrap',
         'p-4 md:p-12 gap-x-2.5 gap-y-4 flex-wrap rounded-3xl border border-border',
-        'overflow-auto relative dark:scheme-dark',
+        'overflow-auto relative dark:scheme-dark text-foreground',
       )}
       {...props}
     >

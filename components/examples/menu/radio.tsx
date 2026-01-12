@@ -22,7 +22,7 @@ export default function MenuRadioExample() {
           </Button>
         }
       />
-      <MenuPopup className="min-w-40" size="sm">
+      <MenuPopup className="min-w-40">
         <MenuGroup>
           <MenuGroupLabel>Sort By</MenuGroupLabel>
           <MenuRadioGroup defaultValue="name">

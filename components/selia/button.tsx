@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '#utils';
+import { Button as BaseButton } from '@base-ui/react/button';
 
 export const buttonVariants = cva(
   [
@@ -14,7 +14,7 @@ export const buttonVariants = cva(
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right]',
-    'disabled:opacity-70 disabled:pointer-events-none',
+    'disabled:opacity-70 disabled:pointer-events-none data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
@@ -91,7 +91,6 @@ export const buttonVariants = cva(
 );
 
 export function Button({
-  render,
   variant,
   size,
   pill,
@@ -99,17 +98,16 @@ export function Button({
   block,
   className,
   ...props
-}: useRender.ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
-  return useRender({
-    defaultTagName: 'button',
-    render,
-    props: {
-      'data-slot': 'button',
-      'data-size': size,
-      ...props,
-      className: cn(
+}: React.ComponentProps<typeof BaseButton> &
+  VariantProps<typeof buttonVariants>) {
+  return (
+    <BaseButton
+      data-slot="button"
+      data-size={size}
+      {...props}
+      className={cn(
         buttonVariants({ variant, size, pill, progress, block, className }),
-      ),
-    },
-  });
+      )}
+    />
+  );
 }

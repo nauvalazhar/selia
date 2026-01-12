@@ -1,5 +1,6 @@
 import { cn } from 'lib/utils';
 import { Tooltip, TooltipPopup, TooltipTrigger } from './selia/tooltip';
+import { ExternalLinkIcon } from 'lucide-react';
 
 type PropSpec = {
   name: string;
@@ -57,13 +58,16 @@ export function ComponentTable({ components }: Props) {
               )}
 
               {spec.source && (
-                <div className="text-sm">
+                <div>
                   Base behavior is provided by{' '}
                   <a
                     href={spec.source.href}
-                    className="underline underline-offset-2"
+                    className="inline-flex text-foreground border-b"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {spec.source.label}
+                    <ExternalLinkIcon className="size-3.5 ml-0.5 -mt-1" />
                   </a>
                   . Refer to its documentation for the full API.
                 </div>

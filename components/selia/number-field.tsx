@@ -64,13 +64,16 @@ export const NumberFieldGroupVariants = cva(
     '**:[svg]:size-4.5',
     '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
     '*:[button]:transition-all *:[button]:duration-100',
+    '*:[button]:text-foreground',
+    '*:[button]:disabled:opacity-70 *:[button]:disabled:pointer-events-none',
     '*:first:rounded-l *:last:rounded-r',
-    '*:[button]:hover:bg-accent',
+    'data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
       variant: {
-        default: 'ring ring-input-border bg-input shadow-input',
+        default:
+          'ring ring-input-border bg-input shadow-input *:[button]:hover:bg-accent',
         plain: 'bg-transparent hover:bg-accent',
       },
     },
