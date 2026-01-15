@@ -76,11 +76,9 @@ export function SelectTrigger({
 export function SelectValue({
   className,
   placeholder = 'Select an option',
-  items,
   ...props
 }: React.ComponentProps<typeof BaseSelect.Value> & {
   placeholder?: string;
-  items?: SelectItem[];
 }) {
   return (
     <BaseSelect.Value
@@ -216,7 +214,7 @@ export function SelectItem({
   return (
     <BaseSelect.Item
       data-slot="select-item"
-      value={{ value, label: children }}
+      value={typeof value === 'object' ? value : { value, label: children }}
       className={cn(
         'flex items-center text-popover-foreground py-2.5 px-3 gap-3.5 rounded select-none',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
