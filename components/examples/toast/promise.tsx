@@ -10,7 +10,7 @@ export default function ToastPromiseExample() {
           new Promise<string>((resolve, reject) => {
             const shouldSucceed = Math.random() > 0.3;
             setTimeout(() => {
-              if (shouldSucceed) {
+              if (false) {
                 resolve('Item added to cart');
               } else {
                 reject(new Error('Failed to add item to cart'));
