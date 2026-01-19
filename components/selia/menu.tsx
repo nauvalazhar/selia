@@ -110,6 +110,7 @@ const menuItemClassName = [
   'focus-visible:outline-none',
   '*:[svg]:size-4 *:[svg]:text-popover-foreground',
   '*:data-[slot=switch]:ml-auto',
+  'data-disabled:opacity-70 data-disabled:pointer-events-none',
 ];
 
 export function MenuItem({
