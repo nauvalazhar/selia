@@ -106,7 +106,7 @@ export function HomeDemo() {
         </div>
         <Item className="items-center">
           <ItemMedia>
-            <img src="https://bun.com/logo.svg" alt="Avatar" />
+            <img src="https://bun.com/logo.svg" alt="Logo" className="size-11" />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Bun</ItemTitle>

@@ -90,6 +90,7 @@ export default function Dashboard() {
                     <img
                       src="https://images.unsplash.com/photo-1545127398-14699f92334b"
                       alt="Product"
+                      className="size-11 rounded"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -104,6 +105,7 @@ export default function Dashboard() {
                     <img
                       src="https://images.unsplash.com/photo-1516962126636-27ad087061cc"
                       alt="Product"
+                      className="size-11 rounded"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -118,6 +120,7 @@ export default function Dashboard() {
                     <img
                       src="https://images.unsplash.com/photo-1549482199-bc1ca6f58502"
                       alt="Product"
+                      className="size-11 rounded"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -132,6 +135,7 @@ export default function Dashboard() {
                     <img
                       src="https://images.unsplash.com/photo-1619008054959-921a896885c7"
                       alt="Product"
+                      className="size-11 rounded"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -146,6 +150,7 @@ export default function Dashboard() {
                     <img
                       src="https://images.unsplash.com/photo-1605034313761-73ea4a0cfbf3"
                       alt="Product"
+                      className="size-11 rounded"
                     />
                   </ItemMedia>
                   <ItemContent>

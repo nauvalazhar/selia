@@ -50,7 +50,7 @@ export function InstallationGuides({ type }: { type: 'framework' | 'manual' }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Item render={<Link to="/docs/installation/manual" />}>
           <ItemMedia className="mt-1">
-            <img src="/reactjs.svg" alt="React" />
+            <img src="/reactjs.svg" alt="React" className="size-11" />
           </ItemMedia>
           <ItemContent className="ml-2">
             <ItemTitle className="text-lg">Manual Guide</ItemTitle>
@@ -69,7 +69,7 @@ export function InstallationGuides({ type }: { type: 'framework' | 'manual' }) {
       {guides.map((guide) => (
         <Item key={guide.name} render={<Link to={guide.href} />}>
           <ItemMedia className="mt-1">
-            <img src={guide.icon} alt={guide.name} />
+            <img src={guide.icon} alt={guide.name} className="size-11" />
           </ItemMedia>
           <ItemContent className="ml-2">
             <ItemTitle className="text-lg">{guide.name}</ItemTitle>
