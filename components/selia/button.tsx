@@ -54,7 +54,7 @@ export const buttonVariants = cva(
         ],
       },
       size: {
-        xs: 'h-7 px-2 rounded-sm after:rounded-sm [&>svg:not([class*=size-])]:size-4',
+        xs: 'h-7 px-2 rounded-sm after:rounded-sm [&>svg:not([class*=size-])]:size-4 gap-1.5 before:-mr-6',
         'xs-icon': 'size-7.5 rounded-sm after:rounded-sm [&>svg:not([class*=size-])]:size-4',
         sm: 'h-8.5 px-3 rounded after:rounded [&>svg:not([class*=size-])]:size-4.5',
         'sm-icon': 'size-8.5 rounded after:rounded [&>svg:not([class*=size-])]:size-4.5',
@@ -81,6 +81,16 @@ export const buttonVariants = cva(
         variant: 'tertiary',
         progress: true,
         className: 'before:bg-spinner-dark',
+      },
+      {
+        size: 'xs',
+        progress: true,
+        className: '[&>svg]:-mr-6 before:size-4',
+      },
+      {
+        size: 'sm',
+        progress: true,
+        className: 'before:size-4.5',
       },
     ],
     defaultVariants: {

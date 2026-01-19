@@ -48,8 +48,8 @@ export function BlockPreview({
   useEffect(() => {
     setIsDark(
       theme === 'dark' ||
-        ((!theme || theme === 'system') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches),
+      ((!theme || theme === 'system') &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches),
     );
   }, [theme]);
 
@@ -194,7 +194,7 @@ function CodePanel({
 
       <CodeBlock
         language="tsx"
-        className="w-full max-h-[calc(100vh-10rem)] bg-code rounded-3xl p-1 ring ring-border"
+        className="w-full h-[calc(100vh-10rem)] bg-code rounded-3xl p-1 ring ring-border"
         syntaxClassName="p-4"
       >
         {typeof code === 'object' ? code[selectedFile ?? ''] : code}

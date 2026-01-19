@@ -7,6 +7,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const itemVariants = cva(
   [
     'relative flex text-left transition-colors [a]:cursor-pointer',
+    'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary',
     '[a,button]:hover:bg-accent',
   ],
   {

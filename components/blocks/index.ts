@@ -11,6 +11,15 @@ type Block = {
 };
 
 export const blocks: Block = {
+  aichat: {
+    name: 'AI Chat',
+    description: 'A chat interface with AI capabilities.',
+    pathIndex: 'page.tsx',
+    path: 'components/blocks/ai-chat',
+    component: React.lazy(() =>
+      import('./ai-chat/page').then((mod) => ({ default: mod.default })),
+    ),
+  },
   sidebarMail: {
     name: 'Sidebar Mail',
     description: 'A sidebar for mail application.',
