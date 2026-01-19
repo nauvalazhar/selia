@@ -31,7 +31,7 @@ export function CollapsibleTrigger({
         'flex items-center gap-2.5 select-none cursor-pointer',
         'transition-colors duration-100 py-2 text-foreground',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-        '**:[svg]:size-4 text-left leading-relaxed font-medium w-full',
+        '[&_svg:not([class*=size-])]:size-4 text-left leading-relaxed font-medium w-full',
         '**:data-[slot=expandable-indicator]:transition-all',
         '**:data-[slot=expandable-indicator]:duration-100',
         expandableIndicator && [

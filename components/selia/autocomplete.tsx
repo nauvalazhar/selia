@@ -221,7 +221,7 @@ export function AutocompleteItem({
         'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded cursor-default',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',
-        '*:[svg]:size-4 *:[svg]:text-foreground',
+        '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-foreground',
         className,
       )}
     />

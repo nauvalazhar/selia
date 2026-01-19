@@ -63,7 +63,8 @@ export function AccordionTrigger({
         'flex items-center gap-2.5 select-none cursor-pointer',
         'transition-colors duration-100 py-4',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-        '**:[svg]:size-4 w-full text-left leading-relaxed font-medium',
+        ' w-full text-left leading-relaxed font-medium',
+        '[&>svg:not([class*=size-])]:size-4 [&>svg:not([class*=text-])]:text-current',
         '**:data-[slot=expandable-indicator]:transition-all',
         '**:data-[slot=expandable-indicator]:duration-100',
         expandableIndicator && [

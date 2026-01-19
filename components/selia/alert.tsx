@@ -7,7 +7,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const alertVariants = cva(
   [
     'w-full px-3.5 py-1.5 min-h-11 rounded font-medium',
-    '*:[svg]:size-4.5 *:[svg]:shrink-0',
+    '[&_svg:not([class*=size-])]:size-4.5 *:[svg]:shrink-0',
     'items-center gap-x-2.5 gap-y-1 flex text-foreground',
     'has-[>[data-slot=alert-description]]:grid',
     'has-[>[data-slot=alert-description]]:py-3',
@@ -19,11 +19,11 @@ export const alertVariants = cva(
     variants: {
       variant: {
         default: 'bg-background ring ring-border',
-        danger: 'bg-danger/7 ring ring-danger/30 *:[svg]:text-danger',
-        info: 'bg-info/7 ring ring-info/30 *:[svg]:text-info',
-        success: 'bg-success/7 ring ring-success/30 *:[svg]:text-success',
-        warning: 'bg-warning/7 ring ring-warning/30 *:[svg]:text-warning',
-        tertiary: 'bg-tertiary/7 ring ring-tertiary/30 *:[svg]:text-tertiary',
+        danger: 'bg-danger/7 ring ring-danger/30 [&_svg:not([class*=text-])]:text-danger',
+        info: 'bg-info/7 ring ring-info/30 [&_svg:not([class*=text-])]:text-info',
+        success: 'bg-success/7 ring ring-success/30 [&_svg:not([class*=text-])]:text-success',
+        warning: 'bg-warning/7 ring ring-warning/30 [&_svg:not([class*=text-])]:text-warning',
+        tertiary: 'bg-tertiary/7 ring ring-tertiary/30 [&_svg:not([class*=text-])]:text-tertiary',
       },
     },
     defaultVariants: {

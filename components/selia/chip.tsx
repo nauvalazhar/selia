@@ -13,9 +13,9 @@ export const chipVariants = cva('inline-flex items-center ring font-medium', {
       plain: 'bg-transparent ring-transparent text-foreground',
     },
     size: {
-      sm: 'text-sm px-1.5 h-5 rounded-sm **:[svg]:size-3.5 gap-1',
-      md: 'px-2 h-6.5 rounded-sm **:[svg]:size-4 gap-2',
-      lg: 'px-2.5 h-7.5 rounded-sm **:[svg]:size-4.5 gap-3',
+      sm: 'text-sm px-1.5 h-5 rounded-sm [&_svg:not([class*=size-])]:size-3.5 gap-1',
+      md: 'px-2 h-6.5 rounded-sm [&_svg:not([class*=size-])]:size-4 gap-2',
+      lg: 'px-2.5 h-7.5 rounded-sm [&_svg:not([class*=size-])]:size-4.5 gap-3',
     },
     pill: {
       true: 'rounded-full',

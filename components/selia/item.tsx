@@ -130,7 +130,7 @@ export function ItemMedia({
     <div
       data-slot="item-media"
       className={cn(
-        'shrink-0 *:[img]:size-11 *:[img]:rounded *:[[data-slot=iconbox]]:size-9 *:[svg]:size-4.5',
+        'shrink-0 *:[[data-slot=iconbox]]:size-9 [&_svg:not([class*=size-])]:size-4.5',
         className,
       )}
       {...props}
@@ -146,7 +146,7 @@ export function ItemAction({
     <div
       data-slot="item-action"
       className={cn(
-        'ml-auto flex items-center gap-2.5 *:[svg]:size-4',
+        'ml-auto flex items-center gap-2.5 [&_svg:not([class*=size-])]:size-4',
         className,
       )}
       {...props}

@@ -107,7 +107,7 @@ function ComboboxRenderValue({
 
   if (typeof value === 'object') {
     return (
-      <div className="flex items-center gap-2.5 *:[svg]:size-4 *:[svg]:text-popover-foreground">
+      <div className="flex items-center gap-2.5 [&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-popover-foreground">
         {value.icon}
         <span className="text-popover-foreground">{value.label}</span>
       </div>

@@ -108,7 +108,7 @@ const menuItemClassName = [
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
   'data-[popup-open]:bg-popover-accent',
   'focus-visible:outline-none',
-  '*:[svg]:size-4 *:[svg]:text-popover-foreground',
+  '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-popover-foreground',
   '*:data-[slot=switch]:ml-auto',
   'data-disabled:opacity-70 data-disabled:pointer-events-none',
 ];

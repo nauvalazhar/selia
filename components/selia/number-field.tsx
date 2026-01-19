@@ -61,7 +61,7 @@ export const NumberFieldGroupVariants = cva(
     'flex h-9.5 rounded',
     'hover:not-[:focus-within]:ring-input-accent-border',
     'focus-within:ring-2 focus-within:ring-primary focus-within:outline-0',
-    '**:[svg]:size-4.5',
+    '[&_svg:not([class*=size-])]:size-4.5',
     '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
     '*:[button]:transition-all *:[button]:duration-100',
     '*:[button]:text-foreground',

@@ -24,9 +24,9 @@ export const badgeVariants = cva(
         'danger-outline': 'border-danger text-danger',
       },
       size: {
-        sm: 'px-1 h-5 rounded-sm text-xs *:[svg]:size-3',
-        md: 'px-1.5 h-5.5 rounded-sm text-sm *:[svg]:size-3.5',
-        lg: 'px-2 h-6 rounded-sm *:[svg]:size-4',
+        sm: 'px-1 h-5 rounded-sm text-xs [&_svg:not([class*=size-])]:size-3',
+        md: 'px-1.5 h-5.5 rounded-sm text-sm [&_svg:not([class*=size-])]:size-3.5',
+        lg: 'px-2 h-6 rounded-sm [&_svg:not([class*=size-])]:size-4',
       },
       pill: {
         true: 'rounded-full',

@@ -59,7 +59,7 @@ export function InputGroup({
 export const inputGroupAddonVariants = cva(
   [
     'flex items-center gap-1.5 shrink-0',
-    '**:[svg]:size-4 **:[svg]:text-dimmed',
+    '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-dimmed',
     '[&_[role="combobox"]]:not-focus:ring-0',
     '[&_[role="combobox"]]:not-focus:ring-transparent',
     '[&_[role="combobox"]]:shadow-none',
@@ -118,7 +118,7 @@ export function InputGroupText({
       data-slot="input-group-text"
       className={cn(
         'inline-flex items-center gap-1.5 text-muted select-none',
-        '*:[svg]:size-4 *:[svg]:text-dimmed',
+        '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-dimmed',
         className,
       )}
       {...props}

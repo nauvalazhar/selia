@@ -4,6 +4,17 @@ import { useRender } from '@base-ui/react/use-render';
 import { cn } from '#utils';
 import { Collapsible as BaseCollapsible } from '@base-ui/react/collapsible';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { createContext, useContext } from 'react';
+
+const SidebarContext = createContext<{
+  size: 'default' | 'compact' | 'loose';
+}>({
+  size: 'default',
+});
+
+export function useSidebar() {
+  return useContext(SidebarContext);
+}
 
 export const sidebarVariants = cva('flex flex-col gap-2.5', {
   variants: {
@@ -199,6 +210,16 @@ export function SidebarItem({
   );
 }
 
+export const sidebarItemActionVariants = cva('absolute right-0 shrink-0 z-10 transition-all duration-100', {
+  variants: {
+    size: {
+      default: 'size-8.5',
+      compact: 'size-8',
+      loose: 'size-10',
+    },
+  },
+});
+
 export function SidebarItemAction({
   className,
   children,
@@ -221,6 +242,19 @@ export function SidebarItemAction({
     </div>
   );
 }
+
+const sidebarItemButtonVariants = cva(
+  'flex items-center gap-2.5 w-full relative z-10 text-foreground cursor-pointer text-left transition-colors duration-75 hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary data-popup-open:bg-accent',
+  {
+    variants: {
+      size: {
+        default: 'min-h-8.5 px-2.5 py-2 rounded',
+        compact: 'min-h-8 px-2.5 py-1.5 rounded',
+        loose: 'min-h-10 px-3 py-2 rounded',
+      },
+    },
+  }
+);
 
 export function SidebarItemButton({
   className,

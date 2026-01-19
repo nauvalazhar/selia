@@ -5,7 +5,6 @@ import {
   ItemContent,
   ItemDescription,
   ItemMedia,
-  ItemMeta,
   ItemTitle,
 } from 'components/selia/item';
 
@@ -17,6 +16,7 @@ export default function ItemBasicExample() {
           <img
             src="https://cdn.svglogos.dev/logos/claude-icon.svg"
             alt="Avatar"
+            className='size-11 rounded'
           />
         </ItemMedia>
         <ItemContent>

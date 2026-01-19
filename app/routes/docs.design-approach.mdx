@@ -91,3 +91,17 @@ The `CardBody` component applies negative margins to `TableContainer` children, 
 ```
 
 The `Item` component adapts its styling when used inside `Menu`, maintaining consistent padding and hover states.
+
+## Styling Trade-offs
+
+While contextual styling makes composition seamless, it relies on high-specificity CSS selectors (like `[&_[data-slot=...]]`). This approach comes with a small trade-off you should keep in mind.
+
+### Overriding Contextual Styles
+
+When a parent component "forces" a style on a child (e.g., the Sidebar setting the height of its buttons), a standard Tailwind class on the child might not always win the specificity battle.
+
+If you need to override a contextually applied style for a one-off edge case, you have two clear paths:
+- **The Escape Hatch**: Use the `!` (important) modifier (e.g., `p-4! rounded-full!`). This is the intended way to handle rare exceptions without over-engineering the component's logic.
+- **Global Refinement**: If you find yourself overriding the same style repeatedly, it’s a sign that the design system should be adjusted. Since Selia lives in your codebase, we recommend modifying the component source directly to maintain global consistency.
+
+We prioritize a clean, predictable default experience over complex prop-drilling or context-heavy logic just to avoid occasional CSS priority conflicts.

@@ -16,7 +16,7 @@ export function Text({
       className: cn(
         'text-base/6 text-foreground',
         'has-[svg]:inline-flex has-[svg]:items-center has-[svg]:gap-2',
-        '*:[svg]:size-3 *:[svg]:shrink-0',
+        '[&_svg:not([class*=size-])]:size-3 *:[svg]:shrink-0',
         className,
       ),
       ...props,

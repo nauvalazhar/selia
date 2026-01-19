@@ -33,9 +33,9 @@ export const iconBoxVariants = cva(
         'warning-subtle': 'bg-warning/10 text-warning before:hidden',
       },
       size: {
-        sm: 'size-7 rounded-sm before:rounded-sm after:rounded-sm *:[svg]:size-3.5',
-        md: 'size-9 rounded before:rounded after:rounded *:[svg]:size-4.5',
-        lg: 'size-13 rounded-lg before:rounded-lg after:rounded-lg *:[svg]:size-5.5',
+        sm: 'size-7 rounded-sm before:rounded-sm after:rounded-sm [&_svg:not([class*=size-])]:size-3.5',
+        md: 'size-9 rounded before:rounded after:rounded [&_svg:not([class*=size-])]:size-4.5',
+        lg: 'size-13 rounded-lg before:rounded-lg after:rounded-lg [&_svg:not([class*=size-])]:size-5.5',
       },
       circle: {
         true: 'rounded-full before:rounded-full after:rounded-full',
