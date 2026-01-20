@@ -41,11 +41,11 @@ export function Checkbox({
       data-slot="checkbox"
       {...props}
       className={cn(
-        'size-4 shrink-0 flex items-center justify-center rounded-xs border border-input-border bg-input shadow-input',
+        'size-4 shrink-0 flex items-center justify-center rounded-xs border border-input-border bg-input shadow-input cursor-pointer',
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-[checked]:bg-primary data-[checked]:border-primary',
         'transition-colors duration-75 hover:border-input-accent-border',
-        'data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
         props.className,
       )}
     >

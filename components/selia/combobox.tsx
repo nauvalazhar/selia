@@ -17,8 +17,8 @@ export const comboboxTriggerVariants = cva(
     'px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-all',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'has-focus:ring-primary has-focus:ring-2',
-    'flex items-center gap-2.5 cursor-default',
-    'data-disabled:opacity-70 data-disabled:pointer-events-none',
+    'flex items-center gap-2.5 cursor-pointer',
+    'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
@@ -291,11 +291,11 @@ export function ComboboxItem({
       data-slot="combobox-item"
       {...props}
       className={cn(
-        'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded select-none',
+        'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded select-none cursor-pointer',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',
-        'data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
       )}
     >

@@ -218,11 +218,11 @@ export function AutocompleteItem({
       data-slot="autocomplete-item"
       {...props}
       className={cn(
-        'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded cursor-default',
+        'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded cursor-pointer',
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',
         '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-foreground',
-        'data-disabled:opacity-50 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50 data-disabled:pointer-events-none',
         className,
       )}
     />

@@ -7,14 +7,14 @@ import { Button as BaseButton } from '@base-ui/react/button';
 
 export const buttonVariants = cva(
   [
-    'relative font-medium select-none',
+    'relative font-medium select-none cursor-pointer',
     'inline-flex justify-center items-center gap-2.5 transition-colors',
     'after:absolute after:inset-0 after:bg-white/15 after:opacity-0 hover:after:opacity-100',
     'active:after:opacity-100 data-popup-open:after:opacity-100 after:transition-opacity',
     'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
     'before:size-4.5 before:bg-spinner before:-mr-7 before:opacity-0 before:scale-20 before:transition-[opacity,scale,margin-right]',
     '[&>svg]:opacity-100 [&>svg]:transition-[opacity,scale,margin-right] [&>svg:not([class*=text-])]:text-current',
-    'disabled:opacity-70 disabled:pointer-events-none data-disabled:opacity-70 data-disabled:pointer-events-none',
+    'disabled:cursor-not-allowed disabled:opacity-70 disabled:pointer-events-none data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
@@ -71,7 +71,7 @@ export const buttonVariants = cva(
       },
       progress: {
         true: [
-          'pointer-events-none opacity-70 [&>svg]:opacity-0 [&>svg]:scale-0 [&>svg]:-mr-7',
+          'cursor-progress pointer-events-none opacity-70 [&>svg]:opacity-0 [&>svg]:scale-0 [&>svg]:-mr-7',
           'before:size-4.5 before:bg-spinner before:animate-spin before:mr-0 before:opacity-100 before:scale-100',
         ],
       },
