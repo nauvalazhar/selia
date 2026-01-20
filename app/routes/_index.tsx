@@ -17,6 +17,7 @@ export default function Index() {
   return (
     <>
       <title>Interfaces That Feel Right, Out of the Box – Selia</title>
+      <meta property="og:title" content="Interfaces That Feel Right, Out of the Box – Selia" />
 
       <main>
         <div className="container mx-auto">

@@ -18,6 +18,7 @@ export default function Blocks() {
   return (
     <div className="container mx-auto py-8">
       <title>Blocks - Selia</title>
+      <meta property="og:title" content="Blocks - Selia" />
       <div className="py-10 md:py-20">
         <div className="text-center lg:w-6/12 mx-auto">
           <h1 className="text-6xl/12 font-semibold tracking-tight pb-2">

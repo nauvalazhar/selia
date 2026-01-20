@@ -233,6 +233,7 @@ export default function DocsView({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <title>{`${title} - Selia`}</title>
+      <meta property="og:title" content={`${title} - Selia`} />
       <article
         className={cn(
           'text-zinc-600 dark:text-zinc-400',
