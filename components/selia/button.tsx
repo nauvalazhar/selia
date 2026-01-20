@@ -46,11 +46,11 @@ export const buttonVariants = cva(
         outline: [
           'text-foreground shadow',
           'ring ring-border hover:not-[[data-disabled]]:bg-accent data-popup-open:bg-accent active:not-[[data-disabled]]:bg-accent',
-          'after:content-none outline-border',
+          'after:content-none outline-primary',
         ],
         plain: [
           'text-foreground hover:not-[[data-disabled]]:bg-accent data-popup-open:bg-accent active:not-[[data-disabled]]:bg-accent',
-          'after:content-none outline-border',
+          'after:content-none outline-primary',
         ],
       },
       size: {

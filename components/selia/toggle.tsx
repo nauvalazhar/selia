@@ -7,7 +7,7 @@ import { cn } from '#utils';
 const toggleVariants = cva(
   [
     'inline-flex items-center justify-center gap-2.5 ring [&_svg:not([class*=size-])]:size-4.5 cursor-pointer',
-    'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2',
+    'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
     'transition-colors duration-100 [&_svg:not([class*=text-])]:text-foreground',
     'hover:not-[[data-disabled]]:not-[[data-pressed]]:bg-accent/50 data-disabled:cursor-not-allowed data-disabled:opacity-70',
   ],
