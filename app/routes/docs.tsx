@@ -13,8 +13,6 @@ import { cn } from 'lib/utils';
 import { Link, Outlet, redirect, useLocation } from 'react-router';
 import { TableOfContents } from 'components/table-of-contents';
 import { ScrollArea } from '@base-ui/react';
-import { Button } from 'components/selia/button';
-import { ListTreeIcon, SidebarIcon, XIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useLayoutStore } from '~/lib/layout-store';
 import { useShallow } from 'zustand/react/shallow';
@@ -39,17 +37,11 @@ export default function LayoutDocs({
   const location = useLocation();
   const {
     isSidebarOpen,
-    isContentsOpen,
-    toggleSidebar,
     closeSidebar,
-    toogleContents,
   } = useLayoutStore(
     useShallow((state) => ({
       isSidebarOpen: state.isSidebarOpen,
-      isContentsOpen: state.isContentsOpen,
-      toggleSidebar: state.toggleSidebar,
       closeSidebar: state.closeSidebar,
-      toogleContents: state.toggleContents,
     })),
   );
 
@@ -68,81 +60,49 @@ export default function LayoutDocs({
   }
 
   return (
-    <>
-      <div
+    <div className="flex container mx-auto">
+      <Sidebar
         className={cn(
-          'lg:hidden fixed bottom-4 right-4 z-40 *:backdrop-blur-sm',
-          'flex rounded-full bg-secondary',
-          '*:first:rounded-r-none *:last:rounded-l-none',
-          '*:first:after:rounded-r-none *:last:after:rounded-l-none',
-          '*:text-sm',
+          'lg:sticky top-30 lg:top-16 lg:h-[calc(100vh-4rem)] max-h-dvh lg:w-64 px-1.5 lg:px-0 shrink-0 lg:border-r border-separator',
+          'fixed z-30 w-full max-lg:h-dvh bg-background lg:bg-transparent dark:lg:bg-transparent transition-all',
+          '**:data-[slot=sidebar-submenu]:ml-3.5',
+          '**:data-[slot=sidebar-submenu]:pl-1',
+          'max-lg:**:data-[slot=sidebar-item-button]:text-lg',
+          isSidebarOpen ? 'left-0' : '-left-full',
         )}
+        size="compact"
       >
-        <Button
-          variant="secondary"
-          size="sm"
-          block
-          pill
-          onClick={toogleContents}
-        >
-          {isContentsOpen ? <XIcon /> : <ListTreeIcon />}
-          Contents
-        </Button>
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={toggleSidebar}
-          block
-          pill
-        >
-          {isSidebarOpen ? <XIcon /> : <SidebarIcon />}
-          Sidebar
-        </Button>
-      </div>
-
-      <div className="flex container mx-auto">
-        <Sidebar
-          className={cn(
-            'lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] max-h-dvh lg:w-64 px-1.5 lg:px-0 shrink-0',
-            'fixed z-30 w-full max-lg:h-dvh bg-background dark:bg-surface-01 lg:bg-transparent dark:lg:bg-transparent transition-all',
-            '**:data-[slot=sidebar-submenu]:ml-3.5',
-            '**:data-[slot=sidebar-submenu]:pl-1',
-            isSidebarOpen ? 'right-0' : '-right-full',
-          )}
-          size="compact"
-        >
-          <SidebarContent render={<SidebarScrollArea />}>
-            <SidebarMenu className="py-9">
-              {sidebarMenu.map((group) => (
-                <SidebarGroup key={group.title}>
-                  <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
-                  <SidebarList>
-                    {group.items.map((item) => (
-                      <SidebarItem key={item.path}>
-                        <SidebarItemButton
-                          active={isActive(item.path)}
-                          render={<Link to={item.path} />}
-                        >
-                          {item.name}
-                        </SidebarItemButton>
-                      </SidebarItem>
-                    ))}
-                  </SidebarList>
-                </SidebarGroup>
-              ))}
-            </SidebarMenu>
-          </SidebarContent>
-        </Sidebar>
-        <main className="w-full min-w-0 flex py-6 md:py-10 gap-6 justify-between max-lg:flex-wrap">
-          <div className="w-full min-w-0 2xl:w-3xl mx-auto">
-            <Outlet />
-          </div>
-          <aside className="w-64">
-            <TableOfContents />
-          </aside>
-        </main>
-      </div>
-    </>
+        <SidebarContent render={<SidebarScrollArea />}>
+          <SidebarMenu className="py-9">
+            {sidebarMenu.map((group) => (
+              <SidebarGroup key={group.title}>
+                <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
+                <SidebarList>
+                  {group.items.map((item) => (
+                    <SidebarItem key={item.path}>
+                      <SidebarItemButton
+                        active={isActive(item.path)}
+                        render={<Link to={item.path} />}
+                      >
+                        {item.name}
+                      </SidebarItemButton>
+                    </SidebarItem>
+                  ))}
+                </SidebarList>
+              </SidebarGroup>
+            ))}
+          </SidebarMenu>
+        </SidebarContent>
+      </Sidebar>
+      <main className="w-full min-w-0 flex py-6 md:py-10 gap-6 justify-between max-lg:flex-wrap">
+        <div className="w-full min-w-0 2xl:w-3xl mx-auto">
+          <Outlet />
+        </div>
+        <aside className="w-64">
+          <TableOfContents />
+        </aside>
+      </main>
+    </div>
   );
 }
 

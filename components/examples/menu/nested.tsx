@@ -6,7 +6,7 @@ import {
   MenuSubmenuTrigger,
   MenuTrigger,
   MenuSeparator,
-  MenuSubPopup,
+  MenuSubmenuPopup,
 } from 'components/selia/menu';
 import { Button } from 'components/selia/button';
 import { ChevronDownIcon } from 'lucide-react';
@@ -26,20 +26,20 @@ export default function MenuNestedExample() {
           <MenuItem>Add to library</MenuItem>
           <MenuSubmenu>
             <MenuSubmenuTrigger>Add to playlist</MenuSubmenuTrigger>
-            <MenuSubPopup>
+            <MenuSubmenuPopup>
               <MenuItem>Recently added</MenuItem>
               <MenuItem>Recently played</MenuItem>
               <MenuSeparator />
               <MenuSubmenu>
                 <MenuSubmenuTrigger>More</MenuSubmenuTrigger>
-                <MenuSubPopup>
+                <MenuSubmenuPopup>
                   <MenuItem>Rock Playlist</MenuItem>
                   <MenuItem>Pop Playlist</MenuItem>
                   <MenuItem>Country Playlist</MenuItem>
                   <MenuItem>Indie Playlist</MenuItem>
-                </MenuSubPopup>
+                </MenuSubmenuPopup>
               </MenuSubmenu>
-            </MenuSubPopup>
+            </MenuSubmenuPopup>
           </MenuSubmenu>
           <MenuItem>Add to queue</MenuItem>
           <MenuSeparator />

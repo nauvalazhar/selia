@@ -114,6 +114,7 @@ export function Button({
     <BaseButton
       data-slot="button"
       data-size={size}
+      focusableWhenDisabled
       {...props}
       className={cn(
         buttonVariants({ variant, size, pill, progress, block, className }),

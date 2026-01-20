@@ -1,6 +1,5 @@
 import { Label } from 'components/selia/label';
 import { Radio, RadioGroup, RadioGroupLabel } from 'components/selia/radio';
-import { Text } from 'components/selia/text';
 
 export default function RadioBasicExample() {
   return (

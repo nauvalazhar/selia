@@ -1,4 +1,3 @@
-import type { Route } from './+types/blocks';
 import { Button } from 'components/selia/button';
 import { Text } from 'components/selia/text';
 import { ArrowDownCircleIcon, ExternalLinkIcon } from 'lucide-react';
@@ -20,7 +19,7 @@ export default function Blocks() {
     <div className="container mx-auto py-8">
       <title>Blocks - Selia</title>
       <div className="py-10 md:py-20">
-        <div className="text-center w-6/12 mx-auto">
+        <div className="text-center lg:w-6/12 mx-auto">
           <h1 className="text-6xl/12 font-semibold tracking-tight pb-2">
             Build Faster with Pre-Built Blocks
           </h1>

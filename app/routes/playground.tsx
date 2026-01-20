@@ -19,7 +19,7 @@ import {
   MenuSeparator,
   MenuSubmenu,
   MenuSubmenuTrigger,
-  MenuSubPopup,
+  MenuSubmenuPopup,
   MenuTrigger,
 } from 'components/selia/menu';
 import { Menubar } from 'components/selia/menubar';

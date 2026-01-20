@@ -34,6 +34,7 @@ export function CollapsibleTrigger({
         '[&_svg:not([class*=size-])]:size-4 text-left leading-relaxed font-medium w-full',
         '**:data-[slot=expandable-indicator]:transition-all',
         '**:data-[slot=expandable-indicator]:duration-100',
+        'disabled:opacity-70 disabled:pointer-events-none',
         expandableIndicator && [
           'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',
           'data-expandable:after:transition-transform data-expandable:after:duration-100 data-expandable:after:shrink-0',

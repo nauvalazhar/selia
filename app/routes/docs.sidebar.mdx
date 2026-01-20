@@ -86,6 +86,16 @@ Each component part, its responsibility, and the props it exposes.
         },
       },
     },
+    SidebarItemButton: {
+      type: 'button',
+      required: true,
+      props: {
+        expandableIndicator: {
+          options: ["true", "false"],
+          default: "true",
+        },
+      },
+    },
   }}
 />
 

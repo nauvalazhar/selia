@@ -9,8 +9,8 @@ export function Slider({
   ...props
 }: React.ComponentProps<typeof BaseSlider.Root>) {
   return (
-    <BaseSlider.Root data-slot="slider" {...props}>
-      <BaseSlider.Control className={cn('touch-none select-none', className)}>
+    <BaseSlider.Root data-slot="slider" className={cn('data-disabled:opacity-70 data-disabled:pointer-events-none', className)} {...props}>
+      <BaseSlider.Control className="touch-none select-none">
         <BaseSlider.Track className="h-1.5 w-full rounded-full bg-track">
           <BaseSlider.Indicator className="rounded-full bg-primary" />
           {children}

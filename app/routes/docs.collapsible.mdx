@@ -34,3 +34,25 @@ The expected structure and composition of the component.
   <CollapsiblePanel>Collapsible content</CollapsiblePanel>
 </Collapsible>
 ```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    CollapsibleTrigger: {
+      source: {
+        label: 'Base UI Collapsible',
+        href: 'https://base-ui.com/react/components/collapsible'
+      },
+      required: true,
+      props: {
+        expandableIndicator: {
+          options: ["true", "false"],
+          default: "true",
+        },
+      }
+    },
+  }}
+/>

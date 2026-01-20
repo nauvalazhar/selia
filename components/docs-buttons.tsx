@@ -17,6 +17,7 @@ export function DocsButtons({ pageRaw, externalDoc }: DocsButtonsProps) {
           variant="outline"
           size="xs"
           className="text-sm *:[svg]:w-3.5"
+          nativeButton={false}
           render={<a href={externalDoc} target="_blank" />}
         >
           Base UI Reference

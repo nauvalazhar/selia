@@ -6,7 +6,7 @@ import {
   MenuSeparator,
   MenuSubmenu,
   MenuSubmenuTrigger,
-  MenuSubPopup,
+  MenuSubmenuPopup,
 } from 'components/selia/menu';
 import { Button } from 'components/selia/button';
 import {
@@ -46,7 +46,7 @@ export default function MenuCompactExample() {
             <PaletteIcon />
             Custom
           </MenuSubmenuTrigger>
-          <MenuSubPopup size="compact">
+          <MenuSubmenuPopup size="compact">
             <MenuItem>
               <PaletteIcon />
               Tokyo Night
@@ -67,7 +67,7 @@ export default function MenuCompactExample() {
               <PaletteIcon />
               Catppuccin
             </MenuItem>
-          </MenuSubPopup>
+          </MenuSubmenuPopup>
         </MenuSubmenu>
       </MenuPopup>
     </Menu>

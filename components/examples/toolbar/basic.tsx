@@ -135,7 +135,7 @@ export default function ToolbarBasicExample() {
           </NumberFieldGroup>
         </NumberField>
         <ToolbarSeparator />
-        <ToolbarLink className="text-nowrap">Saved 5 min ago</ToolbarLink>
+        <ToolbarLink className="text-nowrap text-muted">Saved 5 min ago</ToolbarLink>
         <ToolbarSeparator />
         <Button>Save</Button>
       </Toolbar>

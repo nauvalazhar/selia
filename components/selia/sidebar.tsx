@@ -243,19 +243,6 @@ export function SidebarItemAction({
   );
 }
 
-const sidebarItemButtonVariants = cva(
-  'flex items-center gap-2.5 w-full relative z-10 text-foreground cursor-pointer text-left transition-colors duration-75 hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary data-popup-open:bg-accent',
-  {
-    variants: {
-      size: {
-        default: 'min-h-8.5 px-2.5 py-2 rounded',
-        compact: 'min-h-8 px-2.5 py-1.5 rounded',
-        loose: 'min-h-10 px-3 py-2 rounded',
-      },
-    },
-  }
-);
-
 export function SidebarItemButton({
   className,
   render,
@@ -279,6 +266,7 @@ export function SidebarItemButton({
         '**:[svg]:size-4 **:[svg]:text-muted',
         'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-popup-open:bg-accent',
+        'disabled:opacity-70 disabled:pointer-events-none',
         expandableIndicator && [
           'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',
           'data-expandable:after:transition-transform data-expandable:after:duration-100',

@@ -222,6 +222,7 @@ export function AutocompleteItem({
         'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
         'focus-visible:outline-none',
         '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-foreground',
+        'data-disabled:opacity-50 data-disabled:pointer-events-none',
         className,
       )}
     />

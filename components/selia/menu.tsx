@@ -159,7 +159,7 @@ export function MenuSubmenuTrigger({
   );
 }
 
-export function MenuSubPopup({
+export function MenuSubmenuPopup({
   align,
   alignOffset,
   side,

@@ -6,7 +6,7 @@ import {
   MenuSeparator,
   MenuSubmenu,
   MenuSubmenuTrigger,
-  MenuSubPopup,
+  MenuSubmenuPopup,
   MenuTrigger,
 } from 'components/selia/menu';
 import { Menubar } from 'components/selia/menubar';
@@ -27,12 +27,12 @@ export default function MenubarBasicExample() {
           <MenuItem>Open</MenuItem>
           <MenuItem>Save</MenuItem>
           <MenuSubmenu>
-            <MenuSubmenuTrigger render={<MenuItem>Export</MenuItem>} />
-            <MenuSubPopup size="compact">
+            <MenuSubmenuTrigger>Export</MenuSubmenuTrigger>
+            <MenuSubmenuPopup size="compact">
               <MenuItem>PNG</MenuItem>
               <MenuItem>JPG</MenuItem>
               <MenuItem>PDF</MenuItem>
-            </MenuSubPopup>
+            </MenuSubmenuPopup>
           </MenuSubmenu>
           <MenuSeparator />
           <MenuItem>Exit App</MenuItem>
@@ -64,12 +64,12 @@ export default function MenubarBasicExample() {
           <MenuItem>Zoom In</MenuItem>
           <MenuItem>Zoom Out</MenuItem>
           <MenuSubmenu>
-            <MenuSubmenuTrigger render={<MenuItem>Layout</MenuItem>} />
-            <MenuSubPopup size="compact">
+            <MenuSubmenuTrigger>Layout</MenuSubmenuTrigger>
+            <MenuSubmenuPopup size="compact">
               <MenuItem>Single Page</MenuItem>
               <MenuItem>Two Pages</MenuItem>
               <MenuItem>Continous</MenuItem>
-            </MenuSubPopup>
+            </MenuSubmenuPopup>
           </MenuSubmenu>
           <MenuSeparator />
           <MenuItem>Full Screen</MenuItem>

@@ -7,7 +7,7 @@ export const textareaVariants = cva(
   [
     'w-full px-3.5 py-3.5 text-foreground placeholder:text-dimmed transition-[border-color,box-shadow] shadow-input rounded',
     'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2 min-h-24',
-    'disabled:opacity-70',
+    'disabled:opacity-70 disabled:pointer-events-none',
   ],
   {
     variants: {

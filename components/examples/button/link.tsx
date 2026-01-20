@@ -5,6 +5,7 @@ export default function Link() {
   return (
     <>
       <Button
+        nativeButton={false}
         variant="plain"
         render={
           <a
