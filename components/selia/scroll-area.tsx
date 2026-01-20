@@ -65,7 +65,7 @@ function ScrollAreaScrollbar({
     >
       <BaseScrollArea.Thumb
         data-slot="scroll-area-thumb"
-        className="rounded bg-scrollbar w-full"
+        className="rounded bg-scrollbar w-full cursor-grab active:cursor-grabbing"
       />
     </BaseScrollArea.Scrollbar>
   );

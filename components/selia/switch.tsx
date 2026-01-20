@@ -11,12 +11,12 @@ export function Switch({
     <BaseSwitch.Root
       data-slot="switch"
       className={cn(
-        'w-9 h-5 rounded-full flex items-center px-0.5',
+        'w-9 h-5 rounded-full flex items-center px-0.5 cursor-pointer',
         'ring ring-input-border bg-track inset-shadow-xs inset-shadow-black/10 dark:inset-shadow-none',
         'data-checked:bg-primary data-checked:ring-primary',
         'transition-colors duration-75',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-        'data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
       )}
       {...props}

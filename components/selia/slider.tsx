@@ -28,7 +28,7 @@ export function SliderThumb({
     <BaseSlider.Thumb
       data-slot="slider-thumb"
       className={cn(
-        'size-4 bg-white ring ring-primary rounded-full shadow',
+        'size-4 bg-white ring ring-primary rounded-full shadow cursor-grab active:cursor-grabbing',
         'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-foreground',
       )}
       {...props}

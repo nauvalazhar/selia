@@ -56,12 +56,12 @@ export function TabsItem({
     <BaseTabs.Tab
       data-slot="tabs-item"
       className={cn(
-        'flex items-center justify-center gap-2.5 rounded',
+        'flex items-center justify-center gap-2.5 rounded cursor-pointer',
         'h-8 py-1 px-3 text-muted flex-1 font-medium',
         'data-active:text-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '[&_svg:not([class*=size-])]:size-4',
-        'data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
         className,
       )}
       {...props}

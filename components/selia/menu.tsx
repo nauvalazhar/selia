@@ -104,13 +104,13 @@ export function MenuPopup({
 
 const menuItemClassName = [
   'flex items-center text-popover-foreground',
-  'cursor-default select-none',
+  'cursor-pointer select-none',
   'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
   'data-[popup-open]:bg-popover-accent',
   'focus-visible:outline-none',
   '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-popover-foreground',
   '*:data-[slot=switch]:ml-auto',
-  'data-disabled:opacity-70 data-disabled:pointer-events-none',
+  'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
 ];
 
 export function MenuItem({

@@ -64,10 +64,10 @@ export const NumberFieldGroupVariants = cva(
     '[&_svg:not([class*=size-])]:size-4.5',
     '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
     '*:[button]:transition-all *:[button]:duration-100',
-    '*:[button]:text-foreground',
-    '*:[button]:disabled:opacity-70 *:[button]:disabled:pointer-events-none',
+    '*:[button]:text-foreground *:[button]:cursor-pointer',
+    '*:[button]:disabled:cursor-not-allowed *:[button]:disabled:opacity-70 *:[button]:disabled:pointer-events-none',
     '*:first:rounded-l *:last:rounded-r',
-    'data-disabled:opacity-70 data-disabled:pointer-events-none',
+    'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
