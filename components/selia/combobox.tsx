@@ -18,16 +18,16 @@ export const comboboxTriggerVariants = cva(
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'has-focus:ring-primary has-focus:ring-2',
     'flex items-center gap-2.5 cursor-pointer',
-    'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
+    'data-disabled:cursor-not-allowed data-disabled:opacity-70',
   ],
   {
     variants: {
       variant: {
         default:
-          'bg-input ring ring-input-border hover:ring-input-accent-border shadow-input',
+          'bg-input ring ring-input-border hover:not-[[data-disabled]]:not-[:focus]:ring-input-accent-border shadow-input',
         subtle:
-          'bg-input/60 ring ring-input-border hover:ring-input-accent-border shadow-input',
-        plain: 'bg-transparent hover:bg-accent',
+          'bg-input/60 ring ring-input-border hover:not-[[data-disabled]]:not-[:focus]:ring-input-accent-border shadow-input',
+        plain: 'bg-transparent hover:not-[[data-disabled]]:bg-accent',
       },
       pill: {
         true: 'rounded-full',
@@ -245,6 +245,7 @@ export function ComboboxSearch({
         {...props}
         className={cn(
           'outline-none h-10 px-2.5 w-full border-b border-input-border',
+          'disabled:opacity-70 disabled:cursor-not-allowed',
           className,
         )}
       />
@@ -293,9 +294,9 @@ export function ComboboxItem({
       className={cn(
         'flex items-center text-popover-foreground gap-3.5 py-2.5 px-3 rounded select-none cursor-pointer',
         'group-data-[side=none]:min-w-[calc(var(--anchor-width))]',
-        'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
+        'data-[highlighted]:not-[[data-disabled]]:bg-popover-accent data-[selected]:not-[[data-disabled]]:bg-popover-accent',
         'focus-visible:outline-none',
-        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-70',
         className,
       )}
     >

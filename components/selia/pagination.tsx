@@ -57,13 +57,12 @@ export function PaginationButton({
       'data-slot': 'pagination-button',
       'aria-current': active ? 'page' : undefined,
       'aria-disabled': disabled ? true : undefined,
+      'data-disabled': disabled ? true : undefined,
       className: cn(
         buttonVariants({
           variant: active ? 'secondary' : 'plain',
         }),
-        'cursor-pointer',
         active && 'pointer-events-none',
-        disabled && 'pointer-events-none opacity-70',
         props.className,
       ),
       ...props,

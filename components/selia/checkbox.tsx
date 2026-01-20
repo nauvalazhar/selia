@@ -45,7 +45,7 @@ export function Checkbox({
         'focus:outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-[checked]:bg-primary data-[checked]:border-primary',
         'transition-colors duration-75 hover:border-input-accent-border',
-        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50',
         props.className,
       )}
     >

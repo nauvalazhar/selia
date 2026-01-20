@@ -262,11 +262,11 @@ export function SidebarItemButton({
       className: cn(
         'flex items-center gap-2.5 w-full relative z-10',
         'text-foreground cursor-pointer text-left',
-        'transition-colors duration-75 hover:bg-accent',
+        'transition-colors duration-75 hover:not-[[disabled],[data-disabled]]:bg-accent',
         '**:[svg]:size-4 **:[svg]:text-muted',
         'focus-visible:outline-2 focus-visible:outline-offset-2 outline-primary',
         'data-popup-open:bg-accent',
-        'disabled:opacity-70 disabled:pointer-events-none',
+        'disabled:opacity-70 disabled:cursor-not-allowed',
         expandableIndicator && [
           'data-expandable:after:bg-chevron-down-dark dark:data-expandable:after:bg-chevron-down data-expandable:after:size-4 data-expandable:after:ml-auto',
           'data-expandable:after:transition-transform data-expandable:after:duration-100',

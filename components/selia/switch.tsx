@@ -16,7 +16,7 @@ export function Switch({
         'data-checked:bg-primary data-checked:ring-primary',
         'transition-colors duration-75',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-70',
         className,
       )}
       {...props}

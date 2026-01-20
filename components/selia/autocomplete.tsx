@@ -14,7 +14,7 @@ export function Autocomplete({
 export const autocompleteInputVariants = cva(
   [
     'h-9.5 px-2.5 w-full text-foreground placeholder:text-dimmed transition-all',
-    'disabled:opacity-70 disabled:pointer-events-none',
+    'disabled:opacity-70 disabled:cursor-not-allowed',
   ],
   {
     variants: {
@@ -28,7 +28,7 @@ export const autocompleteInputVariants = cva(
       {
         variant: ['default', 'subtle'],
         className:
-          'ring ring-input-border hover:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2 shadow-input rounded',
+          'ring ring-input-border hover:not-[[data-disabled]]:not-[:focus]:ring-input-accent-border focus:outline-0 focus:ring-primary focus:ring-2 shadow-input rounded',
       },
     ],
     defaultVariants: {
@@ -219,10 +219,10 @@ export function AutocompleteItem({
       {...props}
       className={cn(
         'flex items-center gap-3.5 text-foreground px-3 py-2.5 rounded cursor-pointer',
-        'data-[highlighted]:bg-popover-accent data-[selected]:bg-popover-accent',
+        'data-[highlighted]:not-[[data-disabled]]:bg-popover-accent data-[selected]:not-[[data-disabled]]:bg-popover-accent',
         'focus-visible:outline-none',
         '[&_svg:not([class*=size-])]:size-4 [&_svg:not([class*=text-])]:text-foreground',
-        'data-disabled:cursor-not-allowed data-disabled:opacity-50 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50',
         className,
       )}
     />

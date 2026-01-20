@@ -12,7 +12,7 @@ export function NumberField({
     <BaseNumberField.Root
       data-slot="number-field"
       {...props}
-      className={cn('flex flex-col items-start gap-2', className)}
+      className={cn('flex flex-col items-start gap-2', 'data-disabled:cursor-not-allowed data-disabled:opacity-70', className)}
     />
   );
 }
@@ -59,21 +59,20 @@ export function NumberFieldScrubAreaCursor({
 export const NumberFieldGroupVariants = cva(
   [
     'flex h-9.5 rounded',
-    'hover:not-[:focus-within]:ring-input-accent-border',
+    'hover:not-[:focus-within]:not-[[data-disabled]]:ring-input-accent-border',
     'focus-within:ring-2 focus-within:ring-primary focus-within:outline-0',
     '[&_svg:not([class*=size-])]:size-4.5',
     '*:[button]:size-9.5 *:[button]:flex *:[button]:items-center *:[button]:justify-center',
     '*:[button]:transition-all *:[button]:duration-100',
     '*:[button]:text-foreground *:[button]:cursor-pointer',
-    '*:[button]:disabled:cursor-not-allowed *:[button]:disabled:opacity-70 *:[button]:disabled:pointer-events-none',
+    '*:[button]:disabled:cursor-not-allowed *:[button]:disabled:opacity-70',
     '*:first:rounded-l *:last:rounded-r',
-    'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
   ],
   {
     variants: {
       variant: {
         default:
-          'ring ring-input-border bg-input shadow-input *:[button]:hover:bg-accent',
+          'ring ring-input-border bg-input shadow-input *:[button]:hover:not-[[disabled]]:bg-accent',
         plain: 'bg-transparent hover:bg-accent',
       },
     },

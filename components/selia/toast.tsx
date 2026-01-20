@@ -120,10 +120,13 @@ function ToastContent({ toast }: { toast: ToastObject<Object> }) {
           />
         </div>
         <BaseToast.Action
+          {...toast.actionProps}
           data-slot="toast-action"
+          data-disabled={toast.actionProps?.disabled ? true : undefined}
           className={cn(
             'text-sm md:ml-auto shrink-0 mt-2 md:mt-0 self-center',
             buttonVariants({ variant: 'tertiary', size: 'xs' }),
+            toast.actionProps?.className,
           )}
         />
       </div>

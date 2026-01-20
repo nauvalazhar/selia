@@ -50,7 +50,7 @@ export function ChipButton({ ...props }: useRender.ComponentProps<'button'>) {
   return (
     <button
       data-slot="chip-button"
-      className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer disabled:opacity-70 disabled:pointer-events-none"
+      className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
       {...props}
     />
   );
