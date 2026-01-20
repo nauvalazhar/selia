@@ -61,7 +61,7 @@ export function TabsItem({
         'data-active:text-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '[&_svg:not([class*=size-])]:size-4',
-        'data-disabled:cursor-not-allowed data-disabled:opacity-70 data-disabled:pointer-events-none',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50',
         className,
       )}
       {...props}
