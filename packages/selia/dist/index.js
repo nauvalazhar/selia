@@ -1299,7 +1299,8 @@ async function buildItem(item, output) {
       if (!file.path) {
         throw new Error(`Path is required for file in item "${item.name}"`);
       }
-      const content = await fs11.readFile(file.path, "utf-8");
+      const rawContent = await fs11.readFile(file.path, "utf-8");
+      const content = rawContent.replace(/\r/g, "").trim();
       const { path: _, ...rest } = file;
       return {
         ...rest,
