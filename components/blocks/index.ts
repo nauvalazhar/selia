@@ -85,4 +85,12 @@ export const blocks: Block = {
       import('./dashboard/page').then((mod) => ({ default: mod.default })),
     ),
   },
+  contact: {
+    name: 'Contact',
+    description: 'A contact form block with contact information.',
+    path: 'components/blocks/contact.tsx',
+    component: React.lazy(() =>
+      import('./contact').then((mod) => ({ default: mod.default })),
+    ),
+  },
 };
