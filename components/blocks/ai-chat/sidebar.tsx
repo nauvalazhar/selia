@@ -47,7 +47,7 @@ import { ScrollArea } from 'components/selia/scroll-area';
 export function SidebarChat({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSidebarOpen: (open: boolean) => void }) {
   return (
     <Sidebar
-      className='size-full bg-[oklch(0.1574_0.0017_247.94)] border-r border-separator/60'
+      className='size-full bg-[oklch(0.977_0.0007_247.83)] dark:bg-[oklch(0.1574_0.0017_247.94)] border-r border-separator/60'
       size="compact"
     >
       <SidebarHeader>
