@@ -10,6 +10,7 @@ import { installDependencies } from './install-dependencies';
 import { abortIfCancel } from '~/lib/utils';
 import { detectWorkdir } from '~/lib/detect-workdir';
 import picocolors from 'picocolors';
+import { detectPackageManager } from './package-manager';
 
 export interface SetupContext {
   [key: string]: any;
@@ -95,7 +96,9 @@ export async function previewSetupActions(
     // Add to preview
     if (step.type === 'dependencies') {
       const count = Object.keys(step.packages).length;
-      actions.push(`Install ${count} required package${count > 1 ? 's' : ''}`);
+      const pm = await detectPackageManager(cwd);
+      actions.push(`Install ${count} required package${count > 1 ? 's' : ''} with ${picocolors.cyan(pm)}:`);
+      actions.push(picocolors.dim(Object.keys(step.packages).join(' ')));
     } else if (step.type === 'file-create') {
       const target = interpolate(step.target, context);
       actions.push(`Create \`${target}\``);

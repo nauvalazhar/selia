@@ -73,8 +73,8 @@ export const initCommand = new Command()
         outro(picocolors.green('Config created ✓'));
         log.info(
           'Run ' +
-            picocolors.cyan('selia add <items>') +
-            ' to add items to your project.',
+          picocolors.cyan('selia add <items>') +
+          ' to add items to your project.',
         );
         console.log();
         return;
@@ -87,12 +87,12 @@ export const initCommand = new Command()
       const actions = await previewSetupActions(setup, context);
 
       // Always add config creation action
-      actions.unshift('Create `selia.json`');
+      actions.push('Create `selia.json`');
 
       // Show what will be done
       log.info('I will now perform the following actions:');
       actions.forEach((action) => {
-        console.log(picocolors.dim('  • ') + action);
+        console.log(picocolors.dim('   • ') + action);
       });
 
       // Confirm
@@ -127,8 +127,8 @@ export const initCommand = new Command()
       log.info(picocolors.green('Selia initialized successfully! ✓'));
       outro(
         'Run ' +
-          picocolors.cyan('selia add <items>') +
-          ' to add items to your project.',
+        picocolors.cyan('selia add <items>') +
+        ' to add items to your project.',
       );
       console.log();
     } catch (error) {

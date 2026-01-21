@@ -754,7 +754,9 @@ async function previewSetupActions(setup, context, options = {}) {
     }
     if (step.type === "dependencies") {
       const count = Object.keys(step.packages).length;
-      actions.push(`Install ${count} required package${count > 1 ? "s" : ""}`);
+      const pm = await detectPackageManager(cwd);
+      actions.push(`Install ${count} required package${count > 1 ? "s" : ""} with ${picocolors2.cyan(pm)}:`);
+      actions.push(picocolors2.dim(Object.keys(step.packages).join(" ")));
     } else if (step.type === "file-create") {
       const target = interpolate(step.target, context);
       actions.push(`Create \`${target}\``);
@@ -1184,10 +1186,10 @@ var initCommand = new Command2().name("init").description("Initialize Selia in y
     }
     const context = await executeSetup(setup);
     const actions = await previewSetupActions(setup, context);
-    actions.unshift("Create `selia.json`");
+    actions.push("Create `selia.json`");
     log4.info("I will now perform the following actions:");
     actions.forEach((action) => {
-      console.log(picocolors3.dim("  \u2022 ") + action);
+      console.log(picocolors3.dim("   \u2022 ") + action);
     });
     if (!options.yes) {
       const shouldContinue = await confirm2({
