@@ -80,7 +80,9 @@ async function buildItem(item: Item, output: string): Promise<void> {
         throw new Error(`Path is required for file in item "${item.name}"`);
       }
 
-      const content = await fs.readFile(file.path, 'utf-8');
+      const rawContent = await fs.readFile(file.path, 'utf-8');
+      const content = rawContent.replace(/\r/g, '').trim();
+
       const { path: _, ...rest } = file;
 
       return {
@@ -123,8 +125,7 @@ async function buildSetup(setup: Setup, output: string): Promise<void> {
           };
         } catch (error) {
           throw new Error(
-            `Failed to read content for setup step from "${step.contentPath}": ${
-              error instanceof Error ? error.message : 'Unknown error'
+            `Failed to read content for setup step from "${step.contentPath}": ${error instanceof Error ? error.message : 'Unknown error'
             }`,
           );
         }
