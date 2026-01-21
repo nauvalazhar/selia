@@ -57,8 +57,8 @@ export function TabsItem({
       data-slot="tabs-item"
       className={cn(
         'flex items-center justify-center gap-2.5 rounded cursor-pointer',
-        'h-8 py-1 px-3 text-muted flex-1 font-medium',
-        'data-active:text-foreground',
+        'h-8 py-1 px-3 text-muted hover:not-[[data-disabled]]:text-foreground flex-1 font-medium',
+        'data-active:text-foreground transition-colors',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         '[&_svg:not([class*=size-])]:size-4',
         'data-disabled:cursor-not-allowed data-disabled:opacity-50',
