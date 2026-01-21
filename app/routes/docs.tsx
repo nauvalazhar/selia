@@ -63,7 +63,7 @@ export default function LayoutDocs({
     <div className="flex container mx-auto">
       <Sidebar
         className={cn(
-          'lg:sticky top-30 lg:top-16 lg:h-[calc(100vh-4rem)] max-h-dvh lg:w-64 px-1.5 lg:px-0 shrink-0 lg:border-r border-separator',
+          'lg:sticky top-[calc(var(--spacing)*30+1px)] lg:top-16 lg:h-[calc(100vh-4rem)] max-h-dvh lg:w-64 px-1.5 lg:px-0 shrink-0 xl:border-r border-separator/50',
           'fixed z-30 w-full max-lg:h-dvh bg-background lg:bg-transparent dark:lg:bg-transparent transition-all',
           '**:data-[slot=sidebar-submenu]:ml-3.5',
           '**:data-[slot=sidebar-submenu]:pl-1',
@@ -76,7 +76,7 @@ export default function LayoutDocs({
           <SidebarMenu className="py-9">
             {sidebarMenu.map((group) => (
               <SidebarGroup key={group.title}>
-                <SidebarGroupTitle>{group.title}</SidebarGroupTitle>
+                <SidebarGroupTitle className="max-lg:text-base">{group.title}</SidebarGroupTitle>
                 <SidebarList>
                   {group.items.map((item) => (
                     <SidebarItem key={item.path}>
@@ -95,7 +95,7 @@ export default function LayoutDocs({
         </SidebarContent>
       </Sidebar>
       <main className="w-full min-w-0 flex py-6 md:py-10 gap-6 justify-between max-lg:flex-wrap">
-        <div className="w-full min-w-0 2xl:w-3xl mx-auto">
+        <div className="w-full min-w-0 xl:w-3xl mx-auto">
           <Outlet />
         </div>
         <aside className="w-64">

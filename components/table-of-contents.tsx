@@ -41,7 +41,7 @@ export function TableOfContents() {
       <div
         ref={containerRef}
         className={cn(
-          '**:[a]:mb-2.5 **:[a]:inline-block **:[a]:transition-colors',
+          '**:[a]:mb-3 **:[a]:inline-block **:[a]:transition-colors',
           '**:[a]:duration-75 **:[a]:text-muted **:[a]:hover:text-foreground',
           '[&_.toc-level-3]:pl-2.5',
           '[&_.active]:text-foreground [&_.active]:font-semibold',

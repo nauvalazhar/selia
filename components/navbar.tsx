@@ -25,7 +25,7 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'w-full z-20 transition-colors sticky top-0 border-b border-separator',
+        'w-full z-20 transition-colors sticky top-0 border-b border-separator/50',
         menuOpen || isSidebarOpen ? 'bg-background' : 'backdrop-blur-sm bg-background/75',
       )}
     >
@@ -112,7 +112,7 @@ export function Navbar() {
               size="lg"
               onClick={toggleSidebar}
               block
-              className="rounded-none justify-start px-4 border-y border-separator *:[svg]:mr-2 h-14"
+              className="rounded-none justify-start px-4 border-t border-separator *:[svg]:mr-2 h-14"
             >
               {isSidebarOpen ? <XIcon /> : <MenuIcon />}
               Navigation
