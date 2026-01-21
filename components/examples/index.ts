@@ -49,3 +49,4 @@ export { examples as text } from './text';
 export { examples as textarea } from './textarea';
 export { examples as toast } from './toast';
 export { examples as tooltip } from './tooltip';
+export { examples as breadcrumb } from './breadcrumb';

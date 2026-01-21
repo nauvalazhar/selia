@@ -1,0 +1,53 @@
+# Breadcrumb
+
+Displays the path to the current resource using a hierarchy of links.
+
+<DocsButtons />
+
+<Preview name="basic" />
+
+## Installation
+
+<Installation name="breadcrumb" />
+
+## Usage
+
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Breadcrumb Parts"
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from 'components/selia/breadcrumb';
+```
+
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+### Ellipsis
+
+Use the `BreadcrumbEllipsis` component to show collapsed items.
+
+<Preview name="ellipsis" />
