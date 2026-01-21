@@ -6,7 +6,7 @@ Selia is an opinionated UI library for React, built on top of Tailwind CSS and B
 
 ## Documentation
 
-Full documentation is available at [selia.nauv.al](https://selia.earth)
+Full documentation is available at [selia.earth](https://selia.earth)
 
 ## License
 
