@@ -145,7 +145,7 @@ export function Cmdk({ items: _items }: { items: Group[] }) {
                 <SearchIcon className="size-4 text-muted" />
               </InputGroupAddon>
               <AutocompleteInput
-                placeholder="Search for pages..."
+                placeholder="Search for pages or commands..."
                 variant="plain"
                 onKeyDown={(e) => {
                   if (e.key === 'Escape') {
