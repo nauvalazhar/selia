@@ -79,3 +79,9 @@ export function FieldValidity({
 }: React.ComponentProps<typeof BaseField.Validity>) {
   return <BaseField.Validity data-slot="field-validity" {...props} />;
 }
+
+export function FieldControl({
+  ...props
+}: React.ComponentProps<typeof BaseField.Control>) {
+  return <BaseField.Control data-slot="field-control" {...props} />;
+}

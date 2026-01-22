@@ -15,4 +15,11 @@ export const examples = {
       import('./ellipsis').then((mod) => ({ default: mod.default })),
     ),
   },
+  ellipsisMenu: {
+    name: 'Ellipsis Menu',
+    path: 'components/examples/breadcrumb/ellipsis-menu.tsx',
+    component: React.lazy(() =>
+      import('./ellipsis-menu').then((mod) => ({ default: mod.default })),
+    ),
+  },
 };

@@ -21,8 +21,7 @@ import {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
+  BreadcrumbButton,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 } from 'components/selia/breadcrumb';
@@ -36,18 +35,44 @@ The expected structure and composition of the component.
 <Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
-      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+      <BreadcrumbButton>Home</BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+      <BreadcrumbButton active>Page</BreadcrumbButton>
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>
 ```
+
+### Props
+
+Each component part, its responsibility, and the props it exposes.
+
+<ComponentTable
+  components={{
+    BreadcrumbButton: {
+      type: 'button',
+      required: true,
+      props: {
+        active: {
+          name: 'Active',
+          options: ['true', 'false'],
+          default: 'false',
+        },
+      },
+    },
+  }}
+/>
 
 ### Ellipsis
 
 Use the `BreadcrumbEllipsis` component to show collapsed items.
 
 <Preview name="ellipsis" />
+
+### Ellipsis Menu
+
+Compose the `BreadcrumbEllipsis` component with the `Menu` component to show a menu of collapsed items.
+
+<Preview name="ellipsisMenu" />

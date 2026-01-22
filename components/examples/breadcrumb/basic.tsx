@@ -2,25 +2,27 @@ import {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
+  BreadcrumbButton,
   BreadcrumbSeparator,
 } from 'components/selia/breadcrumb';
+import { Link } from 'react-router';
 
 export default function BreadcrumbBasic() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbButton render={<Link to="/" />}>Home</BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+          <BreadcrumbButton render={<Link to="/docs/introduction" />}>
+            Docs
+          </BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          <BreadcrumbButton active>Breadcrumb</BreadcrumbButton>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

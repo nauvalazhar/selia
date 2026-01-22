@@ -8,7 +8,12 @@ import {
   CardBody,
 } from 'components/selia/card';
 import { Input } from 'components/selia/input';
-import { Field, FieldLabel } from 'components/selia/field';
+import {
+  Field,
+  FieldControl,
+  FieldError,
+  FieldLabel,
+} from 'components/selia/field';
 import { Textarea } from 'components/selia/textarea';
 import {
   Select,
@@ -21,19 +26,39 @@ import {
 import { Heading } from 'components/selia/heading';
 import { Text } from 'components/selia/text';
 import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-react';
+import { IconBox } from 'components/selia/icon-box';
+import { Form } from 'components/selia/form';
+import { toastManager } from 'components/selia/toast';
 
 export default function ContactBlock() {
   const [pending, setPending] = useState(false);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    setPending(true);
+
+    setTimeout(() => {
+      setPending(false);
+
+      toastManager.add({
+        title: 'Message sent',
+        description: 'We will get back to you shortly.',
+        type: 'success',
+      });
+
+      form.reset();
+    }, 2000);
+  };
+
   return (
     <div className="w-full lg:min-h-screen flex items-center justify-center p-4 py-20">
-      <div className="container max-w-6xl grid lg:grid-cols-2 gap-10 items-start">
+      <div className="container max-w-6xl 2xl:max-w-5xl grid lg:grid-cols-2 gap-10 items-start">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <Heading size="lg" className="text-4xl md:text-5xl tracking-tight">
-              Get in touch
-            </Heading>
-            <Text className="text-dimmed text-lg max-w-md">
+            <Heading size="lg">Get in touch</Heading>
+            <Text className="text-dimmed lg:max-w-md">
               Have a question or just want to say hi? We'd love to hear from
               you. Fill out the form and our team will get back to you shortly.
             </Text>
@@ -41,9 +66,9 @@ export default function ContactBlock() {
 
           <div className="flex flex-col gap-6">
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                <MailIcon className="size-5 text-primary" />
-              </div>
+              <IconBox variant="primary-subtle" circle>
+                <MailIcon />
+              </IconBox>
               <div>
                 <Heading level={4} size="sm">
                   Email
@@ -52,9 +77,9 @@ export default function ContactBlock() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                <PhoneIcon className="size-5 text-primary" />
-              </div>
+              <IconBox variant="primary-subtle" circle>
+                <PhoneIcon />
+              </IconBox>
               <div>
                 <Heading level={4} size="sm">
                   Phone
@@ -63,9 +88,9 @@ export default function ContactBlock() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                <MapPinIcon className="size-5 text-primary" />
-              </div>
+              <IconBox variant="primary-subtle" circle>
+                <MapPinIcon />
+              </IconBox>
               <div>
                 <Heading level={4} size="sm">
                   Office
@@ -79,60 +104,92 @@ export default function ContactBlock() {
         </div>
 
         <Card className="w-full">
-          <CardHeader>
+          <CardHeader align="center">
             <CardTitle>Send us a message</CardTitle>
             <CardDescription>We'll respond as soon as we can.</CardDescription>
           </CardHeader>
           <CardBody className="flex flex-col gap-5">
-            <div className="grid md:grid-cols-2 gap-5">
+            <Form onSubmit={handleSubmit}>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Field>
+                  <FieldLabel htmlFor="first-name">First Name</FieldLabel>
+                  <Input id="first-name" placeholder="John" required />
+                  <FieldError match="valueMissing">This is required</FieldError>
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="last-name">Last Name</FieldLabel>
+                  <Input id="last-name" placeholder="Doe" required />
+                  <FieldError match="valueMissing">This is required</FieldError>
+                </Field>
+              </div>
               <Field>
-                <FieldLabel htmlFor="first-name">First Name</FieldLabel>
-                <Input id="first-name" placeholder="John" />
+                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  required
+                />
+                <FieldError match="valueMissing">This is required</FieldError>
               </Field>
               <Field>
-                <FieldLabel htmlFor="last-name">Last Name</FieldLabel>
-                <Input id="last-name" placeholder="Doe" />
+                <FieldLabel>Subject</FieldLabel>
+                <Select defaultValue={subjectOptions[0]} required>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectPopup>
+                    <SelectList>
+                      {subjectOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectList>
+                  </SelectPopup>
+                </Select>
+                <FieldError match="valueMissing">This is required</FieldError>
               </Field>
-            </div>
-            <Field>
-              <FieldLabel htmlFor="email">Email</FieldLabel>
-              <Input id="email" type="email" placeholder="john@example.com" />
-            </Field>
-            <Field>
-              <FieldLabel>Subject</FieldLabel>
-              <Select defaultValue="general">
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectPopup>
-                  <SelectList>
-                    <SelectItem value="general">General Inquiry</SelectItem>
-                    <SelectItem value="support">Technical Support</SelectItem>
-                    <SelectItem value="billing">Billing</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectList>
-                </SelectPopup>
-              </Select>
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="message">Message</FieldLabel>
-              <Textarea id="message" placeholder="How can we help you?" />
-            </Field>
-            <Button
-              variant="primary"
-              block
-              size="lg"
-              progress={pending}
-              onClick={() => {
-                setPending(true);
-                setTimeout(() => setPending(false), 2000);
-              }}
-            >
-              Send Message
-            </Button>
+              <Field name="message">
+                <FieldLabel htmlFor="message">Message</FieldLabel>
+                <FieldControl
+                  render={<Textarea data-slot="textarea" />}
+                  required
+                />
+                <FieldError match="valueMissing">This is required</FieldError>
+              </Field>
+              <Button
+                variant="primary"
+                block
+                size="lg"
+                progress={pending}
+                type="submit"
+              >
+                Send Message
+              </Button>
+            </Form>
           </CardBody>
         </Card>
       </div>
     </div>
   );
 }
+
+const subjectOptions = [
+  {
+    label: 'General Inquiry',
+    value: 'general',
+  },
+  {
+    label: 'Technical Support',
+    value: 'support',
+  },
+  {
+    label: 'Billing',
+    value: 'billing',
+  },
+  {
+    label: 'Other',
+    value: 'other',
+  },
+];
