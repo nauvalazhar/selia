@@ -28,7 +28,7 @@ export function CommandContent({
     <DialogPopup
       {...props}
       className={cn(
-        'p-1 bg-dialog-footer/90 md:min-w-xl',
+        'p-1 bg-dialog-footer/90 md:min-w-xl rounded-[calc(var(--radius-xl)+0.25rem)]',
         '**:data-[slot=autocomplete-list]:h-[min(27rem,50dvh)]',
         '**:data-[slot=autocomplete-empty]:h-[min(27rem,50dvh)]',
         '**:data-[slot=autocomplete-input]:h-11',
