@@ -68,6 +68,16 @@
       ]
     },
     {
+      "name": "breadcrumb",
+      "type": "component",
+      "files": [
+        {
+          "name": "breadcrumb.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "component",
       "files": [

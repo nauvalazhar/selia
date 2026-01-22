@@ -404,6 +404,17 @@
       ]
     },
     {
+      "name": "breadcrumb",
+      "type": "component",
+      "files": [
+        {
+          "name": "breadcrumb.tsx",
+          "path": "components/selia/breadcrumb.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "component",
       "files": [
