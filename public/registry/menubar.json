@@ -5,7 +5,7 @@
     {
       "name": "menubar.tsx",
       "target": "components",
-      "content": "'use client';\n\nimport { Menubar as BaseMenubar } from '@base-ui/react/menubar';\nimport { cn } from '#utils';\n\nexport function Menubar({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseMenubar>) {\n  return (\n    <BaseMenubar\n      className={cn(\n        'flex items-center bg-background ring ring-card-border rounded p-1',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+      "content": "'use client';\n\nimport { Menubar as BaseMenubar } from '@base-ui/react/menubar';\nimport { cn } from '#utils';\n\nexport function Menubar({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseMenubar>) {\n  return (\n    <BaseMenubar\n      className={cn(\n        'flex items-center bg-background ring ring-card-border rounded p-1',\n        className,\n      )}\n      {...props}\n    />\n  );\n}"
     }
   ]
 }

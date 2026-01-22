@@ -5,7 +5,7 @@
     {
       "name": "form.tsx",
       "target": "components",
-      "content": "'use client';\n\nimport { Form as BaseForm } from '@base-ui/react/form';\nimport { cn } from '#utils';\n\nexport function Form({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseForm>) {\n  return (\n    <BaseForm\n      data-slot=\"form\"\n      className={cn('flex flex-col gap-6', className)}\n      {...props}\n    />\n  );\n}\n"
+      "content": "'use client';\n\nimport { Form as BaseForm } from '@base-ui/react/form';\nimport { cn } from '#utils';\n\nexport function Form({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseForm>) {\n  return (\n    <BaseForm\n      data-slot=\"form\"\n      className={cn('flex flex-col gap-6', className)}\n      {...props}\n    />\n  );\n}"
     }
   ]
 }

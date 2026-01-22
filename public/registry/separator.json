@@ -5,7 +5,7 @@
     {
       "name": "separator.tsx",
       "target": "components",
-      "content": "'use client';\n\nimport { Separator as BaseSeparator } from '@base-ui/react/separator';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '#utils';\n\nexport const separatorVariants = cva('bg-separator', {\n  variants: {\n    orientation: {\n      horizontal: 'w-full h-px',\n      vertical: 'w-px min-h-5',\n    },\n  },\n  defaultVariants: {\n    orientation: 'horizontal',\n  },\n});\n\nexport function Separator({\n  className,\n  orientation,\n  ...props\n}: React.ComponentProps<typeof BaseSeparator> &\n  VariantProps<typeof separatorVariants>) {\n  return (\n    <BaseSeparator\n      data-slot=\"separator\"\n      className={cn(separatorVariants({ orientation, className }))}\n      {...props}\n    />\n  );\n}\n"
+      "content": "'use client';\n\nimport { Separator as BaseSeparator } from '@base-ui/react/separator';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '#utils';\n\nexport const separatorVariants = cva('bg-separator', {\n  variants: {\n    orientation: {\n      horizontal: 'w-full h-px',\n      vertical: 'w-px min-h-5',\n    },\n  },\n  defaultVariants: {\n    orientation: 'horizontal',\n  },\n});\n\nexport function Separator({\n  className,\n  orientation,\n  ...props\n}: React.ComponentProps<typeof BaseSeparator> &\n  VariantProps<typeof separatorVariants>) {\n  return (\n    <BaseSeparator\n      data-slot=\"separator\"\n      className={cn(separatorVariants({ orientation, className }))}\n      {...props}\n    />\n  );\n}"
     }
   ]
 }
