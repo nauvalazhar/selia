@@ -6,6 +6,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 } from 'components/selia/breadcrumb';
+import { Button } from 'components/selia/button';
 import { Menu, MenuItem, MenuPopup, MenuTrigger } from 'components/selia/menu';
 import { Link } from 'react-router';
 
@@ -21,10 +22,9 @@ export default function BreadcrumbEllipsisMenuExample() {
           <Menu>
             <MenuTrigger
               render={
-                <BreadcrumbEllipsis
-                  data-slot="breadcrumb-ellipsis"
-                  render={<button />}
-                />
+                <Button variant="plain" size="sm-icon">
+                  <BreadcrumbEllipsis />
+                </Button>
               }
             />
             <MenuPopup size="compact">
