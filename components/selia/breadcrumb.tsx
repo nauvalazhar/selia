@@ -31,7 +31,10 @@ export function BreadcrumbItem({
   return (
     <li
       data-slot="breadcrumb-item"
-      className={cn('inline-flex items-center gap-1.5', className)}
+      className={cn(
+        'inline-flex items-center gap-1.5 group/breadcrumb-item',
+        className,
+      )}
       {...props}
     />
   );
@@ -100,43 +103,34 @@ export function BreadcrumbSeparator({
 
 export function BreadcrumbEllipsis({
   className,
-  render,
   ...props
-}: useRender.ComponentProps<'span'>) {
-  const isButton = React.isValidElement(render) && render.type === 'button';
-
-  return useRender({
-    defaultTagName: 'span',
-    render,
-    props: {
-      'data-slot': 'breadcrumb-ellipsis',
-      'aria-hidden': isButton ? undefined : true,
-      role: isButton ? undefined : 'presentation',
-      className: cn(
-        'size-9 flex items-center justify-center text-muted transition-colors',
-        isButton && 'cursor-pointer hover:text-foreground',
+}: React.ComponentProps<'span'>) {
+  return (
+    <span
+      data-slot="breadcrumb-ellipsis"
+      role="presentation"
+      aria-hidden="true"
+      className={cn(
+        'size-8.5 flex items-center justify-center',
+        'text-muted group-hover/breadcrumb-item:text-foreground',
         className,
-      ),
-      children: (
-        <>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4"
-          >
-            <circle cx="12" cy="12" r="1" />
-            <circle cx="19" cy="12" r="1" />
-            <circle cx="5" cy="12" r="1" />
-          </svg>
-          <span className="sr-only">More</span>
-        </>
-      ),
-      ...props,
-    },
-  });
+      )}
+      {...props}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="size-4.5"
+      >
+        <circle cx="12" cy="12" r="1" />
+        <circle cx="19" cy="12" r="1" />
+        <circle cx="5" cy="12" r="1" />
+      </svg>
+    </span>
+  );
 }
