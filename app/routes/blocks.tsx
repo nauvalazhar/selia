@@ -15,6 +15,19 @@ export async function loader() {
 export default function Blocks() {
   const { sources } = useLoaderData<typeof loader>();
 
+  const categorizedBlocks = Object.entries(blocks).reduce(
+    (acc, [key, block]) => {
+      if (!acc[block.category]) {
+        acc[block.category] = [];
+      }
+      acc[block.category].push([key, block]);
+      return acc;
+    },
+    {} as Record<string, [string, typeof blocks[keyof typeof blocks]][]>,
+  );
+
+  const categories = Object.keys(categorizedBlocks);
+
   return (
     <div className="container mx-auto py-8">
       <title>Blocks - Selia</title>
@@ -56,19 +69,41 @@ export default function Blocks() {
         </div>
       </div>
 
-      <div id="blocks" className="py-10 flex flex-col gap-20">
-        {Object.entries(blocks).map(
-          ([key, { name, description, pathIndex }]) => (
-            <BlockPreview
-              key={key}
-              name={key}
-              title={name}
-              description={description}
-              codeIndex={pathIndex}
-              code={sources[key as keyof typeof sources]}
-            />
-          ),
-        )}
+      <div id="blocks" className="py-10">
+        <div className="mb-12 flex flex-wrap gap-2">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              render={<a href={`#category-${category.toLowerCase()}`} />}
+              variant="outline"
+              size="sm"
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-20">
+          {Object.entries(categorizedBlocks).map(([category, categoryBlocks]) => (
+            <div key={category} id={`category-${category.toLowerCase()}`}>
+              <h2 className="text-3xl font-semibold tracking-tight mb-8">
+                {category}
+              </h2>
+              <div className="flex flex-col gap-20">
+                {categoryBlocks.map(([key, { name, description, pathIndex }]) => (
+                  <BlockPreview
+                    key={key}
+                    name={key}
+                    title={name}
+                    description={description}
+                    codeIndex={pathIndex}
+                    code={sources[key as keyof typeof sources]}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
