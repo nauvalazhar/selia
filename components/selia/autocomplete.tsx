@@ -13,7 +13,7 @@ export function Autocomplete({
 
 export const autocompleteInputVariants = cva(
   [
-    'h-9.5 px-2.5 w-full text-foreground placeholder:text-dimmed transition-all',
+    'h-9.5 px-2.5 w-full text-foreground placeholder:text-dimmed transition-[color,box-shadow]',
     'disabled:opacity-70 disabled:cursor-not-allowed',
   ],
   {
