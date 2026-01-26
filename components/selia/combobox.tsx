@@ -14,7 +14,7 @@ export function Combobox({
 
 export const comboboxTriggerVariants = cva(
   [
-    'px-2.5 w-full bg-input rounded placeholder:text-dimmed transition[color,box-shadow]',
+    'px-2.5 w-full bg-input rounded placeholder:text-dimmed transition-[color,box-shadow]',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'has-focus:ring-primary has-focus:ring-2',
     'flex items-center gap-2.5 cursor-pointer',

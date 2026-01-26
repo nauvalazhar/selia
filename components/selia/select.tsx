@@ -20,7 +20,7 @@ export function Select({
 
 export const selectTriggerVariants = cva(
   [
-    'h-9.5 px-3.5 w-full bg-input rounded placeholder:text-dimmed transition[color,box-shadow]',
+    'h-9.5 px-3.5 w-full bg-input rounded placeholder:text-dimmed transition-[color,box-shadow]',
     'focus:outline-0 focus:ring-primary focus:ring-2',
     'flex items-center gap-2.5 cursor-pointer',
     'data-disabled:cursor-not-allowed data-disabled:opacity-70',
