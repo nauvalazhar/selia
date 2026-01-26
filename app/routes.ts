@@ -11,6 +11,8 @@ export default [
     index('routes/_index.tsx'),
     layout('routes/docs.tsx', [route('docs/:path/*', 'routes/docs.view.tsx')]),
     route('blocks', 'routes/blocks.tsx'),
+    route('blocks/browse', 'routes/blocks.browse.tsx'),
+    route('blocks/:category', 'routes/blocks.category.tsx'),
   ]),
   route('block/:path', 'routes/blocks.view.tsx'),
   route('playground', 'routes/playground.tsx'),

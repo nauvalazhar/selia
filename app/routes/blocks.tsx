@@ -1,32 +1,39 @@
 import { Button } from 'components/selia/button';
 import { Text } from 'components/selia/text';
-import { ArrowDownCircleIcon, ExternalLinkIcon } from 'lucide-react';
-import { useLoaderData } from 'react-router';
-import { getBlockSources } from '~/lib/source';
+import {
+  ExternalLinkIcon,
+  MessageCircleIcon,
+  MenuIcon,
+  UserIcon,
+  FileTextIcon,
+  LayoutDashboardIcon,
+  GridIcon,
+} from 'lucide-react';
 import { blocks } from 'components/blocks';
-import { BlockPreview } from 'components/block-preview';
+import { categoryToSlug } from '~/lib/utils';
+
+const categoryIconMap: Record<string, React.ReactNode> = {
+  Chat: <MessageCircleIcon className="size-6" />,
+  Sidebar: <MenuIcon className="size-6" />,
+  Profile: <UserIcon className="size-6" />,
+  Forms: <FileTextIcon className="size-6" />,
+  Dashboard: <LayoutDashboardIcon className="size-6" />,
+};
 
 export async function loader() {
-  const sources = await getBlockSources();
-
-  return { sources };
+  return null;
 }
 
 export default function Blocks() {
-  const { sources } = useLoaderData<typeof loader>();
+  const categories = [...new Set(Object.values(blocks).map(b => b.category))].sort();
 
-  const categorizedBlocks = Object.entries(blocks).reduce(
-    (acc, [key, block]) => {
-      if (!acc[block.category]) {
-        acc[block.category] = [];
-      }
-      acc[block.category].push([key, block]);
+  const blockCountByCategory = categories.reduce(
+    (acc, category) => {
+      acc[category] = Object.values(blocks).filter(b => b.category === category).length;
       return acc;
     },
-    {} as Record<string, [string, typeof blocks[keyof typeof blocks]][]>,
+    {} as Record<string, number>,
   );
-
-  const categories = Object.keys(categorizedBlocks);
 
   return (
     <div className="container mx-auto py-8">
@@ -43,12 +50,12 @@ export default function Blocks() {
           </Text>
           <Button
             className="mt-6"
-            render={<a href="#blocks" />}
+            render={<a href="/blocks/browse" />}
             size="lg"
             pill
             variant="secondary"
           >
-            Browse <ArrowDownCircleIcon />
+            Browse All <GridIcon />
           </Button>
           <Button
             className="mt-6 ml-2.5"
@@ -69,39 +76,27 @@ export default function Blocks() {
         </div>
       </div>
 
-      <div id="blocks" className="py-10">
-        <div className="mb-12 flex flex-wrap gap-2">
+      <div id="categories" className="py-10">
+        <h2 className="text-3xl font-semibold tracking-tight mb-12 text-center">
+          Explore by Category
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {categories.map((category) => (
-            <Button
+            <a
               key={category}
-              render={<a href={`#category-${category.toLowerCase()}`} />}
-              variant="outline"
-              size="sm"
+              href={`/blocks/${categoryToSlug(category)}`}
+              className="group flex flex-col items-center justify-center rounded-lg border border-slate-200 bg-white p-5 transition-all duration-200 hover:border-slate-300 dark:border-slate-700 dark:bg-transparent dark:hover:border-slate-600"
             >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-20">
-          {Object.entries(categorizedBlocks).map(([category, categoryBlocks]) => (
-            <div key={category} id={`category-${category.toLowerCase()}`}>
-              <h2 className="text-3xl font-semibold tracking-tight mb-8">
-                {category}
-              </h2>
-              <div className="flex flex-col gap-20">
-                {categoryBlocks.map(([key, { name, description, pathIndex }]) => (
-                  <BlockPreview
-                    key={key}
-                    name={key}
-                    title={name}
-                    description={description}
-                    codeIndex={pathIndex}
-                    code={sources[key as keyof typeof sources]}
-                  />
-                ))}
+              <div className="mb-2 text-slate-600 group-hover:text-slate-700 transition-colors dark:text-slate-400 dark:group-hover:text-slate-300">
+                {categoryIconMap[category]}
               </div>
-            </div>
+              <h3 className="text-base font-semibold text-slate-900 text-center dark:text-white">
+                {category}
+              </h3>
+              <p className="mt-1 text-xs text-slate-500 text-center dark:text-slate-400">
+                {blockCountByCategory[category]} block{blockCountByCategory[category] !== 1 ? 's' : ''}
+              </p>
+            </a>
           ))}
         </div>
       </div>
