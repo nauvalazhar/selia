@@ -1,22 +1,33 @@
 import React from 'react';
 
-type Block = {
+export type Block = {
   [key: string]: {
     name: string;
     description: string;
-    category?: string;
+    category: (typeof categories)[number];
     pathIndex?: string;
     path: string;
+    featured?: boolean;
     component: React.LazyExoticComponent<React.ComponentType<any>>;
   };
 };
+
+export const categories = [
+  'AI',
+  'Dashboard',
+  'Forms',
+  'Sidebar',
+  'Misc',
+] as const;
 
 export const blocks: Block = {
   aichat: {
     name: 'AI Chat',
     description: 'A chat interface with AI capabilities.',
+    category: 'AI',
     pathIndex: 'page.tsx',
     path: 'components/blocks/ai-chat',
+    featured: true,
     component: React.lazy(() =>
       import('./ai-chat/page').then((mod) => ({ default: mod.default })),
     ),
@@ -24,6 +35,7 @@ export const blocks: Block = {
   sidebarMail: {
     name: 'Sidebar Mail',
     description: 'A sidebar for mail application.',
+    category: 'Sidebar',
     path: 'components/blocks/sidebar-mail.tsx',
     component: React.lazy(() =>
       import('./sidebar-mail').then((mod) => ({ default: mod.default })),
@@ -32,6 +44,7 @@ export const blocks: Block = {
   sidebarStorage: {
     name: 'Sidebar Storage',
     description: 'A sidebar for storage management.',
+    category: 'Sidebar',
     path: 'components/blocks/sidebar-storage.tsx',
     component: React.lazy(() =>
       import('./sidebar-storage').then((mod) => ({ default: mod.default })),
@@ -40,6 +53,7 @@ export const blocks: Block = {
   sidebarGit: {
     name: 'Sidebar Git',
     description: 'A sidebar for git application.',
+    category: 'Sidebar',
     path: 'components/blocks/sidebar-git.tsx',
     component: React.lazy(() =>
       import('./sidebar-git').then((mod) => ({ default: mod.default })),
@@ -48,6 +62,7 @@ export const blocks: Block = {
   sidebarChat: {
     name: 'Sidebar Chat',
     description: 'A sidebar for chat application.',
+    category: 'Sidebar',
     path: 'components/blocks/sidebar-chat.tsx',
     component: React.lazy(() =>
       import('./sidebar-chat').then((mod) => ({ default: mod.default })),
@@ -56,6 +71,7 @@ export const blocks: Block = {
   sidebarCode: {
     name: 'Sidebar Code',
     description: 'A sidebar with a file tree for code editor.',
+    category: 'Sidebar',
     path: 'components/blocks/sidebar-code.tsx',
     component: React.lazy(() =>
       import('./sidebar-code').then((mod) => ({ default: mod.default })),
@@ -64,6 +80,7 @@ export const blocks: Block = {
   profile: {
     name: 'Profile',
     description: 'A simple profile block with buttons and a separator.',
+    category: 'Misc',
     path: 'components/blocks/profile.tsx',
     component: React.lazy(() =>
       import('./profile').then((mod) => ({ default: mod.default })),
@@ -72,7 +89,9 @@ export const blocks: Block = {
   login: {
     name: 'Login',
     description: 'A simple login form with Google and GitHub authentication.',
+    category: 'Forms',
     path: 'components/blocks/login.tsx',
+    featured: true,
     component: React.lazy(() =>
       import('./login').then((mod) => ({ default: mod.default })),
     ),
@@ -80,8 +99,10 @@ export const blocks: Block = {
   dashboard: {
     name: 'Dashboard',
     description: 'A simple dashboard with a sidebar and a main content area.',
+    category: 'Dashboard',
     pathIndex: 'page.tsx',
     path: 'components/blocks/dashboard',
+    featured: true,
     component: React.lazy(() =>
       import('./dashboard/page').then((mod) => ({ default: mod.default })),
     ),
@@ -89,7 +110,9 @@ export const blocks: Block = {
   contact: {
     name: 'Contact',
     description: 'A contact form block with contact information.',
+    category: 'Forms',
     path: 'components/blocks/contact.tsx',
+    featured: true,
     component: React.lazy(() =>
       import('./contact').then((mod) => ({ default: mod.default })),
     ),

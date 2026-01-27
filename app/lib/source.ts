@@ -1,5 +1,5 @@
 import * as ALL_EXAMPLES from 'components/examples';
-import { blocks } from 'components/blocks';
+import { type Block } from 'components/blocks';
 import { stat } from 'node:fs/promises';
 import { readdir } from 'node:fs/promises';
 import path from 'node:path';
@@ -48,7 +48,7 @@ async function readFilesRecursively(dir: string): Promise<Record<string, any>> {
   return result;
 }
 
-export async function getBlockSources() {
+export async function getBlockSources(blocks: Block) {
   return Object.fromEntries(
     await Promise.all(
       Object.entries(blocks).map(async ([key, { path }]) => {
