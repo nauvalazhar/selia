@@ -7,7 +7,9 @@ export default {
   // Server-side render by default, to enable SPA mode set this to `false`
   async prerender({ getStaticPaths }) {
     const components = await import.meta.glob('./app/routes/docs.*.mdx');
-    const categories = [...new Set(Object.values(blocks).map(b => b.category))];
+    const categories = [
+      ...new Set(Object.values(blocks).map((b) => b.category)),
+    ];
 
     return [
       ...getStaticPaths(),
@@ -25,6 +27,7 @@ export default {
         return `/block/${block}`;
       }),
       '/blocks/browse',
+      '/blocks',
       ...categories.map((category) => {
         return `/blocks/${categoryToSlug(category)}`;
       }),

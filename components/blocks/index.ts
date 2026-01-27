@@ -1,23 +1,33 @@
 import React from 'react';
 
-type Block = {
+export type Block = {
   [key: string]: {
     name: string;
     description: string;
-    category: string;
+    category: (typeof categories)[number];
     pathIndex?: string;
     path: string;
+    featured?: boolean;
     component: React.LazyExoticComponent<React.ComponentType<any>>;
   };
 };
+
+export const categories = [
+  'AI',
+  'Dashboard',
+  'Forms',
+  'Sidebar',
+  'Misc',
+] as const;
 
 export const blocks: Block = {
   aichat: {
     name: 'AI Chat',
     description: 'A chat interface with AI capabilities.',
-    category: 'Chat',
+    category: 'AI',
     pathIndex: 'page.tsx',
     path: 'components/blocks/ai-chat',
+    featured: true,
     component: React.lazy(() =>
       import('./ai-chat/page').then((mod) => ({ default: mod.default })),
     ),
@@ -70,7 +80,7 @@ export const blocks: Block = {
   profile: {
     name: 'Profile',
     description: 'A simple profile block with buttons and a separator.',
-    category: 'Profile',
+    category: 'Misc',
     path: 'components/blocks/profile.tsx',
     component: React.lazy(() =>
       import('./profile').then((mod) => ({ default: mod.default })),
@@ -81,6 +91,7 @@ export const blocks: Block = {
     description: 'A simple login form with Google and GitHub authentication.',
     category: 'Forms',
     path: 'components/blocks/login.tsx',
+    featured: true,
     component: React.lazy(() =>
       import('./login').then((mod) => ({ default: mod.default })),
     ),
@@ -91,6 +102,7 @@ export const blocks: Block = {
     category: 'Dashboard',
     pathIndex: 'page.tsx',
     path: 'components/blocks/dashboard',
+    featured: true,
     component: React.lazy(() =>
       import('./dashboard/page').then((mod) => ({ default: mod.default })),
     ),
@@ -100,6 +112,7 @@ export const blocks: Block = {
     description: 'A contact form block with contact information.',
     category: 'Forms',
     path: 'components/blocks/contact.tsx',
+    featured: true,
     component: React.lazy(() =>
       import('./contact').then((mod) => ({ default: mod.default })),
     ),
