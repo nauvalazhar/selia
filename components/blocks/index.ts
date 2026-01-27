@@ -16,6 +16,7 @@ export const categories = [
   'AI',
   'Dashboard',
   'Forms',
+  'Landing Page',
   'Sidebar',
   'Misc',
 ] as const;

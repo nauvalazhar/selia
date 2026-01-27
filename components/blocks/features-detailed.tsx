@@ -7,7 +7,7 @@ import {
   ShieldIcon,
   BarChartIcon,
   UsersIcon,
-  IntegrateIcon,
+  PlugIcon,
 } from 'lucide-react';
 
 export default function FeaturesDetailedBlock() {
@@ -43,7 +43,7 @@ export default function FeaturesDetailedBlock() {
         'Built for teams. Real-time updates, commenting, and sharing make teamwork seamless.',
     },
     {
-      icon: IntegrateIcon,
+      icon: PlugIcon,
       title: 'Integrations',
       description:
         'Connect with your favorite tools. Native integrations with 100+ popular platforms out of the box.',
