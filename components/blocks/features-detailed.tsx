@@ -1,5 +1,6 @@
 import { Card, CardBody } from 'components/selia/card';
 import { Heading } from 'components/selia/heading';
+import { IconBox } from 'components/selia/icon-box';
 import { Text } from 'components/selia/text';
 import {
   LightbulbIcon,
@@ -57,30 +58,27 @@ export default function FeaturesDetailedBlock() {
           Powerful Features
         </Heading>
         <Text className="text-xl text-dimmed max-w-2xl mx-auto">
-          Everything you need to build modern, scalable applications with confidence.
+          Everything you need to build modern, scalable applications with
+          confidence.
         </Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
             <Card
               key={index}
-              className="border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+              className="hover:ring-primary transition-[colors,box-shadow]"
             >
               <CardBody className="p-8">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-blue-600 dark:text-blue-300" />
-                </div>
-
-                <Heading className="text-xl font-bold mb-3">
+                <IconBox variant="primary" size="lg">
+                  <Icon />
+                </IconBox>
+                <Heading className="text-xl font-semibold mb-2 mt-4">
                   {feature.title}
                 </Heading>
-
-                <Text className="text-dimmed">
-                  {feature.description}
-                </Text>
+                <Text className="text-dimmed">{feature.description}</Text>
               </CardBody>
             </Card>
           );

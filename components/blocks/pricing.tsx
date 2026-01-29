@@ -39,7 +39,7 @@ export default function PricingBlock() {
     {
       name: 'Enterprise',
       price: 'Custom',
-      period: 'contact sales',
+      period: '',
       description: 'For large organizations',
       features: [
         'Everything in Professional',
@@ -61,11 +61,12 @@ export default function PricingBlock() {
           Simple, Transparent Pricing
         </Heading>
         <Text className="text-xl text-dimmed max-w-2xl mx-auto">
-          Choose the perfect plan for your needs. Always flexible to scale up or down.
+          Choose the perfect plan for your needs. Always flexible to scale up or
+          down.
         </Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {plans.map((plan, index) => (
           <Card
             key={index}
@@ -76,38 +77,36 @@ export default function PricingBlock() {
             } overflow-hidden`}
           >
             {plan.popular && (
-              <div className="bg-blue-500 text-white text-center py-2 text-sm font-semibold">
-                MOST POPULAR
+              <div className="bg-blue-500 text-white text-center py-2 text-xs tracking-wider font-semibold uppercase">
+                Most Popular
               </div>
             )}
             <CardBody className="p-8">
-              <Heading className="text-2xl font-bold mb-2">
-                {plan.name}
-              </Heading>
+              <Heading className="text-2xl font-bold mb-2">{plan.name}</Heading>
               <Text className="text-dimmed text-sm mb-6">
                 {plan.description}
               </Text>
 
               <div className="mb-6">
-                <div className="text-5xl font-bold">
-                  {plan.price}
-                </div>
-                <Text className="text-dimmed text-sm">
-                  {plan.period}
-                </Text>
+                <div className="text-5xl font-bold">{plan.price}</div>
+                {plan.period && (
+                  <Text className="text-dimmed text-sm">{plan.period}</Text>
+                )}
               </div>
 
-              <Button className="w-full mb-8" variant={plan.popular ? 'primary' : 'outline'}>
+              <Button
+                className="w-full mb-8"
+                variant={plan.popular ? 'primary' : 'outline'}
+                size="lg"
+              >
                 {plan.cta}
               </Button>
 
-              <div className="space-y-4">
+              <div className="space-y-2.5">
                 {plan.features.map((feature, i) => (
                   <div key={i} className="flex gap-3">
                     <CheckIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <Text className="text-sm">
-                      {feature}
-                    </Text>
+                    <Text className="text-sm">{feature}</Text>
                   </div>
                 ))}
               </div>
@@ -117,7 +116,7 @@ export default function PricingBlock() {
       </div>
 
       <div className="text-center mt-12">
-        <Text className="text-dimmed">
+        <Text className="text-dimmed text-sm">
           All plans include a 14-day free trial. No credit card required.
         </Text>
       </div>

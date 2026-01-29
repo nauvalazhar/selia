@@ -35,7 +35,7 @@ const categoryIconMap: Record<string, React.ReactNode> = {
   Misc: <CircleHelpIcon />,
   Forms: <FileTextIcon />,
   Dashboard: <LayoutDashboardIcon />,
-  'Landing Page': <PaletteIcon />,
+  Marketing: <PaletteIcon />,
 };
 
 export async function loader({ params }: Route.LoaderArgs) {

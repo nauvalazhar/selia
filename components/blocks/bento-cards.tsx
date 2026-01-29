@@ -1,5 +1,6 @@
 import { Card, CardBody } from 'components/selia/card';
 import { Heading } from 'components/selia/heading';
+import { IconBox } from 'components/selia/icon-box';
 import { Text } from 'components/selia/text';
 import {
   SparklesIcon,
@@ -15,7 +16,8 @@ export default function BentoCardsBlock() {
     {
       icon: SparklesIcon,
       title: 'Beautiful Design',
-      description: 'Crafted with attention to detail and user experience in mind.',
+      description:
+        'Crafted with attention to detail and user experience in mind.',
       span: 'md:col-span-2',
     },
     {
@@ -42,12 +44,6 @@ export default function BentoCardsBlock() {
       description: 'Easy to navigate and understand.',
       span: '',
     },
-    {
-      icon: CodeIcon,
-      title: 'Developer Friendly',
-      description: 'Clean code and great documentation.',
-      span: 'md:col-span-2',
-    },
   ];
 
   return (
@@ -61,22 +57,23 @@ export default function BentoCardsBlock() {
         </Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr max-w-6xl mx-auto">
         {cards.map((card, index) => {
           const Icon = card.icon;
+
           return (
             <Card
               key={index}
               className={`border border-slate-200 dark:border-slate-800 ${card.span}`}
             >
               <CardBody className="p-8 flex flex-col">
-                <Icon className="w-8 h-8 text-blue-500 mb-4" />
-                <Heading className="text-xl font-semibold mb-2">
+                <IconBox variant="primary" size="lg">
+                  <Icon />
+                </IconBox>
+                <Heading className="text-xl font-semibold mb-2 mt-4">
                   {card.title}
                 </Heading>
-                <Text className="text-dimmed">
-                  {card.description}
-                </Text>
+                <Text className="text-dimmed">{card.description}</Text>
               </CardBody>
             </Card>
           );

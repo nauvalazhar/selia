@@ -10,33 +10,24 @@ export default function VideoSectionBlock() {
           See It in Action
         </Heading>
         <Text className="text-xl text-dimmed max-w-2xl mx-auto">
-          Watch a quick demo of how our platform works and how it can transform your workflow.
+          Watch a quick demo of how our platform works and how it can transform
+          your workflow.
         </Text>
       </div>
 
       <div className="relative max-w-4xl mx-auto group">
-        {/* Video Container */}
-        <div className="relative bg-black rounded-xl overflow-hidden aspect-video">
-          {/* Placeholder for video */}
-          <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-            <Text className="text-white/40">
-              Video Embed Here
-            </Text>
+        <div className="relative bg-black rounded-4xl overflow-hidden aspect-video">
+          <div className="w-full h-full bg-accent flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1646066490251-1ec58df3d7f5?q=80&w=1171&auto=format&fit=crop" />
           </div>
-
-          {/* Play Button Overlay */}
           <button className="absolute inset-0 flex items-center justify-center group-hover:bg-black/20 transition-colors">
-            <div className="w-20 h-20 bg-white/90 group-hover:bg-white rounded-full flex items-center justify-center transition-all transform group-hover:scale-110">
-              <PlayIcon className="w-8 h-8 text-black fill-black ml-1" />
+            <div className="size-14 bg-white/90 group-hover:bg-white rounded-full flex items-center justify-center transition-all transform group-hover:scale-110">
+              <PlayIcon className="size-6 text-black fill-black" />
             </div>
           </button>
-
-          {/* Border Glow */}
           <div className="absolute inset-0 rounded-xl border-2 border-white/10 group-hover:border-white/20 transition-colors" />
         </div>
-
-        {/* Shadow Effect */}
-        <div className="absolute inset-0 rounded-xl -z-10 -m-4 bg-gradient-to-br from-blue-600/20 to-purple-600/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 rounded-4xl -z-10 -m-4 bg-purple-500/20 blur-3xl" />
       </div>
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -58,9 +49,7 @@ export default function VideoSectionBlock() {
             <Heading className="text-lg font-bold mb-2">
               {resource.title}
             </Heading>
-            <Text className="text-dimmed">
-              {resource.description}
-            </Text>
+            <Text className="text-dimmed">{resource.description}</Text>
           </div>
         ))}
       </div>

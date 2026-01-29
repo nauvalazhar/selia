@@ -1,7 +1,8 @@
 import { Card, CardBody } from 'components/selia/card';
 import { Heading } from 'components/selia/heading';
+import { IconBox } from 'components/selia/icon-box';
 import { Text } from 'components/selia/text';
-import { CheckCircleIcon } from 'lucide-react';
+import { CheckCircle2Icon } from 'lucide-react';
 
 export default function AboutBlock() {
   const features = [
@@ -29,24 +30,25 @@ export default function AboutBlock() {
         <Heading className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
           Why Choose Our Blocks?
         </Heading>
-        <Text className="text-xl text-dimmed max-w-2xl mx-auto">
-          We provide everything you need to build modern, accessible web applications with ease.
+        <Text className="text-xl text-dimmed max-w-xl mx-auto">
+          We provide everything you need to build modern, accessible web
+          applications with ease.
         </Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {features.map((feature, index) => (
-          <Card key={index} className="border border-slate-200 dark:border-slate-800">
-            <CardBody className="p-6">
+          <Card key={index}>
+            <CardBody>
               <div className="flex gap-4">
-                <CheckCircleIcon className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+                <IconBox variant="success" circle>
+                  <CheckCircle2Icon />
+                </IconBox>
                 <div>
                   <Heading className="text-lg font-semibold mb-2">
                     {feature.title}
                   </Heading>
-                  <Text className="text-dimmed">
-                    {feature.description}
-                  </Text>
+                  <Text className="text-dimmed">{feature.description}</Text>
                 </div>
               </div>
             </CardBody>

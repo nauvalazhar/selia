@@ -5,7 +5,7 @@ import { ArrowRightIcon } from 'lucide-react';
 
 export default function HeroBlock() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+    <div className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white dark:from-background dark:to-primary/10 min-h-dvh">
       <div className="container mx-auto px-4 py-20 md:py-32">
         <div className="mx-auto max-w-2xl text-center">
           <Heading className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
@@ -13,24 +13,17 @@ export default function HeroBlock() {
           </Heading>
 
           <Text className="text-xl md:text-2xl text-dimmed font-light mb-8">
-            Create stunning user experiences with our collection of pre-built blocks and components. Drag, drop, and customize to your needs.
+            Create stunning user experiences with our collection of pre-built
+            blocks and components. Drag, drop, and customize to your needs.
           </Text>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              pill
-              className="gap-2"
-            >
+            <Button size="lg" pill className="gap-2">
               Get Started
-              <ArrowRightIcon className="w-5 h-5" />
+              <ArrowRightIcon />
             </Button>
 
-            <Button
-              size="lg"
-              pill
-              variant="outline"
-            >
+            <Button size="lg" pill variant="outline">
               Learn More
             </Button>
           </div>

@@ -1,3 +1,4 @@
+import { Card, CardBody } from 'components/selia/card';
 import { Heading } from 'components/selia/heading';
 import { Text } from 'components/selia/text';
 
@@ -23,20 +24,21 @@ export default function LogoGridBlock() {
           Used by Leading Companies
         </Heading>
         <Text className="text-lg text-dimmed max-w-2xl mx-auto">
-          Join hundreds of companies who trust us with their most important projects.
+          Join hundreds of companies who trust us with their most important
+          projects.
         </Text>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {companies.map((company, index) => (
-          <div
+          <Card
             key={index}
-            className="flex items-center justify-center p-8 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-slate-300 dark:hover:border-slate-700 transition-colors bg-slate-50 dark:bg-slate-900"
+            className="hover:ring-accent hover:bg-accent transition-colors"
           >
-            <Text className="font-semibold text-slate-700 dark:text-slate-300">
-              {company}
-            </Text>
-          </div>
+            <CardBody className="p-8 flex items-center justify-center">
+              <Text className="font-semibold">{company}</Text>
+            </CardBody>
+          </Card>
         ))}
       </div>
 

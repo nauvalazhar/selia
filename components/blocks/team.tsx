@@ -55,30 +55,26 @@ export default function TeamBlock() {
           Meet the Team
         </Heading>
         <Text className="text-xl text-dimmed max-w-2xl mx-auto">
-          Talented individuals dedicated to building the best tools for designers and developers.
+          Talented individuals dedicated to building the best tools for
+          designers and developers.
         </Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {team.map((member, index) => (
-          <Card
-            key={index}
-            className="border border-slate-200 dark:border-slate-800 text-center"
-          >
+          <Card key={index} className="text-center">
             <CardBody className="p-8">
-              <div className="mb-6 flex justify-center">
-                <Avatar className="w-20 h-20 text-2xl">
-                  {member.avatar}
-                </Avatar>
-              </div>
+              <Avatar className="size-20 text-2xl mb-6 mx-auto">
+                {member.avatar}
+              </Avatar>
 
-              <Heading className="text-lg font-bold mb-1">
+              <Heading className="text-lg font-semibold mb-1">
                 {member.name}
               </Heading>
-              <Text className="text-sm text-blue-500 font-semibold mb-3">
+              <Text className="text-sm text-primary font-semibold mb-3">
                 {member.role}
               </Text>
-              <Text className="text-sm text-dimmed mb-6">
+              <Text className="text-sm text-dimmed mb-6 leading-relaxed">
                 {member.bio}
               </Text>
 
@@ -89,9 +85,9 @@ export default function TeamBlock() {
                     <a
                       key={i}
                       href={social.href}
-                      className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                      className="text-dimmed hover:text-primary transition-colors"
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="size-5" />
                     </a>
                   );
                 })}

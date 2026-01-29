@@ -6,42 +6,36 @@ import { ArrowRightIcon } from 'lucide-react';
 export default function CTASectionBlock() {
   return (
     <div className="container mx-auto px-4 py-20">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 px-8 py-20 md:px-16 md:py-32">
-        {/* Decorative elements */}
+      <div className="relative overflow-hidden rounded-2xl bg-primary px-8 py-20 md:px-16 md:py-32">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mb-48" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/50 rounded-full -mr-48 -mt-48" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/50 rounded-full -ml-48 -mb-48" />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center max-w-2xl mx-auto text-white">
-          <Heading className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+        <div className="relative z-10 text-center max-w-2xl mx-auto">
+          <Heading className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">
             Ready to Get Started?
           </Heading>
-          <Text className="text-lg text-blue-100 mb-8">
-            Join thousands of teams building beautiful interfaces with our blocks and components. Start your free trial today.
+          <Text className="text-lg text-white/60 mb-8 leading-relaxed">
+            Join thousands of teams building beautiful interfaces with our
+            blocks and components. Start your free trial today.
           </Text>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               pill
-              className="gap-2 bg-white text-blue-600 hover:bg-blue-50"
+              className="gap-2 bg-white hover:bg-white/80 text-primary"
             >
               Start Free Trial
               <ArrowRightIcon className="w-5 h-5" />
             </Button>
-            <Button
-              size="lg"
-              pill
-              variant="outline"
-              className="text-white border-white hover:bg-white/10"
-            >
+            <Button size="lg" pill variant="plain" className="text-white">
               Schedule Demo
             </Button>
           </div>
 
-          <Text className="text-sm text-blue-100 mt-6">
+          <Text className="text-sm text-white/60 mt-6">
             No credit card required. 14-day free trial.
           </Text>
         </div>

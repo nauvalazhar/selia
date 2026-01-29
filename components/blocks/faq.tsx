@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { Heading } from 'components/selia/heading';
-import { Text } from 'components/selia/text';
+import { Text, TextLink } from 'components/selia/text';
 import { ChevronDownIcon } from 'lucide-react';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionPanel,
+} from 'components/selia/accordion';
 
 export default function FAQBlock() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -30,7 +36,7 @@ export default function FAQBlock() {
     {
       question: 'Do you offer refunds?',
       answer:
-        'We offer a 30-day money-back guarantee on all plans. If you\'re not satisfied, contact our support team for a full refund.',
+        "We offer a 30-day money-back guarantee on all plans. If you're not satisfied, contact our support team for a full refund.",
     },
     {
       question: 'How is my data secured?',
@@ -50,43 +56,28 @@ export default function FAQBlock() {
         </Text>
       </div>
 
-      <div className="max-w-2xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden"
-          >
-            <button
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
-            >
-              <Text className="text-lg font-semibold text-left">
-                {faq.question}
-              </Text>
-              <ChevronDownIcon
-                className={`w-5 h-5 text-dimmed flex-shrink-0 transition-transform ${
-                  openIndex === index ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
-
-            {openIndex === index && (
-              <div className="px-6 py-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-                <Text className="text-dimmed">
-                  {faq.answer}
-                </Text>
-              </div>
-            )}
-          </div>
-        ))}
+      <div className="max-w-2xl mx-auto">
+        <Accordion
+          value={openIndex !== null ? [String(openIndex)] : undefined}
+          onValueChange={(value) => {
+            setOpenIndex(value !== undefined ? Number(value) : null);
+          }}
+        >
+          {faqs.map((faq, index) => (
+            <AccordionItem key={index} value={String(index)}>
+              <AccordionTrigger>{faq.question}</AccordionTrigger>
+              <AccordionPanel>
+                <Text className="text-dimmed">{faq.answer}</Text>
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
 
       <div className="text-center mt-12">
         <Text className="text-dimmed">
           Can't find what you're looking for?{' '}
-          <a href="#" className="text-blue-500 hover:text-blue-600">
-            Contact our support team
-          </a>
+          <TextLink href="#">Contact our support team</TextLink>
         </Text>
       </div>
     </div>

@@ -16,7 +16,7 @@ export const categories = [
   'AI',
   'Dashboard',
   'Forms',
-  'Landing Page',
+  'Marketing',
   'Sidebar',
   'Misc',
 ] as const;
@@ -120,8 +120,9 @@ export const blocks: Block = {
   },
   hero: {
     name: 'Hero',
-    description: 'A hero section with headline, subtitle, and call-to-action buttons.',
-    category: 'Landing Page',
+    description:
+      'A hero section with headline, subtitle, and call-to-action buttons.',
+    category: 'Marketing',
     path: 'components/blocks/hero.tsx',
     component: React.lazy(() =>
       import('./hero').then((mod) => ({ default: mod.default })),
@@ -129,8 +130,9 @@ export const blocks: Block = {
   },
   about: {
     name: 'About',
-    description: 'An about section showcasing key features with icons and descriptions.',
-    category: 'Landing Page',
+    description:
+      'An about section showcasing key features with icons and descriptions.',
+    category: 'Marketing',
     path: 'components/blocks/about.tsx',
     component: React.lazy(() =>
       import('./about').then((mod) => ({ default: mod.default })),
@@ -139,7 +141,7 @@ export const blocks: Block = {
   bentoCards: {
     name: 'Bento Cards',
     description: 'A grid layout with bento-style cards of varying sizes.',
-    category: 'Landing Page',
+    category: 'Marketing',
     path: 'components/blocks/bento-cards.tsx',
     component: React.lazy(() =>
       import('./bento-cards').then((mod) => ({ default: mod.default })),
@@ -148,7 +150,7 @@ export const blocks: Block = {
   testimonial: {
     name: 'Testimonial',
     description: 'Customer testimonial cards with ratings and avatars.',
-    category: 'Landing Page',
+    category: 'Marketing',
     path: 'components/blocks/testimonial.tsx',
     component: React.lazy(() =>
       import('./testimonial').then((mod) => ({ default: mod.default })),
@@ -156,8 +158,9 @@ export const blocks: Block = {
   },
   pricing: {
     name: 'Pricing',
-    description: 'Three-tier pricing section with feature comparison and CTA buttons.',
-    category: 'Landing Page',
+    description:
+      'Three-tier pricing section with feature comparison and CTA buttons.',
+    category: 'Marketing',
     path: 'components/blocks/pricing.tsx',
     component: React.lazy(() =>
       import('./pricing').then((mod) => ({ default: mod.default })),
@@ -166,7 +169,7 @@ export const blocks: Block = {
   faq: {
     name: 'FAQ',
     description: 'Frequently asked questions with expandable accordion layout.',
-    category: 'Landing Page',
+    category: 'Marketing',
     path: 'components/blocks/faq.tsx',
     component: React.lazy(() =>
       import('./faq').then((mod) => ({ default: mod.default })),
@@ -174,8 +177,9 @@ export const blocks: Block = {
   },
   stats: {
     name: 'Stats',
-    description: 'Statistics and metrics showcase section with key performance indicators.',
-    category: 'Landing Page',
+    description:
+      'Statistics and metrics showcase section with key performance indicators.',
+    category: 'Marketing',
     path: 'components/blocks/stats.tsx',
     component: React.lazy(() =>
       import('./stats').then((mod) => ({ default: mod.default })),
@@ -183,8 +187,9 @@ export const blocks: Block = {
   },
   logoGrid: {
     name: 'Logo Grid',
-    description: 'Grid of company logos showcasing trusted partners and clients.',
-    category: 'Landing Page',
+    description:
+      'Grid of company logos showcasing trusted partners and clients.',
+    category: 'Marketing',
     path: 'components/blocks/logo-grid.tsx',
     component: React.lazy(() =>
       import('./logo-grid').then((mod) => ({ default: mod.default })),
@@ -193,7 +198,7 @@ export const blocks: Block = {
   newsletter: {
     name: 'Newsletter',
     description: 'Email signup form with success message and privacy notice.',
-    category: 'Landing Page',
+    category: 'Marketing',
     path: 'components/blocks/newsletter.tsx',
     component: React.lazy(() =>
       import('./newsletter').then((mod) => ({ default: mod.default })),
@@ -202,7 +207,7 @@ export const blocks: Block = {
   splitSection: {
     name: 'Split Section',
     description: 'Side-by-side content layout with text and visual elements.',
-    category: 'Landing Page',
+    category: 'Marketing',
     path: 'components/blocks/split-section.tsx',
     component: React.lazy(() =>
       import('./split-section').then((mod) => ({ default: mod.default })),
@@ -210,8 +215,9 @@ export const blocks: Block = {
   },
   ctaSection: {
     name: 'CTA Section',
-    description: 'Call-to-action section with gradient background and multiple buttons.',
-    category: 'Landing Page',
+    description:
+      'Call-to-action section with gradient background and multiple buttons.',
+    category: 'Marketing',
     path: 'components/blocks/cta-section.tsx',
     component: React.lazy(() =>
       import('./cta-section').then((mod) => ({ default: mod.default })),
@@ -219,8 +225,9 @@ export const blocks: Block = {
   },
   team: {
     name: 'Team',
-    description: 'Team member cards with avatars, titles, bios, and social links.',
-    category: 'Landing Page',
+    description:
+      'Team member cards with avatars, titles, bios, and social links.',
+    category: 'Marketing',
     path: 'components/blocks/team.tsx',
     component: React.lazy(() =>
       import('./team').then((mod) => ({ default: mod.default })),
@@ -228,8 +235,9 @@ export const blocks: Block = {
   },
   featuresDetailed: {
     name: 'Features Detailed',
-    description: 'Detailed feature cards with icons and comprehensive descriptions.',
-    category: 'Landing Page',
+    description:
+      'Detailed feature cards with icons and comprehensive descriptions.',
+    category: 'Marketing',
     path: 'components/blocks/features-detailed.tsx',
     component: React.lazy(() =>
       import('./features-detailed').then((mod) => ({ default: mod.default })),
@@ -237,8 +245,9 @@ export const blocks: Block = {
   },
   videoSection: {
     name: 'Video Section',
-    description: 'Video player with overlay controls and supporting content sections.',
-    category: 'Landing Page',
+    description:
+      'Video player with overlay controls and supporting content sections.',
+    category: 'Marketing',
     path: 'components/blocks/video-section.tsx',
     component: React.lazy(() =>
       import('./video-section').then((mod) => ({ default: mod.default })),

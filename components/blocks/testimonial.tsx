@@ -43,7 +43,7 @@ export default function TestimonialBlock() {
         </Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {testimonials.map((testimonial, index) => (
           <Card
             key={index}
@@ -59,9 +59,7 @@ export default function TestimonialBlock() {
                 ))}
               </div>
 
-              <Text className="text-base mb-6 flex-grow">
-                "{testimonial.content}"
-              </Text>
+              <Text className="mb-6 flex-grow">"{testimonial.content}"</Text>
 
               <div className="flex items-center gap-3">
                 <Avatar className="w-10 h-10" slot="avatar">
