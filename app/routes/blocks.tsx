@@ -10,6 +10,7 @@ import {
   SidebarIcon,
   CircleHelpIcon,
   StarIcon,
+  PaletteIcon,
 } from 'lucide-react';
 import { blocks, categories } from 'components/blocks';
 import { categoryToSlug } from '~/lib/utils';
@@ -34,6 +35,7 @@ const categoryIconMap: Record<string, React.ReactNode> = {
   Misc: <CircleHelpIcon />,
   Forms: <FileTextIcon />,
   Dashboard: <LayoutDashboardIcon />,
+  Marketing: <PaletteIcon />,
 };
 
 export async function loader({ params }: Route.LoaderArgs) {
