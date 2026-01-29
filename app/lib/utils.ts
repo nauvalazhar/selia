@@ -8,15 +8,6 @@ export function componentName(name: string) {
   );
 }
 
-export function categoryToSlug(category: string): string {
-  return category.toLowerCase().replace(/\s+/g, '-');
-}
-
-export function slugToCategory(slug: string): string {
-  const categories = [...new Set(Object.values(blocks).map(b => b.category))];
-  return categories.find(c => categoryToSlug(c) === slug) || '';
-}
-
 export const categoryIcons: Record<string, string> = {
   Chat: 'MessageCircle',
   Sidebar: 'Menu',
@@ -102,4 +93,13 @@ export function replaceVariables(
   });
 
   return result;
+}
+
+export function categoryToSlug(category: string): string {
+  return category.toLowerCase().replace(/\s+/g, '-');
+}
+
+export function slugToCategory(slug: string): string {
+  const categories = [...new Set(Object.values(blocks).map((b) => b.category))];
+  return categories.find((c) => categoryToSlug(c) === slug) || '';
 }

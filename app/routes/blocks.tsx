@@ -13,7 +13,7 @@ import {
   PaletteIcon,
 } from 'lucide-react';
 import { blocks, categories } from 'components/blocks';
-import { categoryToSlug } from '~/lib/utils';
+import { categoryToSlug, slugToCategory } from 'app/lib/utils';
 import {
   Item,
   ItemAction,
@@ -27,7 +27,6 @@ import type { Route } from './+types/blocks';
 import { getBlockSources } from '~/lib/source';
 import { BlockPreview } from 'components/block-preview';
 import { ScrollArea } from 'components/selia/scroll-area';
-import { slugToCategory } from '#utils';
 
 const categoryIconMap: Record<string, React.ReactNode> = {
   AI: <SparklesIcon />,
