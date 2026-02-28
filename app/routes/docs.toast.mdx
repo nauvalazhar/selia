@@ -41,7 +41,7 @@ To create a toast, use the `toastManager` object.
 ```tsx filename="component.tsx"
 import { toastManager } from 'components/selia/toast';
 
-toastManager.create({
+toastManager.add({
   title: 'Toast',
   description: 'This is a toast',
   type: 'success',
@@ -53,7 +53,7 @@ Or use the `anchoredToastManager` object to create an anchored toast.
 ```tsx filename="component.tsx"
 import { anchoredToastManager } from 'components/selia/toast';
 
-anchoredToastManager.create({
+anchoredToastManager.add({
   title: 'Toast',
   description: 'This is a toast',
   type: 'success',
