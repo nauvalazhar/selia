@@ -19,6 +19,7 @@ export { examples as checkbox } from './checkbox';
 export { examples as chip } from './chip';
 export { examples as combobox } from './combobox';
 export { examples as dialog } from './dialog';
+export { examples as drawer } from './drawer';
 export { examples as divider } from './divider';
 export { examples as menu } from './menu';
 export { examples as field } from './field';

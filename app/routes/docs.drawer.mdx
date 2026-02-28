@@ -1,0 +1,106 @@
+# Drawer
+
+A side panel that slides in from the edge of the screen, commonly used for navigation, filters, or additional content.
+
+<DocsButtons externalDoc="https://base-ui.com/react/components/drawer" />
+
+<Preview name="basic" />
+
+## Installation
+
+<Installation name="drawer" dependencies={["button"]} />
+
+## Usage
+
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Drawer Parts"
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerPopup,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerBody,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose
+} from "components/selia/drawer";
+```
+
+### Structure
+
+The expected structure and composition of the component.
+
+```tsx filename="Anatomy"
+<Drawer>
+  <DrawerTrigger>Open Drawer</DrawerTrigger>
+  <DrawerPopup>
+    <DrawerHeader>
+      <DrawerTitle>Drawer Title</DrawerTitle>
+      <DrawerClose />
+    </DrawerHeader>
+    <DrawerBody>
+      <DrawerDescription>Drawer Description</DrawerDescription>
+    </DrawerBody>
+    <DrawerFooter>
+      <DrawerClose>Close</DrawerClose>
+    </DrawerFooter>
+  </DrawerPopup>
+</Drawer>
+```
+
+## Examples
+
+### Right Side Drawer (Default)
+
+A drawer that slides in from the right side. Perfect for navigation, settings, and edit forms.
+
+<Preview name="basic" />
+
+### Bottom Sheet Drawer
+
+A drawer that slides up from the bottom. Ideal for action sheets, mobile navigation, and mobile-first experiences.
+
+<Preview name="bottom" />
+
+### Left Side Drawer
+
+A drawer that slides in from the left side. Great for navigation menus and sidebars.
+
+<Preview name="left" />
+
+### Controlled Drawer
+
+Manage the drawer's open state with React state and external controls.
+
+<Preview name="controlled" />
+
+### Action Sheet
+
+A bottom drawer styled as an action sheet for selecting from a list of actions.
+
+<Preview name="actionsheet" />
+
+### Nested Drawers
+
+Stack multiple drawers for complex workflows and multi-step interactions.
+
+<Preview name="nested" />
+
+### Mobile Navigation
+
+Full-screen mobile navigation drawer with navigation items and social links.
+
+<Preview name="mobilenav" />
+
+## Accessibility
+
+The Drawer component is built on top of Base UI's Drawer, which provides:
+
+- **ARIA attributes**: Proper roles and labels for screen readers
+- **Keyboard navigation**: Dismisses on Escape key press
+- **Focus management**: Focus is trapped within the drawer while open
+- **Backdrop interaction**: Clicking the backdrop closes the drawer
