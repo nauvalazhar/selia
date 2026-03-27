@@ -1,4 +1,4 @@
-import { ScrollArea } from '@base-ui/react';
+import { ScrollArea } from 'components/selia/scroll-area';
 import { CodeTabs, CodeTabsPanel } from 'components/code-tabs';
 import { CopyButton } from 'components/copy-button';
 import { cn } from 'lib/utils';
@@ -36,32 +36,34 @@ export default {
         </header>
         <div
           className={cn(
-            'relative w-full **:[code,pre]:outline-none flex flex-col',
+            'relative w-full **:[code,pre]:outline-none',
             '**:[code]:w-full **:[code]:inline-block',
           )}
         >
-          <ScrollArea.Root
-            className={cn(
-              clip && !isClipOpen
-                ? 'h-72 overflow-hidden pointer-events-none'
-                : '',
-            )}
-          >
-            <ScrollArea.Viewport className="px-4 py-4 rounded-3xl h-full">
+          <ScrollArea className="max-h-[400px]" scrollbar="both" fitContent>
+            <div
+              className={cn(
+                'px-4 py-4 rounded-3xl',
+                clip && !isClipOpen
+                  ? 'pointer-events-none'
+                  : '',
+              )}
+            >
               <pre
                 {...props}
                 className={cn(
-                  'shiki [&:has(.highlighted)_.line:not(.highlighted)]:opacity-70 hover:[&_.line]:!opacity-100',
+                  'shiki !m-0 !p-0 [&:has(.highlighted)_.line:not(.highlighted)]:opacity-70 hover:[&_.line]:!opacity-100',
                   '[&_.highlighted]:bg-linear-to-r [&_.highlighted]:from-primary/20 [&_.highlighted]:to-primary/5',
                   '[&_.highlighted]:border-l-2 [&_.highlighted]:border-primary',
                   '[&_.highlighted]:-m-4 [&_.highlighted]:pl-4 [&_.highlighted]:transition-opacity',
                   '[&_.highlighted]:w-[calc(100%+2rem)] [&_.highlighted]:inline-block',
+                  '!w-max !min-w-full',
                 )}
               >
                 {children}
               </pre>
-            </ScrollArea.Viewport>
-          </ScrollArea.Root>
+            </div>
+          </ScrollArea>
           {clip && (
             <button
               className={cn(
