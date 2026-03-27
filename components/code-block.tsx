@@ -1,3 +1,5 @@
+'use client';
+
 import { useThemeStore } from '~/lib/theme-store';
 import { ScrollArea } from 'components/selia/scroll-area';
 import ShikiHighlighter from 'react-shiki/core';
@@ -26,7 +28,7 @@ export function CodeBlock({
       : 'light';
 
   return (
-    <ScrollArea className={cn(className)}>
+    <ScrollArea className={cn('max-h-[600px]', className)} scrollbar="both" fitContent>
       <ShikiHighlighter
         language={language}
         theme={{
@@ -35,7 +37,7 @@ export function CodeBlock({
         }}
         defaultColor="light"
         className={cn(
-          '**:[pre]:!p-0 **:[pre]:!overflow-visible **:[pre]:!bg-transparent **:[pre]:!outline-none',
+          '!bg-transparent **:[pre]:!p-0 **:[pre]:!bg-transparent **:[pre]:!outline-none **:[pre]:!w-max **:[pre]:!min-w-full',
           syntaxClassName,
         )}
         showLanguage={false}

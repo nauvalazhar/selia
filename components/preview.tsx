@@ -128,7 +128,7 @@ export function PreviewCode({
           {isCopied ? <CheckIcon /> : <ClipboardIcon />}
         </Button>
       </div>
-      <CodeBlock language="tsx" className="h-[500px]">
+      <CodeBlock language="tsx">
         {children}
       </CodeBlock>
     </div>

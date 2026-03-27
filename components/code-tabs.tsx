@@ -93,8 +93,8 @@ export function CodeTabsPanel({
   language?: string;
 }) {
   return (
-    <TabsPanel value={value} keepMounted className="w-full outline-none">
-      <CodeBlock language={language} className="px-4 py-4">
+    <TabsPanel value={value} keepMounted className="w-full outline-none p-4">
+      <CodeBlock language={language}>
         {getTextFromChildren(children)}
       </CodeBlock>
     </TabsPanel>

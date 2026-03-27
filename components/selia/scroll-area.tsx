@@ -7,9 +7,11 @@ export function ScrollArea({
   children,
   className,
   scrollbar = 'both',
+  fitContent = false,
   ...props
 }: React.ComponentProps<typeof BaseScrollArea.Root> & {
   scrollbar?: 'horizontal' | 'vertical' | 'both' | false;
+  fitContent?: boolean;
 }) {
   return (
     <BaseScrollArea.Root
@@ -19,7 +21,10 @@ export function ScrollArea({
     >
       <BaseScrollArea.Viewport
         data-slot="scroll-area-viewport"
-        className="overscroll-contain outline-none size-full"
+        className={cn(
+          'overscroll-contain outline-none w-full',
+          fitContent ? 'max-h-[inherit]' : 'h-full',
+        )}
       >
         {children}
       </BaseScrollArea.Viewport>
@@ -50,22 +55,36 @@ function ScrollAreaScrollbar({
       {...props}
       data-slot="scroll-area-scrollbar"
       className={cn(
-        'flex m-1 touch-none select-none',
-        'opacity-0 transition-opacity delay-300 pointer-events-none',
-        'data-[hovering]:opacity-100 data-[hovering]:delay-0',
-        'data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
-        'data-[scrolling]:opacity-100 data-[scrolling]:delay-0',
-        'data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
+        'flex touch-none select-none transition-opacity delay-300 pointer-events-none opacity-0',
+        'data-[hovering]:opacity-100 data-[hovering]:delay-0 data-[hovering]:duration-75 data-[hovering]:pointer-events-auto',
+        'data-[scrolling]:opacity-100 data-[scrolling]:delay-0 data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto',
         orientation === 'vertical'
-          ? 'w-1.5 justify-center'
-          : 'h-1.5 justify-start',
+          ? 'flex-col w-1.5'
+          : 'flex-row h-1.5',
         className,
       )}
       orientation={orientation}
+      style={{
+        position: 'absolute',
+        ...(orientation === 'vertical'
+          ? {
+              right: '0.25rem',
+              top: '0.25rem',
+              height: 'calc(100% - 1rem)',
+            }
+          : {
+              bottom: '0.25rem',
+              left: '0.25rem',
+              width: 'calc(100% - 1rem)',
+            }),
+      }}
     >
       <BaseScrollArea.Thumb
         data-slot="scroll-area-thumb"
-        className="rounded bg-scrollbar w-full cursor-grab active:cursor-grabbing"
+        className={cn(
+          'rounded-full bg-scrollbar cursor-grab active:cursor-grabbing',
+          orientation === 'vertical' ? 'w-full' : 'h-full',
+        )}
       />
     </BaseScrollArea.Scrollbar>
   );
