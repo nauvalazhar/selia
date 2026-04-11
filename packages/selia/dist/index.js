@@ -109,26 +109,30 @@ var ItemSchema = z3.object({
 });
 
 // src/lib/fetch-item.ts
-async function fetchItem(registryUrl, itemName) {
+async function fetchItem(registryUrl, itemName, retry = true) {
   const url = `${registryUrl}/${itemName}.json`;
+  let response;
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error(`No item found.`);
-      }
-      throw new Error(
-        `Failed to fetch item "${itemName}" from registry: ${response.statusText}`
-      );
-    }
-    const data = await response.json();
-    return ItemSchema.parse(data);
+    response = await fetch(url);
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error("Item could not be found.");
+    if (retry) {
+      await new Promise((resolve) => setTimeout(resolve, 1e3));
+      return fetchItem(registryUrl, itemName, false);
     }
-    throw new Error("Failed to fetch item.");
+    throw new Error(
+      `Failed to fetch item "${itemName}": ${error instanceof Error ? error.message : "network error"}`
+    );
   }
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error(`Item "${itemName}" could not be found.`);
+    }
+    throw new Error(
+      `Failed to fetch item "${itemName}" from registry: ${response.statusText}`
+    );
+  }
+  const data = await response.json();
+  return ItemSchema.parse(data);
 }
 async function fetchItems(registryUrl, itemNames) {
   const items = await Promise.all(
