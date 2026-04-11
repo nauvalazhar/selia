@@ -131,6 +131,10 @@ async function fetchItem(registryUrl, itemName, retry = true) {
       `Failed to fetch item "${itemName}" from registry: ${response.statusText}`
     );
   }
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error(`Item "${itemName}" could not be found.`);
+  }
   const data = await response.json();
   return ItemSchema.parse(data);
 }
