@@ -31,6 +31,11 @@ export async function fetchItem(
     );
   }
 
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    throw new Error(`Item "${itemName}" could not be found.`);
+  }
+
   const data = await response.json();
   return ItemSchema.parse(data);
 }
