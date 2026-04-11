@@ -39,6 +39,10 @@
   --dialog-foreground: var(--foreground);
   --dialog-border: oklch(0.9384 0.0018 247.84);
   --dialog-footer: oklch(0.977 0.0007 247.83);
+  --drawer: oklch(1 0 0);
+  --drawer-foreground: var(--foreground);
+  --drawer-border: oklch(0.9384 0.0018 247.84);
+  --drawer-footer: oklch(0.977 0.0007 247.83);
   --toast: oklch(1 0 0);
   --toast-foreground: var(--foreground);
   --toast-border: oklch(0.9384 0.0018 247.84);
@@ -130,6 +134,10 @@
   --dialog-foreground: var(--foreground);
   --dialog-border: oklch(0.308 0.0046 247.98);
   --dialog-footer: oklch(0.2366 0.0037 247.99);
+  --drawer: oklch(0.2579 0.0043 247.99);
+  --drawer-foreground: var(--foreground);
+  --drawer-border: oklch(0.308 0.0046 247.98);
+  --drawer-footer: oklch(0.2366 0.0037 247.99);
   --toast: oklch(0.3196 0.0058 248.01);
   --toast-foreground: var(--foreground);
   --toast-border: oklch(0.3974 0.0076 248.02);
@@ -224,6 +232,10 @@
   --color-dialog-foreground: var(--dialog-foreground);
   --color-dialog-border: var(--dialog-border);
   --color-dialog-footer: var(--dialog-footer);
+  --color-drawer: var(--drawer);
+  --color-drawer-foreground: var(--drawer-foreground);
+  --color-drawer-border: var(--drawer-border);
+  --color-drawer-footer: var(--drawer-footer);
   --color-tabs: var(--tabs);
   --color-tabs-foreground: var(--tabs-foreground);
   --color-tabs-border: var(--tabs-border);
