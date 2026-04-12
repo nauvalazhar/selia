@@ -7,6 +7,7 @@ export const RegistrySchema = z.object({
   homepage: z.url().optional(),
   items: z.array(ItemSchema),
   setup: z.union([SetupSchema, z.string()]).optional(),
+  docs: z.string().optional(),
 });
 
 export type Registry = z.infer<typeof RegistrySchema>;

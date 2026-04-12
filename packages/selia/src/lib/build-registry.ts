@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { glob } from 'glob';
 import { Registry } from '../schemas/registry-schema';
 import { Item } from '../schemas/item-schema';
 import { log, spinner } from '@clack/prompts';
@@ -34,9 +35,16 @@ export async function buildRegistry(
       await buildSetup(registry.setup, options.output);
     }
 
+    // Build docs if configured
+    let docsCount = 0;
+    if (registry.docs) {
+      s.message('Building documentation...');
+      docsCount = await buildDocs(registry.docs, options.output);
+    }
+
     s.stop('Build complete');
     log.success(
-      picocolors.green(`Built ${registry.items.length} items successfully`),
+      picocolors.green(`Built ${registry.items.length} item(s) and ${docsCount} doc(s) successfully`),
     );
   } catch (error) {
     s.stop('Build failed');
@@ -64,6 +72,9 @@ async function buildRegistryFile(
   if (registry.setup) {
     cleanedRegistry.setup = 'setup.json';
   }
+
+  // Remove docs source path from published registry
+  delete (cleanedRegistry as any).docs;
 
   await fs.mkdir(output, { recursive: true });
   await fs.writeFile(
@@ -164,4 +175,40 @@ async function processSetupPaths(setup: Setup): Promise<Setup> {
   return {
     steps: processedSteps,
   };
+}
+
+async function buildDocs(
+  docsPath: string,
+  output: string,
+): Promise<number> {
+  const docsDir = path.resolve(docsPath);
+  const mdFiles = await glob('*.md', { cwd: docsDir });
+
+  if (mdFiles.length === 0) return 0;
+
+  const docsOutput = path.join(output, 'docs');
+  await fs.mkdir(docsOutput, { recursive: true });
+
+  const docsIndex: Array<{ name: string }> = [];
+
+  for (const file of mdFiles.sort()) {
+    const name = file.replace(/\.md$/, '');
+    const content = await fs.readFile(path.join(docsDir, file), 'utf-8');
+
+    await fs.writeFile(
+      path.join(docsOutput, `${name}.json`),
+      JSON.stringify({ name, content: content.trim() }, null, 2),
+      'utf-8',
+    );
+
+    docsIndex.push({ name });
+  }
+
+  await fs.writeFile(
+    path.join(docsOutput, 'index.json'),
+    JSON.stringify({ docs: docsIndex }, null, 2),
+    'utf-8',
+  );
+
+  return docsIndex.length;
 }

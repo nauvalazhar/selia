@@ -1,0 +1,47 @@
+name: Publish to npm
+
+on:
+  push:
+    branches: [master]
+    paths: [packages/selia/package.json]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check if version changed
+        id: version
+        run: |
+          OLD=$(git show HEAD~1:packages/selia/package.json | grep '"version"' | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
+          NEW=$(grep '"version"' packages/selia/package.json | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
+          if [ "$OLD" != "$NEW" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Version changed: $OLD → $NEW"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Version unchanged: $OLD"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.version.outputs.changed == 'true'
+        with:
+          registry-url: https://registry.npmjs.org
+
+      - uses: oven-sh/setup-bun@v2
+        if: steps.version.outputs.changed == 'true'
+
+      - name: Install and build
+        if: steps.version.outputs.changed == 'true'
+        run: |
+          bun install
+          cd packages/selia && bun install && bun run build
+
+      - name: Publish
+        if: steps.version.outputs.changed == 'true'
+        run: cd packages/selia && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

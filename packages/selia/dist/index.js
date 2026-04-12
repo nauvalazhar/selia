@@ -1242,7 +1242,8 @@ var RegistrySchema = z5.object({
   name: z5.string(),
   homepage: z5.url().optional(),
   items: z5.array(ItemSchema),
-  setup: z5.union([SetupSchema, z5.string()]).optional()
+  setup: z5.union([SetupSchema, z5.string()]).optional(),
+  docs: z5.string().optional()
 });
 
 // src/lib/clean-build.ts
@@ -1257,6 +1258,7 @@ async function cleanBuild(output) {
 // src/lib/build-registry.ts
 import fs11 from "fs/promises";
 import path10 from "path";
+import { glob as glob3 } from "glob";
 import { log as log5, spinner as spinner4 } from "@clack/prompts";
 import picocolors4 from "picocolors";
 async function buildRegistry(registry, options) {
@@ -1273,9 +1275,14 @@ async function buildRegistry(registry, options) {
       s.message("Building setup configuration...");
       await buildSetup(registry.setup, options.output);
     }
+    let docsCount = 0;
+    if (registry.docs) {
+      s.message("Building documentation...");
+      docsCount = await buildDocs(registry.docs, options.output);
+    }
     s.stop("Build complete");
     log5.success(
-      picocolors4.green(`Built ${registry.items.length} items successfully`)
+      picocolors4.green(`Built ${registry.items.length} item(s) and ${docsCount} doc(s) successfully`)
     );
   } catch (error) {
     s.stop("Build failed");
@@ -1296,6 +1303,7 @@ async function buildRegistryFile(registry, output) {
   if (registry.setup) {
     cleanedRegistry.setup = "setup.json";
   }
+  delete cleanedRegistry.docs;
   await fs11.mkdir(output, { recursive: true });
   await fs11.writeFile(
     path10.join(output, "registry.json"),
@@ -1358,6 +1366,30 @@ async function buildSetup(setup, output) {
     "utf-8"
   );
 }
+async function buildDocs(docsPath, output) {
+  const docsDir = path10.resolve(docsPath);
+  const mdFiles = await glob3("*.md", { cwd: docsDir });
+  if (mdFiles.length === 0) return 0;
+  const docsOutput = path10.join(output, "docs");
+  await fs11.mkdir(docsOutput, { recursive: true });
+  const docsIndex = [];
+  for (const file of mdFiles.sort()) {
+    const name = file.replace(/\.md$/, "");
+    const content = await fs11.readFile(path10.join(docsDir, file), "utf-8");
+    await fs11.writeFile(
+      path10.join(docsOutput, `${name}.json`),
+      JSON.stringify({ name, content: content.trim() }, null, 2),
+      "utf-8"
+    );
+    docsIndex.push({ name });
+  }
+  await fs11.writeFile(
+    path10.join(docsOutput, "index.json"),
+    JSON.stringify({ docs: docsIndex }, null, 2),
+    "utf-8"
+  );
+  return docsIndex.length;
+}
 
 // src/commands/build.ts
 var buildCommand = new Command3().name("build").description("Build the registry").option("-o, --output <path>", "Output directory", "./public/registry").action(async (options) => {
@@ -1400,10 +1432,110 @@ var buildCommand = new Command3().name("build").description("Build the registry"
   }
 });
 
+// src/commands/docs.ts
+import { Command as Command4 } from "commander";
+
+// src/schemas/doc-schema.ts
+import { z as z6 } from "zod";
+var DocSchema = z6.object({
+  name: z6.string(),
+  content: z6.string()
+});
+var DocsIndexSchema = z6.object({
+  docs: z6.array(
+    z6.object({
+      name: z6.string()
+    })
+  )
+});
+
+// src/lib/fetch-doc.ts
+async function fetchDoc(registryUrl, name, retry = true) {
+  const url = `${registryUrl}/docs/${name}.json`;
+  let response;
+  try {
+    response = await fetch(url);
+  } catch (error) {
+    if (retry) {
+      await new Promise((resolve) => setTimeout(resolve, 1e3));
+      return fetchDoc(registryUrl, name, false);
+    }
+    throw new Error(
+      `Failed to fetch docs for "${name}": ${error instanceof Error ? error.message : "network error"}`
+    );
+  }
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error(`Documentation for "${name}" could not be found.`);
+    }
+    throw new Error(
+      `Failed to fetch docs for "${name}" from registry: ${response.statusText}`
+    );
+  }
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error(`Documentation for "${name}" could not be found.`);
+  }
+  const data = await response.json();
+  return DocSchema.parse(data);
+}
+async function fetchDocsIndex(registryUrl, retry = true) {
+  const url = `${registryUrl}/docs/index.json`;
+  let response;
+  try {
+    response = await fetch(url);
+  } catch (error) {
+    if (retry) {
+      await new Promise((resolve) => setTimeout(resolve, 1e3));
+      return fetchDocsIndex(registryUrl, false);
+    }
+    throw new Error(
+      `Failed to fetch docs index: ${error instanceof Error ? error.message : "network error"}`
+    );
+  }
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch docs index from registry: ${response.statusText}`
+    );
+  }
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error("Failed to fetch docs index: unexpected response format.");
+  }
+  const data = await response.json();
+  return DocsIndexSchema.parse(data);
+}
+
+// src/commands/docs.ts
+var docsCommand = new Command4().name("docs").description("View documentation for components and guides").argument("[name]", "Documentation topic (e.g. button, customization)").option("-l, --list", "List all available documentation topics").action(async (name, options) => {
+  try {
+    const { runtimeUrl: registryUrl } = await resolveRegistry(process.cwd());
+    if (options.list || !name) {
+      const index = await fetchDocsIndex(registryUrl);
+      if (!name) {
+        console.log("Available documentation topics:\n");
+      }
+      for (const doc2 of index.docs) {
+        console.log(doc2.name);
+      }
+      return;
+    }
+    const normalizedName = name.replace(/\//g, ".");
+    const doc = await fetchDoc(registryUrl, normalizedName);
+    console.log(doc.content);
+  } catch (error) {
+    console.error(
+      error instanceof Error ? error.message : "An unknown error occurred"
+    );
+    process.exit(1);
+  }
+});
+
 // src/index.ts
 program.version("0.0.1");
 program.addCommand(initCommand);
 program.addCommand(addCommand);
 program.addCommand(buildCommand);
+program.addCommand(docsCommand);
 program.parse();
 //# sourceMappingURL=index.js.map
