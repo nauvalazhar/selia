@@ -5,7 +5,7 @@
   "scripts": {
     "build": "bun scripts/build-docs.ts && bun run build:registry && bunx --bun react-router build",
     "build:docs": "bun scripts/build-docs.ts",
-    "build:registry": "cd packages/selia && npm run build && cd ../.. && node packages/selia/dist/index.js build",
+    "build:registry": "cd packages/selia && bun install && bun run build && cd ../.. && node packages/selia/dist/index.js build",
     "dev": "bun scripts/build-docs.ts && bunx --bun react-router dev",
     "start": "bunx --bun react-router-serve ./build/server/index.js",
     "typecheck": "bunx --bun react-router typegen && tsc"
