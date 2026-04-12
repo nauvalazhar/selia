@@ -174,6 +174,21 @@
       ]
     },
     {
+      "name": "drawer",
+      "type": "component",
+      "dependencies": {
+        "items": [
+          "button"
+        ]
+      },
+      "files": [
+        {
+          "name": "drawer.tsx",
+          "target": "components"
+        }
+      ]
+    },
+    {
       "name": "divider",
       "type": "component",
       "files": [

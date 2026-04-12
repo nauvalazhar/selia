@@ -1,0 +1,132 @@
+# Drawer
+
+A panel that slides in from the edge of the screen, with swipe to dismiss.
+
+<DocsButtons externalDoc="https://base-ui.com/react/components/drawer" />
+
+<Preview name="basic" />
+
+## Installation
+<Installation name="drawer" dependencies={["button"]} />
+
+## Usage
+
+### Import
+
+Import the component and its related parts.
+
+```ts filename="Drawer Parts"
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerPopup,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerBody,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose
+} from "components/selia/drawer";
+```
+
+### Structure
+
+How to put the parts together.
+
+```tsx filename="Anatomy"
+<Drawer>
+  <DrawerTrigger>Open Drawer</DrawerTrigger>
+  <DrawerPopup>
+    <DrawerHeader>
+      <DrawerTitle>Drawer Title</DrawerTitle>
+    </DrawerHeader>
+    <DrawerBody>
+      <DrawerDescription>Drawer Description</DrawerDescription>
+    </DrawerBody>
+    <DrawerFooter>
+      <DrawerClose>Close</DrawerClose>
+    </DrawerFooter>
+  </DrawerPopup>
+</Drawer>
+```
+
+### Direction
+
+Use the `direction` prop on `DrawerPopup` to control which edge the drawer slides in from. Defaults to `right`.
+
+```tsx filename="Direction"
+<DrawerPopup direction="left">...</DrawerPopup>
+<DrawerPopup direction="right">...</DrawerPopup>
+<DrawerPopup direction="top">...</DrawerPopup>
+<DrawerPopup direction="bottom">...</DrawerPopup>
+```
+
+Make sure `swipeDirection` on `Drawer` matches the `direction` so swipe to dismiss works correctly.
+
+```tsx filename="Swipe Direction"
+<Drawer swipeDirection="left">
+  <DrawerPopup direction="left">...</DrawerPopup>
+</Drawer>
+```
+
+## Examples
+
+### Bottom
+
+Bottom drawer for confirmations or action sheets.
+
+<Preview name="bottom" />
+
+### Left
+
+Left drawer, good for navigation menus.
+
+<Preview name="left" />
+
+### Top
+
+Top drawer for banners or alerts.
+
+<Preview name="top" />
+
+### Snap Points
+
+The drawer can snap to preset heights as you drag. Pass an array to the `snapPoints` prop. Use numbers between 0 and 1 for viewport fractions, or strings like `'31rem'` for fixed sizes.
+
+<Preview name="snapPoints" />
+
+### Scrolling
+
+Long content scrolls inside the body. The header and footer stay in place.
+
+<Preview name="scrolling" />
+
+### Non-Modal
+
+A drawer that does not trap focus or block the page. Set `modal={false}` and `disablePointerDismissal` on `Drawer`, and `backdrop={false}` on `DrawerPopup`.
+
+<Preview name="nonModal" />
+
+### Indent
+
+Scales down the background when the drawer opens. Wrap your content with `DrawerProvider`, `DrawerIndentBackground`, and `DrawerIndent`. Pass `portalContainer` to `DrawerPopup` so the drawer renders inside the container.
+
+<Preview name="indent" />
+
+### Swipe Area
+
+Place `DrawerSwipeArea` inside `Drawer` to let users swipe from the edge to open the drawer. No button needed.
+
+<Preview name="swipeArea" />
+
+### Nested
+
+Drawers can be nested. They stack with a scale and peek effect, and each one manages focus on its own.
+
+<Preview name="nested" />
+
+### Settings
+
+A settings panel with form fields, checkboxes, and radio groups. The body scrolls while the header and footer stay fixed.
+
+<Preview name="settings" />
