@@ -7,3 +7,7 @@ node_modules
 /.react-router/
 /build/
 
+# Generated docs and registry (built in CI)
+/docs/
+/public/registry/
+

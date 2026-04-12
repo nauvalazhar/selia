@@ -178,10 +178,20 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       new URL(request.url).pathname,
     );
 
+    let processedMarkdown = source;
+    try {
+      const docJson = await Bun.file(
+        path.join(process.cwd(), 'public/registry/docs', `${pathname}.json`),
+      ).json();
+      processedMarkdown = docJson.content;
+    } catch {
+      // Fall back to raw source if processed docs not available
+    }
+
     return {
       title,
       mdxCode,
-      pageRaw: source,
+      pageRaw: processedMarkdown,
       sources,
       menuNextPrev,
       name: componentName(pathname),
